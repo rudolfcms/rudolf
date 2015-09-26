@@ -1,4 +1,4 @@
 # lcms #
 
 ## What is `lcms`? ##
-lcms is my own simple php cms. That's all.
+lcms is my simple CMS system written in PHP. That's all.
