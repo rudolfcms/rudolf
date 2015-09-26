@@ -16,11 +16,11 @@
  * 
  * @return void
  */
-function php_check_run( $minimumVersionPHP ) {
+function php_check_run($minimumVersionPHP) {
 	$phpVersion = PHP_VERSION;
 	
-	if ( version_compare( $phpVersion, $minimumVersionPHP, '<' ) ) {
-		php_version_error( $phpVersion, $minimumVersionPHP );
+	if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
+		php_version_error($phpVersion, $minimumVersionPHP);
 	}
 }
 
@@ -34,14 +34,14 @@ function php_check_run( $minimumVersionPHP ) {
  * 
  * @return void
  */
-function php_version_error( $phpVersion, $minimumVersionPHP ) {
+function php_version_error($phpVersion, $minimumVersionPHP) {
 	$pageTitle = 'Error to start the lcms!';
 	$shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of lcms!';
 	$longText = 'To run lcms, you must upgrade your copy of PHP.';
 
-	php_version_error_display( $pageTitle, $shortText, $longText );
+	php_version_error_display($pageTitle, $shortText, $longText);
 
-	die( 1 );
+	die(1);
 }
 
 /**
@@ -53,10 +53,10 @@ function php_version_error( $phpVersion, $minimumVersionPHP ) {
  * 
  * @return void
  */
-function php_version_error_display( $pageTitle, $shortText, $longText ) {
-	header( 'Content-type: text/html; charset=UTF-8' );
-	header( 'Cache-control: none' );
-	header( 'Pragma: no-cache' );
+function php_version_error_display($pageTitle, $shortText, $longText) {
+	header('Content-type: text/html; charset=UTF-8');
+	header('Cache-control: none');
+	header('Pragma: no-cache');
 
 ?><!DOCTYPE html>
 <html>

@@ -21,16 +21,16 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	public static function setLogPath( $path ) {
-		if( is_dir( $path ) ) {
-			$file = rtrim( $path, '/' ) . '/exceptions.log';
+	public static function setLogPath($path) {
+		if(is_dir($path)) {
+			$file = rtrim($path, '/') . '/exceptions.log';
 			self::$log_path = $file;
 		} else {
 			$file = $path;
 			self::$log_path = $path;
 		}
 
-		if( !is_file($file) ) {
+		if(!is_file($file)) {
 			fopen($file, 'w');
 		}
 	}
@@ -42,8 +42,8 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	public static function setEnvironment( $env ) {
-		if( 'debug' === $env ) {
+	public static function setEnvironment($env) {
+		if('debug' === $env) {
 			self::$debug = true;
 		}
 	}
@@ -59,8 +59,8 @@ class ErrorHandler {
 	* 
 	* @return void
 	*/
-	public static function log_error( $num, $str, $file, $line, $context = false ) {
-		self::log_exception( new ErrorException( $str, 0, $num, $file, $line ), $context );
+	public static function log_error($num, $str, $file, $line, $context = false) {
+		self::log_exception( new ErrorException($str, 0, $num, $file, $line), $context);
 	}
 
 	/**
@@ -71,13 +71,13 @@ class ErrorHandler {
 	* 
 	* @return void
 	*/
-	public static function log_exception( Exception $e, $context = false ) {
-		if ( self::$debug === true ) {
-			header( 'Cache-control: none' );
-			header( 'Pragma: no-cache' );
-			self::display_error_user_friendly( get_class( $e ), $e->getMessage(), $e->getFile(), $e->getLine(), $context );
+	public static function log_exception(Exception $e, $context = false) {
+		if (self::$debug === true) {
+			header('Cache-control: none');
+			header('Pragma: no-cache');
+			self::display_error_user_friendly(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context);
 		} else {
-			self::saveEvent( get_class( $e ), $e->getMessage(), $e->getFile(), $e->getLine(), $context );
+			self::saveEvent(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context );
 		}
 	}
 
@@ -89,8 +89,8 @@ class ErrorHandler {
 	public static function check_for_fatal() {
 		$error = error_get_last();
 
-		if ( $error['type'] == E_ERROR ) {
-			self::log_error( $error['type'], $error['message'], $error['file'], $error['line'] );
+		if ($error['type'] == E_ERROR) {
+			self::log_error( $error['type'], $error['message'], $error['file'], $error['line']);
 			//exit();
 		}
 	}
@@ -106,7 +106,7 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	private static function saveEvent( $type, $message, $file, $line, $context ) {
+	private static function saveEvent($type, $message, $file, $line, $context) {
 		$event = sprintf('[%1$s] %2$s: %3$s in [%4$s] on line %5$s',
 			date('Y-m-d H:i:s'),
 			$type,
@@ -114,7 +114,7 @@ class ErrorHandler {
 			$file,
 			$line
 		);
-		file_put_contents( self::$log_path, $event . PHP_EOL, FILE_APPEND );
+		file_put_contents(self::$log_path, $event . PHP_EOL, FILE_APPEND);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	private static function display_error_user_friendly( $type, $message, $file, $line, $context ) {
+	private static function display_error_user_friendly($type, $message, $file, $line, $context) {
 		?>
 		<div style="margin:30px auto;font-family:Arial;padding:15px;box-shadow:1px 2px 3px #aaa;max-width:800px;">
 			<h2 style="font-weight:normal">Exception Occured:</h2>
