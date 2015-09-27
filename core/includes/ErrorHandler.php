@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die('No direct access!');
+<?php defined('LCMS') or die();
 /**
  * This file is part of lcms.
  * 

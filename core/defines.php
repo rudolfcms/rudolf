@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die('No direct access!');
+<?php defined('LCMS') or die();
 /**
  * This file is part of lcms.
  * 
@@ -15,14 +15,14 @@ define('APP_NAME', 'lcms');
 /**
  * Define app path to access from browser (if not defineted previosly)
  */
-if(!defined('APP_DIR')):
+if(!defined('APP_DIR')) {
 	// define path (front) on user
 	if(dirname($_SERVER['SCRIPT_NAME']) == DIRECTORY_SEPARATOR) {
 		define('APP_DIR', '');
 	} else {
 		define('APP_DIR', dirname($_SERVER['SCRIPT_NAME']));
 	}
-endif;
+}
 
 if(!defined('APP_ENV')) define('APP_ENV', 'debug');
 

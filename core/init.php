@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die('No direct access!');
+<?php defined('LCMS') or die();
 /**
  * This file is part of lcms.
  * 
@@ -24,3 +24,4 @@ register_shutdown_function(array( 'ErrorHandler', 'check_for_fatal'));
 set_error_handler(array('ErrorHandler', 'log_error'));
 set_exception_handler(array('ErrorHandler', 'log_exception'));
 ini_set('display_errors', 'off');
+

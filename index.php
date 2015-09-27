@@ -13,3 +13,5 @@
 define('LCMS', true);
 
 require __DIR__ . '/core/init.php';
+
+print(APP_DIR);
