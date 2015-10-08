@@ -35,6 +35,11 @@ class Router {
 	private $controller = null;
 
 	/**
+	 * @var array request params
+	 */
+	private $params = array();
+
+	/**
 	 * Constructor
 	 * 
 	 * @param RouteCollection
@@ -118,6 +123,15 @@ class Router {
 	}
 
 	/**
+	 * Returns array with params
+	 * 
+	 * @return array
+	 */
+	public function getParams() {
+		return $this->params;
+	}
+
+	/**
 	 * Looking for suitable rule matching URL. If it finds, returns true
 	 * 
 	 * @return bool
@@ -185,15 +199,15 @@ class Router {
 		foreach ($route->getParams() as $key => $param) {
 			preg_match("#$param#", $parsed_url, $results);
 			if (isset($results[0])) {
-				$_GET[$key] = $results[0];
+				$this->params[$key] = $results[0];
 				$parsed_url = str_replace($results[0], '', $parsed_url);
 			}
 		}
 		
 		// jezeli brak parametru w URL ustawia go z tablicy wartości domyślnych
 		foreach ($route->getDefaults() as $key => $default) {
-			if (!isset($_GET[$key])) {
-				$_GET[$key] = $default;
+			if (!isset($this->params[$key])) {
+				$this->params[$key] = $default;
 			}
 		}
 	}

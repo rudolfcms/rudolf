@@ -1,13 +1,15 @@
-<?php defined('LCMS') or die();
+<?php
 /**
  * This file is part of lcms.
  * 
  * Modules Manager.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package lcms\Modules
  * @version 0.1
  */
+
+namespace lcms\Modules;
 
 class ModulesManager {
 
@@ -18,7 +20,7 @@ class ModulesManager {
 	 * 
 	 * @var string
 	 */
-	private static $path;
+	private $path;
 
 	/**
 	 * holds modules list
@@ -27,84 +29,109 @@ class ModulesManager {
 	 * 
 	 * @var array
 	 */
-	private static $modules;
+	private $modules;
 
 	/**
-	 * Run modules manager service.
+	 * Constructor
+	 * 
+	 * Run modules manager service
 	 * 
 	 * @param string $path from-root path to modules directory
-	 * 
-	 * @return void
 	 */
-	public static function run($path = 'modules') {
-		self::$path = LROOT . '/' . $path;
+	public function __construct($path = '/modules') {
+		$this->path = LROOT . $path;
 
-		self::$modules = include self::$path . '/index.php';
+		$this->modules = include $this->path . '/index.php';
 	}
 
 	/**
-	 * Acticate non-active modules.
+	 * Returns the modules array
+	 * 
+	 * @return array $modules
+	 */
+	public function getList() {
+		return $this->modules;
+	}
+
+	/**
+	 * Acticate non-active modules
 	 * 
 	 * @param string $name module name
 	 * 
 	 * @return void
 	 */
-	public static function activate($name) {
-		self::$modules[$name] = true;
+	public function activate($name) {
+		$this->modules[$name] = true;
 
-		self::regenerate_list();
+		self::regenerateList();
 	}
 
 	/**
-	 * Deactivate active modules.
+	 * Deactivate active modules
 	 * 
 	 * @param string $name module name
 	 * 
 	 * @return void
 	 */
-	public static function deactivate($name) {
-		self::$modules[$name] = false;
+	public function deactivate($name) {
+		$this->modules[$name] = false;
 
-		self::regenerate_list();
+		self::regenerateList();
 	}
 
 	/**
-	 * Add new module to list.
+	 * Add new module to list
 	 * 
 	 * @param string $name module name
 	 * 
 	 * @return void
 	 */
-	public static function add($name) {
-		self::$modules[$name] = false;
+	public function add($name) {
+		$this->modules[$name] = false;
 
-		self::regenerate_list();
+		self::regenerateList();
 	}
 
 	/**
-	 * Delete module from list.
+	 * Refresh list modules and add all to list
+	 * 
+	 * @return bool
+	 */
+	public function refresh() {
+		$array = array();
+
+		foreach(glob($this->path . '/*', GLOB_ONLYDIR) as $dir) {
+			$dir = str_replace($this->path . '/', '', $dir);
+			$array[] = $dir;
+		}
+
+		$this->modules = $array;
+	}
+
+	/**
+	 * Delete module from list
 	 * 
 	 * @param string $name module name
 	 * 
 	 * @return void
 	 */
-	public static function delete($name) {
-		unset(self::$modules[$name]);
+	public function delete($name) {
+		unset($this->modules[$name]);
 
-		self::regenerate_list();
+		self::regenerateList();
 	}
 
 	/**
-	 * Generate modules list and save to index.php file in modules directory.
+	 * Generate modules list and save to index.php file in modules directory
 	 * 
 	 * @return void 
 	 */
-	private static function regenerate_list() {
-		ksort(self::$modules);
+	private function regenerateList() {
+		ksort($this->modules);
 
-		$var_str = var_export(self::$modules, true);
+		$var_str = var_export($this->modules, true);
 		$var = "<?php defined('LCMS') or die();\n/**\n * This file is part of lcms.\n * \n * List of instaled modules. DO NOT EDIT, GENERATED AUTOMATICALLY\n * \n * @author Mikołaj Pich <m.pich@outlook.com>\n * @package lcms\n * @version 0.1\n */\n\nreturn $var_str;\n";
 		
-		file_put_contents(self::$path . '/index.php', $var);
+		file_put_contents($this->path . '/index.php', $var);
 	}
 }

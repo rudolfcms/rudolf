@@ -38,12 +38,34 @@ class FrontController {
 	}
 
 	public function invoke() {
-		if(true === $this->router->run()) {
-			$this->explodeName($this->router->getController());
-			print_r($this->method);
-		} else {
-
+		if(false === $this->router->run()) {
+			echo "not route match";
+			return;
 		}
+
+		$this->explodeName($this->router->getController());
+
+		if(!class_exists($this->controller)) {
+			echo "class not exists";
+			return;
+		}
+
+		$object = new $this->controller();
+		
+		return $this->call($object, $this->method, $this->router->getParams());
+		
+	}
+
+	/**
+	 * Call controller method
+	 * 
+	 */
+	private function call($object, $method = 'index', $params) {
+		if(null === $method) {
+			$method = 'index';
+		}
+
+		call_user_func_array(array($object, $method), $params);
 	}
 
 	/**
@@ -57,6 +79,9 @@ class FrontController {
 		$array = explode('::', $name);
 
 		$this->controller = $array[0];
+
+		if(count($array) === 1) return;
+
 		$this->method = $array[1];
 	}
 }
