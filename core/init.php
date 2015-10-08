@@ -10,14 +10,14 @@
  */
 
 // checks whether php version is compatible with the instance lcms
-require_once dirname(__FILE__) . '/includes/PHPVersionCheck.php';
+require_once dirname(__FILE__) . '/Utils/PHPVersionCheck.php';
 php_check_run($required = 5.4);
 
 // load defines
 require_once __DIR__ . '/defines.php';
 
 // load functions to log or disply errors
-require_once LCORE . '/includes/ErrorHandler.php';
+require_once LCORE . '/Utils/ErrorHandler.php';
 ErrorHandler::setLogPath(LCORE . '/log/errors.log');
 ErrorHandler::setEnvironment(LENV);
 register_shutdown_function(array( 'ErrorHandler', 'checkForFatal'));

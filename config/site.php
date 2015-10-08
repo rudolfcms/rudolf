@@ -10,5 +10,7 @@
  */
 
 return array (
+	'front_theme' = 'starter',
+	'admin_theme' = 'starter',
 	'debug' => true
 );
