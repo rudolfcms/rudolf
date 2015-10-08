@@ -1,2 +1,4 @@
 .lcms.sublime-project
 .lcms.sublime-workspace
+
+/vendor/
