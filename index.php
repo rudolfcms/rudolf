@@ -1,5 +1,7 @@
 <?php
 /**
+ * This file is part of lcms.
+ * 
  * This is the main web entry point for lcms.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
