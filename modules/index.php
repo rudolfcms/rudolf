@@ -10,7 +10,9 @@
  */
 
 return array (
-  'albums' => true,
-  'articles' => true,
-  'index' => true,
+  0 => 'albums',
+  1 => 'articles',
+  2 => 'galleries',
+  3 => 'index',
+  4 => 'pages',
 );
