@@ -1,0 +1,200 @@
+<?php
+/**
+ * This file is part of lcms.
+ * 
+ * Router class
+ * 
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package lcms\Routing
+ * @version 0.1
+ */
+
+namespace lcms\Routing;
+use lcms\Routing\RouteCollection;
+
+class Router {
+
+	/**
+	 * @var string URL to processing
+	 */
+	private $url;
+
+	/**
+	 * @var string URL to the root catalog of app
+	 */
+	private $basePath;
+
+	/**
+	 * @var RouteCollection
+	 */
+	private static $collection;
+
+	/**
+	 * @var string name of controller with method name in matched route
+	 */
+	private $controller = null;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param RouteCollection
+	 */
+	public function __construct($url, $basePath, RouteCollection $collection = null) {
+		$this->setBasePath($basePath);
+		$this->setUrl($url);
+
+		if($collection != null) {
+            Router::$collection = $collection;
+        }
+	}
+
+	/**
+	 * Sets the url
+	 * 
+	 * @param string $url request url
+	 */
+	private function setUrl($url) {
+		$basePath = $this->getBasePath();
+		$pos = strpos($url, $basePath);
+
+		if ($pos !== false) {
+			$url = substr_replace($url, '', $pos, strlen($basePath));
+		}
+		$this->url = $url;
+	}
+
+	/**
+	 * Returns the url
+	 * 
+	 * @return string $url
+	 */
+	public function getUrl() {
+		return $this->url;
+	}
+
+	/**
+	 * Sets the base path
+	 * 
+	 * @param string $basePath path to the root catalog of app
+	 */
+	public function setBasePath($basePath) {
+		$this->basePath = $basePath;
+	}
+
+	/**
+	 * Returns the base path
+	 * 
+	 * @return string $basePath
+	 */
+	public function getBasePath() {
+		return $this->basePath;
+	}
+
+	/**
+	 * Sets the RouteCollection
+	 * 
+	 * @param RouteCollection object with route pattern
+	 */
+	private function setCollection(RouteCollection $collection) {
+		self::$collection = $collection;
+	}
+
+	/**
+	 * Returns the RouteCollection object
+	 * 
+	 * @return RouteCollection
+	 */
+	public function getCollection() {
+		return $this->collection;
+	}
+
+	/**
+	 * Returns the controller and method to run names
+	 * 
+	 * @return string
+	 */
+	public function getController() {
+		return $this->controller;
+	}
+
+	/**
+	 * Looking for suitable rule matching URL. If it finds, returns true
+	 * 
+	 * @return bool
+	 */
+	public function run() {
+		if(!Router::$collection->getAll()) {
+			return false;
+		}
+
+		foreach (Router::$collection->getAll() as $route) {
+			if ($this->matchRoute($route)) {
+				$this->setGetData($route);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Checks if the URL matches the handed rule
+	 * 
+	 * @param Route $route
+	 * 
+	 * @return bool
+	 */
+	protected function matchRoute($route) {
+		$params = array();
+		$routeParamsKey = array_keys($route->getParams());
+		$routeParamsValue = $route->getParams();
+		
+		foreach ($routeParamsKey as $key) {
+			$params['<' . $key . '>'] = $routeParamsValue[$key];
+		}
+		
+		$url = $route->getPath();
+		
+		// Zamienia znaczniki na odpowiednie wyrażenia regularne
+		$url = str_replace(array_keys($params), $params, $url);
+		
+		// Jeżeli brak znacznika w tablicy $params zezwala na dowolny znak
+		$url = preg_replace('/<\w+>/', '.*', $url);
+
+		// sprawdza dopasowanie do wzorca
+		preg_match("#^$url$#", $this->getUrl(), $results);
+
+		if ($results) {
+			$this->controller = $route->getControllerName();			
+			return true;
+		}
+
+		return false;
+	}
+
+	 /**
+	 * @param Route $route Obiekt Route pasujący do reguły
+	 */
+	protected function setGetData($route) {
+		$routePath = str_replace(array('(', ')'), array('', ''), $route->getPath());
+		$trim = explode('<', $routePath);
+		$parsed_url = str_replace(array($this->basePath), array(''), $this->url);
+		$parsed_url = preg_replace("#$trim[0]#", '', $parsed_url, 1);
+		
+		// ustawia parametry przekazane w URL
+		foreach ($route->getParams() as $key => $param) {
+			preg_match("#$param#", $parsed_url, $results);
+			if (isset($results[0])) {
+				$_GET[$key] = $results[0];
+				$parsed_url = str_replace($results[0], '', $parsed_url);
+			}
+		}
+		
+		// jezeli brak parametru w URL ustawia go z tablicy wartości domyślnych
+		foreach ($route->getDefaults() as $key => $default) {
+			if (!isset($_GET[$key])) {
+				$_GET[$key] = $default;
+			}
+		}
+	}
+}
