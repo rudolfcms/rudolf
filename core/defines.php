@@ -9,39 +9,42 @@
  * @version 0.1
  */
 
-define('APP_VER', 0.1);
-define('APP_NAME', 'lcms');
+define('LVER', 0.1);
+define('LNAME', 'lcms');
 
 /**
  * Define app path to access from browser (if not defineted previosly)
  */
-if(!defined('APP_DIR')) {
+if(!defined('LDIR')) {
 	// define path (front) on user
 	if(dirname($_SERVER['SCRIPT_NAME']) == DIRECTORY_SEPARATOR) {
-		define('APP_DIR', '');
+		define('LDIR', '');
 	} else {
-		define('APP_DIR', dirname($_SERVER['SCRIPT_NAME']));
+		define('LDIR', dirname($_SERVER['SCRIPT_NAME']));
 	}
 }
 
-if(!defined('APP_ENV')) define('APP_ENV', 'debug');
+if(!defined('LENV')) define('LENV', 'debug');
 
-define('APP_ADMIN', 		APP_DIR . '/admin');
-define('APP_UPLOADS', 		APP_DIR . '/content/uploads');
-define('APP_THEMES', 		APP_DIR . '/content/themes');
-define('APP_PLUGINS', 		APP_DIR . '/content/plugins');
-define('APP_GALLERIES', 	APP_DIR . '/content/galleries');
+define('LADMIN', 		LDIR . '/admin');
+define('LUPLOADS', 		LDIR . '/content/uploads');
+define('LTHEMES', 		LDIR . '/content/themes');
+define('LPLUGINS', 		LDIR . '/content/plugins');
+define('LGALLERIES', 	LDIR . '/content/galleries');
 
 // define path system
-define('APP_ROOT', dirname(__DIR__));
-define('CORE', 				APP_ROOT . '/core');
-define('APP_UPLOADS_ROOT', 	APP_ROOT . '/content/uploads');
-define('APP_THEMES_ROOT', 	APP_ROOT . '/content/themes');
-define('APP_CACHE_ROOT', 	APP_ROOT . '/app/.cache');
-define('APP_PLUGINS_ROOT', 	APP_ROOT . '/content/plugins');
-define('APP_LANGUAGE_ROOT', APP_ROOT . '/content/languages');
-define('APP_MODULES_ROOT', 	APP_ROOT . '/app/modules');
-define('APP_LIB_ROOT', 		APP_ROOT . '/app/Lib');
-define('APP_CONFIG_ROOT', 	APP_ROOT . '/config');
-define('APP_GALLERIES_ROOT',APP_ROOT . '/content/galleries');
-define('APP_FUNCTION_ROOT', APP_ROOT . '/app/functions');
+define('LROOT', 		dirname(__DIR__));
+define('LCORE', 		LROOT . '/core');
+define('LCLASSESS', 	LROOT . '/core/classes');
+
+
+define('LUPLOADS_ROOT', 	LROOT . '/content/uploads');
+define('LTHEMES_ROOT', 		LROOT . '/content/themes');
+define('LCACHE_ROOT', 		LROOT . '/app/.cache');
+define('LPLUGINS_ROOT', 	LROOT . '/content/plugins');
+define('LLANGUAGE_ROOT',	LROOT . '/content/languages');
+define('LMODULES_ROOT', 	LROOT . '/app/modules');
+define('LLIB_ROOT', 		LROOT . '/app/Lib');
+define('LCONFIG_ROOT', 		LROOT . '/config');
+define('LGALLERIES_ROOT',	LROOT . '/content/galleries');
+define('LFUNCTION_ROOT', 	LROOT . '/app/functions');

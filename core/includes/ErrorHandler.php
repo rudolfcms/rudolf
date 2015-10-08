@@ -130,7 +130,7 @@ class ErrorHandler {
 	 */
 	private static function display_error_user_friendly($type, $message, $file, $line, $context) {
 		?>
-		<div style="margin:30px auto;font-family:Arial;padding:15px;box-shadow:1px 2px 3px #aaa;max-width:800px;">
+		<div style="margin:30px auto;font-family:Arial;padding:15px;box-shadow:1px 2px 3px #aaa;max-width:900px;">
 			<h2 style="font-weight:normal">Exception Occured:</h2>
 			<table style="min-width:100%">
 				<tr style="background:#f5f5f5">
