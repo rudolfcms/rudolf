@@ -25,9 +25,6 @@ set_error_handler(array('ErrorHandler', 'log_error'));
 set_exception_handler(array('ErrorHandler', 'log_exception'));
 ini_set('display_errors', 'off');
 
-// load vendor autoloader
-require_once LROOT . '/vendor/autoload.php';
-
 // load hooks class
 require_once LCLASSESS . '/Hooks.php';
 
