@@ -26,12 +26,12 @@ set_exception_handler(array('ErrorHandler', 'logException'));
 ini_set('display_errors', 'off');
 
 // load hooks class
-require_once LCLASSESS . '/Hooks.php';
+require_once LCORE . '/Hooks/Hooks.php';
 
-// load and CLASSESS extension (plugin) menager
-require_once LCLASSESS . '/PluginManager.php';
-PluginManager::run();
+// load and run extensions (plugins) menager
+require_once LCORE . '/Plugins/PluginsManager.php';
+PluginsManager::run();
 
 // load and run modules manager
-require_once LCLASSESS . '/ModulesManager.php';
+require_once LCORE . '/Modules/ModulesManager.php';
 ModulesManager::run();
