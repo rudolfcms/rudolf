@@ -48,4 +48,4 @@ $routeCollection = $modulesRouting->addRoutes();
 $router = new Router($_SERVER['REQUEST_URI'], LDIR, $routeCollection);
 
 $frontController = new FrontController($router);
-$frontController->invoke();
+$frontController->run();

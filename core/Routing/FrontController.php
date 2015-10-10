@@ -11,6 +11,7 @@
  */
 
 namespace lcms\Routing;
+use lcms\Http\HttpErrorException;
 
 class FrontController {
 
@@ -44,37 +45,41 @@ class FrontController {
 	}
 
 	/**
+	 * Run
 	 * 
 	 * @return void
 	 */
-	public function invoke() {
-		if(false === $this->router->run()) {
-			echo "not route match";
-			return;
+	public function run() {
+		try {
+			if(false === $this->router->run()) {
+				throw new HttpErrorException(506);
+			}
+
+			$names = $this->explodeName($this->router->getControllerName());
+
+			if(!class_exists($names[0])) {
+				return print "class not exists";
+			}
+
+			$this->call(new $names[0](), $names[1], $this->router->getParams());
+		} catch(HttpErrorException $e) {
+			die($e);
 		}
-
-		$this->explodeName($this->router->getController());
-
-		if(!class_exists($this->controller)) {
-			echo "class not exists";
-			return;
-		}
-
-		$object = new $this->controller();
-		
-		$this->call($object, $this->method, $this->router->getParams());
-		
 	}
 
 	/**
 	 * Call controller method
 	 * 
+	 * @param object @object
+	 * @param string $method
+	 * @param array $params
+	 * 
+	 * @return void
 	 */
 	private function call($object, $method = 'index', $params) {
 		if(null === $method) {
 			$method = 'index';
 		}
-
 		call_user_func_array(array($object, $method), $params);
 	}
 
@@ -83,15 +88,15 @@ class FrontController {
 	 * 
 	 * @param string $name
 	 * 
-	 * @return void
+	 * @return array|bool
 	 */
 	private function explodeName($name) {
 		$array = explode('::', $name);
 
-		$this->controller = $array[0];
+		if(!empty($array)) {
+			return $array; 
+		}
 
-		if(count($array) === 1) return;
-
-		$this->method = $array[1];
+		return false;
 	}
 }
