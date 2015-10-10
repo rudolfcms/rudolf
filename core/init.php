@@ -1,4 +1,5 @@
-<?php defined('LCMS') or die();
+<?php
+
 /**
  * This file is part of lcms.
  * 
@@ -8,6 +9,14 @@
  * @package lcms
  * @version 0.1
  */
+
+use lcms\Utils\ErrorHandler,
+	lcms\Plugins\PluginsManager,
+	lcms\Modules\ModulesManager,
+	lcms\Modules\ModulesRouting,
+	lcms\Routing\RouteCollection,
+	lcms\Routing\Router,
+	lcms\Routing\FrontController;
 
 // checks whether php version is compatible with the instance lcms
 require_once dirname(__FILE__) . '/Utils/PHPVersionCheck.php';
@@ -20,28 +29,23 @@ require_once __DIR__ . '/defines.php';
 require_once LROOT . '/vendor/autoload.php';
 
 // load functions to log or disply errors
-require_once LCORE . '/Utils/ErrorHandler.php';
 ErrorHandler::setLogPath(LCORE . '/log/errors.log');
 ErrorHandler::setEnvironment(LENV);
 register_shutdown_function(array( 'ErrorHandler', 'checkForFatal'));
 set_error_handler(array('ErrorHandler', 'logError'));
 set_exception_handler(array('ErrorHandler', 'logException'));
-//ini_set('display_errors', 'off');
+//error_reporting(81);
 
-// load hooks class
-require_once LCORE . '/Hooks/Hooks.php';
-
-// load and run extensions (plugins) menager
-require_once LCORE . '/Plugins/PluginsManager.php';
+// run extensions (plugins) menager
 PluginsManager::run();
 
-$routeCollection = new lcms\Routing\RouteCollection();
+$routeCollection = new RouteCollection();
 
-$modulesManager = new lcms\Modules\ModulesManager('/modules');
-$modulesRouting = new lcms\Modules\ModulesRouting($modulesManager->getList(), $routeCollection, '/modules');
+$modulesManager = new ModulesManager('/modules');
+$modulesRouting = new ModulesRouting($modulesManager->getList(), $routeCollection, '/modules');
 $routeCollection = $modulesRouting->addRoutes();
 
-$router = new lcms\Routing\Router($_SERVER['REQUEST_URI'], LDIR, $routeCollection);
+$router = new Router($_SERVER['REQUEST_URI'], LDIR, $routeCollection);
 
-$frontController = new \lcms\Routing\FrontController($router);
+$frontController = new FrontController($router);
 $frontController->invoke();
