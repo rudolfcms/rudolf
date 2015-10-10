@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of lcms.
  * 
@@ -13,6 +14,7 @@ namespace lcms\Modules;
 use lcms\Routing\RouteCollection;
 
 class ModulesRouting {
+	
 	private $collection;
 	private $modulesList;
 

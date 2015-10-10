@@ -1,13 +1,16 @@
-<?php defined('LCMS') or die();
+<?php
+
 /**
  * This file is part of lcms.
  * 
  * Plugin Manager.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package lcms\Plugins
  * @version 0.1
  */
+
+namespace lcms\Plugins;
 
 class PluginsManager {
 

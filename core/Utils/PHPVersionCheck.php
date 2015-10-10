@@ -1,11 +1,12 @@
-<?php defined('LCMS') or die();
+<?php
+
 /**
  * This file is part of lcms.
  * 
  * Checks whether php version is compatible with the instance lcms
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package lcms\Utils
  * @version 0.1
  */
 

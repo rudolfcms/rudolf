@@ -1,20 +1,23 @@
-<?php defined('LCMS') or die ();
+<?php
+
 /**
  * This file is part of lcms.
  * 
  * Hooks class. (WordPress plugin API fork)
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package lcms\Hooks
  * @version 0.1
  */
 
+namespace lcms\Hooks;
+
 class Hooks {
+	
 	/**
 	 * holds list of hooks
 	 * 
 	 * @access public
-	 * @since 0.1
 	 * 
 	 * @var array
 	 */

@@ -1,13 +1,16 @@
-<?php defined('LCMS') or die();
+<?php
+
 /**
  * This file is part of lcms.
  * 
  * Error handler and logger
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package lcms\Utils
  * @version 0.1
  */
+
+namespace lcms\Utils;
 
 class ErrorHandler {
 

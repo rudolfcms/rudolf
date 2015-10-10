@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of lcms.
  * 
@@ -33,10 +34,19 @@ class FrontController {
 	 */
 	private $params;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param Router
+	 */
 	public function __construct(Router $router) {
 		$this->router = $router;
 	}
 
+	/**
+	 * 
+	 * @return void
+	 */
 	public function invoke() {
 		if(false === $this->router->run()) {
 			echo "not route match";
@@ -52,7 +62,7 @@ class FrontController {
 
 		$object = new $this->controller();
 		
-		return $this->call($object, $this->method, $this->router->getParams());
+		$this->call($object, $this->method, $this->router->getParams());
 		
 	}
 
