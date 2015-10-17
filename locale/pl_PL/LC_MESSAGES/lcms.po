@@ -1,0 +1,395 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lcms\\Http\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-17 18:59+0200\n"
+"PO-Revision-Date: 2015-10-17 20:44+0100\n"
+"Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
+"Language-Team: lcms team <team@lcms.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pl_PL\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Code"
+msgstr "Kod"
+
+#: ../../../core/Http/ResponseMessages.php:10
+msgid "Continue"
+msgstr "Kontynuuj"
+
+#: ../../../core/Http/ResponseMessages.php:11
+msgid ""
+"The request has been completed and the rest of the process can continue."
+msgstr "Prośba o dalsze wysyłanie zapytania"
+
+#: ../../../core/Http/ResponseMessages.php:14
+msgid "Switching Protocols"
+msgstr "Zmiana protokołu"
+
+#: ../../../core/Http/ResponseMessages.php:15
+msgid ""
+"When requesting a page, a browser might receive a statis code of 101, "
+"followed by an \"Upgrade\" header showing that the server is changing to a "
+"different version of HTTP."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:18
+msgid "OK"
+msgstr "OK"
+
+#: ../../../core/Http/ResponseMessages.php:19
+msgid "Standard response for HTTP successful requests."
+msgstr "Pomyślnie zrealizowano żądanie"
+
+#: ../../../core/Http/ResponseMessages.php:22
+msgid "Created"
+msgstr "Utworzono"
+
+#: ../../../core/Http/ResponseMessages.php:23
+msgid ""
+"When new pages are created by posted form data or by a CGI process, this is "
+"confirmation that it worked."
+msgstr "Wysłany dokument został zapisany na serwerze"
+
+#: ../../../core/Http/ResponseMessages.php:26
+msgid "Accepted"
+msgstr "Przyjęto"
+
+#: ../../../core/Http/ResponseMessages.php:27
+msgid "The client's request was accepted, though not yet processed."
+msgstr ""
+"Zapytanie zostało przyjęte do obsłużenia, lecz jego zrealizowanie jeszcze "
+"się nie skończyło"
+
+#: ../../../core/Http/ResponseMessages.php:30
+msgid "Non-Authoritative Information"
+msgstr "Informacja nieautorytatywna"
+
+#: ../../../core/Http/ResponseMessages.php:31
+msgid ""
+"The information contained in the entity header is not from the original "
+"site, but from a third party server."
+msgstr ""
+"Zwrócona informacja nie odpowiada dokładnie odpowiedzi pierwotnego serwera, "
+"lecz została utworzona z lokalnych bądź zewnętrznych kopii."
+
+#: ../../../core/Http/ResponseMessages.php:34
+msgid "No Content"
+msgstr "Brak zawartości"
+
+#: ../../../core/Http/ResponseMessages.php:35
+msgid ""
+"If you click a link which has no target URL, this response is elicited by "
+"the server. It's silent and doesn't warn the user about anything."
+msgstr ""
+"Serwer zrealizował zapytanie klienta i nie potrzebuje zwracać żadnej treści"
+
+#: ../../../core/Http/ResponseMessages.php:38
+msgid "Reset Content"
+msgstr "Przywróć zawartość"
+
+#: ../../../core/Http/ResponseMessages.php:39
+msgid "This allows the server to reset any content returned by a CGI."
+msgstr ""
+"Serwer zrealizował zapytanie i klient powinien przywrócić pierwotny wygląd "
+"dokumentu"
+
+#: ../../../core/Http/ResponseMessages.php:42
+msgid "Partial Content"
+msgstr "Część zawartości"
+
+#: ../../../core/Http/ResponseMessages.php:43
+msgid ""
+"The requested file wasn't downloaded entirely. This is returned when the "
+"user presses the stop button before a page is loaded, for example."
+msgstr ""
+"Serwer zrealizował tylko część zapytania typu GET, odpowiedź musi zawierać "
+"nagłówek Range informujący o zakresie bajtowym zwróconego elementu."
+
+#: ../../../core/Http/ResponseMessages.php:46
+msgid "Multiple Choices"
+msgstr "Wiele możliwości"
+
+#: ../../../core/Http/ResponseMessages.php:47
+msgid ""
+"The requested address refers to more than one file. Depending on how the "
+"server is configured, you get an error or a choice of which page you want."
+msgstr ""
+"Istnieje więcej niż jeden sposób obsłużenia danego zapytania, serwer może "
+"podać adres zasobu, który pozwala na wybór jednoznacznego zapytania spośród "
+"możliwych."
+
+#: ../../../core/Http/ResponseMessages.php:50
+msgid "Moved Permanently"
+msgstr "Trwale przeniesiony"
+
+#: ../../../core/Http/ResponseMessages.php:51
+msgid ""
+"If the server is set up properly it will automatically redirect the reader "
+"to the new location of the file."
+msgstr ""
+"Żądany zasób zmienił swój URI i w przyszłości zasób powinien być szukany pod "
+"wskazanym nowym adresem."
+
+#: ../../../core/Http/ResponseMessages.php:54
+msgid "Moved Temporarily"
+msgstr "Znaleziono"
+
+#: ../../../core/Http/ResponseMessages.php:55
+msgid ""
+"Page has been moved temporarily, and the new URL is available. You should be "
+"sent there by the server."
+msgstr ""
+"Żądany zasób jest chwilowo dostępny pod innym adresem a przyszłe odwołania "
+"do zasobu powinny być kierowane pod adres pierwotny."
+
+#: ../../../core/Http/ResponseMessages.php:58
+msgid "See Other"
+msgstr "Zobacz inne"
+
+#: ../../../core/Http/ResponseMessages.php:59
+msgid ""
+"This is a \"see other\" SRC. Data is somewhere else and the GET method is "
+"used to retrieve it."
+msgstr ""
+"Odpowiedź na żądanie znajduje się pod innym URI i tam klient powinien się "
+"skierować. To jest właściwy sposób przekierowywania w odpowiedzi na żądanie "
+"metodą POST."
+
+#: ../../../core/Http/ResponseMessages.php:62
+msgid "Not Modified"
+msgstr "Nie zmieniono"
+
+#: ../../../core/Http/ResponseMessages.php:63
+msgid ""
+"If the request header includes an 'if modified since' parameter, this code "
+"will be returned if the file has not changed since that date. Search engine "
+"robots may generate a lot of these."
+msgstr ""
+"Zawartość zasobu nie podległa zmianie według warunku przekazanego przez "
+"klienta (np. data ostatniej wersji zasobu pobranej przez klienta."
+
+#: ../../../core/Http/ResponseMessages.php:66
+msgid "Use Proxy"
+msgstr "Użyj serwera proxy"
+
+#: ../../../core/Http/ResponseMessages.php:67
+msgid "The recipient is expected to repeat the request via the proxy."
+msgstr ""
+"Do żądanego zasobu trzeba odwołać się przez serwer proxy podany w nagłówku "
+"Location odpowiedzi."
+
+#: ../../../core/Http/ResponseMessages.php:70
+msgid "Bad Request"
+msgstr "Nieprawidłowe zapytanie"
+
+#: ../../../core/Http/ResponseMessages.php:71
+msgid "There is a syntax error in the request, and it is denied."
+msgstr ""
+"Żądanie nie może być obsłużone przez serwer z powodu błędnej składni "
+"zapytania."
+
+#: ../../../core/Http/ResponseMessages.php:74
+msgid "Unauthorized"
+msgstr "Nieautoryzowany dostęp"
+
+#: ../../../core/Http/ResponseMessages.php:75
+msgid ""
+"The request header did not contain the necessary authentication codes, and "
+"the client is denied access."
+msgstr "Żądanie zasobu wymaga uwierzytelnienia"
+
+#: ../../../core/Http/ResponseMessages.php:78
+msgid "Payment Required"
+msgstr "Wymagana opłata"
+
+#: ../../../core/Http/ResponseMessages.php:79
+msgid "Payment is required. This code is not yet in operation."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:82
+msgid "Forbidden"
+msgstr "Dostęp zabroniony"
+
+#: ../../../core/Http/ResponseMessages.php:83
+msgid ""
+"The client is not allowed to see a certain file. This is also returned at "
+"times when the server doesn't want any more visitors."
+msgstr ""
+"Serwer zrozumiał zapytanie lecz konfiguracja bezpieczeństwa zabrania mu "
+"zwrócić żądany zasób."
+
+#: ../../../core/Http/ResponseMessages.php:86
+msgid "Not Found"
+msgstr "Nie znaleziono"
+
+#: ../../../core/Http/ResponseMessages.php:87
+msgid ""
+"The requested file was not found on the server. Possibly because it was "
+"deleted, or never existed before. Often caused by misspellings of URLs."
+msgstr ""
+"Serwer nie odnalazł zasobu według podanego URL ani niczego co by wskazywało "
+"na istnienie takiego zasobu w przeszłości. Często spowodowane przez błędy "
+"ortograficzne w adresach URL."
+
+#: ../../../core/Http/ResponseMessages.php:90
+msgid "Method Not Allowed"
+msgstr "Niedozwolona metoda"
+
+#: ../../../core/Http/ResponseMessages.php:91
+msgid "The method you are using to access the file is not allowed."
+msgstr ""
+"Metoda zawarta w żądaniu nie jest dozwolona dla wskazanego zasobu, odpowiedź "
+"zawiera też listę dozwolonych metod."
+
+#: ../../../core/Http/ResponseMessages.php:94
+msgid "Not Acceptable"
+msgstr "Niedozwolone"
+
+#: ../../../core/Http/ResponseMessages.php:95
+msgid ""
+"The requested file exists but cannot be used as the client system doesn't "
+"understand the format the file is configured for."
+msgstr ""
+"Żażądany zasób nie jest w stanie zwrócić odpowiedzi mogącej być obsłużonej "
+"przez klienta według informacji podanych w zapytaniu."
+
+#: ../../../core/Http/ResponseMessages.php:98
+msgid "Proxy Authentication Required"
+msgstr "Wymagane uwierzytelnienie do serwera pośredniczącego"
+
+#: ../../../core/Http/ResponseMessages.php:99
+msgid "The request must be authorised before it can take place."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:102
+msgid "Request Time-out"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:103
+msgid ""
+"The server took longer than its allowed time to process the request. Often "
+"caused by heavy net traffic."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:106
+msgid "Conflict"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:107
+msgid "Too many concurrent requests for a single file."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:110
+msgid "Gone"
+msgstr "Zniknął (usunięto)"
+
+#: ../../../core/Http/ResponseMessages.php:111
+msgid "The file used to be in this position, but is there no longer."
+msgstr ""
+"Zażądany zasób nie jest dłużej dostępny i nie znany jest jego ewentualny "
+"nowy adres URI."
+
+#: ../../../core/Http/ResponseMessages.php:114
+msgid "Length Required"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:115
+msgid "The request is missing its Content-Length header."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:118
+msgid "Precondition Failed"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:119
+msgid ""
+"A certain configuration is required for this file to be delivered, but the "
+"client has not set this up."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:122
+msgid "Request Entity Too Large"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:123
+msgid "The requested file was too big to process."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:126
+msgid "Request-URI Too Large"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:127
+msgid "The address you entered was overly long for the server."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:130
+msgid "Unsupported Media Type"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:131
+msgid "The filetype of the request is unsupported."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:134
+msgid "Internal Server Error"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:135
+msgid ""
+"The server encountered an unexpected condition which prevented it from "
+"fulfilling the request."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:138
+msgid "Not Implemented"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:139
+msgid "The server does not support the facility required."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:142
+msgid "Bad Gateway"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:143
+msgid "The server you're trying to reach is sending back errors."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:146
+msgid "Service Unavailable"
+msgstr "Usługa niedostępna"
+
+#: ../../../core/Http/ResponseMessages.php:147
+msgid "The service or file that is being requested is not currently available."
+msgstr ""
+"Serwer nie jest w stanie w danej chwili zrealizować zapytania klienta ze "
+"względu na przeciążenie."
+
+#: ../../../core/Http/ResponseMessages.php:150
+msgid "Gateway Time-out"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:151
+msgid ""
+"The gateway has timed out. Like the 408 timeout error, but this one occurs "
+"at the gateway of the server."
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:154
+msgid "HTTP Version not supported"
+msgstr ""
+
+#: ../../../core/Http/ResponseMessages.php:155
+msgid "The HTTP protocol you are asking for is not supported."
+msgstr ""
