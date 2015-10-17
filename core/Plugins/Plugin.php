@@ -12,6 +12,6 @@
 
 namespace lcms\Plugins;
 
-class Plugins {
+class Plugin {
 
 }
