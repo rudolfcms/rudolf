@@ -65,7 +65,7 @@ function php_version_error_display($pageTitle, $shortText, $longText) {
 	<title><?php echo $pageTitle;?></title>
 	<style type="text/css">
 		body {
-			background: #f9f9f9;
+			background: #f1f1f1;
 			font-family: Arial, sans-serif;
 			color: #444;
 		}
