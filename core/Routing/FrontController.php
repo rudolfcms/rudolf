@@ -52,16 +52,16 @@ class FrontController {
 	public function run() {
 		try {
 			if(false === $this->router->run()) {
-				throw new HttpErrorException(506);
+				throw new HttpErrorException(404);
 			}
 
 			$names = $this->explodeName($this->router->getControllerName());
 
 			if(!class_exists($names[0])) {
-				return print "class not exists";
+				throw new HttpErrorException(404);
 			}
 
-			$this->call(new $names[0](), $names[1], $this->router->getParams());
+			$this->call($names, $this->router->getParams());
 		} catch(HttpErrorException $e) {
 			die($e);
 		}
@@ -74,13 +74,18 @@ class FrontController {
 	 * @param string $method
 	 * @param array $params
 	 * 
-	 * @return void
+	 * @return bool
 	 */
-	private function call($object, $method = 'index', $params) {
-		if(null === $method) {
+	private function call($class, $params) {
+		$object = new $class[0]();
+
+		if(false === isset($class[1])) {
 			$method = 'index';
+		} else {
+			$method = $class[1];
 		}
-		call_user_func_array(array($object, $method), $params);
+
+		return call_user_func_array(array($object, $method), $params);
 	}
 
 	/**
