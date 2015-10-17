@@ -14,8 +14,13 @@ namespace lcms\Utils;
 
 class ErrorHandler {
 
-	private static $debug = false;
-	private static $logPath;
+	private $debug = false;
+	private $logPath;
+
+	public function __construct($logPath, $environment) {
+		$this->setLogPath(LROOT . $logPath);
+		$this->setEnvironment($environment);
+	}
 
 	/**
 	 * Set path to log file
@@ -24,13 +29,16 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	public static function setLogPath($path) {
+	private function setLogPath($path) {
+
 		if(is_dir($path)) {
+			
 			$file = rtrim($path, '/') . '/exceptions.log';
-			self::$logPath = $file;
+			$this->logPath = $file;
 		} else {
+
 			$file = $path;
-			self::$logPath = $path;
+			$this->logPath = $path;
 		}
 
 		if(!is_file($file)) {
@@ -45,9 +53,9 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	public static function setEnvironment($env) {
+	private function setEnvironment($env) {
 		if('debug' === $env) {
-			self::$debug = true;
+			$this->debug = true;
 		}
 	}
 
@@ -62,8 +70,8 @@ class ErrorHandler {
 	* 
 	* @return void
 	*/
-	public static function logError($num, $str, $file, $line, $context = false) {
-		self::logException(new ErrorException($str, 0, $num, $file, $line), $context);
+	public function logError($num, $str, $file, $line, $context = false) {
+		$this->logException(new \ErrorException($str, 0, $num, $file, $line), $context);
 	}
 
 	/**
@@ -74,13 +82,13 @@ class ErrorHandler {
 	* 
 	* @return void
 	*/
-	public static function logException(Exception $e, $context = false) {
-		if (self::$debug === true) {
+	public function logException(\Exception $e, $context = false) {
+		if ($this->debug === true) {
 			header('Cache-control: none');
 			header('Pragma: no-cache');
-			self::displayErrorUserFriendly(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context);
+			$this->displayErrorUserFriendly(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context);
 		} else {
-			self::saveEvent(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context);
+			$this->saveEvent(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $context);
 		}
 	}
 
@@ -89,11 +97,11 @@ class ErrorHandler {
 	* 
 	* @return void
 	*/
-	public static function checkForFatal() {
+	public function checkForFatal() {
 		$error = error_get_last();
 
 		if ($error['type'] == E_ERROR) {
-			self::logError( $error['type'], $error['message'], $error['file'], $error['line']);
+			$this->logError( $error['type'], $error['message'], $error['file'], $error['line']);
 			//exit();
 		}
 	}
@@ -109,7 +117,7 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	private static function saveEvent($type, $message, $file, $line, $context) {
+	private function saveEvent($type, $message, $file, $line, $context) {
 		$event = sprintf('[%1$s] %2$s: %3$s in [%4$s] on line %5$s',
 			date('Y-m-d H:i:s'),
 			$type,
@@ -117,7 +125,7 @@ class ErrorHandler {
 			$file,
 			$line
 		);
-		file_put_contents(self::$logPath, $event . PHP_EOL, FILE_APPEND);
+		file_put_contents($this->logPath, $event . PHP_EOL, FILE_APPEND);
 	}
 
 	/**
@@ -131,7 +139,7 @@ class ErrorHandler {
 	 * 
 	 * @return void
 	 */
-	private static function displayErrorUserFriendly($type, $message, $file, $line, $context) {
+	private function displayErrorUserFriendly($type, $message, $file, $line, $context) {
 		?>
 		<div style="margin:30px auto;font-family:Arial;padding:15px;box-shadow:1px 2px 3px #aaa;max-width:900px;">
 			<h2 style="font-weight:normal">Exception Occured:</h2>
