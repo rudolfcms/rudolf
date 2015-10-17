@@ -18,7 +18,7 @@ use lcms\Utils\ErrorHandler,
 	lcms\Routing\Router,
 	lcms\Routing\FrontController;
 
-// checks whether php version is compatible with the instance lcms
+// checks whether php version is compatible with the instance of lcms
 require_once dirname(__FILE__) . '/Utils/PHPVersionCheck.php';
 php_check_run($required = 5.3);
 
@@ -28,13 +28,18 @@ require_once __DIR__ . '/defines.php';
 // load class autolaoder
 require_once LROOT . '/vendor/autoload.php';
 
+setlocale(LC_ALL,'pl_PL.UTF8');
+//setlocale(LC_ALL,'en_US.UTF8');
+bindtextdomain('lcms','./locale');
+textdomain('lcms');
+
 // load functions to log or disply errors
-ErrorHandler::setLogPath(LCORE . '/log/errors.log');
-ErrorHandler::setEnvironment(LENV);
-register_shutdown_function(array( 'ErrorHandler', 'checkForFatal'));
-set_error_handler(array('ErrorHandler', 'logError'));
-set_exception_handler(array('ErrorHandler', 'logException'));
-//error_reporting(81);
+$errorHandler = new ErrorHandler('/log/errors.log', LENV);
+ini_set('display_errors', 1);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
+set_error_handler(array($errorHandler, 'logError'));
+set_exception_handler(array($errorHandler, 'logException'));
+register_shutdown_function(array($errorHandler, 'checkForFatal'));
 
 // run extensions (plugins) menager
 PluginsManager::run();
@@ -49,3 +54,4 @@ $router = new Router($_SERVER['REQUEST_URI'], LDIR, $routeCollection);
 
 $frontController = new FrontController($router);
 $frontController->run();
+
