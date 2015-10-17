@@ -3,7 +3,7 @@
 /**
  * This file is part of lcms.
  * 
- * Plugins Manager.
+ * Plugin Manager.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
  * @package lcms\Plugins
