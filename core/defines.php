@@ -24,12 +24,9 @@ if(!defined('LDIR')) {
 		define('LDIR', dirname($_SERVER['SCRIPT_NAME']));
 	}
 }
-
-if(!defined('LENV')) define('LENV', 'debug');
-
 define('LADMIN', 		LDIR . '/admin');
 define('LUPLOADS', 		LDIR . '/content/uploads');
-define('LTHEMES', 		LDIR . '/content/themes');
+define('LTHEMES', 		LDIR . '/themes');
 define('LPLUGINS', 		LDIR . '/content/plugins');
 define('LGALLERIES', 	LDIR . '/content/galleries');
 
@@ -39,13 +36,13 @@ define('LCORE', 		LROOT . '/core');
 define('LCLASSESS', 	LROOT . '/core/classes');
 
 
-define('LUPLOADS_ROOT', 	LROOT . '/content/uploads');
-define('LTHEMES_ROOT', 		LROOT . '/content/themes');
+define('LUPLOADS_ROOT', 	LROOT . '/uploads');
+define('LTHEMES_ROOT', 		LROOT . '/themes');
 define('LCACHE_ROOT', 		LROOT . '/app/.cache');
-define('LPLUGINS_ROOT', 	LROOT . '/content/plugins');
-define('LLANGUAGE_ROOT',	LROOT . '/content/languages');
+define('LPLUGINS_ROOT', 	LROOT . '/plugins');
+define('LLANGUAGE_ROOT',	LROOT . '/languages');
 define('LMODULES_ROOT', 	LROOT . '/app/modules');
 define('LLIB_ROOT', 		LROOT . '/app/Lib');
 define('LCONFIG_ROOT', 		LROOT . '/config');
-define('LGALLERIES_ROOT',	LROOT . '/content/galleries');
+define('LGALLERIES_ROOT',	LROOT . '/galleries');
 define('LFUNCTION_ROOT', 	LROOT . '/app/functions');

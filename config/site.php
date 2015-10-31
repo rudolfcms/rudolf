@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die();
+<?php
 /**
  * This file is part of lcms.
  * 
@@ -10,7 +10,7 @@
  */
 
 return array (
-	'front_theme' = 'starter',
-	'admin_theme' = 'starter',
+	'front_theme' => 'starter',
+	'admin_theme' => 'starter',
 	'debug' => true
 );

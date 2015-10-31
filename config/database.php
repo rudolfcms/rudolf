@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die();
+<?php
 /**
  * This file is part of lcms.
  * 
@@ -10,10 +10,11 @@
  */
 
 return array (
+	'engine' => 'mysql',
 	'host' => 'localhost',
-	'name' => 'lcms',
+	'database' => 'lcms',
 	'user' => 'lcms',
-	'password' => 'lcms',
+	'pass' => 'lcms',
 	'charset' => 'utf8',
 	'prefix' => 'lcms_'
 );

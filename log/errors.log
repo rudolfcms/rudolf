@@ -1,0 +1,25 @@
+[2015-10-31 21:53:17] ErrorException: Call to undefined method Modules\articles\ArticleOneView::html() in [/home/mp360/www/lcms/core/Abstracts/View.php] on line 27
+[2015-10-31 21:53:41] ErrorException: include(/home/mp360/www/lcms/content/themes/front/starter/templates/article): failed to open stream: No such file or directory in [/home/mp360/www/lcms/core/Abstracts/View.php] on line 36
+[2015-10-31 21:53:41] ErrorException: include(): Failed opening '/home/mp360/www/lcms/content/themes/front/starter/templates/article' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/core/Abstracts/View.php] on line 36
+[2015-10-31 21:57:39] ErrorException: include(_head.html.php): failed to open stream: No such file or directory in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:57:39] ErrorException: include(): Failed opening '_head.html.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:01] ErrorException: include(_head.html.php): failed to open stream: No such file or directory in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:01] ErrorException: include(): Failed opening '_head.html.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:08] ErrorException: include(_head.html.php): failed to open stream: No such file or directory in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:08] ErrorException: include(): Failed opening '_head.html.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:29] ErrorException: include(_head.html.php): failed to open stream: No such file or directory in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:29] ErrorException: include(): Failed opening '_head.html.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:42] ErrorException: include(_head.html.php): failed to open stream: No such file or directory in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 21:58:42] ErrorException: include(): Failed opening '_head.html.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 1
+[2015-10-31 22:03:11] ErrorException: Call to undefined method Modules\articles\ArticleOneView::author() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 6
+[2015-10-31 22:03:47] ErrorException: Call to undefined method Modules\articles\ArticleOneView::hasPhotos() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 8
+[2015-10-31 22:04:10] ErrorException: Call to undefined method Modules\articles\ArticleOneView::hasPhotos() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 8
+[2015-10-31 22:04:36] ErrorException: Call to undefined method Modules\articles\ArticleOneView::views() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 9
+[2015-10-31 22:05:01] ErrorException: Call to undefined method Modules\articles\ArticleOneView::hasCategory() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 10
+[2015-10-31 22:06:46] ErrorException: Call to undefined method Modules\articles\ArticleOneView::photos() in [/home/mp360/www/lcms/themes/front/starter/templates/article.html.php] on line 8
+[2015-10-31 22:08:35] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37
+[2015-10-31 22:08:35] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37
+[2015-10-31 22:10:20] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37
+[2015-10-31 22:10:20] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37
+[2015-10-31 22:12:54] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37
+[2015-10-31 22:12:54] ErrorException: Undefined property: Modules\articles\ArticleOneView::$article in [/home/mp360/www/lcms/modules/articles/ArticleOneView.php] on line 37

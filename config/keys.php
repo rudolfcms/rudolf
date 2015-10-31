@@ -1,4 +1,4 @@
-<?php defined('LCMS') or die();
+<?php
 /**
  * This file is part of lcms.
  * 

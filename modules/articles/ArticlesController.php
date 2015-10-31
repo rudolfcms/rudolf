@@ -10,7 +10,8 @@
  */
  
 namespace Modules\articles;
-use lcms\Abstracts\Controller;
+use lcms\Abstracts\Controller,
+	lcms\Http\HttpErrorException;
 
 class ArticlesController extends Controller {
 	
@@ -21,27 +22,29 @@ class ArticlesController extends Controller {
 	*
 	* @return bool|string
 	*/
-	public function articlesList($page) {
-	    $model = new ArticlesListModel();
-	    $view = new ArticlesListView();
+	public function getList($page) {
+	    $model = new ArticlesModel();
+	    $view = new ArticlesView();
 	    
-	    $results = $model->getArticlesListArray($page);
+	    $results = $model->getList($page);
 		if(false === $results) {
-			return false;
+			throw new HttpErrorException(404);
 		}
 		
-	    return $view->getArticlesListaPage($results);
+	    return $view->getArticlesListPage($results);
 	}
 
 	public function one($year, $month, $slug) {
-		$model = new ArticlesOnceModel();
-		$view = new ArticlesOnceView();
+		$model = new ArticlesModel();
+		$view = new ArticleOneView();
 		
-		$results = $model->getArticleOnceArray($year, $month, $slug);
+		$results = $model->getOneByDate($year, $month, $slug);
 		if(false === $results) {
-			return false;
+			throw new HttpErrorException(404);
 		}
 		
-		return $view->getArticleOncePage($results);
+		$view->setData($results);
+
+		$view->render();
 	}
 }
