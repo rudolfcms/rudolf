@@ -25,7 +25,7 @@ class ArticlesController extends Controller {
 	    $model = new ArticlesListModel();
 	    $view = new ArticlesListView();
 	    
-	    $results = $model->getArticlesListArray($page, );
+	    $results = $model->getArticlesListArray($page);
 		if(false === $results) {
 			return false;
 		}

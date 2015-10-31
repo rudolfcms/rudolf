@@ -6,11 +6,11 @@
  * Abstract view.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Abstract
+ * @package lcms\Abstracts
  * @version 0.1
  */
 
-namespace lcms\Abstract;
+namespace lcms\Abstracts;
 
 abstract class View {
 	
