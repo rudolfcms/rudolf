@@ -1,0 +1,3 @@
+[submodule "themes/front/amazingschool"]
+	path = themes/front/amazingschool
+	url = git@gitlab.com:lcms-themes/amazingschool.git
