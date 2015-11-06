@@ -18,7 +18,7 @@ class ArticleOneView extends View {
 
 	public function setData($data) {
 		$this->data = $data;
-		$this->template = (isset($data['template'])) ? $data['template'] : 'article';
+		$this->template = (isset($data['template'])) ? $data['template'] : 'article-once';
 	}
 
 	protected function title() {
