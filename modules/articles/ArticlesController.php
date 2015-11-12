@@ -16,7 +16,7 @@ use lcms\Abstracts\Controller,
 class ArticlesController extends Controller {
 	
 	/**
-	* Manage model and view to display articles list
+	* Get articles list
 	*
 	* @param int $page Page number
 	*
@@ -34,7 +34,13 @@ class ArticlesController extends Controller {
 	    return $view->getArticlesListPage($results);
 	}
 
-	public function one($year, $month, $slug) {
+	/**
+	 * Get one article
+	 * 
+	 * 
+	 * 
+	 */
+	public function getOne($year, $month, $slug) {
 		$model = new ArticlesModel();
 		$view = new ArticleOneView();
 		
@@ -42,7 +48,6 @@ class ArticlesController extends Controller {
 		if(false === $results) {
 			throw new HttpErrorException(404);
 		}
-		
 		$view->setData($results);
 
 		$view->render();
