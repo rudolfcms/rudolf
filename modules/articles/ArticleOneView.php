@@ -14,19 +14,27 @@ use lcms\Abstracts\View;
 
 class ArticleOneView extends View {
 
-	protected $data;
+	protected $article;
 
-	public function setData($data) {
-		$this->data = $data;
-		$this->template = (isset($data['template'])) ? $data['template'] : 'article-once';
+	public function setData($article) {
+		$this->article = $article;
+		$this->template = (isset($article['template'])) ? $article['template'] : 'article-once';
 	}
 
 	protected function title() {
-		return $this->data['title'];
+
+		$title = $this->article['title'];
+
+		$title = str_replace('w ', 'w&nbsp;', $title);
+		$title = str_replace('i ', 'i&nbsp;', $title);
+		$title = str_replace('o ', 'o&nbsp;', $title);
+		$title = str_replace('a ', 'a&nbsp;', $title);
+
+		return $title;
 	}
 
 	protected function content() {
-		return $this->data['content'];
+		return $this->article['content'];
 	}
 
 	protected function date($format = false) {
@@ -42,30 +50,30 @@ class ArticleOneView extends View {
 	}
 
 	protected function keywords() {
-		return $this->data['keywords'];
+		return $this->article['keywords'];
 	}
 
 	protected function description() {
-		return $this->data['description'];
+		return $this->article['description'];
 	}
 
 	protected function author() {
-		return $this->data['author'];
+		return $this->article['author'];
 	}
 
 	protected function hasPhotos() {
-		return (bool) $this->data['photos'];
+		return (bool) $this->article['photos'];
 	}
 
 	protected function photos() {
-		return (int) $this->data['photos'];
+		return (int) $this->article['photos'];
 	}
 
 	protected function views() {
-		return (int) $this->data['views'];
+		return (int) $this->article['views'];
 	}
 
 	protected function hasCategory() {
-		return (bool) $this->data['category_url'];
+		return (bool) $this->article['category_url'];
 	}
 }
