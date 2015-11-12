@@ -13,9 +13,15 @@
 namespace lcms\Abstracts;
 
 abstract class View {
+
+	public $path;
+
 	public function render($side = 'front', $type = 'html') {
 		if('front' !== $side or 'admin' !== $side) {
-			$side = 'front';
+			$this->side = 'front';
+			$this->path = LTHEMES . '/front/' . FRONT_THEME;
+		} else {
+			$this->side = $side;
 		}
 
 		switch ($type) {
@@ -24,16 +30,22 @@ abstract class View {
 				break;
 			
 			default:
-				$this->renderHtml($side);
+				$this->renderHtml();
 				break;
 		}
 	}
 
-	private function renderHtml($side) {
-		$file = LTHEMES_ROOT . '/'. $side .'/'. FRONT_THEME .'/'. 'templates/'. $this->template .'.html.php';
+	private function renderHtml() {
+		$file = LTHEMES_ROOT . '/'. $this->side .'/'. FRONT_THEME . '/templates/' . $this->template .'.html.php';
 		
-		if(is_file($file)) {
-			include $file;
+		try {
+			if(is_file($file)) {
+				include $file;
+			} else {
+				throw new \ErrorException("Template file $this->template does not exist!");
+			}
+		} catch (\ErrorException $e) {
+			die($e);
 		}
 	}
 
