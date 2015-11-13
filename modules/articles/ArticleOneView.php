@@ -82,7 +82,7 @@ class ArticleOneView extends View {
 			$format = 'Y-m-d H:i:s';
 		}
 
-		if($this->article['date']) {
+		if(empty($this->article['date'])) {
 			return false;
 		}
 
