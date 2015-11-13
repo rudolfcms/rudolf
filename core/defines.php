@@ -35,14 +35,14 @@ define('LROOT', 		dirname(__DIR__));
 define('LCORE', 		LROOT . '/core');
 define('LCLASSESS', 	LROOT . '/core/classes');
 
-
+define('LTEMP',				LROOT . '/.temp');
 define('LUPLOADS_ROOT', 	LROOT . '/uploads');
 define('LTHEMES_ROOT', 		LROOT . '/themes');
 define('LCACHE_ROOT', 		LROOT . '/app/.cache');
 define('LPLUGINS_ROOT', 	LROOT . '/plugins');
 define('LLANGUAGE_ROOT',	LROOT . '/languages');
 define('LMODULES_ROOT', 	LROOT . '/app/modules');
-define('LLIB_ROOT', 		LROOT . '/app/Lib');
+define('LLIB', 				LROOT . '/core/Libs');
 define('LCONFIG_ROOT', 		LROOT . '/config');
 define('LGALLERIES_ROOT',	LROOT . '/galleries');
 define('LFUNCTION_ROOT', 	LROOT . '/app/functions');
