@@ -23,25 +23,27 @@ class ArticlesController extends Controller {
 	* @return bool|string
 	*/
 	public function getList($page) {
-	    $model = new ArticlesModel();
-	    $view = new ArticlesView();
+	    $model = new ArticlesListModel();
+	    $view = new ArticlesListView();
 	    
 	    $results = $model->getList($page);
-		if(false === $results) {
-			throw new HttpErrorException(404);
-		}
+
+	    $view->setData($results);
 		
-	    return $view->getArticlesListPage($results);
+	   	$view->render();
 	}
 
 	/**
 	 * Get one article
 	 * 
+	 * @param int $year
+	 * @param int $month
+	 * @param string $slug
 	 * 
-	 * 
+	 * @return void
 	 */
 	public function getOne($year, $month, $slug) {
-		$model = new ArticlesModel();
+		$model = new ArticleOneModel();
 		$view = new ArticleOneView();
 		
 		$results = $model->getOneByDate($year, $month, $slug);
