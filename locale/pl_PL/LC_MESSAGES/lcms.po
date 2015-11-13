@@ -405,3 +405,9 @@ msgstr "zdjęć"
 
 msgid "views"
 msgstr "odsłon"
+
+msgid "Search something?"
+msgstr "Szukasz czegoś?"
+
+msgid "Search"
+msgstr "Szukaj"
