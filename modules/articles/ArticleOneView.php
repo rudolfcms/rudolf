@@ -117,7 +117,9 @@ class ArticleOneView extends View {
 	 * @return string
 	 */
 	protected function author() {
-		return $this->article['author'];
+
+		return ($this->article['author']) ? $this->article['author'] : $this->article['first_name'] . ' ' . $this->article['surname'];
+		
 	}
 
 	/**

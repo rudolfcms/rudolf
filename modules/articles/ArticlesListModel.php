@@ -88,52 +88,9 @@ class ArticlesListModel extends Model {
 		}
 
 		if(!empty($results)) {
-			return $this->formatResults($results);
+			return $results;
 			
 		}
 		return false;
 	}
-
-	/**
-	 * It format array with results
-	 *
-	 * @param array $results
-	 *
-	 * @return array
-	 */
-	private function formatResults($rows)
-	{
-		if(empty($rows)) {
-			return false;
-		}
-
-		for($i = 0; $i < $c = count($rows); $i++) {
-			$array[$i] = array(
-				'id' => $rows[$i]['id'],
-				'category_id' => $rows[$i]['category_id'],
-				'title' => $rows[$i]['title'],
-				'content' => $rows[$i]['content'],
-				'author' => ($rows[$i]['author']) ? $rows[$i]['author'] : $rows[$i]['first_name'] . ' ' . $rows[$i]['surname'],
-				'date' => $rows[$i]['date'],
-				'added' => $rows[$i]['added'],
-				'modified' => $rows[$i]['modified'],
-				'views' => $rows[$i]['views'],
-				'slug' => $rows[$i]['slug'],
-				'album' => $rows[$i]['album'],
-				'thumb' => $rows[$i]['thumb'],
-				'photos' => $rows[$i]['photos'],
-				'published' => $rows[$i]['published'],
-				'category_title' => $rows[$i]['category_title'],
-				'category_url' => $rows[$i]['category_url'],
-				'first_name' => $rows[$i]['first_name'],
-				'surname' => $rows[$i]['surname'],
-				'modified_first_name' => $rows[$i]['modified_first_name'],
-				'modified_surname' => $rows[$i]['modified_surname'],
-				'user_id' => $rows[$i]['user_id'],
-				'modified_user_id' => $rows[$i]['modified_user_id']
-			);
-		}
-		return $array;
-	}
-
 }
