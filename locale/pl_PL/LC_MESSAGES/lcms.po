@@ -393,3 +393,15 @@ msgstr ""
 #: ../../../core/Http/ResponseMessages.php:155
 msgid "The HTTP protocol you are asking for is not supported."
 msgstr ""
+
+msgid "author"
+msgstr "autor"
+
+msgid "added"
+msgstr "dodano"
+
+msgid "photos"
+msgstr "zdjęć"
+
+msgid "views"
+msgstr "odsłon"
