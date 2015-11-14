@@ -411,3 +411,6 @@ msgstr "Szukasz czegoś?"
 
 msgid "Search"
 msgstr "Szukaj"
+
+msgid "date_on"
+msgstr "o"

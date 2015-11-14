@@ -1,0 +1,22 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lcms\\Http\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-17 18:59+0200\n"
+"PO-Revision-Date: 2015-10-17 20:44+0100\n"
+"Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
+"Language-Team: lcms team <team@lcms.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pl_PL\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "date_on"
+msgstr "at"
