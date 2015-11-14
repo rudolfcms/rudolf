@@ -23,14 +23,16 @@ class ArticlesController extends Controller {
 	* @return bool|string
 	*/
 	public function getList($page) {
-	    $model = new ArticlesListModel();
-	    $view = new ArticlesListView();
-	    
-	    $results = $model->getList($page);
+		$page = $this->firstPageRedirect($page);
 
-	    $view->setData($results);
+		$model = new ArticlesListModel();
+		$view = new ArticlesListView();
 		
-	   	$view->render();
+		$results = $model->getList($page);
+
+		$view->setData($results, ['total' => $model->total, 'page' => $page]);
+		
+		$view->render();
 	}
 
 	/**
@@ -64,6 +66,8 @@ class ArticlesController extends Controller {
 	 * @return void
 	 */
 	public function getCategory($slug, $page) {
+		$page = $this->firstPageRedirect($page, 301, '../../'. $slug); // łork eraułnd
+		
 		$list = new ArticlesListModel();
 		$category = new ArticlesCategoryModel();
 		$view = new ArticlesCategoryView();
@@ -72,7 +76,7 @@ class ArticlesController extends Controller {
 
 		$results = $list->getList($page, ['published'=>1, 'category_id'=>$categoryInfo['id']]);
 
-		$view->setData($results, $categoryInfo);
+		$view->setData($results, $categoryInfo, ['total' => $list->total, 'page' => $page]);
 
 		$view->render();
 	}
