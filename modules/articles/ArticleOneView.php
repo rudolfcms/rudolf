@@ -10,7 +10,8 @@
  */
  
 namespace Modules\articles;
-use lcms\Abstracts\View;
+use lcms\Abstracts\View,
+	lcms\Hooks\Hooks;
 
 class ArticleOneView extends View {
 
@@ -74,21 +75,45 @@ class ArticleOneView extends View {
 	 * Return article date
 	 * 
 	 * @param bool|string $format
+	 * @param string $style normal|locale
 	 * 
 	 * @return string
 	 */
-	protected function date($format = false) {
-		if(false === $format) {
-			$format = 'Y-m-d H:i:s';
+	protected function date($format = false, $style = 'normal') {
+		switch ($style) {
+			case 'locale': // http://php.net/manual/en/function.strftime.php
+					$locale = $this->theme->article['date']['default']['locale'];
+				$format = ($format) ? $format : (isset($locale)) ? $locale : '%V-%G-%Y';
+				$date = strftime($format, strtotime($this->article['date']));
+				break;
+			
+			default: // http://php.net/manual/en/datetime.formats.date.php
+					$normal = $this->theme->article['date']['default']['normal'];
+				$format = (!$format) ? ((isset($normal)) ? $normal : 'Y-m-d H:i:s') : $format;
+				$date = date_format(date_create($this->article['date']), $format);
+				break;
 		}
 
 		if(empty($this->article['date'])) {
 			return false;
 		}
+		
+		$date = Hooks::apply_filters('date_format_filter', $date);
 
-		$date = date_format(date_create($this->article['date']), $format);
+		$month = [
+			'styczeń' => 'stycznia',
+			'czerwiec' => 'czerwca', // 06
+			'lipiec' => 'lipca', // 07
+			'sierpień' => 'sierpnia', // 08
+			'wrzesień' => 'września', // 09
+			'październik' => 'października', // 10
+			'listopad' => 'listopada', // 11
+			'grudzień' => 'grudnia' // 12
+		];
 
-		//$date = $this->hooks->apply_filters('date_format_filter', $date);
+		foreach ($month as $key => $value) {
+			$date = str_replace($key, $value, $date);
+		}
 
 		return $date;
 	}
