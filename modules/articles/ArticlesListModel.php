@@ -38,11 +38,11 @@ class ArticlesListModel extends Model {
 		$clausule = null;
 		if(is_array($where)) {
 			foreach ($where as $key => $value) {
-				$condition = $key . '=' . $value . ', ';
+				$condition = $key . '=' . $value . ' and ';
 				$clausule .= trim($condition, '0=');
 			}
 
-			$clausule = trim($clausule, ', ');
+			$clausule = trim($clausule, 'and ');
 		} elseif(is_string($where)) {
 			$clausule = $where;
 		} else {
@@ -79,7 +79,7 @@ class ArticlesListModel extends Model {
 			");
 
 			$stmt->execute();
-			$results = $stmt->fetchAll();
+			$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
 		}
 		catch(\PDOException $e) {
@@ -92,5 +92,30 @@ class ArticlesListModel extends Model {
 			
 		}
 		return false;
+	}
+
+	/**
+	 * Get category info
+	 * 
+	 * @param string $slug
+	 * 
+	 * @return array
+	 */
+	public function getCategoryInfo($slug) {
+		try {
+			$stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories WHERE slug = :slug and type = :type");
+			$stmt->bindValue(':slug', $slug, \PDO::PARAM_INT);
+			$stmt->bindValue(':type', 'articles', \PDO::PARAM_STR);
+			$stmt->execute();
+			$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		} catch (\PDOException $e) {
+			die($e);
+		}
+
+		if(empty($results[0])) {
+			return false;
+		}
+
+		return $results[0];
 	}
 }
