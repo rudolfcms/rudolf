@@ -13,6 +13,8 @@ namespace Modules\articles;
 use lcms\Abstracts\View,
 	lcms\Hooks\Hooks;
 
+use lcms\Html\Text;
+
 class ArticleOneView extends View {
 
 	/**
@@ -36,9 +38,12 @@ class ArticleOneView extends View {
 	 * 
 	 * @return string
 	 */
-	protected function title() {
-
+	protected function title($type = 'beautify') {
 		$title = $this->article['title'];
+
+		if('raw' === $type) {
+			return $title;
+		}
 
 		$title = str_replace(' w ', ' w&nbsp;', $title);
 		$title = str_replace(' i ', ' i&nbsp;', $title);
@@ -64,8 +69,7 @@ class ArticleOneView extends View {
 		}
 
 		if(false !== $truncate and strlen($content) > $truncate) {
-			$content = substr($content, 0, $truncate);
-			$content = trim(trim($content), ',') . '...';
+			$content = Text::truncate($content, $truncate);
 		}
 
 		return $content;
@@ -128,7 +132,7 @@ class ArticleOneView extends View {
 	 * @return string
 	 */
 	protected function keywords() {
-		return $this->article['keywords'];
+		return Text::escape($this->article['keywords']);
 	}
 
 	/**
@@ -137,7 +141,7 @@ class ArticleOneView extends View {
 	 * @return string
 	 */
 	protected function description() {
-		return $this->article['description'];
+		return Text::escape($this->article['description']);
 	}
 
 	/**
@@ -209,7 +213,7 @@ class ArticleOneView extends View {
 	protected function thumbnail($w, $h, $src = false, $alt = false) {
 		$w = ($w) ? $w : $this->theme->article['thumb']['width'];
 		$h = ($h) ? $h : $this->theme->article['thumb']['height'];
-		$alt = ($alt) ? $alt : $this->title();
+		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
 
 		$address = $this->article['thumb'];
 
