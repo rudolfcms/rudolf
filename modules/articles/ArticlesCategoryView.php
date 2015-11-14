@@ -14,9 +14,14 @@ use lcms\Abstracts\View;
 
 class ArticlesCategoryView extends ArticlesListView {
 
-	public function setData($data, $info) {
+	public function setData($data, $info, $paginationInfo) {
 		$this->data = $data;
+		
 		$this->categoryInfo = $info;
+
+		$this->paginationInfo = $paginationInfo;
+
+		$this->path = '/artykuly/kategorie/'. $info['slug'];
 
 		$this->template = (isset($data['template'])) ? $data['template'] : 'category';
 	}
