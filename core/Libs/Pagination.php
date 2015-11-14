@@ -80,6 +80,11 @@ class Pagination {
 
 	/**
 	 * Initializes variables.
+	 * 
+	 * @param int $total Number of all items
+	 * @param int $pageNumber Number of current page
+	 * @param int $onPage Number of items per page
+	 * @param int $navNum Number of items in navigation
 	 *
 	 * @return void
 	 */
