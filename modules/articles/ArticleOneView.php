@@ -101,7 +101,11 @@ class ArticleOneView extends View {
 		$date = Hooks::apply_filters('date_format_filter', $date);
 
 		$month = [
-			'styczeń' => 'stycznia',
+			'styczeń' => 'stycznia', // 01
+			'luty' => 'lutego', // 02
+			'marzec' => 'marca', // 03
+			'kwiecień' => 'kwietnia', // 04
+			'maj' => 'maja', // 05
 			'czerwiec' => 'czerwca', // 06
 			'lipiec' => 'lipca', // 07
 			'sierpień' => 'sierpnia', // 08
