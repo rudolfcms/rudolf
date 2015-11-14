@@ -90,11 +90,11 @@ abstract class Model {
 			$clausule = 'WHERE ';
 
 			foreach ($where as $key => $value) {
-				$condition = $key . '=' . $value . ', ';
+				$condition = $key . '=' . $value . ' and ';
 				$clausule .= trim($condition, '0=');
 			}
 
-			$clausule = trim($clausule, ', ');
+			$clausule = trim($clausule, 'and ');
 		} elseif(is_string($where)) {
 			$clausule = 'WHERE ' . $where;
 		}
