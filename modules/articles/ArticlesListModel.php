@@ -17,6 +17,11 @@ use lcms\Abstracts\Model,
 class ArticlesListModel extends Model {
 
 	/**
+	 * @var int Number of all items
+	 */
+	public $total;
+
+	/**
 	 * Returns array with articles list
 	 *
 	 * @param int $page
@@ -25,15 +30,17 @@ class ArticlesListModel extends Model {
 	 *
 	 * @return array
 	 */
-	public function getList($page = 1, $where = ['published'=>1], $onPage = 10, $orderBy = ['id', 'desc']) {
-		$total = $this->countItems('articles', $where);
+	public function getList($page = 1, $where = ['published'=>1], $onPage = 15, $orderBy = ['id', 'desc']) {
+		$this->total = $this->countItems('articles', $where);
 
-		if($onPage * $page > $total) {
-			$page = 0;
-		} else {
-			$page = $page - 1;
+		$allPages = ceil($this->total/$onPage); // round up quotient all elements and elements on page
+
+		// if page number is greater than number of all elements
+		if($page > $allPages) {
+			$page = 1;
 		}
-		$limit = $page * $onPage;
+
+		$limit = ($page - 1) * $onPage;
 
 		$clausule = null;
 		if(is_array($where)) {
@@ -83,7 +90,7 @@ class ArticlesListModel extends Model {
 			$stmt->closeCursor();
 		}
 		catch(\PDOException $e) {
-			echo '<code>Mysql error: ' . $e->getMessage().'</code>';
+			echo '<code>Mysql error: '.$e->getMessage().'<br/><br/>In: '.$e->getFile().' on '.$e->getLine().'</code>';
 			exit;
 		}
 

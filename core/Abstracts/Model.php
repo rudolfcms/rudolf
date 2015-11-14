@@ -102,7 +102,7 @@ abstract class Model {
 		try {
 			$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table $clausule");
 		} catch (\PDOException $e) {
-			echo '<pre>Mysql error: ' . $e->getMessage().'</pre>';
+			echo '<code>Mysql error: '.$e->getMessage().'<br/><br/>In: '.$e->getFile().' on '.$e->getLine().'</code>';
 			exit;
 		}	
 		$result = $stmt->fetch(PDO::FETCH_OBJ);

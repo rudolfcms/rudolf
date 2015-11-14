@@ -31,7 +31,8 @@ class ArticlesCategoryModel extends Model {
 			$stmt->execute();
 			$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		} catch (\PDOException $e) {
-			die($e);
+			echo '<code>Mysql error: '.$e->getMessage().'<br/><br/>In: '.$e->getFile().' on '.$e->getLine().'</code>';
+			exit;
 		}
 
 		if(empty($results[0])) {
