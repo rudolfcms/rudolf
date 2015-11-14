@@ -7,7 +7,7 @@ $collection->add('article/list', new Routing\Route(
 	'artykuly(/page/<page>)?',
 	'Modules\articles\ArticlesController::getList',
 	array( // wyrazenia regularne dla parametrow
-		'page' => "\d+"
+		'page' => "[1-9][0-9]*$"
 	),
 	array( // wartosci domyslne
 		'page' => 1
@@ -19,11 +19,11 @@ $collection->add('article/category', new Routing\Route(
 	'artykuly/kategorie/<slug>(/page/<page>)?',
 	'Modules\articles\ArticlesController::getCategory',
 	array( // wyrazenia regularne dla parametrow
-		'page' => "\d+",
-		'slug' => "[a-z0-9]+(?:-[a-z0-9]+)*"
+		'slug' => "[a-z0-9]+(?:-[a-z0-9]+)*",
+		'page' => "[1-9][0-9]*$"
 	),
 	array( // wartosci domyslne
-		'page' => 1
+		'page' => 0
 	)
 ));
 
