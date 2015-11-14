@@ -10,12 +10,18 @@
  */
  
 namespace Modules\articles;
-use lcms\Abstracts\View;
+use lcms\Abstracts\View,
+	lcms\Libs\Pagination,
+	lcms\Html\Navigation;
 
 class ArticlesListView extends ArticleOneView {
 
-	public function setData($data) {
+	public $path;
+
+	public function setData($data, $paginationInfo) {
 		$this->data = $data;
+
+		$this->paginationInfo = $paginationInfo;
 
 		$this->template = 'index';
 	}
@@ -55,9 +61,33 @@ class ArticlesListView extends ArticleOneView {
 	 *
 	 * @return void
 	 */
-	public function article()
-	{
+	public function article() {
 		$this->current += 1;
 		$this->article = $this->data[$this->current];
+	}
+
+	/**
+	 * Return navigation
+	 * 
+	 * @param array $classes
+	 * 		ul
+	 * 		current
+	 * 
+	 * @return string
+	 */
+	public function nav($classes) {
+		$nav = $this->paginationInfo;
+
+		$onPage = $this->theme->article['pagination']['onPage'];
+		$navNumber = $this->theme->article['pagination']['navNumber'];
+		
+		$pagination = new Pagination($nav['total'], $nav['page'], $onPage, $navNumber);
+
+
+		$navigation = new Navigation();
+		return $navigation->createPagingNavigation($pagination->nav(), $this->path, $classes, $nesting = 2);
+
+		$list = ($classes['list']) ? $classes['list'] : 'cd-pagination';
+		$current = ($classes['current']) ? $classes['current'] : 'current';
 	}
 }
