@@ -204,7 +204,18 @@ class ArticleOneView extends View {
 	 * 
 	 * @return string
 	 */
-	public function url() {
+	protected function url() {
 		return LDIR . '/artykuly/'. $this->date('Y') .'/'. $this->date('m') .'/'. $this->article['slug'];
+	}
+
+	/**
+	 * Return article category
+	 * 
+	 * @return string
+	 */
+	protected function category() {
+		$address = LDIR . '/artykuly/kategorie/'. $this->article['category_url'];
+		
+		return sprintf('<a href="%1$s">%2$s</a>', $address, $this->article['category_title']);
 	}
 }
