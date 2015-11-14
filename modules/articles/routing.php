@@ -14,6 +14,19 @@ $collection->add('article/list', new Routing\Route(
 	)
 ));
 
+# /artykuly/kategorie(/page/3)
+$collection->add('article/category', new Routing\Route(
+	'artykuly/kategorie/<slug>(/page/<page>)?',
+	'Modules\articles\ArticlesController::getCategory',
+	array( // wyrazenia regularne dla parametrow
+		'page' => "\d+",
+		'slug' => "[a-z0-9]+(?:-[a-z0-9]+)*"
+	),
+	array( // wartosci domyslne
+		'page' => 1
+	)
+));
+
 # /artykuly/2015/09/hello-world
 $collection->add('article/one', new Routing\Route(
 	'artykuly/<year>/<month>/<slug>',

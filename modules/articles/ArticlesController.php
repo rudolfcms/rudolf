@@ -54,4 +54,25 @@ class ArticlesController extends Controller {
 
 		$view->render();
 	}
+
+	/**
+	 * Get articles by category
+	 * 
+	 * @param string $slug
+	 * @param int $page
+	 * 
+	 * @return void
+	 */
+	public function getCategory($slug, $page) {
+		$model = new ArticlesListModel();
+		$view = new ArticlesListView();
+
+		$categoryInfo = $model->getCategoryInfo($slug);
+
+		$results = $model->getList($page, ['published'=>1, 'category_id'=>$categoryInfo['id']]);
+
+		$view->setData($results);
+
+		$view->render();
+	}
 }
