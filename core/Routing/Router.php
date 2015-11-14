@@ -201,7 +201,7 @@ class Router {
 			preg_match("#$param#", $parsed_url, $results);
 			if (isset($results[0])) {
 				$this->params[$key] = $results[0];
-				$parsed_url = str_replace($results[0], '', $parsed_url);
+				$parsed_url = preg_replace('/'.$results[0].'/', '', $parsed_url, 1);
 			}
 		}
 		
