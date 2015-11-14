@@ -64,14 +64,15 @@ class ArticlesController extends Controller {
 	 * @return void
 	 */
 	public function getCategory($slug, $page) {
-		$model = new ArticlesListModel();
-		$view = new ArticlesListView();
+		$list = new ArticlesListModel();
+		$category = new ArticlesCategoryModel();
+		$view = new ArticlesCategoryView();
 
-		$categoryInfo = $model->getCategoryInfo($slug);
+		$categoryInfo = $category->getCategoryInfo($slug);
 
-		$results = $model->getList($page, ['published'=>1, 'category_id'=>$categoryInfo['id']]);
+		$results = $list->getList($page, ['published'=>1, 'category_id'=>$categoryInfo['id']]);
 
-		$view->setData($results);
+		$view->setData($results, $categoryInfo);
 
 		$view->render();
 	}
