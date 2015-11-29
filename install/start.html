@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Instalator</title>
+	<style>
+		body {
+			background: #f1f1f1;
+			font-family: Arial, sans-serif;
+			color: #444;
+		}
+		.centered {
+			max-width: 500px;
+			min-width: 200px;
+			margin: 40px auto;
+			padding: 15px;
+			background: #fff;
+			box-shadow: 1px 2px 3px #aaa;
+		}
+		h1 {
+			font-weight: normal;
+			margin: 20px;
+		}
+		p {
+			margin: 10px;
+			color: #555;
+		}
+
+		form {
+			overflow: hidden;
+		}
+
+		input {
+			border-radius: 0;
+			background: #fff;
+			color: #444;
+			border: 1px solid #f1f1f1;
+			padding: 5px 10px;
+			cursor: pointer;
+		}
+		input:hover {
+			background: #f1f1f1;
+			color: #555;
+		}
+
+		form > input.next {
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<header class="centered">
+		<h1>Welcome to <em>lcms</em>!</h1>
+	</header>
+	<main class="centered">
+		<p>We help you, to install lcms. Press <i>Next</i> button, to start.</p>
+
+		<form method="post" action="./">
+			<input type="submit" name="step-one" class="next" value="Next"/>
+		</form>
+	</main>
+</body>
+</html>

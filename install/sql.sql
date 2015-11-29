@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `lcms_albums` (
   `photos` int(10) unsigned NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_articles` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `lcms_articles` (
   `photos` int(11) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `lcms_categories` (
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `type` varchar(16) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_galleries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `lcms_galleries` (
   `thumb_width` int(11) NOT NULL,
   `thumb_height` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `lcms_menu` (
   `module_name` varchar(16) COLLATE utf8_polish_ci NOT NULL,
   `link` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_menu_types` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `lcms_menu_types` (
   `title` varchar(32) COLLATE utf8_polish_ci NOT NULL,
   `description` varchar(64) COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 
 CREATE TABLE IF NOT EXISTS `lcms_pages` (
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `lcms_pages` (
   `slug` varchar(128) COLLATE utf8_polish_ci NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 CREATE TABLE IF NOT EXISTS `lcms_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -112,5 +112,5 @@ CREATE TABLE IF NOT EXISTS `lcms_users` (
   `isactive` tinyint(1) NOT NULL DEFAULT '0',
   `dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
