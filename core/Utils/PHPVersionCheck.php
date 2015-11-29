@@ -62,6 +62,7 @@ function php_version_error_display($pageTitle, $shortText, $longText) {
 ?><!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8"/>
 	<title><?php echo $pageTitle;?></title>
 	<style type="text/css">
 		body {
