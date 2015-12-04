@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Modules Manager.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Modules
+ * @package Rudolf\Modules
  * @version 0.1
  */
 
-namespace lcms\Modules;
+namespace Rudolf\Modules;
 
 class ModulesManager {
 
@@ -40,7 +39,7 @@ class ModulesManager {
 	 * @param string $path from-root path to modules directory
 	 */
 	public function __construct($path = '/modules') {
-		$this->path = LROOT . $path;
+		$this->path = ROOT . $path;
 
 		$this->modules = include $this->path . '/index.php';
 	}
@@ -131,7 +130,7 @@ class ModulesManager {
 		ksort($this->modules);
 
 		$var_str = var_export($this->modules, true);
-		$var = "<?php defined('LCMS') or die();\n/**\n * This file is part of lcms.\n * \n * List of instaled modules. DO NOT EDIT, GENERATED AUTOMATICALLY\n * \n * @author Mikołaj Pich <m.pich@outlook.com>\n * @package lcms\n * @version 0.1\n */\n\nreturn $var_str;\n";
+		$var = "<?php defined('Rudolf') or die();\n/**\n * This file is part of Rudolf.\n * \n * List of instaled modules. DO NOT EDIT, GENERATED AUTOMATICALLY\n * \n * @author Mikołaj Pich <m.pich@outlook.com>\n * @package Rudolf\n * @version 0.1\n */\n\nreturn $var_str;\n";
 		
 		file_put_contents($this->path . '/index.php', $var);
 	}

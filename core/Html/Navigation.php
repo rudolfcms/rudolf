@@ -1,7 +1,6 @@
 <?php
 
-
-namespace lcms\Html;
+namespace Rudolf\Html;
 
 class Navigation {
 	
@@ -32,10 +31,10 @@ class Navigation {
 		$tab = str_repeat("\t", 1 + $nesting);
 
 		if($nav['page'] > 1) {
-			$html[] = sprintf('%1$s<li><a href="%2$s">«</a></li>', $tab, LDIR . $path.'/page/' . $nav['prev']);
+			$html[] = sprintf('%1$s<li><a href="%2$s">«</a></li>', $tab, DIR . $path.'/page/' . $nav['prev']);
 		}
 		if ($nav['forstart'] > 1) {
-			$html[] = sprintf('%1$s<li><a href="%2$s">1</a></li>', $tab, LDIR . $path);
+			$html[] = sprintf('%1$s<li><a href="%2$s">1</a></li>', $tab, DIR . $path);
 		}
 		if ($nav['forstart'] > 2) {
 			$html[] = sprintf('%1$s<li><a>...</a></li>', $tab);
@@ -46,7 +45,7 @@ class Navigation {
 					'%1$s<li class="%2$s"><a href="%3$s">%4$s</a></li>', 
 					$tab, 
 					$classes['current'],
-					LDIR . $path . '/page/' . $nav['forstart'],
+					DIR . $path . '/page/' . $nav['forstart'],
 					$nav['forstart']
 				);
 			}
@@ -54,7 +53,7 @@ class Navigation {
 				$html[] = sprintf(
 					'%1$s<li><a href="%2$s">%3$s</a></li>', 
 					$tab, 
-					LDIR . $path . '/page/' . $nav['forstart'],
+					DIR . $path . '/page/' . $nav['forstart'],
 					$nav['forstart']
 				);
 			}
@@ -66,7 +65,7 @@ class Navigation {
 			$html[] = sprintf(
 				'%1$s<li><a href="%2$s">%3$s</a></li>',
 				$tab,
-				LDIR . $path . '/page/' . $nav['allpages'],
+				DIR . $path . '/page/' . $nav['allpages'],
 				$nav['allpages']
 			);
 		}
@@ -74,7 +73,7 @@ class Navigation {
 			$html[] = sprintf(
 				'%1$s<li><a href="%2$s">»</a></li>',
 				$tab,
-				LDIR . $path . '/page/' . $nav['next']
+				DIR . $path . '/page/' . $nav['next']
 			); 
 		}
 		$html[] = $nest . '</ul>'."\n";

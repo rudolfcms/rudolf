@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\index;
-use Modules\index;
+namespace Rudolf\Modules\index;
+use Rudolf\Modules\index;
 
-class IndexModel extends \Modules\articles\ArticlesListModel {
+class IndexModel extends \Rudolf\Modules\articles\ArticlesListModel {
 
 }

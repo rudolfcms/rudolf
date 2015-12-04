@@ -1,12 +1,11 @@
 <?php
-
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
- * Checks whether php version is compatible with the instance lcms
+ * Checks whether php version is compatible with the instance Rudolf
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Utils
+ * @package Rudolf\Utils
  * @version 0.1
  */
 
@@ -36,9 +35,9 @@ function php_check_run($minimumVersionPHP) {
  * @return void
  */
 function php_version_error($phpVersion, $minimumVersionPHP) {
-	$pageTitle = 'Error to start the lcms!';
-	$shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of lcms!';
-	$longText = 'To run lcms, you must upgrade your copy of PHP.';
+	$pageTitle = 'Error to start the Rudolf!';
+	$shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of Rudolf!';
+	$longText = 'To run Rudolf, you must upgrade your copy of PHP.';
 
 	php_version_error_display($pageTitle, $shortText, $longText);
 

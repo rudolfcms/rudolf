@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Hooks class. (WordPress plugin API fork)
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Hooks
+ * @package Rudolf\Hooks
  * @version 0.1
  */
 
-namespace lcms\Hooks;
+namespace Rudolf\Hooks;
 
 class Hooks {
 	

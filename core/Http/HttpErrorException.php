@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Display error and send specific http code.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Http
+ * @package Rudolf\Http
  * @version 0.1
  */
 
-namespace lcms\Http;
+namespace Rudolf\Http;
 
 class HttpErrorException extends \Exception {
 

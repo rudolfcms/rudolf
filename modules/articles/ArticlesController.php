@@ -1,17 +1,17 @@
 <?php
 /**
- * This file is part of lcms articles module.
+ * This file is part of Rudolf articles module.
  * 
  * This is the controller of articles module.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf\Modules\articles
  * @version 0.1
  */
  
-namespace Modules\articles;
-use lcms\Abstracts\Controller,
-	lcms\Http\HttpErrorException;
+namespace Rudolf\Modules\articles;
+use Rudolf\Abstracts\Controller,
+	Rudolf\Http\HttpErrorException;
 
 class ArticlesController extends Controller {
 	

@@ -1,6 +1,6 @@
 <?php
 
-namespace lcms\Http;
+namespace Rudolf\Http;
 
 class ResponseMessages {
 

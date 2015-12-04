@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Contains a collection of class members Route
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Routing
+ * @package Rudolf\Routing
  * @version 0.1
  */
 
-namespace lcms\Routing;
+namespace Rudolf\Routing;
 
 class RouteCollection {
 

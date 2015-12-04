@@ -1,18 +1,17 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Abstract controller.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Abstracts
+ * @package Rudolf\Abstracts
  * @version 0.1
  */
 
-namespace lcms\Abstracts;
+namespace Rudolf\Abstracts;
 
-use lcms\Http\Response;
+use Rudolf\Http\Response;
 
 abstract class Controller {
 	

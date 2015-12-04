@@ -1,17 +1,16 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Modules Routing.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Modules
+ * @package Rudolf\Modules
  * @version 0.1
  */
 
-namespace lcms\Modules;
-use lcms\Routing\RouteCollection;
+namespace Rudolf\Modules;
+use Rudolf\Routing\RouteCollection;
 
 class ModulesRouting {
 	
@@ -39,7 +38,7 @@ class ModulesRouting {
 	public function addRoutes() {
 		$collection = $this->collection;
 		for ($i=0; $i < $c = count($this->modulesList); $i++) {
-			$file = LROOT . $this->path . '/' . $this->modulesList[$i] . '/routing.php';
+			$file = ROOT . $this->path . '/' . $this->modulesList[$i] . '/routing.php';
 			
 			if(is_file($file)) {
 				include $file;

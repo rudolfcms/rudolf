@@ -1,9 +1,11 @@
-.lcms.sublime-project
-.lcms.sublime-workspace
+.Rudolf.sublime-project
+.Rudolf.sublime-workspace
 
 /vendor/
-/themes/front/starter/bower_components/
-/themes/admin/starter/bower_components/
 /log/
 /.temp/
 /uploads/
+/themes/front/
+!/themes/front/index.php
+/themes/admin/
+!/themes/admin/index.php

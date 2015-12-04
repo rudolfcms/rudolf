@@ -1,17 +1,16 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Front Controller.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Routing
+ * @package Rudolf\Routing
  * @version 0.1
  */
 
-namespace lcms\Routing;
-use lcms\Http\HttpErrorException;
+namespace Rudolf\Routing;
+use Rudolf\Http\HttpErrorException;
 
 class FrontController {
 

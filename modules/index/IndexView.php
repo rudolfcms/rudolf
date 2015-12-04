@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\index;
-use lcms\Abstracts\View;
+namespace Rudolf\Modules\index;
+use Rudolf\Abstracts\View;
 
-class IndexView extends \Modules\articles\ArticlesListView {
+class IndexView extends \Rudolf\Modules\articles\ArticlesListView {
 	
 	public function setData($data, $paginationInfo) {
 		$this->data = $data;

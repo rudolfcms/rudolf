@@ -1,7 +1,6 @@
 <?php
 
-
-namespace lcms\Html;
+namespace Rudolf\Html;
 
 class Text {
 	

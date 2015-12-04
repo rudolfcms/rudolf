@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\index;
-use lcms\Abstracts\Controller,
-	Modules\index;
+namespace Rudolf\Modules\index;
+use Rudolf\Abstracts\Controller,
+	Rudolf\Modules\index;
 
 class IndexController extends Controller {
 

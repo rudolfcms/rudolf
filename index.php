@@ -1,17 +1,12 @@
 <?php
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
- * This is the main web entry point for lcms.
+ * This is the main web entry point for Rudolf.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf
  * @version 0.1
  */
 
-/**
- * Constant that is checked in included files to prevent direct access.
- */
-define('LCMS', true);
-
-require __DIR__ . '/core/init.php';
+require __DIR__ . '/init.php';

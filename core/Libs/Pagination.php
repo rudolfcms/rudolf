@@ -1,15 +1,15 @@
 <?php
 /**
- * This file is part of lcms libs.
- * 
+ * This file is part of Rudolf libs.
+ *
  * This is the pagination lib.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Libs
+ * @package Rudolf\Libs
  * @version 0.1
  */
 
-namespace lcms\Libs;
+namespace Rudolf\Libs;
 
 class Pagination {
 	

@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Abstract view.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Abstracts
+ * @package Rudolf\Abstracts
  * @version 0.1
  */
 
-namespace lcms\Abstracts;
+namespace Rudolf\Abstracts;
 
 abstract class View {
 
@@ -39,7 +38,7 @@ abstract class View {
 			$this->side = $side;
 		}
 		
-		$this->themePath = LTHEMES .'/front/'. FRONT_THEME;
+		$this->themePath = THEMES .'/front/'. FRONT_THEME;
 
 		$this->loadConfig();
 
@@ -60,7 +59,7 @@ abstract class View {
 	 * @return void
 	 */
 	private function renderHtml() {
-		$file = LTHEMES_ROOT .'/'. $this->side .'/'. FRONT_THEME .'/templates/'. $this->template .'.html.php';
+		$file = THEMES_ROOT .'/'. $this->side .'/'. FRONT_THEME .'/templates/'. $this->template .'.html.php';
 		
 		try {
 			if(is_file($file)) {
@@ -87,7 +86,7 @@ abstract class View {
 	 * Load theme config class
 	 */
 	private function loadConfig() {
-		$file = LTHEMES_ROOT .'/front/'. FRONT_THEME .'/'. FRONT_THEME .'.php';
+		$file = THEMES_ROOT .'/front/'. FRONT_THEME .'/'. FRONT_THEME .'.php';
 		
 		if(is_file($file)) {
 			include $file;

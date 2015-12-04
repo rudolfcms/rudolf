@@ -1,11 +1,11 @@
 <?php
 
-use lcms\Routing;
+use Rudolf\Routing;
 
 # /artykuly(/page/3)
 $collection->add('article/list', new Routing\Route(
 	'artykuly(/page/<page>)?',
-	'Modules\articles\ArticlesController::getList',
+	'Rudolf\Modules\articles\ArticlesController::getList',
 	array( // wyrazenia regularne dla parametrow
 		'page' => "[1-9][0-9]*$"
 	),
@@ -17,7 +17,7 @@ $collection->add('article/list', new Routing\Route(
 # /artykuly/kategorie(/page/3)
 $collection->add('article/category', new Routing\Route(
 	'artykuly/kategorie/<slug>(/page/<page>)?',
-	'Modules\articles\ArticlesController::getCategory',
+	'Rudolf\Modules\articles\ArticlesController::getCategory',
 	array( // wyrazenia regularne dla parametrow
 		'slug' => "[a-z0-9]+(?:-[a-z0-9]+)*",
 		'page' => "[1-9][0-9]*$"
@@ -30,7 +30,7 @@ $collection->add('article/category', new Routing\Route(
 # /artykuly/2015/09/hello-world
 $collection->add('article/one', new Routing\Route(
 	'artykuly/<year>/<month>/<slug>',
-	'Modules\articles\ArticlesController::getOne',
+	'Rudolf\Modules\articles\ArticlesController::getOne',
 	array( // wyrazenia regularne dla parametrow
 		'year' => "[0-9]{4}",
 		'month' => "(0[1-9]|[12]\d|3[01])",
@@ -43,7 +43,7 @@ $collection->add('article/one', new Routing\Route(
 # /artykuly/2015/9/hello-world
 /*
 $collection->add('article/one', new Routing\Route(
-	'artykuly/<year>/<month>/<slug>',
+	'Rudolf\Modules/<year>/<month>/<slug>',
 	'Modules\articles\ArticlesController::one',
 	array( // wyrazenia regularne dla parametrow
 		'year' => "[0-9]{4}",

@@ -1,22 +1,25 @@
 <?php
 /**
- * This file is part of lcms articles module.
+ * This file is part of Rudolf articles module.
  * 
  * This is the model of articles module.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf\Modules\articles
  * @version 0.1
  */
  
-namespace Modules\articles;
-use lcms\Abstracts\View,
-	lcms\Libs\Pagination,
-	lcms\Html\Navigation;
+namespace Rudolf\Modules\articles;
+use Rudolf\Abstracts\View,
+	Rudolf\Libs\Pagination,
+	Rudolf\Html\Navigation;
 
-class ArticlesListView extends ArticleOneView {
+class ArticlesListView extends View {
+	use ArticleTraits;
 
 	public $path;
+
+	private $current;
 
 	public function setData($data, $paginationInfo) {
 		$this->data = $data;
@@ -75,14 +78,18 @@ class ArticlesListView extends ArticleOneView {
 	 * 
 	 * @return string
 	 */
-	public function nav($classes) {
+	public function nav($classes, $navNumber = false) {
 		$nav = $this->paginationInfo;
 
-		$onPage = $this->theme->article['pagination']['onPage'];
-		$navNumber = $this->theme->article['pagination']['navNumber'];
+		if(is_object($this->theme)) {
+			$onPage = $this->theme->article['pagination']['onPage'];
+		} else {
+			$onPage = 10;
+		}
+		
+		$navNumber = ($navNumber) ? $navNumber : $navNumber = $this->theme->article['pagination']['navNumber'];
 		
 		$pagination = new Pagination($nav['total'], $nav['page'], $onPage, $navNumber);
-
 
 		$navigation = new Navigation();
 		return $navigation->createPagingNavigation($pagination->nav(), $this->path, $classes, $nesting = 2);

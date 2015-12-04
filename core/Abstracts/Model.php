@@ -1,15 +1,15 @@
 <?php
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Abstract model.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Abstracts
+ * @package Rudolf\Abstracts
  * @version 0.1
  */
 
-namespace lcms\Abstracts;
+namespace Rudolf\Abstracts;
 use \PDO;
 
 abstract class Model {
@@ -41,8 +41,12 @@ abstract class Model {
 	 */
 	public function __construct() {
 		if(!is_object(self::$db)) {
-			self::$config = include LCONFIG_ROOT . '/database.php';
-			self::$db = $this->connect();
+			self::$config = include CONFIG_ROOT . '/database.php';
+			try {
+				self::$db = $this->connect();
+			} catch (\PDOException $e) {
+				die($e);
+			}
 		}
 
 		$this->pdo = self::$db;
@@ -79,7 +83,7 @@ abstract class Model {
 		$table = $this->prefix . $table;
 		$cachedFileName = $table . '_' . md5(json_encode($where));
 
-		$file = LTEMP . '/' . self::$config['engine'] . '/' . $cachedFileName;
+		$file = TEMP . '/' . self::$config['engine'] . '/' . $cachedFileName;
 
 		if(is_file($file)) {
 			return file_get_contents($file);

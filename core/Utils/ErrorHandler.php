@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
  * Error handler and logger
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Utils
+ * @package Rudolf\Utils
  * @version 0.1
  */
 
-namespace lcms\Utils;
+namespace Rudolf\Utils;
 
 class ErrorHandler {
 
@@ -18,7 +17,7 @@ class ErrorHandler {
 	private $logPath;
 
 	public function __construct($logPath, $environment) {
-		$this->setLogPath(LROOT . $logPath);
+		$this->setLogPath(ROOT . $logPath);
 		$this->setEnvironment($environment);
 	}
 

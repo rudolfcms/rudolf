@@ -1,6 +1,6 @@
 {
-	"name": "mp360/lcms",
-	"description": "lcms is simple CMS system written in PHP. That's all.",
+	"name": "mklj/Rudolf",
+	"description": "Rudolf is simple CMS system written in PHP. That's all.",
 	"authors": [
 		{
 			"name": "Mikołaj Pich",
@@ -12,9 +12,9 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"lcms\\": "core/",
-			"Modules\\": "modules/",
-			"lcms\\Plugins\\": "plugins/"
+			"Rudolf\\": "core/",
+			"Rudolf\\Modules\\": "modules/",
+			"Rudolf\\Plugins\\": "plugins/"
 		}
 	}
 }

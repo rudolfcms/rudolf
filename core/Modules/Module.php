@@ -1,13 +1,16 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Module.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Modules
+ * @package Rudolf\Modules
  * @version 0.1
  */
 
-namespace lcms\Modules;
+namespace Rudolf\Modules;
+
+class Module {
+
+}

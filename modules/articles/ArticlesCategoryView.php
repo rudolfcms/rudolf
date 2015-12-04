@@ -1,16 +1,16 @@
 <?php
 /**
- * This file is part of lcms articles module.
+ * This file is part of Rudolf articles module.
  * 
  * This is the model of articles module.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf\Modules\articles
  * @version 0.1
  */
  
-namespace Modules\articles;
-use lcms\Abstracts\View;
+namespace Rudolf\Modules\articles;
+use Rudolf\Abstracts\View;
 
 class ArticlesCategoryView extends ArticlesListView {
 

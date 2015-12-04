@@ -1,11 +1,11 @@
 <?php
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
  * Database configuration.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf\Config
  * @version 0.1
  */
 

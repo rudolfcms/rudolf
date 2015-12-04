@@ -1,40 +1,40 @@
 <?php
 
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
  * Initiates the application.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf
  * @version 0.1
  */
 
-use lcms\Utils\ErrorHandler,
-	lcms\Plugins\PluginsManager,
-	lcms\Modules\ModulesManager,
-	lcms\Modules\ModulesRouting,
-	lcms\Routing\RouteCollection,
-	lcms\Routing\Router,
-	lcms\Routing\FrontController;
+use Rudolf\Utils\ErrorHandler,
+	Rudolf\Plugins\PluginsManager,
+	Rudolf\Modules\ModulesManager,
+	Rudolf\Modules\ModulesRouting,
+	Rudolf\Routing\RouteCollection,
+	Rudolf\Routing\Router,
+	Rudolf\Routing\FrontController;
 
-// checks whether php version is compatible with the instance of lcms
-require_once dirname(__FILE__) . '/Utils/PHPVersionCheck.php';
+// checks whether php version is compatible with the instance of Rudolf
+require_once dirname(__FILE__) . '/core/Utils/PHPVersionCheck.php';
 php_check_run($required = 5.3);
 
 // load defines
 require_once __DIR__ . '/defines.php';
 
 // load class autolaoder
-require_once LROOT . '/vendor/autoload.php';
+require_once ROOT . '/vendor/autoload.php';
 
-$config = include LCONFIG_ROOT . '/site.php';
+$config = include CONFIG_ROOT . '/site.php';
 define('FRONT_THEME', $config['front_theme']);
 define('ADMIN_THEME', $config['admin_theme']);
-define('LENV', $config['debug']);
+define('ENV', $config['debug']);
 
 // load functions to log or disply errors
-$errorHandler = new ErrorHandler('/log/errors.log', LENV);
+$errorHandler = new ErrorHandler('/log/errors.log', ENV);
 ini_set('display_errors', 1);
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
 set_error_handler(array($errorHandler, 'logError'));
@@ -43,8 +43,8 @@ register_shutdown_function(array($errorHandler, 'checkForFatal'));
 
 setlocale(LC_ALL,'pl_PL.UTF8');
 //setlocale(LC_ALL,'en_US.UTF8');
-bindtextdomain('lcms','./locale');
-textdomain('lcms');
+bindtextdomain('rudolf','./locale');
+textdomain('rudolf');
 
 // run extensions (plugins) menager
 PluginsManager::run();
@@ -55,7 +55,7 @@ $modulesManager = new ModulesManager('/modules');
 $modulesRouting = new ModulesRouting($modulesManager->getList(), $routeCollection, '/modules');
 $routeCollection = $modulesRouting->addRoutes();
 
-$router = new Router($_SERVER['REQUEST_URI'], LDIR, $routeCollection);
+$router = new Router($_SERVER['REQUEST_URI'], DIR, $routeCollection);
 
 $frontController = new FrontController($router);
 $frontController->run();

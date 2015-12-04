@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
  * Generate random and put it on database
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\install
+ * @package Rudolf\Install
  * @version 0.1
  */
 
-namespace lcms\install;
+namespace Rudolf\Install;
 
 class DataGenerator {
 

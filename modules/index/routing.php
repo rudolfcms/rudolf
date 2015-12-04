@@ -1,10 +1,10 @@
 <?php
 
-use lcms\Routing;
+use Rudolf\Routing;
 
 $collection->add('index', new Routing\Route(
 	'(page/<page>)?',
-	'Modules\index\IndexController',
+	'Rudolf\Modules\index\IndexController',
 	array(
 		'page' => "[1-9][0-9]*$"
 	),

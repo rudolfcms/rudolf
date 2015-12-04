@@ -1,0 +1,613 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nav",
+				"navNumber"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"ran",
+				"random"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"create",
+				"createSlug"
+			],
+			[
+				"random",
+				"randomVarchar"
+			],
+			[
+				"ke",
+				"key"
+			],
+			[
+				"categ",
+				"categoryInfo"
+			],
+			[
+				"unse",
+				"unset"
+			],
+			[
+				"Y",
+				"Y-m-d"
+			],
+			[
+				"them",
+				"themeFormat"
+			],
+			[
+				"Arti",
+				"ArticlesListView"
+			],
+			[
+				"category",
+				"category_url"
+			],
+			[
+				"art",
+				"artykuly"
+			],
+			[
+				"R",
+				"Route"
+			],
+			[
+				"co",
+				"collection"
+			],
+			[
+				"func_",
+				"func_get_args"
+			],
+			[
+				"func",
+				"func_get_arg"
+			],
+			[
+				"route",
+				"routeCollection"
+			],
+			[
+				"cla",
+				"clausule"
+			],
+			[
+				"con",
+				"condition"
+			],
+			[
+				"ca",
+				"cachedFileName"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"pr",
+				"printf"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"mysq",
+				"mysql_errno"
+			],
+			[
+				"mys",
+				"mysql_error"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"tempa",
+				"templatesDirectory"
+			],
+			[
+				"key",
+				"keywords"
+			],
+			[
+				"t",
+				"throw	Throw Exception"
+			],
+			[
+				"status",
+				"statusTexts"
+			],
+			[
+				"log",
+				"logPath"
+			],
+			[
+				"env",
+				"environment"
+			],
+			[
+				"long",
+				"longMessage"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"Http",
+				"HttpErrorException"
+			],
+			[
+				"Pl",
+				"PluginsManager"
+			],
+			[
+				"ob",
+				"object"
+			],
+			[
+				"me",
+				"method"
+			],
+			[
+				"class",
+				"class_exists"
+			],
+			[
+				"met",
+				"method"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"Ro",
+				"Router"
+			],
+			[
+				"modules",
+				"modulesList"
+			],
+			[
+				"mod",
+				"modulesRouting"
+			],
+			[
+				"base",
+				"basePath"
+			],
+			[
+				"pri",
+				"print_r"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"requ",
+				"require_once"
+			],
+			[
+				"Rou",
+				"Routing"
+			],
+			[
+				"mat",
+				"matched"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ssh",
+		"selected_items":
+		[
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"sscss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 548.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/mklj/www/rudolf",
+		"/home/mklj/www/rudolf/core",
+		"/home/mklj/www/rudolf/core/Images"
+	],
+	"file_history":
+	[
+		"/home/mklj/www/rudolf/core/Images/Image.php",
+		"/home/mklj/www/rudolf/core/Images/Resizer.php",
+		"/home/mklj/www/rudolf/core/Http/ResponseMessages.php",
+		"/home/mklj/www/rudolf/core/Http/Response.php",
+		"/home/mklj/www/rudolf/core/Http/HttpErrorException.php",
+		"/home/mklj/www/rudolf/core/Html/Text.php",
+		"/home/mklj/www/rudolf/core/Html/Navigation.php",
+		"/home/mklj/www/rudolf/core/Hooks/Hooks.php",
+		"/home/mklj/www/rudolf/core/Abstracts/View.php",
+		"/home/mklj/www/rudolf/core/defines.php",
+		"/home/mklj/www/rudolf/core/Abstracts/Model.php",
+		"/home/mklj/www/rudolf/core/Abstracts/Controller.php",
+		"/home/mklj/www/rudolf/config/site.php",
+		"/home/mklj/www/rudolf/config/keys.php",
+		"/home/mklj/www/rudolf/config/database.php",
+		"/home/mklj/www/rudolf/core/Routing/RouteCollection.php",
+		"/home/mklj/www/rudolf/core/Routing/FrontController.php",
+		"/home/mklj/www/rudolf/core/init.php",
+		"/home/mklj/www/rudolf/core/Utils/PHPVersionCheck.php",
+		"/home/mklj/www/rudolf/core/Utils/ErrorHandler.php",
+		"/home/mklj/www/rudolf/install/DataGenerator.php",
+		"/home/mklj/www/rudolf/log/errors.log",
+		"/home/mklj/www/rudolf/modules/index.php",
+		"/home/mklj/www/rudolf/.gitignore",
+		"/home/mklj/www/rudolf/composer.json",
+		"/home/mklj/www/rudolf/README.md",
+		"/home/mklj/www/rudolf/.htaccess",
+		"/home/mklj/www/rudolf/index.php",
+		"/home/mklj/www/rudolf/.lcms.sublime-project",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/_head.html.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/articles-list.html.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/index.html.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/article-once.html.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/scss/_container.scss",
+		"/home/mklj/www/lcms/themes/front/amazingschool/scss/_article.scss",
+		"/home/mklj/www/lcms/themes/front/amazingschool/templates/_head.html.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/index.php",
+		"/home/mklj/www/lcms/config/site.php",
+		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/_foot.html.php",
+		"/home/mklj/www/lcms/index.php",
+		"/home/mklj/www/lcms/core/init.php",
+		"/home/mklj/www/lcms/modules/articles/ArticlesListView.php",
+		"/home/mklj/www/lcms/core/Html/Navigation.php",
+		"/home/mklj/www/lcms/themes/front/amazingschool/templates/articles-list.html.php",
+		"/home/mklj/Pobrane/PacketTracer62Student/install",
+		"/home/mklj/www/biblioteka/index.html",
+		"/home/mklj/untitled.html",
+		"/home/mklj/www/lcms/themes/front/amazingschool/scss/_pagination.scss",
+		"/home/mklj/www/lcms/core/Libs/Pagination.php",
+		"/home/mklj/www/lcms/modules/articles/ArticlesController.php",
+		"/home/mklj/www/lcms/install/sql.php",
+		"/home/mklj/www/lcms/install/structure.php",
+		"/home/mklj/www/lcms/install/DataGenerator.php",
+		"/home/mklj/www/lcms/install/index.html",
+		"/home/mklj/www/lcms/install/index.php",
+		"/home/mklj/www/lcms/core/Utils/PHPVersionCheck.php",
+		"/home/mklj/www/lcms/sql.php",
+		"/home/mklj/www/lcms/sql.sql",
+		"/home/mklj/www/lcms/install/random.txt",
+		"/home/mklj/Dropbox/Dokumenty/sh/apache.sh",
+		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_pagination.scss",
+		"/home/mp360/www/lcms/core/Libs/Pagination.php",
+		"/home/mp360/www/lcms/core/init.php",
+		"/home/mp360/www/lcms/modules/articles/ArticlesController.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/templates/category.html.php",
+		"/home/mp360/www/lcms/modules/articles/ArticlesListView.php",
+		"/home/mp360/www/lcms/modules/articles/ArticlesCategoryView.php",
+		"/home/mp360/www/lcms/modules/articles/ArticlesCategoryModel.php",
+		"/home/mp360/www/lcms/modules/articles/ArticlesListModel.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_scaffolding.scss",
+		"/home/mp360/www/lcms/modules/articles/ArticleOneView.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_typography.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/templates/articles-list.html.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/amazingschool.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/templates/article-once.html.php",
+		"/home/mp360/www/~production/lastcms/content/themes/amazingSchool/templates/article.html.php",
+		"/home/mp360/www/lcms/core/Plugins/PluginsManager.php",
+		"/home/mp360/www/untitled.php",
+		"/home/mp360/www/lcms/locale/pl_PL/LC_MESSAGES/lcms.po",
+		"/home/mp360/www/lcms/locale/en_US/LC_MESSAGES/lcms.po",
+		"/home/mp360/www/lcms/modules/articles/routing.php",
+		"/home/mp360/www/lcms/core/Abstracts/Model.php",
+		"/home/mp360/www/lcms/modules/articles/ArticleOneModel.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/templates/_foot.html.php",
+		"/home/mp360/www/lcms/core/Abstracts/View.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_article.scss",
+		"/home/mp360/www/lcms/modules/articles/ArticlesModel.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_variables.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/css/style.css.map",
+		"/home/mp360/www/lcms/themes/front/amazingschool/css/reset.css",
+		"/home/mp360/www/lcms/themes/front/amazingschool/css/style.css",
+		"/home/mp360/www/lcms/themes/front/amazingschool/templates/_head.html.php",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/reset.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/screen.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/_typography.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/config.rb",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/ie.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/print.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/sass/style.scss",
+		"/home/mp360/www/lcms/themes/front/amazingschool/css/screen.css",
+		"/home/mp360/www/lcms/themes/front/amazingschool/css/ie.css",
+		"/home/mp360/www/lcms/.gitignore",
+		"/home/mp360/www/lcms/themes/front/amazingschool/.gitignore",
+		"/home/mp360/www/lcms/themes/front/amazingschool/.git",
+		"/home/mp360/www/lcms/core/Images/Image.php",
+		"/home/mp360/www/lcms/modules/index/IndexController.php",
+		"/home/mp360/www/lcms/core/Images/Resizer.php",
+		"/home/mp360/www/lcms/tt.php",
+		"/home/mp360/www/lcms/core/Libs/timthumb.php",
+		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_ext_856b7a5d6179a96dd2dba3303127ce03.timthumb.txt",
+		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_cacheLastCleanTime.touch",
+		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_ext_e72d2862f41cfc988412fbd3fe034fe7.timthumb.txt",
+		"/home/mp360/www/~production/lastcms/content/tt.php",
+		"/home/mp360/www/lcms/core/defines.php",
+		"/home/mp360/www/lcms/core/Images/routing.php",
+		"/home/mp360/www/~production/lastcms/app/Lib/timthumb.php",
+		"/home/mp360/www/lcms/core/Routing/Router.php",
+		"/home/mp360/www/lcms/modules/index/routing.php",
+		"/home/mp360/www/lcms/core/Images/routung.php",
+		"/home/mp360/www/lcms/core/Images/route.php",
+		"/home/mp360/www/lcms/vendor/mos/cimage/webroot/htaccess",
+		"/home/mp360/www/lcms/vendor/mos/cimage/webroot/img.php",
+		"/home/mp360/www/lcms/vendor/mos/cimage/CRemoteImage.php",
+		"/home/mp360/www/lcms/vendor/mos/cimage/autoload.php",
+		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListView.php",
+		"/home/mp360/www/lcms/modules/index/IndexView.php",
+		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListModel.php",
+		"/home/mp360/www/~production/lastcms/app/Lib/Pagination.php"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"this->",
+			"1262055680",
+			"`",
+			"	\n",
+			"more",
+			"url",
+			"lastURLError",
+			"Use of ",
+			"Use of undefined constant",
+			"LENV",
+			"$this->param(",
+			"h",
+			"165",
+			"220",
+			"lib",
+			"$_GET",
+			"path",
+			"count",
+			"getNumberOfAll",
+			"	\n",
+			"345105",
+			"{$this->config['prefix']}",
+			"{$this->config->prefix}",
+			"mint",
+			"linux",
+			" linux",
+			"linux ",
+			"linux",
+			"Linux",
+			"'\n			],",
+			"',",
+			"\n				'",
+			"'",
+			"']",
+			"['",
+			": $t = ",
+			"self::$",
+			"getController",
+			"getControllerName",
+			"static ",
+			"self::$",
+			"regenerate_list",
+			"/**\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"'",
+			"",
+			"slug",
+			"{$this->prefix}",
+			"{self::$config['prefix']}",
+			"{$this->config['prefix']}",
+			"')\n			],",
+			"'),",
+			"\n				_('",
+			"_('",
+			"'\n			]",
+			"[\n				'",
+			"[\n				",
+			" => ",
+			"$this->",
+			"",
+			"$this->",
+			"regenerateList"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 140.0
+	},
+	"pinned_build_system": "",
+	"project": "Rudolf.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ht",
+				"html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 197.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

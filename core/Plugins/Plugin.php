@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Plugin.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Plugins
+ * @package Rudolf\Plugins
  * @version 0.1
  */
 
-namespace lcms\Plugins;
+namespace Rudolf\Plugins;
 
 class Plugin {
 

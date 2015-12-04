@@ -1,17 +1,16 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Router class
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Routing
+ * @package Rudolf\Routing
  * @version 0.1
  */
 
-namespace lcms\Routing;
-use lcms\Routing\RouteCollection;
+namespace Rudolf\Routing;
+use Rudolf\Routing\RouteCollection;
 
 class Router {
 
@@ -180,7 +179,7 @@ class Router {
 		preg_match("#^$url$#", $this->getUrl(), $results);
 
 		if ($results) {
-			$this->controller = $route->getControllerName();			
+			$this->controller = $route->getControllerName();	
 			return true;
 		}
 

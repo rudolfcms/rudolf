@@ -1,12 +1,12 @@
 <?php
 
 /**
- * This file is part of lcms.
+ * This file is part of Rudolf.
  * 
  * List of instaled modules. DO NOT EDIT, GENERATED AUTOMATICALLY
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms
+ * @package Rudolf\Modules
  * @version 0.1
  */
 

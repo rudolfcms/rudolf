@@ -1,10 +1,10 @@
 <?php
 
-use lcms\Routing;
+use Rudolf\Routing;
 
 $collection->add('imageresizer', new Routing\Route(
 	'imageresize/<width>/<height>/<url>',
-	'lcms\Images\Resizer::init',
+	'Rudolf\Images\Resizer::init',
 	array(
 		'width' => '\d+',
 		'height' => '\d+',

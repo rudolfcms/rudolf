@@ -1,16 +1,15 @@
 <?php
-
 /**
- * This file is part of lcms.
- * 
+ * This file is part of Rudolf.
+ *
  * Resize images, cache and other.
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package lcms\Images
+ * @package Rudolf\Images
  * @version 0.1
  */
 
-namespace lcms\Images;
+namespace Rudolf\Images;
 
 class Image {
 	
