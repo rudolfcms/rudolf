@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of Rudolf.
+ *
+ * Navigation.
+ *
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package Rudolf\Html
+ * @version 0.1
+ */
 
 namespace Rudolf\Html;
 

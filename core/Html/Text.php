@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of Rudolf.
+ *
+ * Text tools.
+ *
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package Rudolf\Html
+ * @version 0.1
+ */
 
 namespace Rudolf\Html;
 
@@ -24,6 +33,13 @@ class Text {
 		}
 	}
 
+	/**
+	 * Excape string.
+	 * 
+	 * @param string $content
+	 * 
+	 * @return string
+	 */
 	public static function escape($content) {
 		return htmlspecialchars($content);
 	}
