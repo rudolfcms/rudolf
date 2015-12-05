@@ -1,14 +1,14 @@
 <?php
 
 $_tables = [
-	'albums' 		=> 'lcms_albums',
-	'articles' 		=> 'lcms_articles',
-	'categories' 	=> 'lcms_categories',
-	'galleries' 	=> 'lcms_galleries',
-	'menu' 			=> 'lcms_menu',
-	'menu_types' 	=> 'lcms_menu_types',
-	'pages' 		=> 'lcms_pages',
-	'users' 		=> 'lcms_users'
+	'albums' 		=> 'rudolf_albums',
+	'articles' 		=> 'rudolf_articles',
+	'categories' 	=> 'rudolf_categories',
+	'galleries' 	=> 'rudolf_galleries',
+	'menu' 			=> 'rudolf_menu',
+	'menu_types' 	=> 'rudolf_menu_types',
+	'pages' 		=> 'rudolf_pages',
+	'users' 		=> 'rudolf_users'
 ];
 
 $_fields = [

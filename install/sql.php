@@ -18,7 +18,7 @@
 
 	$random = file_get_contents('./random.txt');
 
-	$generator = new lcms\install\DataGenerator($pdo, $_tables, $_fields, $random);
+	$generator = new Rudolf\install\DataGenerator($pdo, $_tables, $_fields, $random);
 
 	$posts = 50;
 	$number = $generator->addRandom($posts, $_tables['albums']);

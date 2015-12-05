@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `lcms_albums` (
+CREATE TABLE IF NOT EXISTS `rudolf_albums` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL DEFAULT '0' COMMENT 'category id',
   `title` varchar(128) CHARACTER SET ucs2 COLLATE ucs2_polish_ci NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `lcms_albums` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_articles` (
+CREATE TABLE IF NOT EXISTS `rudolf_articles` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL DEFAULT '0' COMMENT 'category id',
   `title` varchar(255) CHARACTER SET ucs2 COLLATE ucs2_polish_ci NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `lcms_articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_categories` (
+CREATE TABLE IF NOT EXISTS `rudolf_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) COLLATE utf8_polish_ci NOT NULL,
   `keywords` varchar(128) COLLATE utf8_polish_ci NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `lcms_categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_galleries` (
+CREATE TABLE IF NOT EXISTS `rudolf_galleries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `lcms_galleries` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_menu` (
+CREATE TABLE IF NOT EXISTS `rudolf_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menu_type` varchar(16) COLLATE utf8_polish_ci NOT NULL,
   `title` varchar(64) COLLATE utf8_polish_ci NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `lcms_menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_menu_types` (
+CREATE TABLE IF NOT EXISTS `rudolf_menu_types` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `menu_type` varchar(16) COLLATE utf8_polish_ci NOT NULL,
   `title` varchar(32) COLLATE utf8_polish_ci NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `lcms_menu_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
 
-CREATE TABLE IF NOT EXISTS `lcms_pages` (
+CREATE TABLE IF NOT EXISTS `rudolf_pages` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `title` varchar(128) CHARACTER SET ucs2 COLLATE ucs2_polish_ci NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `lcms_pages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=0;
 
-CREATE TABLE IF NOT EXISTS `lcms_users` (
+CREATE TABLE IF NOT EXISTS `rudolf_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nick` varchar(32) NOT NULL,
   `first_name` varchar(64) NOT NULL,
