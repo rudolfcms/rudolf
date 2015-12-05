@@ -49,21 +49,17 @@ class FrontController {
 	 * @return void
 	 */
 	public function run() {
-		try {
-			if(false === $this->router->run()) {
-				throw new HttpErrorException(404);
-			}
-
-			$names = $this->explodeName($this->router->getControllerName());
-
-			if(!class_exists($names[0])) {
-				throw new HttpErrorException(404);
-			}
-
-			$this->call($names, $this->router->getParams());
-		} catch(HttpErrorException $e) {
-			die($e);
+		if(false === $this->router->run()) {
+			throw new HttpErrorException('No routing rules (error 404)', 404);
 		}
+
+		$names = $this->explodeName($this->router->getControllerName());
+
+		if(!class_exists($names[0])) {
+			throw new HttpErrorException('Controller class doesn\'t exist');
+		}
+
+		$this->call($names, $this->router->getParams());
 	}
 
 	/**
