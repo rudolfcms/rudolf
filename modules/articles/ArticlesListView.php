@@ -19,7 +19,7 @@ class ArticlesListView extends View {
 
 	public $path;
 
-	private $current;
+	private $current = -1;
 
 	public function setData($data, $paginationInfo) {
 		$this->data = $data;
