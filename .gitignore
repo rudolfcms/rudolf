@@ -1,12 +1,10 @@
-.Rudolf.sublime-project
-.Rudolf.sublime-workspace
-
 /vendor/
 /log/
 /.temp/
 !/.temp/.htaccess
-!/.temp/mysql/index.php
+
 /uploads/
+
 /themes/front/
 !/themes/front/index.php
 /themes/admin/
