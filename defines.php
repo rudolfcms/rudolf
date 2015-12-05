@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of Rudolf.
  * 
@@ -24,6 +23,7 @@ if(!defined('DIR')) {
 		define('DIR', dirname($_SERVER['SCRIPT_NAME']));
 	}
 }
+
 define('ADMIN', 		DIR . '/admin');
 define('UPLOADS', 		DIR . '/content/uploads');
 define('THEMES', 		DIR . '/themes');
@@ -31,9 +31,9 @@ define('PLUGINS', 		DIR . '/content/plugins');
 define('GALLERIES', 	DIR . '/content/galleries');
 
 // define path system
-define('ROOT', 			__DIR__);
-define('CORE', 			ROOT . '/core');
-define('CLASSESS', 		ROOT . '/core/classes');
+define('ROOT', 				__DIR__);
+define('CORE', 				ROOT . '/core');
+define('CLASSESS', 			ROOT . '/core/classes');
 
 define('TEMP',				ROOT . '/.temp');
 define('UPLOADS_ROOT', 		ROOT . '/uploads');
@@ -46,3 +46,4 @@ define('LIB', 				ROOT . '/core/Libs');
 define('CONFIG_ROOT', 		ROOT . '/config');
 define('GALLERIES_ROOT',	ROOT . '/galleries');
 define('FUNCTION_ROOT', 	ROOT . '/app/functions');
+define('LOG_ROOT', 			ROOT . '/log');
