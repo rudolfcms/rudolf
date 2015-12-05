@@ -105,7 +105,7 @@ abstract class Model {
 
 		$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table $clausule");
 			
-		$result = $stmt->fetch(PDO::FETCH_OBJ);
+		$result = $stmt->fetch(\PDO::FETCH_OBJ);
 
 		$fp = fopen($file, 'w');
 		fputs($fp, $result->count);
