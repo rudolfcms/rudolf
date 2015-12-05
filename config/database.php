@@ -12,9 +12,9 @@
 return array (
 	'engine' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'lcms',
-	'user' => 'lcms',
-	'pass' => 'lcms',
+	'database' => 'rudolf',
+	'user' => 'rudolf',
+	'pass' => 'rudolf',
 	'charset' => 'utf8',
-	'prefix' => 'lcms_'
+	'prefix' => 'rudolf_'
 );
