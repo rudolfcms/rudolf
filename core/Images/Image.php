@@ -14,6 +14,6 @@ namespace Rudolf\Images;
 class Image {
 	
 	public static function resize($url, $w, $h) {
-		return LDIR . '/tt.php?w='. $w .'&amp;h='. $h .'&amp;src='. $url;
+		return DIR . '/tt.php?w='. $w .'&amp;h='. $h .'&amp;src='. $url;
 	}
 }

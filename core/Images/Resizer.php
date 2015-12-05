@@ -25,7 +25,7 @@ class Resizer {
 	public function init($width, $height, $url) {
 		$url = ltrim($url, '/');
 
-		$cacheDir = LTEMP . '/imageresizer/';
+		$cacheDir = TEMP . '/imageresizer/';
 		//$filename = $width . 'x' . $height . '_' . md5($url);
 
 		if(!file_exists($cacheDir)) {
@@ -43,6 +43,6 @@ class Resizer {
 		define('DEBUG_ON', true);
 		define ('DEBUG_LEVEL', 3);
 
-		include LLIB . '/timthumb.php';
+		include LIB . '/timthumb.php';
 	}
 }
