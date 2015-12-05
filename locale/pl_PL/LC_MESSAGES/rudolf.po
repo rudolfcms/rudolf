@@ -1,16 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Language package for Rudolf.
+# Copyright (C) 2015 Rudolf
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Mikołaj Pich <m.pich@outlook.com>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lcms\\Http\n"
+"Project-Id-Version: Rudolf\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-17 18:59+0200\n"
-"PO-Revision-Date: 2015-10-17 20:44+0100\n"
+"PO-Revision-Date: 2015-12-05 16:12+0100\n"
 "Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
-"Language-Team: lcms team <team@lcms.net>\n"
+"Language-Team: Rudolf team <team@rudolf.project>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -282,7 +282,7 @@ msgstr ""
 
 #: ../../../core/Http/ResponseMessages.php:106
 msgid "Conflict"
-msgstr ""
+msgstr "Konflikt"
 
 #: ../../../core/Http/ResponseMessages.php:107
 msgid "Too many concurrent requests for a single file."
@@ -342,13 +342,15 @@ msgstr ""
 
 #: ../../../core/Http/ResponseMessages.php:134
 msgid "Internal Server Error"
-msgstr ""
+msgstr "Wewnętrzny błąd serwera"
 
 #: ../../../core/Http/ResponseMessages.php:135
 msgid ""
 "The server encountered an unexpected condition which prevented it from "
 "fulfilling the request."
 msgstr ""
+"Serwer napotkał niespodziewane trudności, które uniemożliwiły zrealizowanie "
+"żądania."
 
 #: ../../../core/Http/ResponseMessages.php:138
 msgid "Not Implemented"
