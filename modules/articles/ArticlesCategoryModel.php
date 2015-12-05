@@ -11,8 +11,7 @@
  
 namespace Rudolf\Modules\articles;
 
-use Rudolf\Abstracts\Model,
-	\PDO;
+use Rudolf\Abstracts\Model;
 
 class ArticlesCategoryModel extends Model {
 
@@ -24,16 +23,11 @@ class ArticlesCategoryModel extends Model {
 	 * @return array
 	 */
 	public function getCategoryInfo($slug) {
-		try {
-			$stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories WHERE slug = :slug and type = :type");
-			$stmt->bindValue(':slug', $slug, \PDO::PARAM_INT);
-			$stmt->bindValue(':type', 'articles', \PDO::PARAM_STR);
-			$stmt->execute();
-			$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-		} catch (\PDOException $e) {
-			echo '<code>Mysql error: '.$e->getMessage().'<br/><br/>In: '.$e->getFile().' on '.$e->getLine().'</code>';
-			exit;
-		}
+		$stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories WHERE slug = :slug and type = :type");
+		$stmt->bindValue(':slug', $slug, \PDO::PARAM_INT);
+		$stmt->bindValue(':type', 'articles', \PDO::PARAM_STR);
+		$stmt->execute();
+		$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 		if(empty($results[0])) {
 			return false;
