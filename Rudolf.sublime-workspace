@@ -289,6 +289,9 @@
 	],
 	"file_history":
 	[
+		"/home/mklj/www/Rudolf/config/site.php",
+		"/home/mklj/www/Rudolf/core/Abstracts/Model.php",
+		"/home/mklj/www/Rudolf/.temp/mysql/index.php",
 		"/home/mklj/www/rudolf/core/Images/Image.php",
 		"/home/mklj/www/rudolf/core/Images/Resizer.php",
 		"/home/mklj/www/rudolf/core/Http/ResponseMessages.php",
@@ -413,10 +416,7 @@
 		"/home/mp360/www/lcms/vendor/mos/cimage/webroot/img.php",
 		"/home/mp360/www/lcms/vendor/mos/cimage/CRemoteImage.php",
 		"/home/mp360/www/lcms/vendor/mos/cimage/autoload.php",
-		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListView.php",
-		"/home/mp360/www/lcms/modules/index/IndexView.php",
-		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListModel.php",
-		"/home/mp360/www/~production/lastcms/app/Lib/Pagination.php"
+		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListView.php"
 	],
 	"find":
 	{
