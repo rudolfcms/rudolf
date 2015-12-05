@@ -10,7 +10,6 @@
  */
 
 namespace Rudolf\Abstracts;
-use \PDO;
 
 abstract class Model {
 
@@ -42,11 +41,8 @@ abstract class Model {
 	public function __construct() {
 		if(!is_object(self::$db)) {
 			self::$config = include CONFIG_ROOT . '/database.php';
-			try {
-				self::$db = $this->connect();
-			} catch (\PDOException $e) {
-				die($e);
-			}
+			self::$db = $this->connect();
+
 		}
 
 		$this->pdo = self::$db;
@@ -65,7 +61,7 @@ abstract class Model {
         	.';charset='. self::$config['charset'] 
         	.';host='. self::$config['host'];
 
-		$conn = new PDO($dns, self::$config['user'], self::$config['pass']);
+		$conn = new \PDO($dns, self::$config['user'], self::$config['pass']);
 		$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 		return $conn;
@@ -107,12 +103,8 @@ abstract class Model {
 			$clausule = 'WHERE ' . $where;
 		}
 
-		try {
-			$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table $clausule");
-		} catch (\PDOException $e) {
-			echo '<code>Mysql error: '.$e->getMessage().'<br/><br/>In: '.$e->getFile().' on '.$e->getLine().'</code>';
-			exit;
-		}	
+		$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table $clausule");
+			
 		$result = $stmt->fetch(PDO::FETCH_OBJ);
 
 		$fp = fopen($file, 'w');

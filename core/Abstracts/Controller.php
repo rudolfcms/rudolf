@@ -10,7 +10,6 @@
  */
 
 namespace Rudolf\Abstracts;
-
 use Rudolf\Http\Response;
 
 abstract class Controller {

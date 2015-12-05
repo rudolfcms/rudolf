@@ -10,6 +10,7 @@
  */
 
 namespace Rudolf\Abstracts;
+use Rudolf\Html\ThemeNotFoundException;
 
 abstract class View {
 
@@ -59,16 +60,15 @@ abstract class View {
 	 * @return void
 	 */
 	private function renderHtml() {
-		$file = THEMES_ROOT .'/'. $this->side .'/'. FRONT_THEME .'/templates/'. $this->template .'.html.php';
+		$theme = THEMES_ROOT .'/'. $this->side .'/'. FRONT_THEME;
+		$file = $theme .'/templates/'. $this->template .'.html.php';
 		
-		try {
-			if(is_file($file)) {
-				include $file;
-			} else {
-				throw new \ErrorException("Template file $this->template does not exist!");
-			}
-		} catch (\ErrorException $e) {
-			die($e);
+		if(!file_exists($theme)) {
+			throw new ThemeNotFoundException("Theme ".FRONT_THEME." does not exist");
+		} elseif(is_file($file)) {
+			include $file;
+		} else {
+			throw new TemplateNotFoundException("Template file {$this->template} does not exist in ".FRONT_THEME);
 		}
 	}
 
