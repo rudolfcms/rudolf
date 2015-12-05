@@ -186,7 +186,7 @@ trait ArticleTraits {
 	 * 
 	 * @return string
 	 */
-	protected function thumbnail($w, $h, $src = false, $alt = false) {
+	protected function thumbnail($w = false, $h = false, $src = false, $alt = false) {
 		$w = ($w) ? $w : $this->theme->article['thumb']['width'];
 		$h = ($h) ? $h : $this->theme->article['thumb']['height'];
 		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
@@ -199,7 +199,7 @@ trait ArticleTraits {
 			return false;
 		}
 
-		$address = \lcms\Images\Image::resize($address, $w, $h);
+		$address = \Rudolf\Images\Image::resize($address, $w, $h);
 
 		if(true === $src) {
 			return $address;
