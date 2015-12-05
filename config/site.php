@@ -11,6 +11,6 @@
 
 return array (
 	'front_theme' => 'beautifullibrary',
-	'admin_theme' => 'starter',
+	'admin_theme' => 'reindeer',
 	'debug' => true
 );
