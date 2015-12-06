@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"func_",
+				"func_get_arg"
+			],
+			[
+				"func",
+				"func_get_args"
+			],
+			[
+				"lo",
+				"logger"
+			],
+			[
+				"log",
+				"logFile"
+			],
+			[
+				"Res",
+				"ResponseMessages"
+			],
+			[
 				"nav",
 				"navNumber"
 			],
@@ -68,14 +88,6 @@
 				"collection"
 			],
 			[
-				"func_",
-				"func_get_args"
-			],
-			[
-				"func",
-				"func_get_arg"
-			],
-			[
 				"route",
 				"routeCollection"
 			],
@@ -134,10 +146,6 @@
 			[
 				"status",
 				"statusTexts"
-			],
-			[
-				"log",
-				"logPath"
 			],
 			[
 				"env",
@@ -231,6 +239,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "themes/front/amazingschool/templates/articles-list.html.php",
+			"settings":
+			{
+				"buffer_size": 1202,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -239,13 +255,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 390.0,
 		"last_filter": "ssh",
 		"selected_items":
 		[
 			[
 				"ssh",
 				"Set Syntax: HTML"
+			],
+			[
+				"ssphp",
+				"Set Syntax: PHP"
 			],
 			[
 				"sscss",
@@ -264,7 +284,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 548.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -285,142 +305,70 @@
 	},
 	"expanded_folders":
 	[
-		"/home/mklj/www/Rudolf"
+		"/home/mklj/www/Rudolf",
+		"/home/mklj/www/Rudolf/modules",
+		"/home/mklj/www/Rudolf/modules/articles",
+		"/home/mklj/www/Rudolf/themes",
+		"/home/mklj/www/Rudolf/themes/front",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/templates"
 	],
 	"file_history":
 	[
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/amazingschool.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticlesListView.php",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/scss/_article.scss",
+		"/home/mklj/www/Rudolf/modules/index/IndexView.php",
 		"/home/mklj/www/Rudolf/config/site.php",
+		"/home/mklj/www/Rudolf/init.php",
 		"/home/mklj/www/Rudolf/core/Abstracts/Model.php",
-		"/home/mklj/www/Rudolf/.temp/mysql/index.php",
-		"/home/mklj/www/rudolf/core/Images/Image.php",
-		"/home/mklj/www/rudolf/core/Images/Resizer.php",
-		"/home/mklj/www/rudolf/core/Http/ResponseMessages.php",
-		"/home/mklj/www/rudolf/core/Http/Response.php",
-		"/home/mklj/www/rudolf/core/Http/HttpErrorException.php",
-		"/home/mklj/www/rudolf/core/Html/Text.php",
-		"/home/mklj/www/rudolf/core/Html/Navigation.php",
-		"/home/mklj/www/rudolf/core/Hooks/Hooks.php",
-		"/home/mklj/www/rudolf/core/Abstracts/View.php",
-		"/home/mklj/www/rudolf/core/defines.php",
-		"/home/mklj/www/rudolf/core/Abstracts/Model.php",
-		"/home/mklj/www/rudolf/core/Abstracts/Controller.php",
-		"/home/mklj/www/rudolf/config/site.php",
-		"/home/mklj/www/rudolf/config/keys.php",
-		"/home/mklj/www/rudolf/config/database.php",
-		"/home/mklj/www/rudolf/core/Routing/RouteCollection.php",
-		"/home/mklj/www/rudolf/core/Routing/FrontController.php",
-		"/home/mklj/www/rudolf/core/init.php",
-		"/home/mklj/www/rudolf/core/Utils/PHPVersionCheck.php",
-		"/home/mklj/www/rudolf/core/Utils/ErrorHandler.php",
-		"/home/mklj/www/rudolf/install/DataGenerator.php",
-		"/home/mklj/www/rudolf/log/errors.log",
-		"/home/mklj/www/rudolf/modules/index.php",
-		"/home/mklj/www/rudolf/.gitignore",
-		"/home/mklj/www/rudolf/composer.json",
-		"/home/mklj/www/rudolf/README.md",
-		"/home/mklj/www/rudolf/.htaccess",
-		"/home/mklj/www/rudolf/index.php",
-		"/home/mklj/www/rudolf/.lcms.sublime-project",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/_head.html.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/articles-list.html.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/index.html.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/article-once.html.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/scss/_container.scss",
-		"/home/mklj/www/lcms/themes/front/amazingschool/scss/_article.scss",
-		"/home/mklj/www/lcms/themes/front/amazingschool/templates/_head.html.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/index.php",
-		"/home/mklj/www/lcms/config/site.php",
-		"/home/mklj/www/lcms/themes/front/beautifullibrary/templates/_foot.html.php",
-		"/home/mklj/www/lcms/index.php",
-		"/home/mklj/www/lcms/core/init.php",
-		"/home/mklj/www/lcms/modules/articles/ArticlesListView.php",
-		"/home/mklj/www/lcms/core/Html/Navigation.php",
-		"/home/mklj/www/lcms/themes/front/amazingschool/templates/articles-list.html.php",
-		"/home/mklj/Pobrane/PacketTracer62Student/install",
-		"/home/mklj/www/biblioteka/index.html",
-		"/home/mklj/untitled.html",
-		"/home/mklj/www/lcms/themes/front/amazingschool/scss/_pagination.scss",
-		"/home/mklj/www/lcms/core/Libs/Pagination.php",
-		"/home/mklj/www/lcms/modules/articles/ArticlesController.php",
-		"/home/mklj/www/lcms/install/sql.php",
-		"/home/mklj/www/lcms/install/structure.php",
-		"/home/mklj/www/lcms/install/DataGenerator.php",
-		"/home/mklj/www/lcms/install/index.html",
-		"/home/mklj/www/lcms/install/index.php",
-		"/home/mklj/www/lcms/core/Utils/PHPVersionCheck.php",
-		"/home/mklj/www/lcms/sql.php",
-		"/home/mklj/www/lcms/sql.sql",
-		"/home/mklj/www/lcms/install/random.txt",
-		"/home/mklj/Dropbox/Dokumenty/sh/apache.sh",
-		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_pagination.scss",
-		"/home/mp360/www/lcms/core/Libs/Pagination.php",
-		"/home/mp360/www/lcms/core/init.php",
-		"/home/mp360/www/lcms/modules/articles/ArticlesController.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/templates/category.html.php",
-		"/home/mp360/www/lcms/modules/articles/ArticlesListView.php",
-		"/home/mp360/www/lcms/modules/articles/ArticlesCategoryView.php",
-		"/home/mp360/www/lcms/modules/articles/ArticlesCategoryModel.php",
-		"/home/mp360/www/lcms/modules/articles/ArticlesListModel.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_scaffolding.scss",
-		"/home/mp360/www/lcms/modules/articles/ArticleOneView.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_typography.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/templates/articles-list.html.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/amazingschool.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/templates/article-once.html.php",
-		"/home/mp360/www/~production/lastcms/content/themes/amazingSchool/templates/article.html.php",
-		"/home/mp360/www/lcms/core/Plugins/PluginsManager.php",
-		"/home/mp360/www/untitled.php",
-		"/home/mp360/www/lcms/locale/pl_PL/LC_MESSAGES/lcms.po",
-		"/home/mp360/www/lcms/locale/en_US/LC_MESSAGES/lcms.po",
-		"/home/mp360/www/lcms/modules/articles/routing.php",
-		"/home/mp360/www/lcms/core/Abstracts/Model.php",
-		"/home/mp360/www/lcms/modules/articles/ArticleOneModel.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/templates/_foot.html.php",
-		"/home/mp360/www/lcms/core/Abstracts/View.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_article.scss",
-		"/home/mp360/www/lcms/modules/articles/ArticlesModel.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/scss/_variables.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/css/style.css.map",
-		"/home/mp360/www/lcms/themes/front/amazingschool/css/reset.css",
-		"/home/mp360/www/lcms/themes/front/amazingschool/css/style.css",
-		"/home/mp360/www/lcms/themes/front/amazingschool/templates/_head.html.php",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/reset.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/screen.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/_typography.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/config.rb",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/ie.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/print.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/sass/style.scss",
-		"/home/mp360/www/lcms/themes/front/amazingschool/css/screen.css",
-		"/home/mp360/www/lcms/themes/front/amazingschool/css/ie.css",
-		"/home/mp360/www/lcms/.gitignore",
-		"/home/mp360/www/lcms/themes/front/amazingschool/.gitignore",
-		"/home/mp360/www/lcms/themes/front/amazingschool/.git",
-		"/home/mp360/www/lcms/core/Images/Image.php",
-		"/home/mp360/www/lcms/modules/index/IndexController.php",
-		"/home/mp360/www/lcms/core/Images/Resizer.php",
-		"/home/mp360/www/lcms/tt.php",
-		"/home/mp360/www/lcms/core/Libs/timthumb.php",
-		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_ext_856b7a5d6179a96dd2dba3303127ce03.timthumb.txt",
-		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_cacheLastCleanTime.touch",
-		"/home/mp360/www/lcms/.temp/imageresizer/timthumb_ext_e72d2862f41cfc988412fbd3fe034fe7.timthumb.txt",
-		"/home/mp360/www/~production/lastcms/content/tt.php",
-		"/home/mp360/www/lcms/core/defines.php",
-		"/home/mp360/www/lcms/core/Images/routing.php",
-		"/home/mp360/www/~production/lastcms/app/Lib/timthumb.php",
-		"/home/mp360/www/lcms/core/Routing/Router.php",
-		"/home/mp360/www/lcms/modules/index/routing.php",
-		"/home/mp360/www/lcms/core/Images/routung.php",
-		"/home/mp360/www/lcms/core/Images/route.php",
-		"/home/mp360/www/lcms/vendor/mos/cimage/webroot/htaccess",
-		"/home/mp360/www/lcms/vendor/mos/cimage/webroot/img.php",
-		"/home/mp360/www/lcms/vendor/mos/cimage/CRemoteImage.php",
-		"/home/mp360/www/lcms/vendor/mos/cimage/autoload.php",
-		"/home/mp360/www/~production/lastcms/app/Modules/Articles/ArticlesListView.php"
+		"/home/mklj/www/Rudolf/core/Logger/ErrorHandler.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticlesListModel.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticlesController.php",
+		"/home/mklj/www/Rudolf/modules/index/IndexController.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticleOneModel.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticlesCategoryModel.php",
+		"/home/mklj/www/Rudolf/config/database.php",
+		"/home/mklj/www/Rudolf/core/Http/ResponseMessages.php",
+		"/home/mklj/www/Rudolf/core/Routing/FrontController.php",
+		"/home/mklj/www/Rudolf/core/Logger/Exception.php",
+		"/home/mklj/www/Rudolf/core/Http/HttpErrorException.php",
+		"/home/mklj/www/Rudolf/core/Logger/Logger.php",
+		"/home/mklj/www/Rudolf/core/Abstracts/View.php",
+		"/home/mklj/www/Rudolf/core/Html/TemplateNotFoundException.php",
+		"/home/mklj/www/Rudolf/core/Html/ThemeNotFoundException.php",
+		"/home/mklj/www/Rudolf/core/Logger/DisplayError.php",
+		"/home/mklj/www/Rudolf/core/Utils/ErrorHandler.php",
+		"/home/mklj/www/Rudolf/core/Database/DatabaseErrorException.php",
+		"/home/mklj/www/Rudolf/core/Exceptions/Exception.php",
+		"/home/mklj/www/Rudolf/core/Logger/ILogger.php",
+		"/home/mklj/www/Rudolf/core/Hooks/Hooks.php",
+		"/home/mklj/www/Rudolf/core/Html/Navigation.php",
+		"/home/mklj/www/Rudolf/core/Html/Text.php",
+		"/home/mklj/www/Rudolf/core/Abstracts/Controller.php",
+		"/home/mklj/www/Rudolf/locale/en_US/LC_MESSAGES/rudolf.po",
+		"/home/mklj/www/Rudolf/locale/pl_PL/LC_MESSAGES/rudolf.po",
+		"/home/mklj/www/Rudolf/core/Images/Image.php",
+		"/home/mklj/www/Rudolf/modules/articles/ArticleTraits.php",
+		"/home/mklj/www/Rudolf/core/Images/Resizer.php",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/templates/_foot.html.php",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/templates/_head.html.php",
+		"/home/mklj/www/Rudolf/defines.php",
+		"/home/mklj/www/Rudolf/themes/front/reindeer/bower.json",
+		"/home/mklj/www/Rudolf/themes/front/amazingschool/README.md",
+		"/home/mklj/www/Rudolf/themes/admin/reindeer/templates/_head.html.php",
+		"/home/mklj/www/Rudolf/themes/admin/reindeer/bower.json",
+		"/home/mklj/www/Rudolf/install/sql.sql",
+		"/home/mklj/www/Rudolf/install/sql.php",
+		"/home/mklj/www/Rudolf/install/index.html",
+		"/home/mklj/www/Rudolf/install/DataGenerator.php",
+		"/home/mklj/www/Rudolf/install/start.html",
+		"/home/mklj/www/Rudolf/install/structure.php",
+		"/home/mklj/composer.phar"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -434,6 +382,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"],",
+			" =>",
+			"cod",
+			"Service Unavailable",
+			"lcms",
 			"this->",
 			"1262055680",
 			"`",
@@ -484,6 +437,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"]; break;",
+			": return",
+			"rudolf",
+			"Rudolf",
+			"rudolf",
+			"Rudolf",
+			"rudolf",
 			"",
 			"'",
 			"",
@@ -513,8 +473,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "themes/front/amazingschool/templates/articles-list.html.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1202,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -561,7 +551,7 @@
 	"project": "Rudolf.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -603,7 +593,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 197.0,
+	"side_bar_width": 220.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
