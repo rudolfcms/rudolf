@@ -57,11 +57,13 @@ trait ArticleTraits {
 	 * 
 	 * @return string
 	 */
-	protected function date($format = false, $style = 'normal') {
+	protected function date($format = false, $style = 'normal', $inflected = true) {
 		switch ($style) {
 			case 'locale': // http://php.net/manual/en/function.strftime.php
-					$locale = $this->theme->article['date']['default']['locale'];
-				$format = ($format) ? $format : (isset($locale)) ? $locale : '%V-%G-%Y';
+					if(is_object($this->theme)) {
+						$locale = $this->theme->article['date']['default']['locale'];
+					} else {$locale = false;}
+				$format = (!$format) ? ((isset($locale)) ? $locale : '%V-%G-%Y') : $format;
 				$date = strftime($format, strtotime($this->article['date']));
 				break;
 			
@@ -80,23 +82,25 @@ trait ArticleTraits {
 		
 		$date = Hooks::apply_filters('date_format_filter', $date);
 
-		$month = [
-			'styczeń' => 'stycznia', // 01
-			'luty' => 'lutego', // 02
-			'marzec' => 'marca', // 03
-			'kwiecień' => 'kwietnia', // 04
-			'maj' => 'maja', // 05
-			'czerwiec' => 'czerwca', // 06
-			'lipiec' => 'lipca', // 07
-			'sierpień' => 'sierpnia', // 08
-			'wrzesień' => 'września', // 09
-			'październik' => 'października', // 10
-			'listopad' => 'listopada', // 11
-			'grudzień' => 'grudnia' // 12
-		];
+		if(true === $inflected) {
+			$month = [
+				'styczeń' => 'stycznia', // 01
+				'luty' => 'lutego', // 02
+				'marzec' => 'marca', // 03
+				'kwiecień' => 'kwietnia', // 04
+				'maj' => 'maja', // 05
+				'czerwiec' => 'czerwca', // 06
+				'lipiec' => 'lipca', // 07
+				'sierpień' => 'sierpnia', // 08
+				'wrzesień' => 'września', // 09
+				'październik' => 'października', // 10
+				'listopad' => 'listopada', // 11
+				'grudzień' => 'grudnia' // 12
+			];
 
-		foreach ($month as $key => $value) {
-			$date = str_replace($key, $value, $date);
+			foreach ($month as $key => $value) {
+				$date = str_replace($key, $value, $date);
+			}
 		}
 
 		return $date;

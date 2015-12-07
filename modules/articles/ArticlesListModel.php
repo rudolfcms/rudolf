@@ -29,7 +29,7 @@ class ArticlesListModel extends Model {
 	 *
 	 * @return array
 	 */
-	public function getList($page = 1, $where = ['published'=>1], $onPage = 15, $orderBy = ['id', 'desc']) {
+	public function getList($page = 1, $where = ['published'=>1], $onPage = 10, $orderBy = ['id', 'desc']) {
 		$this->total = $this->countItems('articles', $where);
 
 		$allPages = ceil($this->total/$onPage); // round up quotient all elements and elements on page
