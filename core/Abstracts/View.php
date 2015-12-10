@@ -10,7 +10,8 @@
  */
 
 namespace Rudolf\Abstracts;
-use Rudolf\Html\ThemeNotFoundException;
+use Rudolf\Html\ThemeNotFoundException,
+	Rudolf\Html\TemplateNotFoundException;
 
 abstract class View {
 
