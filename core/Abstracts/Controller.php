@@ -36,7 +36,7 @@ abstract class Controller {
 		if(1 == $page) {
 			$response = new Response('', $code);
 			$response->setHeader(['Location', $location]);
-			$response->send()
+			$response->send();
 			exit;
 		} elseif(0 === $page) {
 			return 1;
