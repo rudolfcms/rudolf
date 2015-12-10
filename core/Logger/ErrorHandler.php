@@ -60,7 +60,8 @@ class ErrorHandler {
 	public function shutdown() {
 		$e = error_get_last();
 
-		if (E_ERROR === $e['type'] or E_COMPILE_ERROR === $e['type']) {
+		//http://php.net/manual/en/errorfunc.constants.php
+		if (E_ERROR === $e['type'] or E_PARSE === $e['type'] or E_COMPILE_ERROR === $e['type']) {
 			$log = new Logger('compile', $this->errorType($e['type']), $e['message'], $e['file'], $e['line']);
 			$log->save();
 			
