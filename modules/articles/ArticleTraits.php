@@ -62,15 +62,15 @@ trait ArticleTraits {
 			case 'locale': // http://php.net/manual/en/function.strftime.php
 					if(is_object($this->theme)) {
 						$locale = $this->theme->article['date']['default']['locale'];
-					} else {$locale = false;}
-				$format = (!$format) ? ((isset($locale)) ? $locale : '%V-%G-%Y') : $format;
+					} else {$locale = null;}
+				$format = (!$format) ? ((isset($locale)) ? $locale : '%D') : $format;
 				$date = strftime($format, strtotime($this->article['date']));
 				break;
 			
 			default: // http://php.net/manual/en/datetime.formats.date.php
 					if(is_object($this->theme)) {
 						$normal = $this->theme->article['date']['default']['normal'];
-					} else {$normal = false;}
+					} else {$normal = null;}
 				$format = (!$format) ? ((isset($normal)) ? $normal : 'Y-m-d H:i:s') : $format;
 				$date = date_format(date_create($this->article['date']), $format);
 				break;
@@ -191,16 +191,18 @@ trait ArticleTraits {
 	 * @return string
 	 */
 	protected function thumbnail($w = false, $h = false, $src = false, $alt = false) {
-		$w = ($w) ? $w : $this->theme->article['thumb']['width'];
-		$h = ($h) ? $h : $this->theme->article['thumb']['height'];
+		$w = ($w) ? $w : ((is_object($this->theme) ? $this->theme->article['thumb']['width'] : 100));
+		$h = ($h) ? $h : ((is_object($this->theme) ? $this->theme->article['thumb']['height'] : 100));
 		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
 
 		$address = $this->article['thumb'];
 
-		if(!$this->hasThumbnail() and $image = $this->theme->article['thumb']['default']) {
-			$address = $this->themePath .'/'. $image;
-		} elseif(!$this->hasThumbnail()) {
-			return false;
+		if(is_object($this->theme)) {
+			if(!$this->hasThumbnail() and $image = $this->theme->article['thumb']['default']) {
+				$address = $this->themePath .'/'. $image;
+			} elseif(!$this->hasThumbnail()) {
+				return false;
+			}
 		}
 
 		$address = \Rudolf\Images\Image::resize($address, $w, $h);
