@@ -82,7 +82,7 @@ abstract class Model {
 		$file = TEMP . '/' . self::$config['engine'] . '/' . $cachedFileName;
 
 		if(!file_exists(TEMP .'/mysql')) {
-			mkdir(TEMP .'/mysql', 644);
+			mkdir(TEMP .'/mysql', 755);
 		}
 
 		if(is_file($file)) {
