@@ -89,14 +89,14 @@ class Pagination {
 	 * @return void
 	 */
 	public function __construct($total, $pageNumber = 1, $onPage = 10, $navNum = 7) {
-		$this->total = (int)$total;
-		$this->pageNumber = (int)$pageNumber;
-		$this->onPage = (int)$onPage;
-		$this->navNum = (int)$navNum;
+		print_r($onPage);
+		$this->total = (int) $total;
+		$this->pageNumber = (int) $pageNumber;
+		$this->onPage = (int) $onPage;
+		$this->navNum = (int) $navNum;
 		
-		if(($total) < 0 || ($pageNumber) < 0 || ($onPage) < 0 || ($navNum) < 0)
-		{
-			die('bad pagination param');
+		if(($total) < 0 || ($pageNumber) < 0 || ($onPage) < 0 || ($navNum) < 0) {
+			throw new \InvalidArgumentException("Bad pagination params");
 		}
 
 		$this->calculationVariables();
