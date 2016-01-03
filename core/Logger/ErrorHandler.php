@@ -49,6 +49,8 @@ class ErrorHandler {
 				$code = 503;
 				break;
 		}
+		
+		ob_clean();
 
 		// log exception
 		$logger = new Logger($logFile, get_class($e), $e->getMessage(), $e->getFile(), $e->getLine());
