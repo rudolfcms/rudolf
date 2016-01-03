@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of pages Rudolf module.
+ * 
+ * Pages route
+ * 
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package Rudolf\Modules\pages
+ * @version 0.1
+ */
 
 use Rudolf\Routing;
 
