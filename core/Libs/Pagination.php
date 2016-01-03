@@ -89,7 +89,6 @@ class Pagination {
 	 * @return void
 	 */
 	public function __construct($total, $pageNumber = 1, $onPage = 10, $navNum = 7) {
-		print_r($onPage);
 		$this->total = (int) $total;
 		$this->pageNumber = (int) $pageNumber;
 		$this->onPage = (int) $onPage;
