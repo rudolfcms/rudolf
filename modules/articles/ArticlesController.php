@@ -30,6 +30,10 @@ class ArticlesController extends Controller {
 		
 		$results = $model->getList($page);
 
+		if(false === $results and $page > 1) {
+			throw new HttpErrorException('No articles page found (error 404)', 404);
+		}
+
 		$view->setData($results, ['total' => $model->total, 'page' => $page]);
 		
 		$view->render();
