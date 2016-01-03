@@ -42,9 +42,12 @@ class ErrorHandler {
 		$code = ($e->getCode()) ? $e->getCode() : 503;
 		$logFile = (404 === $code) ? 'error404' : 'exceptions';
 
-		// if it work, it not stupid
-		if(!400 == $code || !404 == $code || !500 == $code || !503 == $code) {
-			$code = 503;
+		switch ($code) {
+			case 400: case 404: case 500: case 503:
+				break;
+			default:
+				$code = 503;
+				break;
 		}
 
 		// log exception
