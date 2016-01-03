@@ -75,26 +75,25 @@ class ArticlesListView extends View {
 	 * @param array $classes
 	 * 		ul
 	 * 		current
+	 * @param int $navNumber
 	 * 
 	 * @return string
 	 */
 	public function nav($classes, $navNumber = false) {
-		$nav = $this->paginationInfo;
+		$navInfo = $this->paginationInfo;
 
 		if(is_object($this->theme)) {
 			$onPage = $this->theme->article['pagination']['onPage'];
+			$navNumberTheme = $this->theme->article['pagination']['navNumber'];
 		} else {
 			$onPage = 10;
 		}
 		
-		$navNumber = ($navNumber) ? $navNumber : $navNumber = $this->theme->article['pagination']['navNumber'];
+		$navNumber = ($navNumber) ? $navNumber : $navNumberTheme;
 		
-		$pagination = new Pagination($nav['total'], $nav['page'], $onPage, $navNumber);
+		$nav = new Navigation();
+		$pagination = new Pagination($navInfo['total'], $navInfo['page'], $onPage, $navNumber);
 
-		$navigation = new Navigation();
-		return $navigation->createPagingNavigation($pagination->nav(), $this->path, $classes, $nesting = 2);
-
-		$list = ($classes['list']) ? $classes['list'] : 'cd-pagination';
-		$current = ($classes['current']) ? $classes['current'] : 'current';
+		return $nav->createPagingNavigation($pagination->nav(), $this->path, $classes, $nesting = 2);
 	}
 }
