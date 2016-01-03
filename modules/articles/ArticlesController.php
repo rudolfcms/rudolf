@@ -50,7 +50,7 @@ class ArticlesController extends Controller {
 		
 		$results = $model->getOneByDate($year, $month, $slug);
 		if(false === $results) {
-			throw new HttpErrorException(404);
+			throw new HttpErrorException('No article found (error 404)', 404);
 		}
 		$view->setData($results);
 
