@@ -36,7 +36,8 @@ class ArticlesListModel extends Model {
 
 		// if page number is greater than number of all elements
 		if($page > $allPages) {
-			$page = 1;
+			//$page = 1;
+			return false;
 		}
 
 		$limit = ($page - 1) * $onPage;
