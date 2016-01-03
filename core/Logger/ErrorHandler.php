@@ -42,7 +42,10 @@ class ErrorHandler {
 		$code = ($e->getCode()) ? $e->getCode() : 503;
 		$logFile = (404 === $code) ? 'error404' : 'exceptions';
 
-		if(400 !== $code or 404 !== $code or 500 !== $code or 503 !== $code) $code = 503;
+		// if it work, it not stupid
+		if(!400 == $code || !404 == $code || !500 == $code || !503 == $code) {
+			$code = 503;
+		}
 
 		// log exception
 		$logger = new Logger($logFile, get_class($e), $e->getMessage(), $e->getFile(), $e->getLine());
