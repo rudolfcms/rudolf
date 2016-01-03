@@ -62,7 +62,7 @@ class Router {
 		$basePath = $this->getBasePath();
 		$pos = strpos($url, $basePath);
 
-		if ($pos !== false) {
+		if (false !== $pos) {
 			$url = substr_replace($url, '', $pos, strlen($basePath));
 		}
 		$this->url = $url;
@@ -200,7 +200,7 @@ class Router {
 			preg_match("#$param#", $parsed_url, $results);
 			if (isset($results[0])) {
 				$this->params[$key] = $results[0];
-				$parsed_url = preg_replace('/'.$results[0].'/', '', $parsed_url, 1);
+				$parsed_url = preg_replace('#'.$results[0].'#', '', $parsed_url, 1);
 			}
 		}
 		
