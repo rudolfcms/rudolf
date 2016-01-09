@@ -110,8 +110,7 @@ class Pagination {
 		$this->allPages = ceil($this->total/$this->onPage); // round up quotient all elements and elements on page
 
 		// if page number is greater than number of all elements
-		if($this->pageNumber > $this->allPages) 
-		{
+		if($this->pageNumber > $this->allPages) {
 			$this->pageNumber = 1;
 		}
 
@@ -119,8 +118,7 @@ class Pagination {
 		$this->limit = ($this->pageNumber - 1) * $this->onPage;
 
 		// protection in the event that the number of pages proved to be greater than the number of displayed page numbers
-		if($this->navNum > $this->allPages)
-		{
+		if($this->navNum > $this->allPages) {
 			$this->navNum = $this->allPages;
 		}
 	
@@ -128,15 +126,13 @@ class Pagination {
 		$this->forstart = $this->pageNumber - floor($this->navNum / 2);
 		$this->forend = $this->forstart + $this->navNum;
 	
-		if($this->forstart <= 0)
-		{
+		if($this->forstart <= 0) {
 			$this->forstart = 1;
 		}
 	
 		$overend = $this->allPages - $this->forend;
 		
-		if($overend < 0)
-		{ 
+		if($overend < 0) { 
 			$this->forstart = $this->forstart + $overend + 1;
 		}
 		
@@ -146,6 +142,29 @@ class Pagination {
 		// Variables hold the numbers of the previous and next page
 		$this->prev = $this->pageNumber - 1;
 		$this->next = $this->pageNumber + 1;
+	}
+
+	public function getTotal() {
+		return $this->total;
+	}
+
+	public function getOnPage() {
+		return $this->onPage;
+	}
+
+	public function getPageNumber() {
+		return $this->pageNumber;
+	}
+	public function getLimit() {
+		return $this->limit;
+	}
+
+	public function getAllPages() {
+		return $this->allPages;
+	}
+
+	public function getNavNum() {
+		return $this->navNum;
 	}
 
 	/**
