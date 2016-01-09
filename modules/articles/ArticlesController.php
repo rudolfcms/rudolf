@@ -27,10 +27,15 @@ class ArticlesController extends Controller {
 
 		$model = new ArticlesListModel();
 		$view = new ArticlesListView();
-		
-		$pagination = new Pagination($model->getTotalNumber(), $page);
 
-		$results = $model->getList($pagination);
+		$module = new Module('articles');
+		$config = $module->getConfig();
+		$onPage = $config['on_page'];
+		$navNumber = $config['nav_number'];
+		
+		$pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+
+		$results = $model->getList($pagination, [$config['sort'], $config['order']]);
 
 		if(false === $results and $page > 1) {
 			throw new HttpErrorException('No articles page found (error 404)', 404);
@@ -83,9 +88,14 @@ class ArticlesController extends Controller {
 
 		$categoryInfo = $category->getCategoryInfo($slug);
 
-		$pagination = new Pagination($list->getTotalNumber(['published'=>1, 'category_id'=>$categoryInfo['id']]), $page);
+		$module = new Module('articles');
+		$config = $module->getConfig();
+		$onPage = $config['on_page'];
+		$navNumber = $config['nav_number'];
 
-		$results = $list->getList($pagination);
+		$pagination = new Pagination($list->getTotalNumber(['published'=>1, 'category_id'=>$categoryInfo['id']]), $page, $onPage, $navNumber);
+
+		$results = $list->getList($pagination, [$config['sort'], $config['order']]);
 
 		$view->setData($results, $categoryInfo, $pagination);
 
