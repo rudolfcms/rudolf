@@ -58,6 +58,9 @@ class ArticlesController extends Controller {
 		if(false === $results) {
 			throw new HttpErrorException('No article found (error 404)', 404);
 		}
+		
+		$model->addView();
+
 		$view->setData($results);
 
 		$view->render();

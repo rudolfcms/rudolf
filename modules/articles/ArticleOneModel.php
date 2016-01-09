@@ -47,12 +47,24 @@ class ArticleOneModel extends Model {
 		$stmt->bindValue(':month', $month, \PDO::PARAM_INT);
 		$stmt->bindValue(':slug', $slug, \PDO::PARAM_STR);
 		$stmt->execute();
-		$results = $stmt->fetch(\PDO::FETCH_ASSOC);
+		$this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
 		
-		if(empty($results)) {
+		if(empty($this->results)) {
 			return false;
 		}
 
-		return $results;
+		return $this->results;
+	}
+
+	/**
+	 * Increment article views 
+	 */
+	public function addView() {
+		$info = $this->results;
+
+		$stmt = $this->pdo->prepare("UPDATE {$this->prefix}articles SET views = :v WHERE id = :id");
+		$stmt->bindValue(':v', ++$info['views'], \PDO::PARAM_INT);
+		$stmt->bindValue(':id', $info['id'], \PDO::PARAM_INT);
+		$stmt->execute();
 	}
 }
