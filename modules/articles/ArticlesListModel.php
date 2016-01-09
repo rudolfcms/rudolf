@@ -10,8 +10,8 @@
  */
  
 namespace Rudolf\Modules\articles;
-
-use Rudolf\Abstracts\Model;
+use Rudolf\Abstracts\Model,
+	Rudolf\Libs\Pagination;
 
 class ArticlesListModel extends Model {
 
@@ -29,33 +29,17 @@ class ArticlesListModel extends Model {
 	 *
 	 * @return array
 	 */
-	public function getList($page = 1, $where = ['published'=>1], $onPage = 10, $orderBy = ['id', 'desc']) {
-		$this->total = $this->countItems('articles', $where);
-
-		$allPages = ceil($this->total/$onPage); // round up quotient all elements and elements on page
-
+	public function getList(Pagination $pagination, $orderBy = ['id', 'desc']) {
 		// if page number is greater than number of all elements
-		if($page > $allPages) {
+		if($pagination->getPageNumber() > $pagination->getAllPages()) {
 			//$page = 1;
 			return false;
 		}
 
-		$limit = ($page - 1) * $onPage;
+		$limit = $pagination->getLimit();
+		$onPage = $pagination->getOnPage();
 
-		$clausule = null;
-		if(is_array($where)) {
-			foreach ($where as $key => $value) {
-				$condition = $key . '=' . $value . ' and ';
-				$clausule .= trim($condition, '0=');
-			}
-
-			$clausule = trim($clausule, 'and ');
-		} elseif(is_string($where)) {
-			$clausule = $where;
-		} else {
-			$clausule = '1=1';
-		}
-
+		$clausule = $this->createWhereClausule($this->where);
 		
 		$stmt = $this->pdo->prepare("SELECT
 			-- article fields
@@ -95,5 +79,17 @@ class ArticlesListModel extends Model {
 			
 		}
 		return false;
+	}
+
+	/**
+	 * Returns total number of articles items
+	 * 
+	 * @param array|string $where
+	 * 
+	 * @return int
+	 */
+	public function getTotalNumber($where = ['published'=>1]) {
+		$this->where = $where;
+		return $this->countItems('articles', $where);
 	}
 }

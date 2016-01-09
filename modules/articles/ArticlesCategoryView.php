@@ -10,16 +10,17 @@
  */
  
 namespace Rudolf\Modules\articles;
-use Rudolf\Abstracts\View;
+use Rudolf\Abstracts\View,
+	Rudolf\Libs\Pagination;
 
 class ArticlesCategoryView extends ArticlesListView {
 
-	public function setData($data, $info, $paginationInfo) {
+	public function setData($data, $info, Pagination $pagination) {
 		$this->data = $data;
 		
 		$this->categoryInfo = $info;
 
-		$this->paginationInfo = $paginationInfo;
+		$this->pagination = $pagination;
 
 		$this->path = '/artykuly/kategorie/'. $info['slug'];
 

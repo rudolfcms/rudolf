@@ -28,14 +28,16 @@ class ArticlesController extends Controller {
 		$model = new ArticlesListModel();
 		$view = new ArticlesListView();
 		
-		$results = $model->getList($page);
+		$pagination = new Pagination($model->getTotalNumber(), $page);
+
+		$results = $model->getList($pagination);
 
 		if(false === $results and $page > 1) {
 			throw new HttpErrorException('No articles page found (error 404)', 404);
 		}
 
-		$view->setData($results, ['total' => $model->total, 'page' => $page]);
-		
+		$view->setData($results, $pagination);
+
 		$view->render();
 	}
 
@@ -78,9 +80,11 @@ class ArticlesController extends Controller {
 
 		$categoryInfo = $category->getCategoryInfo($slug);
 
-		$results = $list->getList($page, ['published'=>1, 'category_id'=>$categoryInfo['id']]);
+		$pagination = new Pagination($list->getTotalNumber(['published'=>1, 'category_id'=>$categoryInfo['id']]), $page);
 
-		$view->setData($results, $categoryInfo, ['total' => $list->total, 'page' => $page]);
+		$results = $list->getList($pagination);
+
+		$view->setData($results, $categoryInfo, $pagination);
 
 		$view->render();
 	}
