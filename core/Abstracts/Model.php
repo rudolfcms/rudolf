@@ -89,21 +89,9 @@ abstract class Model {
 			return file_get_contents($file);
 		}
 
-		$clausule = null;
-		if(is_array($where)) {
-			$clausule = 'WHERE ';
+		$clausule = $this->createWhereClausule($where);
 
-			foreach ($where as $key => $value) {
-				$condition = $key . '=' . $value . ' and ';
-				$clausule .= trim($condition, '0=');
-			}
-
-			$clausule = trim($clausule, 'and ');
-		} elseif(is_string($where)) {
-			$clausule = 'WHERE ' . $where;
-		}
-
-		$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table $clausule");
+		$stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table WHERE $clausule");
 			
 		$result = $stmt->fetch(\PDO::FETCH_OBJ);
 
@@ -112,5 +100,31 @@ abstract class Model {
 		fclose($fp);
 
 		return $result->count;
+	}
+
+	/**
+	 * Create where clausule for pdo
+	 * 
+	 * @param array|string $where
+	 * 
+	 * @return string
+	 */
+	public function createWhereClausule($where) {
+		if(is_array($where)) {
+			$clausule = null;
+			
+			foreach ($where as $key => $value) {
+				$condition = $key . '=' . $value . ' and ';
+				$clausule .= trim($condition, '0=');
+			}
+
+			$clausule = trim($clausule, 'and ');
+		} elseif(is_string($where)) {
+			$clausule = $where;
+		} else {
+			$clausule = '1=1';
+		}
+
+		return $clausule;
 	}
 }
