@@ -70,6 +70,7 @@ class ErrorHandler {
 
 		//http://php.net/manual/en/errorfunc.constants.php
 		if (E_ERROR === $e['type'] or E_PARSE === $e['type'] or E_COMPILE_ERROR === $e['type']) {
+			ob_clean();
 			$log = new Logger('compile', $this->errorType($e['type']), $e['message'], $e['file'], $e['line']);
 			$log->save();
 			
