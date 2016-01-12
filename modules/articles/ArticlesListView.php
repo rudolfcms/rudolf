@@ -85,4 +85,13 @@ class ArticlesListView extends View {
 		
 		return $nav->createPagingNavigation($calculations, $this->path, $classes, $nesting);
 	}
+
+	/**
+	 * Checks if pagination is needed
+	 * 
+	 * @return bool
+	 */
+	public function isPagination() {
+		return 1 < $this->pagination->getAllPages();
+	}
 }

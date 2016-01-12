@@ -15,7 +15,7 @@ use Rudolf\Abstracts\View,
 
 class ArticlesCategoryView extends ArticlesListView {
 
-	public function setData($data, $info, Pagination $pagination) {
+	public function setData($data, Pagination $pagination, $info = false) { // $info = false; to compatible with ArticlesListView
 		$this->data = $data;
 		
 		$this->categoryInfo = $info;

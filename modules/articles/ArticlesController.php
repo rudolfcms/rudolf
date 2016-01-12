@@ -11,7 +11,9 @@
  
 namespace Rudolf\Modules\articles;
 use Rudolf\Abstracts\Controller,
-	Rudolf\Http\HttpErrorException;
+	Rudolf\Http\HttpErrorException,
+	Rudolf\Modules\Module,
+	Rudolf\Libs\Pagination;
 
 class ArticlesController extends Controller {
 	
@@ -87,6 +89,9 @@ class ArticlesController extends Controller {
 		$view = new ArticlesCategoryView();
 
 		$categoryInfo = $category->getCategoryInfo($slug);
+		if(empty($categoryInfo)) {
+			throw new HttpErrorException('Category not found (error 404)', 404);
+		}
 
 		$module = new Module('articles');
 		$config = $module->getConfig();
@@ -97,7 +102,7 @@ class ArticlesController extends Controller {
 
 		$results = $list->getList($pagination, [$config['sort'], $config['order']]);
 
-		$view->setData($results, $categoryInfo, $pagination);
+		$view->setData($results, $pagination, $categoryInfo);
 
 		$view->render();
 	}
