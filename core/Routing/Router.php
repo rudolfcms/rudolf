@@ -60,10 +60,13 @@ class Router {
 	 */
 	private function setUrl($url) {
 		$basePath = $this->getBasePath();
-		$pos = strpos($url, $basePath);
+		
+		if($basePath) {
+			$pos = strpos($url, $basePath);
 
-		if (false !== $pos) {
-			$url = substr_replace($url, '', $pos, strlen($basePath));
+			if (false !== $pos) {
+				$url = substr_replace($url, '', $pos, strlen($basePath));
+			}
 		}
 		$this->url = $url;
 	}
