@@ -15,5 +15,6 @@ return array (
   1 => 'articles',
   2 => 'galleries',
   3 => 'index',
+  5 => 'koxy',
   4 => 'pages',
 );
