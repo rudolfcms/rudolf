@@ -51,6 +51,17 @@ class RouteCollection {
 	 * @return Route array An array of routes collection
 	 */
 	public function getAll() {
+		uasort($this->collection, [$this, 'cmp_obj']);
+
 		return $this->collection;
+	}
+
+	public static function cmp_obj($a, $b) {
+		$al = $a->getPriority();
+		$bl = $b->getPriority();
+		if ($al == $bl) {
+			return 0;
+		}
+		return ($al > $bl) ? +1 : -1;
 	}
 }

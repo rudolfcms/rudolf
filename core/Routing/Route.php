@@ -32,6 +32,11 @@ class Route {
 	 * @var array
 	 */
 	private $defaults = array();
+
+	/**
+	 * @var int
+	 */
+	private $priority;
 	
 	/**
 	 * Constructor
@@ -40,12 +45,14 @@ class Route {
 	 * @param array		$controllerName		Controller to use for route
 	 * @param array 	$params 			Params
 	 * @param array		$defaults			An array of default parameter values
+	 * @param int 		$priority 			Route priority
 	 */
-	public function __construct($path, $controllerName, array $params = array(), array $defaults = array()) {
+	public function __construct($path, $controllerName, array $params = array(), array $defaults = array(), $priority = 1000) {
 		$this->setPath($path);
 		$this->setControllerName($controllerName);
 		$this->setParams($params);
 		$this->setDefaults($defaults);
+		$this->setPriority($priority);
 	}
 
 	/**
@@ -114,6 +121,18 @@ class Route {
 		return $this->params;
 	}
 
+
+	/**
+	 * Returns the priority
+	 * 
+	 * @access public
+	 * 
+	 * @return array $priority 
+	 */
+	public function getPriority() {
+		return $this->priority;
+	}
+
 	/**
 	 * Sets the defaults
 	 * 
@@ -123,6 +142,17 @@ class Route {
 	 */
 	private function setDefaults(array $defaults) {
 		$this->defaults = $defaults;
+	}
+
+	/**
+	 * Sets the priority
+	 * 
+	 * @access private
+	 *
+	 * @param int $priority The priority
+	 */
+	private function setPriority($priority) {
+		$this->priority = $priority;
 	}
 
 	/**
