@@ -10,7 +10,7 @@
  */
 
 return array (
-	'front_theme' => 'reindeer',
+	'front_theme' => 'amazingschool',
 	'admin_theme' => 'reindeer',
 	'debug' => true
 );
