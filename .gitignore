@@ -2,7 +2,7 @@
 /log/
 /.temp/
 !/.temp/.htaccess
-/config/*
+config/
 /uploads/
 
 /themes/front/
