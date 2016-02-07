@@ -10,12 +10,8 @@
  */
  
 namespace Rudolf\Modules\articles;
-use Rudolf\Abstracts\Controller,
-	Rudolf\Http\HttpErrorException,
-	Rudolf\Modules\Module,
-	Rudolf\Libs\Pagination;
 
-class ArticlesController extends Controller {
+class ArticlesController extends \Rudolf\Modules\_front\Controller {
 	
 	/**
 	* Get articles list
@@ -30,20 +26,21 @@ class ArticlesController extends Controller {
 		$model = new ArticlesListModel();
 		$view = new ArticlesListView();
 
-		$module = new Module('articles');
+		$module = new \Rudolf\Modules\Module('articles');
 		$config = $module->getConfig();
 		$onPage = $config['on_page'];
 		$navNumber = $config['nav_number'];
 		
-		$pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+		$pagination = new \Rudolf\Libs\Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
 
 		$results = $model->getList($pagination, [$config['sort'], $config['order']]);
 
 		if(false === $results and $page > 1) {
-			throw new HttpErrorException('No articles page found (error 404)', 404);
+			throw new \Rudolf\Http\HttpErrorException('No articles page found (error 404)', 404);
 		}
 
 		$view->setData($results, $pagination);
+		$view->setFrontData($this->frontData);
 
 		$view->render();
 	}
@@ -69,6 +66,7 @@ class ArticlesController extends Controller {
 		$model->addView();
 
 		$view->setData($results);
+		$view->setFrontData($this->frontData);
 
 		$view->render();
 	}
@@ -93,16 +91,17 @@ class ArticlesController extends Controller {
 			throw new HttpErrorException('Category not found (error 404)', 404);
 		}
 
-		$module = new Module('articles');
+		$module = new \Rudolf\Modules\Module('articles');
 		$config = $module->getConfig();
 		$onPage = $config['on_page'];
 		$navNumber = $config['nav_number'];
 
-		$pagination = new Pagination($list->getTotalNumber(['published'=>1, 'category_id'=>$categoryInfo['id']]), $page, $onPage, $navNumber);
+		$pagination = new \Rudolf\Libs\Pagination($list->getTotalNumber(['published'=>1, 'category_id'=>$categoryInfo['id']]), $page, $onPage, $navNumber);
 
 		$results = $list->getList($pagination, [$config['sort'], $config['order']]);
 
 		$view->setData($results, $pagination, $categoryInfo);
+		$view->setFrontData($this->frontData);
 
 		$view->render();
 	}

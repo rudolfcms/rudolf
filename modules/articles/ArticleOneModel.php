@@ -11,9 +11,7 @@
  
 namespace Rudolf\Modules\articles;
 
-use Rudolf\Abstracts\Model;
-
-class ArticleOneModel extends Model {
+class ArticleOneModel extends \Rudolf\Abstracts\Model {
 
 	public function getOneByDate($year, $month, $slug) {
 		$stmt = $this->pdo->prepare("SELECT 

@@ -10,12 +10,11 @@
  */
  
 namespace Rudolf\Modules\articles;
-use Rudolf\Abstracts\View,
-	Rudolf\Libs\Pagination;
 
 class ArticlesCategoryView extends ArticlesListView {
 
-	public function setData($data, Pagination $pagination, $info = false) { // $info = false; to compatible with ArticlesListView
+	// $info = false; to compatible with ArticlesListView
+	public function setData($data, \Rudolf\Libs\Pagination $pagination, $info = false) {
 		$this->data = $data;
 		
 		$this->categoryInfo = $info;

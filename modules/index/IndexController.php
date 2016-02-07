@@ -1,13 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\index;
-use Rudolf\Abstracts\Controller,
-	Rudolf\Http\HttpErrorException,
-	Rudolf\Modules\index,
-	Rudolf\Libs\Pagination,
-	Rudolf\Modules\Module;
 
-class IndexController extends Controller {
+class IndexController extends \Rudolf\Modules\_front\Controller {
 
 	public function index($page) {
 		$page = $this->firstPageRedirect($page);
@@ -15,20 +10,21 @@ class IndexController extends Controller {
 		$model = new IndexModel();
 		$view = new IndexView();
 
-		$module = new Module('index');
+		$module = new \Rudolf\Modules\Module('index');
 		$config = $module->getConfig();
 		$onPage = $config['on_page'];
 		$navNumber = $config['nav_number'];
 		
-		$pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+		$pagination = new \Rudolf\Libs\Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
 
 		$articles = $model->getList($pagination, [$config['sort'], $config['order']]);
 
 		if(false === $articles and $page > 1) {
-			throw new HttpErrorException('No articles page found (error 404)', 404);
+			throw new \Rudolf\Http\HttpErrorException('No articles page found (error 404)', 404);
 		}
 
 		$view->setData($articles, $pagination);
+		$view->setFrontData($this->frontData);
 
 		$view->render();
 	}

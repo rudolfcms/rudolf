@@ -10,18 +10,15 @@
  */
  
 namespace Rudolf\Modules\articles;
-use Rudolf\Abstracts\View,
-	Rudolf\Html\Navigation,
-	Rudolf\Libs\Pagination;
 
-class ArticlesListView extends View {
+class ArticlesListView extends \Rudolf\Modules\_front\View {
 	use ArticleTraits;
 
 	public $path;
 
 	private $current = -1;
 
-	public function setData($data, Pagination $pagination) {
+	public function setData($data, \Rudolf\Libs\Pagination $pagination) {
 		$this->data = $data;
 
 		$this->pagination = $pagination;
@@ -80,7 +77,7 @@ class ArticlesListView extends View {
 	 * @return string
 	 */
 	public function nav($classes, $nesting = 2) {
-		$nav = new Navigation();
+		$nav = new \Rudolf\Html\Navigation();
 		$calculations = $this->pagination->nav();
 		
 		return $nav->createPagingNavigation($calculations, $this->path, $classes, $nesting);

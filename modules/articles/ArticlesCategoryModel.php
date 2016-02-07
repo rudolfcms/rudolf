@@ -11,9 +11,7 @@
  
 namespace Rudolf\Modules\articles;
 
-use Rudolf\Abstracts\Model;
-
-class ArticlesCategoryModel extends Model {
+class ArticlesCategoryModel extends \Rudolf\Abstracts\Model {
 
 	/**
 	 * Get category info

@@ -10,9 +10,9 @@
  */
  
 namespace Rudolf\Modules\articles;
-use Rudolf\Abstracts\View;
 
-class ArticleOneView extends View {
+class ArticleOneView extends \Rudolf\Modules\_front\View {
+	
 	use ArticleTraits;
 
 	/**

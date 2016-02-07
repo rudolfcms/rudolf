@@ -10,14 +10,28 @@
  */
 
 namespace Rudolf\Modules\pages;
-use Rudolf\Abstracts\View;
 
-class PagesView extends View {
+class PagesView extends \Rudolf\Modules\_front\View {
 	
 	use PageTraits;
 
 	public function page($data) {
 		$this->template = (isset($data['template'])) ? $data['template'] : 'page';
 		$this->page = $data;
+	}
+
+	public function breadcrumb($nesting = 0) {
+		$nav = new \Rudolf\Html\Navigation();
+		$pagesList = $this->pagesList;
+		$aAddress = $this->aAddress;
+		
+		$navigation = $nav->createBreadcrumbsNavigation(0, $pagesList, $aAddress, $nesting);
+
+		return $navigation;
+	}
+
+	public function setBreadcrumbsData($list, $aAddress) {
+		$this->pagesList = $list;
+		$this->aAddress = $aAddress;
 	}
 }

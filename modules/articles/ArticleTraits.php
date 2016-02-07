@@ -183,19 +183,20 @@ trait ArticleTraits {
 	/**
 	 * Return thumbnail code or only address
 	 * 
-	 * @param int $w
-	 * @param int $h
-	 * @param bool $src
-	 * @param bool|string $alt
+	 * @param int $w Image width
+	 * @param int $h Image height
+	 * @param bool $src Set true to get only image address
+	 * @param bool $album Add album address if exists
+	 * @param bool|string $alt Set alternative text
 	 * 
 	 * @return string
 	 */
-	protected function thumbnail($w = false, $h = false, $src = false, $alt = false) {
+	protected function thumbnail($w = false, $h = false, $album = false, $src = false, $alt = false) {
 		$w = ($w) ? $w : ((is_object($this->theme) ? $this->theme->article['thumb']['width'] : 100));
 		$h = ($h) ? $h : ((is_object($this->theme) ? $this->theme->article['thumb']['height'] : 100));
 		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
 
-		$address = $this->article['thumb'];
+		$address = Text::escape($this->article['thumb']);
 
 		if(is_object($this->theme)) {
 			if(!$this->hasThumbnail() and $image = $this->theme->article['thumb']['default']) {
@@ -211,7 +212,14 @@ trait ArticleTraits {
 			return $address;
 		}
 
-		return sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>', $address, $w, $h, $alt);
+		$image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>', $address, $w, $h, $alt);
+
+		if(true === $album and !empty($this->article['album'])) {
+			$album = Text::escape($this->article['album']);
+			$image = sprintf('<a href="%1$s">%2$s</a>', $album, $image);
+		}
+
+		return $image;
 	}
 
 	/**
