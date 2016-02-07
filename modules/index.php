@@ -17,4 +17,6 @@ return array (
   3 => 'index',
   5 => 'koxy',
   4 => 'pages',
+  5 => 'dashboard',
+  6 => 'login'
 );
