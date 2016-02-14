@@ -24,7 +24,7 @@ class IndexController extends \Rudolf\Modules\_front\Controller {
 		}
 
 		$view->setData($articles, $pagination);
-		$view->setFrontData($this->frontData);
+		$view->setFrontData($this->frontData, '');
 
 		$view->render();
 	}
