@@ -40,7 +40,7 @@ class ArticlesController extends \Rudolf\Modules\_front\Controller {
 		}
 
 		$view->setData($results, $pagination);
-		$view->setFrontData($this->frontData);
+		$view->setFrontData($this->frontData, '');
 
 		$view->render();
 	}
@@ -66,7 +66,7 @@ class ArticlesController extends \Rudolf\Modules\_front\Controller {
 		$model->addView();
 
 		$view->setData($results);
-		$view->setFrontData($this->frontData);
+		$view->setFrontData($this->frontData, '');
 
 		$view->render();
 	}
@@ -101,7 +101,7 @@ class ArticlesController extends \Rudolf\Modules\_front\Controller {
 		$results = $list->getList($pagination, [$config['sort'], $config['order']]);
 
 		$view->setData($results, $pagination, $categoryInfo);
-		$view->setFrontData($this->frontData);
+		$view->setFrontData($this->frontData, '');
 
 		$view->render();
 	}
