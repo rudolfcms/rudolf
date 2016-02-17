@@ -21,6 +21,21 @@ abstract class View {
 	public $themePath;
 
 	/**
+	 * @var string 
+	 */
+	public $themeRoot;
+
+	/**
+	 * @var string
+	 */
+	public $themeName;
+
+	/**
+	 * @var string
+	 */
+	public $side;
+
+	/**
 	 * @var object
 	 */
 	public $theme;
@@ -34,13 +49,18 @@ abstract class View {
 	 * @return void
 	 */
 	public function render($side = 'front', $type = 'html') {
-		if('front' !== $side or 'admin' !== $side) {
-			$this->side = 'front';
+		if('admin' === $side) {
+			$this->side = 'admin';
+			$this->themeName = ADMIN_THEME;
+			$path = '/' . $this->side . '/' . $this->themeName;
 		} else {
-			$this->side = $side;
+			$this->side = 'front';
+			$this->themeName = FRONT_THEME;
+			$path = '/' . $this->side . '/' . $this->themeName;
 		}
-		
-		$this->themePath = THEMES .'/front/'. FRONT_THEME;
+
+		$this->themeRoot = THEMES_ROOT . $path;
+		$this->themePath = THEMES . $path;
 
 		$this->loadConfig();
 
@@ -61,15 +81,14 @@ abstract class View {
 	 * @return void
 	 */
 	private function renderHtml() {
-		$theme = THEMES_ROOT .'/'. $this->side .'/'. FRONT_THEME;
-		$file = $theme .'/templates/'. $this->template .'.html.php';
+		$file = $this->themeRoot .'/templates/'. $this->template .'.html.php';
 		
-		if(!file_exists($theme)) {
-			throw new ThemeNotFoundException("Theme ".FRONT_THEME." does not exist");
+		if(!file_exists($this->themeRoot)) {
+			throw new ThemeNotFoundException("Theme ". $this->themeName ." does not exist");
 		} elseif(is_file($file)) {
 			include $file;
 		} else {
-			throw new TemplateNotFoundException("Template file {$this->template} does not exist in ".FRONT_THEME);
+			throw new TemplateNotFoundException("Template file {$this->template} does not exist in ". $this->themeName);
 		}
 	}
 
@@ -87,11 +106,11 @@ abstract class View {
 	 * Load theme config class
 	 */
 	private function loadConfig() {
-		$file = THEMES_ROOT .'/front/'. FRONT_THEME .'/'. FRONT_THEME .'.php';
+		$file = $this->themeRoot . '/' . $this->themeName . '.php';
 		
 		if(is_file($file)) {
 			include $file;
-			$class = ucfirst(FRONT_THEME);
+			$class = ucfirst($this->themeName);
 			$this->theme = new $class();
 		}
 	}
