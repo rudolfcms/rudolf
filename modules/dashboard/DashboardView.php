@@ -2,7 +2,7 @@
 
 namespace Rudolf\Modules\dashboard;
 
-class DashboardView extends \Rudolf\Abstracts\View {
+class DashboardView extends \Rudolf\Modules\_admin\AdminView {
 	public function dashboard() {
 		$this->template = 'dashboard';
 	}
