@@ -6,13 +6,13 @@ $id = $this->addItem(
 	$title = 'User',
 	$slug = 'user',
 	$parent_id = 0,
-	$isAdmin = true,
+	$isAdmin = false,
 	$caption = 'user',
 	$position = 0,
 	$font_awesome_ico = 'fa-user'
 );
 
-$this->addItem('top-right', 'Logout', 'user/logout', $id, true, 'Logout', 0, 'fa-sign-out');
+$this->addItem('top-right', 'Logout', 'user/logout', $id, false, 'Logout', 0, 'fa-sign-out');
 
 # users
 $id = $this->addItem(
@@ -20,10 +20,10 @@ $id = $this->addItem(
 	$title = 'Users',
 	$slug = 'users',
 	$parent_id = 0,
-	$isAdmin = true,
+	$isAdmin = false,
 	$caption = 'users',
 	$position = 11,
 	$font_awesome_ico = 'fa-users'
 );
 
-$this->addItem('main', 'list', 'users/list', $id, true, 'list', 0, 'fa-list');
+$this->addItem('main', 'list', 'users/list', $id, false, 'list', 0, 'fa-list');
