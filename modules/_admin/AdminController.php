@@ -1,18 +1,32 @@
 <?php
 
 namespace Rudolf\Modules\_admin;
+use Rudolf\Abstracts\Controller,
+	Rudolf\Http\Response;
 
-class AdminController extends \Rudolf\Abstracts\Controller {
+class AdminController extends Controller {
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
-		$auth = new AdminModel();
+		$model = new AdminModel();
+		$this->auth = $model->getAuth();
+
+		$adminData = [
+			'menu_items' => $model->getMenuItems(),
+			//'menu_types' => $model->getMenuTypes()
+		];
 
 		// if not logged in
-		if(!$auth->auth()->check()) {
-			$response = new \Rudolf\Http\Response('');
+		if(!$this->auth->check()) {
+			$response = new Response('');
 			$response->setHeader(['Location', DIR . '/user/login']);
 			$response->send();
 			exit;
 		}
+		
+		AdminView::setUserInfo($this->auth->getUser());
+		AdminView::setAdminData($adminData);
 	}
 }

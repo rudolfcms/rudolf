@@ -5,8 +5,5 @@ $config = $module->getConfig();
 
 $collection->add('dashboard', new Rudolf\Routing\Route(
 	$config['admin_path'] . '?',
-	'Rudolf\Modules\dashboard\DashboardController',
-	[],
-	[],
-	999
+	'Rudolf\Modules\dashboard\DashboardController'
 ));

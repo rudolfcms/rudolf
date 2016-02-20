@@ -19,6 +19,5 @@ $collection->add('koxy', new Routing\Route(
 	),
 	array(
 		'page' => 0
-	),
-	$priority = 1000
+	)
 ));

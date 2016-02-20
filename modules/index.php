@@ -11,12 +11,12 @@
  */
 
 return array (
-  0 => 'albums',
-  1 => 'articles',
-  2 => 'galleries',
-  3 => 'index',
-  5 => 'koxy',
-  4 => 'pages',
-  5 => 'dashboard',
-  6 => 'login'
+	0 => 'albums',
+	1 => 'articles',
+	2 => 'galleries',
+	3 => 'index',
+	4 => 'pages',
+	5 => 'dashboard',
+	6 => 'koxy',
+	7 => 'user'
 );
