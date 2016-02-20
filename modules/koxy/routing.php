@@ -11,6 +11,9 @@
 
 use Rudolf\Routing;
 
+$module = new \Rudolf\Modules\Module('koxy');
+$config = $module->getConfig();
+
 $collection->add('koxy', new Routing\Route(
 	'(page/<page>)?',
 	'Rudolf\Modules\koxy\KoxyController',
@@ -19,5 +22,6 @@ $collection->add('koxy', new Routing\Route(
 	),
 	array(
 		'page' => 0
-	)
+	),
+	$config['priority']
 ));
