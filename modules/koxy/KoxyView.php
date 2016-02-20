@@ -1,7 +1,7 @@
 <?php
 
 namespace Rudolf\Modules\koxy;
-use Rudolf\Abstracts\View,
+use Rudolf\Modules\_front\View,
 	Rudolf\Libs\Pagination,
 	Rudolf\Html\Navigation;
 

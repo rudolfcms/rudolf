@@ -1,7 +1,7 @@
 <?php
 
 namespace Rudolf\Modules\koxy;
-use Rudolf\Abstracts\Controller,
+use Rudolf\Modules\_front\Controller,
 	Rudolf\Http\HttpErrorException,
 	Rudolf\Modules\koxy,
 	Rudolf\Libs\Pagination,
@@ -29,6 +29,7 @@ class KoxyController extends Controller {
 		}
 
 		$view->setData($koxy, $pagination);
+		$view->setFrontData($this->frontData, '');
 
 		$view->render();
 	}
