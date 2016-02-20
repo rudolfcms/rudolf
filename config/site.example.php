@@ -11,6 +11,6 @@
 
 return array (
 	'front_theme' => 'reindeer',
-	'admin_theme' => 'reindeer',
+	'admin_theme' => 'dasher',
 	'debug' => true
 );
