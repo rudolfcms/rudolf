@@ -10,6 +10,7 @@
  */
 
 namespace Rudolf\Html;
+use Rudolf\Libs\MenuBuilder;
 
 class Navigation {
 
@@ -24,14 +25,24 @@ class Navigation {
 	 * @return string
 	 */
 	public function createPageNavigation($type, $items, $current, $classes, $nesting = 0) {
-		$builder = new \Rudolf\Libs\MenuBuilder();
+		$builder = new MenuBuilder();
 		foreach ($items as $key => $value) {
 			if($type === $value['menu_type']) {
 				$newItems[] = $items[$key];
 			}
 		}
 
+		if(empty($newItems)) {
+			return false;
+		}
+
+		usort($newItems, [$this, 'sortByPosition']);
+
 		return $builder->getMenuHtml(0, $newItems, DIR.'/', $classes, $current, $nesting);
+	}
+
+	function sortByPosition($a, $b) {
+	    return $a['position'] - $b['position'];
 	}
 
 	/**
