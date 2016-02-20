@@ -33,17 +33,17 @@ define('GALLERIES', 	DIR . '/content/galleries');
 // define path system
 define('ROOT', 				__DIR__);
 define('CORE', 				ROOT . '/core');
-define('CLASSESS', 			ROOT . '/core/classes');
+//define('CLASSESS', 			ROOT . '/core/classes');
 
 define('TEMP',				ROOT . '/.temp');
 define('UPLOADS_ROOT', 		ROOT . '/uploads');
 define('THEMES_ROOT', 		ROOT . '/themes');
-define('CACHE_ROOT', 		ROOT . '/app/.cache');
+//define('CACHE_ROOT', 		ROOT . '/.temp');
 define('PLUGINS_ROOT', 		ROOT . '/plugins');
 define('LANGUAGE_ROOT',		ROOT . '/languages');
-define('MODULES_ROOT', 		ROOT . '/app/modules');
+define('MODULES_ROOT', 		ROOT . '/modules');
 define('LIB', 				ROOT . '/core/Libs');
 define('CONFIG_ROOT', 		ROOT . '/config');
-define('GALLERIES_ROOT',	ROOT . '/galleries');
-define('FUNCTION_ROOT', 	ROOT . '/app/functions');
+define('GALLERIES_ROOT',	ROOT . '/content/galleries');
+//define('FUNCTION_ROOT', 	ROOT . '/app/functions');
 define('LOG_ROOT', 			ROOT . '/log');
