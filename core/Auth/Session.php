@@ -86,7 +86,7 @@ class Session {
 		$stmt = $this->pdo->prepare("DELETE FROM {$this->table} WHERE cookie = :cookie");
 		$stmt->bindValue(':cookie', $value, \PDO::PARAM_STR);
 
-		$stmt->execute();
+		return $stmt->execute();
 	}
 
 	/**
@@ -133,6 +133,29 @@ class Session {
 		}
 
 		return true;
+	}
+
+	/**
+	* Returns the UID 
+	* 
+	* @param string $hash
+	*
+	*  @return int $uid
+	*/
+	public function getSessionUID($hash = false) {
+		if(false === $hash) {
+			$cookie = new Cookie($this->cookieName);
+			$hash = $cookie->getValue();
+		}
+
+		$stmt = $this->pdo->prepare("SELECT user_id FROM {$this->table} WHERE cookie = ?");
+		$stmt->execute(array($hash));
+
+		if ($stmt->rowCount() == 0) {
+			return false;
+		}
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC)['user_id'];
 	}
 
 	/**
