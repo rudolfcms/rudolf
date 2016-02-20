@@ -18,7 +18,7 @@ class LoginView extends View {
 	 * @return string
 	 */
 	protected function getNick() {
-		return Text::escape($this->formData['email']);
+		return (isset($this->formData['email'])) ? Text::escape($this->formData['email']) : '';
 	}
 
 	/**
