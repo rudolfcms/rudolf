@@ -42,7 +42,10 @@ class MenuBuilder {
 		$parent_stack = array();
 		
 		// HTML wrapper for the menu (open)
-		$this->html[] = '<ul>';
+		$this->html[] =  sprintf(
+			'<ul%1$s>',
+			(isset($classes[1])) ? ' class="'.$classes[1].'"' : ''
+		);
 		
 		while($loop && (($option = each($children[$parent])) || ($parent > $root_id)))	{
 			if($option === false) {
@@ -59,12 +62,12 @@ class MenuBuilder {
 					'%1$s<li%5$s><a %2$shref="%3$s">%4$s</a>',
 					$tab,   // %1$s = tabulation
 					($option['value']['caption']) ? 'title="'.$option['value']['caption'].'" ' : '', // %2$s = caption title=""
-					$sPrefix . $option['value']['slug'],   // %3$s = link (URL)
+					rtrim($sPrefix . $option['value']['slug'], '/'),   // %3$s = link (URL)
 					$option['value']['title'],   // %4$s = title
 					($option['value']['slug'] === $current) ? ' class="'.$classes[0].'"' : ''
 				); 
 
-				$ulSub = sprintf('<ul%1$s>', (isset($classes[1])) ? ' class="'.$classes[1].'"' : '');
+				$ulSub = sprintf('<ul%1$s>', (isset($classes[2])) ? ' class="'.$classes[2].'"' : '');
 				$this->html[] = $tab . "\t" . $ulSub;
 				
 				array_push($parent_stack, $option['value']['parent_id']);
@@ -75,7 +78,7 @@ class MenuBuilder {
 					'%1$s<li%5$s><a %2$shref="%3$s">%4$s</a></li>',
 					str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),   // %1$s = tabulation
 					($option['value']['caption']) ? 'title="'.$option['value']['caption'].'" ' : '', // %2$s = caption title=""
-					$sPrefix . $option['value']['slug'],   // %3$s = link (URL)
+					rtrim($sPrefix . $option['value']['slug'], '/'),   // %3$s = link (URL)
 					$option['value']['title'],   // %4$s = title
 					($option['value']['slug'] === $current) ? ' class="'.$classes[0].'"' : ''
 				);
