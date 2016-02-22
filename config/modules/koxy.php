@@ -5,5 +5,5 @@ return array(
 	'nav_number' => 7,
 	'order' => 'DESC',
 	'sort' => 'id',
-	'priority' => 999
+	'priority' => 1000
 );
