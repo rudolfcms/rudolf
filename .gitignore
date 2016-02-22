@@ -10,4 +10,6 @@
 /config/
 !/config/site.example.php
 !/config/database.example.php
+!/config/auth.example.php
+composer.lock
 Rudolf.sublime-workspace
