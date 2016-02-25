@@ -56,7 +56,7 @@ class FrontController {
 		$names = $this->explodeName($this->router->getControllerName());
 
 		if(!class_exists($names[0])) {
-			throw new HttpErrorException('Controller class doesn\'t exist');
+			throw new HttpErrorException('Controller class '. $names[0].' doesn\'t exist');
 		}
 
 		$this->call($names, $this->router->getParams());
