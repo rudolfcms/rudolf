@@ -10,7 +10,8 @@
  */
 
 namespace Rudolf\Abstracts;
-use Rudolf\Html\Exceptions\ThemeNotFoundException,
+use Rudolf\Html\Head,
+	Rudolf\Html\Exceptions\ThemeNotFoundException,
 	Rudolf\Html\Exceptions\TemplateNotFoundException;
 
 abstract class AView {
@@ -39,6 +40,14 @@ abstract class AView {
 	 * @var object
 	 */
 	public $theme;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		// create necessary objects
+		$this->head = new Head();
+	}
 
 	/**
 	 * Render page
@@ -111,7 +120,7 @@ abstract class AView {
 		if(is_file($file)) {
 			include $file;
 			$class = ucfirst($this->themeName);
-			$this->theme = new $class();
+			$this->theme = new $class($this);
 		}
 	}
 }
