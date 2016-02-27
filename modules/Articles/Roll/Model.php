@@ -44,7 +44,7 @@ class Model extends AModel {
 		$stmt = $this->pdo->prepare("SELECT
 			-- article fields
 			a.id, a.category_id, a.title,
-			a.content,
+			a.content, a.description,
 			a.author, a.date, a.added, a.modified, a.modified_by,
 			a.views, a.slug, a.album, a.thumb, a.photos, a.published,
 

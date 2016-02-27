@@ -11,6 +11,13 @@ class View extends Articles\Roll\View {
 
 		$this->pagination = $pagination;
 
+		$page = $pagination->getPageNumber();
+		$allPages = $pagination->getAllPages();
+
+		if(1 !== $page) {
+			$this->head->setTitle(sprintf(_('Page %1$s of %2$s'), $page, $allPages));
+		}
+
 		$this->template = 'index';
 	}
 }

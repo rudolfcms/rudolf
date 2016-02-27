@@ -23,6 +23,17 @@ class View extends Roll\View {
 
 		$this->pagination = $pagination;
 
+		$page = $pagination->getPageNumber();
+		$allPages = $pagination->getAllPages();
+
+		$titleBefore = null;
+
+		if(1 !== $page) {
+			$titleBefore = sprintf(_('Page %1$s of %2$s'), $page, $allPages) .' ';
+		}
+
+		$this->head->setTitle($titleBefore . $this->categoryTitle(true));
+
 		$this->path = '/artykuly/kategorie/'. $info['slug'];
 
 		$this->template = (isset($data['template'])) ? $data['template'] : 'category';
@@ -31,10 +42,18 @@ class View extends Roll\View {
 	/**
 	 * Returns category title
 	 * 
+	 * @param bool $strip
+	 * 
 	 * @return string
 	 */
-	public function categoryTitle() {
-		return $this->categoryInfo['title'];
+	public function categoryTitle($strip = false) {
+		$title = _('Artykuły z kategorii') . ' <i>' . $this->categoryInfo['title'] . '</i>';
+
+		if(true === $strip) {
+			return strip_tags($title);
+		}
+
+		return $title;
 	}
 
 	/**

@@ -18,8 +18,11 @@ class View extends FView {
 	use Traits;
 
 	public function page($data) {
-		$this->template = (isset($data['template'])) ? $data['template'] : 'page';
 		$this->page = $data;
+		
+		$this->head->setTitle($this->title());
+
+		$this->template = (isset($data['template'])) ? $data['template'] : 'page';
 	}
 
 	public function breadcrumb($nesting = 0) {

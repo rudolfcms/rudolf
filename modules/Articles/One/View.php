@@ -30,6 +30,8 @@ class View extends FView {
 	public function setData($article) {
 		$this->article = $article;
 
+		$this->head->setTitle($this->title());
+
 		$this->template = (isset($article['template'])) ? $article['template'] : 'article-once';
 	}
 }

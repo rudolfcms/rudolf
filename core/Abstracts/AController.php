@@ -37,6 +37,7 @@ abstract class AController {
 			$response = new Response('', $code);
 			$response->setHeader(['Location', $location]);
 			$response->send();
+			
 			exit;
 		} elseif(0 === $page) {
 			return 1;

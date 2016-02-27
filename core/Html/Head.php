@@ -69,7 +69,7 @@ class Head {
 	 * @return void|string
 	 */
 	public function title($return = false) {
-		$title = $this->pageTitle;
+		$title = trim($this->pageTitle . ' | ' . GENERAL_SITE_NAME, ' | ');
 		
 		if(true === $return) {
 			return $title;

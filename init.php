@@ -31,6 +31,7 @@ require_once ROOT . '/vendor/autoload.php';
 $config = include CONFIG_ROOT . '/site.php';
 define('FRONT_THEME', $config['front_theme']);
 define('ADMIN_THEME', $config['admin_theme']);
+define('GENERAL_SITE_NAME', $config['general_name']);
 define('ENV', $config['debug']);
 
 // set locale

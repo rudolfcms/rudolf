@@ -13,7 +13,8 @@ namespace Rudolf\Modules\Articles;
 use Rudolf\Modules\A_front\FController,
 	Rudolf\Modules\Module,
 	Rudolf\Http\HttpErrorException,
-	Rudolf\Libs\Pagination;
+	Rudolf\Libs\Pagination,
+	Rudolf\Http\Response;
 
 
 class Controller extends FController {
@@ -112,5 +113,39 @@ class Controller extends FController {
 		$view->setFrontData($this->frontData, '');
 
 		$view->render();
+	}
+
+	/**
+	 * Get feed
+	 * 
+	 * @param string $type Feed type
+	 * 
+	 * @return void
+	 */
+	public function getFeed($type) {
+		$list = new Roll\Model();
+		$view = new Feed\View();
+		$response = new Response();
+
+		$pagination = new Pagination($list->getTotalNumber(), 1, 20);
+		$results = $list->getList($pagination, ['id', 'desc']);
+		$view->setArticles($results);
+		
+		switch ($type) {
+			case 'atom':
+				$response->setContent($view->atom());
+				$response->setHeader(['Content-Type', 'text/xml']);
+				//$response->setHeader(['Content-Type', 'application/atom+xml']);
+				echo $response->send();
+				break;
+
+			case 'rss':
+			default:
+				$response->setContent($view->rss2());
+				$response->setHeader(['Content-Type', 'text/xml']);
+				//$response->setHeader(['Content-Type', 'charset=utf-8']);
+				echo $response->send();
+				break;
+		}
 	}
 }

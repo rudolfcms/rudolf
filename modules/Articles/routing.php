@@ -54,3 +54,12 @@ $collection->add('article/one', new Routing\Route(
 	)
 ));
 */
+
+# /feed/atom
+$collection->add('articles/feed', new Routing\Route(
+	'feed/<feed>$',
+	'Rudolf\Modules\Articles\Controller::getFeed',
+	array( // wyrazenia regularne dla parametrow
+		'feed' => '[a-z0-9]+(?:-[a-z0-9]+)*'
+	)
+));
