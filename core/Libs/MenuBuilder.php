@@ -24,7 +24,7 @@ class MenuBuilder {
 	/**
 	 * Build the HTML for the menu 
 	 */
-	public function getMenuHtml($root_id = 0, $items, $sPrefix = '/', $classes = [], $current = false, $nesting = 0)	{
+	public function getMenuHtml($root_id = 0, $items, $sPrefix = '/', $classes = [], array $current, $nesting = 0)	{
 		$this->html  = array();
 		$this->items = $items;
 		$nesting = (int) $nesting;
@@ -64,7 +64,7 @@ class MenuBuilder {
 					($option['value']['caption']) ? 'title="'.$option['value']['caption'].'" ' : '', // %2$s = caption title=""
 					rtrim($sPrefix . $option['value']['slug'], '/'),   // %3$s = link (URL)
 					$option['value']['title'],   // %4$s = title
-					($option['value']['slug'] === $current) ? ' class="'.$classes[0].'"' : ''
+					(in_array($option['value']['slug'], $current)) ? ' class="'.$classes[0].'"' : ''
 				); 
 
 				$ulSub = sprintf('<ul%1$s>', (isset($classes[2])) ? ' class="'.$classes[2].'"' : '');
@@ -80,7 +80,7 @@ class MenuBuilder {
 					($option['value']['caption']) ? 'title="'.$option['value']['caption'].'" ' : '', // %2$s = caption title=""
 					rtrim($sPrefix . $option['value']['slug'], '/'),   // %3$s = link (URL)
 					$option['value']['title'],   // %4$s = title
-					($option['value']['slug'] === $current) ? ' class="'.$classes[0].'"' : ''
+					(in_array($option['value']['slug'], $current)) ? ' class="'.$classes[0].'"' : ''
 				);
 		}
 		

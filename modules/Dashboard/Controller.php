@@ -9,6 +9,8 @@ class Controller extends AdminController {
 
 		$view->dashboard();
 
+		$view->setActive(['admin/']);
+
 		$view->render('admin');
 	}
 }

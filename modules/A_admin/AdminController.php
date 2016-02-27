@@ -13,11 +13,6 @@ class AdminController extends AController {
 		$model = new AdminModel();
 		$this->auth = $model->getAuth();
 
-		$adminData = [
-			'menu_items' => $model->getMenuItems(),
-			//'menu_types' => $model->getMenuTypes()
-		];
-
 		// if not logged in
 		if(!$this->auth->check()) {
 			$response = new Response('');
@@ -27,6 +22,9 @@ class AdminController extends AController {
 		}
 		
 		AdminView::setUserInfo($this->auth->getUser());
-		AdminView::setAdminData($adminData);
+		AdminView::setAdminData([
+			'menu_items' => $model->getMenuItems(),
+			//'menu_types' => $model->getMenuTypes()
+		]);
 	}
 }

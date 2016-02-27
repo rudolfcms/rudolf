@@ -18,13 +18,13 @@ class Navigation {
 	 * It create page navigation
 	 * 
 	 * @param array $items Array of navigation items
-	 * @param int $current Id of current page
+	 * @param array $current Current pages slug
 	 * @param array $classes
 	 * @param int $nesting
 	 * 
 	 * @return string
 	 */
-	public function createPageNavigation($type, $items, $current, $classes, $nesting = 0) {
+	public function createPageNavigation($type, $items, array $current, $classes, $nesting = 0) {
 		$builder = new MenuBuilder();
 		foreach ($items as $key => $value) {
 			if($type === $value['menu_type']) {

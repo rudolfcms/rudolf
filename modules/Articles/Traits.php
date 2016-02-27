@@ -7,6 +7,10 @@ use Rudolf\Hooks\Hooks,
 
 trait Traits {
 
+	protected function id() {
+		return $this->article['id'];
+	}
+
 	/**
 	 * Return article title
 	 * 
@@ -32,10 +36,11 @@ trait Traits {
 	 * 
 	 * @param bool|int $truncate
 	 * @param bool $stripTags
+	 * @param bool $escape
 	 * 
 	 * @return string
 	 */
-	protected function content($truncate = false, $stripTags = false) {
+	protected function content($truncate = false, $stripTags = false, $escape = fale) {
 		$content = $this->article['content'];
 
 		if(true === $stripTags) {
@@ -44,6 +49,10 @@ trait Traits {
 
 		if(false !== $truncate and strlen($content) > $truncate) {
 			$content = Text::truncate($content, $truncate);
+		}
+
+		if(true === $escape) {
+			$content = Text::escape($content);
 		}
 
 		return $content;
@@ -132,7 +141,15 @@ trait Traits {
 	protected function author() {
 
 		return ($this->article['author']) ? $this->article['author'] : $this->article['first_name'] . ' ' . $this->article['surname'];
-		
+	}
+
+	/**
+	 * Returns the real author
+	 * 
+	 * @return string
+	 */
+	protected function realAuthor() {
+		return $this->article['author'];
 	}
 
 	/**
@@ -229,6 +246,15 @@ trait Traits {
 	 */
 	protected function url() {
 		return DIR . '/artykuly/'. $this->date('Y') .'/'. $this->date('m') .'/'. $this->article['slug'];
+	}
+
+	/**
+	 * Return article slug
+	 * 
+	 * @return string
+	 */
+	protected function slug() {
+		return $this->article['slug'];
 	}
 
 	/**

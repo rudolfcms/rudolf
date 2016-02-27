@@ -18,12 +18,26 @@ class AdminView extends AView {
 	 */
 	private static $adminData;
 
+	/**
+	 * @var string $active
+	 * @access private
+	 */
+	private static $active;
+
 	public function pageNav($type, $class, $nesting = 0) {
 		$object = new Navigation();
 		$items = self::$adminData['menu_items'];
-		//$current = $this->frontData[1];
+		$current = self::$active;
+
+		if(!is_array($current)) {
+			$current = array($current);
+		}
 		
-		return $object->createPageNavigation($type, $items, $current = '', $class, $nesting);
+		return $object->createPageNavigation($type, $items, $current, $class, $nesting);
+	}
+
+	public function setActive($active) {
+		self::$active = $active;
 	}
 
 	/**

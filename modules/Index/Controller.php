@@ -28,7 +28,7 @@ class Controller extends FController {
 		}
 
 		$view->setData($articles, $pagination);
-		$view->setFrontData($this->frontData, '');
+		$view->setFrontData($this->frontData, ['']);
 
 		$view->render();
 	}

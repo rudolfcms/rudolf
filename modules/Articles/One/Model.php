@@ -55,6 +55,45 @@ class Model extends AModel {
 		return $this->results;
 	}
 
+	public function getOneById($id) {
+		$stmt = $this->pdo->prepare("SELECT 
+			-- article fields
+			a.id, a.category_id, a.title, a.keywords, a.description, a.content, a.author, 
+			a.added_by, a.date, a.added, a.modified, a.modified_by, a.views, 
+			a.slug, a.album, a.thumb, a.photos, a.published, 
+
+			-- user fields
+			u.first_name, u.surname, 
+
+			m.first_name as 'modified_first_name', m.surname as 'modified_surname', 
+
+			-- category fields
+			c.title as category_title, c.slug as category_url 
+
+			FROM {$this->prefix}articles as a 
+
+			-- user join on added_by id
+			LEFT JOIN {$this->prefix}users as u ON a.added_by=u.id 
+
+			-- user join on modified_by id
+			LEFT JOIN {$this->prefix}users as m ON a.modified_by=m.id
+
+			-- category join on article category_id
+			LEFT JOIN {$this->prefix}categories as c ON a.category_id=c.id 
+
+			WHERE a.id = :id
+		");
+		$stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+		$stmt->execute();
+		$this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
+		
+		if(empty($this->results)) {
+			return false;
+		}
+
+		return $this->results;
+	}
+
 	/**
 	 * Increment article views 
 	 */

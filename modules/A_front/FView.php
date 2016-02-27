@@ -15,6 +15,10 @@ abstract class FView extends AView {
 		$items = $this->frontData[0]['menu_items'];
 		$current = $this->frontData[1];
 		
+		if(!is_array($current)) {
+			$current = array($current);
+		}
+		
 		return $object->createPageNavigation($type, $items, $current, $class, $nesting);
 	}
 }
