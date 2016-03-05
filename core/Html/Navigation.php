@@ -17,28 +17,64 @@ class Navigation {
 	/**
 	 * It create page navigation
 	 * 
+	 * @param string $type Menu type
 	 * @param array $items Array of navigation items
-	 * @param array $current Current pages slug
+	 * @param array $currents Current pages slug
 	 * @param array $classes
 	 * @param int $nesting
+	 * @param array $before
+	 * @param array $after
 	 * 
 	 * @return string
 	 */
-	public function createPageNavigation($type, $items, array $current, $classes, $nesting = 0) {
-		$builder = new MenuBuilder();
+	public function createPageNavigation($type, $items, $currents, $classes = '', $nesting = 0, $before = '', $after = '') {
+
+		// filter items
 		foreach ($items as $key => $value) {
 			if($type === $value['menu_type']) {
 				$newItems[] = $items[$key];
+
+				if(isset($items[$key]['type'])) {
+					switch($items[$key]['type']) {
+						case 'absolute':
+							// $newItems[$key];
+							break;
+						case 'app':
+						default:
+							$newItems[$key]['slug'] = DIR . '/' . $value['slug'];
+							break;
+					}
+				}
 			}
+		}
+
+		// add actual app dir to currents slug
+		foreach ($currents as $key => $value) {
+			$currents[$key] = DIR . '/' . $value;
 		}
 
 		if(empty($newItems)) {
 			return false;
 		}
 
+		// print_r($newItems);
+
+		// sort items
 		usort($newItems, [$this, 'sortByPosition']);
 
-		return $builder->getMenuHtml(0, $newItems, DIR.'/', $classes, $current, $nesting);
+		// build menu
+		$builder = new MenuBuilder();
+		$builder->setParams([
+			'root_id' => 0,
+			'items' => $newItems,
+			'currents' => $currents,
+			'classes' => $classes,
+			'before' => $before,
+			'after' => $after,
+			'nesting' => $nesting
+		]);
+
+		return $builder->renderMenu();
 	}
 
 	function sortByPosition($a, $b) {

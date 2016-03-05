@@ -10,7 +10,7 @@ abstract class FView extends AView {
 		$this->frontData = [$menu, $current];
 	}
 
-	public function pageNav($type, $class, $nesting = 0) {
+	public function pageNav($type, $classes, $nesting = 0) {
 		$object = new Navigation();
 		$items = $this->frontData[0]['menu_items'];
 		$current = $this->frontData[1];
@@ -19,6 +19,6 @@ abstract class FView extends AView {
 			$current = array($current);
 		}
 		
-		return $object->createPageNavigation($type, $items, $current, $class, $nesting);
+		return $object->createPageNavigation($type, $items, $current, $classes, $nesting);
 	}
 }

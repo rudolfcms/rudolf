@@ -51,7 +51,7 @@ class ModulesMenu {
 	 * 
 	 * @return int $id
 	 */
-	private function addItem($type, $title, $slug, $pid=0, $admin=true, $cp='', $ps=10, $f='') {
+	private function addItem($type, $title, $slug, $pid=0, $admin=true, $cp='', $ps=10, $f='', $t='') {
 		$id = count($this->items) + 1;
 
 		$this->items[] = [
@@ -62,7 +62,8 @@ class ModulesMenu {
 			'slug' => ($admin) ? $this->dashboardConfig['admin_path'] . '/' . $slug : $slug,
 			'parent_id' => $pid,
 			'caption' => $cp,
-			'position' => $ps
+			'position' => $ps,
+			'type' => (empty($t)) ? 'app' : $t
 		];
 
 		return $id;

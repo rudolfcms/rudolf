@@ -40,7 +40,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function content($truncate = false, $stripTags = false, $escape = fale) {
+	protected function content($truncate = false, $stripTags = false, $escape = false) {
 		$content = $this->article['content'];
 
 		if(true === $stripTags) {

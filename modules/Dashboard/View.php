@@ -9,4 +9,8 @@ class View extends \Rudolf\Modules\A_admin\AdminView {
 
 		$this->template = 'dashboard';
 	}
+
+	public function pageTitle() {
+		
+	}
 }
