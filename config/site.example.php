@@ -12,6 +12,6 @@
 return array (
 	'front_theme' => 'reindeer',
 	'admin_theme' => 'dasher',
-	'general_name' => 'Rudolf → czerwononosy renifer'
+	'general_name' => 'Rudolf → czerwononosy renifer',
 	'debug' => true
 );
