@@ -2,7 +2,8 @@
 
 namespace Rudolf\Modules\A_admin;
 use Rudolf\Abstracts\AView,
-	Rudolf\Html\Navigation;
+	Rudolf\Html\Navigation,
+	Rudolf\Modules\Module;
 
 class AdminView extends AView {
 
@@ -23,6 +24,13 @@ class AdminView extends AView {
 	 * @access private
 	 */
 	private static $active;
+
+	public function __construct() {
+		$module = new Module('dashboard');
+		$this->config = $module->getConfig();
+
+		parent::__construct();
+	}
 
 	/**
 	 * Create page nav
@@ -45,6 +53,10 @@ class AdminView extends AView {
 		}
 		
 		return $object->createPageNavigation($type, $items, $currents, $classes, $nesting, $before, $after);
+	}
+
+	public function adminDir() {
+		return DIR . '/' . $this->config['admin_path'];
 	}
 
 	public function setActive($active) {

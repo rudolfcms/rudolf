@@ -115,6 +115,22 @@ trait Traits {
 		return $date;
 	}
 
+	protected function dateAdded() {
+		return $this->article['added'];
+	}
+
+	protected function addedBy() {
+		return $this->article['added_by'];
+	}
+
+	protected function modifiedBy() {
+		return $this->article['modified_by'];
+	}
+
+	protected function modified() {
+		return $this->article['modified'];
+	}
+
 	/**
 	 * Returns the keywords
 	 * 
@@ -197,6 +213,10 @@ trait Traits {
 		return (bool) $this->article['thumb'];
 	}
 
+	protected function thumb() {
+		return Text::escape($this->article['thumb']);
+	}
+
 	/**
 	 * Return thumbnail code or only address
 	 * 
@@ -239,6 +259,10 @@ trait Traits {
 		return $image;
 	}
 
+	protected function album() {
+		return $this->article['album'];
+	}
+
 	/**
 	 * Return article url
 	 * 
@@ -266,5 +290,9 @@ trait Traits {
 		$address = DIR . '/artykuly/kategorie/'. $this->article['category_url'];
 		
 		return sprintf('<a href="%1$s">%2$s</a>', $address, $this->article['category_title']);
+	}
+
+	protected function isPublished() {
+		return (bool) $this->article['published'];
 	}
 }

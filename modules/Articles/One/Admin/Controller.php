@@ -13,9 +13,19 @@ class Controller extends AdminController {
 
 		$one = $model->getOneById($id);
 
-		$view->setData($one);
+		$view->setDataEdit($one);
 
 		$view->setActive(['admin/articles']);
+
+		$view->render('admin');
+	}
+
+	public function add() {		
+		$view = new View();
+
+		$view->setDataAdd();
+
+		$view->setActive(['admin/articles', 'admin/articles/add']);
 
 		$view->render('admin');
 	}

@@ -57,7 +57,10 @@ $collection->add('article/one', new Routing\Route(
 ));
 */
 
-# /admin/articles/list
+# admin
+############################
+
+
 $collection->add('articles/roll/admin', new Routing\Route(
 	$config['admin_path'] . '/articles/list(/page/<page>)?',
 	'Rudolf\Modules\Articles\Roll\Admin\Controller::getList',
@@ -66,9 +69,14 @@ $collection->add('articles/roll/admin', new Routing\Route(
 ));
 
 
-# /artykuly/2015/09/hello-world
 $collection->add('articles/one/admin/edit', new Routing\Route(
 	$config['admin_path'] . '/articles/edit/<id>$',
 	'Rudolf\Modules\Articles\One\Admin\Controller::edit',
 	['id' => "[1-9][0-9]*"]
+));
+
+
+$collection->add('articles/one/admin/add', new Routing\Route(
+	$config['admin_path'] . '/articles/add$',
+	'Rudolf\Modules\Articles\One\Admin\Controller::add'
 ));
