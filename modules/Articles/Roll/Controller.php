@@ -8,7 +8,7 @@
  * @package Rudolf\Modules\Articles\Roll
  * @version 0.1
  */
- 
+
 namespace Rudolf\Modules\Articles\Roll;
 use Rudolf\Modules\A_front\FController,
 	Rudolf\Modules\Module,

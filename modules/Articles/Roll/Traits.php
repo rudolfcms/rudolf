@@ -1,13 +1,23 @@
 <?php
- 
+/**
+ * This file is part of Rudolf articles module.
+ * 
+ * Articles roll trait
+ * 
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package Rudolf\Modules\Articles\Roll
+ * @version 0.1
+ */
+
 namespace Rudolf\Modules\Articles\Roll;
 use Rudolf\Libs\Pagination,
 	Rudolf\Html\Navigation;
 	
 trait Traits {
-	
+
 
 	public $path;
+
 
 	private $current = -1;
 

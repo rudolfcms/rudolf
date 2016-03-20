@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of Rudolf articles module.
+ * This file is part of Rudolf Articles module.
  *
- * This is the model of articles module.
+ * One article model.
  *
  * @author Mikołaj Pich <m.pich@outlook.com>
  * @package Rudolf\Modules\Articles\One
@@ -10,38 +10,22 @@
  */
  
 namespace Rudolf\Modules\Articles\One;
-use Rudolf\Abstracts\AModel;
+use Rudolf\Modules\Articles;
 
-class Model extends AModel {
+class Model extends Articles\Model {
 
+	/**
+	 * Returns article data based on year, month and slug
+	 * 
+	 * @param int $year
+	 * @param int $month
+	 * @param string $slug
+	 * 
+	 * @return bool|array
+	 */
 	public function getOneByDate($year, $month, $slug) {
-		$stmt = $this->pdo->prepare("SELECT 
-			-- article fields
-			a.id, a.category_id, a.title, a.keywords, a.description, a.content, a.author, 
-			a.added_by, a.date, a.added, a.modified, a.modified_by, a.views, 
-			a.slug, a.album, a.thumb, a.photos, a.published, 
-
-			-- user fields
-			u.first_name, u.surname, 
-
-			m.first_name as 'modified_first_name', m.surname as 'modified_surname', 
-
-			-- category fields
-			c.title as category_title, c.slug as category_url 
-
-			FROM {$this->prefix}articles as a 
-
-			-- user join on added_by id
-			LEFT JOIN {$this->prefix}users as u ON a.added_by=u.id 
-
-			-- user join on modified_by id
-			LEFT JOIN {$this->prefix}users as m ON a.modified_by=m.id
-
-			-- category join on article category_id
-			LEFT JOIN {$this->prefix}categories as c ON a.category_id=c.id 
-
-			WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND a.slug = :slug
-		");
+		$stmt = $this->pdo->prepare($this->queryPart('full') .
+			"WHERE YEAR(article.date) = :year AND MONTH(article.date) = :month AND article.slug = :slug");
 		$stmt->bindValue(':year', $year, \PDO::PARAM_INT);
 		$stmt->bindValue(':month', $month, \PDO::PARAM_INT);
 		$stmt->bindValue(':slug', $slug, \PDO::PARAM_STR);
@@ -55,34 +39,16 @@ class Model extends AModel {
 		return $this->results;
 	}
 
+	/**
+	 * Returns article data based on id
+	 * 
+	 * @param int $id
+	 * 
+	 * @return bool|array
+	 */
 	public function getOneById($id) {
-		$stmt = $this->pdo->prepare("SELECT 
-			-- article fields
-			a.id, a.category_id, a.title, a.keywords, a.description, a.content, a.author, 
-			a.added_by, a.date, a.added, a.modified, a.modified_by, a.views, 
-			a.slug, a.album, a.thumb, a.photos, a.published, 
-
-			-- user fields
-			u.first_name, u.surname, 
-
-			m.first_name as 'modified_first_name', m.surname as 'modified_surname', 
-
-			-- category fields
-			c.title as category_title, c.slug as category_url 
-
-			FROM {$this->prefix}articles as a 
-
-			-- user join on added_by id
-			LEFT JOIN {$this->prefix}users as u ON a.added_by=u.id 
-
-			-- user join on modified_by id
-			LEFT JOIN {$this->prefix}users as m ON a.modified_by=m.id
-
-			-- category join on article category_id
-			LEFT JOIN {$this->prefix}categories as c ON a.category_id=c.id 
-
-			WHERE a.id = :id
-		");
+		$stmt = $this->pdo->prepare($this->queryPart('full') .
+			'WHERE article.id = :id');
 		$stmt->bindValue(':id', $id, \PDO::PARAM_INT);
 		$stmt->execute();
 		$this->results = $stmt->fetch(\PDO::FETCH_ASSOC);

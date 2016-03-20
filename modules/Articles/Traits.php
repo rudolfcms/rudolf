@@ -1,38 +1,89 @@
 <?php
+/**
+ * This file is part of Rudolf articles module.
+ * 
+ * Article trait
+ * 
+ * @author Mikołaj Pich <m.pich@outlook.com>
+ * @package Rudolf\Modules\Articles
+ * @version 0.1
+ */
 
 namespace Rudolf\Modules\Articles;
-
 use Rudolf\Hooks\Hooks,
-	Rudolf\Html\Text;
+	Rudolf\Html\Text,
+	Rudolf\Images\Image;
 
 trait Traits {
 
+	/**
+	 * Returns article ID
+	 * 
+	 * @return int
+	 */
 	protected function id() {
-		return $this->article['id'];
+		return (int) $this->article['id'];
 	}
 
 	/**
-	 * Return article title
+	 * Returns category ID
+	 * 
+	 * @return int
+	 */
+	protected function categoryID() {
+		return (int) $this->article['category_ID'];
+	}
+
+	/**
+	 * Returns article title
+	 * 
+	 * @param string $type null|raw
 	 * 
 	 * @return string
 	 */
-	protected function title($type = 'beautify') {
+	protected function title($type = '') {
 		$title = $this->article['title'];
-
 		if('raw' === $type) {
 			return $title;
 		}
 
-		$title = str_replace(' w ', ' w&nbsp;', $title);
-		$title = str_replace(' i ', ' i&nbsp;', $title);
-		$title = str_replace(' o ', ' o&nbsp;', $title);
-		$title = str_replace(' a ', ' a&nbsp;', $title);
-
-		return $title;
+		return Text::escape($title);
 	}
 
 	/**
-	 * Return article content
+	 * Returns the keywords
+	 * 
+	 * @param string $type null|raw
+	 * 
+	 * @return string
+	 */
+	protected function keywords($type = '') {
+		$keywords = $this->article['keywords'];
+		if('raw' === $type) {
+			return $keywords;
+		}
+
+		return Text::escape($keywords);
+	}
+
+	/**
+	 * Returns the description
+	 * 
+	 * @param string $type
+	 * 
+	 * @return string
+	 */
+	protected function description($type = '') {
+		$description = $this->article['description'];
+		if('raw' === $type) {
+			return $description;
+		}
+
+		return Text::escape($description);
+	}
+
+	/**
+	 * Returns article content
 	 * 
 	 * @param bool|int $truncate
 	 * @param bool $stripTags
@@ -59,7 +110,25 @@ trait Traits {
 	}
 
 	/**
-	 * Return article date
+	 * Returns the author
+	 * 
+	 * @param bool $adder Returns adder name if fields empty
+	 * 
+	 * @return string
+	 */
+	protected function author($adder = true) {
+		$author = $this->article['author'];
+
+		// if fields is empty and $adder is true
+		if(empty($author) and true === $adder) {
+			$author = $this->adderFullName(false);
+		}
+
+		return Text::escape($author);
+	}
+
+	/**
+	 * Returns article date
 	 * 
 	 * @param bool|string $format
 	 * @param string $style normal|locale
@@ -115,75 +184,79 @@ trait Traits {
 		return $date;
 	}
 
-	protected function dateAdded() {
+	/**
+	 * Returns date of article added
+	 * 
+	 * @return string
+	 */
+	protected function added() {
 		return $this->article['added'];
 	}
 
-	protected function addedBy() {
-		return $this->article['added_by'];
-	}
-
-	protected function modifiedBy() {
-		return $this->article['modified_by'];
-	}
-
+	/**
+	 * Returns date of last article modified
+	 * 
+	 * @return string
+	 */
 	protected function modified() {
 		return $this->article['modified'];
 	}
 
 	/**
-	 * Returns the keywords
-	 * 
-	 * @return string
-	 */
-	protected function keywords() {
-		return Text::escape($this->article['keywords']);
-	}
-
-	/**
-	 * Returns the description
-	 * 
-	 * @return string
-	 */
-	protected function description() {
-		return Text::escape($this->article['description']);
-	}
-
-	/**
-	 * Returns the author
-	 * 
-	 * @return string
-	 */
-	protected function author() {
-
-		return ($this->article['author']) ? $this->article['author'] : $this->article['first_name'] . ' ' . $this->article['surname'];
-	}
-
-	/**
-	 * Returns the real author
-	 * 
-	 * @return string
-	 */
-	protected function realAuthor() {
-		return $this->article['author'];
-	}
-
-	/**
-	 * Checks whether the article has a photos
-	 * 
-	 * @return bool
-	 */
-	protected function hasPhotos() {
-		return (bool) $this->article['photos'];
-	}
-
-	/**
-	 * Returns the number of photos
+	 * Returns adder ID
 	 * 
 	 * @return int
 	 */
-	protected function photos() {
-		return (int) $this->article['photos'];
+	protected function adderID() {
+		return (int) $this->article['adder_ID'];
+	}
+
+	/**
+	 * Returns first name and surname of adder
+	 * 
+	 * @param string $type
+	 * 
+	 * @return string
+	 */
+	protected function adderFullName($type = '') {
+		$name = $this->article['adder_first_name'] . ' ' . $this->article['adder_surname'];
+		if('raw' === $type) {
+			return $name;
+		}
+
+		return Text::escape($name);
+	}
+
+	/**
+	 * Returns modifier ID
+	 * 
+	 * @return int
+	 */
+	protected function modifierID() {
+		return (int) $this->article['modifier_ID'];
+	}
+
+	/**
+	 * Returns modifier full name
+	 * 
+	 * @return int
+	 */
+	protected function modifierFullName($type = '') {
+		$name = $this->article['modifier_first_name'] . ' ' . $this->article['modifier_surname'];
+		if('raw' === $type) {
+			return $name;
+		}
+
+		return Text::escape($name);
+	}
+
+	/**
+	 * Checks whether the article has modified
+	 * 
+	 * @return bool
+	 */
+	protected function isModified() {
+		return (bool) $this->article['modified'];
 	}
 
 	/**
@@ -196,12 +269,45 @@ trait Traits {
 	}
 
 	/**
-	 * Checks whether the article has a category
+	 * Returns article slug
 	 * 
-	 * @return bool
+	 * @return string
 	 */
-	protected function hasCategory() {
-		return (bool) $this->article['category_url'];
+	protected function slug() {
+		return $this->article['slug'];
+	}
+
+	/**
+	 * Returns article url
+	 * 
+	 * @return string
+	 */
+	protected function url() {
+		return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
+			DIR,
+			'artykuly',
+			$this->date('Y'),
+			$this->date('m'),
+			$this->article['slug']
+		);
+	}
+
+	/**
+	 * Returns album path
+	 * 
+	 * @return string
+	 */
+	protected function album() {
+		return $this->article['album'];
+	}
+
+	/**
+	 * Returns thumb path
+	 * 
+	 * @return string
+	 */
+	protected function thumb() {
+		return Text::escape($this->article['thumb']);
 	}
 
 	/**
@@ -213,22 +319,17 @@ trait Traits {
 		return (bool) $this->article['thumb'];
 	}
 
-	protected function thumb() {
-		return Text::escape($this->article['thumb']);
-	}
-
 	/**
-	 * Return thumbnail code or only address
+	 * Returns thumbnail code or only address
 	 * 
 	 * @param int $w Image width
 	 * @param int $h Image height
-	 * @param bool $src Set true to get only image address
 	 * @param bool $album Add album address if exists
 	 * @param bool|string $alt Set alternative text
 	 * 
 	 * @return string
 	 */
-	protected function thumbnail($w = false, $h = false, $album = false, $src = false, $alt = false) {
+	protected function thumbnail($w = false, $h = false, $album = false, $alt = false) {
 		$w = ($w) ? $w : ((is_object($this->theme) ? $this->theme->article['thumb']['width'] : 100));
 		$h = ($h) ? $h : ((is_object($this->theme) ? $this->theme->article['thumb']['height'] : 100));
 		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
@@ -243,56 +344,101 @@ trait Traits {
 			}
 		}
 
-		$address = \Rudolf\Images\Image::resize($address, $w, $h);
+		$address = Image::resize($address, $w, $h);
 
-		if(true === $src) {
-			return $address;
-		}
-
-		$image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>', $address, $w, $h, $alt);
+		$image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>',
+			$address,
+			$w,
+			$h,
+			$alt
+		);
 
 		if(true === $album and !empty($this->article['album'])) {
 			$album = Text::escape($this->article['album']);
-			$image = sprintf('<a href="%1$s">%2$s</a>', $album, $image);
+			$image = sprintf('<a href="%1$s">%2$s</a>',
+				$album,
+				$image
+			);
 		}
 
 		return $image;
 	}
 
-	protected function album() {
-		return $this->article['album'];
-	}
-
 	/**
-	 * Return article url
+	 * Returns the number of photos
 	 * 
-	 * @return string
+	 * @return int
 	 */
-	protected function url() {
-		return DIR . '/artykuly/'. $this->date('Y') .'/'. $this->date('m') .'/'. $this->article['slug'];
+	protected function photos() {
+		return (int) $this->article['photos'];
 	}
 
 	/**
-	 * Return article slug
+	 * Checks whether the article has a photos
 	 * 
-	 * @return string
+	 * @return bool
 	 */
-	protected function slug() {
-		return $this->article['slug'];
+	protected function hasPhotos() {
+		return (bool) $this->article['photos'];
 	}
 
 	/**
-	 * Return article category
+	 * Chcecks whether the article is published
+	 * 
+	 * @return bool
+	 */
+	protected function isPublished() {
+		return (bool) $this->article['published'];
+	}
+
+	/**
+	 * Returns article category anchor
 	 * 
 	 * @return string
 	 */
 	protected function category() {
-		$address = DIR . '/artykuly/kategorie/'. $this->article['category_url'];
-		
-		return sprintf('<a href="%1$s">%2$s</a>', $address, $this->article['category_title']);
+		return sprintf('<a href="%1$s">%2$s</a>',
+			$this->categoryUrl(),
+			$this->categoryTitle()
+		);
 	}
 
-	protected function isPublished() {
-		return (bool) $this->article['published'];
+	/**
+	 * Returns category title
+	 * 
+	 * @param string $type
+	 * 
+	 * @return string
+	 */
+	protected function categoryTitle($type = '') {
+		$title = $this->article['category_title'];
+
+		if('raw' === $type) {
+			return $title;
+		}
+
+		return Text::escape($title);
+	}
+
+	/**
+	 * Returns category url
+	 * 
+	 * @return string
+	 */
+	protected function categoryUrl() {
+		return sprintf('%1$s/%2$s/%3$s',
+			DIR,
+			'artykuly/kategorie',
+			Text::escape($this->article['category_url'])
+		);
+	}
+
+	/**
+	 * Checks whether the article has a category
+	 * 
+	 * @return bool
+	 */
+	protected function hasCategory() {
+		return (bool) $this->article['category_url'];
 	}
 }

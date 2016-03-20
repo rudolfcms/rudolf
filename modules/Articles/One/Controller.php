@@ -1,19 +1,20 @@
 <?php
 /**
- * This file is part of Rudolf articles module.
+ * This file is part of Rudolf Articles module.
  * 
- * This is the controller of articles module.
+ * One article controller.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
  * @package Rudolf\Modules\Articles\One
  * @version 0.1
  */
- 
+
 namespace Rudolf\Modules\Articles\One;
 use Rudolf\Modules\A_front\FController,
 	Rudolf\Http\HttpErrorException;
 
 class Controller extends FController {
+
 	/**
 	 * Get one article
 	 * 
@@ -26,12 +27,12 @@ class Controller extends FController {
 	public function getOne($year, $month, $slug) {
 		$model = new Model();
 		$view = new View();
-		
+
 		$results = $model->getOneByDate($year, $month, $slug);
 		if(false === $results) {
 			throw new HttpErrorException('No article found (error 404)', 404);
 		}
-		
+
 		$model->addView();
 
 		$view->setData($results);

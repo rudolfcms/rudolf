@@ -2,7 +2,7 @@
 /**
  * This file is part of Rudolf articles module.
  *
- * This is the model of articles module.
+ * One article view.
  *
  * @author Mikołaj Pich <m.pich@outlook.com>
  * @package Rudolf\Modules\Articles\One
@@ -31,7 +31,6 @@ class View extends FView {
 		$this->article = $article;
 
 		$this->head->setTitle($this->title());
-
 		$this->template = (isset($article['template'])) ? $article['template'] : 'article-once';
 	}
 }
