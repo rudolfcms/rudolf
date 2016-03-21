@@ -40,6 +40,15 @@ class AlertsCollection {
 	}
 
 	/**
+	 * Checks whether were any alert
+	 * 
+	 * @return bool
+	 */
+	public static function isAlerts() {
+		return (bool) !empty(self::$collection);
+	}
+
+	/**
 	 * Get all alerts
 	 * 
 	 * @return Alert array
