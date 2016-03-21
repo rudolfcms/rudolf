@@ -3,7 +3,8 @@
 namespace Rudolf\Modules\A_admin;
 use Rudolf\Abstracts\AView,
 	Rudolf\Html\Navigation,
-	Rudolf\Modules\Module;
+	Rudolf\Modules\Module,
+	Rudolf\Alerts\AlertsCollection;
 
 class AdminView extends AView {
 
@@ -121,5 +122,50 @@ class AdminView extends AView {
 	 */
 	protected function getUserRegisterDate() {
 		return self::$userInfo['dt'];
+	}
+
+	/**
+	 * Get all alerts
+	 * 
+	 * @param array
+	 */
+	protected function alerts($classes = []) {
+		if(!AlertsCollection::isAlerts()) {
+			return false;
+		}
+
+		$classes = array_merge([
+			'danger' => 'danger',
+			'error' => 'error',
+			'warning' => 'warning',
+			'success' => 'success',
+			'info' => 'info'
+		], $classes);
+
+		$a = AlertsCollection::getAll();
+
+		foreach ($a as $key => $alert) {
+			$html[] = $this->alert($alert->getType(), $alert->getMessage(), $classes);
+		}
+
+		return implode("\n", $html);
+	}
+
+	/**
+	 * Get code for one alert
+	 * 
+	 * @param string $type
+	 * @param string $message
+	 * @param array $classes
+	 * 
+	 * @return string
+	 */
+	protected function alert($type, $message, $classes = '') {
+		$html[] = sprintf('<div class="alert alert-%1$s %1$s">', $classes[$type]);
+		$html[] = '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+        $html[] = sprintf('<strong>%1$s!</strong> %2$s', ucfirst($type), $message);
+        $html[] = '</div>';
+
+        return implode('', $html);
 	}
 }
