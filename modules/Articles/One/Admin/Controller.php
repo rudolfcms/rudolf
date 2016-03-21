@@ -7,16 +7,20 @@ use Rudolf\Modules\A_admin\AdminController,
 class Controller extends AdminController {
 	
 	public function edit($id) {
-		$model = new One\Model();
-		
-		$view = new View();
+		$editModel = new Model();
 
+		// if data was send
+		if(isset($_POST['update'])) {
+			$editModel->update($_POST, $id);
+		}
+
+		$model = new One\Model();
+		$view = new View();
+		
 		$one = $model->getOneById($id);
 
 		$view->setDataEdit($one);
-
 		$view->setActive(['admin/articles']);
-
 		$view->render('admin');
 	}
 
