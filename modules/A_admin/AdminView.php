@@ -55,6 +55,10 @@ class AdminView extends AView {
 		return $object->createPageNavigation($type, $items, $currents, $classes, $nesting, $before, $after);
 	}
 
+	protected function pageTitle() {
+		return $this->pageTitle;
+	}
+
 	public function adminDir() {
 		return DIR . '/' . $this->config['admin_path'];
 	}

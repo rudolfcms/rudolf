@@ -2,7 +2,7 @@
 /**
  * This file is part of Rudolf articles module.
  * 
- * Articles roll trait
+ * Articles roll
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
  * @package Rudolf\Modules\Articles\Roll
@@ -10,16 +10,39 @@
  */
 
 namespace Rudolf\Modules\Articles\Roll;
-use Rudolf\Libs\Pagination,
+use Rudolf\Modules\Articles\One\Article,
+	Rudolf\Libs\Pagination,
 	Rudolf\Html\Navigation;
 	
-trait Traits {
+class Roll {
 
+	/**
+	 * @var string
+	 */
+	protected $path;
 
-	public $path;
+	/**
+	 * @var int
+	 */
+	protected $current = -1;
 
+	/**
+	 * @var array
+	 */
+	protected $data;
 
-	private $current = -1;
+	/**
+	 * Constructor
+	 * 
+	 * @param array $data
+	 * @param Pagination $pagination
+	 * @param string $path
+	 */
+	public function __construct($data, $pagination, $path = '') {
+		$this->data = $data;
+		$this->pagination = $pagination;
+		$this->path = $path;
+	}
 
 	/**
 	 * Chech, is any articles to display
@@ -58,7 +81,10 @@ trait Traits {
 	 */
 	public function article() {
 		$this->current += 1;
-		$this->article = $this->data[$this->current];
+		$article = new Article();
+		$article->setData($this->data[$this->current]);
+
+		return $article;
 	}
 
 	/**

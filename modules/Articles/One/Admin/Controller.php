@@ -27,7 +27,14 @@ class Controller extends AdminController {
 	public function add() {		
 		$view = new View();
 
-		$view->setDataAdd();
+		$article = null;
+
+		// if data was send
+		if(isset($_POST['add'])) {
+			
+		}
+
+		$view->setDataAdd($_POST);
 
 		$view->setActive(['admin/articles', 'admin/articles/add']);
 

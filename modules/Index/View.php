@@ -7,9 +7,7 @@ use Rudolf\Modules\Articles,
 class View extends Articles\Roll\View {
 	
 	public function setData($data, Pagination $pagination) {
-		$this->data = $data;
-
-		$this->pagination = $pagination;
+		$this->rollView($data, $pagination);
 
 		$page = $pagination->getPageNumber();
 		$allPages = $pagination->getAllPages();

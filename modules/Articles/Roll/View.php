@@ -10,16 +10,12 @@
  */
  
 namespace Rudolf\Modules\Articles\Roll;
-use Rudolf\Modules\A_front\FView,
-	Rudolf\Modules\Articles\Traits as Article;
+use Rudolf\Modules\A_front\FView;
 
 class View extends FView {
-	use Article, Traits;
 
-	public function rollView($data, Pagination $pagination) {
-		$this->data = $data;
-
-		$this->pagination = $pagination;
+	public function rollView($data, $pagination) {
+		$this->roll = new Roll($data, $pagination);
 
 		$this->template = 'index';
 	}

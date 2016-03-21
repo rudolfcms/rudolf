@@ -8,29 +8,22 @@
  * @package Rudolf\Modules\Articles\One
  * @version 0.1
  */
- 
+
 namespace Rudolf\Modules\Articles\One;
-use Rudolf\Modules\A_front\FView,
-	Rudolf\Modules\Articles\Traits;
+use Rudolf\Modules\A_front\FView;
 
 class View extends FView {
-	
-	use Traits;
-
-	/**
-	 * @var array
-	 */
-	protected $article;
 
 	/**
 	 * Set articles data
 	 * 
-	 * @param array $article
+	 * @param array $data
 	 */
-	public function setData($article) {
-		$this->article = $article;
+	public function setData($data) {
+		$this->article = new Article($data);
 
-		$this->head->setTitle($this->title());
-		$this->template = (isset($article['template'])) ? $article['template'] : 'article-once';
+		$this->head->setTitle($this->article->title());
+
+		$this->template = (isset($data['template'])) ? $data['template'] : 'article-once';
 	}
 }

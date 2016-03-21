@@ -2,26 +2,81 @@
 /**
  * This file is part of Rudolf articles module.
  * 
- * Article trait
+ * Article
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Modules\Articles
+ * @package Rudolf\Modules\Articles\One
  * @version 0.1
  */
 
-namespace Rudolf\Modules\Articles;
+namespace Rudolf\Modules\Articles\One;
 use Rudolf\Hooks\Hooks,
 	Rudolf\Html\Text,
 	Rudolf\Images\Image;
 
-trait Traits {
+class Article {
+
+	/**
+	 * @var array Article data
+	 */
+	protected $article;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param array $article
+	 */
+	public function __construct($article = array()) {
+		$this->setData($article);
+	}
+
+	/**
+	 * Set article data
+	 * 
+	 * @param array $article
+	 */
+	public function setData($article) {
+		$this->article = array_merge(
+			[
+				'id' => 0,
+				'category_ID' => 0,
+				'title' => '',
+				'keywords' => '',
+				'description' => '',
+				'content' => '',
+				'author' => '',
+				'author' => '',
+				'date' => '',
+				'added' => '',
+				'modified' => '',
+				'adder_ID' => 0,
+				'adder_first_name' => '',
+				'adder_surname' => '',
+				'modifier_ID' => 0,
+				'modifier_first_name' => '',
+				'modifier_surname' => '',
+				'views' => 0,
+				'slug' => '',
+				'url' => '',
+				'album' => '',
+				'thumb' => '',
+				'thumbnail' => '',
+				'photos' => '',
+				'published' => false,
+				'category' => '',
+				'category_title' => '',
+				'category_url' => '',
+			],
+			(array) $article
+		);
+	}
 
 	/**
 	 * Returns article ID
 	 * 
 	 * @return int
 	 */
-	protected function id() {
+	public function id() {
 		return (int) $this->article['id'];
 	}
 
@@ -30,7 +85,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function categoryID() {
+	public function categoryID() {
 		return (int) $this->article['category_ID'];
 	}
 
@@ -41,7 +96,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function title($type = '') {
+	public function title($type = '') {
 		$title = $this->article['title'];
 		if('raw' === $type) {
 			return $title;
@@ -57,7 +112,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function keywords($type = '') {
+	public function keywords($type = '') {
 		$keywords = $this->article['keywords'];
 		if('raw' === $type) {
 			return $keywords;
@@ -73,7 +128,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function description($type = '') {
+	public function description($type = '') {
 		$description = $this->article['description'];
 		if('raw' === $type) {
 			return $description;
@@ -91,7 +146,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function content($truncate = false, $stripTags = false, $escape = false) {
+	public function content($truncate = false, $stripTags = false, $escape = false) {
 		$content = $this->article['content'];
 
 		if(true === $stripTags) {
@@ -116,7 +171,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function author($adder = true) {
+	public function author($adder = true) {
 		$author = $this->article['author'];
 
 		// if fields is empty and $adder is true
@@ -133,29 +188,25 @@ trait Traits {
 	 * @param bool|string $format
 	 * @param string $style normal|locale
 	 * 
-	 * @return string
+	 * @return string If date field empty, return current date
 	 */
-	protected function date($format = false, $style = 'normal', $inflected = true) {
+	public function date($format = false, $style = 'normal', $inflected = true) {
+		$date = $this->article['date'];
+
+		if(empty($date)) {
+			$date = date('Y-m-d H:i:s');
+		}
+
 		switch ($style) {
 			case 'locale': // http://php.net/manual/en/function.strftime.php
-					if(is_object($this->theme)) {
-						$locale = $this->theme->article['date']['default']['locale'];
-					} else {$locale = null;}
-				$format = (!$format) ? ((isset($locale)) ? $locale : '%D') : $format;
-				$date = strftime($format, strtotime($this->article['date']));
+				$format = ($format) ? $format : '%D';
+				$date = strftime($format, strtotime($date));
 				break;
 			
 			default: // http://php.net/manual/en/datetime.formats.date.php
-					if(is_object($this->theme)) {
-						$normal = $this->theme->article['date']['default']['normal'];
-					} else {$normal = null;}
-				$format = (!$format) ? ((isset($normal)) ? $normal : 'Y-m-d H:i:s') : $format;
-				$date = date_format(date_create($this->article['date']), $format);
+				$format = ($format) ? $format : 'Y-m-d H:i:s';
+				$date = date_format(date_create($date), $format);
 				break;
-		}
-
-		if(empty($this->article['date'])) {
-			return false;
 		}
 		
 		$date = Hooks::apply_filters('date_format_filter', $date);
@@ -189,7 +240,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function added() {
+	public function added() {
 		return $this->article['added'];
 	}
 
@@ -198,7 +249,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function modified() {
+	public function modified() {
 		return $this->article['modified'];
 	}
 
@@ -207,7 +258,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function adderID() {
+	public function adderID() {
 		return (int) $this->article['adder_ID'];
 	}
 
@@ -218,8 +269,8 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function adderFullName($type = '') {
-		$name = $this->article['adder_first_name'] . ' ' . $this->article['adder_surname'];
+	public function adderFullName($type = '') {
+		$name = trim($this->article['adder_first_name'] . ' ' . $this->article['adder_surname']);
 		if('raw' === $type) {
 			return $name;
 		}
@@ -232,7 +283,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function modifierID() {
+	public function modifierID() {
 		return (int) $this->article['modifier_ID'];
 	}
 
@@ -241,7 +292,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function modifierFullName($type = '') {
+	public function modifierFullName($type = '') {
 		$name = $this->article['modifier_first_name'] . ' ' . $this->article['modifier_surname'];
 		if('raw' === $type) {
 			return $name;
@@ -255,7 +306,7 @@ trait Traits {
 	 * 
 	 * @return bool
 	 */
-	protected function isModified() {
+	public function isModified() {
 		return (bool) $this->article['modified'];
 	}
 
@@ -264,7 +315,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function views() {
+	public function views() {
 		return (int) $this->article['views'];
 	}
 
@@ -273,7 +324,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function slug() {
+	public function slug() {
 		return $this->article['slug'];
 	}
 
@@ -282,7 +333,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function url() {
+	public function url() {
 		return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
 			DIR,
 			'artykuly',
@@ -297,8 +348,8 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function album() {
-		return $this->article['album'];
+	public function album() {
+		return Text::escape($this->article['album']);
 	}
 
 	/**
@@ -306,7 +357,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function thumb() {
+	public function thumb() {
 		return Text::escape($this->article['thumb']);
 	}
 
@@ -315,50 +366,42 @@ trait Traits {
 	 * 
 	 * @return bool
 	 */
-	protected function hasThumbnail() {
+	public function hasThumbnail() {
 		return (bool) $this->article['thumb'];
 	}
 
 	/**
 	 * Returns thumbnail code or only address
 	 * 
-	 * @param int $w Image width
-	 * @param int $h Image height
+	 * @param int $width Image width
+	 * @param int $height Image height
 	 * @param bool $album Add album address if exists
-	 * @param bool|string $alt Set alternative text
+	 * @param string $alt Set alternative text
+	 * @param string $default Default thumb path. It use when thumb path is empty
 	 * 
 	 * @return string
 	 */
-	protected function thumbnail($w = false, $h = false, $album = false, $alt = false) {
-		$w = ($w) ? $w : ((is_object($this->theme) ? $this->theme->article['thumb']['width'] : 100));
-		$h = ($h) ? $h : ((is_object($this->theme) ? $this->theme->article['thumb']['height'] : 100));
-		$alt = ($alt) ? $alt : Text::escape($this->title('raw'));
+	public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '') {
+		$path = $this->thumb();
+		$alt = ($alt) ? $alt : $this->title('raw');
 
-		$address = Text::escape($this->article['thumb']);
-
-		if(is_object($this->theme)) {
-			if(!$this->hasThumbnail() and $image = $this->theme->article['thumb']['default']) {
-				$address = $this->themePath .'/'. $image;
-			} elseif(!$this->hasThumbnail()) {
+		if(!$this->hasThumbnail()) {
+			if(!empty($default)) {
+				$path = $default;
+			} else {
 				return false;
 			}
 		}
 
-		$address = Image::resize($address, $w, $h);
+		$path = Image::resize($path, $width, $height);
 
 		$image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>',
-			$address,
-			$w,
-			$h,
-			$alt
+			$path, $width, $height, $alt
 		);
 
-		if(true === $album and !empty($this->article['album'])) {
-			$album = Text::escape($this->article['album']);
-			$image = sprintf('<a href="%1$s">%2$s</a>',
-				$album,
-				$image
-			);
+		if(true === $album and !empty($this->album())) {
+			$album = $this->album();
+			$image = sprintf('<a href="%1$s">%2$s</a>', $album, $image);
 		}
 
 		return $image;
@@ -369,7 +412,7 @@ trait Traits {
 	 * 
 	 * @return int
 	 */
-	protected function photos() {
+	public function photos() {
 		return (int) $this->article['photos'];
 	}
 
@@ -378,7 +421,7 @@ trait Traits {
 	 * 
 	 * @return bool
 	 */
-	protected function hasPhotos() {
+	public function hasPhotos() {
 		return (bool) $this->article['photos'];
 	}
 
@@ -387,7 +430,7 @@ trait Traits {
 	 * 
 	 * @return bool
 	 */
-	protected function isPublished() {
+	public function isPublished() {
 		return (bool) $this->article['published'];
 	}
 
@@ -396,7 +439,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function category() {
+	public function category() {
 		return sprintf('<a href="%1$s">%2$s</a>',
 			$this->categoryUrl(),
 			$this->categoryTitle()
@@ -410,7 +453,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function categoryTitle($type = '') {
+	public function categoryTitle($type = '') {
 		$title = $this->article['category_title'];
 
 		if('raw' === $type) {
@@ -425,7 +468,7 @@ trait Traits {
 	 * 
 	 * @return string
 	 */
-	protected function categoryUrl() {
+	public function categoryUrl() {
 		return sprintf('%1$s/%2$s/%3$s',
 			DIR,
 			'artykuly/kategorie',
@@ -438,7 +481,7 @@ trait Traits {
 	 * 
 	 * @return bool
 	 */
-	protected function hasCategory() {
+	public function hasCategory() {
 		return (bool) $this->article['category_url'];
 	}
 }

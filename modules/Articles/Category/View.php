@@ -10,18 +10,15 @@
  */
  
 namespace Rudolf\Modules\Articles\Category;
-use Rudolf\Modules\Articles\Roll,
-	Rudolf\Libs\Pagination;
+use Rudolf\Modules\A_front\FView,
+	Rudolf\Modules\Articles\Roll;
 
-class View extends Roll\View {
+class View extends FView {
 
-	// $info = false; to compatible with ArticlesListView
-	public function setData($data, Pagination $pagination, $info = false) {
-		$this->data = $data;
+	public function setData($data, $pagination, $info = false) {
+		$this->roll = new Roll\Roll($data, $pagination, '/artykuly/kategorie/'. $info['slug']);
 		
 		$this->categoryInfo = $info;
-
-		$this->pagination = $pagination;
 
 		$page = $pagination->getPageNumber();
 		$allPages = $pagination->getAllPages();
@@ -33,8 +30,6 @@ class View extends Roll\View {
 		}
 
 		$this->head->setTitle($titleBefore . $this->categoryTitle(true));
-
-		$this->path = '/artykuly/kategorie/'. $info['slug'];
 
 		$this->template = (isset($data['template'])) ? $data['template'] : 'category';
 	}
