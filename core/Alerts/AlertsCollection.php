@@ -7,7 +7,7 @@ class AlertsCollection {
 	/**
 	 * @var array
 	 */
-	private $collection;
+	private static $collection;
 
 	/**
 	 * Add alert to collection
@@ -16,8 +16,8 @@ class AlertsCollection {
 	 * 
 	 * @return void
 	 */
-	public function add(Rudolf\Alerts\Alert $alert) {
-		$this->collection[] = $alert;
+	public static function add(\Rudolf\Alerts\Alert $alert) {
+		self::$collection[] = $alert;
 	}
 
 	/**
@@ -27,10 +27,10 @@ class AlertsCollection {
 	 * 
 	 * @return Alert array
 	 */
-	public function getByType($type) {
-		$collection = $this->collection;
+	public static function getByType($type) {
+		$collection = self::$collection;
 
-		foreach ($this->collection as $key => $value) {
+		foreach (self::$collection as $key => $value) {
 			if($type === $value->getType()) {
 				$newCollection[] = $value;
 			}
@@ -44,7 +44,7 @@ class AlertsCollection {
 	 * 
 	 * @return Alert array
 	 */
-	public function getAll() {
-		return $this->collection;
+	public static function getAll() {
+		return self::$collection;
 	}
 }
