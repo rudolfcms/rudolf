@@ -2,42 +2,47 @@
 
 namespace Rudolf\Modules\Articles\One\Admin;
 use Rudolf\Modules\A_admin\AdminController,
-	Rudolf\Modules\Articles\One;
+	Rudolf\Modules\Articles\One,
+	Rudolf\Http\Response;
 
 class Controller extends AdminController {
 	
 	public function edit($id) {
-		$editModel = new Model();
+		$model = new Model();
 
 		// if data was send
 		if(isset($_POST['update'])) {
-			$editModel->update($_POST, $id);
+			$model->update($_POST, $id);
 		}
 
-		$model = new One\Model();
-		$view = new View();
+		$one = new One\Model();
+		$article = $one->getOneById($id);
 		
-		$one = $model->getOneById($id);
-
-		$view->setDataEdit($one);
+		$view = new View();
+		$view->editArticle($article);
 		$view->setActive(['admin/articles']);
 		$view->render('admin');
 	}
 
-	public function add() {		
-		$view = new View();
-
-		$article = null;
+	public function add() {
+		$model = new Model();
 
 		// if data was send
 		if(isset($_POST['add'])) {
-			
+			$id = $model->add($_POST);
+
+			if($id) {
+				$location = DIR . '/admin/articles/edit/' . $id;
+				$response = new Response('', 301);
+				$response->setHeader(['Location', $location]);
+				$response->send();
+				exit();
+			}
 		}
 
-		$view->setDataAdd($_POST);
-
+		$view = new View();
+		$view->addArticle($_POST);
 		$view->setActive(['admin/articles', 'admin/articles/add']);
-
 		$view->render('admin');
 	}
 }

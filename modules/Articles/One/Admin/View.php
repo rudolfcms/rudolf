@@ -11,7 +11,7 @@ class View extends AdminView {
 	 * 
 	 * @param array $article
 	 */
-	public function setDataEdit($article) {
+	public function editArticle($article) {
 		$this->article = new AArticle($article);
 
 		$this->pageTitle = _('Edit article');
@@ -31,7 +31,7 @@ class View extends AdminView {
 	 * 
 	 * @return void
 	 */
-	public function setDataAdd($article) {
+	public function addArticle($article) {
 		$this->article = new AArticle($article);
 
 		$this->pageTitle = _('Add article');
