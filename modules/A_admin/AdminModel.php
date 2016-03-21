@@ -6,13 +6,18 @@ use Rudolf\Abstracts\AModel,
 
 class AdminModel extends AModel {
 
+	protected static $auth;
+
 	/**
 	 * Returns Auth object 
 	 * 
 	 * @return Auth
 	 */
 	public function getAuth() {
-		return new Auth($this->pdo, $this->prefix);
+		if(empty(self::$auth)) {
+			self::$auth = new Auth($this->pdo, $this->prefix);
+		}
+		return self::$auth;
 	}
 
 	/**
