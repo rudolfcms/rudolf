@@ -1,5 +1,7 @@
 <?php
 
+namespace Rudolf\Forms;
+
 class AdminFields {
 	
 	/**
