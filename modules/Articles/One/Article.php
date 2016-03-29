@@ -325,7 +325,7 @@ class Article {
 	 * @return string
 	 */
 	public function slug() {
-		return $this->article['slug'];
+		return Text::escape($this->article['slug']);
 	}
 
 	/**
@@ -339,7 +339,7 @@ class Article {
 			'artykuly',
 			$this->date('Y'),
 			$this->date('m'),
-			$this->article['slug']
+			$this->slug()
 		);
 	}
 
