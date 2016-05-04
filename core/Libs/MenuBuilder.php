@@ -235,7 +235,8 @@ class MenuBuilder {
 		$nesting = $this->getNesting();
 
 		foreach ($items as $item) {
-			$children[$item['parent_id']][] = $item;
+			if(isset($item['parent_id']))
+				$children[$item['parent_id']][] = $item;
 		}
 		
 		// loop will be false if the root has no children (i.e., an empty menu!)

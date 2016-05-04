@@ -78,6 +78,7 @@ class Navigation {
 	}
 
 	function sortByPosition($a, $b) {
+		if(isset($a['position']) and isset($b['position']))
 	    return $a['position'] - $b['position'];
 	}
 
