@@ -25,3 +25,11 @@ $collection->add('koxy', new Routing\Route(
 	),
 	$config['priority']
 ));
+
+$collection->add('koxy/vote', new Routing\Route(
+	'ajax/koxy/vote/<type>',
+	'Rudolf\Modules\Koxy\Controller::vote',
+	array(
+		'name' => "[a-z]+"
+	)
+));
