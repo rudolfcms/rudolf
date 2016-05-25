@@ -10,8 +10,8 @@
  */
 
 return array (
-	'front_theme' => 'reindeer',
-	'admin_theme' => 'dasher',
-	'general_name' => 'Rudolf → czerwononosy renifer',
-	'debug' => true
+	'front_theme' => 'front_theme_value',
+	'admin_theme' => 'admin_theme_value',
+	'general_name' => 'general_name_value',
+	'debug' => debug_value
 );

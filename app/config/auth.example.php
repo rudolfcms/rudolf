@@ -10,6 +10,6 @@
  */
 
 return array (
-	'site_key' => '*S<u^p_ehNUhrPki}AuoB.q&\R6&Fu',
+	'site_key' => 'site_key_value',
 	'session_expire' => '+1 month'
 );
