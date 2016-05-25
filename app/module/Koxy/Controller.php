@@ -2,10 +2,9 @@
 
 namespace Rudolf\Modules\Koxy;
 use Rudolf\Modules\A_front\FController,
-	Rudolf\Http\HttpErrorException,
-	Rudolf\Modules\Koxy,
-	Rudolf\Libs\Pagination,
-	Rudolf\Modules\Module;
+	Rudolf\Component\Http\HttpErrorException,
+	Rudolf\Component\Libs\Pagination,
+	Rudolf\Component\Modules\Module;
 
 class Controller extends FController {
 

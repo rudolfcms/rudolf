@@ -1,10 +1,12 @@
 <?php
 
 namespace Rudolf\Modules\Koxy;
-use Rudolf\Abstracts\AModel,
-	Rudolf\Libs\Pagination;
+use Rudolf\Component\Abstracts\AModel,
+	Rudolf\Component\Libs\Pagination;
 
 class Model extends AModel {
+
+	private $web_root = WEB_ROOT;
 
 	private $extension = 'png';
 
@@ -25,7 +27,7 @@ class Model extends AModel {
 		}
 
 		foreach ($array as $key => $value) {
-			$a[]['path'] = str_replace(ROOT, '', $value);
+			$a[]['path'] = str_replace($this->web_root, '', $value);
 		}
 
 		if($orderBy[1] === 'DESC') {
@@ -36,7 +38,7 @@ class Model extends AModel {
 
 		foreach ($a as $key => $value) {
 			$file = UPLOADS_ROOT . str_replace('.'.$this->extension, '.txt', $value['path']);
-			$file = str_replace('uploads/uploads/moments', 'uploads/moments-db', $file);
+			$file = str_replace('content/uploads/moments', 'moments-db', $file);
 
 			if(file_exists($file)) {
 				$content = file_get_contents($file);

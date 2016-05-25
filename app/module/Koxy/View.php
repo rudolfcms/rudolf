@@ -2,8 +2,8 @@
 
 namespace Rudolf\Modules\Koxy;
 use Rudolf\Modules\A_front\FView,
-	Rudolf\Libs\Pagination,
-	Rudolf\Html\Navigation;
+	Rudolf\Component\Libs\Pagination,
+	Rudolf\Component\Html\Navigation;
 
 class View extends FView {
 	use Traits;
