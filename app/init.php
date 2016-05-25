@@ -39,7 +39,7 @@ define('ENV', $config['debug']);
 $name = 'rudolf';
 setlocale(LC_ALL,'pl_PL.UTF8');
 //setlocale(LC_ALL,'en_US.UTF8');
-bindtextdomain($name,'./locale');
+bindtextdomain($name, APP_ROOT . '/locale');
 textdomain($name);
 
 // load functions to log or disply errors

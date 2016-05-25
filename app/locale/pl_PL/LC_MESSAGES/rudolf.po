@@ -18,62 +18,57 @@ msgstr ""
 "Language: pl_PL\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Code"
-msgstr "Kod"
-
-#: ../../../core/Http/ResponseMessages.php:10
+#: app/component/Http/ResponseMessages.php:26
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: ../../../core/Http/ResponseMessages.php:11
+#: app/component/Http/ResponseMessages.php:27
 msgid ""
 "The request has been completed and the rest of the process can continue."
 msgstr "Prośba o dalsze wysyłanie zapytania"
 
-#: ../../../core/Http/ResponseMessages.php:14
+#: app/component/Http/ResponseMessages.php:30
 msgid "Switching Protocols"
 msgstr "Zmiana protokołu"
 
-#: ../../../core/Http/ResponseMessages.php:15
+#: app/component/Http/ResponseMessages.php:31
 msgid ""
 "When requesting a page, a browser might receive a statis code of 101, "
 "followed by an \"Upgrade\" header showing that the server is changing to a "
 "different version of HTTP."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:18
+#: app/component/Http/ResponseMessages.php:34
 msgid "OK"
 msgstr "OK"
 
-#: ../../../core/Http/ResponseMessages.php:19
+#: app/component/Http/ResponseMessages.php:35
 msgid "Standard response for HTTP successful requests."
 msgstr "Pomyślnie zrealizowano żądanie"
 
-#: ../../../core/Http/ResponseMessages.php:22
+#: app/component/Http/ResponseMessages.php:38
 msgid "Created"
 msgstr "Utworzono"
 
-#: ../../../core/Http/ResponseMessages.php:23
+#: app/component/Http/ResponseMessages.php:39
 msgid ""
 "When new pages are created by posted form data or by a CGI process, this is "
 "confirmation that it worked."
 msgstr "Wysłany dokument został zapisany na serwerze"
 
-#: ../../../core/Http/ResponseMessages.php:26
+#: app/component/Http/ResponseMessages.php:42
 msgid "Accepted"
 msgstr "Przyjęto"
 
-#: ../../../core/Http/ResponseMessages.php:27
+#: app/component/Http/ResponseMessages.php:43
 msgid "The client's request was accepted, though not yet processed."
-msgstr ""
-"Zapytanie zostało przyjęte do obsłużenia, lecz jego zrealizowanie jeszcze "
-"się nie skończyło"
+msgstr "Zapytanie zostało przyjęte do obsłużenia, lecz jego zrealizowanie jeszcze"
 
-#: ../../../core/Http/ResponseMessages.php:30
+#: app/component/Http/ResponseMessages.php:46
 msgid "Non-Authoritative Information"
 msgstr "Informacja nieautorytatywna"
 
-#: ../../../core/Http/ResponseMessages.php:31
+#: app/component/Http/ResponseMessages.php:47
 msgid ""
 "The information contained in the entity header is not from the original "
 "site, but from a third party server."
@@ -81,32 +76,32 @@ msgstr ""
 "Zwrócona informacja nie odpowiada dokładnie odpowiedzi pierwotnego serwera, "
 "lecz została utworzona z lokalnych bądź zewnętrznych kopii."
 
-#: ../../../core/Http/ResponseMessages.php:34
+#: app/component/Http/ResponseMessages.php:50
 msgid "No Content"
 msgstr "Brak zawartości"
 
-#: ../../../core/Http/ResponseMessages.php:35
+#: app/component/Http/ResponseMessages.php:51
 msgid ""
 "If you click a link which has no target URL, this response is elicited by "
 "the server. It's silent and doesn't warn the user about anything."
 msgstr ""
 "Serwer zrealizował zapytanie klienta i nie potrzebuje zwracać żadnej treści"
 
-#: ../../../core/Http/ResponseMessages.php:38
+#: app/component/Http/ResponseMessages.php:54
 msgid "Reset Content"
 msgstr "Przywróć zawartość"
 
-#: ../../../core/Http/ResponseMessages.php:39
+#: app/component/Http/ResponseMessages.php:55
 msgid "This allows the server to reset any content returned by a CGI."
 msgstr ""
 "Serwer zrealizował zapytanie i klient powinien przywrócić pierwotny wygląd "
 "dokumentu"
 
-#: ../../../core/Http/ResponseMessages.php:42
+#: app/component/Http/ResponseMessages.php:58
 msgid "Partial Content"
 msgstr "Część zawartości"
 
-#: ../../../core/Http/ResponseMessages.php:43
+#: app/component/Http/ResponseMessages.php:59
 msgid ""
 "The requested file wasn't downloaded entirely. This is returned when the "
 "user presses the stop button before a page is loaded, for example."
@@ -114,11 +109,11 @@ msgstr ""
 "Serwer zrealizował tylko część zapytania typu GET, odpowiedź musi zawierać "
 "nagłówek Range informujący o zakresie bajtowym zwróconego elementu."
 
-#: ../../../core/Http/ResponseMessages.php:46
+#: app/component/Http/ResponseMessages.php:62
 msgid "Multiple Choices"
 msgstr "Wiele możliwości"
 
-#: ../../../core/Http/ResponseMessages.php:47
+#: app/component/Http/ResponseMessages.php:63
 msgid ""
 "The requested address refers to more than one file. Depending on how the "
 "server is configured, you get an error or a choice of which page you want."
@@ -127,11 +122,11 @@ msgstr ""
 "podać adres zasobu, który pozwala na wybór jednoznacznego zapytania spośród "
 "możliwych."
 
-#: ../../../core/Http/ResponseMessages.php:50
+#: app/component/Http/ResponseMessages.php:66
 msgid "Moved Permanently"
 msgstr "Trwale przeniesiony"
 
-#: ../../../core/Http/ResponseMessages.php:51
+#: app/component/Http/ResponseMessages.php:67
 msgid ""
 "If the server is set up properly it will automatically redirect the reader "
 "to the new location of the file."
@@ -139,11 +134,11 @@ msgstr ""
 "Żądany zasób zmienił swój URI i w przyszłości zasób powinien być szukany pod "
 "wskazanym nowym adresem."
 
-#: ../../../core/Http/ResponseMessages.php:54
+#: app/component/Http/ResponseMessages.php:70
 msgid "Moved Temporarily"
 msgstr "Znaleziono"
 
-#: ../../../core/Http/ResponseMessages.php:55
+#: app/component/Http/ResponseMessages.php:71
 msgid ""
 "Page has been moved temporarily, and the new URL is available. You should be "
 "sent there by the server."
@@ -151,11 +146,11 @@ msgstr ""
 "Żądany zasób jest chwilowo dostępny pod innym adresem a przyszłe odwołania "
 "do zasobu powinny być kierowane pod adres pierwotny."
 
-#: ../../../core/Http/ResponseMessages.php:58
+#: app/component/Http/ResponseMessages.php:74
 msgid "See Other"
 msgstr "Zobacz inne"
 
-#: ../../../core/Http/ResponseMessages.php:59
+#: app/component/Http/ResponseMessages.php:75
 msgid ""
 "This is a \"see other\" SRC. Data is somewhere else and the GET method is "
 "used to retrieve it."
@@ -164,11 +159,11 @@ msgstr ""
 "skierować. To jest właściwy sposób przekierowywania w odpowiedzi na żądanie "
 "metodą POST."
 
-#: ../../../core/Http/ResponseMessages.php:62
+#: app/component/Http/ResponseMessages.php:78
 msgid "Not Modified"
 msgstr "Nie zmieniono"
 
-#: ../../../core/Http/ResponseMessages.php:63
+#: app/component/Http/ResponseMessages.php:79
 msgid ""
 "If the request header includes an 'if modified since' parameter, this code "
 "will be returned if the file has not changed since that date. Search engine "
@@ -177,49 +172,49 @@ msgstr ""
 "Zawartość zasobu nie podległa zmianie według warunku przekazanego przez "
 "klienta (np. data ostatniej wersji zasobu pobranej przez klienta."
 
-#: ../../../core/Http/ResponseMessages.php:66
+#: app/component/Http/ResponseMessages.php:82
 msgid "Use Proxy"
 msgstr "Użyj serwera proxy"
 
-#: ../../../core/Http/ResponseMessages.php:67
+#: app/component/Http/ResponseMessages.php:83
 msgid "The recipient is expected to repeat the request via the proxy."
 msgstr ""
 "Do żądanego zasobu trzeba odwołać się przez serwer proxy podany w nagłówku "
 "Location odpowiedzi."
 
-#: ../../../core/Http/ResponseMessages.php:70
+#: app/component/Http/ResponseMessages.php:86
 msgid "Bad Request"
 msgstr "Nieprawidłowe zapytanie"
 
-#: ../../../core/Http/ResponseMessages.php:71
+#: app/component/Http/ResponseMessages.php:87
 msgid "There is a syntax error in the request, and it is denied."
 msgstr ""
 "Żądanie nie może być obsłużone przez serwer z powodu błędnej składni "
 "zapytania."
 
-#: ../../../core/Http/ResponseMessages.php:74
+#: app/component/Http/ResponseMessages.php:90
 msgid "Unauthorized"
 msgstr "Nieautoryzowany dostęp"
 
-#: ../../../core/Http/ResponseMessages.php:75
+#: app/component/Http/ResponseMessages.php:91
 msgid ""
 "The request header did not contain the necessary authentication codes, and "
 "the client is denied access."
 msgstr "Żądanie zasobu wymaga uwierzytelnienia"
 
-#: ../../../core/Http/ResponseMessages.php:78
+#: app/component/Http/ResponseMessages.php:94
 msgid "Payment Required"
 msgstr "Wymagana opłata"
 
-#: ../../../core/Http/ResponseMessages.php:79
+#: app/component/Http/ResponseMessages.php:95
 msgid "Payment is required. This code is not yet in operation."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:82
+#: app/component/Http/ResponseMessages.php:98
 msgid "Forbidden"
 msgstr "Dostęp zabroniony"
 
-#: ../../../core/Http/ResponseMessages.php:83
+#: app/component/Http/ResponseMessages.php:99
 msgid ""
 "The client is not allowed to see a certain file. This is also returned at "
 "times when the server doesn't want any more visitors."
@@ -227,11 +222,11 @@ msgstr ""
 "Serwer zrozumiał zapytanie lecz konfiguracja bezpieczeństwa zabrania mu "
 "zwrócić żądany zasób."
 
-#: ../../../core/Http/ResponseMessages.php:86
+#: app/component/Http/ResponseMessages.php:102
 msgid "Not Found"
 msgstr "Nie znaleziono"
 
-#: ../../../core/Http/ResponseMessages.php:87
+#: app/component/Http/ResponseMessages.php:103
 msgid ""
 "The requested file was not found on the server. Possibly because it was "
 "deleted, or never existed before. Often caused by misspellings of URLs."
@@ -240,111 +235,111 @@ msgstr ""
 "na istnienie takiego zasobu w przeszłości. Często spowodowane przez błędy "
 "ortograficzne w adresach URL."
 
-#: ../../../core/Http/ResponseMessages.php:90
+#: app/component/Http/ResponseMessages.php:106
 msgid "Method Not Allowed"
 msgstr "Niedozwolona metoda"
 
-#: ../../../core/Http/ResponseMessages.php:91
+#: app/component/Http/ResponseMessages.php:107
 msgid "The method you are using to access the file is not allowed."
 msgstr ""
 "Metoda zawarta w żądaniu nie jest dozwolona dla wskazanego zasobu, odpowiedź "
 "zawiera też listę dozwolonych metod."
 
-#: ../../../core/Http/ResponseMessages.php:94
+#: app/component/Http/ResponseMessages.php:110
 msgid "Not Acceptable"
 msgstr "Niedozwolone"
 
-#: ../../../core/Http/ResponseMessages.php:95
+#: app/component/Http/ResponseMessages.php:111
 msgid ""
 "The requested file exists but cannot be used as the client system doesn't "
-"understand the format the file is configured for."
 msgstr ""
+"understand the format the file is configured for."
 "Żażądany zasób nie jest w stanie zwrócić odpowiedzi mogącej być obsłużonej "
 "przez klienta według informacji podanych w zapytaniu."
 
-#: ../../../core/Http/ResponseMessages.php:98
-msgid "Proxy Authentication Required"
-msgstr "Wymagane uwierzytelnienie do serwera pośredniczącego"
+#: app/component/Http/ResponseMessages.php:114
+msgid "PWymagane uwierzytelnienie do serwera pośredniczącegoroxy Authentication Required"
+msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:99
+#: app/component/Http/ResponseMessages.php:115
 msgid "The request must be authorised before it can take place."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:102
+#: app/component/Http/ResponseMessages.php:118
 msgid "Request Time-out"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:103
+#: app/component/Http/ResponseMessages.php:119
 msgid ""
 "The server took longer than its allowed time to process the request. Often "
 "caused by heavy net traffic."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:106
+#: app/component/Http/ResponseMessages.php:122
 msgid "Conflict"
 msgstr "Konflikt"
 
-#: ../../../core/Http/ResponseMessages.php:107
+#: app/component/Http/ResponseMessages.php:123
 msgid "Too many concurrent requests for a single file."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:110
+#: app/component/Http/ResponseMessages.php:126
 msgid "Gone"
 msgstr "Zniknął (usunięto)"
 
-#: ../../../core/Http/ResponseMessages.php:111
+#: app/component/Http/ResponseMessages.php:127
 msgid "The file used to be in this position, but is there no longer."
 msgstr ""
 "Zażądany zasób nie jest dłużej dostępny i nie znany jest jego ewentualny "
 "nowy adres URI."
 
-#: ../../../core/Http/ResponseMessages.php:114
+#: app/component/Http/ResponseMessages.php:130
 msgid "Length Required"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:115
+#: app/component/Http/ResponseMessages.php:131
 msgid "The request is missing its Content-Length header."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:118
+#: app/component/Http/ResponseMessages.php:134
 msgid "Precondition Failed"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:119
+#: app/component/Http/ResponseMessages.php:135
 msgid ""
 "A certain configuration is required for this file to be delivered, but the "
 "client has not set this up."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:122
+#: app/component/Http/ResponseMessages.php:138
 msgid "Request Entity Too Large"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:123
+#: app/component/Http/ResponseMessages.php:139
 msgid "The requested file was too big to process."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:126
+#: app/component/Http/ResponseMessages.php:142
 msgid "Request-URI Too Large"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:127
+#: app/component/Http/ResponseMessages.php:143
 msgid "The address you entered was overly long for the server."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:130
+#: app/component/Http/ResponseMessages.php:146
 msgid "Unsupported Media Type"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:131
+#: app/component/Http/ResponseMessages.php:147
 msgid "The filetype of the request is unsupported."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:134
+#: app/component/Http/ResponseMessages.php:150
 msgid "Internal Server Error"
 msgstr "Wewnętrzny błąd serwera"
 
-#: ../../../core/Http/ResponseMessages.php:135
+#: app/component/Http/ResponseMessages.php:151
 msgid ""
 "The server encountered an unexpected condition which prevented it from "
 "fulfilling the request."
@@ -352,67 +347,155 @@ msgstr ""
 "Serwer napotkał niespodziewane trudności, które uniemożliwiły zrealizowanie "
 "żądania."
 
-#: ../../../core/Http/ResponseMessages.php:138
+#: app/component/Http/ResponseMessages.php:154
 msgid "Not Implemented"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:139
+#: app/component/Http/ResponseMessages.php:155
 msgid "The server does not support the facility required."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:142
+#: app/component/Http/ResponseMessages.php:158
 msgid "Bad Gateway"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:143
+#: app/component/Http/ResponseMessages.php:159
 msgid "The server you're trying to reach is sending back errors."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:146
+#: app/component/Http/ResponseMessages.php:162
+#: app/component/Http/ResponseMessages.php:175
 msgid "Service Unavailable"
 msgstr "Usługa niedostępna"
 
-#: ../../../core/Http/ResponseMessages.php:147
+#: app/component/Http/ResponseMessages.php:163
+#: app/component/Http/ResponseMessages.php:176
 msgid "The service or file that is being requested is not currently available."
 msgstr ""
 "Serwer nie jest w stanie w danej chwili zrealizować zapytania klienta ze "
 "względu na przeciążenie."
 
-#: ../../../core/Http/ResponseMessages.php:150
+#: app/component/Http/ResponseMessages.php:166
 msgid "Gateway Time-out"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:151
+#: app/component/Http/ResponseMessages.php:167
 msgid ""
 "The gateway has timed out. Like the 408 timeout error, but this one occurs "
 "at the gateway of the server."
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:154
+#: app/component/Http/ResponseMessages.php:170
 msgid "HTTP Version not supported"
 msgstr ""
 
-#: ../../../core/Http/ResponseMessages.php:155
+#: app/component/Http/ResponseMessages.php:171
 msgid "The HTTP protocol you are asking for is not supported."
 msgstr ""
 
+#: app/component/Logger/DisplayError.php:25
+msgid "Code"
+msgstr "Kod"
+
+#: app/module/Dashboard/View.php:8
+msgid "Dashboard"
+msgstr "Panel zarządzania"
+
+#: app/module/Index/View.php:16 app/module/Articles/Category/View.php:29
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr "Strona %1$s z %2$s"
+
+#: app/module/Users/Login/View.php:36
+msgid "logged in"
+msgstr "zalogowano"
+
+#: app/module/Users/Login/View.php:41
+msgid "email not valid"
+msgstr "adres email jest niepoprawny"
+
+#: app/module/Users/Login/View.php:46
+msgid "password not valid"
+msgstr "hasło jest nie poprawne"
+
+#: app/module/Users/Login/View.php:56
+msgid "email or password incorect"
+msgstr "adres email lub hasło są nieprawidłowe"
+
+#: app/module/Users/Login/View.php:61
+msgid "account is inactive"
+msgstr "konto jest nieaktywne"
+
+#: app/module/Users/Login/View.php:68
+msgid "unnamed error"
+msgstr "nieznany błąd"
+
+#: app/module/Users/Profile/View.php:10
+msgid "Profile"
+msgstr "Profil"
+
+#: app/module/Articles/Roll/Admin/View.php:17
+msgid "Articles list"
+msgstr "Lista artykułów"
+
+#: app/module/Articles/Category/View.php:45
+msgid "Artykuły z kategorii"
+msgstr ""
+
+#: app/module/Articles/One/Admin/View.php:17
+msgid "Edit article"
+msgstr "Edycja artykułu"
+
+#: app/module/Articles/One/Admin/View.php:37
+msgid "Add article"
+msgstr "Dodaj artykuł"
+
+#: content/themes/front/amazingschool/amazingschool.php:20
+#: content/themes/front/amazingschool/templates/article-once.html.php:7
+#: content/themes/front/amazingschool/templates/articles-list.html.php:7
+msgid "date_on"
+msgstr "o"
+
+#: content/themes/front/amazingschool/templates/article-once.html.php:6
+#: content/themes/front/amazingschool/templates/articles-list.html.php:6
 msgid "author"
 msgstr "autor"
 
+#: content/themes/front/amazingschool/templates/article-once.html.php:7
+#: content/themes/front/amazingschool/templates/articles-list.html.php:7
 msgid "added"
 msgstr "dodano"
 
+#: content/themes/front/amazingschool/templates/article-once.html.php:8
+#: content/themes/front/amazingschool/templates/articles-list.html.php:8
 msgid "photos"
 msgstr "zdjęć"
 
+#: content/themes/front/amazingschool/templates/article-once.html.php:9
+#: content/themes/front/amazingschool/templates/articles-list.html.php:9
 msgid "views"
 msgstr "odsłon"
 
+#: content/themes/front/amazingschool/templates/_foot.html.php:3
 msgid "Search something?"
 msgstr "Szukasz czegoś?"
 
+#: content/themes/front/amazingschool/templates/_foot.html.php:4
 msgid "Search"
 msgstr "Szukaj"
 
-msgid "date_on"
-msgstr "o"
+#: content/themes/front/amazingschool/templates/_foot.html.php:10
+msgid "Bookmarks"
+msgstr "Zakładki"
+
+#: content/themes/front/amazingschool/templates/_foot.html.php:16
+msgid "References"
+msgstr "Polecane"
+
+#: content/themes/front/amazingschool/templates/_foot.html.php:22
+msgid "Links"
+msgstr "Linki"
+
+#: content/themes/front/amazingschool/templates/_foot.html.php:28
+msgid "Subscription"
+msgstr "Subskrypcje"
