@@ -1,4 +1,7 @@
 {
+	"config": {
+    	"vendor-dir": "app/vendor"
+    },
 	"name": "mklj/Rudolf",
 	"description": "Rudolf is simple CMS system written in PHP. That's all.",
 	"authors": [
@@ -12,9 +15,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Rudolf\\": "core/",
-			"Rudolf\\Modules\\": "modules/",
-			"Rudolf\\Plugins\\": "plugins/"
+			"Rudolf\\Component\\": "app/component/",
+			"Rudolf\\Modules\\": "app/module/"
 		}
 	}
 }

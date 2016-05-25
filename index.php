@@ -9,4 +9,6 @@
  * @version 0.1
  */
 
-require __DIR__ . '/init.php';
+define('WEB_ROOT', __DIR__);
+
+require __DIR__ . '/app/init.php';
