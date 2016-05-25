@@ -11,9 +11,9 @@
 
 namespace Rudolf\Modules\Articles\Roll;
 use Rudolf\Modules\A_front\FController,
-	Rudolf\Modules\Module,
-	Rudolf\Http\HttpErrorException,
-	Rudolf\Libs\Pagination;
+	Rudolf\Component\Modules\Module,
+	Rudolf\Component\Http\HttpErrorException,
+	Rudolf\Component\Libs\Pagination;
 
 
 class Controller extends FController {

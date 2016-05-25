@@ -10,10 +10,10 @@
  */
  
 namespace Rudolf\Modules\Articles\Feed;
-use Rudolf\Modules\A_front\FController,
-	Rudolf\Modules\Articles\Roll,
-	Rudolf\Libs\Pagination,
-	Rudolf\Http\Response;
+use Rudolf\Modules\A_front\FController;
+use Rudolf\Modules\Articles\Roll;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Http\Response;
 
 
 class Controller extends FController {
@@ -32,7 +32,7 @@ class Controller extends FController {
 
 		$pagination = new Pagination($list->getTotalNumber(), 1, 20);
 		$results = $list->getList($pagination, ['id', 'desc']);
-		$view->setArticles($results);
+		$view->setArticles($results, $pagination);
 		
 		switch ($type) {
 			case 'atom':
