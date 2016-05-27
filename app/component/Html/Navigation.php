@@ -96,9 +96,9 @@ class Navigation {
 		$url = null;
 
 		for($pid = 0, $i = 0; $i < count($address); $i++) {
-			if($pid == $menu[$address[$i]]['parent_id']) {
-				$array[$i] = array($url . '/' . $address[$i], $menu[$address[$i]]['title']);
-				$pid = $menu[$address[$i]]['id'];
+			if($pid == $menu[$address[$i]][$pid]['parent_id']) {
+				$array[$i] = array($url . '/' . $address[$i], $menu[$address[$i]][$pid]['title']);
+				$pid = $menu[$address[$i]][$pid]['id'];
 				$url .= '/' . $address[$i];
 			}
 		}

@@ -28,8 +28,10 @@ class Model extends AModel {
 		}
 
 		for($pid = 0, $i = 0; $i < count($path); ++$i) {
-			if(isset($pages[$path[$i]]['parent_id']) && $pid == $pages[$path[$i]]['parent_id']) {
-				$pid = $pages[$path[$i]]['id'];
+			$pidInArray = $pages[$path[$i]][$pid];
+			
+			if(isset($pidInArray['parent_id']) && $pid == $pidInArray['parent_id']) {
+				$pid = $pidInArray['id'];
 			} else {
 				return false;
 			}
@@ -51,9 +53,10 @@ class Model extends AModel {
 		if(empty($results)) {
 			return false;
 		}
+		$i = 0;
 
 		foreach ($results as $key => $value) {
-			$array[$value['slug']] = array(
+			$array[$value['slug']][$value['parent_id']] = array(
 				'id' => $value['id'],
 				'parent_id' => $value['parent_id'],
 				'slug' => $value['slug'],
