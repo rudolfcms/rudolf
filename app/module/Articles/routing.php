@@ -25,11 +25,11 @@ $collection->add('article/category', new Routing\Route(
 
 # /artykuly/2015/09/hello-world
 $collection->add('article/one', new Routing\Route(
-	'artykuly/<year>/<month>/<slug>',
+	'artykuly/<year>/<month>/<slug>(\/)?',
 	'Rudolf\Modules\Articles\One\Controller::getOne',
 	['year' => "[0-9]{4}",
 	 'month' => "(0[1-9]|[12]\d|3[01])",
-	 'slug' => "[a-z0-9-]*$"
+	 'slug' => "[a-z0-9-]+"
 		// (0[1-9]|[12]\d|3[01]) with 0, like 05
 		// ([1-9]|[12]\d|3[01]) without 0, like 5
 	]
