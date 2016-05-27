@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Users\Login;
-use Rudolf\Component\Abstracts\AView,
-	Rudolf\Component\Html\Text;
+use Rudolf\Component\Abstracts\AView;
+use Rudolf\Component\Html\Text;
 
 class View extends AView {
 	

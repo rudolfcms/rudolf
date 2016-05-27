@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\A_admin;
-use Rudolf\Component\Abstracts\AModel,
-	Rudolf\Component\Auth\Auth;
+use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Component\Auth\Auth;
 
 class AdminModel extends AModel {
 

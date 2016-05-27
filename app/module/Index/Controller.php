@@ -1,10 +1,10 @@
 <?php
 
 namespace Rudolf\Modules\Index;
-use Rudolf\Modules\A_front\FController,
-	Rudolf\Component\Modules\Module,
-	Rudolf\Component\Libs\Pagination,
-	Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Modules\A_front\FController;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Http\HttpErrorException;
 
 class Controller extends FController {
 

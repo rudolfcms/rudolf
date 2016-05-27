@@ -10,8 +10,8 @@
  */
  
 namespace Rudolf\Modules\Albums\Roll;
-use Rudolf\Modules\Albums,
-	Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\Albums;
+use Rudolf\Component\Libs\Pagination;
 
 class Model extends Albums\Model {
 

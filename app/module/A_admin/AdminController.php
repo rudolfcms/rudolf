@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\A_admin;
-use Rudolf\Component\Abstracts\AController,
-	Rudolf\Component\Http\Response;
+use Rudolf\Component\Abstracts\AController;
+use Rudolf\Component\Http\Response;
 
 class AdminController extends AController {
 

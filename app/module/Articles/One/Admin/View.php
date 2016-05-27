@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Articles\One\Admin;
-use Rudolf\Modules\A_admin\AdminView,
-	Rudolf\Html\Text;
+use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Html\Text;
 
 class View extends AdminView {
 

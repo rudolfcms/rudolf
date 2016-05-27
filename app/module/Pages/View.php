@@ -10,8 +10,8 @@
  */
 
 namespace Rudolf\Modules\Pages;
-use Rudolf\Modules\A_front\FView,
-	Rudolf\Component\Html\Navigation;
+use Rudolf\Modules\A_front\FView;
+use Rudolf\Component\Html\Navigation;
 
 class View extends FView {
 	

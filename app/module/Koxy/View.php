@@ -1,9 +1,9 @@
 <?php
 
 namespace Rudolf\Modules\Koxy;
-use Rudolf\Modules\A_front\FView,
-	Rudolf\Component\Libs\Pagination,
-	Rudolf\Component\Html\Navigation;
+use Rudolf\Modules\A_front\FView;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Html\Navigation;
 
 class View extends FView {
 	use Traits;

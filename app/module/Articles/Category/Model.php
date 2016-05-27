@@ -10,7 +10,7 @@
  */
  
 namespace Rudolf\Modules\Articles\Category;
-use Rudolf\Abstracts\AModel;
+use Rudolf\Component\Abstracts\AModel;
 
 class Model extends AModel {
 

@@ -10,9 +10,9 @@
  */
 
 namespace Rudolf\Modules\Articles\Roll;
-use Rudolf\Modules\Articles\One\Article,
-	Rudolf\Component\Libs\Pagination,
-	Rudolf\Component\Html\Navigation;
+use Rudolf\Modules\Articles\One\Article;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Html\Navigation;
 	
 class Roll {
 

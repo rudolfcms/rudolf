@@ -10,9 +10,9 @@
  */
 
 namespace Rudolf\Component\Abstracts;
-use Rudolf\Component\Html\Head,
-	Rudolf\Component\Html\Exceptions\ThemeNotFoundException,
-	Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
+use Rudolf\Component\Html\Head;
+use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
+use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
 
 abstract class AView {
 

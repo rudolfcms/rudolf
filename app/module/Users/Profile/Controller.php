@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Users\Profile;
-use Rudolf\Modules\A_admin\AdminController,
-	Rudolf\Http\Response;
+use Rudolf\Modules\A_admin\AdminController;
+use Rudolf\Http\Response;
 
 class Controller extends AdminController {
 

@@ -10,8 +10,8 @@
  */
  
 namespace Rudolf\Modules\Articles\One\Admin;
-use Rudolf\Modules\A_admin\AdminModel,
-	Rudolf\Component\Alerts;
+use Rudolf\Modules\A_admin\AdminModel;
+use Rudolf\Component\Alerts;
 
 class Model extends AdminModel {
 

@@ -10,8 +10,8 @@
  */
  
 namespace Rudolf\Modules\Articles\Roll;
-use Rudolf\Modules\Articles,
-	Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\Articles;
+use Rudolf\Component\Libs\Pagination;
 
 class Model extends Articles\Model {
 

@@ -1,10 +1,10 @@
 <?php
 
 namespace Rudolf\Modules\Koxy;
-use Rudolf\Modules\A_front\FController,
-	Rudolf\Component\Http\HttpErrorException,
-	Rudolf\Component\Libs\Pagination,
-	Rudolf\Component\Modules\Module;
+use Rudolf\Modules\A_front\FController;
+use Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Modules\Module;
 
 class Controller extends FController {
 

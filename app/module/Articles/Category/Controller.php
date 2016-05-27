@@ -10,11 +10,11 @@
  */
  
 namespace Rudolf\Modules\Articles\Category;
-use Rudolf\Modules\A_front\FController,
-	Rudolf\Modules\Module,
-	Rudolf\Http\HttpErrorException,
-	Rudolf\Libs\Pagination,
-	Rudolf\Modules\Articles\Roll;
+use Rudolf\Modules\A_front\FController;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\Articles\Roll;
 
 
 class Controller extends FController {

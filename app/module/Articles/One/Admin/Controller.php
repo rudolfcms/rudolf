@@ -1,9 +1,9 @@
 <?php
 
 namespace Rudolf\Modules\Articles\One\Admin;
-use Rudolf\Modules\A_admin\AdminController,
-	Rudolf\Modules\Articles\One,
-	Rudolf\Http\Response;
+use Rudolf\Modules\A_admin\AdminController;
+use Rudolf\Modules\Articles\One;
+use Rudolf\Http\Response;
 
 class Controller extends AdminController {
 	

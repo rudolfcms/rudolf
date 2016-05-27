@@ -1,10 +1,10 @@
 <?php
 
 namespace Rudolf\Modules\A_admin;
-use Rudolf\Component\Abstracts\AView,
-	Rudolf\Component\Html\Navigation,
-	Rudolf\Component\Modules\Module,
-	Rudolf\Component\Alerts\AlertsCollection;
+use Rudolf\Component\Abstracts\AView;
+use Rudolf\Component\Html\Navigation;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Component\Alerts\AlertsCollection;
 
 class AdminView extends AView {
 

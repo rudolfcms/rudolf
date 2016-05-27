@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Koxy;
-use Rudolf\Component\Abstracts\AModel,
-	Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Component\Libs\Pagination;
 
 class Model extends AModel {
 

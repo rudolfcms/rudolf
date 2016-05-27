@@ -10,8 +10,8 @@
  */
 
 namespace Rudolf\Modules\Pages;
-use Rudolf\Modules\A_front\FController,
-	Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Modules\A_front\FController;
+use Rudolf\Component\Http\HttpErrorException;
 
 class Controller extends FController {
 	

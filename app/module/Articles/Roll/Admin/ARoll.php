@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Articles\Roll\Admin;
-use Rudolf\Modules\Articles\Roll,
-	Rudolf\Modules\Articles\One\Admin\AArticle;
+use Rudolf\Modules\Articles\Roll;
+use Rudolf\Modules\Articles\One\Admin\AArticle;
 
 class ARoll extends Roll\Roll {
 

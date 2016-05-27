@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\A_front;
-use Rudolf\Component\Abstracts\AView,
-	Rudolf\Component\Html\Navigation;
+use Rudolf\Component\Abstracts\AView;
+use Rudolf\Component\Html\Navigation;
 
 abstract class FView extends AView {
 

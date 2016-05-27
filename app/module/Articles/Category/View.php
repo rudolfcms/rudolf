@@ -10,8 +10,8 @@
  */
  
 namespace Rudolf\Modules\Articles\Category;
-use Rudolf\Modules\A_front\FView,
-	Rudolf\Modules\Articles\Roll;
+use Rudolf\Modules\A_front\FView;
+use Rudolf\Modules\Articles\Roll;
 
 class View extends FView {
 

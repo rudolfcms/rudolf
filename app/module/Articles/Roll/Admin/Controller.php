@@ -1,9 +1,9 @@
 <?php
 
 namespace Rudolf\Modules\Articles\Roll\Admin;
-use Rudolf\Modules\A_admin\AdminController,
-	Rudolf\Modules\Articles\Roll,
-	Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\A_admin\AdminController;
+use Rudolf\Modules\Articles\Roll;
+use Rudolf\Component\Libs\Pagination;
 
 class Controller extends AdminController {
 	public function getList($page) {

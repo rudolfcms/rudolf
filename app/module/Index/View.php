@@ -1,8 +1,8 @@
 <?php
 
 namespace Rudolf\Modules\Index;
-use Rudolf\Modules\Articles,
-	Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\Articles;
+use Rudolf\Component\Libs\Pagination;
 
 class View extends Articles\Roll\View {
 	
