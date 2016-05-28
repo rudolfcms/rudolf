@@ -32,7 +32,7 @@ class Navigation {
 		// filter items
 		foreach ($items as $key => $value) {
 			if($type === $value['menu_type']) {
-				$newItems[] = $items[$key];
+				$newItems[$key] = $items[$key];
 
 				if(isset($items[$key]['type'])) {
 					switch($items[$key]['type']) {
@@ -106,7 +106,7 @@ class Navigation {
 		if($a) {
 			return $array;
 		} elseif(!$a) {
-			$html[] = '<li><a href="' . DIR . '">Start</a></li>';
+			$html[] = '<li><a href="' . DIR . '/">Start</a></li>';
 
 			$tab = str_repeat("\t", $nesting);
 
