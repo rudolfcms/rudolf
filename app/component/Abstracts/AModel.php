@@ -114,7 +114,7 @@ abstract class AModel {
 			$clausule = null;
 			
 			foreach ($where as $key => $value) {
-				$condition = $key . '=' . $value . ' and ';
+				$condition = $key . '=\'' . $value . '\' and ';
 				$clausule .= trim($condition, '0=');
 			}
 
