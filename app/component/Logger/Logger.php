@@ -100,6 +100,6 @@ class Logger {
 	 * @return void
 	 */
 	private function display() {
-		echo "<pre>$this->event</pre>" . PHP_EOL;
+		echo "<code>$this->event</code>" . PHP_EOL;
 	}
 }
