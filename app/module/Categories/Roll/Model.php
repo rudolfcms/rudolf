@@ -1,15 +1,15 @@
 <?php
 /**
- * This file is part of Rudolf articles module.
+ * This file is part of Rudolf categories module.
  *
- * This is the model of articles module.
+ * This is the model of categories module.
  *
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Modules\Articles\Category
+ * @package Rudolf\Modules\Categories\Roll
  * @version 0.1
  */
  
-namespace Rudolf\Modules\Articles\Category;
+namespace Rudolf\Modules\Categories\Roll;
 use Rudolf\Component\Abstracts\AModel;
 use Rudolf\Component\Libs\Pagination;
 
@@ -34,9 +34,8 @@ class Model extends AModel {
 		$limit = $pagination->getLimit();
 		$onPage = $pagination->getOnPage();
 
-		$clausule = $this->createWhereClausule(['type'=>'articles']);
 		$stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories ".
-			"WHERE $clausule ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
+			"ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
 
 		$stmt->execute();
 		$results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -47,5 +46,14 @@ class Model extends AModel {
 			return $results;
 		}
 		return false;
+	}
+
+	/**
+	 * Returns total number of articles items
+	 * 
+	 * @return int
+	 */
+	public function getTotalNumber() {
+		return $this->countItems('categories');
 	}
 }

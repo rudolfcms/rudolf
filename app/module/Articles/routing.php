@@ -68,13 +68,11 @@ $collection->add('articles/roll/admin', new Routing\Route(
 	['page' => 0]
 ));
 
-
 $collection->add('articles/one/admin/edit', new Routing\Route(
 	$config['admin_path'] . '/articles/edit/<id>$',
 	'Rudolf\Modules\Articles\One\Admin\Controller::edit',
 	['id' => "[1-9][0-9]*"]
 ));
-
 
 $collection->add('articles/one/admin/add', new Routing\Route(
 	$config['admin_path'] . '/articles/add$',

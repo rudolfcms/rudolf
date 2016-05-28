@@ -10,12 +10,12 @@
  */
  
 namespace Rudolf\Modules\Articles\Category;
-use Rudolf\Modules\A_front\FController;
-use Rudolf\Component\Modules\Module;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Modules\A_front\FController;
 use Rudolf\Modules\Articles\Roll;
-
+use Rudolf\Modules\Categories;
 
 class Controller extends FController {
 
@@ -30,11 +30,13 @@ class Controller extends FController {
 	public function getCategory($slug, $page) {
 		$page = $this->firstPageRedirect($page, 301, '../../'. $slug); // łork eraułnd
 		
-		$category = new Model();
+		$categories = new Categories\One\Model();
+		
+		//$articlesCategory = new Model();
 		$list = new Roll\Model();
 		$view = new View();
 
-		$categoryInfo = $category->getCategoryInfo($slug);
+		$categoryInfo = $categories->getCategoryInfo($slug, 'articles');
 		if(empty($categoryInfo)) {
 			throw new HttpErrorException('Category not found (error 404)', 404);
 		}
