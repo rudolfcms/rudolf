@@ -1,21 +1,23 @@
 <?php
-
 namespace Rudolf\Modules\Users\Profile;
+
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Http\Response;
 
-class Controller extends AdminController {
+class Controller extends AdminController
+{
 
-	public function profile() {
-		$model = new Model();
+    public function profile()
+    {
+        $model = new Model();
 
-		//$profileInfo = $model->getProfileInfo();
+        //$profileInfo = $model->getProfileInfo();
 
-		$view = new View();
+        $view = new View();
 
-		$view->setActive(['user']);
+        $view->setActive(['user']);
 
-		$view->userCard();
-		$view->render('admin');
-	}
+        $view->userCard();
+        $view->render('admin');
+    }
 }

@@ -1,32 +1,25 @@
 <?php
-/**
- * This file is part of Rudolf.
- *
- * Module.
- *
- * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Component\Modules
- * @version 0.1
- */
-
 namespace Rudolf\Component\Modules;
 
-class Module {
-	public function __construct($name) {
-		$this->name = $name;
-		
-		if(empty($name)) {
-			throw new \InvalidArgumentException("Invalid module name");
-		}
-	}
+class Module
+{
+    public function __construct($name)
+    {
+        $this->name = $name;
+        
+        if (empty($name)) {
+            throw new \InvalidArgumentException("Invalid module name");
+        }
+    }
 
-	public function getConfig() {
-		$file = CONFIG_ROOT . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR . $this->name . '.php';
+    public function getConfig()
+    {
+        $file = CONFIG_ROOT . DIRECTORY_SEPARATOR .'modules'. DIRECTORY_SEPARATOR . $this->name .'.php';
 
-		if(!file_exists($file)) {
-			throw new \Exception("{$this->name} module configuration does not exist");
+        if (!file_exists($file)) {
+            throw new \Exception("{$this->name} module configuration does not exist");
 
-		}
-		return include $file;
-	}
+        }
+        return include $file;
+    }
 }

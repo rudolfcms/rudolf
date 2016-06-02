@@ -1,5 +1,6 @@
 <?php
-
 namespace Rudolf\Modules\Index;
 
-class Model extends \Rudolf\Modules\Articles\Roll\Model { }
+use Rudolf\Modules\Articles\Roll;
+
+class Model extends Roll\Model { }

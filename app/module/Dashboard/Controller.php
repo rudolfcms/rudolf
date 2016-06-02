@@ -1,16 +1,18 @@
 <?php
-
 namespace Rudolf\Modules\Dashboard;
+
 use Rudolf\Modules\A_admin\AdminController;
 
-class Controller extends AdminController {
-	public function index() {
-		$view = new View();
+class Controller extends AdminController
+{
+    public function index()
+    {
+        $view = new View();
 
-		$view->dashboard();
+        $view->dashboard();
 
-		$view->setActive(['admin/']);
+        $view->setActive(['admin/']);
 
-		$view->render('admin');
-	}
+        $view->render('admin');
+    }
 }

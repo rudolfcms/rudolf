@@ -9,13 +9,13 @@
  * @version 0.1
  */
 
-use Rudolf\Component\Logger\ErrorHandler,
-	Rudolf\Component\Plugins\PluginsManager,
-	Rudolf\Component\Modules\ModulesManager,
-	Rudolf\Component\Modules\ModulesRouting,
-	Rudolf\Component\Routing\RouteCollection,
-	Rudolf\Component\Routing\Router,
-	Rudolf\Component\Routing\FrontController;
+use Rudolf\Component\Logger\ErrorHandler;
+use Rudolf\Component\Plugins\PluginsManager;
+use Rudolf\Component\Modules\ModulesManager;
+use Rudolf\Component\Modules\ModulesRouting;
+use Rudolf\Component\Routing\RouteCollection;
+use Rudolf\Component\Routing\Router;
+use Rudolf\Component\Routing\FrontController;
 ob_start();
 
 // checks whether php version is compatible with the instance of Rudolf

@@ -1,45 +1,47 @@
 <?php
-
 namespace Rudolf\Modules\Koxy;
+
 use Rudolf\Modules\A_front\FController;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Libs\Pagination;
 use Rudolf\Component\Modules\Module;
 
-class Controller extends FController {
+class Controller extends FController
+{
+    public function index($page)
+    {
+        $page = $this->firstPageRedirect($page);
 
-	public function index($page) {
-		$page = $this->firstPageRedirect($page);
+        $model = new Model();
+        $view = new View();
 
-		$model = new Model();
-		$view = new View();
+        $module = new Module('koxy');
+        $config = $module->getConfig();
+        $onPage = $config['on_page'];
+        $navNumber = $config['nav_number'];
+        
+        $pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
 
-		$module = new Module('koxy');
-		$config = $module->getConfig();
-		$onPage = $config['on_page'];
-		$navNumber = $config['nav_number'];
-		
-		$pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+        $koxy = $model->getList($pagination, [$config['sort'], $config['order']]);
 
-		$koxy = $model->getList($pagination, [$config['sort'], $config['order']]);
+        if (false === $koxy and $page > 1) {
+            throw new HttpErrorException('No koxy page found (error 404)', 404);
+        }
 
-		if(false === $koxy and $page > 1) {
-			throw new HttpErrorException('No koxy page found (error 404)', 404);
-		}
+        $view->setData($koxy, $pagination);
+        $view->setFrontData($this->frontData, '');
 
-		$view->setData($koxy, $pagination);
-		$view->setFrontData($this->frontData, '');
+        $view->render();
+    }
 
-		$view->render();
-	}
+    public function vote($type)
+    {
+        $model = new Model();
+        $view = new View();
 
-	public function vote($type) {
-		$model = new Model();
-		$view = new View();
+        $response = $model->vote($type, $_POST);
 
-		$response = $model->vote($type, $_POST);
-
-		$view->data = $response;
-		$view->render('', 'json');
-	}
+        $view->data = $response;
+        $view->render('', 'json');
+    }
 }

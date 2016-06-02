@@ -1,4 +1,6 @@
 <?php
+namespace Rudolf\Component\Feed;
+
 /**
  * This file is part of Rudolf articles module.
  * 
@@ -10,229 +12,243 @@
  * @package Rudolf\Component\Feed
  * @version 0.1
  */
- 
-namespace Rudolf\Component\Feed;
 
-class RSS2Item {
+class RSS2Item
+{
+    /**
+     * @var string
+     */
+    private $title;
+    
+    /**
+     * @var string
+     */
+    private $link;
+    
+    /**
+     * @var string
+     */
+    private $description;
+    
+    /**
+     * @var string
+     */
+    private $author;
+    
+    /**
+     * @var string
+     */
+    private $category;
+    
+    /**
+     * @var string
+     */
+    private $comments;
+    
+    /**
+     * @var string
+     */
+    private $enclosure;
+    
+    /**
+     * @var string
+     */
+    private $guid;
+    
+    /**
+     * @var string
+     */
+    private $pubDate;
+    
+    /**
+     * @var string
+     */
+    private $source;
 
-	/**
-	 * @var string
-	 */
-	private $title;
-	
-	/**
-	 * @var string
-	 */
-	private $link;
-	
-	/**
-	 * @var string
-	 */
-	private $description;
-	
-	/**
-	 * @var string
-	 */
-	private $author;
-	
-	/**
-	 * @var string
-	 */
-	private $category;
-	
-	/**
-	 * @var string
-	 */
-	private $comments;
-	
-	/**
-	 * @var string
-	 */
-	private $enclosure;
-	
-	/**
-	 * @var string
-	 */
-	private $guid;
-	
-	/**
-	 * @var string
-	 */
-	private $pubDate;
-	
-	/**
-	 * @var string
-	 */
-	private $source;
+    /**
+     * Set item title
+     * 
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Set item title
-	 * 
-	 * @param string $title
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Set item link
+     * 
+     * @param string $link 
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
 
-	/**
-	 * Set item link
-	 * 
-	 * @param string $link 
-	 */
-	public function setLink($link) {
-		$this->link = $link;
-	}
+    /**
+     * Set item descritpion
+     * 
+     * @param string descrption
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
-	/**
-	 * Set item descritpion
-	 * 
-	 * @param string descrption
-	 */
-	public function setDescription($description) {
-		$this->description = $description;
-	}
+    /**
+     * Set item author
+     * 
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
 
-	/**
-	 * Set item author
-	 * 
-	 * @param string $author
-	 */
-	public function setAuthor($author) {
-		$this->author = $author;
-	}
+    /**
+     * Set item category
+     * 
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
 
-	/**
-	 * Set item category
-	 * 
-	 * @param string $category
-	 */
-	public function setCategory($category) {
-		$this->category = $category;
-	}
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
 
-	public function setComments($comments) {
-		$this->comments = $comments;
-	}
+    public function setEnclosure($enclosure)
+    {
+        $this->enclosure = $enclosure;
+    }
 
-	public function setEnclosure($enclosure) {
-		$this->enclosure = $enclosure;
-	}
+    public function setGuid($guid) {
+        $this->guid = $guid;
+    }
 
-	public function setGuid($guid) {
-		$this->guid = $guid;
-	}
+    public function setPubDate($pubDate)
+    {
+        $this->pubDate = $pubDate;
+    }
 
-	public function setPubDate($pubDate) {
-		$this->pubDate = $pubDate;
-	}
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
 
-	public function setSource($source) {
-		$this->source = $source;
-	}
+    /**
+     * Get item title
+     * 
+     * @return bool|string
+     */
+    public function getTitle()
+    {
+        if (empty($this->title)) {
+            return false;
+        }
 
-	/**
-	 * Get item title
-	 * 
-	 * @return bool|string
-	 */
-	public function getTitle() {
-		if(empty($this->title)) {
-			return false;
-		}
+        return '<title>' . htmlspecialchars($this->title) . '</title>';
+    }
 
-		return '<title>' . htmlspecialchars($this->title) . '</title>';
-	}
+    /**
+     * Get item link
+     * 
+     * @return bool|string
+     */
+    public function getLink()
+    {
+        if (empty($this->link)) {
+            return false;
+        }
 
-	/**
-	 * Get item link
-	 * 
-	 * @return bool|string
-	 */
-	public function getLink() {
-		if(empty($this->link)) {
-			return false;
-		}
+        return '<link>' . $this->link . '</link>';
+    }
 
-		return '<link>' . $this->link . '</link>';
-	}
+    /**
+     * Get item description
+     * 
+     * @return bool|string
+     */
+    public function getDescription()
+    {
+        if (empty($this->description)) {
+            return false;
+        }
 
-	/**
-	 * Get item description
-	 * 
-	 * @return bool|string
-	 */
-	public function getDescription() {
-		if(empty($this->description)) {
-			return false;
-		}
+        $content = str_replace(array("\n","\r"), '', $this->description);
+        
+        return '<description>' . htmlspecialchars($content) . '</description>';
+    }
 
-		$content = str_replace(array("\n","\r"), '', $this->description);
-		
-		return '<description>' . htmlspecialchars($content) . '</description>';
-	}
+    /**
+     * Get item author
+     * 
+     * @return bool|string
+     */
+    public function getAuthor()
+    {
+        if (empty($this->author)) {
+            return false;
+        }
 
-	/**
-	 * Get item author
-	 * 
-	 * @return bool|string
-	 */
-	public function getAuthor() {
-		if(empty($this->author)) {
-			return false;
-		}
+        return '<author>' . $this->author . '</author>';
+    }
 
-		return '<author>' . $this->author . '</author>';
-	}
+    /**
+     * Get item category
+     * 
+     * @return bool|string
+     */
+    public function getCategory()
+    {
+        if (empty($this->category)) {
+            return false;
+        }
 
-	/**
-	 * Get item category
-	 * 
-	 * @return bool|string
-	 */
-	public function getCategory() {
-		if(empty($this->category)) {
-			return false;
-		}
+        return '<category>' . $this->category . '</category>';
+    }
 
-		return '<category>' . $this->category . '</category>';
-	}
+    /**
+     * Get item pub date
+     * 
+     * @return bool|string
+     */
+    public function getPubDate()
+    {
+        if (empty($this->pubDate)) {
+            return false;
+        }
 
-	/**
-	 * Get item pub date
-	 * 
-	 * @return bool|string
-	 */
-	public function getPubDate() {
-		if(empty($this->pubDate)) {
-			return false;
-		}
+        return '<pubDate>' . $this->pubDate . '</pubDate>';
+    }
 
-		return '<pubDate>' . $this->pubDate . '</pubDate>';
-	}
+    /**
+     * Get <item> element
+     * 
+     * @return string
+     */
+    public function getItem()
+    {
+        $xml[] = $this->getTitle();
+        $xml[] = $this->getLink();
+        $xml[] = $this->getDescription();
+        $xml[] = $this->getAuthor();
+        $xml[] = $this->getPubDate();
+        $xml[] = $this->getCategory();
 
-	/**
-	 * Get <item> element
-	 * 
-	 * @return string
-	 */
-	public function getItem() {
-		$xml[] = $this->getTitle();
-		$xml[] = $this->getLink();
-		$xml[] = $this->getDescription();
-		$xml[] = $this->getAuthor();
-		$xml[] = $this->getPubDate();
-		$xml[] = $this->getCategory();
+        $xml = array_filter($xml);
 
-		$xml = array_filter($xml);
+        foreach ($xml as $key => $value) {
+            $xml[$key] = "\t\t\t" . $value;
+        }
+        
+        array_unshift($xml, "\t\t" . '<item>');
 
-		foreach($xml as $key => $value) {
-			$xml[$key] = "\t\t\t" . $value;
-		}
-		
-		array_unshift($xml, "\t\t" . '<item>');
+        $xml[] = "\t\t" . '</item>';
 
-		$xml[] = "\t\t" . '</item>';
-
-		return implode("\n", array_filter($xml));
-	}
+        return implode("\n", array_filter($xml));
+    }
 }

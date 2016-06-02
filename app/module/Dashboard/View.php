@@ -1,16 +1,19 @@
 <?php
-
 namespace Rudolf\Modules\Dashboard;
 
-class View extends \Rudolf\Modules\A_admin\AdminView {
-	public function dashboard() {
+use Rudolf\Modules\A_admin\AdminView;
 
+class View extends AdminView
+{
+	public function dashboard()
+	{
 		$this->head->setTitle(_('Dashboard'));
 
 		$this->template = 'dashboard';
 	}
 
-	public function pageTitle() {
+	public function pageTitle()
+	{
 		
 	}
 }

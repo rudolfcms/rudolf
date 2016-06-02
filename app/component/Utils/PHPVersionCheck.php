@@ -1,13 +1,4 @@
 <?php
-/**
- * This file is part of Rudolf.
- * 
- * Checks whether php version is compatible with the instance Rudolf
- * 
- * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Utils
- * @version 0.1
- */
 
 /**
  * Checks whether php version is compatible with LCMS
@@ -16,12 +7,13 @@
  * 
  * @return void
  */
-function php_check_run($minimumVersionPHP) {
-	$phpVersion = PHP_VERSION;
-	
-	if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
-		php_version_error($phpVersion, $minimumVersionPHP);
-	}
+function php_check_run($minimumVersionPHP)
+{
+    $phpVersion = PHP_VERSION;
+    
+    if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
+        php_version_error($phpVersion, $minimumVersionPHP);
+    }
 }
 
 /**
@@ -34,14 +26,15 @@ function php_check_run($minimumVersionPHP) {
  * 
  * @return void
  */
-function php_version_error($phpVersion, $minimumVersionPHP) {
-	$pageTitle = 'Error to start the Rudolf!';
-	$shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of Rudolf!';
-	$longText = 'To run Rudolf, you must upgrade your copy of PHP.';
+function php_version_error($phpVersion, $minimumVersionPHP)
+{
+    $pageTitle = 'Error to start the Rudolf!';
+    $shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of Rudolf!';
+    $longText = 'To run Rudolf, you must upgrade your copy of PHP.';
 
-	php_version_error_display($pageTitle, $shortText, $longText);
+    php_version_error_display($pageTitle, $shortText, $longText);
 
-	die(1);
+    die(1);
 }
 
 /**
@@ -53,45 +46,46 @@ function php_version_error($phpVersion, $minimumVersionPHP) {
  * 
  * @return void
  */
-function php_version_error_display($pageTitle, $shortText, $longText) {
-	header('Content-type: text/html; charset=UTF-8');
-	header('Cache-control: none');
-	header('Pragma: no-cache');
+function php_version_error_display($pageTitle, $shortText, $longText)
+{
+    header('Content-type: text/html; charset=UTF-8');
+    header('Cache-control: none');
+    header('Pragma: no-cache');
 
 ?><!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<title><?php echo $pageTitle;?></title>
-	<style type="text/css">
-		body {
-			background: #f1f1f1;
-			font-family: Arial, sans-serif;
-			color: #444;
-		}
-		.centered {
-			max-width: 500px;
-			min-width: 200px;
-			margin: 40px auto;
-			padding: 15px;
-			background: #fff;
-			box-shadow: 1px 2px 3px #aaa;
-		}
-		h1 {
-			font-weight: normal;
-			margin: 5px 10px 20px;
-		}
-		p {
-			margin: 10px;
-			color: #555;
-		}
-	</style>
+    <meta charset="utf-8"/>
+    <title><?php echo $pageTitle;?></title>
+    <style type="text/css">
+        body {
+            background: #f1f1f1;
+            font-family: Arial, sans-serif;
+            color: #444;
+        }
+        .centered {
+            max-width: 500px;
+            min-width: 200px;
+            margin: 40px auto;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 1px 2px 3px #aaa;
+        }
+        h1 {
+            font-weight: normal;
+            margin: 5px 10px 20px;
+        }
+        p {
+            margin: 10px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="centered">
-    	<h1><?php echo $pageTitle;?></h1>
-    	<p><?php echo $shortText;?></p>
-    	<p><?php echo $longText;?></p>
+        <h1><?php echo $pageTitle;?></h1>
+        <p><?php echo $shortText;?></p>
+        <p><?php echo $longText;?></p>
     </div>
 </body>
 </html><?php
