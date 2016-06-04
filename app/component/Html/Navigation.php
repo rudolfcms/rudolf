@@ -151,7 +151,7 @@ class Navigation
             $html[] = sprintf('%1$s<li><a href="%2$s">«</a></li>', $tab, DIR . $path.'/page/' . $nav['prev']);
         }
         if ($nav['forstart'] > 1) {
-            $html[] = sprintf('%1$s<li><a href="%2$s">1</a></li>', $tab, '/page/1');
+            $html[] = sprintf('%1$s<li><a href="%2$s">1</a></li>', $tab, DIR . $path.'/page/1');
         }
         if ($nav['forstart'] > 2) {
             $html[] = sprintf('%1$s<li><a>...</a></li>', $tab);
