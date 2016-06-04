@@ -10,12 +10,13 @@
  */
 
 use Rudolf\Component\Logger\ErrorHandler;
-use Rudolf\Component\Plugins\PluginsManager;
+use Rudolf\Component\Modules\ModulesHooks;
 use Rudolf\Component\Modules\ModulesManager;
 use Rudolf\Component\Modules\ModulesRouting;
+use Rudolf\Component\Plugins\PluginsManager;
+use Rudolf\Component\Routing\FrontController;
 use Rudolf\Component\Routing\RouteCollection;
 use Rudolf\Component\Routing\Router;
-use Rudolf\Component\Routing\FrontController;
 ob_start();
 
 // checks whether php version is compatible with the instance of Rudolf
@@ -53,9 +54,12 @@ register_shutdown_function(array($errorHandler, 'shutdown'));
 // run extensions (plugins) menager
 PluginsManager::run();
 
+$modulesManager = new ModulesManager(MODULES_ROOT);
+$modulesHooks = new ModulesHooks($modulesManager->getList(), MODULES_ROOT);
+$modulesHooks->addHooks();
+
 $routeCollection = new RouteCollection();
 
-$modulesManager = new ModulesManager(MODULES_ROOT);
 $modulesRouting = new ModulesRouting($modulesManager->getList(), $routeCollection, MODULES_ROOT);
 $routeCollection = $modulesRouting->addRoutes();
 

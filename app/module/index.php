@@ -8,5 +8,6 @@
   6 => 'Koxy',
   7 => 'Pages',
   8 => 'Users',
-  9 => 'Categories'
+  9 => 'Categories',
+  10 => 'Galleries'
 );

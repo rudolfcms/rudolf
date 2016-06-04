@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Articles\One;
 
-use Rudolf\Component\Hooks\Hooks;
+use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
 
@@ -138,10 +138,11 @@ class Article
      * @param bool|int $truncate
      * @param bool $stripTags
      * @param bool $escape
+     * @param bool $raw
      * 
      * @return string
      */
-    public function content($truncate = false, $stripTags = false, $escape = false) {
+    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false) {
         $content = $this->article['content'];
 
         if (true === $stripTags) {
@@ -154,6 +155,11 @@ class Article
 
         if (true === $escape) {
             $content = Text::escape($content);
+        }
+
+        if (false === $raw) {
+            $content = Hooks\Filter::apply('content_filter', $content);
+            return $content;
         }
 
         return $content;
@@ -204,7 +210,7 @@ class Article
                 break;
         }
         
-        $date = Hooks::apply_filters('date_format_filter', $date);
+        $date = Hooks\Filter::apply('date_format_filter', $date);
 
         if (true === $inflected) {
             $month = [
