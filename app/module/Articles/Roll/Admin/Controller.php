@@ -13,7 +13,7 @@ class Controller extends AdminController
 
         $list = new Roll\Model();
         
-        $pagination = new Pagination($list->getTotalNumber(), $page);
+        $pagination = new Pagination($list->getTotalNumber('1=1'), $page);
         $results = $list->getList($pagination);
 
         $view = new View();
