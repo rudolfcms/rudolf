@@ -25,7 +25,7 @@ class Kox
      * 
      * @param array $koxy
      */
-    public function setData($koxy)
+    public function setData($kox)
     {
         $this->kox = array_merge(
             [
