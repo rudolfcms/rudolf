@@ -142,10 +142,10 @@ class AdminView extends AView
      */
     protected function alerts($classes = [])
     {
-        if (!AlertsCollection::isAlerts()) {
+        if(!$this->isAlerts()) {
             return false;
         }
-
+        
         $classes = array_merge([
             'danger' => 'danger',
             'error' => 'error',
@@ -161,6 +161,14 @@ class AdminView extends AView
         }
 
         return implode("\n", $html);
+    }
+
+    protected function isAlerts()
+    {
+        if (AlertsCollection::isAlerts()) {
+            return true;
+        }
+        return false;
     }
 
     /**

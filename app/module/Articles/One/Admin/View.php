@@ -11,6 +11,8 @@ class View extends AdminView
      * Set data to edit article
      * 
      * @param array $article
+     * 
+     * @return void
      */
     public function editArticle($article)
     {
@@ -24,6 +26,27 @@ class View extends AdminView
         $this->templateType = 'edit';
 
         $this->template = 'articles-one';
+    }
+
+    /**
+     * Set data to delete article
+     * 
+     * @param array $article
+     * 
+     * @return void
+     */
+    public function delArticle($article)
+    {
+        $this->article = new AArticle($article);
+
+        $this->pageTitle = _('Delete article');
+        $this->head->setTitle($this->pageTitle());
+
+        $this->path = $this->article->delUrl();
+
+        $this->templateType = 'del';
+
+        $this->template = 'articles-del';
     }
 
     /**

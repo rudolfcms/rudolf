@@ -70,6 +70,28 @@ class Model extends AdminModel
     }
 
     /**
+     * Delete article
+     * 
+     * @param int $id Article ID
+     */
+    public function delete($id)
+    {
+        $query = $this->pdo->prepare("DELETE FROM {$this->prefix}articles WHERE id = :id");
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
+        $status = $query->execute();
+
+        if ($status) {
+            Alerts\AlertsCollection::add(new Alerts\Alert(
+                'success', 'Pomyślnie usunięto!'
+            ));
+        } else {
+            Alerts\AlertsCollection::add(new Alerts\Alert(
+                'warning', 'Coś się zepsuło! Wpis nie został usunięty'
+            ));
+        }
+    }
+
+    /**
      * Add article
      * 
      * @param array $post

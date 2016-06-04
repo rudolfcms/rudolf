@@ -20,7 +20,7 @@ class AArticle extends One\Article
      */
     public function textarea()
     {
-        return trim($this->content(false, false, true)); // traits
+        return trim($this->content(false, false, true, true)); // traits
     }
 
     public function addCategory()

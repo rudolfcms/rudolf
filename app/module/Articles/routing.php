@@ -74,6 +74,12 @@ $collection->add('articles/one/admin/edit', new Routing\Route(
     ['id' => "[1-9][0-9]*"]
 ));
 
+$collection->add('articles/one/admin/del', new Routing\Route(
+    $config['admin_path'] . '/articles/del/<id>$',
+    'Rudolf\Modules\Articles\One\Admin\Controller::del',
+    ['id' => "[1-9][0-9]*"]
+));
+
 $collection->add('articles/one/admin/add', new Routing\Route(
     $config['admin_path'] . '/articles/add$',
     'Rudolf\Modules\Articles\One\Admin\Controller::add'

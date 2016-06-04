@@ -25,6 +25,23 @@ class Controller extends AdminController
         $view->render('admin');
     }
 
+    public function del($id) {
+        $model = new Model();
+
+        // if data was send
+        if (isset($_POST['delete'])) {
+            $model->delete($id);
+        }
+
+        $one = new One\Model();
+        $article = $one->getOneById($id);
+        
+        $view = new View();
+        $view->delArticle($article);
+        $view->setActive(['admin/articles']);
+        $view->render('admin');
+    }
+
     public function add()
     {
         $model = new Model();
