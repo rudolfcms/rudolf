@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Articles\Roll\Admin;
 
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Modules\Articles\Roll;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Controller extends AdminController
 {

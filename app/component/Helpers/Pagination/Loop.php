@@ -1,12 +1,24 @@
 <?php
-namespace Rudolf\Modules\Albums\Roll;
-
-use Rudolf\Modules\Albums\One\Album;
-use Rudolf\Component\Libs\Pagination;
+namespace Rudolf\Component\Helpers\Pagination;
 use Rudolf\Component\Html\Navigation;
     
-class Roll
+class Loop
 {
+    /**
+     * @var array
+     */
+    protected $data;
+
+    /**
+     * @var Calc
+     */
+    protected $calc;
+
+    /**
+     * @var string
+     */
+    protected $itemClassName;
+
     /**
      * @var string
      */
@@ -18,36 +30,33 @@ class Roll
     protected $current = -1;
 
     /**
-     * @var array
-     */
-    protected $data;
-
-    /**
      * Constructor
      * 
      * @param array $data
-     * @param Pagination $pagination
+     * @param Calc $calc
+     * @param string $itemClassName
      * @param string $path
      */
-    public function __construct($data, $pagination, $path = '')
+    public function __construct($data, Calc $calc, $itemClassName, $path = '')
     {
         $this->data = $data;
-        $this->pagination = $pagination;
+        $this->calc = $calc;
+        $this->itemClassName = $itemClassName;
         $this->path = $path;
     }
 
     /**
-     * Chech, is any albums to display
+     * Chech, is any item to display
      * 
      * @return bool
      */
-    public function isAlbums()
+    public function isItems()
     {
         return is_array($this->data);
     }
 
     /**
-     * Returns number of album to display on page
+     * Returns number of items to display on page
      * 
      * @return int
      */
@@ -57,11 +66,11 @@ class Roll
     }
 
     /**
-     * Whether there are more posts available in the loop
+     * Whether there are more items available in the loop
      *
      * @return bool
      */
-    public function haveAlbums()
+    public function haveItems()
     {
         if ($this->current + 1 < $this->total()) {
             return true;
@@ -70,17 +79,17 @@ class Roll
     }
 
     /**
-     * Set the current album
+     * Set the current item
      *
      * @return void
      */
-    public function album()
+    public function item()
     {
         $this->current += 1;
-        $album = new Album();
-        $album->setData($this->data[$this->current]);
+        $item = new $this->itemClassName();
+        $item->setData($this->data[$this->current]);
 
-        return $album;
+        return $item;
     }
 
     /**
@@ -96,7 +105,7 @@ class Roll
     public function nav($classes, $nesting = 2)
     {
         $nav = new Navigation();
-        $calculations = $this->pagination->nav();
+        $calculations = $this->calc->nav();
         
         return $nav->createPagingNavigation($calculations, $this->path, $classes, $nesting);
     }
@@ -108,6 +117,6 @@ class Roll
      */
     public function isPagination()
     {
-        return 1 < $this->pagination->getAllPages();
+        return 1 < $this->calc->getAllPages();
     }
 }

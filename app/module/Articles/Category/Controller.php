@@ -1,8 +1,8 @@
 <?php
 namespace Rudolf\Modules\Articles\Category;
 
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
-use Rudolf\Component\Libs\Pagination;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Modules\A_front\FController;
 use Rudolf\Modules\Articles\Roll;

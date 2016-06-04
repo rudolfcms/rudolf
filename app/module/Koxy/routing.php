@@ -7,7 +7,7 @@ $config = $module->getConfig();
 
 $collection->add('koxy', new Routing\Route(
     '(page/<page>)?',
-    'Rudolf\Modules\Koxy\Controller',
+    'Rudolf\Modules\Koxy\Roll\Controller',
     array(
         'page' => "[1-9][0-9]*$"
     ),
@@ -19,7 +19,7 @@ $collection->add('koxy', new Routing\Route(
 
 $collection->add('koxy/vote', new Routing\Route(
     'ajax/koxy/vote/<type>',
-    'Rudolf\Modules\Koxy\Controller::vote',
+    'Rudolf\Modules\Koxy\One\Controller::vote',
     array(
         'name' => "[a-z]+"
     )

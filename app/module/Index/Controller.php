@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Index;
 
 use Rudolf\Modules\A_front\FController;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
 
 class Controller extends FController

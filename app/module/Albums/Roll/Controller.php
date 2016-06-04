@@ -4,7 +4,7 @@ namespace Rudolf\Modules\Albums\Roll;
 use Rudolf\Modules\A_front\FController;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Component\Http\HttpErrorException;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Controller extends FController
 {

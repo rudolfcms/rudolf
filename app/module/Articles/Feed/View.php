@@ -1,14 +1,16 @@
 <?php
 namespace Rudolf\Modules\Articles\Feed;
 
-use Rudolf\Modules\Articles\Roll\Roll;
-use Rudolf\Modules\A_front\FView;
-use Rudolf\Component\Libs\Pagination;
 use Rudolf\Component\Feed;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Component\Helpers\Pagination\Loop as Loop;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Modules\A_front\FView;
+use Rudolf\Modules\Articles\Roll\Roll;
 
 class View extends FView
 {
-	public function setArticles($data, $pagination)
+	public function setArticles($data, Pagination $pagination)
 	{
 		$this->data = $data;
 		$this->pagination = $pagination;
@@ -16,14 +18,19 @@ class View extends FView
 
 	public function rss2()
 	{
+		$module = new Module('articles');
+		$config = $module->getConfig();
+
 		$generator = new Feed\RSS2Generator();
-		$generator->setTitle('RSS2Generator example');
+		$generator->setTitle($config['feed_title']);
 		$generator->setLink('http://zsrokietnica.project/feed/rss');
-		$generator->setDescription('Rudolf RSS canal');
+		$generator->setDescription($config['feed_description']);
 
-		$roll = new Roll($this->data, $this->pagination);
+		$loop = new Loop($this->data, $this->pagination,
+			'Rudolf\\Modules\\Articles\\One\\Article'
+		);
 
-		while ($roll->haveArticles()) { $article = $roll->article();
+		while ($loop->haveItems()) { $article = $loop->item();
 			$item = new Feed\RSS2Item();
 			
 			$item->setTitle($article->title());

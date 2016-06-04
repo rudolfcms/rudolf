@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Albums\Roll;
 
 use Rudolf\Modules\Albums;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends Albums\Model
 {

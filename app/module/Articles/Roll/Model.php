@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Articles\Roll;
 
 use Rudolf\Modules\Articles;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends Articles\Model
 {

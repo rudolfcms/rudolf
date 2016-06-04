@@ -1,7 +1,7 @@
 <?php
-namespace Rudolf\Component\Libs;
+namespace Rudolf\Component\Helpers\Pagination;
 
-class Pagination
+class Calc
 {
     /**
      * the number of all elements

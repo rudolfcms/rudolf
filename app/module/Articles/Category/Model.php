@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Articles\Category;
 
 use Rudolf\Component\Abstracts\AModel;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends AModel
 {

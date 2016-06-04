@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Articles\Feed;
 
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Component\Http\Response;
 use Rudolf\Modules\A_front\FController;
 use Rudolf\Modules\Articles\Roll;
-use Rudolf\Component\Libs\Pagination;
-use Rudolf\Component\Http\Response;
 
 class Controller extends FController
 {

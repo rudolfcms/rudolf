@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Index;
 
-use Rudolf\Modules\Articles\Roll;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Modules\Articles\Roll\View as ArticlesView;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
-class View extends Roll\View
+class View extends ArticlesView
 {
     public function setData($data, Pagination $pagination)
     {

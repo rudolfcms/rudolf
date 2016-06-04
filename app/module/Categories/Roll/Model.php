@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Categories\Roll;
 
 use Rudolf\Component\Abstracts\AModel;
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends AModel
 {
@@ -33,7 +33,6 @@ class Model extends AModel
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         
-
         if (!empty($results)) {
             return $results;
         }

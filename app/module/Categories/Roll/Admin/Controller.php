@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Categories\Roll\Admin;
 
-use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Modules\Categories\Roll;
 
