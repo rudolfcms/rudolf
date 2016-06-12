@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Albums\One;
 
-use Rudolf\Component\Hooks\Hooks;
+use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
 
@@ -210,7 +210,7 @@ class Album
                 break;
         }
         
-        $date = Hooks::apply_filters('date_format_filter', $date);
+        $date = Hooks\Filter::apply('date_format_filter', $date);
 
         if (true === $inflected) {
             $month = [
