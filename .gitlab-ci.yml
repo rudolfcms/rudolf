@@ -1,10 +1,7 @@
-# Select image from https://hub.docker.com/_/php/
-image: php:5.6
-
 # Select what we should cache
 cache:
   paths:
-  - vendor/
+  - app/vendor/
 
 before_script:
 # Install git, the php image doesn't have installed
@@ -17,8 +14,13 @@ before_script:
 # Install all project dependencies
 - php composer.phar install
 
-# We test PHP5.6 (the default)
-test:mysql:
+test:php5.5:
+  image: php:5.5
+  script:
+  - app/vendor/bin/phpunit
+
+test:php5.6:
+  image: php:5.6
   script:
   - app/vendor/bin/phpunit
 
@@ -27,5 +29,4 @@ test:php7:
   image: php:7
   script:
   - app/vendor/bin/phpunit
-  allow_failure: true
 
