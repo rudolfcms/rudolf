@@ -17,15 +17,15 @@ before_script:
 # Install all project dependencies
 - php composer.phar install
 
-# We test PHP5.6 (the default) with MySQL
+# We test PHP5.6 (the default)
 test:mysql:
   script:
-  - vendor/bin/phpunit
+  - app/vendor/bin/phpunit
 
-# We test PHP7 with MySQL, but we allow it to fail
-test:php7:mysql:
+# We test PHP7, but we allow it to fail
+test:php7:
   image: php:7
   script:
-  - vendor/bin/phpunit
+  - app/vendor/bin/phpunit
   allow_failure: true
 
