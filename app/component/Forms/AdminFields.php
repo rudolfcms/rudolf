@@ -20,7 +20,7 @@ class AdminFields
      */
     public function textarea($content, $name, $class, $id, $placeholder ='', $cols = 30, $rows = 10)
     {
-        $html = sprintf('<textarea name="%2$s" id="%3$s" placeholder="%5$s" cols="%6$s" rows="%7$s">%1$s</textarea>',
+        $html = sprintf('<textarea name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s" cols="%6$s" rows="%7$s">%1$s</textarea>',
             $content, 
             $name,
             $class,
@@ -48,7 +48,7 @@ class AdminFields
      */
     public function datetimeInput($date, $name, $class, $id, $placeholder = '')
     {
-        $html = sprintf('<input type="datetime" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s"/>',
+        $html = sprintf('<input type="datetime" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s">',
             $date,
             $name,
             $class,
@@ -74,8 +74,8 @@ class AdminFields
      */
     public function pathInput($path, $name, $class, $id, $placeholder = '')
     {
-        $html = sprintf('<input type="text" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s"/>',
-            $date,
+        $html = sprintf('<input type="text" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s">',
+            $path,
             $name,
             $class,
             $id,

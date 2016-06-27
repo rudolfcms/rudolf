@@ -195,6 +195,6 @@ class Navigation
         }
         $html[] = $nest . '</ul>'."\n";
         
-        return implode("\r\n", $html);
+        return implode("\n", $html);
     }
 }

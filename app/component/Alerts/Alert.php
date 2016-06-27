@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Component\Alerts;
 
-class Alert
+class Alert implements IAlert
 {
     /**
      * @var string

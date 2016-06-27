@@ -1,7 +1,9 @@
 <?php
 namespace Rudolf\Component\Helpers\Pagination;
 
-class Calc
+use InvalidArgumentException;
+
+class Calc implements ICalc
 {
     /**
      * the number of all elements
@@ -75,6 +77,8 @@ class Calc
      * @param int $pageNumber Number of current page
      * @param int $onPage Number of items per page
      * @param int $navNum Number of items in navigation
+     * 
+     * @throws InvalidArgumentException
      *
      * @return void
      */
@@ -86,7 +90,7 @@ class Calc
         $this->navNum = (int) $navNum;
         
         if (($total) < 0 || ($pageNumber) < 0 || ($onPage) < 0 || ($navNum) < 0) {
-            throw new \InvalidArgumentException("Bad pagination params");
+            throw new InvalidArgumentException("Bad pagination params");
         }
 
         $this->calculationVariables();

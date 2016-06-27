@@ -1,6 +1,8 @@
 <?php
 namespace Rudolf\Component\Forms;
 
+use DateTime;
+
 class Validator
 {
     /**
@@ -49,7 +51,7 @@ class Validator
      */
     public function checkDatetime($field, $value, $format = 'Y-m-d')
     {
-        $d = \DateTime::createFromFormat($format, $value);
+        $d = DateTime::createFromFormat($format, $value);
         
         if (false === ($d && $d->format($format) == $value)) {
             $this->alerts[$field] = [

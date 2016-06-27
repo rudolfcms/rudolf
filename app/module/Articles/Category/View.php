@@ -2,14 +2,18 @@
 namespace Rudolf\Modules\Articles\Category;
 
 use Rudolf\Modules\A_front\FView;
-use Rudolf\Modules\Articles\Roll;
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Component\Helpers\Pagination\Loop;
 
 class View extends FView
 {
 
     public function setData($data, $pagination, $info = false)
     {
-        $this->roll = new Roll\Roll($data, $pagination, '/artykuly/kategorie/'. $info['slug']);
+        $this->loop = new Loop($data, $pagination,
+            'Rudolf\\Modules\\Articles\\One\\Article',
+            '/artykuly/kategorie/' . $info['slug']
+        );
         
         $this->categoryInfo = $info;
 

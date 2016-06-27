@@ -37,10 +37,11 @@ class Loop
      * @param string $itemClassName
      * @param string $path
      */
-    public function __construct($data, Calc $calc, $itemClassName, $path = '')
+    public function __construct($data, Calc $calc, $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item', $path = '')
     {
         $this->data = $data;
         $this->calc = $calc;
+
         $this->itemClassName = $itemClassName;
         $this->path = $path;
     }
@@ -52,7 +53,7 @@ class Loop
      */
     public function isItems()
     {
-        return is_array($this->data);
+        return is_array($this->data) and !empty($this->data);
     }
 
     /**

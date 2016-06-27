@@ -13,7 +13,7 @@ namespace Rudolf\Component\Feed;
  * @version 0.1
  */
 
-class RSS2Item
+class RSS2Item implements IRSS2Item
 {
     /**
      * @var string
@@ -150,7 +150,7 @@ class RSS2Item
             return false;
         }
 
-        return '<title>' . htmlspecialchars($this->title) . '</title>';
+        return '<title>' . strip_tags($this->title) . '</title>';
     }
 
     /**
