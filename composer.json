@@ -14,6 +14,11 @@
 		"php": ">=5.4.0",
 		"phpunit/phpunit": "4.8.*"
 	},
+	"require-dev": {
+	   "squizlabs/php_codesniffer": "*",
+	   "wimg/php-compatibility": "dev-master",
+	   "simplyadmire/composer-plugins" : "@dev"
+	},
 	"autoload": {
 		"psr-4": {
 			"Rudolf\\Component\\": "app/component/",
