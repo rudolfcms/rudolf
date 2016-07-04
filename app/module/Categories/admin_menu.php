@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'categories',
-    $position = 10,
+    $position = 7,
     $font_awesome_ico = 'fa fa-folder'
 );
 

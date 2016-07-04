@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'home page',
-    $position = 10,
+    $position = 8,
     $font_awesome_ico = 'fa-home'
 );
 
