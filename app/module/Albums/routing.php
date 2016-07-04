@@ -34,3 +34,31 @@ $collection->add('album/one', new Routing\Route(
         // ([1-9]|[12]\d|3[01]) without 0, like 5
     ]
 ));
+
+
+# admin
+############################
+
+$collection->add('albums/roll/admin', new Routing\Route(
+    $config['admin_path'] . '/albums/list(/page/<page>)?',
+    'Rudolf\Modules\Albums\Roll\Admin\Controller::getList',
+    ['page' => "[1-9][0-9]*$"],
+    ['page' => 0]
+));
+
+$collection->add('albums/one/admin/edit', new Routing\Route(
+    $config['admin_path'] . '/albums/edit/<id>$',
+    'Rudolf\Modules\Albums\One\Admin\Controller::edit',
+    ['id' => "[1-9][0-9]*"]
+));
+
+$collection->add('albums/one/admin/del', new Routing\Route(
+    $config['admin_path'] . '/albums/del/<id>$',
+    'Rudolf\Modules\Albums\One\Admin\Controller::del',
+    ['id' => "[1-9][0-9]*"]
+));
+
+$collection->add('albums/one/admin/add', new Routing\Route(
+    $config['admin_path'] . '/albums/add$',
+    'Rudolf\Modules\Albums\One\Admin\Controller::add'
+));

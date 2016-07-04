@@ -34,9 +34,6 @@ class Album
                 'id' => 0,
                 'category_ID' => 0,
                 'title' => '',
-                'keywords' => '',
-                'description' => '',
-                'content' => '',
                 'author' => '',
                 'author' => '',
                 'date' => '',
@@ -99,68 +96,6 @@ class Album
         }
 
         return Text::escape($title);
-    }
-
-    /**
-     * Returns the keywords
-     * 
-     * @param string $type null|raw
-     * 
-     * @return string
-     */
-    public function keywords($type = '')
-    {
-        $keywords = $this->album['keywords'];
-        if ('raw' === $type) {
-            return $keywords;
-        }
-
-        return Text::escape($keywords);
-    }
-
-    /**
-     * Returns the description
-     * 
-     * @param string $type
-     * 
-     * @return string
-     */
-    public function description($type = '')
-    {
-        $description = $this->album['description'];
-        if ('raw' === $type) {
-            return $description;
-        }
-
-        return Text::escape($description);
-    }
-
-    /**
-     * Returns album content
-     * 
-     * @param bool|int $truncate
-     * @param bool $stripTags
-     * @param bool $escape
-     * 
-     * @return string
-     */
-    public function content($truncate = false, $stripTags = false, $escape = false)
-    {
-        $content = $this->album['content'];
-
-        if (true === $stripTags) {
-            $content = strip_tags($content);
-        }
-
-        if (false !== $truncate and strlen($content) > $truncate) {
-            $content = Text::truncate($content, $truncate);
-        }
-
-        if (true === $escape) {
-            $content = Text::escape($content);
-        }
-
-        return $content;
     }
 
     /**
@@ -410,7 +345,7 @@ class Album
 
         $path = Image::resize($path, $width, $height);
 
-        $image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>',
+        $image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
             $path, $width, $height, $alt
         );
 
