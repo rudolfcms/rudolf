@@ -347,7 +347,7 @@ class Album
     {
         return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
             DIR,
-            'artykuly',
+            'foto',
             $this->date('Y'),
             $this->date('m'),
             $this->slug()
@@ -492,7 +492,7 @@ class Album
     {
         return sprintf('%1$s/%2$s/%3$s',
             DIR,
-            'artykuly/kategorie',
+            'foto/kategorie',
             Text::escape($this->album['category_url'])
         );
     }
