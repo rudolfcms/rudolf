@@ -56,13 +56,13 @@ database_charset=$(get_value "Charset" "utf8")
 database_prefix=$(get_value "Prefix" "rudolf_")
 
 printf "Saving..."
-sed -i "s/engine_value/$database_engine/g" app/config/database.php
-sed -i "s/host_value/$database_host/g" app/config/database.php
-sed -i "s/database_value/$database_name/g" app/config/database.php
-sed -i "s/user_value/$database_user/g" app/config/database.php
-sed -i "s/pass_value/$database_pass/g" app/config/database.php
-sed -i "s/charset_value/$database_charset/g" app/config/database.php
-sed -i "s/prefix_value/$database_prefix/g" app/config/database.php
+sed -i.bak "s/engine_value/$database_engine/g" app/config/database.php
+sed -i.bak "s/host_value/$database_host/g" app/config/database.php
+sed -i.bak "s/database_value/$database_name/g" app/config/database.php
+sed -i.bak "s/user_value/$database_user/g" app/config/database.php
+sed -i.bak "s/pass_value/$database_pass/g" app/config/database.php
+sed -i.bak "s/charset_value/$database_charset/g" app/config/database.php
+sed -i.bak "s/prefix_value/$database_prefix/g" app/config/database.php
 echo " done."
 
 
@@ -74,10 +74,10 @@ site_general_name=$(get_value "Site general name" "Rudolf → czerwononosy renif
 site_debug=$(get_value "Debug mode (true|false)" "false")
 
 printf "Saving..."
-sed -i "s/front_theme_value/$site_front_theme/g" app/config/site.php
-sed -i "s/admin_theme_value/$site_admin_theme/g" app/config/site.php
-sed -i "s/general_name_value/$site_general_name/g" app/config/site.php
-sed -i "s/'debug_value'/$site_debug/g" app/config/site.php
+sed -i.bak "s/front_theme_value/$site_front_theme/g" app/config/site.php
+sed -i.bak "s/admin_theme_value/$site_admin_theme/g" app/config/site.php
+sed -i.bak "s/general_name_value/$site_general_name/g" app/config/site.php
+sed -i.bak "s/'debug_value'/$site_debug/g" app/config/site.php
 echo " done."
 
 
@@ -86,7 +86,7 @@ echo "--- Auth config"
 auth_key=$(cat /dev/urandom | tr -dc "a-zA-Z0-9!@#$%^&*()_+?><~\`;" | fold -w 48 | head -n 1)
 
 printf "Saving..."
-sed -i "s/site_key_value/$auth_key/g" app/config/auth.php
+sed -i.bak "s/site_key_value/$auth_key/g" app/config/auth.php
 echo " done."
 
 echo ""
