@@ -116,7 +116,7 @@ class Navigation
                 $array[$i][1]
             );
             
-            return implode("\r\n", $html);
+            return implode("\n", $html);
         }
     }
 

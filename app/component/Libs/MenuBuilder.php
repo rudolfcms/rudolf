@@ -379,7 +379,7 @@ class MenuBuilder
 
         $this->html[] = $after['root_ul'];
         
-        return implode("\r\n", array_filter($this->html)) . "\n";
+        return implode("\n", array_filter($this->html)) . "\n";
     }
 
     /**
