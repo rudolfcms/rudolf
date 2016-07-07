@@ -83,10 +83,16 @@ echo " done."
 
 echo ""
 echo "--- Auth config"
-auth_key=$(cat /dev/urandom | tr -dc "a-zA-Z0-9!@#$%^&*()_+?><~\`;" | fold -w 48 | head -n 1)
+auth_key=$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-zA-Z0-9!@#$%^&*()_+?><~\`;' | head -c 64)
 
 printf "Saving..."
 sed -i.bak "s/site_key_value/$auth_key/g" app/config/auth.php
+echo " done."
+
+
+echo ""
+printf "Cleaning..."
+rm app/config/*.bak
 echo " done."
 
 echo ""
