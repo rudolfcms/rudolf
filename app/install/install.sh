@@ -53,7 +53,7 @@ database_name=$(get_value "Name" "rudolf")
 database_user=$(get_value "User" "rudolf")
 database_pass=$(get_value "Password")
 database_charset=$(get_value "Charset" "utf8")
-database_prefix=$(get_value "Prefix" "rudolf_")
+database_prefix=$(get_value "Prefix" "")
 
 printf "Saving..."
 sed -i.bak "s/engine_value/$database_engine/g" app/config/database.php
