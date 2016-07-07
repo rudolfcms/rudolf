@@ -2,7 +2,7 @@
 
 function install_composer() {
 	composer install -q
-	
+
 }
 function get_value() {
 	local text=$1
@@ -31,7 +31,7 @@ echo " done."
 
 echo ""
 echo "--- Database config"
-cp app/config/database.example.php app/config/database.php
+cp "app/install/config.example/database.php" "app/config/database.php"
 database_engine=$(get_value "Engine" "mysql")
 database_host=$(get_value "Host" "localhost")
 database_name=$(get_value "Name" "rudolf")
@@ -53,7 +53,7 @@ echo " done."
 
 echo ""
 echo "--- Site config"
-cp app/config/site.example.php app/config/site.php
+cp "app/install/config.example/site.php" "app/config/site.php"
 site_front_theme=$(get_value "Front theme name" "reindeer")
 site_admin_theme=$(get_value "Admin theme name" "dasher")
 site_general_name=$(get_value "Site general name" "Rudolf → czerwononosy renifer")
@@ -69,7 +69,7 @@ echo " done."
 
 echo ""
 echo "--- Auth config"
-cp app/config/auth.example.php app/config/auth.php
+cp "app/install/config.example/auth.php" "app/config/auth.php"
 auth_key=$(cat /dev/urandom | tr -dc "a-zA-Z0-9!@#$%^&*()_+?><~\`;" | fold -w 48 | head -n 1)
 
 printf "Saving..."
