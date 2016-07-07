@@ -1,9 +1,7 @@
 composer.lock
-content/themes/admin/
-content/themes/front/
-content/uploads/
-app/log
-app/vendor
-app/temp
 app/config
-!app/config/*.example.php
+app/log
+app/temp
+app/vendor
+content/themes
+content/uploads
