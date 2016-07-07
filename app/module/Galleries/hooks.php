@@ -6,4 +6,4 @@ function galleryCodeReplasdfasdasasdfjasldkfjlkasdjflkj($content) {
 	return str_replace('Dzień', 'asdf', $content);
 }
 
-Hooks\Filter::add('content_filter', 'galleryCodeReplasdfasdasasdfjasldkfjlkasdjflkj');
+//Hooks\Filter::add('content_filter', 'galleryCodeReplasdfasdasasdfjasldkfjlkasdjflkj');
