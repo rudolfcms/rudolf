@@ -23,7 +23,13 @@ class Controller extends FController
         $view = new View();
         $view->page($pageData);
         $aAddress = explode('/', $sAddress);
-        $view->setFrontData($this->frontData, $aAddress[0]);
+
+        $temp = '';
+        foreach ($aAddress as $key => $value) {
+            $active[] = ltrim($temp = $temp . '/' . $value, '/');
+        }
+
+        $view->setFrontData($this->frontData, $active);
         $view->setBreadcrumbsData($pagesList, $aAddress);
 
         return $view->render();
