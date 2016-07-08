@@ -7,6 +7,10 @@ use Rudolf\Component\Images\Image;
 
 class Parser
 {
+    private $allowedExtension = [
+        'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF'
+    ];
+
     public function __construct()
     {
         $this->image = new Image();
@@ -34,39 +38,17 @@ class Parser
 
                 $info = $model->getGalleryInfoById($id);
 
-                $galleryCode =  $this->createGallery($info);
-                if ($galleryCode) {
+                $codeGallery =  $this->createGallery($info);
+                if ($codeGallery) {
                     $content = str_replace('{{gallery:'. $id .'}}',
-                        '<div class="gallery-container">'. $galleryCode .'</div>',
+                        '<div class="gallery-container">'. $codeGallery .'</div>',
                         $content
                     );
-                   // $this->info[] = array('url'=>$id, 'name'=> $info['title']);
                 }
             }
-            //$this->hooks->add_filter('add_admin_top_menu', array($this, 'adminAddons'), 10, 1);
         }
         return $content;
     }
-
-    // public function adminAddons($array)
-    // {
-    //     if (count($this->info) === 1) {
-    //         $array[] =  array(
-    //             'name' => 'Edytuj galerię',
-    //             'url' => APP_DIR . '/admin/'. $this->config['admin_url'] .'/edit/'. $this->info[0]['url'],
-    //             'icon' => 'fa-camera',
-    //         );
-    //     }
-    //     else {
-    //         $array[] =  array(
-    //             'name' => 'Edytuj galerie',
-    //             'url' => APP_DIR . '/admin/'. $this->config['admin_url'] .'/edit',
-    //             'icon' => 'fa-camera',
-    //             'child' => $this->info
-    //         );
-    //     }
-    //     return $array;
-    // }
 
     /**
      * It create gallery code
@@ -77,74 +59,54 @@ class Parser
      */
     public function createGallery($info)
     {
-        $path = $this->config['path_root'] . '/' . $info['url'];
-        $galleryPath = $this->config['path_web'] . '/' . $info['url'];
+        $serverPath = $this->config['path_root'] . '/' . $info['url'];
+        $webPath = $this->config['path_web'] . '/' . $info['url'];
 
-        $imagesArray = $this->imagesArray($path);
+        $imagesArray = $this->getImagesArray($serverPath .'/thumbs');
         if (!$imagesArray) {
             return false;
         }
 
-        // if ($this->hooks->has_filter('images_gallery_viewer')) {
-        //  return $this->hooks->apply_filters('images_gallery_viewer', $imagesArray, $info);
-        // }
-        
+        if (Hooks\Filter::isHas('images_gallery_viewer')) {
+            return Hooks\Filter::apply('images_gallery_viewer', $imagesArray, $info);
+        }
+
         $w = $info['thumb_width'];
         $h = $info['thumb_height'];
-        $galleryCode = '';
 
         for ($i=0; $i < count($imagesArray); $i++) {
-            $galleryCode .= sprintf('
-                <a href="%1$s" data-group="%2$s">
-                    <img src="%3$s" width="%4$s" height="%5$s" alt="%2$s"/>
-                </a>',
-                $galleryPath . '/photos/' . $imagesArray[$i], // image source
-                $imagesArray[$i], // gallery name
-                $this->image->resize($galleryPath .'/thumbs/'. $imagesArray[$i], $w, $h), // image path
-                $w, // width thumb
-                $h // height thumb
+            $photo = $webPath . '/photos/' . $imagesArray[$i];
+            $thumb = $this->image->resize($webPath .'/thumbs/'. $imagesArray[$i], $w, $h);
+            $alt = $imagesArray[$i];
+
+            $codeGallery[] = sprintf('<a href="%1$s">'.
+                    '<img src="%2$s" alt="%3$s" width="%4$s" height="%5$s">'.
+                '</a>', $photo, $thumb, $alt, $w, $h
             );
         }
 
-        return $galleryCode;
+        return implode("\n", $codeGallery);
     }
 
     /**
      * It returns array list of gallery images
-     * 
+     *
      * @param string $imagesDir string with images directory
      *
      * @return array $array array with images list
      */
-    private function imagesArray($imagesDir)
+    private function getImagesArray($imagesDir)
     {
-        $imagesDir .= '/thumbs';
-        $dir = opendir($imagesDir);
-
-        $allows = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF');
-
-        $array = null;
-
-        if (is_dir($imagesDir)) {
-            if ($dh = opendir($imagesDir)) {
-                while (($file = readdir($dh)) !== false) {
-                    if (is_file($imagesDir . '/' . $file) && $file != "." && $file != "..") {
-                        $file_info = pathinfo($imagesDir . '/' . $file);
-                        if (in_array($file_info['extension'], $allows)) {
-                            $array[] = $file;
-                        }
-                    }
-                }
-                closedir($dh);
+        foreach (glob($imagesDir . '/*') as $file) {
+            if (in_array(pathinfo($file)['extension'], $this->allowedExtension)) {
+                $array[] = str_replace($imagesDir . '/', '', $file);
             }
-            if (empty($array)) {
-                return false;
-            }
-            sort($array);
-            return $array;
         }
-        else {
+        if (empty($array)) {
             return false;
         }
+        sort($array);
+
+        return $array;
     }
 }
