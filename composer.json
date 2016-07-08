@@ -3,7 +3,7 @@
     	"vendor-dir": "app/vendor"
     },
 	"name": "mklj/Rudolf",
-	"description": "Rudolf is simple CMS system written in PHP. That's all.",
+	"description": "Rudolf is simple CMS written in PHP. That's all.",
 	"authors": [
 		{
 			"name": "Mikołaj Pich",
