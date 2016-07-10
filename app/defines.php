@@ -10,7 +10,7 @@
  */
 
 define('VER', 0.1);
-define('VER_NAME', '0.0.7-prealpha');
+define('VER_NAME', '0.0.8-prealpha');
 define('NAME', 'rudolf');
 
 if(dirname($_SERVER['SCRIPT_NAME']) == DIRECTORY_SEPARATOR) {
