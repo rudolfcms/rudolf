@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\A_admin;
 
-use Rudolf\Component\Abstracts\AController;
+use Rudolf\Framework\Controller\BaseController;
 use Rudolf\Component\Http\Response;
 
-class AdminController extends AController
+class AdminController extends BaseController
 {
     /**
      * Constructor

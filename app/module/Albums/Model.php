@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Albums;
 
-use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Modules\A_front\FModel;
 
-abstract class Model extends AModel
+abstract class Model extends FModel
 {
     /**
      * Returns part of query

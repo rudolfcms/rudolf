@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\A_front;
 
-use Rudolf\Component\Abstracts\AView;
+use Rudolf\Framework\View\BaseView;
 use Rudolf\Component\Html\Navigation;
 
-abstract class FView extends AView
+abstract class FView extends BaseView
 {
 
     public function setFrontData($menu, $current = 0)

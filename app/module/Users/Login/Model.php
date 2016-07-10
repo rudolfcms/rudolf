@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Users\Login;
 
-use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Modules\A_front\FModel
 use Rudolf\Component\Auth\Auth;
 
-class Model extends AModel
+class Model extends FModel
 {
 
     public function check()

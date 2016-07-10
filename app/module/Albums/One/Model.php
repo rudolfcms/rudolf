@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Albums\One;
 
-use Rudolf\Modules\A_front\Model as FModel;
+use Rudolf\Modules\A_front\FModel;
 
 class Model extends FModel
 {

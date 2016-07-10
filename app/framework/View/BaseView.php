@@ -1,11 +1,11 @@
 <?php
-namespace Rudolf\Component\Abstracts;
+namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Html\Head;
 use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
 use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
 
-abstract class AView
+abstract class BaseView
 {
     /**
      * @var string Server-side path to theme catalog

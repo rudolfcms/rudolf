@@ -1,9 +1,9 @@
 <?php
-namespace Rudolf\Component\Abstracts;
+namespace Rudolf\Framework\Model;
 
 use PDO;
 
-abstract class AModel
+abstract class BaseModel
 {
     /**
      * @var object PDO

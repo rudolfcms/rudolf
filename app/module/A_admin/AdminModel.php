@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\A_admin;
 
-use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Framework\Model\BaseModel;
 use Rudolf\Component\Auth\Auth;
 
-class AdminModel extends AModel
+class AdminModel extends BaseModel
 {
     protected static $auth;
 

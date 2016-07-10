@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Koxy\Roll;
 
-use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Modules\A_front\FModel;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
-class Model extends AModel
+class Model extends FModel
 {
     private $web_root = WEB_ROOT;
 

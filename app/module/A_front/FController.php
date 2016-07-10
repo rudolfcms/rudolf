@@ -1,15 +1,15 @@
 <?php
 namespace Rudolf\Modules\A_front;
 
-use Rudolf\Component\Abstracts\AController;
+use Rudolf\Framework\Controller\BaseController;
 
-abstract class FController extends AController
+abstract class FController extends BaseController
 {
     public $frontData;
 
     public function __construct()
     {
-        $model = new Model();
+        $model = new FModel();
         
         $this->frontData = [
             'menu_items' => $model->getMenuItems(),

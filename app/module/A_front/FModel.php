@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\A_front;
 
-use Rudolf\Component\Abstracts\AModel;
+use Rudolf\Framework\Model\BaseModel;
 
-class Model extends AModel
+class FModel extends BaseModel
 {
     public function getMenuItems()
     {

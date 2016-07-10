@@ -1,9 +1,9 @@
 <?php
-namespace Rudolf\Component\Abstracts;
+namespace Rudolf\Framework\Controller;
 
 use Rudolf\Component\Http\Response;
 
-abstract class AController
+abstract class BaseController
 {
     /**
      * @var array An array of objects models
