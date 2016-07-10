@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Users\Login;
 
-use Rudolf\Modules\A_front\FModel
+use Rudolf\Modules\A_front\FModel;
 use Rudolf\Component\Auth\Auth;
 
 class Model extends FModel
