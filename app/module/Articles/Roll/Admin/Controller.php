@@ -1,9 +1,10 @@
 <?php
 namespace Rudolf\Modules\Articles\Roll\Admin;
 
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Component\Http\Response;
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Modules\Articles\Roll;
-use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Controller extends AdminController
 {
@@ -23,5 +24,12 @@ class Controller extends AdminController
         $view->setActive(['admin/articles', 'admin/articles/list']);
 
         $view->render('admin');
+    }
+    public function redirect()
+    {
+        $response = new Response('', 301);
+        $response->setHeader(['Location', DIR . '/admin/articles/list']);
+        $response->send();
+        exit;
     }
 }

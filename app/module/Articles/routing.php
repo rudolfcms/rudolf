@@ -61,6 +61,11 @@ $collection->add('article/one', new Routing\Route(
 ############################
 
 
+$collection->add('articles/admin', new Routing\Route(
+    $config['admin_path'] . '/articles?$',
+    'Rudolf\Modules\Articles\Roll\Admin\Controller::redirect'
+));
+
 $collection->add('articles/roll/admin', new Routing\Route(
     $config['admin_path'] . '/articles/list(/page/<page>)?',
     'Rudolf\Modules\Articles\Roll\Admin\Controller::getList',

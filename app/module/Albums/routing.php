@@ -39,6 +39,11 @@ $collection->add('album/one', new Routing\Route(
 # admin
 ############################
 
+$collection->add('albums/admin', new Routing\Route(
+    $config['admin_path'] . '/albums?$',
+    'Rudolf\Modules\Albums\Roll\Admin\Controller::redirect'
+));
+
 $collection->add('albums/roll/admin', new Routing\Route(
     $config['admin_path'] . '/albums/list(/page/<page>)?',
     'Rudolf\Modules\Albums\Roll\Admin\Controller::getList',

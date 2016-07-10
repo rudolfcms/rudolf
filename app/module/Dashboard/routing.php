@@ -6,8 +6,8 @@ $module = new Module('dashboard');
 $config = $module->getConfig();
 
 $collection->add('dashboard', new Routing\Route(
-    $config['admin_path'] . '?',
-    'Rudolf\Modules\Dashboard\Controller'
+    $config['admin_path'] . '([\/])?',
+    'Rudolf\Modules\Dashboard\Controller::redirect'
 ));
 $collection->add('dashboard/overview', new Routing\Route(
     $config['admin_path'] . '/overview?',
