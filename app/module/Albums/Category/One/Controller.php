@@ -1,17 +1,17 @@
 <?php
-namespace Rudolf\Modules\Articles\Category;
+namespace Rudolf\Modules\Albums\Category\One;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Modules\A_front\FController;
-use Rudolf\Modules\Articles\Roll;
+use Rudolf\Modules\Albums\Roll;
 use Rudolf\Modules\Categories;
 
 class Controller extends FController
 {
     /**
-     * Get articles by category
+     * Get albums by category
      * 
      * @param string $slug
      * @param int $page
@@ -24,29 +24,32 @@ class Controller extends FController
         
         $categories = new Categories\One\Model();
         
-        //$articlesCategory = new Model();
+        //$albumsCategory = new Model();
         $list = new Roll\Model();
         $view = new View();
 
-        $categoryInfo = $categories->getCategoryInfo($slug, 'articles');
+        $categoryInfo = $categories->getCategoryInfo($slug, 'albums');
         if (empty($categoryInfo)) {
             throw new HttpErrorException('Category not found (error 404)', 404);
         }
 
-        $module = new Module('articles');
+        $module = new Module('albums');
         $config = $module->getConfig();
         $onPage = $config['on_page'];
         $navNumber = $config['nav_number'];
 
-        $pagination = new Pagination($list->getTotalNumber([
+        $pagination = new Pagination(
+            $list->getTotalNumber([
                 'published' => 1,
                 'category_id' => $categoryInfo['id']
-            ]), $page, $onPage, $navNumber);
+            ]),
+            $page, $onPage, $navNumber
+        );
 
         $results = $list->getList($pagination, [$config['sort'], $config['order']]);
 
         $view->setData($results, $pagination, $categoryInfo);
-        $view->setFrontData($this->frontData, '');
+        $view->setFrontData($this->frontData, 'albums/kategorie/'. $slug);
 
         $view->render();
     }

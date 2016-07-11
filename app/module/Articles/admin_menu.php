@@ -13,3 +13,7 @@ $id = $this->addItem(
 
 $this->addItem('main', 'List', 'articles/list', $id, true, 'Articles list', 2, 'fa-list');
 $this->addItem('main', 'Add', 'articles/add', $id, true, 'Add article', 3, 'fa-plus');
+
+$catID = $this->addItem('main', 'Categories', 'articles/categories', $id, true, 'Category list', 4, 'fa fa-folder');
+$this->addItem('main', 'List', 'articles/categories/list', $catID, true, 'Categories list', 2, 'fa-list');
+$this->addItem('main', 'Add', 'articles/categories/add', $catID, true, 'Add categories', 3, 'fa-plus');

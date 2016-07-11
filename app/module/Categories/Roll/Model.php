@@ -7,7 +7,12 @@ use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 class Model extends FModel
 {
     /**
-     * Returns array with article categories list
+     * @var int Number of all items
+     */
+    public $total;
+
+    /**
+     * Returns array with categories list
      *
      * @param int $page
      * @param string|array $where
@@ -26,8 +31,11 @@ class Model extends FModel
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories ".
-            "ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
+        $clausule = $this->createWhereClausule($this->where);
+
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories "
+            . "WHERE $clausule "
+            . "ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
 
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -40,12 +48,15 @@ class Model extends FModel
     }
 
     /**
-     * Returns total number of articles items
+     * Returns total number of items
+     * 
+     * @param array|string $where
      * 
      * @return int
      */
-    public function getTotalNumber()
+    public function getTotalNumber($where)
     {
-        return $this->countItems('categories');
+        $this->where = $where;
+        return $this->countItems('categories', $where);
     }
 }

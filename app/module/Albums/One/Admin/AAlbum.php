@@ -25,6 +25,6 @@ class AAlbum extends One\Album
 
     public function addCategory()
     {
-        return DIR . '/admin/albums/category/add';
+        return DIR . '/admin/albums/categories/add';
     }
 }

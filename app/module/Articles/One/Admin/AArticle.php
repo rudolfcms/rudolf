@@ -25,6 +25,6 @@ class AArticle extends One\Article
 
     public function addCategory()
     {
-        return DIR . '/admin/articles/category/add';
+        return DIR . '/admin/articles/categories/add';
     }
 }

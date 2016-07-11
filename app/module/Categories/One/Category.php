@@ -1,11 +1,11 @@
 <?php
 namespace Rudolf\Modules\Categories\One;
 
-use Rudolf\Component\Hooks\Hooks;
+use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
 
-class Category
+abstract class Category
 {
     /**
      * @var array Article data
@@ -36,6 +36,7 @@ class Category
                 'title' => '',
                 'keywords' => '',
                 'description' => '',
+                'content' => '',
                 'views' => 0,
                 'slug' => '',
                 'url' => '',
@@ -104,6 +105,119 @@ class Category
 
         return Text::escape($description);
     }
+    
+    /**
+     * Returns content
+     * 
+     * @param bool|int $truncate
+     * @param bool $stripTags
+     * @param bool $escape
+     * @param bool $raw
+     * 
+     * @return string
+     */
+    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false) {
+        $content = $this->category['content'];
+
+        if (true === $stripTags) {
+            $content = strip_tags($content);
+        }
+
+        if (false !== $truncate and strlen($content) > $truncate) {
+            $content = Text::truncate($content, $truncate);
+        }
+
+        if (true === $escape) {
+            $content = Text::escape($content);
+        }
+
+        if (false === $raw) {
+            $content = Hooks\Filter::apply('content_filter', $content);
+            return $content;
+        }
+
+        return $content;
+    }
+
+    /**
+     * Returns date of category added
+     * 
+     * @return string
+     */
+    public function added()
+    {
+        return $this->category['added'];
+    }
+
+    /**
+     * Returns date of last category modified
+     * 
+     * @return string
+     */
+    public function modified()
+    {
+        return $this->category['modified'];
+    }
+
+    /**
+     * Returns adder ID
+     * 
+     * @return int
+     */
+    public function adderID()
+    {
+        return (int) $this->category['adder_ID'];
+    }
+
+    /**
+     * Returns first name and surname of adder
+     * 
+     * @param string $type
+     * 
+     * @return string
+     */
+    public function adderFullName($type = '') {
+        $name = trim($this->category['adder_first_name'] . ' ' . $this->category['adder_surname']);
+        if ('raw' === $type) {
+            return $name;
+        }
+
+        return Text::escape($name);
+    }
+
+    /**
+     * Returns modifier ID
+     * 
+     * @return int
+     */
+    public function modifierID()
+    {
+        return (int) $this->category['modifier_ID'];
+    }
+
+    /**
+     * Returns modifier full name
+     * 
+     * @return int
+     */
+    public function modifierFullName($type = '') {
+        $name = $this->category['modifier_first_name'] . ' ' . $this->category['modifier_surname'];
+        if ('raw' === $type) {
+            return $name;
+        }
+
+        return Text::escape($name);
+    }
+
+    /**
+     * Checks whether the category has modified
+     * 
+     * @return bool
+     */
+    public function isModified()
+    {
+        return (bool) $this->category['modified'];
+    }
 
     /**
      * Returns the number of views
@@ -115,6 +229,11 @@ class Category
         return (int) $this->category['views'];
     }
 
+    public function total()
+    {
+        return (int) $this->category['total'];
+    }
+
     /**
      * Returns category slug
      * 
@@ -123,21 +242,5 @@ class Category
     public function slug()
     {
         return Text::escape($this->category['slug']);
-    }
-
-    /**
-     * Returns category url
-     * 
-     * @return string
-     */
-    public function url()
-    {
-        return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
-            DIR,
-            'artykuly',
-            $this->date('Y'),
-            $this->date('m'),
-            $this->slug()
-        );
     }
 }

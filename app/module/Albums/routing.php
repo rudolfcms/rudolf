@@ -17,7 +17,7 @@ $collection->add('album/list', new Routing\Route(
 # /foto/kategorie(/page/3)
 $collection->add('album/category', new Routing\Route(
     'foto/kategorie/<slug>(/page/<page>)?',
-    'Rudolf\Modules\Albums\Category\Controller::getCategory',
+    'Rudolf\Modules\Albums\Category\One\Controller::getCategory',
     ['slug' => "[a-z0-9]+(?:-[a-z0-9]+)*",
      'page' => "[1-9][0-9]*$"],
     ['page' => 0]
@@ -51,6 +51,29 @@ $collection->add('albums/roll/admin', new Routing\Route(
     ['page' => 0]
 ));
 
+// categories
+$collection->add('albums/categories/admin', new Routing\Route(
+    $config['admin_path'] . '/albums/categories?$',
+    'Rudolf\Modules\Albums\Category\Admin\Controller::redirect'
+));
+$collection->add('albums/categories/roll/admin', new Routing\Route(
+    $config['admin_path'] . '/albums/categories/list(/page/<page>)?',
+    'Rudolf\Modules\Albums\Category\Roll\Admin\Controller::getList',
+    ['page' => "[1-9][0-9]*$"],
+    ['page' => 0]
+));
+$collection->add('albums/categories/one/admin/edit', new Routing\Route(
+    $config['admin_path'] . '/albums/categories/edit/<id>$',
+    'Rudolf\Modules\Albums\Category\One\Admin\Controller::edit',
+    ['id' => "[1-9][0-9]*"]
+));
+$collection->add('albums/categories/one/admin/add', new Routing\Route(
+    $config['admin_path'] . '/albums/categories/add$',
+    'Rudolf\Modules\Albums\Category\One\Admin\Controller::add'
+));
+
+
+// one
 $collection->add('albums/one/admin/edit', new Routing\Route(
     $config['admin_path'] . '/albums/edit/<id>$',
     'Rudolf\Modules\Albums\One\Admin\Controller::edit',

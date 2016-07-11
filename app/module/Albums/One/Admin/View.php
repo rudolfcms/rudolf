@@ -1,11 +1,13 @@
 <?php
 namespace Rudolf\Modules\Albums\One\Admin;
 
-use Rudolf\Modules\A_admin\AdminView;
 use Rudolf\Html\Text;
+use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Modules\Categories\CategoryAddon;
 
 class View extends AdminView
 {
+    use CategoryAddon;
 
     /**
      * Set data to edit album

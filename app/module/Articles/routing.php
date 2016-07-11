@@ -6,7 +6,7 @@ $module = new Module('dashboard');
 $config = $module->getConfig();
 
 # /artykuly(/page/3)
-$collection->add('article/list', new Routing\Route(
+$collection->add('articles/list', new Routing\Route(
     'artykuly(/page/<page>)?',
     'Rudolf\Modules\Articles\Roll\Controller::getList',
     ['page' => "[1-9][0-9]*$"],
@@ -15,16 +15,16 @@ $collection->add('article/list', new Routing\Route(
 
 
 # /artykuly/kategorie(/page/3)
-$collection->add('article/category', new Routing\Route(
+$collection->add('articles/categories/one', new Routing\Route(
     'artykuly/kategorie/<slug>(/page/<page>)?',
-    'Rudolf\Modules\Articles\Category\Controller::getCategory',
+    'Rudolf\Modules\Articles\Category\One\Controller::getCategory',
     ['slug' => "[a-z0-9]+(?:-[a-z0-9]+)*",
      'page' => "[1-9][0-9]*$"],
     ['page' => 0]
 ));
 
 # /artykuly/2015/09/hello-world
-$collection->add('article/one', new Routing\Route(
+$collection->add('articles/one', new Routing\Route(
     'artykuly/<year>/<month>/<slug>(\/)?',
     'Rudolf\Modules\Articles\One\Controller::getOne',
     ['year' => "[0-9]{4}",
@@ -44,7 +44,7 @@ $collection->add('articles/feed', new Routing\Route(
 
 # /artykuly/2015/9/hello-world
 /*
-$collection->add('article/one', new Routing\Route(
+$collection->add('articles/one', new Routing\Route(
     'Rudolf\Modules/<year>/<month>/<slug>',
     'Modules\Articles\Controller::one',
     [
@@ -60,7 +60,7 @@ $collection->add('article/one', new Routing\Route(
 # admin
 ############################
 
-
+// list
 $collection->add('articles/admin', new Routing\Route(
     $config['admin_path'] . '/articles?$',
     'Rudolf\Modules\Articles\Roll\Admin\Controller::redirect'
@@ -73,6 +73,28 @@ $collection->add('articles/roll/admin', new Routing\Route(
     ['page' => 0]
 ));
 
+// categories
+$collection->add('articles/categories/admin', new Routing\Route(
+    $config['admin_path'] . '/articles/categories?$',
+    'Rudolf\Modules\Articles\Category\Admin\Controller::redirect'
+));
+$collection->add('articles/categories/roll/admin', new Routing\Route(
+    $config['admin_path'] . '/articles/categories/list(/page/<page>)?',
+    'Rudolf\Modules\Articles\Category\Roll\Admin\Controller::getList',
+    ['page' => "[1-9][0-9]*$"],
+    ['page' => 0]
+));
+$collection->add('articles/categories/one/admin/edit', new Routing\Route(
+    $config['admin_path'] . '/articles/categories/edit/<id>$',
+    'Rudolf\Modules\Articles\Category\One\Admin\Controller::edit',
+    ['id' => "[1-9][0-9]*"]
+));
+$collection->add('articles/categories/one/admin/add', new Routing\Route(
+    $config['admin_path'] . '/articles/categories/add$',
+    'Rudolf\Modules\Articles\Category\One\Admin\Controller::add'
+));
+
+// article
 $collection->add('articles/one/admin/edit', new Routing\Route(
     $config['admin_path'] . '/articles/edit/<id>$',
     'Rudolf\Modules\Articles\One\Admin\Controller::edit',

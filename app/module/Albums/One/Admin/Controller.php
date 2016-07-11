@@ -1,15 +1,18 @@
 <?php
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Rudolf\Component\Http\Response;
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Modules\Albums\One;
-use Rudolf\Component\Http\Response;
+use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class Controller extends AdminController
 {
     public function edit($id)
     {
         $model = new Model();
+        $categories = new CategoriesRoll();
+        $categoriesList = $categories->getAll('albums');
 
         // if data was send
         if (isset($_POST['update'])) {
@@ -21,6 +24,7 @@ class Controller extends AdminController
         
         $view = new View();
         $view->editAlbum($album);
+        $view->setCategories($categoriesList);
         $view->setActive(['admin/albums']);
         $view->render('admin');
     }
@@ -45,6 +49,8 @@ class Controller extends AdminController
     public function add()
     {
         $model = new Model();
+        $categories = new CategoriesRoll();
+        $categoriesList = $categories->getAll('albums');
 
         // if data was send
         if (isset($_POST['add'])) {
@@ -61,6 +67,7 @@ class Controller extends AdminController
 
         $view = new View();
         $view->addAlbum($_POST);
+        $view->setCategories($categoriesList);
         $view->setActive(['admin/albums', 'admin/albums/add']);
         $view->render('admin');
     }

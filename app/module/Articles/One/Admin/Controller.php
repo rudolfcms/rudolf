@@ -1,15 +1,18 @@
 <?php
 namespace Rudolf\Modules\Articles\One\Admin;
 
+use Rudolf\Component\Http\Response;
 use Rudolf\Modules\A_admin\AdminController;
 use Rudolf\Modules\Articles\One;
-use Rudolf\Component\Http\Response;
+use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class Controller extends AdminController
 {
     public function edit($id)
     {
         $model = new Model();
+        $categories = new CategoriesRoll();
+        $categoriesList = $categories->getAll('articles');
 
         // if data was send
         if (isset($_POST['update'])) {
@@ -21,6 +24,7 @@ class Controller extends AdminController
         
         $view = new View();
         $view->editArticle($article);
+        $view->setCategories($categoriesList);
         $view->setActive(['admin/articles']);
         $view->render('admin');
     }
@@ -45,6 +49,8 @@ class Controller extends AdminController
     public function add()
     {
         $model = new Model();
+        $categories = new CategoriesRoll();
+        $categoriesList = $categories->getAll('articles');
 
         // if data was send
         if (isset($_POST['add'])) {
@@ -61,6 +67,7 @@ class Controller extends AdminController
 
         $view = new View();
         $view->addArticle($_POST);
+        $view->setCategories($categoriesList);
         $view->setActive(['admin/articles', 'admin/articles/add']);
         $view->render('admin');
     }

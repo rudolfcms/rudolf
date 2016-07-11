@@ -1,5 +1,5 @@
 <?php
-namespace Rudolf\Modules\Articles\Category;
+namespace Rudolf\Modules\Albums\Category\One;
 
 use Rudolf\Modules\A_front\FView;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -7,12 +7,11 @@ use Rudolf\Component\Helpers\Pagination\Loop;
 
 class View extends FView
 {
-
     public function setData($data, $pagination, $info = false)
     {
         $this->loop = new Loop($data, $pagination,
-            'Rudolf\\Modules\\Articles\\One\\Article',
-            '/artykuly/kategorie/' . $info['slug']
+            'Rudolf\\Modules\\Albums\\One\\Album',
+            '/albums/kategorie/' . $info['slug']
         );
         
         $this->categoryInfo = $info;
@@ -28,7 +27,7 @@ class View extends FView
 
         $this->head->setTitle($titleBefore . $this->categoryTitle(true));
 
-        $this->template = (isset($data['template'])) ? $data['template'] : 'category';
+        $this->template = 'albums-category';
     }
 
     /**
@@ -40,7 +39,7 @@ class View extends FView
      */
     public function categoryTitle($strip = false)
     {
-        $title = _('Artykuły z kategorii') . ' <i>' . $this->categoryInfo['title'] . '</i>';
+        $title = _('Albumy z kategorii') . ' <i>' . $this->categoryInfo['title'] . '</i>';
 
         if (true === $strip) {
             return strip_tags($title);
