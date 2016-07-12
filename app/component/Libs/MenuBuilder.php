@@ -5,6 +5,8 @@ namespace Rudolf\Component\Libs;
  * Generate HTML for multi-dimensional menu from MySQL database
  * with ONE QUERY and WITHOUT RECURSION 
  * @author J. Bruni
+ *
+ * @link http://pastebin.com/GAFvSew4
  */
 
 class MenuBuilder
