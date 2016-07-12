@@ -1,6 +1,6 @@
 <?php
 namespace Rudolf\Component\Helpers\Pagination;
-use Rudolf\Component\Html\Navigation;
+use Rudolf\Component\Html\Paging;
     
 class Loop
 {
@@ -105,10 +105,13 @@ class Loop
      */
     public function nav($classes, $nesting = 2)
     {
-        $nav = new Navigation();
-        $calculations = $this->calc->nav();
-        
-        return $nav->createPagingNavigation($calculations, $this->path, $classes, $nesting);
+        $nav = new Paging();
+        $nav->setInfo($this->calc->nav());
+        $nav->setPath($this->path);
+        $nav->setClasses($classes);
+        $nav->setNesting($nesting);
+
+        return $nav->create();
     }
 
     /**
