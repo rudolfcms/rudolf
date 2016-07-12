@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Pages;
 
 use Rudolf\Modules\A_front\FView;
-use Rudolf\Component\Html\Navigation;
+use Rudolf\Component\Html\Breadcrumbs;
 
 class View extends FView
 {
@@ -14,23 +14,23 @@ class View extends FView
         
         $this->head->setTitle($this->title());
 
-        $this->template = (isset($data['template'])) ? $data['template'] : 'page';
-    }
-
-    public function breadcrumb($nesting = 0)
-    {
-        $nav = new Navigation();
-        $pagesList = $this->pagesList;
-        $aAddress = $this->aAddress;
-        
-        $navigation = $nav->createBreadcrumbsNavigation(0, $pagesList, $aAddress, $nesting);
-
-        return $navigation;
+        $this->template = 'page';
     }
 
     public function setBreadcrumbsData($list, $aAddress)
     {
         $this->pagesList = $list;
         $this->aAddress = $aAddress;
+    }
+
+    public function breadcrumb($nesting = 0, $classes = [])
+    {
+        $breadcrumbs = new Breadcrumbs();
+        $breadcrumbs->setElements($this->pagesList);
+        $breadcrumbs->setAddress($this->aAddress);
+        $breadcrumbs->setClasses($classes);
+        $breadcrumbs->setNesting($nesting);
+
+        return $breadcrumbs->create();
     }
 }

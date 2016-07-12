@@ -75,52 +75,6 @@ class Navigation
     }
 
     /**
-     * It create breadcrumb
-     *
-     * @param boolean $a create breadcrumb or only return array with breadrumb data
-     * @param array $menu array with menu elements
-     * @param array $address Address array
-     * @param int $nesting
-     *
-     * @return array|string
-     */
-    public function createBreadcrumbsNavigation($a, $menu, $address, $nesting = 0)
-    {
-        $url = null;
-
-        for($pid = 0, $i = 0; $i < count($address); $i++) {
-            if ($pid == $menu[$address[$i]][$pid]['parent_id']) {
-                $array[$i] = array($url . '/' . $address[$i], $menu[$address[$i]][$pid]['title']);
-                $pid = $menu[$address[$i]][$pid]['id'];
-                $url .= '/' . $address[$i];
-            }
-        }
-
-        if ($a) {
-            return $array;
-        } elseif (!$a) {
-            $html[] = '<li><a href="' . DIR . '/">Start</a></li>';
-
-            $tab = str_repeat("\t", $nesting);
-
-            for($i = 0; $i < (count($array) - 1); $i++) {
-                $html[] = sprintf('%1$s<li><a href="%2$s">%3$s</a></li>',
-                    $tab, // nesting
-                    DIR . $array[$i][0],
-                    $array[$i][1]
-                );
-            }
-
-            $html[] = sprintf('%1$s<li class="active">%2$s</li>',
-                $tab, // nesting
-                $array[$i][1]
-            );
-            
-            return implode("\n", $html);
-        }
-    }
-
-    /**
      * It created paging navigation
      *
      * @param array $nav with data for loop
