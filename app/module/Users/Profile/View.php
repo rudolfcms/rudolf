@@ -7,8 +7,13 @@ class View extends AdminView
 {
     public function userCard()
     {
-        $this->head->setTitle(_('Profile'));
+        $this->head->setTitle($this->pageTitle());
 
         $this->template = 'profile';
+    }
+
+    public function pageTitle()
+    {
+        return _('Profile');
     }
 }
