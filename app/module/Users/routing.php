@@ -22,6 +22,6 @@ $collection->add('user/logout', new Routing\Route(
 ));
 
 $collection->add('user/profile', new Routing\Route(
-    'user',
+    'user/profile',
     'Rudolf\Modules\Users\Profile\Controller::profile'
 ));
