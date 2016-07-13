@@ -1,11 +1,11 @@
 <?php
 namespace Rudolf\Modules\Albums\One;
 
-use Rudolf\Modules\A_front\FController;
-use Rudolf\Component\Http\Response;
 use Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Component\Http\Response;
+use Rudolf\Framework\Controller\FrontController;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     /**
      * Get one album

@@ -1,8 +1,8 @@
 <?php
 namespace Rudolf\Modules\Articles\Roll;
 
-use Rudolf\Modules\Articles;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Modules\Articles;
 
 class Model extends Articles\Model
 {

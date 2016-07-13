@@ -1,8 +1,7 @@
 <?php
 namespace Rudolf\Modules\Albums\One\Admin;
 
-use Rudolf\Html\Text;
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 use Rudolf\Modules\Categories\CategoryAddon;
 
 class View extends AdminView

@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Albums\One;
 
-use Rudolf\Modules\A_front\FModel;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel
+class Model extends FrontModel
 {
     /**
      * Returns album data based on year, month and slug

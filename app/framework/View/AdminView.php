@@ -1,10 +1,9 @@
 <?php
-namespace Rudolf\Modules\A_admin;
+namespace Rudolf\Framework\View;
 
-use Rudolf\Framework\View\BaseView;
+use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Component\Html\Navigation;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Component\Alerts\AlertsCollection;
 
 class AdminView extends BaseView
 {
@@ -36,13 +35,13 @@ class AdminView extends BaseView
 
     /**
      * Create page nav
-     * 
+     *
      * @param string $type
      * @param int $nesting
      * @param array $classes
      * @param array $before
      * @param array $after
-     * 
+     *
      * @return string
      */
     public function pageNav($type, $nesting = 0, $classes, $before = false, $after = false)
@@ -54,7 +53,7 @@ class AdminView extends BaseView
         if (!is_array($currents)) {
             $currents = array($currents);
         }
-        
+
         return $object->createPageNavigation($type, $items, $currents, $classes, $nesting, $before, $after);
     }
 
@@ -73,7 +72,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return void
      */
     public static function setAdminData($adminData)
@@ -82,7 +81,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return void
      */
     public static function setUserInfo($userInfo)
@@ -91,7 +90,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return string
      */
     protected function getUserName()
@@ -100,7 +99,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return string
      */
     protected function getUserFullName()
@@ -109,7 +108,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return string
      */
     protected function getUserEmail()
@@ -118,7 +117,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return string
      */
     protected function getUserNick()
@@ -127,7 +126,7 @@ class AdminView extends BaseView
     }
 
     /**
-     * 
+     *
      * @return string
      */
     protected function getUserRegisterDate()
@@ -137,7 +136,7 @@ class AdminView extends BaseView
 
     /**
      * Get all alerts
-     * 
+     *
      * @param array
      */
     protected function alerts($classes = [])
@@ -145,7 +144,7 @@ class AdminView extends BaseView
         if(!$this->isAlerts()) {
             return false;
         }
-        
+
         $classes = array_merge([
             'danger' => 'danger',
             'error' => 'error',
@@ -173,11 +172,11 @@ class AdminView extends BaseView
 
     /**
      * Get code for one alert
-     * 
+     *
      * @param string $type
      * @param string $message
      * @param array $classes
-     * 
+     *
      * @return string
      */
     protected function alert($type, $message, $classes = '')

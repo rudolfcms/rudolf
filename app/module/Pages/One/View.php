@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Pages\One;
 
-use Rudolf\Modules\A_front\FView;
 use Rudolf\Component\Html\Breadcrumbs;
+use Rudolf\Framework\View\FrontView;
 
-class View extends FView
+class View extends FrontView
 {
     use Traits;
 

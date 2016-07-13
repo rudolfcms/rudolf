@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Users\Login;
 
-use Rudolf\Modules\A_front\FView;
 use Rudolf\Component\Html\Text;
+use Rudolf\Framework\View\FrontView;
 
-class View extends FView
+class View extends FrontView
 {
     
     public function form($formData, $status)

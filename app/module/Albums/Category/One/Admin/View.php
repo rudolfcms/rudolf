@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Albums\Category\One\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {

@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Dashboard;
 
 use Rudolf\Component\Http\Response;
-use Rudolf\Modules\A_admin\AdminController;
+use Rudolf\Framework\Controller\AdminController;
 
 class Controller extends AdminController
 {

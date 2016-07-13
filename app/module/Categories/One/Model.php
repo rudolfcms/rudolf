@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Categories\One;
 
-use Rudolf\Modules\A_front\FModel;
 use Rudolf\Component\Libs\Pagination;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel {
+class Model extends FrontModel {
 
     /**
      * Get category info

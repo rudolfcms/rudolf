@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Koxy\One;
 
-use Rudolf\Modules\A_front\FController;
+use Rudolf\Framework\Controller\FrontController;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     public function vote($type)
     {

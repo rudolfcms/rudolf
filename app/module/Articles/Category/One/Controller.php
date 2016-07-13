@@ -4,11 +4,11 @@ namespace Rudolf\Modules\Articles\Category\One;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Modules\A_front\FController;
+use Rudolf\Framework\Controller\FrontController;
 use Rudolf\Modules\Articles\Roll;
 use Rudolf\Modules\Categories;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     /**
      * Get articles by category

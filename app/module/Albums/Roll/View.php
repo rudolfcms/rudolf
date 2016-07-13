@@ -4,9 +4,9 @@ namespace Rudolf\Modules\Albums\Roll;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Modules\A_front\FView;
+use Rudolf\Framework\View\FrontView;
 
-class View extends FView
+class View extends FrontView
 {
     public function rollView($data, $pagination)
     {

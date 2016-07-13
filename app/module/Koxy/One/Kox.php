@@ -1,8 +1,6 @@
 <?php
 namespace Rudolf\Modules\Koxy\One;
 
-use Rudolf\Component\Hooks\Hooks;
-
 class Kox
 {
     /**

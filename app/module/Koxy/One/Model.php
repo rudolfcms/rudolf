@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Koxy\One;
 
-use Rudolf\Modules\A_front\FModel;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel
+class Model extends FrontModel
 {
 
     private $extension = 'png';	

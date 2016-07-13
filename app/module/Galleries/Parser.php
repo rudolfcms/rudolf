@@ -2,8 +2,8 @@
 namespace Rudolf\Modules\Galleries;
 
 use Rudolf\Component\Hooks;
-use Rudolf\Component\Modules\Module;
 use Rudolf\Component\Images\Image;
+use Rudolf\Component\Modules\Module;
 
 class Parser
 {

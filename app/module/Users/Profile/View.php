@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Users\Profile;
 
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {

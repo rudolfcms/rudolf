@@ -1,10 +1,9 @@
 <?php
-namespace Rudolf\Modules\A_front;
+namespace Rudolf\Framework\View;
 
-use Rudolf\Framework\View\BaseView;
 use Rudolf\Component\Html\Navigation;
 
-abstract class FView extends BaseView
+abstract class FrontView extends BaseView
 {
 
     public function setFrontData($menu, $current = 0)
@@ -17,11 +16,11 @@ abstract class FView extends BaseView
         $object = new Navigation();
         $items = $this->frontData[0]['menu_items'];
         $current = $this->frontData[1];
-        
+
         if (!is_array($current)) {
             $current = array($current);
         }
-        
+
         return $object->createPageNavigation($type, $items, $current, $classes, $nesting, $before, $after);
     }
 }

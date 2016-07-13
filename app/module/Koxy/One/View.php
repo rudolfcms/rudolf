@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Koxy\One;
 
-use Rudolf\Modules\A_front\FView;
+use Rudolf\Framework\View\FrontView;
 
-class View extends FView
+class View extends FrontView
 {
 
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Rudolf\Modules\A_admin;
+namespace Rudolf\Component\Helpers\Navigation;
 
 use Rudolf\Component\Modules\Module;
 
@@ -19,9 +19,9 @@ class ModulesMenu
             $array[] = $dir;
         }
 
-        for ($i=0; $i < count($array); $i++) { 
+        for ($i=0; $i < count($array); $i++) {
             $file = MODULES_ROOT . '/' . $array[$i] . '/admin_menu.php';
-            
+
             if (file_exists($file)) {
                 include $file;
             }
@@ -43,14 +43,14 @@ class ModulesMenu
 
     /**
      * Add item to admin menu
-     * 
+     *
      * @param string $type Menu type identyfier
      * @param string $title Item title
      * @param string $caption Item caption
      * @param int $pid Parent ID
      * @param int $ps Position
      * @param string $f Font awesome icon id
-     * 
+     *
      * @return int $id
      */
     private function addItem($type, $title, $slug, $pid=0, $admin=true, $cp='', $ps=10, $f='', $t='')
@@ -61,7 +61,7 @@ class ModulesMenu
             'id' => $id,
             'menu_type' => $type,
                                                 // replace addFAIco
-            'title' => (!empty($f)) ? '<i class="fa '.$f.'"></i> ' . $title : $title, 
+            'title' => (!empty($f)) ? '<i class="fa '.$f.'"></i> ' . $title : $title,
             'slug' => ($admin) ? $this->dashboardConfig['admin_path'] . '/' . $slug : $slug,
             'parent_id' => $pid,
             'caption' => $cp,

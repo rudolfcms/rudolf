@@ -4,11 +4,11 @@ namespace Rudolf\Modules\Albums\Category\One;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Modules\A_front\FController;
+use Rudolf\Framework\Controller\FrontController;
 use Rudolf\Modules\Albums\Roll;
 use Rudolf\Modules\Categories;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     /**
      * Get albums by category

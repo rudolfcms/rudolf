@@ -1,16 +1,14 @@
 <?php
-namespace Rudolf\Modules\A_front;
+namespace Rudolf\Framework\Model;
 
-use Rudolf\Framework\Model\BaseModel;
-
-class FModel extends BaseModel
+class FrontModel extends BaseModel
 {
     public function getMenuItems()
     {
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}menu");
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        
+
         return $results;
     }
 
@@ -23,4 +21,3 @@ class FModel extends BaseModel
         return $results;
     }
 }
- 

@@ -1,16 +1,16 @@
 <?php
-namespace Rudolf\Modules\A_admin;
+namespace Rudolf\Framework\Model;
 
-use Rudolf\Framework\Model\BaseModel;
 use Rudolf\Component\Auth\Auth;
+use Rudolf\Component\Helpers\Navigation\ModulesMenu;
 
 class AdminModel extends BaseModel
 {
     protected static $auth;
 
     /**
-     * Returns Auth object 
-     * 
+     * Returns Auth object
+     *
      * @return Auth
      */
     public function getAuth()

@@ -1,14 +1,13 @@
 <?php
 namespace Rudolf\Modules\Articles\Roll;
 
-use Rudolf\Modules\A_front\FController;
-use Rudolf\Component\Modules\Module;
-use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
-
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Libs\Pagination;
+use Rudolf\Component\Modules\Module;
+use Rudolf\Framework\Controller\FrontController;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     /**
     * Get articles list

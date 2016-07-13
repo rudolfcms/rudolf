@@ -3,10 +3,10 @@ namespace Rudolf\Modules\Articles\Feed;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\Response;
-use Rudolf\Modules\A_front\FController;
+use Rudolf\Framework\Controller\FrontController;
 use Rudolf\Modules\Articles\Roll;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     /**
      * Get feed

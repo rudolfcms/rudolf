@@ -5,10 +5,10 @@ use Rudolf\Component\Feed;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop as Loop;
 use Rudolf\Component\Modules\Module;
-use Rudolf\Modules\A_front\FView;
+use Rudolf\Framework\View\FrontView;
 use Rudolf\Modules\Articles\Roll\Roll;
 
-class View extends FView
+class View extends FrontView
 {
 	public function setArticles($data, Pagination $pagination)
 	{

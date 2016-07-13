@@ -1,8 +1,7 @@
 <?php
 namespace Rudolf\Modules\Articles\One\Admin;
 
-use Rudolf\Html\Text;
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 use Rudolf\Modules\Categories\CategoryAddon;
 
 class View extends AdminView
@@ -18,7 +17,7 @@ class View extends AdminView
      */
     public function editArticle($article)
     {
-        $this->article = new AArticle($article);
+        $this->article = new Article($article);
 
         $this->pageTitle = _('Edit article');
         $this->head->setTitle($this->pageTitle());
@@ -39,7 +38,7 @@ class View extends AdminView
      */
     public function delArticle($article)
     {
-        $this->article = new AArticle($article);
+        $this->article = new Article($article);
 
         $this->pageTitle = _('Delete article');
         $this->head->setTitle($this->pageTitle());
@@ -60,7 +59,7 @@ class View extends AdminView
      */
     public function addArticle($article)
     {
-        $this->article = new AArticle($article);
+        $this->article = new Article($article);
 
         $this->pageTitle = _('Add article');
         $this->head->setTitle($this->pageTitle());

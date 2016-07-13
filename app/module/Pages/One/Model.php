@@ -1,11 +1,10 @@
 <?php
 namespace Rudolf\Modules\Pages\One;
 
-use Rudolf\Modules\A_front\FModel;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel
+class Model extends FrontModel
 {
-    
     /**
      * Returns page id by path
      * 

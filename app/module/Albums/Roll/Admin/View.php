@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Albums\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {
@@ -14,12 +14,12 @@ class View extends AdminView
             $data,
             $pagination,
             'Rudolf\\Modules\\Albums\\One\\Admin\\AAlbum',
-            '/admin/articles/list'
+            '/admin/albums/list'
         );
 
         $this->head->setTitle($this->pageTitle());
 
-        $this->template = 'articles-list';
+        $this->template = 'albums-list';
     }
     
     protected function pageTitle()

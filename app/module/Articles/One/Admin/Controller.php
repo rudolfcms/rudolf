@@ -2,7 +2,7 @@
 namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Component\Http\Response;
-use Rudolf\Modules\A_admin\AdminController;
+use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Articles\One;
 use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 

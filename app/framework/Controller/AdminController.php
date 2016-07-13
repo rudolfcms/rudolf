@@ -1,8 +1,9 @@
 <?php
-namespace Rudolf\Modules\A_admin;
+namespace Rudolf\Framework\Controller;
 
-use Rudolf\Framework\Controller\BaseController;
 use Rudolf\Component\Http\Response;
+use Rudolf\Framework\Model\AdminModel;
+use Rudolf\Framework\View\AdminView;
 
 class AdminController extends BaseController
 {
@@ -21,7 +22,7 @@ class AdminController extends BaseController
             $response->send();
             exit;
         }
-        
+
         AdminView::setUserInfo($this->auth->getUser());
         AdminView::setAdminData([
             'menu_items' => $model->getMenuItems(),

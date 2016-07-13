@@ -1,16 +1,16 @@
 <?php
-namespace Rudolf\Modules\A_front;
+namespace Rudolf\Framework\Controller;
 
-use Rudolf\Framework\Controller\BaseController;
+use Rudolf\Framework\Model\FrontModel;
 
-abstract class FController extends BaseController
+abstract class FrontController extends BaseController
 {
     public $frontData;
 
     public function __construct()
     {
-        $model = new FModel();
-        
+        $model = new FrontModel();
+
         $this->frontData = [
             'menu_items' => $model->getMenuItems(),
             'menu_types' => $model->getMenuTypes()

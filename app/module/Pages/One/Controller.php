@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Pages\One;
 
-use Rudolf\Modules\A_front\FController;
 use Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Framework\Controller\FrontController;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     public function page($sAddress)
     {

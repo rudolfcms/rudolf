@@ -1,9 +1,9 @@
 <?php
 namespace Rudolf\Modules\Galleries;
 
-use Rudolf\Modules\A_front\FModel;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel
+class Model extends FrontModel
 {
     /**
      * It get gallery info by id

@@ -1,7 +1,7 @@
 <?php
 namespace Rudolf\Modules\Dashboard;
 
-use Rudolf\Modules\A_admin\AdminView;
+use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {
@@ -14,6 +14,6 @@ class View extends AdminView
 
 	public function pageTitle()
 	{
-		
+		return _('Dashboard');
 	}
 }

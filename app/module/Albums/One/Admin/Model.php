@@ -1,8 +1,8 @@
 <?php
 namespace Rudolf\Modules\Albums\One\Admin;
 
-use Rudolf\Modules\A_admin\AdminModel;
 use Rudolf\Component\Alerts;
+use Rudolf\Framework\Model\AdminModel;
 
 class Model extends AdminModel
 {

@@ -1,12 +1,12 @@
 <?php
 namespace Rudolf\Modules\Index;
 
-use Rudolf\Modules\A_front\FController;
+use Rudolf\Framework\Controller\FrontController;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
 
-class Controller extends FController
+class Controller extends FrontController
 {
     public function index($page)
     {

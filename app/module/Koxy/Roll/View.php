@@ -3,9 +3,9 @@ namespace Rudolf\Modules\Koxy\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
-use Rudolf\Modules\A_front\FView;
+use Rudolf\Framework\View\FrontView;
 
-class View extends FView
+class View extends FrontView
 {
     public function setData($data, Pagination $pagination)
     {

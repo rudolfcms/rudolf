@@ -1,10 +1,10 @@
 <?php
 namespace Rudolf\Modules\Categories\Roll;
 
-use Rudolf\Modules\A_front\FModel;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FModel
+class Model extends FrontModel
 {
     /**
      * @var int Number of all items

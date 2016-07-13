@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Modules\Articles\One;
 
-class AArticle extends One\Article
+class Article extends One\Article
 {
     public function editUrl()
     {

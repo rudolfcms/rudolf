@@ -2,8 +2,9 @@
 namespace Rudolf\Modules\Users\Login;
 
 use Rudolf\Component\Http\Response;
+use Rudolf\Framework\Controller\FrontController;
 
-class Controller
+class Controller extends FrontController
 {
     /**
      * login
