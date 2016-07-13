@@ -1,5 +1,5 @@
 <?php
-namespace Rudolf\Modules\Pages;
+namespace Rudolf\Modules\Pages\One;
 
 use Rudolf\Modules\A_front\FModel;
 
