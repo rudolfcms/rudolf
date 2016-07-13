@@ -1,16 +1,28 @@
 <?php
 namespace Rudolf\Component\Html;
 
-use Rudolf\Component\Libs\MenuBuilder;
-
 class Navigation
 {
+    private $type;
+
+    private $items;
+
+    private $currents;
+
+    private $classes;
+
+    private $nesting;
+
+    private $before;
+
+    private $after;
+
     /**
-     * It create page navigation
-     * 
+     * Constructor
+     *
      * @param string $type Menu type
      * @param array $items Array of navigation items
-     * @param array $currents Current pages slug
+     * @param array|string $currents Current pages slug
      * @param array $classes
      * @param int $nesting
      * @param array $before
@@ -18,11 +30,71 @@ class Navigation
      * 
      * @return string
      */
-    public function createPageNavigation($type, $items, $currents, $classes = '', $nesting = 0, $before = '', $after = '')
+    public function __construct($type = '', $items = [], $currents = null, $classes = [],
+        $nesting = 0, $before = [], $after = [])
     {
+        $this->setRootID(0);
+        $this->setType($type);
+        $this->setItems($items);
+        $this->setCurrent($currents);
+        $this->setClasses($classes);
+        $this->setNesting($nesting);
+        $this->setBefore($before);
+        $this->setAfter($after);
+    }
+
+    /**
+     * Set root ID
+     * 
+     * @param id $id ID of element to start create tree. Set 0 to create full tree
+     */
+    public function setRootID($id)
+    {
+        $this->rootID = is_numeric($id) ? $id : 0;
+    }
+
+    public function getRootID()
+    {
+        return $this->rootID;
+    }
+
+    /**
+     * Menu type definited in menu_types table
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set items
+     *
+     * 'items' (array) Menu item
+     *      'id' (int) Unique item id
+     *      'parent_id' (int) Parent ID
+     *      'title' (string) Text in <li><a>
+     *      'slug' (string) Url in <li><a href=""
+     *      'caption' (string) Text in <li><a title=""
+     */
+    public function setItems(array $items)
+    {
+        $this->items = $items;
+    }
+
+    public function getItems()
+    {
+        $items = $this->items;
+
         // filter items
         foreach ($items as $key => $value) {
-            if ($type === $value['menu_type']) {
+            if ($this->getType() === $value['menu_type']) {
                 $newItems[$key] = $items[$key];
 
                 if (isset($items[$key]['type'])) {
@@ -32,45 +104,333 @@ class Navigation
                             break;
                         case 'app':
                         default:
-                            $newItems[$key]['slug'] = DIR . '/' . $value['slug'];
+                            $newItems[$key]['slug'] = DIR .'/'. $value['slug'];
                             break;
                     }
                 }
             }
         }
 
+        if (empty($newItems)) {
+            return false;
+        }
+
+        // sort items
+        usort($newItems, function ($a, $b) {
+            if (isset($a['position']) and isset($b['position']))
+                return $a['position'] - $b['position'];
+        });
+
+        return $newItems;
+    }
+
+    /**
+     * Set active elements slugs, use to mark current items
+     *
+     * @param array|string $currents
+     */
+    public function setCurrent($currents)
+    {
+        if (!is_array($currents)) {
+            $currents = array($currents);
+        }
+
+        $this->currents = $currents;
+    }
+
+    public function getCurrents()
+    {
+        $currents = $this->currents;
+
         // add actual app dir to currents slug
         foreach ($currents as $key => $value) {
             $currents[$key] = DIR . '/' . $value;
         }
 
-        if (empty($newItems)) {
-            return false;
-        }
-
-        // print_r($newItems);
-
-        // sort items
-        usort($newItems, [$this, 'sortByPosition']);
-
-        // build menu
-        $builder = new MenuBuilder();
-        $builder->setParams([
-            'root_id' => 0,
-            'items' => $newItems,
-            'currents' => $currents,
-            'classes' => $classes,
-            'before' => $before,
-            'after' => $after,
-            'nesting' => $nesting
-        ]);
-
-        return $builder->renderMenu();
+        return $currents;
     }
 
-    private function sortByPosition($a, $b)
+    /**
+     * Set classes to use in menu
+     *
+     * 'classes' (array) 
+     *      'root_ul' (string) Main <ul>
+     *      'li_with_ul' (string) <li> with <ul>
+     *      'li_whitout_ul' (string) <li> without <ul>
+     *      'sub_ul' (string) <ul> inside <li>
+     *      'li_active' (string)
+     */
+    public function setClasses(array $classes)
     {
-        if (isset($a['position']) and isset($b['position']))
-        return $a['position'] - $b['position'];
+        $this->classes = $classes;
+    }
+
+    public function getClasses()
+    {
+        return array_merge([
+            'root_ul' => '',
+            'li_with_ul' => '',
+            'li_whitout_ul' => '',
+            'sub_ul' => '',
+            'li_active' => ''
+        ], $this->classes);
+    }
+
+    /**
+     * Set generated menu code nesting
+     *
+     * @param int $nesting
+     */
+    public function setNesting($nesting)
+    {
+        $this->nesting = $nesting;
+    }
+
+    public function getNesting()
+    {
+        return $this->nesting;
+    }
+
+    /**
+     * Put string before elements
+     *
+     * 'before' (array)
+     *      'root_ul' (string) Main <ul>
+     *      'first_root_li' (string) First <li> in main <ul>
+     *      'li_a' (string) In <li> before <a>
+     *      'li_a_text' (string) In <li><a> before text inside
+     *      'li_with_ul_a' (string) In <li> with <ul> before <a>
+     *      'li_with_ul_a_text' (string) In <li><a> with <ul> before text inside
+     */
+    public function setBefore(array $before)
+    {
+        $this->before = $before;
+    }
+
+    public function getBefore()
+    {
+        return array_merge([
+            'root_ul' => '',
+            'first_root_li' => '',
+            'li_a' => '',
+            'li_a_text' => '',
+            'li_with_ul_a' => '',
+            'li_with_ul_a_text' => '',
+        ], $this->before);
+    }
+
+    /**
+     * Put string after elements
+     *
+     * 'after' (array) Texts after:
+     *      'root_ul' (string) Main <ul>
+     *      'last_root_li' (string) Last <li> in main <ul>
+     *      'li_a' (string) In <li> after <a>
+     *      'li_a_text' (string) In <li><a> before text inside
+     *      'li_with_ul_a' (string) In <li> with <ul> after <a>
+     *      'li_with_ul_a_text' (string) In <li><a> with <ul> after text inside
+     */
+    public function setAfter(array $after)
+    {
+        $this->after = $after;
+    }
+
+    public function getAfter()
+    {
+        return array_merge([
+            'root_ul' => '',
+            'last_root_li' => '',
+            'li_a' => '',
+            'li_a_text' => '',
+            'li_with_ul_a' => '',
+            'li_with_ul_a_text' => '',
+        ], $this->after);
+    }
+
+    /**
+     * Put value is not empty
+     *
+     * @param string $atribute
+     * @param string|array $value
+     *
+     * @return string
+     */
+    private function isAtribute($atribute, $value)
+    {
+        if (is_array($value)) {
+            array_filter($value);
+            $value = trim(implode(' ', $value));
+            return (!empty($value)) ? ' '. $atribute .'="' . $value .'"' : '';
+        }
+        return (isset($value) and !empty($value)) ? ' '. $atribute .'="' . trim($value) .'"' : '';
+    }
+
+    /**
+     * Check is item active
+     *
+     * @param string $slug Current slug
+     * @param array $array Active slugs
+     *
+     * @return bool
+     */
+    private function isActive($slug, $array)
+    {
+        return in_array($slug, $array);
+    }
+
+    /**
+     * Menu creator
+     *
+     * @link http://pastebin.com/GAFvSew4
+     * @author J. Bruni - original author
+     *
+     * @return string|bool
+     */
+    public function create()
+    {
+        $root_id = $this->getRootID();
+        $items = $this->getItems();
+        $currents = $this->getCurrents();
+        $classes = $this->getClasses();
+        $before = $this->getBefore();
+        $after = $this->getAfter();
+        $nesting = $this->getNesting();
+
+        if (empty($items)) {
+            return false;
+        }
+        foreach ($items as $item) {
+            if (isset($item['parent_id']))
+                $children[$item['parent_id']][] = $item;
+        }
+
+        // loop will be false if the root has no children (i.e., an empty menu!)
+        $loop = !empty($children[$root_id]);
+
+        // initializing $parent as the root
+        $parent = $root_id;
+        $parent_stack = array();
+
+        $this->html[] = $before['root_ul'];
+
+        // HTML wrapper for the menu (open)
+        $this->html[] = sprintf('%1$s' . '<ul' . '%2$s' . '>',
+            # %1$s tab if text before
+            (!empty($before['root_ul'])) ? str_repeat("\t", $nesting) : '',
+
+            # %2$s root ul class
+            $this->isAtribute('class', $classes['root_ul'])
+        );
+
+        $this->html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1) . $before['first_root_li'] : '';
+
+        // loop
+        while($loop && (($option = each($children[$parent])) || ($parent > $root_id))) {
+
+            // HTML for menu item containing childrens (close)
+            if ($option === false) {
+                $parent = array_pop($parent_stack);
+                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting) . '</ul>';
+                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting) . '</li>';
+            }
+
+            // HTML for menu item containing childrens (open)
+            elseif (!empty($children[$option['value']['id']])) {
+                $tab = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting);
+
+                /*
+                 * <li> with <ul>
+                 */
+                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'.'%4$s'.' href="'.'%5$s'.'">%6$s'.'%7$s'.'%8$s</a>%9$s',
+                    # %1$s tabulation
+                    $tab,
+
+                    # %2$s li class (active)
+                    $this->isAtribute('class', [
+                        $classes['li_with_ul'],
+                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : ''
+                    ]),
+
+                    # %3$s text before li a
+                    $before['li_with_ul_a'],
+
+                    # %4$s a title=""
+                    $this->isAtribute('title', $option['value']['caption']),
+
+                    # %5$s a href=""
+                    $option['value']['slug'],
+
+                    # %6$s before text in li a
+                    $before['li_with_ul_a_text'],
+
+                    # %7$s text inside item
+                    $option['value']['title'],
+
+                    # %8$s after text in li a
+                    $after['li_with_ul_a_text'],
+
+                    # %9$s text after li a
+                    $after['li_with_ul_a']
+                );
+
+                /*
+                 * sub <ul> in <li>
+                 */
+                $this->html[] = sprintf('%1$s' . '<ul' . '%2$s' . '>',
+                    # %1$s tabulation
+                    $tab ."\t",
+
+                    # %2$s sub ul class
+                    $this->isAtribute('class', $classes['sub_ul'])
+                );
+
+                array_push($parent_stack, $option['value']['parent_id']);
+                $parent = $option['value']['id'];
+            }
+
+            // HTML for menu item with no children (aka "leaf")
+            else {
+                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'.'%4$s'.' href="'.'%5$s'.'">%6$s'.'%7$s'.'%8$s</a>%9$s',
+                    # %1$s tabulation
+                    str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),
+
+                    # %2$s li class (active)
+                    $this->isAtribute('class', [
+                        $classes['li_whitout_ul'],
+                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : ''
+                    ]),
+
+                    # %3$s text before li a
+                    $before['li_a'],
+
+                    # %4$s a title=""
+                    $this->isAtribute('title', $option['value']['caption']),
+
+                    # %5$s a href=""
+                    $option['value']['slug'],
+
+                    # %6$s before text in li a
+                    $before['li_a_text'],
+
+                    # %7$s text inside item
+                    $option['value']['title'],
+
+                    # %8$s after text in li a
+                    $after['li_a_text'],
+
+                    # %9$s text after li a
+                    $after['li_a']
+                );
+            }
+        }
+
+        $this->html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1) . $after['last_root_li'] : '';
+
+        // HTML wrapper for the menu (close)
+        $this->html[] = str_repeat("\t", $nesting) . '</ul>';
+
+        $this->html[] = $after['root_ul'];
+
+        return implode("\n", array_filter($this->html)) . "\n";
     }
 }

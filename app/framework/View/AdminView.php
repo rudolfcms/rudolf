@@ -46,15 +46,16 @@ class AdminView extends BaseView
      */
     public function pageNav($type, $nesting = 0, $classes, $before = false, $after = false)
     {
-        $object = new Navigation();
-        $items = self::$adminData['menu_items'];
-        $currents = self::$active;
+        $nav = new Navigation();
+        $nav->setType($type);
+        $nav->setItems(self::$adminData['menu_items']);
+        $nav->setCurrent(self::$active);
+        $nav->setClasses($classes);
+        $nav->setNesting($nesting);
+        $nav->setBefore($before);
+        $nav->setAfter($after);
 
-        if (!is_array($currents)) {
-            $currents = array($currents);
-        }
-
-        return $object->createPageNavigation($type, $items, $currents, $classes, $nesting, $before, $after);
+        return $nav->create();
     }
 
     protected function pageTitle()
