@@ -12,7 +12,7 @@ class Controller extends AdminController
 
         $view->dashboard();
 
-        $view->setActive(['admin/']);
+        $view->setActive(['admin/', 'admin/overview']);
 
         $view->render('admin');
     }
