@@ -29,7 +29,7 @@ class Controller extends FrontController
 
         $view = new View();
         $view->setData($koxy, $pagination);
-        $view->setFrontData($this->frontData);
+        $view->setFrontData($this->frontData, '');
         $view->render();
     }
 }
