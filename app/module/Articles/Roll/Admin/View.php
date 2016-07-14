@@ -17,13 +17,10 @@ class View extends AdminView
             '/admin/articles/list'
         );
 
-        $this->head->setTitle($this->pageTitle());
+        $this->pageTitle = _('Articles list');
+
+        $this->head->setTitle($this->pageTitle);
 
         $this->template = 'articles-list';
-    }
-    
-    protected function pageTitle()
-    {
-        return _('Articles list');
     }
 }

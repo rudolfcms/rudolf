@@ -13,33 +13,30 @@ class Controller extends FrontController
     *
     * @param int $page Page number
     *
-    * @return bool|string
+    * @return void
     */
     public function getList($page)
     {
-        $module = new Module('albums');
-        $config = $module->getConfig();
+        $conf = (new Module('albums'))->getConfig();;
 
-        // tu się może coś zepsuć
-        $page = $this->firstPageRedirect($page, 301, trim(DIR . $config['path']), '/');
+        $page = $this->firstPageRedirect($page, 301, '../../'. $conf['path']);
 
-        $model = new Model();
-        $view = new View();
+        $list = new Model();
+        $total = $list->getTotalNumber();
 
-        $onPage = $config['on_page'];
-        $navNumber = $config['nav_number'];
-        
-        $pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+        $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
 
-        $results = $model->getList($pagination, [$config['sort'], $config['order']]);
+        $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         if (false === $results and $page > 1) {
             throw new HttpErrorException('No albums page found (error 404)', 404);
         }
 
+        $view = new View();
         $view->rollView($results, $pagination);
         $view->setFrontData($this->frontData, '');
-
         $view->render();
     }
 }

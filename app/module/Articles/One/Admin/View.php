@@ -20,7 +20,7 @@ class View extends AdminView
         $this->article = new Article($article);
 
         $this->pageTitle = _('Edit article');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = $this->article->editUrl();
 
@@ -41,7 +41,7 @@ class View extends AdminView
         $this->article = new Article($article);
 
         $this->pageTitle = _('Delete article');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = $this->article->delUrl();
 
@@ -62,7 +62,7 @@ class View extends AdminView
         $this->article = new Article($article);
 
         $this->pageTitle = _('Add article');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = DIR . '/admin/articles/add';
 

@@ -10,17 +10,8 @@ class Model extends FrontModel
 
     private $extension = 'png';
 
-    public function getList(Pagination $pagination, $orderBy = ['id', 'DESC'])
+    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'DESC'])
     {
-        // if page number is greater than number of all elements
-        if ($pagination->getPageNumber() > $pagination->getAllPages()) {
-            //$page = 1;
-            return false;
-        }
-
-        $limit = $pagination->getLimit();
-        $onPage = $pagination->getOnPage();
-
         $catalog = UPLOADS_ROOT . '/moments/';
 
         if (($array = glob($catalog  . '*.' . $this->extension)) == false) {

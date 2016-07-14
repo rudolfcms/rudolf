@@ -17,10 +17,10 @@ class View extends AdminView
      */
     public function editAlbum($album)
     {
-        $this->album = new AAlbum($album);
+        $this->album = new Album($album);
 
         $this->pageTitle = _('Edit album');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = $this->album->editUrl();
 
@@ -38,10 +38,10 @@ class View extends AdminView
      */
     public function delAlbum($album)
     {
-        $this->album = new AAlbum($album);
+        $this->album = new Album($album);
 
         $this->pageTitle = _('Delete album');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = $this->album->delUrl();
 
@@ -59,10 +59,10 @@ class View extends AdminView
      */
     public function addAlbum($album)
     {
-        $this->album = new AAlbum($album);
+        $this->album = new Album($album);
 
         $this->pageTitle = _('Add album');
-        $this->head->setTitle($this->pageTitle());
+        $this->head->setTitle($this->pageTitle);
 
         $this->path = DIR . '/admin/albums/add';
 

@@ -15,8 +15,7 @@ class Parser
     {
         $this->image = new Image();
 
-        $module = new Module('galleries');
-        $this->config = $module->getConfig();;
+        $this->config = (new Module('galleries'))->getConfig();
     }
 
     /**

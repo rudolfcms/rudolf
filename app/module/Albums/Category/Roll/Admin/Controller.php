@@ -9,69 +9,25 @@ use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class Controller extends AdminController
 {
-    public function getList($page) {
+    public function getList($page)
+    {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');
         
         $list = new CategoriesRoll();
-        $pagination = new Pagination($list->getTotalNumber(['type'=>'albums']), $page);
-        $results = $list->getList($pagination);
+        $total = $list->getTotalNumber(['type'=>'albums']);
+
+        $pagination = new Pagination($total, $page);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
+
+        $results = $list->getList($limit, $onPage);
 
         $view = new View();
-
         $view->setData($results, $pagination);
-
         $view->setActive([
             'admin/albums',
             'admin/albums/categories',
             'admin/albums/categories/list'
-        ]);
-
-        $view->render('admin');
-    }
-
-    public function edit($id)
-    {
-        $model = new One\Model();
-
-        // if data was send
-        if (isset($_POST['update'])) {
-            $model->update($_POST, $id);
-        }
-
-        $category = $model->getCategoryInfoById($id);
-        
-        $view = new View();
-        $view->edit($category);
-         $view->setActive([
-            'admin/albums',
-            'admin/albums/categories'
-        ]);
-        $view->render('admin');
-    }
-
-    public function add()
-    {
-        $model = new One\Model();
-
-        // if data was send
-        if (isset($_POST['add'])) {
-            $id = $model->add($_POST);
-
-            if ($id) {
-                $location = DIR . '/admin/albums/edit/' . $id;
-                $response = new Response('', 301);
-                $response->setHeader(['Location', $location]);
-                $response->send();
-                exit();
-            }
-        }
-
-        $view = new View();
-        $view->add($_POST);
-         $view->setActive([
-            'admin/albums',
-            'admin/albums/categories',
-            'admin/albums/categories/add'
         ]);
         $view->render('admin');
     }

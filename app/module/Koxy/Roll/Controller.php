@@ -12,25 +12,24 @@ class Controller extends FrontController
     {
         $page = $this->firstPageRedirect($page);
 
-        $model = new Model();
-        $view = new View();
+        $list = new Model();
+        $total = $list->getTotalNumber();
 
-        $module = new Module('koxy');
-        $config = $module->getConfig();
-        $onPage = $config['on_page'];
-        $navNumber = $config['nav_number'];
+        $conf = (new Module('koxy'))->getConfig();
         
-        $pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+        $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
 
-        $koxy = $model->getList($pagination, [$config['sort'], $config['order']]);
+        $koxy = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         if (false === $koxy and $page > 1) {
             throw new HttpErrorException('No koxy page found (error 404)', 404);
         }
 
+        $view = new View();
         $view->setData($koxy, $pagination);
-        $view->setFrontData($this->frontData, '');
-
+        $view->setFrontData($this->frontData);
         $view->render();
     }
 }

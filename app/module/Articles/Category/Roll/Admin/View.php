@@ -14,13 +14,10 @@ class View extends AdminView
             '/admin/articles\\categories/list'
         );
 
-        $this->head->setTitle($this->pageTitle());
+        $this->pageTitle = _('Category list');
+
+        $this->head->setTitle($this->pageTitle);
 
         $this->template = 'categories-list';
-    }
-
-    protected function pageTitle()
-    {
-        return _('Category list');
     }
 }

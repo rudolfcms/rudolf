@@ -6,17 +6,8 @@ use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends Roll\Model
 {
-    public function getList(Pagination $pagination, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        // if page number is greater than number of all elements
-        if ($pagination->getPageNumber() > $pagination->getAllPages()) {
-            //$page = 1;
-            return false;
-        }
-
-        $limit = $pagination->getLimit();
-        $onPage = $pagination->getOnPage();
-
         $clausule = $this->createWhereClausule($this->where);
 
         $type = $this->where['type'];

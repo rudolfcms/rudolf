@@ -15,7 +15,7 @@ class View extends FrontView
 
         $this->loop = new Loop($data, $pagination,
         	'Rudolf\\Modules\\Albums\\One\\Album',
-        	$config['path']
+        	'/' . $config['path']
         );
 
         $this->template = 'albums';

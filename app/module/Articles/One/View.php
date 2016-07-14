@@ -16,6 +16,6 @@ class View extends FrontView
 
         $this->head->setTitle($this->article->title());
 
-        $this->template = (isset($data['template'])) ? $data['template'] : 'article-once';
+        $this->template = 'article-one';
     }
 }

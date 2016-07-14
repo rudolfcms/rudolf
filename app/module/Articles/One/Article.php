@@ -38,7 +38,6 @@ class Article
                 'description' => '',
                 'content' => '',
                 'author' => '',
-                'author' => '',
                 'date' => '',
                 'added' => '',
                 'modified' => '',

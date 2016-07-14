@@ -6,32 +6,32 @@ use Rudolf\Framework\Controller\FrontController;
 
 class Controller extends FrontController
 {
-    public function page($sAddress)
+    public function page($stringAddress)
     {
-        $addressArray = explode('/', trim($sAddress, '/'));
+        $addressArray = explode('/', trim($stringAddress, '/'));
 
-        $model = new Model();
-        $pagesList = $model->getPagesList();
-        $pageId = $model->getPageIdByPath($addressArray, $pagesList);
+        $pages = new Model();
+        $pagesList = $pages->getPagesList();
+        $pageID = $pages->getPageIdByPath($addressArray, $pagesList);
 
-        if (false === $pageId) {
+        if (false === $pageID) {
             throw new HttpErrorException('No page found (error 404)', 404);
         }
 
-        $pageData = $model->getPageById($pageId);
+        $pageInfo = $pages->getPageById($pageID);
 
         $view = new View();
-        $view->page($pageData);
-        $aAddress = explode('/', $sAddress);
+        $view->page($pageInfo);
+
+        $active = [];
 
         $temp = '';
-        foreach ($aAddress as $key => $value) {
+        foreach ($addressArray as $key => $value) {
             $active[] = ltrim($temp = $temp . '/' . $value, '/');
         }
 
         $view->setFrontData($this->frontData, $active);
-        $view->setBreadcrumbsData($pagesList, $aAddress);
-
-        return $view->render();
+        $view->setBreadcrumbsData($pagesList, $addressArray);
+        $view->render();
     }
 }

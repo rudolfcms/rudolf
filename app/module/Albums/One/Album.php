@@ -35,7 +35,6 @@ class Album
                 'category_ID' => 0,
                 'title' => '',
                 'author' => '',
-                'author' => '',
                 'date' => '',
                 'added' => '',
                 'modified' => '',

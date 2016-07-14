@@ -5,7 +5,6 @@ use Rudolf\Modules\Categories\One;
 
 class Category extends One\Category implements One\ICategory
 {
-
     /**
      * Returns category url
      * 

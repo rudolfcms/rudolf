@@ -8,10 +8,9 @@ class Controller extends FrontController
     public function vote($type)
     {
         $model = new Model();
-        $view = new View();
-
         $response = $model->vote($type, $_POST);
 
+        $view = new View();
         $view->data = $response;
         $view->render('', 'json');
     }

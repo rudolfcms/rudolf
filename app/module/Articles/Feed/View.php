@@ -6,7 +6,6 @@ use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop as Loop;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Framework\View\FrontView;
-use Rudolf\Modules\Articles\Roll\Roll;
 
 class View extends FrontView
 {
@@ -18,8 +17,7 @@ class View extends FrontView
 
 	public function rss2()
 	{
-		$module = new Module('articles');
-		$config = $module->getConfig();
+		$config = (new Module('articles'))->getConfig();
 
 		$generator = new Feed\RSS2Generator();
 		$generator->setTitle($config['feed_title']);

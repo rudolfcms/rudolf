@@ -6,13 +6,11 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    use Traits;
-
     public function page($data)
     {
-        $this->page = $data;
+        $this->page = new Page($data);
         
-        $this->head->setTitle($this->title());
+        $this->head->setTitle($this->page->title());
 
         $this->template = 'page';
     }

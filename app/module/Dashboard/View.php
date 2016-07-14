@@ -7,13 +7,9 @@ class View extends AdminView
 {
 	public function dashboard()
 	{
-		$this->head->setTitle(_('Dashboard'));
+        $this->pageTitle = _('Dashboard');
+		$this->head->setTitle($this->pageTitle);
 
 		$this->template = 'dashboard';
-	}
-
-	public function pageTitle()
-	{
-		return _('Dashboard');
 	}
 }

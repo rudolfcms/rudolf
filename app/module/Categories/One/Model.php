@@ -15,7 +15,8 @@ class Model extends FrontModel {
      */
     public function getCategoryInfo($slug, $type)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories WHERE slug = :slug and type = :type");
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories
+            WHERE slug = :slug and type = :type");
         $stmt->bindValue(':slug', $slug, \PDO::PARAM_INT);
         $stmt->bindValue(':type', $type, \PDO::PARAM_STR);
         $stmt->execute();
@@ -38,9 +39,8 @@ class Model extends FrontModel {
     public function getCategoryInfoById($id)
     {
         $stmt = $this->pdo->prepare("SELECT category.id, category.title, category.keywords,
-            category.description, category.content,
-            category.added, category.modified, category.adder_ID, category.modifier_ID, category.views,
-            category.slug, 
+            category.description, category.content, category.added, category.modified,
+            category.adder_ID, category.modifier_ID, category.views, category.slug, 
 
             adder.nick as adder_nick, adder.first_name as adder_first_name,
             adder.surname as adder_surname, adder.email as adder_email,
@@ -56,7 +56,8 @@ class Model extends FrontModel {
             -- join on modifier_ID
             LEFT JOIN {$this->prefix}users as modifier ON category.modifier_ID = modifier.id
 
-            WHERE category.id = :id");
+            WHERE category.id = :id
+        ");
         $stmt->bindValue(':id', $id, \PDO::PARAM_STR);
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

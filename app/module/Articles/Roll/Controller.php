@@ -3,7 +3,6 @@ namespace Rudolf\Modules\Articles\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\HttpErrorException;
-use Rudolf\Component\Libs\Pagination;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Framework\Controller\FrontController;
 
@@ -20,25 +19,24 @@ class Controller extends FrontController
     {
         $page = $this->firstPageRedirect($page);
 
-        $model = new Model();
-        $view = new View();
+        $articles = new Model();
+        $total = $articles->getTotalNumber();
 
-        $module = new Module('');
-        $config = $module->getConfig();
-        $onPage = $config['on_page'];
-        $navNumber = $config['nav_number'];
+        $conf = (new Module('articles'))->getConfig();
         
-        $pagination = new Pagination($model->getTotalNumber(), $page, $onPage, $navNumber);
+        $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
 
-        $results = $model->getList($pagination, [$config['sort'], $config['order']]);
+        $results = $articles->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         if (false === $results and $page > 1) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
 
+        $view = new View();
         $view->rollView($results, $pagination);
-        $view->setFrontData($this->frontData, '');
-
+        $view->setFrontData($this->frontData);
         $view->render();
     }
 }

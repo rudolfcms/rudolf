@@ -7,30 +7,16 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
-     * @var int Number of all items
-     */
-    public $total;
-
-    /**
      * Returns array with categories list
      *
-     * @param int $page
-     * @param string|array $where
-     * @param array $paginationConfig
+     * @param int $limit
+     * @param int $onPage
+     * @param array $orderBy
      *
      * @return array
      */
-    public function getList(Pagination $pagination, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        // if page number is greater than number of all elements
-        if ($pagination->getPageNumber() > $pagination->getAllPages()) {
-            //$page = 1;
-            return false;
-        }
-
-        $limit = $pagination->getLimit();
-        $onPage = $pagination->getOnPage();
-
         $clausule = $this->createWhereClausule($this->where);
 
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories "

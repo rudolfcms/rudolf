@@ -4,7 +4,7 @@ namespace Rudolf\Modules\Articles\Feed;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\FrontController;
-use Rudolf\Modules\Articles\Roll;
+use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 
 class Controller extends FrontController
 {
@@ -17,14 +17,19 @@ class Controller extends FrontController
      */
     public function getFeed($type)
     {
-        $list = new Roll\Model();
-        $view = new View();
-        $response = new Response();
+        $list = new ArticlesList();
+        $total = $list->getTotalNumber();
 
-        $pagination = new Pagination($list->getTotalNumber(), 1, 20);
-        $results = $list->getList($pagination, ['id', 'desc']);
+        $pagination = new Pagination($total, 1, 20);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
+
+        $results = $list->getList($limit, $onPage);
+
+        $view = new View();
         $view->setArticles($results, $pagination);
         
+        $response = new Response();
         switch ($type) {
             case 'atom':
                 $response->setContent($view->atom());

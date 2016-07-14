@@ -60,7 +60,8 @@ class Model extends Articles\Model
     {
         $info = $this->results;
 
-        $stmt = $this->pdo->prepare("UPDATE {$this->prefix}articles SET views = :v WHERE id = :id");
+        $stmt = $this->pdo->prepare("UPDATE {$this->prefix}articles SET views = :v
+            WHERE id = :id");
         $stmt->bindValue(':v', ++$info['views'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $info['id'], \PDO::PARAM_INT);
         $stmt->execute();

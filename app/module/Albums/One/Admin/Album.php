@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Albums\One\Admin;
 
 use Rudolf\Modules\Albums\One;
 
-class AAlbum extends One\Album
+class Album extends One\Album
 {
     public function editUrl()
     {

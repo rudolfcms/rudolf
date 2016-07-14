@@ -5,27 +5,30 @@ use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One;
-use Rudolf\Modules\Categories\Roll\Admin as Roll;
+use Rudolf\Modules\Categories\Roll\Admin\Model as AlbumsList;
 
 class Controller extends AdminController
 {
-    public function getList($page) {
+    public function getList($page)
+    {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');
-        
-        $list = new Roll\Model();
-        $pagination = new Pagination($list->getTotalNumber(['type'=>'albums']), $page);
-        $results = $list->getList($pagination);
+
+        $list = new AlbumsList();
+        $total = $list->getTotalNumber(['type'=>'albums']);
+
+        $pagination = new Pagination($total, $page);
+        $limit = $pagination->getLimit();
+        $onPage = $pagination->getOnPage();
+
+        $results = $list->getList($limit, $onPage);
 
         $view = new View();
-
         $view->setData($results, $pagination);
-
         $view->setActive([
             'admin/albums',
             'admin/albums/categories',
             'admin/albums/categories/list'
         ]);
-
         $view->render('admin');
     }
 

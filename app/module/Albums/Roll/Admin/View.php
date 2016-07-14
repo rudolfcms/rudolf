@@ -7,23 +7,18 @@ use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {
-
     public function setData($data, Pagination $pagination)
     {
         $this->loop = new Loop(
             $data,
             $pagination,
-            'Rudolf\\Modules\\Albums\\One\\Admin\\AAlbum',
+            'Rudolf\\Modules\\Albums\\One\\Admin\\Album',
             '/admin/albums/list'
         );
 
-        $this->head->setTitle($this->pageTitle());
+        $this->pageTitle = _('Albums list');
+        $this->head->setTitle($this->pageTitle);
 
         $this->template = 'albums-list';
-    }
-    
-    protected function pageTitle()
-    {
-        return _('Albums list');
     }
 }

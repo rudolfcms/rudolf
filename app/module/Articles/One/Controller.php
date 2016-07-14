@@ -17,19 +17,18 @@ class Controller extends FrontController
      */
     public function getOne($year, $month, $slug)
     {
-        $model = new Model();
-        $view = new View();
+        $article = new Model();
 
-        $results = $model->getOneByDate($year, $month, $slug);
+        $results = $article->getOneByDate($year, $month, $slug);
         if (false === $results) {
             throw new HttpErrorException('No article found (error 404)', 404);
         }
 
-        $model->addView();
+        $article->addView();
 
+        $view = new View();
         $view->setData($results);
-        $view->setFrontData($this->frontData, '');
-
+        $view->setFrontData($this->frontData);
         $view->render();
     }
 }
