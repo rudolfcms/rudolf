@@ -3,7 +3,7 @@ namespace Rudolf\Modules\Articles\Feed;
 
 use Rudolf\Component\Feed;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
-use Rudolf\Component\Helpers\Pagination\Loop as Loop;
+use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Framework\View\FrontView;
 

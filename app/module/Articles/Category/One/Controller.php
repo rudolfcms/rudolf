@@ -40,6 +40,10 @@ class Controller extends FrontController
         $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
+
+        if ($pagination->getAllPages() < $page) {
+            throw new HttpErrorException('No articles page found (error 404)', 404);
+        }
         
         $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 

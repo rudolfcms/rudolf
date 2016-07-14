@@ -21,12 +21,12 @@ class Controller extends FrontController
         $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
-        
-        $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
-        if (false === $results and $page > 1) {
+        if ($pagination->getAllPages() < $page) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
+
+        $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         $view = new View();
         $view->setData($results, $pagination);

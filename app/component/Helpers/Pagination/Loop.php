@@ -1,5 +1,6 @@
 <?php
 namespace Rudolf\Component\Helpers\Pagination;
+
 use Rudolf\Component\Html\Paging;
     
 class Loop
@@ -37,11 +38,11 @@ class Loop
      * @param string $itemClassName
      * @param string $path
      */
-    public function __construct($data, Calc $calc, $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item', $path = '')
+    public function __construct($data, ICalc $calc,
+        $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item', $path = '')
     {
         $this->data = $data;
         $this->calc = $calc;
-
         $this->itemClassName = $itemClassName;
         $this->path = $path;
     }
@@ -82,7 +83,7 @@ class Loop
     /**
      * Set the current item
      *
-     * @return void
+     * @return object
      */
     public function item()
     {
@@ -91,6 +92,16 @@ class Loop
         $item->setData($this->data[$this->current]);
 
         return $item;
+    }
+
+    /**
+     * Checks if pagination is needed
+     * 
+     * @return bool
+     */
+    public function isPagination()
+    {
+        return 1 < $this->calc->getAllPages();
     }
 
     /**
@@ -112,15 +123,5 @@ class Loop
         $nav->setNesting($nesting);
 
         return $nav->create();
-    }
-
-    /**
-     * Checks if pagination is needed
-     * 
-     * @return bool
-     */
-    public function isPagination()
-    {
-        return 1 < $this->calc->getAllPages();
     }
 }

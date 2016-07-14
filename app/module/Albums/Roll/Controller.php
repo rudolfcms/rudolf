@@ -28,11 +28,11 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
-
-        if (false === $results and $page > 1) {
+        if ($pagination->getAllPages() < $page) {
             throw new HttpErrorException('No albums page found (error 404)', 404);
         }
+
+        $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         $view = new View();
         $view->rollView($results, $pagination);
