@@ -3,5 +3,5 @@
     'nav_number' => 7,
     'order' => 'DESC',
     'sort' => 'id',
-    'path' => '/foto',
+    'path' => 'foto',
 );

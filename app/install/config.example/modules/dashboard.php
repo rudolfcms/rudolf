@@ -1,5 +1,3 @@
-<?php
-
-return array(
+<?php return array(
 	'admin_path' => 'admin'
 );
