@@ -38,8 +38,14 @@ class Model extends FrontModel
      */
     public function getPagesList()
     {
-        $stmt = $this->pdo->prepare("SELECT id, parent_id, slug, title, published
-            FROM {$this->prefix}pages");
+        $stmt = $this->pdo->prepare("
+            SELECT id,
+                   parent_id,
+                   slug,
+                   title,
+                   published
+            FROM {$this->prefix}pages
+        ");
         $stmt->execute();
         $results = $stmt->fetchAll();
         $stmt->closeCursor();
@@ -71,7 +77,11 @@ class Model extends FrontModel
      */
     public function getPageById($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}pages WHERE id = :id");
+        $stmt = $this->pdo->prepare("
+            SELECT *
+            FROM {$this->prefix}pages
+            WHERE id = :id
+        ");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $results = $stmt->fetchAll();

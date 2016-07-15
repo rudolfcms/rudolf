@@ -49,9 +49,22 @@ class Session
             return false;
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO {$this->table} 
-            (user_id,  hash,  expire,  ip,  useragent, cookie) VALUES 
-            (:user_id, :hash, :expire, :ip, :useragent, :cookie)");
+        $stmt = $this->pdo->prepare("
+            INSERT INTO {$this->table}
+                (user_id
+                , hash
+                , expire
+                , ip
+                , useragent
+                , cookie)
+            VALUES
+                (:user_id
+                , :hash
+                , :expire
+                , :ip
+                , :useragent
+                , :cookie)
+        ");
         $stmt->bindValue(':user_id', $user['id'], \PDO::PARAM_INT);
         $stmt->bindValue(':hash', $session['hash'], \PDO::PARAM_STR);
         $stmt->bindValue(':expire', $session['expire'], \PDO::PARAM_STR);

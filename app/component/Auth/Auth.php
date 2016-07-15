@@ -97,8 +97,17 @@ class Auth
             $uid = $this->session->getSessionUID();
         }
 
-        $stmt = $this->pdo->prepare("SELECT id, nick, first_name, surname, email, active, dt 
-                                    FROM {$this->table} WHERE id = :uid");
+        $stmt = $this->pdo->prepare("
+            SELECT id,
+                   nick,
+                   first_name,
+                   surname,
+                   email,
+                   active,
+                   dt
+            FROM {$this->table}
+            WHERE id = :uid
+        ");
         $stmt->bindValue(':uid', $uid, \PDO::PARAM_INT);
         $stmt->execute();
 
@@ -132,7 +141,11 @@ class Auth
      */
     public function getUserDataByEmail($email)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}users WHERE email = :email");
+        $stmt = $this->pdo->prepare("
+            SELECT *
+            FROM {$this->table}
+            WHERE email = :email
+        ");
         $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

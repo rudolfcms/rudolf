@@ -15,8 +15,15 @@ class Model extends FrontModel
     public function getGalleryInfoById($id)
     {
         $id = (int) $id;
-        $stmt = $this->pdo->prepare("SELECT id, title, url, thumb_width, thumb_height
-            FROM {$this->prefix}galleries WHERE id = :id");
+        $stmt = $this->pdo->prepare("
+            SELECT id,
+                   title,
+                   url,
+                   thumb_width,
+                   thumb_height
+            FROM {$this->prefix}galleries
+            WHERE id = :id
+        ");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

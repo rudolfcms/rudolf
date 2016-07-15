@@ -19,9 +19,13 @@ class Model extends FrontModel
     {
         $clausule = $this->createWhereClausule($this->where);
 
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories "
-            . "WHERE $clausule "
-            . "ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
+        $stmt = $this->pdo->prepare("
+            SELECT *
+            FROM {$this->prefix}categories
+            WHERE $clausule
+            ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
+                                                   $onPage
+        ");
 
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

@@ -15,8 +15,12 @@ class Model extends FrontModel {
      */
     public function getCategoryInfo($slug, $type)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}categories
-            WHERE slug = :slug and type = :type");
+        $stmt = $this->pdo->prepare("
+            SELECT *
+            FROM {$this->prefix}categories
+            WHERE slug = :slug
+              AND TYPE = :type
+        ");
         $stmt->bindValue(':slug', $slug, \PDO::PARAM_INT);
         $stmt->bindValue(':type', $type, \PDO::PARAM_STR);
         $stmt->execute();
@@ -38,24 +42,31 @@ class Model extends FrontModel {
      */
     public function getCategoryInfoById($id)
     {
-        $stmt = $this->pdo->prepare("SELECT category.id, category.title, category.keywords,
-            category.description, category.content, category.added, category.modified,
-            category.adder_ID, category.modifier_ID, category.views, category.slug, 
+        $stmt = $this->pdo->prepare("
+            SELECT category.id,
+                   category.title,
+                   category.keywords,
+                   category.description,
+                   category.content,
+                   category.added,
+                   category.modified,
+                   category.adder_ID,
+                   category.modifier_ID,
+                   category.views,
+                   category.slug,
+                   adder.nick AS adder_nick,
+                   adder.first_name AS adder_first_name,
+                   adder.surname AS adder_surname,
+                   adder.email AS adder_email,
+                   modifier.nick AS adder_nick,
+                   modifier.first_name AS modifier_first_name,
+                   modifier.surname AS modifier_surname,
+                   modifier.email AS modifier_email
+            FROM {$this->prefix}categories AS category
 
-            adder.nick as adder_nick, adder.first_name as adder_first_name,
-            adder.surname as adder_surname, adder.email as adder_email,
+            LEFT JOIN {$this->prefix}users AS adder ON category.adder_ID = adder.id
 
-            modifier.nick as adder_nick, modifier.first_name as modifier_first_name,
-            modifier.surname as modifier_surname, modifier.email as modifier_email
-
-            FROM {$this->prefix}categories as category
-
-            -- join on adder_ID
-            LEFT JOIN {$this->prefix}users as adder ON category.adder_ID = adder.id
-
-            -- join on modifier_ID
-            LEFT JOIN {$this->prefix}users as modifier ON category.modifier_ID = modifier.id
-
+            LEFT JOIN {$this->prefix}users AS modifier ON category.modifier_ID = modifier.id
             WHERE category.id = :id
         ");
         $stmt->bindValue(':id', $id, \PDO::PARAM_STR);

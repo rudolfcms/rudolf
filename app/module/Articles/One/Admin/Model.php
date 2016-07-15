@@ -34,11 +34,25 @@ class Model extends AdminModel
         $f['photos'] = (string) $post['photos'];
         $f['published'] = (bool) (!isset($post['published'])) ? 0 : 1;
 
-        $stmt = $this->pdo->prepare("UPDATE {$this->prefix}articles SET 
-            title = :title, keywords = :keywords, description = :description, content = :content,
-            author = :author, date = :date, modified = :modified, modifier_ID = :modifier, slug = :slug,
-            album = :album, thumb = :thumb, photos = :photos, published = :published
-            WHERE id = :id
+        $stmt = $this->pdo->prepare("
+            UPDATE
+                {$this->prefix}articles
+            SET
+                title = :title,
+                keywords = :keywords,
+                description = :description,
+                content = :content,
+                author = :author,
+                date = :date,
+                modified = :modified,
+                modifier_ID = :modifier,
+                slug = :slug,
+                album = :album,
+                thumb = :thumb,
+                photos = :photos,
+                published = :published
+            WHERE
+                id = :id
         ");
         $stmt->bindValue(':title', $f['title'], \PDO::PARAM_STR);
         $stmt->bindValue(':keywords', $f['keywords'], \PDO::PARAM_STR);
@@ -118,10 +132,35 @@ class Model extends AdminModel
         $f['photos'] = (string) $post['photos'];
         $f['published'] = (bool) (!isset($post['published'])) ? 0 : 1;
 
-        $stmt = $this->pdo->prepare("INSERT INTO {$this->prefix}articles 
-            (title, keywords, description, content, author, date, added, adder_ID, slug, album, thumb, photos, published) 
+        $stmt = $this->pdo->prepare("
+            INSERT INTO {$this->prefix}articles
+                (title
+                , keywords
+                , description
+                , content
+                , author
+                , date
+                , added
+                , adder_ID
+                , slug
+                , album
+                , thumb
+                , photos
+                , published)
             VALUES
-            (:title, :keywords, :description, :content, :author, :date, :added, :adder, :slug, :album, :thumb, :photos, :published)
+                (:title
+                , :keywords
+                , :description
+                , :content
+                , :author
+                , :date
+                , :added
+                , :adder
+                , :slug
+                , :album
+                , :thumb
+                , :photos
+                , :published)
         ");
         $stmt->bindValue(':title', $f['title'], \PDO::PARAM_STR);
         $stmt->bindValue(':keywords', $f['keywords'], \PDO::PARAM_STR);

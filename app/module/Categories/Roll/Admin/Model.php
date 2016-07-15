@@ -11,18 +11,19 @@ class Model extends Roll\Model
         $clausule = $this->createWhereClausule($this->where);
 
         $type = $this->where['type'];
-        $stmt = $this->pdo->prepare("SELECT category.id, category.title, category.slug,
-            COUNT(items.id) as total 
-
-            FROM {$this->prefix}categories as category 
-            
-            LEFT JOIN {$this->prefix}$type as items ON category.id=items.category_ID
-
-            WHERE category.type = '$type' GROUP BY category.id
-
-            ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage
+        $stmt = $this->pdo->prepare("
+            SELECT category.id,
+                   category.title,
+                   category.slug,
+                   COUNT(items.id) AS total
+            FROM {$this->prefix}categories AS category
+            LEFT JOIN {$this->prefix}$type AS items ON category.id=items.category_ID
+            WHERE category.type = '$type'
+            GROUP BY category.id
+            ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
+                                                   $onPage
         ");
-        
+
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
@@ -35,14 +36,15 @@ class Model extends Roll\Model
 
     public function getAll($type)
     {
-        $stmt = $this->pdo->prepare("SELECT category.id, category.title, category.slug,
-            COUNT(items.id) as total 
-
-            FROM {$this->prefix}categories as category 
-            
-            LEFT JOIN {$this->prefix}$type as items ON category.id=items.category_ID
-
-            WHERE category.type = '$type' GROUP BY category.id
+        $stmt = $this->pdo->prepare("
+            SELECT category.id,
+                   category.title,
+                   category.slug,
+                   COUNT(items.id) AS total
+            FROM {$this->prefix}categories AS category
+            LEFT JOIN {$this->prefix}$type AS items ON category.id=items.category_ID
+            WHERE category.type = '$type'
+            GROUP BY category.id
         ");
 
         $stmt->execute();

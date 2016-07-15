@@ -86,7 +86,11 @@ abstract class BaseModel
 
         $clausule = $this->createWhereClausule($where);
 
-        $stmt = $this->pdo->query("SELECT COUNT(*) as count FROM $table WHERE $clausule");
+        $stmt = $this->pdo->query("
+            SELECT COUNT(*) AS COUNT
+            FROM $table
+            WHERE $clausule
+        ");
             
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
