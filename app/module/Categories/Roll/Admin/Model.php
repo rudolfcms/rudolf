@@ -18,7 +18,7 @@ class Model extends Roll\Model
             
             LEFT JOIN {$this->prefix}$type as items ON category.id=items.category_ID
 
-            WHERE category.type = '$type' GROUP BY items.category_ID
+            WHERE category.type = '$type' GROUP BY category.id
 
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage
         ");
@@ -42,7 +42,7 @@ class Model extends Roll\Model
             
             LEFT JOIN {$this->prefix}$type as items ON category.id=items.category_ID
 
-            WHERE category.type = '$type' GROUP BY items.category_ID
+            WHERE category.type = '$type' GROUP BY category.id
         ");
 
         $stmt->execute();
