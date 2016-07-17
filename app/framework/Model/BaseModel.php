@@ -87,7 +87,7 @@ abstract class BaseModel
         $clausule = $this->createWhereClausule($where);
 
         $stmt = $this->pdo->query("
-            SELECT COUNT(*) AS COUNT
+            SELECT COUNT(*) AS count
             FROM $table
             WHERE $clausule
         ");
