@@ -54,7 +54,7 @@ $collection->add('albums/roll/admin', new Routing\Route(
 // categories
 $collection->add('albums/categories/admin', new Routing\Route(
     $config['admin_path'] . '/albums/categories?$',
-    'Rudolf\Modules\Albums\Category\Admin\Controller::redirect'
+    'Rudolf\Modules\Albums\Category\Roll\Admin\Controller::redirect'
 ));
 $collection->add('albums/categories/roll/admin', new Routing\Route(
     $config['admin_path'] . '/albums/categories/list(/page/<page>)?',

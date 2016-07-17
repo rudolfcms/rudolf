@@ -76,7 +76,7 @@ $collection->add('articles/roll/admin', new Routing\Route(
 // categories
 $collection->add('articles/categories/admin', new Routing\Route(
     $config['admin_path'] . '/articles/categories?$',
-    'Rudolf\Modules\Articles\Category\Admin\Controller::redirect'
+    'Rudolf\Modules\Articles\Category\Roll\Admin\Controller::redirect'
 ));
 $collection->add('articles/categories/roll/admin', new Routing\Route(
     $config['admin_path'] . '/articles/categories/list(/page/<page>)?',
