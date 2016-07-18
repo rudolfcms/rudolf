@@ -45,7 +45,7 @@ class View extends FrontView
      */
     public function categoryTitle($strip = false)
     {
-        $title = _('Albumy z kategorii') . ' <i>' . $this->categoryInfo['title'] . '</i>';
+        $title = _('Albums from category') . ' <i>' . $this->categoryInfo['title'] . '</i>';
 
         if (true === $strip) {
             return strip_tags($title);

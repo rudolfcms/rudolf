@@ -2,13 +2,13 @@
 
 $id = $this->addItem(
     $menu_type = 'main',
-    $title = 'Dashboard',
+    $title = _('Dashboard'),
     $slug = '',
     $parent_id = 0,
     $isAdmin = true,
-    $caption = 'Dashboard',
+    $caption = _('Dashboard'),
     $position = 10,
     $font_awesome_ico = 'fa-tachometer'
 );
 
-$this->addItem('main', 'Overview', 'overview', $id, true, 'overview', 0, 'fa-home');
+$this->addItem('main', _('Overview'), 'overview', $id, true, _('Overview'), 0, 'fa-home');

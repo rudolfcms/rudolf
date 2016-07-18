@@ -2,18 +2,18 @@
 
 $id = $this->addItem(
     $menu_type = 'main',
-    $title = 'Articles',
+    $title = _('Articles'),
     $slug = 'articles',
     $parent_id = 0,
     $isAdmin = true,
-    $caption = 'articles',
+    $caption = _('Articles'),
     $position = 20,
     $font_awesome_ico = 'fa-pencil'
 );
 
-$this->addItem('main', 'List', 'articles/list', $id, true, 'Articles list', 2, 'fa-list');
-$this->addItem('main', 'Add', 'articles/add', $id, true, 'Add article', 3, 'fa-plus');
+$this->addItem('main', _('Articles list'), 'articles/list', $id, true, _('Articles list'), 2, 'fa-list');
+$this->addItem('main', _('Add article'), 'articles/add', $id, true, _('Add article'), 3, 'fa-plus');
 
-$catID = $this->addItem('main', 'Categories', 'articles/categories', $id, true, 'Category list', 4, 'fa fa-folder');
-$this->addItem('main', 'List', 'articles/categories/list', $catID, true, 'Categories list', 2, 'fa-list');
-$this->addItem('main', 'Add', 'articles/categories/add', $catID, true, 'Add categories', 3, 'fa-plus');
+$catID = $this->addItem('main', _('Categories'), 'articles/categories', $id, true, _('Categories'), 4, 'fa fa-folder');
+$this->addItem('main', _('Categories list'), 'articles/categories/list', $catID, true, _('Categories list'), 2, 'fa-list');
+$this->addItem('main', _('Add category'), 'articles/categories/add', $catID, true, _('Add category'), 3, 'fa-plus');

@@ -2,16 +2,16 @@
 # users
 $aid = $this->addItem(
     $menu_type = 'main',
-    $title = 'Users',
+    $title = _('Users'),
     $slug = 'users',
     $parent_id = 0,
     $isAdmin = false,
-    $caption = 'users',
+    $caption = _('Users'),
     $position = 80,
     $font_awesome_ico = 'fa-users'
 );
 
-$this->addItem('main', 'list', 'users/list', $aid, false, 'list', 0, 'fa-list');
+$this->addItem('main', _('Users list'), 'users/list', $aid, false, _('Users list'), 0, 'fa-list');
 
 # user
 $id = $this->addItem(

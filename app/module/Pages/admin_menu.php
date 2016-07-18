@@ -2,14 +2,14 @@
 
 $id = $this->addItem(
     $menu_type = 'main',
-    $title = 'Pages',
+    $title = _('Pages'),
     $slug = 'pages',
     $parent_id = 0,
     $isAdmin = true,
-    $caption = 'pages',
+    $caption = _('Pages'),
     $position = 30,
     $font_awesome_ico = 'fa-file'
 );
 
-$this->addItem('main', 'List', 'pages/list', $id, true, 'Pages list', 0, 'fa-list');
-$this->addItem('main', 'Add', 'pages/add', $id, true, 'Add page', 0, 'fa-plus');
+$this->addItem('main', _('Pages list'), 'pages/list', $id, true, _('Pages list'), 0, 'fa-list');
+$this->addItem('main', _('Add page'), 'pages/add', $id, true, _('Add page'), 0, 'fa-plus');
