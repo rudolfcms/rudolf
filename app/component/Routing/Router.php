@@ -71,7 +71,7 @@ class Router
      */
     public function getUrl()
     {
-        return $this->url;
+        return parse_url($this->url, PHP_URL_PATH);
     }
 
     /**
@@ -198,7 +198,7 @@ class Router
     {
         $routePath = str_replace(array('(', ')'), array('', ''), $route->getPath());
         $trim = explode('<', $routePath);
-        $parsed_url = str_replace(array($this->basePath), array(''), $this->url);
+        $parsed_url = str_replace(array($this->basePath), array(''), $this->getUrl());
         $parsed_url = preg_replace("#$trim[0]#", '', $parsed_url, 1);
         
         // ustawia parametry przekazane w URL
