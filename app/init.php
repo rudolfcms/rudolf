@@ -36,14 +36,15 @@ define('ADMIN_THEME', $config['admin_theme']);
 define('GENERAL_SITE_NAME', $config['general_name']);
 define('ENV', $config['debug']);
 
-// set locale
 $lang = 'pl_PL.UTF8';
-putenv('LANG='.$lang);
-setlocale(LC_ALL, $lang);
+putenv('LANG='. $lang);
+setlocale(LC_MESSAGES,  $locale);
 //setlocale(LC_ALL,'en_US.UTF8');
+
 $domain = 'rudolf';
-bindtextdomain($domain, APP_ROOT . '/locale');
+bindtextdomain($domain, APP_ROOT .'/locale');
 textdomain($domain);
+bind_textdomain_codeset($domain, 'UTF-8');
 
 // load functions to log or disply errors
 $errorHandler = new ErrorHandler();
