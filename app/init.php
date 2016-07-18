@@ -37,11 +37,13 @@ define('GENERAL_SITE_NAME', $config['general_name']);
 define('ENV', $config['debug']);
 
 // set locale
-$name = 'rudolf';
-setlocale(LC_ALL,'pl_PL.UTF8');
+$lang = 'pl_PL.UTF8';
+putenv('LANG='.$lang);
+setlocale(LC_ALL, $lang);
 //setlocale(LC_ALL,'en_US.UTF8');
-bindtextdomain($name, APP_ROOT . '/locale');
-textdomain($name);
+$domain = 'rudolf';
+bindtextdomain($domain, APP_ROOT . '/locale');
+textdomain($domain);
 
 // load functions to log or disply errors
 $errorHandler = new ErrorHandler();
