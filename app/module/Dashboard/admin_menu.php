@@ -11,4 +11,4 @@ $id = $this->addItem(
     $font_awesome_ico = 'fa-tachometer'
 );
 
-$this->addItem('main', 'Overview', 'overview', $id, true, 'overview', 0);
+$this->addItem('main', 'Overview', 'overview', $id, true, 'overview', 0, 'fa-home');
