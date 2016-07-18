@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'koxy',
-    $position = 10,
+    $position = 60,
     $font_awesome_ico = 'fa-file-word-o'
 );
 

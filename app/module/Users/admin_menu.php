@@ -7,7 +7,7 @@ $aid = $this->addItem(
     $parent_id = 0,
     $isAdmin = false,
     $caption = 'users',
-    $position = 11,
+    $position = 80,
     $font_awesome_ico = 'fa-users'
 );
 

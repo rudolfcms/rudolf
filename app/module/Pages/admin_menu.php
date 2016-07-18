@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'pages',
-    $position = 10,
+    $position = 30,
     $font_awesome_ico = 'fa-file'
 );
 

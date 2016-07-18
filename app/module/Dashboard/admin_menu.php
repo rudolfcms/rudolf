@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'Dashboard',
-    $position = 1,
+    $position = 10,
     $font_awesome_ico = 'fa-tachometer'
 );
 

@@ -7,7 +7,7 @@ $id = $this->addItem(
     $parent_id = 0,
     $isAdmin = true,
     $caption = 'albums',
-    $position = 6,
+    $position = 40,
     $font_awesome_ico = 'fa-camera'
 );
 
