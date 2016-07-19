@@ -9,6 +9,11 @@ class Run
 	private $debug;
 
 	/**
+	 * @var object
+	 */
+	private $logger;
+
+	/**
 	 * Constructor
 	 * 
 	 */
@@ -24,6 +29,14 @@ class Run
 	public function setEnvironment($debug)
 	{
 		$this->debug = $debug;
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 */
+	public function setLogger($logger)
+	{
+		$this->logger = $logger;
 	}
 
 	/**
@@ -81,6 +94,11 @@ class Run
 	{
 		ob_clean();
 		$this->handler->handle($e);
+
+		if ($this->logger) {
+			$d = $this->handler->getDescription();
+			$this->logger->critical($d['file'] .':'. $d['line'] .' '. $d['class'] .': '. $d['message']);
+		}
 		die();
 	}
 

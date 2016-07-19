@@ -45,9 +45,13 @@ bindtextdomain($domain, APP_ROOT .'/locale');
 textdomain($domain);
 bind_textdomain_codeset($domain, 'UTF-8');
 
+// initialize logger
+$logger = new Rudolf\Component\Logger\Logger();
+
 // register ErrorHandler
 $errorHandler = new ErrorHandler();
 $errorHandler->setEnvironment($config['debug']);
+$errorHandler->setLogger($logger);
 $errorHandler->register();
 
 // run extensions (plugins) menager
