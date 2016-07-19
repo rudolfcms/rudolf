@@ -9,7 +9,7 @@
  * @version 0.1
  */
 
-use Rudolf\Component\Logger\ErrorHandler;
+use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
 use Rudolf\Component\Modules\ModulesHooks;
 use Rudolf\Component\Modules\ModulesManager;
 use Rudolf\Component\Modules\ModulesRouting;
@@ -34,7 +34,6 @@ $config = include CONFIG_ROOT . '/site.php';
 define('FRONT_THEME', $config['front_theme']);
 define('ADMIN_THEME', $config['admin_theme']);
 define('GENERAL_SITE_NAME', $config['general_name']);
-define('ENV', $config['debug']);
 
 $lang = 'pl_PL.UTF8';
 putenv('LANG='. $lang);
@@ -46,13 +45,14 @@ bindtextdomain($domain, APP_ROOT .'/locale');
 textdomain($domain);
 bind_textdomain_codeset($domain, 'UTF-8');
 
-// load functions to log or disply errors
+// initialize logger
+$logger = new Rudolf\Component\Logger\Logger();
+
+// register ErrorHandler
 $errorHandler = new ErrorHandler();
-ini_set('display_errors', 0);
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
-set_error_handler(array($errorHandler, 'errorHandler'));
-set_exception_handler(array($errorHandler, 'exceptionHandler'));
-register_shutdown_function(array($errorHandler, 'shutdown'));
+$errorHandler->setEnvironment($config['debug']);
+$errorHandler->setLogger($logger);
+$errorHandler->register();
 
 // run extensions (plugins) menager
 PluginsManager::run();
