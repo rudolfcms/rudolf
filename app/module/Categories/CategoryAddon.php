@@ -9,6 +9,6 @@ trait CategoryAddon {
     }
     public function categories()
     {
-        return $this->categories;
+        return (array) $this->categories;
     }
 }

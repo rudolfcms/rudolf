@@ -13,14 +13,18 @@ class Model extends FrontModel
      * 
      * @return int|bool
      */
-    public function getPageIdByPath($path, $pages = false)
+    public function getPageIdByPath(array $path, $pages = false)
     {
         if (false === $pages) {
             $pages = $this->getPagesList();
         }
 
         for ($pid = 0, $i = 0; $i < count($path); ++$i) {
-            $pidInArray = $pages[$path[$i]][$pid];
+            $pidInArray = isset($pages[$path[$i]]) ? $pages[$path[$i]][$pid] : false;
+
+            if (false === $pidInArray) {
+                return false;
+            }
             
             if (isset($pidInArray['parent_id']) && $pid == $pidInArray['parent_id']) {
                 $pid = $pidInArray['id'];
