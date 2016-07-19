@@ -38,7 +38,7 @@ define('ENV', $config['debug']);
 
 $lang = 'pl_PL.UTF8';
 putenv('LANG='. $lang);
-setlocale(LC_MESSAGES,  $locale);
+setlocale(LC_MESSAGES,  $lang);
 //setlocale(LC_ALL,'en_US.UTF8');
 
 $domain = 'rudolf';
