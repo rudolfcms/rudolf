@@ -46,18 +46,17 @@ class Album
                 'modifier_surname' => '',
                 'views' => 0,
                 'slug' => '',
-                'url' => '',
                 'album' => '',
                 'thumb' => '',
-                'thumbnail' => '',
-                'photos' => '',
+                'photos' => 0,
                 'published' => false,
-                'category' => '',
                 'category_title' => '',
                 'category_url' => '',
             ],
             (array) $album
         );
+
+        return $this->album;
     }
 
     /**
@@ -100,17 +99,15 @@ class Album
     /**
      * Returns the author
      * 
-     * @param bool $adder Returns adder name if fields empty
+     * @param string $type null|raw
      * 
      * @return string
      */
-    public function author($adder = true)
+    public function author($type = '')
     {
         $author = $this->album['author'];
-
-        // if fields is empty and $adder is true
-        if (empty($author) and true === $adder) {
-            $author = $this->adderFullName(false);
+        if ('raw' === $type) {
+            return $author;
         }
 
         return Text::escape($author);
