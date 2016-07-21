@@ -104,9 +104,15 @@ class Album
      * 
      * @return string
      */
-    public function author($type = '')
+    public function author($type = '', $adder = true)
     {
         $author = $this->album['author'];
+
+        // if fields is empty and $adder is true
+        if (empty($author) and true === $adder) {
+            $author = $this->adderFullName(false);
+        }
+
         if ('raw' === $type) {
             return $author;
         }
