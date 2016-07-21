@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace Rudolf\Component\Html;
 
 class Head
@@ -34,9 +35,7 @@ class Head
     private $after;
 
     /**
-     * Make all elements inside <head>
-     * 
-     * @return void
+     * Make all elements inside <head>.
      */
     public function make($return = false, $nesting = 1)
     {
@@ -52,7 +51,7 @@ class Head
             $html[$key] = trim($value);
         }
 
-        $return = implode("\n" . str_repeat("\t", $nesting), array_filter($html)) . PHP_EOL;
+        $return = implode("\n".str_repeat("\t", $nesting), array_filter($html)).PHP_EOL;
 
         if (true === $return) {
             return $return;
@@ -62,7 +61,7 @@ class Head
     }
 
     /**
-     * Get page title
+     * Get page title.
      * 
      * @param bool $return
      * 
@@ -70,8 +69,8 @@ class Head
      */
     public function title($return = false)
     {
-        $title = trim($this->pageTitle . ' | ' . GENERAL_SITE_NAME, ' | ');
-        
+        $title = trim($this->pageTitle.' | '.GENERAL_SITE_NAME, ' | ');
+
         if (true === $return) {
             return $title;
         }
@@ -85,7 +84,7 @@ class Head
     }
 
     /**
-     * Get page charset
+     * Get page charset.
      * 
      * @param bool $return
      * 
@@ -94,7 +93,7 @@ class Head
     public function charset($return = false)
     {
         $charset = (empty($this->pageCharset)) ? 'utf-8' : $this->pageCharset;
-        
+
         if (true === $return) {
             return $charset;
         }
@@ -108,7 +107,7 @@ class Head
     }
 
     /**
-     * Get stylesheets links
+     * Get stylesheets links.
      * 
      * @param bool $return
      * 
@@ -124,7 +123,7 @@ class Head
             $html[] = sprintf('<link rel="stylesheet" href="%1$s"/>', $value);
         }
 
-        $html = implode("\n" . str_repeat("\t", $nesting), $html) . PHP_EOL;
+        $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
 
         if (true === $return) {
             return $html;
@@ -134,7 +133,7 @@ class Head
     }
 
     /**
-     * Set page stylesheet
+     * Set page stylesheet.
      * 
      * @param string $href Stylesheet location
      */
@@ -144,7 +143,7 @@ class Head
     }
 
     /**
-     * Get favicon links
+     * Get favicon links.
      * 
      * @param bool $return
      * 
@@ -166,7 +165,7 @@ class Head
     }
 
     /**
-     * Set page favicon
+     * Set page favicon.
      * 
      * @param string $href Favicon location
      */
@@ -176,10 +175,10 @@ class Head
     }
 
     /**
-     * Get tags before
+     * Get tags before.
      * 
      * @param bool $return
-     * @param int $nesting
+     * @param int  $nesting
      * 
      * @return void|string
      */
@@ -189,7 +188,7 @@ class Head
             return false;
         }
 
-        $html = implode("\n" . str_repeat("\t", $nesting), $this->before) . PHP_EOL;
+        $html = implode("\n".str_repeat("\t", $nesting), $this->before).PHP_EOL;
 
         if (true === $return) {
             return $html;
@@ -199,11 +198,9 @@ class Head
     }
 
     /**
-     * Set tags before others
+     * Set tags before others.
      * 
      * @param string $before
-     * 
-     * @return void
      */
     public function setBefore($before)
     {
@@ -211,10 +208,10 @@ class Head
     }
 
     /**
-     * Get tags after
+     * Get tags after.
      * 
      * @param bool $return
-     * @param int $nesting
+     * @param int  $nesting
      * 
      * @return void|string
      */
@@ -224,7 +221,7 @@ class Head
             return false;
         }
 
-        $html = implode("\n" . str_repeat("\t", $nesting), $this->after) . PHP_EOL;
+        $html = implode("\n".str_repeat("\t", $nesting), $this->after).PHP_EOL;
 
         if (true === $return) {
             return $html;
@@ -234,11 +231,9 @@ class Head
     }
 
     /**
-     * Set tags after others
+     * Set tags after others.
      * 
      * @param string $after
-     * 
-     * @return void
      */
     public function setAfter($after)
     {

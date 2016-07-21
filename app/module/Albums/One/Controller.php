@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\One;
 
 use Rudolf\Component\Http\HttpErrorException;
@@ -8,13 +9,11 @@ use Rudolf\Framework\Controller\FrontController;
 class Controller extends FrontController
 {
     /**
-     * Get one album
+     * Get one album.
      *
-     * @param int $year
-     * @param int $month
+     * @param int    $year
+     * @param int    $month
      * @param string $slug
-     *
-     * @return void
      */
     public function getOne($year, $month, $slug)
     {

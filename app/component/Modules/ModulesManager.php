@@ -1,28 +1,27 @@
 <?php
+
 namespace Rudolf\Component\Modules;
 
 class ModulesManager
 {
     /**
-     * holds path to modules directory
+     * holds path to modules directory.
      * 
-     * @access private
      * 
      * @var string
      */
     private $path;
 
     /**
-     * holds modules list
+     * holds modules list.
      * 
-     * @access private
      * 
      * @var array
      */
     private $modules;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * Run modules manager service
      * 
@@ -32,11 +31,11 @@ class ModulesManager
     {
         $this->path = $path;
 
-        $this->modules = include $this->path . '/index.php';
+        $this->modules = include $this->path.'/index.php';
     }
 
     /**
-     * Returns the modules array
+     * Returns the modules array.
      * 
      * @return array $modules
      */
@@ -46,11 +45,9 @@ class ModulesManager
     }
 
     /**
-     * Acticate non-active modules
+     * Acticate non-active modules.
      * 
      * @param string $name module name
-     * 
-     * @return void
      */
     public function activate($name)
     {
@@ -60,11 +57,9 @@ class ModulesManager
     }
 
     /**
-     * Deactivate active modules
+     * Deactivate active modules.
      * 
      * @param string $name module name
-     * 
-     * @return void
      */
     public function deactivate($name)
     {
@@ -74,11 +69,9 @@ class ModulesManager
     }
 
     /**
-     * Add new module to list
+     * Add new module to list.
      * 
      * @param string $name module name
-     * 
-     * @return void
      */
     public function add($name)
     {
@@ -88,7 +81,7 @@ class ModulesManager
     }
 
     /**
-     * Refresh list modules and add all to list
+     * Refresh list modules and add all to list.
      * 
      * @return bool
      */
@@ -96,8 +89,8 @@ class ModulesManager
     {
         $array = array();
 
-        foreach (glob($this->path . '/*', GLOB_ONLYDIR) as $dir) {
-            $dir = str_replace($this->path . '/', '', $dir);
+        foreach (glob($this->path.'/*', GLOB_ONLYDIR) as $dir) {
+            $dir = str_replace($this->path.'/', '', $dir);
             $array[] = $dir;
         }
 
@@ -105,11 +98,9 @@ class ModulesManager
     }
 
     /**
-     * Delete module from list
+     * Delete module from list.
      * 
      * @param string $name module name
-     * 
-     * @return void
      */
     public function delete($name)
     {
@@ -119,9 +110,7 @@ class ModulesManager
     }
 
     /**
-     * Generate modules list and save to index.php file in modules directory
-     * 
-     * @return void 
+     * Generate modules list and save to index.php file in modules directory.
      */
     private function regenerateList()
     {
@@ -129,7 +118,7 @@ class ModulesManager
 
         $var_str = var_export($this->modules, true);
         $var = "<?php return $var_str;\n";
-        
-        file_put_contents($this->path . '/index.php', $var);
+
+        file_put_contents($this->path.'/index.php', $var);
     }
 }

@@ -26,4 +26,3 @@ $id = $this->addItem(
 );
 
 $this->addItem('top-right', 'Logout', 'user/logout', $id, false, 'Logout', 0, 'fa-sign-out');
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Dashboard;
 
 use Rudolf\Component\Http\Response;
@@ -13,11 +14,11 @@ class Controller extends AdminController
         $view->setActive(['admin/', 'admin/overview']);
         $view->render('admin');
     }
-    
+
     public function redirect()
     {
         $response = new Response('', 301);
-        $response->setHeader(['Location', DIR . '/admin/overview']);
+        $response->setHeader(['Location', DIR.'/admin/overview']);
         $response->send();
         exit;
     }

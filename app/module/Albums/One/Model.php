@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\One;
 
 use Rudolf\Framework\Model\FrontModel;
@@ -6,10 +7,10 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
-     * Returns album data based on year, month and slug
+     * Returns album data based on year, month and slug.
      *
-     * @param int $year
-     * @param int $month
+     * @param int    $year
+     * @param int    $month
      * @param string $slug
      *
      * @return bool|array
@@ -64,7 +65,7 @@ class Model extends FrontModel
     }
 
     /**
-     * Returns album data based on id
+     * Returns album data based on id.
      *
      * @param int $id
      *
@@ -116,7 +117,7 @@ class Model extends FrontModel
     }
 
     /**
-     * Increment album views
+     * Increment album views.
      */
     public function addView()
     {

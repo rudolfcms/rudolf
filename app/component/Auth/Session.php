@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Auth;
 
 class Session
@@ -15,11 +16,11 @@ class Session
         $this->prefix = $prefix;
         $this->config = $config;
 
-        $this->table = $this->prefix . 'users_sessions';
+        $this->table = $this->prefix.'users_sessions';
     }
 
     /**
-     * Add user session
+     * Add user session.
      * 
      * @param array $user
      * 
@@ -30,10 +31,10 @@ class Session
         $ip = $this->getIP();
         $useragent = $_SERVER['HTTP_USER_AGENT'];
 
-        $session['cookie_hash'] = sha1($this->config['site_key'] . microtime());
+        $session['cookie_hash'] = sha1($this->config['site_key'].microtime());
         $session['hash'] = $this->cookieHash($session['cookie_hash']);
 
-        $session['expire'] = date("Y-m-d H:i:s", strtotime($this->config['session_expire']));
+        $session['expire'] = date('Y-m-d H:i:s', strtotime($this->config['session_expire']));
 
         $cookie = new Cookie($this->cookieName);
 
@@ -43,8 +44,8 @@ class Session
 
         $cookie->setValue($session['cookie_hash']);
         $cookie->setExpire(strtotime($session['expire']));
-        $cookie->setPath(DIR . '/');
-        
+        $cookie->setPath(DIR.'/');
+
         if (false === $cookie->create()) {
             return false;
         }
@@ -80,7 +81,7 @@ class Session
     }
 
     /**
-     * Destroy session
+     * Destroy session.
      * 
      * @param string $hash Cookie hash
      * 
@@ -103,14 +104,14 @@ class Session
     }
 
     /**
-     * Check session
+     * Check session.
      * 
      * @return bool
      */
     public function checkSession()
     {
         $cookie = new Cookie($this->cookieName);
-        
+
         $cookie_value = $cookie->getValue();
         $ip = $this->getIP();
         $useragent = $_SERVER['HTTP_USER_AGENT'];
@@ -132,8 +133,9 @@ class Session
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         #check expire
-        if (strtotime(date("Y-m-d H:i:s")) > strtotime($row['expire'])) {
+        if (strtotime(date('Y-m-d H:i:s')) > strtotime($row['expire'])) {
             $this->destroySession();
+
             return false;
         }
 
@@ -150,12 +152,12 @@ class Session
     }
 
     /**
-    * Returns the UID 
-    * 
-    * @param string $hash
-    *
-    *  @return int $uid
-    */
+     * Returns the UID.
+     *
+     * @param string $hash
+     *
+     * @return int $uid
+     */
     public function getSessionUID($hash = false)
     {
         if (false === $hash) {
@@ -174,7 +176,7 @@ class Session
     }
 
     /**
-     * Hash cookie hash
+     * Hash cookie hash.
      * 
      * @param string $cookie
      * 
@@ -182,11 +184,11 @@ class Session
      */
     private function cookieHash($cookie)
     {
-        return hash('sha256', $cookie . $this->config['site_key']);
+        return hash('sha256', $cookie.$this->config['site_key']);
     }
 
     /**
-     * Get user ip address
+     * Get user ip address.
      * 
      * @see https://www.chriswiegman.com/2014/05/getting-correct-ip-address-php/
      * 
@@ -194,23 +196,23 @@ class Session
      */
     public function getIP()
     {
-        
+
         //Just get the headers if we can or else use the SERVER global
-        if ( function_exists( 'apache_request_headers' ) ) {
+        if (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
         } else {
             $headers = $_SERVER;
         }
         //Get the forwarded IP if it exists
-        if ( array_key_exists( 'X-Forwarded-For', $headers ) && filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) ) {
+        if (array_key_exists('X-Forwarded-For', $headers) && filter_var($headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $the_ip = $headers['X-Forwarded-For'];
-        } elseif ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $headers ) && filter_var( $headers['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 )
+        } elseif (array_key_exists('HTTP_X_FORWARDED_FOR', $headers) && filter_var($headers['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)
         ) {
             $the_ip = $headers['HTTP_X_FORWARDED_FOR'];
         } else {
-            
-            $the_ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 );
+            $the_ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
+
         return $the_ip;
     }
 }

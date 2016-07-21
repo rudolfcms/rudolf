@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Galleries;
 
 use Rudolf\Framework\Model\FrontModel;
@@ -6,7 +7,7 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
-     * It get gallery info by id
+     * It get gallery info by id.
      *
      * @param int $id
      *

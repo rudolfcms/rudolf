@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Users\Login;
 
 use Rudolf\Component\Html\Text;
@@ -6,7 +7,6 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    
     public function form($formData, $status)
     {
         $this->formData = $formData;
@@ -15,7 +15,7 @@ class View extends FrontView
     }
 
     /**
-     * Get nick
+     * Get nick.
      * 
      * @return string
      */
@@ -25,7 +25,7 @@ class View extends FrontView
     }
 
     /**
-     * Get status info
+     * Get status info.
      * 
      * @return array
      */
@@ -35,7 +35,7 @@ class View extends FrontView
             return false;
         }
 
-        switch($this->status) {
+        switch ($this->status) {
             case 1:
                 $a['message'] = _('logged in');
                 $a['type'] = 'success';
@@ -67,7 +67,7 @@ class View extends FrontView
                 break;
 
             case 7:
-            
+
             default:
                 $a['message'] = _('unnamed error');
                 $a['type'] = 'danger';
@@ -86,6 +86,7 @@ class View extends FrontView
         if (!isset($this->status)) {
             return false;
         }
+
         return true;
     }
 }

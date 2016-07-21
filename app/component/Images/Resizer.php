@@ -1,13 +1,14 @@
 <?php
+
 namespace Rudolf\Component\Images;
 
 class Resizer
 {
     /**
-     * It resise images
+     * It resise images.
      * 
-     * @param int $width
-     * @param int $height
+     * @param int    $width
+     * @param int    $height
      * @param string $url
      * 
      * @return 
@@ -16,7 +17,7 @@ class Resizer
     {
         $url = ltrim($url, '/');
 
-        $cacheDir = TEMP . '/imageresizer/';
+        $cacheDir = TEMP.'/imageresizer/';
         //$filename = $width . 'x' . $height . '_' . md5($url);
 
         if (!file_exists($cacheDir)) {
@@ -32,8 +33,8 @@ class Resizer
         define('ALLOW_ALL_EXTERNAL_SITES', true);
         define('PNG_IS_TRANSPARENT', true);
         define('DEBUG_ON', true);
-        define ('DEBUG_LEVEL', 3);
+        define('DEBUG_LEVEL', 3);
 
-        include LIB . '/timthumb.php';
+        include LIB.'/timthumb.php';
     }
 }

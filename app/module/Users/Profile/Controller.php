@@ -1,12 +1,11 @@
 <?php
+
 namespace Rudolf\Modules\Users\Profile;
 
-use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\AdminController;
 
 class Controller extends AdminController
 {
-
     public function profile()
     {
         $model = new Model();

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Tests\Component\Alerts;
 
 use Rudolf\Component\Alerts\Alert;

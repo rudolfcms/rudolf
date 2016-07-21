@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Component\Http\Response;
@@ -21,7 +22,7 @@ class Controller extends AdminController
 
         $one = new One\Model();
         $article = $one->getOneById($id);
-        
+
         $view = new View();
         $view->editArticle($article);
         $view->setCategories($categoriesList);
@@ -29,7 +30,8 @@ class Controller extends AdminController
         $view->render('admin');
     }
 
-    public function del($id) {
+    public function del($id)
+    {
         $model = new Model();
 
         // if data was send
@@ -39,7 +41,7 @@ class Controller extends AdminController
 
         $one = new One\Model();
         $article = $one->getOneById($id);
-        
+
         $view = new View();
         $view->delArticle($article);
         $view->setActive(['admin/articles']);
@@ -57,7 +59,7 @@ class Controller extends AdminController
             $id = $model->add($_POST);
 
             if ($id) {
-                $location = DIR . '/admin/articles/edit/' . $id;
+                $location = DIR.'/admin/articles/edit/'.$id;
                 $response = new Response('', 301);
                 $response->setHeader(['Location', $location]);
                 $response->send();

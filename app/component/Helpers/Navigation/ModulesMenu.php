@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Helpers\Navigation;
 
 use Rudolf\Component\Modules\Module;
@@ -14,13 +15,13 @@ class ModulesMenu
 
         $catalog = MODULES_ROOT;
 
-        foreach (glob($catalog . '/*', GLOB_ONLYDIR) as $dir) {
-            $dir = str_replace($catalog . '/', '', $dir);
+        foreach (glob($catalog.'/*', GLOB_ONLYDIR) as $dir) {
+            $dir = str_replace($catalog.'/', '', $dir);
             $array[] = $dir;
         }
 
-        for ($i=0; $i < count($array); $i++) {
-            $file = MODULES_ROOT . '/' . $array[$i] . '/admin_menu.php';
+        for ($i = 0; $i < count($array); ++$i) {
+            $file = MODULES_ROOT.'/'.$array[$i].'/admin_menu.php';
 
             if (file_exists($file)) {
                 include $file;
@@ -32,28 +33,31 @@ class ModulesMenu
 
     private function addFAIco($items)
     {
-        foreach  ($items as $key => $value) {
+        foreach ($items as $key => $value) {
             if (!empty($items[$key]['fa_ico'])) {
                 $fa_ico = '<i class="fa '.$items[$key]['fa_ico'].'"></i>';
-            } else $fa_ico = null;
-            $items[$key]['title'] = trim($fa_ico . ' ' .$items[$key]['title']);
+            } else {
+                $fa_ico = null;
+            }
+            $items[$key]['title'] = trim($fa_ico.' '.$items[$key]['title']);
         }
+
         return $items;
     }
 
     /**
-     * Add item to admin menu
+     * Add item to admin menu.
      *
-     * @param string $type Menu type identyfier
-     * @param string $title Item title
+     * @param string $type    Menu type identyfier
+     * @param string $title   Item title
      * @param string $caption Item caption
-     * @param int $pid Parent ID
-     * @param int $ps Position
-     * @param string $f Font awesome icon id
+     * @param int    $pid     Parent ID
+     * @param int    $ps      Position
+     * @param string $f       Font awesome icon id
      *
      * @return int $id
      */
-    private function addItem($type, $title, $slug, $pid=0, $admin=true, $cp='', $ps=10, $f='', $t='')
+    private function addItem($type, $title, $slug, $pid = 0, $admin = true, $cp = '', $ps = 10, $f = '', $t = '')
     {
         $id = count($this->items) + 1;
 
@@ -61,12 +65,12 @@ class ModulesMenu
             'id' => $id,
             'menu_type' => $type,
                                                 // replace addFAIco
-            'title' => (!empty($f)) ? '<i class="fa '.$f.'"></i> ' . $title : $title,
-            'slug' => ($admin) ? $this->dashboardConfig['admin_path'] . '/' . $slug : $slug,
+            'title' => (!empty($f)) ? '<i class="fa '.$f.'"></i> '.$title : $title,
+            'slug' => ($admin) ? $this->dashboardConfig['admin_path'].'/'.$slug : $slug,
             'parent_id' => $pid,
             'caption' => $cp,
             'position' => $ps,
-            'type' => (empty($t)) ? 'app' : $t
+            'type' => (empty($t)) ? 'app' : $t,
         ];
 
         return $id;

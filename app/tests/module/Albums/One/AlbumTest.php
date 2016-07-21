@@ -71,7 +71,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['date' => $date]);
-        $this->assertEquals($obj->date(), $date); 
+        $this->assertEquals($obj->date(), $date);
     }
 
     public function testEmptyDate()
@@ -117,7 +117,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['added' => $added]);
-        $this->assertEquals($obj->added(), $added); 
+        $this->assertEquals($obj->added(), $added);
     }
 
     public function testModified()
@@ -126,7 +126,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['modified' => $modified]);
-        $this->assertEquals($obj->modified(), $modified); 
+        $this->assertEquals($obj->modified(), $modified);
     }
 
     public function testAdderID()
@@ -135,7 +135,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['adder_ID' => $adderID]);
-        $this->assertEquals($obj->adderID(), $adderID); 
+        $this->assertEquals($obj->adderID(), $adderID);
     }
 
     public function testRawAdderFullName()
@@ -145,7 +145,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['adder_first_name' => $firstName, 'adder_surname' => $surname]);
-        $this->assertEquals($obj->adderFullName('raw'), $firstName .' '. $surname); 
+        $this->assertEquals($obj->adderFullName('raw'), $firstName.' '.$surname);
     }
 
     public function testAdderFullName()
@@ -155,7 +155,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['adder_first_name' => $firstName, 'adder_surname' => $surname]);
-        $this->assertEquals($obj->adderFullName(), htmlspecialchars($firstName .' '. $surname)); 
+        $this->assertEquals($obj->adderFullName(), htmlspecialchars($firstName.' '.$surname));
     }
 
     public function testModifierID()
@@ -173,7 +173,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['modifier_ID' => $modifierD]);
-        $this->assertTrue(is_int($obj->modifierID())); 
+        $this->assertTrue(is_int($obj->modifierID()));
     }
 
     public function testRawModifierFullName()
@@ -183,7 +183,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['modifier_first_name' => $firstName, 'modifier_surname' => $surname]);
-        $this->assertEquals($obj->modifierFullName('raw'), $firstName .' '. $surname); 
+        $this->assertEquals($obj->modifierFullName('raw'), $firstName.' '.$surname);
     }
 
     public function testModifierFullName()
@@ -193,7 +193,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['modifier_first_name' => $firstName, 'modifier_surname' => $surname]);
-        $this->assertEquals($obj->modifierFullName(), htmlspecialchars($firstName .' '. $surname));
+        $this->assertEquals($obj->modifierFullName(), htmlspecialchars($firstName.' '.$surname));
     }
 
     public function testIsModifiedWhenModified()
@@ -317,7 +317,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
             'photos' => 63,
             'published' => true,
             'category_title' => 'Tests',
-            'category_url' => 'tests'
+            'category_url' => 'tests',
         ];
     }
 }

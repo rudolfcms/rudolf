@@ -1,16 +1,16 @@
 <?php
+
 namespace Rudolf\Modules\Categories\Roll;
 
-use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Framework\Model\FrontModel;
 
 class Model extends FrontModel
 {
     /**
-     * Returns array with categories list
+     * Returns array with categories list.
      *
-     * @param int $limit
-     * @param int $onPage
+     * @param int   $limit
+     * @param int   $onPage
      * @param array $orderBy
      *
      * @return array
@@ -30,15 +30,16 @@ class Model extends FrontModel
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        
+
         if (!empty($results)) {
             return $results;
         }
+
         return false;
     }
 
     /**
-     * Returns total number of items
+     * Returns total number of items.
      * 
      * @param array|string $where
      * 
@@ -47,6 +48,7 @@ class Model extends FrontModel
     public function getTotalNumber($where)
     {
         $this->where = $where;
+
         return $this->countItems('categories', $where);
     }
 }

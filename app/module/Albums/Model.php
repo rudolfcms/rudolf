@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums;
 
 use Rudolf\Framework\Model\FrontModel;
@@ -6,7 +7,7 @@ use Rudolf\Framework\Model\FrontModel;
 abstract class Model extends FrontModel
 {
     /**
-     * Returns part of query
+     * Returns part of query.
      * 
      * @return string
      */

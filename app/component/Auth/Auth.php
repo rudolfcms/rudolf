@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Auth;
 
 class Auth
@@ -7,27 +8,27 @@ class Auth
     {
         $this->pdo = $pdo;
         $this->prefix = $prefix;
-        $this->config = include CONFIG_ROOT . '/' . 'auth.php';
+        $this->config = include CONFIG_ROOT.'/'.'auth.php';
 
-        $this->table = $this->prefix . 'users';
+        $this->table = $this->prefix.'users';
 
         $this->session = new Session($pdo, $prefix, $this->config);
     }
 
     /**
-     * Login user
+     * Login user.
      * 
      * @param string $email
      * @param string $password
      * 
      * @return int
-     *          1 - logged in!
-     *          2 - email not valid
-     *          3 - password not valid
-     *          4 - user not exist
-     *          5 - email or password incorect
-     *          6 - account is inactive
-     *          7 - unnamed error
+     *             1 - logged in!
+     *             2 - email not valid
+     *             3 - password not valid
+     *             4 - user not exist
+     *             5 - email or password incorect
+     *             6 - account is inactive
+     *             7 - unnamed error
      */
     public function login($email, $password)
     {
@@ -64,7 +65,7 @@ class Auth
     }
 
     /**
-     * Logout current user
+     * Logout current user.
      * 
      * @return bool
      */
@@ -74,7 +75,7 @@ class Auth
     }
 
     /**
-     * Check is session exists
+     * Check is session exists.
      * 
      * @return bool
      */
@@ -84,10 +85,10 @@ class Auth
     }
 
     /**
-     * Get logged user info
+     * Get logged user info.
      * 
      * @param id $uid User ID
-     *           not set gives current logged user data
+     *                not set gives current logged user data
      * 
      * @return array
      */
@@ -117,11 +118,10 @@ class Auth
         }
 
         return $data;
-
     }
 
     /**
-     * Get password hash
+     * Get password hash.
      * 
      * @param string $password
      * 
@@ -133,7 +133,7 @@ class Auth
     }
 
     /**
-     * Get user data by email
+     * Get user data by email.
      * 
      * @param string $email
      * 
@@ -158,7 +158,7 @@ class Auth
     }
 
     /**
-     * Validate email
+     * Validate email.
      * 
      * @param string $email
      * 
@@ -170,7 +170,7 @@ class Auth
     }
 
     /**
-     * Validate password
+     * Validate password.
      * 
      * @param string $password
      * 

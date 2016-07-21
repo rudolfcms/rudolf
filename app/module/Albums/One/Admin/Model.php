@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\One\Admin;
 
 use Rudolf\Component\Alerts;
@@ -7,10 +8,10 @@ use Rudolf\Framework\Model\AdminModel;
 class Model extends AdminModel
 {
     /**
-     * Update article by id
+     * Update article by id.
      * 
      * @param array $post
-     * @param int $id
+     * @param int   $id
      * 
      * @return int
      */
@@ -76,7 +77,7 @@ class Model extends AdminModel
     }
 
     /**
-     * Delete article
+     * Delete article.
      * 
      * @param int $id Article ID
      */
@@ -98,7 +99,7 @@ class Model extends AdminModel
     }
 
     /**
-     * Add article
+     * Add article.
      * 
      * @param array $post
      * 
@@ -165,6 +166,7 @@ class Model extends AdminModel
             Alerts\AlertsCollection::add(new Alerts\Alert(
                 'warning', 'Coś się zepsuło! Nie udało się dodać albumu'
             ));
+
             return false;
         }
 

@@ -1,7 +1,6 @@
 <?php
-namespace Rudolf\Component\Routing;
 
-use Rudolf\Component\Routing\RouteCollection;
+namespace Rudolf\Component\Routing;
 
 class Router
 {
@@ -31,7 +30,7 @@ class Router
     private $params = [];
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param RouteCollection
      */
@@ -41,19 +40,19 @@ class Router
         $this->setUrl($url);
 
         if ($collection != null) {
-            Router::$collection = $collection;
+            self::$collection = $collection;
         }
     }
 
     /**
-     * Sets the url
+     * Sets the url.
      * 
      * @param string $url request url
      */
     private function setUrl($url)
     {
         $basePath = $this->getBasePath();
-        
+
         if ($basePath) {
             $pos = strpos($url, $basePath);
 
@@ -65,7 +64,7 @@ class Router
     }
 
     /**
-     * Returns the url
+     * Returns the url.
      * 
      * @return string $url
      */
@@ -75,7 +74,7 @@ class Router
     }
 
     /**
-     * Sets the base path
+     * Sets the base path.
      * 
      * @param string $basePath path to the root catalog of app
      */
@@ -85,7 +84,7 @@ class Router
     }
 
     /**
-     * Returns the base path
+     * Returns the base path.
      * 
      * @return string $basePath
      */
@@ -95,7 +94,7 @@ class Router
     }
 
     /**
-     * Sets the RouteCollection
+     * Sets the RouteCollection.
      * 
      * @param RouteCollection object with route pattern
      */
@@ -105,7 +104,7 @@ class Router
     }
 
     /**
-     * Returns the RouteCollection object
+     * Returns the RouteCollection object.
      * 
      * @return RouteCollection
      */
@@ -115,7 +114,7 @@ class Router
     }
 
     /**
-     * Returns the controller and method to run names
+     * Returns the controller and method to run names.
      * 
      * @return string
      */
@@ -125,7 +124,7 @@ class Router
     }
 
     /**
-     * Returns array with params
+     * Returns array with params.
      * 
      * @return array
      */
@@ -135,28 +134,29 @@ class Router
     }
 
     /**
-     * Looking for suitable rule matching URL. If it finds, returns true
+     * Looking for suitable rule matching URL. If it finds, returns true.
      * 
      * @return bool
      */
     public function run()
     {
-        if (!Router::$collection->getAll()) {
+        if (!self::$collection->getAll()) {
             return false;
         }
 
-        foreach (Router::$collection->getAll() as $route) {
+        foreach (self::$collection->getAll() as $route) {
             if ($this->matchRoute($route)) {
                 $this->setGetData($route);
+
                 return true;
             }
         }
-        
+
         return false;
     }
 
     /**
-     * Checks if the URL matches the handed rule
+     * Checks if the URL matches the handed rule.
      * 
      * @param Route $route
      * 
@@ -167,16 +167,16 @@ class Router
         $params = [];
         $routeParamsKey = array_keys($route->getParams());
         $routeParamsValue = $route->getParams();
-        
+
         foreach ($routeParamsKey as $key) {
-            $params['<' . $key . '>'] = $routeParamsValue[$key];
+            $params['<'.$key.'>'] = $routeParamsValue[$key];
         }
-        
+
         $url = $route->getPath();
-        
+
         // Zamienia znaczniki na odpowiednie wyrażenia regularne
         $url = str_replace(array_keys($params), $params, $url);
-        
+
         // Jeżeli brak znacznika w tablicy $params zezwala na dowolny znak
         $url = preg_replace('/<\w+>/', '.*', $url);
 
@@ -184,14 +184,15 @@ class Router
         preg_match("#^$url$#", $this->getUrl(), $results);
 
         if ($results) {
-            $this->controller = $route->getControllerName();    
+            $this->controller = $route->getControllerName();
+
             return true;
         }
 
         return false;
     }
 
-     /**
+    /**
      * @param Route $route Obiekt Route pasujący do reguły
      */
     protected function setGetData($route)
@@ -200,7 +201,7 @@ class Router
         $trim = explode('<', $routePath);
         $parsed_url = str_replace(array($this->basePath), array(''), $this->getUrl());
         $parsed_url = preg_replace("#$trim[0]#", '', $parsed_url, 1);
-        
+
         // ustawia parametry przekazane w URL
         foreach ($route->getParams() as $key => $param) {
             preg_match("#$param#", $parsed_url, $results);
@@ -209,7 +210,7 @@ class Router
                 $parsed_url = preg_replace('#'.$results[0].'#', '', $parsed_url, 1);
             }
         }
-        
+
         // jezeli brak parametru w URL ustawia go z tablicy wartości domyślnych
         foreach ($route->getDefaults() as $key => $default) {
             if (!isset($this->params[$key])) {

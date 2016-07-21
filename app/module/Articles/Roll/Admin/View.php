@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -7,7 +8,6 @@ use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {
-
     public function setData($data, Pagination $pagination)
     {
         $this->loop = new Loop(

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\One\Admin;
 
 use Rudolf\Framework\View\AdminView;
@@ -9,11 +10,9 @@ class View extends AdminView
     use CategoryAddon;
 
     /**
-     * Set data to edit album
+     * Set data to edit album.
      * 
      * @param array $album
-     * 
-     * @return void
      */
     public function editAlbum($album)
     {
@@ -30,11 +29,9 @@ class View extends AdminView
     }
 
     /**
-     * Set data to delete album
+     * Set data to delete album.
      * 
      * @param array $album
-     * 
-     * @return void
      */
     public function delAlbum($album)
     {
@@ -51,11 +48,9 @@ class View extends AdminView
     }
 
     /**
-     * Set data do add album
+     * Set data do add album.
      * 
      * @param array $album
-     * 
-     * @return void
      */
     public function addAlbum($album)
     {
@@ -64,7 +59,7 @@ class View extends AdminView
         $this->pageTitle = _('Add album');
         $this->head->setTitle($this->pageTitle);
 
-        $this->path = DIR . '/admin/albums/add';
+        $this->path = DIR.'/admin/albums/add';
 
         $this->templateType = 'add';
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Category\One;
 
 use Rudolf\Modules\Categories\One;
@@ -6,7 +7,7 @@ use Rudolf\Modules\Categories\One;
 class Category extends One\Category implements One\ICategory
 {
     /**
-     * Returns category url
+     * Returns category url.
      * 
      * @return string
      */

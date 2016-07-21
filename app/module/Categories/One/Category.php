@@ -1,9 +1,9 @@
 <?php
+
 namespace Rudolf\Modules\Categories\One;
 
 use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
-use Rudolf\Component\Images\Image;
 
 abstract class Category
 {
@@ -13,7 +13,7 @@ abstract class Category
     protected $category;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param array $category
      */
@@ -23,7 +23,7 @@ abstract class Category
     }
 
     /**
-     * Set category data
+     * Set category data.
      * 
      * @param array $category
      */
@@ -46,7 +46,7 @@ abstract class Category
     }
 
     /**
-     * Returns category ID
+     * Returns category ID.
      * 
      * @return int
      */
@@ -56,7 +56,7 @@ abstract class Category
     }
 
     /**
-     * Returns category title
+     * Returns category title.
      * 
      * @param string $type null|raw
      * 
@@ -73,7 +73,7 @@ abstract class Category
     }
 
     /**
-     * Returns the keywords
+     * Returns the keywords.
      * 
      * @param string $type null|raw
      * 
@@ -90,7 +90,7 @@ abstract class Category
     }
 
     /**
-     * Returns the description
+     * Returns the description.
      * 
      * @param string $type
      * 
@@ -105,18 +105,19 @@ abstract class Category
 
         return Text::escape($description);
     }
-    
+
     /**
-     * Returns content
+     * Returns content.
      * 
      * @param bool|int $truncate
-     * @param bool $stripTags
-     * @param bool $escape
-     * @param bool $raw
+     * @param bool     $stripTags
+     * @param bool     $escape
+     * @param bool     $raw
      * 
      * @return string
      */
-    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false) {
+    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
+    {
         $content = $this->category['content'];
 
         if (true === $stripTags) {
@@ -133,6 +134,7 @@ abstract class Category
 
         if (false === $raw) {
             $content = Hooks\Filter::apply('content_filter', $content);
+
             return $content;
         }
 
@@ -140,7 +142,7 @@ abstract class Category
     }
 
     /**
-     * Returns date of category added
+     * Returns date of category added.
      * 
      * @return string
      */
@@ -150,7 +152,7 @@ abstract class Category
     }
 
     /**
-     * Returns date of last category modified
+     * Returns date of last category modified.
      * 
      * @return string
      */
@@ -160,7 +162,7 @@ abstract class Category
     }
 
     /**
-     * Returns adder ID
+     * Returns adder ID.
      * 
      * @return int
      */
@@ -170,14 +172,15 @@ abstract class Category
     }
 
     /**
-     * Returns first name and surname of adder
+     * Returns first name and surname of adder.
      * 
      * @param string $type
      * 
      * @return string
      */
-    public function adderFullName($type = '') {
-        $name = trim($this->category['adder_first_name'] . ' ' . $this->category['adder_surname']);
+    public function adderFullName($type = '')
+    {
+        $name = trim($this->category['adder_first_name'].' '.$this->category['adder_surname']);
         if ('raw' === $type) {
             return $name;
         }
@@ -186,7 +189,7 @@ abstract class Category
     }
 
     /**
-     * Returns modifier ID
+     * Returns modifier ID.
      * 
      * @return int
      */
@@ -196,12 +199,13 @@ abstract class Category
     }
 
     /**
-     * Returns modifier full name
+     * Returns modifier full name.
      * 
      * @return int
      */
-    public function modifierFullName($type = '') {
-        $name = $this->category['modifier_first_name'] . ' ' . $this->category['modifier_surname'];
+    public function modifierFullName($type = '')
+    {
+        $name = $this->category['modifier_first_name'].' '.$this->category['modifier_surname'];
         if ('raw' === $type) {
             return $name;
         }
@@ -210,7 +214,7 @@ abstract class Category
     }
 
     /**
-     * Checks whether the category has modified
+     * Checks whether the category has modified.
      * 
      * @return bool
      */
@@ -220,7 +224,7 @@ abstract class Category
     }
 
     /**
-     * Returns the number of views
+     * Returns the number of views.
      * 
      * @return int
      */
@@ -235,7 +239,7 @@ abstract class Category
     }
 
     /**
-     * Returns category slug
+     * Returns category slug.
      * 
      * @return string
      */

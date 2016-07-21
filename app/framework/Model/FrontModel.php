@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\Model;
 
 class FrontModel extends BaseModel

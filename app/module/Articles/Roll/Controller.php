@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -9,12 +10,12 @@ use Rudolf\Framework\Controller\FrontController;
 class Controller extends FrontController
 {
     /**
-    * Get articles list
-    *
-    * @param int $page Page number
-    *
-    * @return bool|string
-    */
+     * Get articles list.
+     *
+     * @param int $page Page number
+     *
+     * @return bool|string
+     */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page);
@@ -23,7 +24,7 @@ class Controller extends FrontController
         $total = $articles->getTotalNumber();
 
         $conf = (new Module('articles'))->getConfig();
-        
+
         $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();

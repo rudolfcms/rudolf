@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\Controller;
 
 use Rudolf\Component\Http\Response;
@@ -16,7 +17,7 @@ abstract class BaseController
     protected $views = array();
 
     /**
-     * Redirect to `up`, if curent page is 1
+     * Redirect to `up`, if curent page is 1.
      * 
      * @param int $page
      * @param int $code
@@ -29,11 +30,12 @@ abstract class BaseController
             $response = new Response('', $code);
             $response->setHeader(['Location', $location]);
             $response->send();
-            
+
             exit;
         } elseif (0 === $page) {
             return 1;
         }
+
         return $page;
     }
 }

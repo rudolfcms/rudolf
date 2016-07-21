@@ -46,8 +46,8 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($validator->getAlerts()['date'], [
             'type' => 'error',
-            'message' => 'Invalid datetime'
-        ]); 
+            'message' => 'Invalid datetime',
+        ]);
     }
 
     public function testCheckChar()
@@ -74,8 +74,8 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($validator->getAlerts()['char'], [
             'type' => 'error',
-            'message' => 'Too short string'
-        ]); 
+            'message' => 'Too short string',
+        ]);
     }
 
     public function testCheckCharToLongAlert()
@@ -86,8 +86,8 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($validator->getAlerts()['char'], [
             'type' => 'error',
-            'message' => 'Too long string'
-        ]); 
+            'message' => 'Too long string',
+        ]);
     }
 
     public function testCheckInt()

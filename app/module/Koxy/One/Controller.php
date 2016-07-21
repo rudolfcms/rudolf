@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Koxy\One;
 
 use Rudolf\Framework\Controller\FrontController;

@@ -1,18 +1,18 @@
 <?php
+
 namespace Rudolf\Modules\Koxy\One;
 
 use Rudolf\Framework\Model\FrontModel;
 
 class Model extends FrontModel
 {
-
-    private $extension = 'png';	
+    private $extension = 'png';
 
     public function vote($type, $post)
     {
         $id = str_replace('.'.$this->extension, '', $post['id']);
 
-        $file = UPLOADS_ROOT . '/moments-db/' . $id . '.txt';
+        $file = UPLOADS_ROOT.'/moments-db/'.$id.'.txt';
 
         if (file_exists($file)) {
             $content = file_get_contents($file);
@@ -21,17 +21,17 @@ class Model extends FrontModel
             file_put_contents($file, '0:0');
             $contentArray = [0, 0];
         }
-        
-        if (!isset($_COOKIE['vote_' . $id])) {
+
+        if (!isset($_COOKIE['vote_'.$id])) {
             switch ($type) {
                 case 'down':
                     $type = 'down';
-                    $contentArray[1]++;
+                    ++$contentArray[1];
                     break;
 
                 case 'up':
                     $type = 'up';
-                    $contentArray[0]++;
+                    ++$contentArray[0];
                     break;
 
                 default:
@@ -41,12 +41,12 @@ class Model extends FrontModel
 
             file_put_contents($file, implode(':', $contentArray));
 
-            setcookie('vote_' . $id, $type,  time() + (3600 * 24 * 365 * 5), DIR);
+            setcookie('vote_'.$id, $type,  time() + (3600 * 24 * 365 * 5), DIR);
         }
 
         return [
             'up' => $contentArray[0],
-            'down' => $contentArray[1]
+            'down' => $contentArray[1],
         ];
     }
 }

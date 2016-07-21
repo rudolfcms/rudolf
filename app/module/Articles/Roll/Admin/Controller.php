@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -14,11 +15,11 @@ class Controller extends AdminController
 
         $list = new ArticlesList();
         $total = $list->getTotalNumber('1');
-        
+
         $pagination = new Pagination($total, $page, 10);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
-        
+
         $results = $list->getList($limit, $onPage);
 
         $view = new View();
@@ -26,11 +27,11 @@ class Controller extends AdminController
         $view->setActive(['admin/articles', 'admin/articles/list']);
         $view->render('admin');
     }
-    
+
     public function redirect()
     {
         $response = new Response('', 301);
-        $response->setHeader(['Location', DIR . '/admin/articles/list']);
+        $response->setHeader(['Location', DIR.'/admin/articles/list']);
         $response->send();
         exit;
     }

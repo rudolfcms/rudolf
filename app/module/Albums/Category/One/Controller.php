@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\Category\One;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -11,17 +12,15 @@ use Rudolf\Modules\Categories\One\Model as CategoryInfo;
 class Controller extends FrontController
 {
     /**
-     * Get albums by category
+     * Get albums by category.
      *
      * @param string $slug
-     * @param int $page
-     *
-     * @return void
+     * @param int    $page
      */
     public function getCategory($slug, $page)
     {
-        $page = $this->firstPageRedirect($page, 301, '../../'. $slug); // łork eraułnd
-        
+        $page = $this->firstPageRedirect($page, 301, '../../'.$slug); // łork eraułnd
+
         $category = new CategoryInfo();
 
         $categoryInfo = $category->getCategoryInfo($slug, 'albums');
@@ -32,7 +31,7 @@ class Controller extends FrontController
         $list = new AlbumsList();
         $total = $list->getTotalNumber([
             'published' => 1,
-            'category_id' => $categoryInfo['id']
+            'category_id' => $categoryInfo['id'],
         ]);
 
         $conf = (new Module('albums'))->getConfig();
@@ -49,7 +48,7 @@ class Controller extends FrontController
 
         $view = new View();
         $view->setData($results, $pagination, $categoryInfo);
-        $view->setFrontData($this->frontData, 'albums/kategorie/'. $slug);
+        $view->setFrontData($this->frontData, 'albums/kategorie/'.$slug);
         $view->render();
     }
 }

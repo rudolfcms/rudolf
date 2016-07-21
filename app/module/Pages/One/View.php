@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Pages\One;
 
 use Rudolf\Component\Html\Breadcrumbs;
@@ -9,7 +10,7 @@ class View extends FrontView
     public function page($data)
     {
         $this->page = new Page($data);
-        
+
         $this->head->setTitle($this->page->title());
 
         $this->template = 'page';

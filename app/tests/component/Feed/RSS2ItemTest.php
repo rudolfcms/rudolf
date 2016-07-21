@@ -11,7 +11,7 @@ class RSS2ItemTest extends \PHPUnit_Framework_TestCase
         $item = new RSS2Item();
         $item->setTitle($value);
 
-        $this->assertEquals($item->getTitle(), '<title>' . $value . '</title>');
+        $this->assertEquals($item->getTitle(), '<title>'.$value.'</title>');
     }
 
     public function testGetTitleWhenEmpty()
@@ -29,7 +29,7 @@ class RSS2ItemTest extends \PHPUnit_Framework_TestCase
         $item = new RSS2Item();
         $item->setTitle($value);
 
-        $this->assertEquals($item->getTitle(), '<title>' . strip_tags($value) . '</title>');
+        $this->assertEquals($item->getTitle(), '<title>'.strip_tags($value).'</title>');
     }
 
     public function testGetLink()
@@ -39,7 +39,7 @@ class RSS2ItemTest extends \PHPUnit_Framework_TestCase
         $item = new RSS2Item();
         $item->setLink($value);
 
-        $this->assertEquals($item->getLink(), '<link>' . $value . '</link>');
+        $this->assertEquals($item->getLink(), '<link>'.$value.'</link>');
     }
 
     public function testGetLlinkWhenEmpty()

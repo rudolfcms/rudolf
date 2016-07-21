@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Koxy\One;
 
 class Kox
@@ -9,7 +10,7 @@ class Kox
     protected $kox;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param array $koxy
      */
@@ -19,7 +20,7 @@ class Kox
     }
 
     /**
-     * Set koxy data
+     * Set koxy data.
      * 
      * @param array $koxy
      */
@@ -28,7 +29,7 @@ class Kox
         $this->kox = array_merge(
             [
                 'path' => '',
-                'likes' => [0, 0]
+                'likes' => [0, 0],
             ],
             (array) $kox
         );

@@ -1,9 +1,9 @@
 <?php
+
 namespace Rudolf\Install;
 
 class DataGenerator
 {
-
     public $_tables;
     private $_fields;
 
@@ -16,26 +16,24 @@ class DataGenerator
         $this->_fields = $_fields;
         $this->random = $random;
     }
-    
+
     public function addRandom($number, $table)
     {
-
         foreach ($this->_fields[$table] as $key => $value) {
             $aFields[] = $key;
-            $a_fields[] = ':'. $key;
+            $a_fields[] = ':'.$key;
         }
 
         $fields = implode(', ', $aFields);
         $_fields = implode(', ', $a_fields);
 
-        $stmt = $this->pdo->prepare('INSERT INTO '. $table .' ('. $fields .') VALUES('. $_fields .')');
-        
+        $stmt = $this->pdo->prepare('INSERT INTO '.$table.' ('.$fields.') VALUES('.$_fields.')');
+
         $i = $count = 0;
         while ($number--) {
             foreach ($this->_fields[$table] as $key => $value) {
-
                 if ('id' === $key) {
-                     continue;
+                    continue;
                 } elseif ('category_id' === $key or 'parent_id' === $key) {
                     $v = 0;
                 } elseif ('tinyint' === $value[0]) {
@@ -60,12 +58,12 @@ class DataGenerator
                     $v = 'https://api.fnkr.net/testimg/2200x1500/222/FFF/?text='.$i++;
                 }
 
-                $stmt->bindValue(':'. $key, $v);
+                $stmt->bindValue(':'.$key, $v);
             }
             $count += $stmt->execute();
         }
 
-        return $count;      
+        return $count;
     }
 
     private function randomTinyint()
@@ -96,7 +94,7 @@ class DataGenerator
             'ą' => 'a', 'ę' => 'e', 'ś' => 's', 'ć' => 'c',
             'ó' => 'o', 'ń' => 'n', 'ż' => 'z', 'ź' => 'z', 'ł' => 'l',
             'Ą' => 'A', 'Ę' => 'E', 'Ś' => 'S', 'Ć' => 'C',
-            'Ó' => 'O', 'Ń' => 'N', 'Ż' => 'Z', 'Ź' => 'Z', 'Ł' => 'L'
+            'Ó' => 'O', 'Ń' => 'N', 'Ż' => 'Z', 'Ź' => 'Z', 'Ł' => 'L',
         );
 
         return str_replace(array_keys($aReplacePL), array_values($aReplacePL), $sText);
@@ -109,6 +107,7 @@ class DataGenerator
         }
 
         $string = mb_substr($this->random, rand(0, strlen($this->random)) - strlen($this->random), $length);
+
         return trim($string, ',. :');
     }
 
@@ -116,6 +115,6 @@ class DataGenerator
     {
         $int = mt_rand(100000000, 1450000000);
 
-        return date("Y-m-d H:i:s", $int);
+        return date('Y-m-d H:i:s', $int);
     }
 }

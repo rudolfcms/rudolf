@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Html\Navigation;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Users\Login;
 
 use Rudolf\Component\Http\Response;
@@ -7,11 +8,9 @@ use Rudolf\Framework\Controller\FrontController;
 class Controller extends FrontController
 {
     /**
-     * login
+     * login.
      * 
      * @param string $redirect
-     * 
-     * @return void
      */
     public function login($redirect)
     {
@@ -24,7 +23,7 @@ class Controller extends FrontController
 
         if (true === $model->check() || 1 === $status) {
             $response = new Response('');
-            $response->setHeader(['Location', DIR . '/admin']);
+            $response->setHeader(['Location', DIR.'/admin']);
             $response->send();
             exit;
         }
@@ -35,9 +34,7 @@ class Controller extends FrontController
     }
 
     /**
-     * logout
-     * 
-     * @return void
+     * logout.
      */
     public function logout()
     {
@@ -45,7 +42,7 @@ class Controller extends FrontController
         $model->logout();
 
         $response = new Response('');
-        $response->setHeader(['Location', DIR . '/user/login']);
+        $response->setHeader(['Location', DIR.'/user/login']);
         $response->send();
         exit;
     }

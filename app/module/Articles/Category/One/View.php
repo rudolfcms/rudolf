@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Category\One;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -10,7 +11,7 @@ class View extends FrontView
 {
     public function setData($data, Pagination $pagination, $info = false)
     {
-        $path = '/artykuly/kategorie/' . $info['slug'];
+        $path = '/artykuly/kategorie/'.$info['slug'];
         $this->loop = new Loop($data, $pagination,
             'Rudolf\\Modules\\Articles\\One\\Article',
             $path
@@ -19,7 +20,7 @@ class View extends FrontView
         $tags = new TagsGenerator($pagination, $this->head);
         $tags->setPath($path);
         $tags->create();
-        
+
         $this->categoryInfo = $info;
 
         $page = $pagination->getPageNumber();
@@ -28,16 +29,16 @@ class View extends FrontView
         $titleBefore = null;
 
         if (1 !== $page) {
-            $titleBefore = sprintf(_('Page %1$s of %2$s'), $page, $allPages) .' &ndash; ';
+            $titleBefore = sprintf(_('Page %1$s of %2$s'), $page, $allPages).' &ndash; ';
         }
 
-        $this->head->setTitle($titleBefore . $this->categoryTitle(true));
+        $this->head->setTitle($titleBefore.$this->categoryTitle(true));
 
         $this->template = 'articles-category';
     }
 
     /**
-     * Returns category title
+     * Returns category title.
      * 
      * @param bool $strip
      * 
@@ -45,7 +46,7 @@ class View extends FrontView
      */
     public function categoryTitle($strip = false)
     {
-        $title = _('Articles from category') . ' <i>' . $this->categoryInfo['title'] . '</i>';
+        $title = _('Articles from category').' <i>'.$this->categoryInfo['title'].'</i>';
 
         if (true === $strip) {
             return strip_tags($title);
@@ -55,7 +56,7 @@ class View extends FrontView
     }
 
     /**
-     * Returns category description
+     * Returns category description.
      * 
      * @return string
      */

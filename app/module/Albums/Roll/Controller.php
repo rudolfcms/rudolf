@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -9,17 +10,15 @@ use Rudolf\Framework\Controller\FrontController;
 class Controller extends FrontController
 {
     /**
-    * Get albums list
-    *
-    * @param int $page Page number
-    *
-    * @return void
-    */
+     * Get albums list.
+     *
+     * @param int $page Page number
+     */
     public function getList($page)
     {
-        $conf = (new Module('albums'))->getConfig();;
+        $conf = (new Module('albums'))->getConfig();
 
-        $page = $this->firstPageRedirect($page, 301, '../../'. $conf['path']);
+        $page = $this->firstPageRedirect($page, 301, '../../'.$conf['path']);
 
         $list = new Model();
         $total = $list->getTotalNumber();

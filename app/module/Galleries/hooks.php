@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Galleries;
 
 use Rudolf\Component\Hooks;

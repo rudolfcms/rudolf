@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Galleries;
 
 use Rudolf\Component\Hooks;
@@ -8,7 +9,7 @@ use Rudolf\Component\Modules\Module;
 class Parser
 {
     private $allowedExtension = [
-        'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF'
+        'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF',
     ];
 
     public function __construct()
@@ -19,7 +20,7 @@ class Parser
     }
 
     /**
-     * Parse content
+     * Parse content.
      *
      * @param string $content
      *
@@ -37,20 +38,21 @@ class Parser
 
                 $info = $model->getGalleryInfoById($id);
 
-                $codeGallery =  $this->createGallery($info);
+                $codeGallery = $this->createGallery($info);
                 if ($codeGallery) {
-                    $content = str_replace('{{gallery:'. $id .'}}',
-                        '<div class="gallery-container">'. $codeGallery .'</div>',
+                    $content = str_replace('{{gallery:'.$id.'}}',
+                        '<div class="gallery-container">'.$codeGallery.'</div>',
                         $content
                     );
                 }
             }
         }
+
         return $content;
     }
 
     /**
-     * It create gallery code
+     * It create gallery code.
      *
      * @param array $info array with gallery information
      *
@@ -58,10 +60,10 @@ class Parser
      */
     public function createGallery($info)
     {
-        $serverPath = $this->config['path_root'] . '/' . $info['url'];
-        $webPath = $this->config['path_web'] . '/' . $info['url'];
+        $serverPath = $this->config['path_root'].'/'.$info['url'];
+        $webPath = $this->config['path_web'].'/'.$info['url'];
 
-        $imagesArray = $this->getImagesArray($serverPath .'/thumbs');
+        $imagesArray = $this->getImagesArray($serverPath.'/thumbs');
         if (!$imagesArray) {
             return false;
         }
@@ -73,9 +75,9 @@ class Parser
         $w = $info['thumb_width'];
         $h = $info['thumb_height'];
 
-        for ($i=0; $i < count($imagesArray); $i++) {
-            $photo = $webPath . '/photos/' . $imagesArray[$i];
-            $thumb = $this->image->resize($webPath .'/thumbs/'. $imagesArray[$i], $w, $h);
+        for ($i = 0; $i < count($imagesArray); ++$i) {
+            $photo = $webPath.'/photos/'.$imagesArray[$i];
+            $thumb = $this->image->resize($webPath.'/thumbs/'.$imagesArray[$i], $w, $h);
             $alt = $imagesArray[$i];
 
             $codeGallery[] = sprintf('<a href="%1$s">'.
@@ -88,7 +90,7 @@ class Parser
     }
 
     /**
-     * It returns array list of gallery images
+     * It returns array list of gallery images.
      *
      * @param string $imagesDir string with images directory
      *
@@ -96,9 +98,9 @@ class Parser
      */
     private function getImagesArray($imagesDir)
     {
-        foreach (glob($imagesDir . '/*') as $file) {
+        foreach (glob($imagesDir.'/*') as $file) {
             if (in_array(pathinfo($file)['extension'], $this->allowedExtension)) {
-                $array[] = str_replace($imagesDir . '/', '', $file);
+                $array[] = str_replace($imagesDir.'/', '', $file);
             }
         }
         if (empty($array)) {

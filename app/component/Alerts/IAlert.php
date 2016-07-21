@@ -1,6 +1,8 @@
 <?php
+
 namespace Rudolf\Component\Alerts;
 
-interface IAlert {
+interface IAlert
+{
     public function getType();
 }

@@ -8,12 +8,12 @@ class LoopTest extends \PHPUnit_Framework_TestCase
     private $data = [
         [
             'title' => 'test',
-            'slug' => 'test'
+            'slug' => 'test',
         ],
         [
             'title' => 'test1',
-            'slug' => 'test1'
-        ]
+            'slug' => 'test1',
+        ],
     ];
 
     public function testTotal()
@@ -87,7 +87,7 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         $loop = new Loop($data, $calc);
 
         $s = "<ul class=\"nav\">\n\t<li class=\"current\"><a href=\"/page/1\">1</a></li>\n</ul>\n";
-        $this->assertEquals($s, $loop->nav(['ul'=>'nav'], 0));
+        $this->assertEquals($s, $loop->nav(['ul' => 'nav'], 0));
     }
 
     public function testIsPaginationWhenExistOnePage()

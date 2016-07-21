@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Html;
 
 class Breadcrumbs
@@ -12,12 +13,12 @@ class Breadcrumbs
     private $nesting;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param array $elements Array with menu elements
-     * @param array $address Address elements array
-     * @param array $classes Array wich classes to use in breadcrumbs
-     * @param int $nesting Generated code nesting
+     * @param array $address  Address elements array
+     * @param array $classes  Array wich classes to use in breadcrumbs
+     * @param int   $nesting  Generated code nesting
      */
     public function __construct($elements = [], $address = [], $classes = [], $nesting = 0)
     {
@@ -50,7 +51,7 @@ class Breadcrumbs
     {
         $this->classes = array_merge([
             'ul' => '',
-            'li_active' => ''
+            'li_active' => '',
         ], $classes);
     }
 
@@ -80,11 +81,11 @@ class Breadcrumbs
 
         $url = null;
 
-        for ($pid = 0, $i = 0; $i < count($address); $i++) {
+        for ($pid = 0, $i = 0; $i < count($address); ++$i) {
             if ($pid == $menu[$address[$i]][$pid]['parent_id']) {
-                $array[$i] = array($url .'/'. $address[$i], $menu[$address[$i]][$pid]['title']);
+                $array[$i] = array($url.'/'.$address[$i], $menu[$address[$i]][$pid]['title']);
                 $pid = $menu[$address[$i]][$pid]['id'];
-                $url .= '/'. $address[$i];
+                $url .= '/'.$address[$i];
             }
         }
 
@@ -97,29 +98,29 @@ class Breadcrumbs
         $nesting = $this->getNesting();
         $classes = $this->getClasses();
 
-        $html[] = sprintf('<ul'. '%1$s' .'>',
-            $classes['ul'] ? ' class="'. $classes['ul'] .'"' : ''
+        $html[] = sprintf('<ul'.'%1$s'.'>',
+            $classes['ul'] ? ' class="'.$classes['ul'].'"' : ''
         );
 
         $tab = str_repeat("\t", $nesting + 1);
 
-        $html[] = $tab . '<li><a href="' . DIR . '/">Start</a></li>';
+        $html[] = $tab.'<li><a href="'.DIR.'/">Start</a></li>';
 
-        for ($i = 0; $i < (count($elements) - 1); $i++) {
+        for ($i = 0; $i < (count($elements) - 1); ++$i) {
             $html[] = sprintf('%1$s<li><a href="%2$s">%3$s</a></li>',
                 $tab, // nesting
-                DIR . $elements[$i][0],
+                DIR.$elements[$i][0],
                 $elements[$i][1]
             );
         }
 
-        $html[] = sprintf('%1$s' . '<li' . '%2$s' . '>' . '%3$s' . '</li>',
+        $html[] = sprintf('%1$s'.'<li'.'%2$s'.'>'.'%3$s'.'</li>',
             $tab, // nesting
-            $classes['li_active'] ? ' class="'. $classes['li_active'] .'"' : '',
+            $classes['li_active'] ? ' class="'.$classes['li_active'].'"' : '',
             $elements[$i][1]
         );
 
-        $html[] = str_repeat("\t", $nesting) . '</ul>';
+        $html[] = str_repeat("\t", $nesting).'</ul>';
 
         return implode("\n", $html);
     }

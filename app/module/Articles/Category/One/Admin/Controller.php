@@ -1,11 +1,10 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Category\One\Admin;
 
-use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One;
-use Rudolf\Modules\Categories\Roll\Admin as Roll;
 
 class Controller extends AdminController
 {
@@ -19,12 +18,12 @@ class Controller extends AdminController
         }
 
         $category = $model->getCategoryInfoById($id);
-        
+
         $view = new View();
         $view->edit($category);
-         $view->setActive([
+        $view->setActive([
             'admin/articles',
-            'admin/articles/categories'
+            'admin/articles/categories',
         ]);
         $view->render('admin');
     }
@@ -38,7 +37,7 @@ class Controller extends AdminController
             $id = $model->add($_POST);
 
             if ($id) {
-                $location = DIR . '/admin/articles/edit/' . $id;
+                $location = DIR.'/admin/articles/edit/'.$id;
                 $response = new Response('', 301);
                 $response->setHeader(['Location', $location]);
                 $response->send();
@@ -48,10 +47,10 @@ class Controller extends AdminController
 
         $view = new View();
         $view->add($_POST);
-         $view->setActive([
+        $view->setActive([
             'admin/articles',
             'admin/articles/categories',
-            'admin/articles/categories/add'
+            'admin/articles/categories/add',
         ]);
         $view->render('admin');
     }

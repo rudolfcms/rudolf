@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;

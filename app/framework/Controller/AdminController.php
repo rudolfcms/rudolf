@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\Controller;
 
 use Rudolf\Component\Http\Response;
@@ -8,7 +9,7 @@ use Rudolf\Framework\View\AdminView;
 class AdminController extends BaseController
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -18,7 +19,7 @@ class AdminController extends BaseController
         // if not logged in
         if (!$this->auth->check()) {
             $response = new Response('');
-            $response->setHeader(['Location', DIR . '/user/login']);
+            $response->setHeader(['Location', DIR.'/user/login']);
             $response->send();
             exit;
         }

@@ -1,10 +1,11 @@
 <?php
+
 namespace Rudolf\Component\Auth;
 
 class Cookie
 {
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param string $name
      */
@@ -14,7 +15,7 @@ class Cookie
     }
 
     /**
-     * Create cookie
+     * Create cookie.
      * 
      * @return bool
      */
@@ -34,8 +35,7 @@ class Cookie
     }
 
     /**
-     * Destroy cookie
-     * 
+     * Destroy cookie.
      */
     public function destroy()
     {
@@ -43,7 +43,7 @@ class Cookie
             $this->path = DIR;
         }
 
-        setcookie($this->name, '', time()-3600, $this->path);
+        setcookie($this->name, '', time() - 3600, $this->path);
     }
 
     /**

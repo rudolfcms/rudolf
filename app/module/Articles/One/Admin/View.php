@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Framework\View\AdminView;
@@ -9,11 +10,9 @@ class View extends AdminView
     use CategoryAddon;
 
     /**
-     * Set data to edit article
+     * Set data to edit article.
      * 
      * @param array $article
-     * 
-     * @return void
      */
     public function editArticle($article)
     {
@@ -30,11 +29,9 @@ class View extends AdminView
     }
 
     /**
-     * Set data to delete article
+     * Set data to delete article.
      * 
      * @param array $article
-     * 
-     * @return void
      */
     public function delArticle($article)
     {
@@ -51,11 +48,9 @@ class View extends AdminView
     }
 
     /**
-     * Set data do add article
+     * Set data do add article.
      * 
      * @param array $article
-     * 
-     * @return void
      */
     public function addArticle($article)
     {
@@ -64,7 +59,7 @@ class View extends AdminView
         $this->pageTitle = _('Add article');
         $this->head->setTitle($this->pageTitle);
 
-        $this->path = DIR . '/admin/articles/add';
+        $this->path = DIR.'/admin/articles/add';
 
         $this->templateType = 'add';
 

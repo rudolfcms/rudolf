@@ -1,10 +1,11 @@
 <?php
+
 namespace Rudolf\Component\Routing;
 
 class Route
 {
     /**
-     * @var string 
+     * @var string
      */
     private $path;
 
@@ -27,15 +28,14 @@ class Route
      * @var int
      */
     private $priority;
-    
+
     /**
-     * Constructor
-     * 
-     * @param string    $path               The path pattern to match
-     * @param array     $controllerName     Controller to use for route
-     * @param array     $params             Params
-     * @param array     $defaults           An array of default parameter values
-     * @param int       $priority           Route priority
+     * Constructor.
+     *
+     * @param array  $controllerName Controller to use for route
+     * @param array  $params         Params
+     * @param array  $defaults       An array of default parameter values
+     * @param int    $priority       Route priority
      */
     public function __construct($path, $controllerName, array $params = [], array $defaults = [], $priority = 1000)
     {
@@ -47,22 +47,18 @@ class Route
     }
 
     /**
-     * Sets the pattern for the path
-     * 
-     * @access private
+     * Sets the pattern for the path.
      *
      * @param string $pattern The path pattern
      */
     private function setPath($path)
     {
-        $this->path = '/' . ltrim(trim($path), '/');
+        $this->path = '/'.ltrim(trim($path), '/');
     }
 
     /**
-     * Returns the path
-     * 
-     * @access public
-     * 
+     * Returns the path.
+     *
      * @return string $path
      */
     public function getPath()
@@ -71,10 +67,8 @@ class Route
     }
 
     /**
-     * Sets the controller name to use for route
-     * 
-     * @access private
-     * 
+     * Sets the controller name to use for route.
+     *
      * @param string $controllerName The controller name
      */
     private function setControllerName($controllerName)
@@ -83,10 +77,8 @@ class Route
     }
 
     /**
-     * Returns the controller name
-     * 
-     * @access public
-     * 
+     * Returns the controller name.
+     *
      * @return array $controllerName 
      */
     public function getControllerName()
@@ -95,10 +87,8 @@ class Route
     }
 
     /**
-     * Sets the params
-     * 
-     * @access private
-     * 
+     * Sets the params.
+     *
      * @param array $params The params
      */
     private function setParams($params)
@@ -107,10 +97,8 @@ class Route
     }
 
     /**
-     * Returns the params
-     * 
-     * @access public
-     * 
+     * Returns the params.
+     *
      * @return array $params 
      */
     public function getParams()
@@ -118,12 +106,9 @@ class Route
         return $this->params;
     }
 
-
     /**
-     * Returns the priority
-     * 
-     * @access public
-     * 
+     * Returns the priority.
+     *
      * @return array $priority 
      */
     public function getPriority()
@@ -132,9 +117,7 @@ class Route
     }
 
     /**
-     * Sets the defaults
-     * 
-     * @access private
+     * Sets the defaults.
      *
      * @param array $defaults The defaults
      */
@@ -144,9 +127,7 @@ class Route
     }
 
     /**
-     * Sets the priority
-     * 
-     * @access private
+     * Sets the priority.
      *
      * @param int $priority The priority
      */
@@ -156,9 +137,7 @@ class Route
     }
 
     /**
-     * Returns the defaults params
-     * 
-     * @access public
+     * Returns the defaults params.
      *
      * @return array $defaults The defaults params
      */

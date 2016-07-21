@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Html\Head;
@@ -13,7 +14,7 @@ abstract class BaseView
     public $themePath;
 
     /**
-     * @var string 
+     * @var string
      */
     public $themeRoot;
 
@@ -33,7 +34,7 @@ abstract class BaseView
     public $theme;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -42,27 +43,25 @@ abstract class BaseView
     }
 
     /**
-     * Render page
+     * Render page.
      * 
      * @param string $side front|admin
      * @param string $type html|json
-     * 
-     * @return void
      */
     public function render($side = 'front', $type = 'html')
     {
         if ('admin' === $side) {
             $this->side = 'admin';
             $this->themeName = ADMIN_THEME;
-            $path = '/' . $this->side . '/' . $this->themeName;
+            $path = '/'.$this->side.'/'.$this->themeName;
         } else {
             $this->side = 'front';
             $this->themeName = FRONT_THEME;
-            $path = '/' . $this->side . '/' . $this->themeName;
+            $path = '/'.$this->side.'/'.$this->themeName;
         }
 
-        $this->themeRoot = THEMES_ROOT . $path;
-        $this->themePath = THEMES . $path;
+        $this->themeRoot = THEMES_ROOT.$path;
+        $this->themePath = THEMES.$path;
 
         $this->loadConfig();
 
@@ -70,7 +69,7 @@ abstract class BaseView
             case 'json':
                 $this->renderJson();
                 break;
-            
+
             default:
                 $this->renderHtml();
                 break;
@@ -78,41 +77,37 @@ abstract class BaseView
     }
 
     /**
-     * Render page in html
-     * 
-     * @return void
+     * Render page in html.
      */
     private function renderHtml()
     {
-        $file = $this->themeRoot .'/templates/'. $this->template .'.html.php';
-        
+        $file = $this->themeRoot.'/templates/'.$this->template.'.html.php';
+
         if (!file_exists($this->themeRoot)) {
-            throw new ThemeNotFoundException("Theme ". $this->themeName ." does not exist");
+            throw new ThemeNotFoundException('Theme '.$this->themeName.' does not exist');
         } elseif (is_file($file)) {
             include $file;
         } else {
-            throw new TemplateNotFoundException("Template file '{$this->template}' does not exist in ". $this->themeName);
+            throw new TemplateNotFoundException("Template file '{$this->template}' does not exist in ".$this->themeName);
         }
     }
 
     /**
-     * Render page in json
-     * 
-     * @return void
+     * Render page in json.
      */
     private function renderJson()
     {
         header('Content-Type: application/json');
         echo json_encode($this->data);
     }
-    
+
     /**
-     * Load theme config class
+     * Load theme config class.
      */
     private function loadConfig()
     {
-        $file = $this->themeRoot . '/' . $this->themeName . '.php';
-        
+        $file = $this->themeRoot.'/'.$this->themeName.'.php';
+
         if (is_file($file)) {
             include $file;
             $class = ucfirst($this->themeName);

@@ -1,7 +1,8 @@
 <?php
+
 namespace Rudolf\Component\Alerts;
 
-use \Exception;
+use Exception;
 
 class AlertsCollection
 {
@@ -11,25 +12,23 @@ class AlertsCollection
     private static $collection;
 
     /**
-     * Add alert to collection
+     * Add alert to collection.
      * 
      * @param Alert $alert Alert object
      * 
      * @throws Exception
-     * 
-     * @return void
      */
     public static function add($alert)
     {
         if (!$alert instanceof IAlert) {
-            throw new Exception("Must implement IAlert!");
+            throw new Exception('Must implement IAlert!');
         }
 
         self::$collection[] = $alert;
     }
 
     /**
-     * Get alerts by type
+     * Get alerts by type.
      * 
      * @param string $type Alert type
      * 
@@ -53,7 +52,7 @@ class AlertsCollection
     }
 
     /**
-     * Checks whether were any alert
+     * Checks whether were any alert.
      * 
      * @return bool
      */
@@ -63,9 +62,7 @@ class AlertsCollection
     }
 
     /**
-     * Delete all alerts
-     * 
-     * @return void
+     * Delete all alerts.
      */
     public function deleteAll()
     {
@@ -73,7 +70,7 @@ class AlertsCollection
     }
 
     /**
-     * Get all alerts
+     * Get all alerts.
      * 
      * @return Alert array
      */

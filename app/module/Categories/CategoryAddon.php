@@ -1,8 +1,9 @@
 <?php
+
 namespace Rudolf\Modules\Categories;
 
-trait CategoryAddon {
-
+trait CategoryAddon
+{
     public function setCategories($categories)
     {
         $this->categories = $categories;

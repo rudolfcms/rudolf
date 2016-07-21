@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Routing;
 
 class RouteCollection
@@ -9,12 +10,10 @@ class RouteCollection
     private $collection;
 
     /**
-     * Adds a route
+     * Adds a route.
      * 
-     * @param string $name  The route name
+     * @param string $name The route name
      * @param Route  $item A Route instance
-     * 
-     * @return void
      */
     public function add($name, Route $item)
     {
@@ -22,7 +21,7 @@ class RouteCollection
     }
 
     /**
-     * Gets a route by name
+     * Gets a route by name.
      * 
      * @param string $name The route name
      * 
@@ -32,13 +31,14 @@ class RouteCollection
     {
         //!array_key_exists($name, $this->collection)
         if (!isset($this->collection[$name])) {
-            return null;
+            return;
         }
+
         return $this->collection[$name];
     }
 
     /**
-     * Returns all routes in this collection
+     * Returns all routes in this collection.
      *
      * @return Route array An array of routes collection
      */
@@ -47,7 +47,7 @@ class RouteCollection
         if (empty($this->collection)) {
             return false;
         }
-        
+
         uasort($this->collection, [$this, 'cmp_obj']);
 
         return $this->collection;
@@ -60,6 +60,7 @@ class RouteCollection
         if ($al == $bl) {
             return 0;
         }
+
         return ($al > $bl) ? +1 : -1;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\Category\One\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -14,7 +15,7 @@ class Controller extends AdminController
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');
 
         $list = new AlbumsList();
-        $total = $list->getTotalNumber(['type'=>'albums']);
+        $total = $list->getTotalNumber(['type' => 'albums']);
 
         $pagination = new Pagination($total, $page);
         $limit = $pagination->getLimit();
@@ -27,7 +28,7 @@ class Controller extends AdminController
         $view->setActive([
             'admin/albums',
             'admin/albums/categories',
-            'admin/albums/categories/list'
+            'admin/albums/categories/list',
         ]);
         $view->render('admin');
     }
@@ -42,12 +43,12 @@ class Controller extends AdminController
         }
 
         $category = $model->getCategoryInfoById($id);
-        
+
         $view = new View();
         $view->edit($category);
-         $view->setActive([
+        $view->setActive([
             'admin/albums',
-            'admin/albums/categories'
+            'admin/albums/categories',
         ]);
         $view->render('admin');
     }
@@ -61,7 +62,7 @@ class Controller extends AdminController
             $id = $model->add($_POST);
 
             if ($id) {
-                $location = DIR . '/admin/albums/edit/' . $id;
+                $location = DIR.'/admin/albums/edit/'.$id;
                 $response = new Response('', 301);
                 $response->setHeader(['Location', $location]);
                 $response->send();
@@ -71,18 +72,18 @@ class Controller extends AdminController
 
         $view = new View();
         $view->add($_POST);
-         $view->setActive([
+        $view->setActive([
             'admin/albums',
             'admin/albums/categories',
-            'admin/albums/categories/add'
+            'admin/albums/categories/add',
         ]);
         $view->render('admin');
     }
-    
+
     public function redirect()
     {
         $response = new Response('', 301);
-        $response->setHeader(['Location', DIR . '/admin/albums/categories/list']);
+        $response->setHeader(['Location', DIR.'/admin/albums/categories/list']);
         $response->send();
         exit;
     }

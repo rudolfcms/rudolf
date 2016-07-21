@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Alerts;
 
 class Alert implements IAlert
@@ -14,7 +15,7 @@ class Alert implements IAlert
     private $message;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param string $type
      * @param string $message
@@ -26,7 +27,7 @@ class Alert implements IAlert
     }
 
     /**
-     * Set alert type
+     * Set alert type.
      * 
      * @param string $type
      * 
@@ -38,7 +39,7 @@ class Alert implements IAlert
     }
 
     /**
-     * Get alert type
+     * Get alert type.
      * 
      * @return string
      */
@@ -48,7 +49,7 @@ class Alert implements IAlert
     }
 
     /**
-     * Set alert mesage
+     * Set alert mesage.
      * 
      * @param string $message
      * 
@@ -60,7 +61,7 @@ class Alert implements IAlert
     }
 
     /**
-     * Get alert mesage
+     * Get alert mesage.
      * 
      * @return string
      */

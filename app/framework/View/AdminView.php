@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Alerts\AlertsCollection;
@@ -8,20 +9,17 @@ use Rudolf\Component\Modules\Module;
 class AdminView extends BaseView
 {
     /**
-     * @var array $userInfo
-     * @access private
+     * @var array
      */
     private static $userInfo;
 
     /**
-     * @var array $adminData
-     * @access private
+     * @var array
      */
     private static $adminData;
 
     /**
-     * @var string $active
-     * @access private
+     * @var string
      */
     private static $active;
 
@@ -34,13 +32,13 @@ class AdminView extends BaseView
     }
 
     /**
-     * Create page nav
+     * Create page nav.
      *
      * @param string $type
-     * @param int $nesting
-     * @param array $classes
-     * @param array $before
-     * @param array $after
+     * @param int    $nesting
+     * @param array  $classes
+     * @param array  $before
+     * @param array  $after
      *
      * @return string
      */
@@ -65,16 +63,16 @@ class AdminView extends BaseView
 
     public function adminDir()
     {
-        return DIR . '/' . $this->config['admin_path'];
+        return DIR.'/'.$this->config['admin_path'];
     }
 
-    public function setActive($active) {
+    public function setActive($active)
+    {
         self::$active = $active;
     }
 
     /**
      *
-     * @return void
      */
     public static function setAdminData($adminData)
     {
@@ -83,7 +81,6 @@ class AdminView extends BaseView
 
     /**
      *
-     * @return void
      */
     public static function setUserInfo($userInfo)
     {
@@ -91,7 +88,6 @@ class AdminView extends BaseView
     }
 
     /**
-     *
      * @return string
      */
     protected function getUserName()
@@ -100,16 +96,14 @@ class AdminView extends BaseView
     }
 
     /**
-     *
      * @return string
      */
     protected function getUserFullName()
     {
-        return self::$userInfo['first_name'] . ' ' . self::$userInfo['surname'];
+        return self::$userInfo['first_name'].' '.self::$userInfo['surname'];
     }
 
     /**
-     *
      * @return string
      */
     protected function getUserEmail()
@@ -118,7 +112,6 @@ class AdminView extends BaseView
     }
 
     /**
-     *
      * @return string
      */
     protected function getUserNick()
@@ -127,7 +120,6 @@ class AdminView extends BaseView
     }
 
     /**
-     *
      * @return string
      */
     protected function getUserRegisterDate()
@@ -136,13 +128,13 @@ class AdminView extends BaseView
     }
 
     /**
-     * Get all alerts
+     * Get all alerts.
      *
      * @param array
      */
     protected function alerts($classes = [])
     {
-        if(!$this->isAlerts()) {
+        if (!$this->isAlerts()) {
             return false;
         }
 
@@ -151,7 +143,7 @@ class AdminView extends BaseView
             'error' => 'error',
             'warning' => 'warning',
             'success' => 'success',
-            'info' => 'info'
+            'info' => 'info',
         ], $classes);
 
         $a = AlertsCollection::getAll();
@@ -168,15 +160,16 @@ class AdminView extends BaseView
         if (AlertsCollection::isAlerts()) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * Get code for one alert
+     * Get code for one alert.
      *
      * @param string $type
      * @param string $message
-     * @param array $classes
+     * @param array  $classes
      *
      * @return string
      */

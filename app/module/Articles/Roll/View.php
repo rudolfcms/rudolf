@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -11,7 +12,7 @@ class View extends FrontView
     public function rollView($data, Pagination $pagination)
     {
         $this->loop = new Loop($data, $pagination,
-        	'Rudolf\\Modules\\Articles\\One\\Article'
+            'Rudolf\\Modules\\Articles\\One\\Article'
         );
 
         $tags = new TagsGenerator($pagination, $this->head);

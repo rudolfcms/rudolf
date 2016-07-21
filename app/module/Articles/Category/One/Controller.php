@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Category\One;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -11,16 +12,14 @@ use Rudolf\Modules\Categories\One\Model as CategoriesModel;
 class Controller extends FrontController
 {
     /**
-     * Get articles by category
+     * Get articles by category.
      *
      * @param string $slug
-     * @param int $page
-     *
-     * @return void
+     * @param int    $page
      */
     public function getCategory($slug, $page)
     {
-        $page = $this->firstPageRedirect($page, 301, '../../'. $slug); // łork eraułnd
+        $page = $this->firstPageRedirect($page, 301, '../../'.$slug); // łork eraułnd
 
         $categories = new CategoriesModel();
 
@@ -32,7 +31,7 @@ class Controller extends FrontController
         $list = new ArticlesList();
         $total = $list->getTotalNumber([
             'published' => 1,
-            'category_id' => $categoryInfo['id']
+            'category_id' => $categoryInfo['id'],
         ]);
 
         $conf = (new Module('articles'))->getConfig();
@@ -44,12 +43,12 @@ class Controller extends FrontController
         if ($pagination->getAllPages() < $page) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
-        
+
         $results = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         $view = new View();
         $view->setData($results, $pagination, $categoryInfo);
-        $view->setFrontData($this->frontData, 'artykuly/kategorie/'. $slug);
+        $view->setFrontData($this->frontData, 'artykuly/kategorie/'.$slug);
         $view->render();
     }
 }

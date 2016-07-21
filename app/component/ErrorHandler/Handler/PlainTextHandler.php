@@ -1,9 +1,10 @@
 <?php
+
 namespace Rudolf\Component\ErrorHandler\Handler;
 
 class PlainTextHandler extends Handler implements IHandler
 {
-	public function handle($exception)
+    public function handle($exception)
     {
         $this->exception = $exception;
 
@@ -11,7 +12,7 @@ class PlainTextHandler extends Handler implements IHandler
     }
 
     /**
-     * Format message
+     * Format message.
      *
      * @return string
      */
@@ -29,7 +30,7 @@ class PlainTextHandler extends Handler implements IHandler
     }
 
     /**
-     * Format trace
+     * Format trace.
      *
      * @param array $trace
      *
@@ -46,6 +47,7 @@ class PlainTextHandler extends Handler implements IHandler
                 $value['function']
             );
         }
+
         return implode("\n", $t);
     }
 }

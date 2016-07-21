@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Feed;
 
 use Rudolf\Component\Feed;
@@ -9,43 +10,43 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-	public function setArticles($data, Pagination $pagination)
-	{
-		$this->data = $data;
-		$this->pagination = $pagination;
-	}
+    public function setArticles($data, Pagination $pagination)
+    {
+        $this->data = $data;
+        $this->pagination = $pagination;
+    }
 
-	public function rss2()
-	{
-		$config = (new Module('articles'))->getConfig();
+    public function rss2()
+    {
+        $config = (new Module('articles'))->getConfig();
 
-		$generator = new Feed\RSS2Generator();
-		$generator->setTitle($config['feed_title']);
-		$generator->setLink('http://zsrokietnica.project/feed/rss');
-		$generator->setDescription($config['feed_description']);
+        $generator = new Feed\RSS2Generator();
+        $generator->setTitle($config['feed_title']);
+        $generator->setLink('http://zsrokietnica.project/feed/rss');
+        $generator->setDescription($config['feed_description']);
 
-		$loop = new Loop($this->data, $this->pagination,
-			'Rudolf\\Modules\\Articles\\One\\Article'
-		);
+        $loop = new Loop($this->data, $this->pagination,
+            'Rudolf\\Modules\\Articles\\One\\Article'
+        );
 
-		while ($loop->haveItems()) { $article = $loop->item();
-			$item = new Feed\RSS2Item();
-			
-			$item->setTitle($article->title());
-			$item->setLink('http://zsrokietnica.project'. $article->url());
-			$item->setDescription($article->content());
-			$item->setAuthor($article->author());
-			$item->setPubDate($article->date('D, d M Y H:i:s T'));
-			$array[] = $item->getItem();
-		}
+        while ($loop->haveItems()) {
+            $article = $loop->item();
+            $item = new Feed\RSS2Item();
 
-		$generator->setItems($array);
+            $item->setTitle($article->title());
+            $item->setLink('http://zsrokietnica.project'.$article->url());
+            $item->setDescription($article->content());
+            $item->setAuthor($article->author());
+            $item->setPubDate($article->date('D, d M Y H:i:s T'));
+            $array[] = $item->getItem();
+        }
 
-		return $generator->generate();
-	}
+        $generator->setItems($array);
 
-	public function atom()
-	{
-		
-	}
+        return $generator->generate();
+    }
+
+    public function atom()
+    {
+    }
 }

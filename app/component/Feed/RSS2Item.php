@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Feed;
 
 /**
@@ -9,64 +10,63 @@ namespace Rudolf\Component\Feed;
  * @see http://cyber.law.harvard.edu/rss/rss.html
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Component\Feed
+ *
  * @version 0.1
  */
-
 class RSS2Item implements IRSS2Item
 {
     /**
      * @var string
      */
     private $title;
-    
+
     /**
      * @var string
      */
     private $link;
-    
+
     /**
      * @var string
      */
     private $description;
-    
+
     /**
      * @var string
      */
     private $author;
-    
+
     /**
      * @var string
      */
     private $category;
-    
+
     /**
      * @var string
      */
     private $comments;
-    
+
     /**
      * @var string
      */
     private $enclosure;
-    
+
     /**
      * @var string
      */
     private $guid;
-    
+
     /**
      * @var string
      */
     private $pubDate;
-    
+
     /**
      * @var string
      */
     private $source;
 
     /**
-     * Set item title
+     * Set item title.
      * 
      * @param string $title
      */
@@ -76,9 +76,9 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Set item link
+     * Set item link.
      * 
-     * @param string $link 
+     * @param string $link
      */
     public function setLink($link)
     {
@@ -86,7 +86,7 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Set item descritpion
+     * Set item descritpion.
      * 
      * @param string descrption
      */
@@ -96,7 +96,7 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Set item author
+     * Set item author.
      * 
      * @param string $author
      */
@@ -106,7 +106,7 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Set item category
+     * Set item category.
      * 
      * @param string $category
      */
@@ -125,7 +125,8 @@ class RSS2Item implements IRSS2Item
         $this->enclosure = $enclosure;
     }
 
-    public function setGuid($guid) {
+    public function setGuid($guid)
+    {
         $this->guid = $guid;
     }
 
@@ -140,7 +141,7 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Get item title
+     * Get item title.
      * 
      * @return bool|string
      */
@@ -150,11 +151,11 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        return '<title>' . strip_tags($this->title) . '</title>';
+        return '<title>'.strip_tags($this->title).'</title>';
     }
 
     /**
-     * Get item link
+     * Get item link.
      * 
      * @return bool|string
      */
@@ -164,11 +165,11 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        return '<link>' . $this->link . '</link>';
+        return '<link>'.$this->link.'</link>';
     }
 
     /**
-     * Get item description
+     * Get item description.
      * 
      * @return bool|string
      */
@@ -178,13 +179,13 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        $content = str_replace(array("\n","\r"), '', $this->description);
-        
-        return '<description>' . htmlspecialchars($content) . '</description>';
+        $content = str_replace(array("\n", "\r"), '', $this->description);
+
+        return '<description>'.htmlspecialchars($content).'</description>';
     }
 
     /**
-     * Get item author
+     * Get item author.
      * 
      * @return bool|string
      */
@@ -194,11 +195,11 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        return '<author>' . $this->author . '</author>';
+        return '<author>'.$this->author.'</author>';
     }
 
     /**
-     * Get item category
+     * Get item category.
      * 
      * @return bool|string
      */
@@ -208,11 +209,11 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        return '<category>' . $this->category . '</category>';
+        return '<category>'.$this->category.'</category>';
     }
 
     /**
-     * Get item pub date
+     * Get item pub date.
      * 
      * @return bool|string
      */
@@ -222,11 +223,11 @@ class RSS2Item implements IRSS2Item
             return false;
         }
 
-        return '<pubDate>' . $this->pubDate . '</pubDate>';
+        return '<pubDate>'.$this->pubDate.'</pubDate>';
     }
 
     /**
-     * Get <item> element
+     * Get <item> element.
      * 
      * @return string
      */
@@ -242,12 +243,12 @@ class RSS2Item implements IRSS2Item
         $xml = array_filter($xml);
 
         foreach ($xml as $key => $value) {
-            $xml[$key] = "\t\t\t" . $value;
+            $xml[$key] = "\t\t\t".$value;
         }
-        
-        array_unshift($xml, "\t\t" . '<item>');
 
-        $xml[] = "\t\t" . '</item>';
+        array_unshift($xml, "\t\t".'<item>');
+
+        $xml[] = "\t\t".'</item>';
 
         return implode("\n", array_filter($xml));
     }

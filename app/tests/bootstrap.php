@@ -14,4 +14,3 @@ require_once 'app/vendor/autoload.php';
 
 // define('FRONT_THEME', $config['front_theme']);
 // define('ADMIN_THEME', $config['admin_theme']);
-

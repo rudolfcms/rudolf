@@ -1,13 +1,13 @@
 <?php
+
 namespace Rudolf\Modules\Categories\One;
 
-use Rudolf\Component\Libs\Pagination;
 use Rudolf\Framework\Model\FrontModel;
 
-class Model extends FrontModel {
-
+class Model extends FrontModel
+{
     /**
-     * Get category info
+     * Get category info.
      * 
      * @param string $slug
      * 
@@ -33,8 +33,8 @@ class Model extends FrontModel {
         return $results[0];
     }
 
-     /**
-     * Get category info
+    /**
+     * Get category info.
      * 
      * @param string $slug
      * 

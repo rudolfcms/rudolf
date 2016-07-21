@@ -1,7 +1,7 @@
 <?php
+
 namespace Rudolf\Modules\Koxy\Roll;
 
-use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Framework\Model\FrontModel;
 
 class Model extends FrontModel
@@ -12,9 +12,9 @@ class Model extends FrontModel
 
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'DESC'])
     {
-        $catalog = UPLOADS_ROOT . '/moments/';
+        $catalog = UPLOADS_ROOT.'/moments/';
 
-        if (($array = glob($catalog  . '*.' . $this->extension)) == false) {
+        if (($array = glob($catalog.'*.'.$this->extension)) == false) {
             return false;
         }
 
@@ -29,13 +29,13 @@ class Model extends FrontModel
         $a = array_slice($a, $limit, $onPage);
 
         foreach ($a as $key => $value) {
-            $file = UPLOADS_ROOT . str_replace('.'.$this->extension, '.txt', $value['path']);
+            $file = UPLOADS_ROOT.str_replace('.'.$this->extension, '.txt', $value['path']);
             $file = str_replace('content/uploads/moments', 'moments-db', $file);
 
             if (file_exists($file)) {
                 $content = file_get_contents($file);
                 $contentArray = explode(':', $content);
-                
+
                 $likes[$key]['likes'] = [$contentArray[0], $contentArray[1]];
             } else {
                 $likes[$key]['likes'] = [0, 0];
@@ -45,7 +45,7 @@ class Model extends FrontModel
         foreach ($a as $key => $value) {
             $returnArray[$key] = [
                 'path' => $value['path'],
-                'likes' => $likes[$key]['likes']
+                'likes' => $likes[$key]['likes'],
             ];
         }
 
@@ -53,15 +53,15 @@ class Model extends FrontModel
     }
 
     /**
-     * Returns total number of kox items
+     * Returns total number of kox items.
      * 
      * @return int
      */
     public function getTotalNumber()
     {
-        $catalog = UPLOADS_ROOT . '/moments/';
+        $catalog = UPLOADS_ROOT.'/moments/';
 
-        if (($array = glob($catalog  . '*.' . $this->extension)) != false) {
+        if (($array = glob($catalog.'*.'.$this->extension)) != false) {
             return count($array);
         }
 

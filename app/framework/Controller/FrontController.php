@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\Controller;
 
 use Rudolf\Framework\Model\FrontModel;
@@ -13,7 +14,7 @@ abstract class FrontController extends BaseController
 
         $this->frontData = [
             'menu_items' => $model->getMenuItems(),
-            'menu_types' => $model->getMenuTypes()
+            'menu_types' => $model->getMenuTypes(),
         ];
     }
 }

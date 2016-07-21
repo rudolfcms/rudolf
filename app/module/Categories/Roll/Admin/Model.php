@@ -1,8 +1,8 @@
 <?php
+
 namespace Rudolf\Modules\Categories\Roll\Admin;
 
 use Rudolf\Modules\Categories\Roll;
-use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 
 class Model extends Roll\Model
 {
@@ -31,6 +31,7 @@ class Model extends Roll\Model
         if (!empty($results)) {
             return $results;
         }
+
         return false;
     }
 
@@ -54,6 +55,7 @@ class Model extends Roll\Model
         if (!empty($results)) {
             return $results;
         }
+
         return false;
     }
 }

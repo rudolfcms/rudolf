@@ -1,27 +1,28 @@
 <?php
+
 namespace Rudolf\Component\Forms;
 
 class AdminFields
 {
     /**
-     * Returns textarea
+     * Returns textarea.
      * 
      * @param string $content
      * @param string $name
      * @param string $class
      * @param string $id
      * @param string $placeholder
-     * @param int $cols
-     * @param int $rows
+     * @param int    $cols
+     * @param int    $rows
      * 
      * @todo http://www.php-fig.org/psr/psr-2/#4-4-method-arguments
      * 
      * @return string
      */
-    public function textarea($content, $name, $class, $id, $placeholder ='', $cols = 30, $rows = 10)
+    public function textarea($content, $name, $class, $id, $placeholder = '', $cols = 30, $rows = 10)
     {
         $html = sprintf('<textarea name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s" cols="%6$s" rows="%7$s">%1$s</textarea>',
-            $content, 
+            $content,
             $name,
             $class,
             $id,
@@ -36,7 +37,7 @@ class AdminFields
     }
 
     /**
-     * Returns input type date or datetime
+     * Returns input type date or datetime.
      * 
      * @param string $date
      * @param string $name
@@ -62,7 +63,7 @@ class AdminFields
     }
 
     /**
-     * Returns input with path to file
+     * Returns input with path to file.
      * 
      * @param $string path
      * @param string $name

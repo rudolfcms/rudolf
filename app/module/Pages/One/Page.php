@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Pages\One;
 
 use Rudolf\Component\Hooks;
@@ -20,7 +21,7 @@ class Page
                 'title' => '',
                 'author' => '',
                 'content' => '',
-                'views' => ''
+                'views' => '',
             ],
             (array) $page
         );
@@ -40,7 +41,7 @@ class Page
     {
         $content = $this->page['content'];
         $content = Hooks\Filter::apply('content_filter', $content);
-        
+
         return $content;
     }
 

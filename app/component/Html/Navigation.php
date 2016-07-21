@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Html;
 
 class Navigation
@@ -18,15 +19,15 @@ class Navigation
     private $after;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param string $type Menu type
-     * @param array $items Array of navigation items
+     * @param string       $type     Menu type
+     * @param array        $items    Array of navigation items
      * @param array|string $currents Current pages slug
-     * @param array $classes
-     * @param int $nesting
-     * @param array $before
-     * @param array $after
+     * @param array        $classes
+     * @param int          $nesting
+     * @param array        $before
+     * @param array        $after
      * 
      * @return string
      */
@@ -44,7 +45,7 @@ class Navigation
     }
 
     /**
-     * Set root ID
+     * Set root ID.
      * 
      * @param id $id ID of element to start create tree. Set 0 to create full tree
      */
@@ -59,7 +60,7 @@ class Navigation
     }
 
     /**
-     * Menu type definited in menu_types table
+     * Menu type definited in menu_types table.
      *
      * @param string $type
      */
@@ -74,7 +75,7 @@ class Navigation
     }
 
     /**
-     * Set items
+     * Set items.
      *
      * 'items' (array) Menu item
      *      'id' (int) Unique item id
@@ -104,7 +105,7 @@ class Navigation
                             break;
                         case 'app':
                         default:
-                            $newItems[$key]['slug'] = DIR .'/'. $value['slug'];
+                            $newItems[$key]['slug'] = DIR.'/'.$value['slug'];
                             break;
                     }
                 }
@@ -117,15 +118,16 @@ class Navigation
 
         // sort items
         usort($newItems, function ($a, $b) {
-            if (isset($a['position']) and isset($b['position']))
+            if (isset($a['position']) and isset($b['position'])) {
                 return $a['position'] - $b['position'];
+            }
         });
 
         return $newItems;
     }
 
     /**
-     * Set active elements slugs, use to mark current items
+     * Set active elements slugs, use to mark current items.
      *
      * @param array|string $currents
      */
@@ -144,14 +146,14 @@ class Navigation
 
         // add actual app dir to currents slug
         foreach ($currents as $key => $value) {
-            $currents[$key] = DIR . '/' . $value;
+            $currents[$key] = DIR.'/'.$value;
         }
 
         return $currents;
     }
 
     /**
-     * Set classes to use in menu
+     * Set classes to use in menu.
      *
      * 'classes' (array) 
      *      'root_ul' (string) Main <ul>
@@ -172,12 +174,12 @@ class Navigation
             'li_with_ul' => '',
             'li_whitout_ul' => '',
             'sub_ul' => '',
-            'li_active' => ''
+            'li_active' => '',
         ], $this->classes);
     }
 
     /**
-     * Set generated menu code nesting
+     * Set generated menu code nesting.
      *
      * @param int $nesting
      */
@@ -192,7 +194,7 @@ class Navigation
     }
 
     /**
-     * Put string before elements
+     * Put string before elements.
      *
      * 'before' (array)
      *      'root_ul' (string) Main <ul>
@@ -220,7 +222,7 @@ class Navigation
     }
 
     /**
-     * Put string after elements
+     * Put string after elements.
      *
      * 'after' (array) Texts after:
      *      'root_ul' (string) Main <ul>
@@ -248,9 +250,9 @@ class Navigation
     }
 
     /**
-     * Put value is not empty
+     * Put value is not empty.
      *
-     * @param string $atribute
+     * @param string       $atribute
      * @param string|array $value
      *
      * @return string
@@ -260,16 +262,18 @@ class Navigation
         if (is_array($value)) {
             array_filter($value);
             $value = trim(implode(' ', $value));
-            return (!empty($value)) ? ' '. $atribute .'="' . $value .'"' : '';
+
+            return (!empty($value)) ? ' '.$atribute.'="'.$value.'"' : '';
         }
-        return (isset($value) and !empty($value)) ? ' '. $atribute .'="' . trim($value) .'"' : '';
+
+        return (isset($value) and !empty($value)) ? ' '.$atribute.'="'.trim($value).'"' : '';
     }
 
     /**
-     * Check is item active
+     * Check is item active.
      *
-     * @param string $slug Current slug
-     * @param array $array Active slugs
+     * @param string $slug  Current slug
+     * @param array  $array Active slugs
      *
      * @return bool
      */
@@ -279,9 +283,10 @@ class Navigation
     }
 
     /**
-     * Menu creator
+     * Menu creator.
      *
      * @link http://pastebin.com/GAFvSew4
+     *
      * @author J. Bruni - original author
      *
      * @return string|bool
@@ -300,8 +305,9 @@ class Navigation
             return false;
         }
         foreach ($items as $item) {
-            if (isset($item['parent_id']))
+            if (isset($item['parent_id'])) {
                 $children[$item['parent_id']][] = $item;
+            }
         }
 
         // loop will be false if the root has no children (i.e., an empty menu!)
@@ -314,7 +320,7 @@ class Navigation
         $this->html[] = $before['root_ul'];
 
         // HTML wrapper for the menu (open)
-        $this->html[] = sprintf('%1$s' . '<ul' . '%2$s' . '>',
+        $this->html[] = sprintf('%1$s'.'<ul'.'%2$s'.'>',
             # %1$s tab if text before
             (!empty($before['root_ul'])) ? str_repeat("\t", $nesting) : '',
 
@@ -322,16 +328,16 @@ class Navigation
             $this->isAtribute('class', $classes['root_ul'])
         );
 
-        $this->html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1) . $before['first_root_li'] : '';
+        $this->html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
         // loop
-        while($loop && (($option = each($children[$parent])) || ($parent > $root_id))) {
+        while ($loop && (($option = each($children[$parent])) || ($parent > $root_id))) {
 
             // HTML for menu item containing childrens (close)
             if ($option === false) {
                 $parent = array_pop($parent_stack);
-                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting) . '</ul>';
-                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting) . '</li>';
+                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting).'</ul>';
+                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting).'</li>';
             }
 
             // HTML for menu item containing childrens (open)
@@ -348,7 +354,7 @@ class Navigation
                     # %2$s li class (active)
                     $this->isAtribute('class', [
                         $classes['li_with_ul'],
-                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : ''
+                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
@@ -376,9 +382,9 @@ class Navigation
                 /*
                  * sub <ul> in <li>
                  */
-                $this->html[] = sprintf('%1$s' . '<ul' . '%2$s' . '>',
+                $this->html[] = sprintf('%1$s'.'<ul'.'%2$s'.'>',
                     # %1$s tabulation
-                    $tab ."\t",
+                    $tab."\t",
 
                     # %2$s sub ul class
                     $this->isAtribute('class', $classes['sub_ul'])
@@ -397,7 +403,7 @@ class Navigation
                     # %2$s li class (active)
                     $this->isAtribute('class', [
                         $classes['li_whitout_ul'],
-                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : ''
+                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
@@ -424,13 +430,13 @@ class Navigation
             }
         }
 
-        $this->html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1) . $after['last_root_li'] : '';
+        $this->html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1).$after['last_root_li'] : '';
 
         // HTML wrapper for the menu (close)
-        $this->html[] = str_repeat("\t", $nesting) . '</ul>';
+        $this->html[] = str_repeat("\t", $nesting).'</ul>';
 
         $this->html[] = $after['root_ul'];
 
-        return implode("\n", array_filter($this->html)) . "\n";
+        return implode("\n", array_filter($this->html))."\n";
     }
 }

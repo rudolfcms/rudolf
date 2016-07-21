@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Users\Profile;
 
 use Rudolf\Framework\View\AdminView;

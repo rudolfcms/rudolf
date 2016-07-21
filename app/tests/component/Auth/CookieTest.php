@@ -33,7 +33,7 @@ class CookieTest extends \PHPUnit_Framework_TestCase
         $cookie->create();
         $_COOKIE[$this->cookieName] = $this->cookieValue;
 
-        $this->assertEquals($cookie->getValue(), $this->cookieValue); 
+        $this->assertEquals($cookie->getValue(), $this->cookieValue);
     }
 
     /**
@@ -48,9 +48,9 @@ class CookieTest extends \PHPUnit_Framework_TestCase
         $cookie->create();
         $_COOKIE[$this->cookieName] = $this->cookieValue;
 
-        $this->assertTrue($cookie->isExist()); 
+        $this->assertTrue($cookie->isExist());
     }
-    
+
     public function testIsExistWhenCookieNotExist()
     {
         $cookie = new Cookie($this->cookieName);
@@ -58,6 +58,6 @@ class CookieTest extends \PHPUnit_Framework_TestCase
         $cookie->setExpire('1');
         $cookie->setPath('/');
 
-        $this->assertFalse($cookie->isExist()); 
+        $this->assertFalse($cookie->isExist());
     }
 }

@@ -5,10 +5,9 @@
  * Initiates the application.
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf
+ *
  * @version 0.1
  */
-
 use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
 use Rudolf\Component\Modules\ModulesHooks;
 use Rudolf\Component\Modules\ModulesManager;
@@ -17,31 +16,32 @@ use Rudolf\Component\Plugins\PluginsManager;
 use Rudolf\Component\Routing\FrontController;
 use Rudolf\Component\Routing\RouteCollection;
 use Rudolf\Component\Routing\Router;
+
 ob_start();
 
 // checks whether php version is compatible with the instance of Rudolf
-require_once dirname(__FILE__) . '/component/Utils/PHPVersionCheck.php';
+require_once dirname(__FILE__).'/component/Utils/PHPVersionCheck.php';
 php_check_run($required = 5.3);
 
 // load defines
-require_once __DIR__ . '/defines.php';
+require_once __DIR__.'/defines.php';
 
 // load class autolaoder
-require_once APP_ROOT . '/vendor/autoload.php';
+require_once APP_ROOT.'/vendor/autoload.php';
 
 // load page configuration
-$config = include CONFIG_ROOT . '/site.php';
+$config = include CONFIG_ROOT.'/site.php';
 define('FRONT_THEME', $config['front_theme']);
 define('ADMIN_THEME', $config['admin_theme']);
 define('GENERAL_SITE_NAME', $config['general_name']);
 
 $lang = 'pl_PL.UTF8';
-putenv('LANG='. $lang);
+putenv('LANG='.$lang);
 setlocale(LC_MESSAGES,  $lang);
 //setlocale(LC_ALL,'en_US.UTF8');
 
 $domain = 'rudolf';
-bindtextdomain($domain, APP_ROOT .'/locale');
+bindtextdomain($domain, APP_ROOT.'/locale');
 textdomain($domain);
 bind_textdomain_codeset($domain, 'UTF-8');
 

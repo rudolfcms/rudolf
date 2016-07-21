@@ -1,25 +1,26 @@
 <?php
+
 namespace Rudolf\Component\ErrorHandler\Handler;
 
 abstract class Handler
 {
     /**
-     * Get exception information
+     * Get exception information.
      *
      * @return array
      */
-	public function getDescription()
+    public function getDescription()
     {
         return [
             'class' => get_class($this->exception),
             'message' => $this->exception->getMessage(),
             'file' => str_replace(WEB_ROOT, '', $this->exception->getFile()),
-            'line' => $this->exception->getLine()
+            'line' => $this->exception->getLine(),
         ];
     }
 
     /**
-     * Get strac trace
+     * Get strac trace.
      *
      * @return array
      */
@@ -36,7 +37,7 @@ abstract class Handler
                 'type' => isset($value['type']) ? $value['type'] : '',
                 'function' => isset($value['function']) ? $value['function'] : '',
                 // 'args' => str_replace(WEB_ROOT, '', var_export($value['args'], true))
-                'args' => ''
+                'args' => '',
             ];
         }
 
@@ -47,7 +48,7 @@ abstract class Handler
             'type' => $log[0]['type'],
             'function' => $log[0]['function'],
             // 'args' => str_replace(WEB_ROOT, '', var_export($log[0]['args'], true))
-            'args' => ''
+            'args' => '',
         ]);
 
         array_splice($log, 1, 1);

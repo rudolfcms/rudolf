@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Feed;
 
 /**
@@ -9,108 +10,107 @@ namespace Rudolf\Component\Feed;
  * @see http://cyber.law.harvard.edu/rss/rss.html
  * 
  * @author Mikołaj Pich <m.pich@outlook.com>
- * @package Rudolf\Component\Feed
+ *
  * @version 0.1
  */
-
 class RSS2Generator
 {
     ##################################################################
     ## Required
-    
+
     /**
      * @var string
      */
     private $title;
-    
+
     /**
      * @var string
      */
     private $link;
-    
+
     /**
      * @var string
      */
     private $description;
-    
+
     ##################################################################
     ## Optional
-    
+
     /**
      * @var string
      */
     private $language;
-    
+
     /**
      * @var string
      */
     private $copyright;
-    
+
     /**
      * @var string
      */
     private $managingEditor;
-    
+
     /**
      * @var string
      */
     private $webMaster;
-    
+
     /**
      * @var string
      */
     private $pubDate;
-    
+
     /**
      * @var string
      */
     private $lastBuildDate;
-    
+
     /**
      * @var string
      */
     private $category;
-    
+
     /**
      * @var string
      */
     private $generator;
-    
+
     /**
      * @var string
      */
     private $docs;
-    
+
     /**
      * @var array
      */
     private $cloud;
-    
+
     /**
      * @var int
      */
     private $ttl;
-    
+
     /**
      * @var private
      */
     private $image;
-    
+
     /**
      * @var private
      */
     private $rating;
-    
+
     /**
      * @var private
      */
     private $textInput;
-    
+
     /**
      * @var private
      */
     private $skipHours;
-    
+
     /**
      * @var private
      */
@@ -122,7 +122,7 @@ class RSS2Generator
     private $items;
 
     /**
-     * Set channel title
+     * Set channel title.
      * 
      * The name of the channel.
      * It's how people refer to your service. If you have an HTML
@@ -140,7 +140,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel link
+     * Set channel link.
      * 
      * The URL to the HTML website corresponding to the channel.
      * 
@@ -154,7 +154,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel descritpion
+     * Set channel descritpion.
      * 
      * Phrase or sentence describing the channel.
      * 
@@ -168,7 +168,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel description
+     * Set channel description.
      * 
      * The language the channel is written in.
      * This allows aggregators to group all Italian language sites,
@@ -189,7 +189,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel copyright
+     * Set channel copyright.
      * 
      * Copyright notice for content in the channel.
      * 
@@ -203,7 +203,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel managing editor
+     * Set channel managing editor.
      * 
      * Email address for person responsible for editorial content.
      * 
@@ -217,7 +217,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel web master
+     * Set channel web master.
      * 
      * Email address for person responsible for technical issues
      * relating to channel.
@@ -232,7 +232,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel pub date
+     * Set channel pub date.
      * 
      * The publication date for the content in the channel.
      * For example, the New York Times publishes on a daily basis,
@@ -254,7 +254,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel last build date
+     * Set channel last build date.
      * 
      * The last time the content of the channel changed.
      * 
@@ -268,7 +268,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel category
+     * Set channel category.
      * 
      * Specify one or more categories that the channel belongs to.
      * Follows the same rules as the <item>-level category element.
@@ -286,7 +286,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel generator
+     * Set channel generator.
      * 
      * A string indicating the program used to generate the channel.
      * 
@@ -300,7 +300,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel docs
+     * Set channel docs.
      * 
      * A URL that points to the documentation for the format
      * used in the RSS file. It's probably a pointer to this page.
@@ -317,7 +317,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel cloud
+     * Set channel cloud.
      * 
      * Allows processes to register with a cloud to be notified
      * of updates to the channel, implementing a lightweight
@@ -326,15 +326,15 @@ class RSS2Generator
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltcloudgtSubelementOfLtchannelgt
      * 
      * @example <cloud 
-    *               domain="rpc.sys.com"
-    *               port="80"
-    *               path="/RPC2"
-    *               registerProcedure="pingMe"
-    *               protocol="soap"
+     *               domain="rpc.sys.com"
+     *               port="80"
+     *               path="/RPC2"
+     *               registerProcedure="pingMe"
+     *               protocol="soap"
      *          />
      * 
      * @param string $domain
-     * @param int $port
+     * @param int    $port
      * @param string $path
      * @param string $registerProcedure
      * @param string $protocol
@@ -351,7 +351,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel ttl
+     * Set channel ttl.
      * 
      * ttl stands for time to live.It's a number of minutes
      * that indicates how long a channel can be cached
@@ -369,19 +369,19 @@ class RSS2Generator
     }
 
     /**
-     * Set channel image
+     * Set channel image.
      * 
      * Specifies a GIF, JPEG or PNG image that can be displayed
      * with the channel.
      * 
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltimagegtSubelementOfLtchannelgt
      * 
-     * @param string $url The URL of a GIF, JPEG or PNG image that represents the channel
+     * @param string $url   The URL of a GIF, JPEG or PNG image that represents the channel
      * @param string $title Describes the image, it's used in the ALT attribute of the
-     *      HTML <img> tag when the channel is rendered in HTML
-     * @param string $link The URL of the site, when the channel is rendered, the image
-     *      is a link to the site. (Note, in practice the image <title> and <link> should
-     *      have the same value as the channel's <title> and <link>
+     *                      HTML <img> tag when the channel is rendered in HTML
+     * @param string $link  The URL of the site, when the channel is rendered, the image
+     *                      is a link to the site. (Note, in practice the image <title> and <link> should
+     *                      have the same value as the channel's <title> and <link>
      */
     public function setImage($url, $title, $link, $width = 88, $height = 31, $description = '')
     {
@@ -392,7 +392,7 @@ class RSS2Generator
             'url' => $url,
             'width' => $width,
             'height' => $height,
-            'description' => $description
+            'description' => $description,
         ];
     }
 
@@ -409,30 +409,30 @@ class RSS2Generator
     }
 
     /**
-     * Set channel text input
+     * Set channel text input.
      * 
      * Specifies a text input box that can be displayed
      * with the channel.
      * 
      * @link http://cyber.law.harvard.edu/rss/rss.html#lttextinputgtSubelementOfLtchannelgt
      * 
-     * @param string $title The label of the Submit button in the text input area
+     * @param string $title       The label of the Submit button in the text input area
      * @param string $description Explains the text input area
-     * @param string $name The name of the text object in the text input area
-     * @param string $link The URL of the CGI script that processes text input requests
+     * @param string $name        The name of the text object in the text input area
+     * @param string $link        The URL of the CGI script that processes text input requests
      */
     public function setTextInput($title, $description, $name, $link)
     {
         $this->textInput = [
-            'title' => $title, 
-            'description' => $description, 
-            'name' => $name, 
-            'link' => $link
+            'title' => $title,
+            'description' => $description,
+            'name' => $name,
+            'link' => $link,
         ];
     }
 
     /**
-     * Set channel skip hours
+     * Set channel skip hours.
      * 
      * A hint for aggregators telling them which hours
      * they can skip.
@@ -447,7 +447,7 @@ class RSS2Generator
     }
 
     /**
-     * Set channel skip days
+     * Set channel skip days.
      * 
      * A hint for aggregators telling them which days
      * they can skip.
@@ -461,30 +461,31 @@ class RSS2Generator
         $this->skipDays = $skipDays;
     }
 
-    public function setItems($items) {
+    public function setItems($items)
+    {
         $this->items = $items;
     }
 
     /**
-     * Generate rss canal
+     * Generate rss canal.
      * 
      * @return string
      */
     public function generate()
     {
-        $t = "\t" . "\t";
+        $t = "\t"."\t";
 
         $xml[] = "<?xml version='1.0' encoding='UTF-8'?>";
         $xml[] = '<rss version="2.0">';
 
-        $xml[] = "\t" . '<channel>';
-        $xml[] = $t . '<title>' . $this->title . '</title>';
-        $xml[] = $t . '<link>' . $this->link . '</link>';
-        $xml[] = $t . '<description>' . $this->description . '</description>';
+        $xml[] = "\t".'<channel>';
+        $xml[] = $t.'<title>'.$this->title.'</title>';
+        $xml[] = $t.'<link>'.$this->link.'</link>';
+        $xml[] = $t.'<description>'.$this->description.'</description>';
 
         $xml = array_merge($xml, $this->items);
 
-        $xml[] = "\t" . '</channel>';
+        $xml[] = "\t".'</channel>';
         $xml[] = '</rss>';
 
         return trim(implode("\n", $xml));

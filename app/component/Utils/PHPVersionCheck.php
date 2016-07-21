@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Checks whether php version is compatible with LCMS
+ * Checks whether php version is compatible with LCMS.
  * 
  * @param float $minimumVersionPHP
- * 
- * @return void
  */
 function php_check_run($minimumVersionPHP)
 {
     $phpVersion = PHP_VERSION;
-    
+
     if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
         php_version_error($phpVersion, $minimumVersionPHP);
     }
@@ -23,13 +21,11 @@ function php_check_run($minimumVersionPHP)
  * 
  * @param float $phpVersion
  * @param float $minimumVersionPHP
- * 
- * @return void
  */
 function php_version_error($phpVersion, $minimumVersionPHP)
 {
     $pageTitle = 'Error to start the Rudolf!';
-    $shortText = 'Your host needs to use PHP ' . $minimumVersionPHP . ' or higher to run this version of Rudolf!';
+    $shortText = 'Your host needs to use PHP '.$minimumVersionPHP.' or higher to run this version of Rudolf!';
     $longText = 'To run Rudolf, you must upgrade your copy of PHP.';
 
     php_version_error_display($pageTitle, $shortText, $longText);
@@ -38,25 +34,21 @@ function php_version_error($phpVersion, $minimumVersionPHP)
 }
 
 /**
- * Display user-friendly error
+ * Display user-friendly error.
  * 
  * @param string $pageTitle
  * @param string $shortText
  * @param string $longText
- * 
- * @return void
  */
 function php_version_error_display($pageTitle, $shortText, $longText)
 {
     header('Content-type: text/html; charset=UTF-8');
     header('Cache-control: none');
-    header('Pragma: no-cache');
-
-?><!DOCTYPE html>
+    header('Pragma: no-cache'); ?><!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title><?php echo $pageTitle;?></title>
+    <title><?php echo $pageTitle; ?></title>
     <style type="text/css">
         body {
             background: #f1f1f1;
@@ -83,9 +75,9 @@ function php_version_error_display($pageTitle, $shortText, $longText)
 </head>
 <body>
     <div class="centered">
-        <h1><?php echo $pageTitle;?></h1>
-        <p><?php echo $shortText;?></p>
-        <p><?php echo $longText;?></p>
+        <h1><?php echo $pageTitle; ?></h1>
+        <p><?php echo $shortText; ?></p>
+        <p><?php echo $longText; ?></p>
     </div>
 </body>
 </html><?php

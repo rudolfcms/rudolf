@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\ErrorHandler\Handler;
 
 use Rudolf\Component\Http\ResponseMessages;
@@ -18,7 +19,7 @@ class UserFriendlyHandler extends Handler implements IHandler
     }
 
     /**
-     * Get code from exception
+     * Get code from exception.
      * 
      * @param Exception $e
      * 
@@ -30,7 +31,7 @@ class UserFriendlyHandler extends Handler implements IHandler
     }
 
     /**
-     * Displays an error message in html
+     * Displays an error message in html.
      * 
      * @return string
      */
@@ -39,21 +40,21 @@ class UserFriendlyHandler extends Handler implements IHandler
         $code = $code;
         $message = _($message);
         $text = $text;
-        $error = _('Code') . ' ' . $code;
-        $title = $error . ' - ' . $message;
+        $error = _('Code').' '.$code;
+        $title = $error.' - '.$message;
 
-        return 
+        return
         '<!DOCTYPE html>'
             .'<meta charset="utf-8">'
-            .'<title>'. $title .'</title>'
+            .'<title>'.$title.'</title>'
             .'<style>'
-            .    'body{background:#f1f1f1;font-family:Arial,sans-serif;color:#444}.c{max-width:500px;min-width:200px;margin:40px auto;padding:15px;background:#fff;box-shadow:1px 2px 3px #aaa}h1{font-weight:normal;margin:5px 10px 20px;}p{margin:10px;color:#555}.r{font-size:13px;text-align:right;font-style:italic;color:#aaa}'
+            .'body{background:#f1f1f1;font-family:Arial,sans-serif;color:#444}.c{max-width:500px;min-width:200px;margin:40px auto;padding:15px;background:#fff;box-shadow:1px 2px 3px #aaa}h1{font-weight:normal;margin:5px 10px 20px;}p{margin:10px;color:#555}.r{font-size:13px;text-align:right;font-style:italic;color:#aaa}'
             .'</style>'
             .'<div class="c">'
-            .    '<h1>'. $message .'</h1>'
-            .    '<p>'. $error .'</p>'
-            .    '<p>'. $text .'</p>'
-            .    '<p class="r">Rudolf</p>'
+            .'<h1>'.$message.'</h1>'
+            .'<p>'.$error.'</p>'
+            .'<p>'.$text.'</p>'
+            .'<p class="r">Rudolf</p>'
             .'</div>';
     }
 }

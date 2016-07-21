@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\One;
 
 use Rudolf\Modules\Articles;
@@ -6,24 +7,24 @@ use Rudolf\Modules\Articles;
 class Model extends Articles\Model
 {
     /**
-     * Returns article data based on year, month and slug
+     * Returns article data based on year, month and slug.
      * 
-     * @param int $year
-     * @param int $month
+     * @param int    $year
+     * @param int    $month
      * @param string $slug
      * 
      * @return bool|array
      */
     public function getOneByDate($year, $month, $slug)
     {
-        $stmt = $this->pdo->prepare($this->queryPart('full') .
-            "WHERE YEAR(article.date) = :year AND MONTH(article.date) = :month AND article.slug = :slug");
+        $stmt = $this->pdo->prepare($this->queryPart('full').
+            'WHERE YEAR(article.date) = :year AND MONTH(article.date) = :month AND article.slug = :slug');
         $stmt->bindValue(':year', $year, \PDO::PARAM_INT);
         $stmt->bindValue(':month', $month, \PDO::PARAM_INT);
         $stmt->bindValue(':slug', $slug, \PDO::PARAM_STR);
         $stmt->execute();
         $this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
-        
+
         if (empty($this->results)) {
             return false;
         }
@@ -32,7 +33,7 @@ class Model extends Articles\Model
     }
 
     /**
-     * Returns article data based on id
+     * Returns article data based on id.
      * 
      * @param int $id
      * 
@@ -40,12 +41,12 @@ class Model extends Articles\Model
      */
     public function getOneById($id)
     {
-        $stmt = $this->pdo->prepare($this->queryPart('full') .
+        $stmt = $this->pdo->prepare($this->queryPart('full').
             'WHERE article.id = :id');
         $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
-        
+
         if (empty($this->results)) {
             return false;
         }
@@ -54,7 +55,7 @@ class Model extends Articles\Model
     }
 
     /**
-     * Increment article views 
+     * Increment article views.
      */
     public function addView()
     {

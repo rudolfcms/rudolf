@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -30,7 +31,7 @@ class Controller extends AdminController
     public function redirect()
     {
         $response = new Response('', 301);
-        $response->setHeader(['Location', DIR . '/admin/albums/list']);
+        $response->setHeader(['Location', DIR.'/admin/albums/list']);
         $response->send();
         exit;
     }

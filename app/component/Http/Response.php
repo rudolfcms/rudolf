@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Http;
 
 class Response
@@ -12,12 +13,12 @@ class Response
      * @var int Http response code
      */
     private $status;
-    
+
     /**
      * @var array Headers
      */
     private $headers;
-    
+
     /**
      * @var array Status codes translation table
      */
@@ -25,14 +26,14 @@ class Response
         100 => 'Continue',
         101 => 'Switching Protocols',
         200 => 'OK',
-        
+
         201 => 'Created',
         202 => 'Accepted',
         203 => 'Non-Authoritative Information',
         204 => 'No Content',
         205 => 'Reset Content',
         206 => 'Partial Content',
-        
+
         300 => 'Multiple Choices',
         301 => 'Moved Permanently',
         302 => 'Found',
@@ -40,7 +41,7 @@ class Response
         304 => 'Not Modified',
         305 => 'Use Proxy',
         307 => 'Temporary Redirect',
-        
+
         400 => 'Bad Request',
         401 => 'Unauthorized',
         402 => 'Payment Required',
@@ -59,21 +60,21 @@ class Response
         415 => 'Unsupported Media Type',
         416 => 'Requested range not satisfiable',
         417 => 'Expectation Failed',
-        
+
         500 => 'Internal Server Error',
         501 => 'Not Implemented',
         502 => 'Bad Gateway',
         503 => 'Service Unavailable',
         504 => 'Gateway Timeout',
-        505 => 'HTTP Version Not Supported'
+        505 => 'HTTP Version Not Supported',
     );
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $content The response content
-     * @param int   $status  The response status code
-     * @param array $headers An array of response headers
+     * @param int    $status  The response status code
+     * @param array  $headers An array of response headers
      *
      * @throws \InvalidArgumentException When the HTTP status code is not valid
      */
@@ -85,11 +86,9 @@ class Response
     }
 
     /**
-     * Set content
+     * Set content.
      * 
      * @param string $content Content to return in response
-     * 
-     * @return void
      */
     public function setContent($content)
     {
@@ -97,28 +96,24 @@ class Response
     }
 
     /**
-     * Set status code
+     * Set status code.
      * 
      * @param int $code Http status code
      * 
      * @throws \InvalidArgumentException
-     * @return void
      */
     private function setStatusCode($code)
     {
         if (!isset(self::$statusTexts[$code])) {
             throw new \InvalidArgumentException('Invalid HTTP status code', 1);
-            
         }
         $this->statusCode = $code;
     }
 
     /**
-     * Set once header
+     * Set once header.
      * 
      * @param array $header
-     * 
-     * @return void
      */
     public function setHeader($header)
     {
@@ -129,11 +124,9 @@ class Response
     }
 
     /**
-     * Set many headers
+     * Set many headers.
      * 
-     * @param array $headers 
-     * 
-     * @return void
+     * @param array $headers
      */
     public function setManyHeaders($headers)
     {
@@ -146,33 +139,33 @@ class Response
     }
 
     /**
-     * Send headers
+     * Send headers.
      * 
      * @return void|false
      */
     public function sendHeaders()
     {
-        header('HTTP/1.1 ' . $this->statusCode . ' ' . self::$statusTexts[$this->statusCode]);
+        header('HTTP/1.1 '.$this->statusCode.' '.self::$statusTexts[$this->statusCode]);
 
         if (empty($this->headers)) {
             return false;
         }
 
         foreach ($this->headers as $key => $value) {
-            header($key . ': ' . $value);
+            header($key.': '.$value);
         }
     }
 
     /**
      * Send http response
-     * It sends headers and content
+     * It sends headers and content.
      * 
      * @return string Response content
      */
     public function send()
     {
         $this->sendHeaders();
-        
+
         return $this->content;
     }
 }

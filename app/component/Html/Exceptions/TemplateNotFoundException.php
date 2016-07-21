@@ -1,4 +1,7 @@
 <?php
+
 namespace Rudolf\Component\Html\Exceptions;
 
-class TemplateNotFoundException extends \Exception { }
+class TemplateNotFoundException extends \Exception
+{
+}

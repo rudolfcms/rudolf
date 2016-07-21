@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Framework\Model;
 
 use Rudolf\Component\Auth\Auth;
@@ -9,15 +10,16 @@ class AdminModel extends BaseModel
     protected static $auth;
 
     /**
-     * Returns Auth object
+     * Returns Auth object.
      *
      * @return Auth
      */
     public function getAuth()
     {
-        if(empty(self::$auth)) {
+        if (empty(self::$auth)) {
             self::$auth = new Auth($this->pdo, $this->prefix);
         }
+
         return self::$auth;
     }
 
@@ -27,6 +29,7 @@ class AdminModel extends BaseModel
     public function getMenuItems()
     {
         $menu = new ModulesMenu();
+
         return $menu->getMenuItems();
     }
 }

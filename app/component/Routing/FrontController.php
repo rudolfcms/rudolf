@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Routing;
 
 use Rudolf\Component\Http\HttpErrorException;
@@ -26,7 +27,7 @@ class FrontController
     private $params;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param Router
      */
@@ -36,9 +37,7 @@ class FrontController
     }
 
     /**
-     * Run
-     * 
-     * @return void
+     * Run.
      */
     public function run()
     {
@@ -49,18 +48,18 @@ class FrontController
         $names = $this->explodeName($this->router->getControllerName());
 
         if (!class_exists($names[0])) {
-            throw new HttpErrorException('Controller class '. $names[0].' doesn\'t exist');
+            throw new HttpErrorException('Controller class '.$names[0].' doesn\'t exist');
         }
 
         $this->call($names, $this->router->getParams());
     }
 
     /**
-     * Call controller method
+     * Call controller method.
      * 
      * @param object @object
      * @param string $method
-     * @param array $params
+     * @param array  $params
      * 
      * @return bool
      */
@@ -78,7 +77,7 @@ class FrontController
     }
 
     /**
-     * Divides the the name of the class and method
+     * Divides the the name of the class and method.
      * 
      * @param string $name
      * 
@@ -89,7 +88,7 @@ class FrontController
         $array = explode('::', $name);
 
         if (!empty($array)) {
-            return $array; 
+            return $array;
         }
 
         return false;

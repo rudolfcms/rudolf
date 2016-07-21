@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Koxy\Roll;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -16,7 +17,7 @@ class Controller extends FrontController
         $total = $list->getTotalNumber();
 
         $conf = (new Module('koxy'))->getConfig();
-        
+
         $pagination = new Pagination($total, $page, $conf['on_page'], $conf['nav_number']);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();

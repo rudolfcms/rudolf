@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\One;
 
 use Rudolf\Component\Hooks;
@@ -13,7 +14,7 @@ class Article
     protected $article;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param array $article
      */
@@ -23,7 +24,7 @@ class Article
     }
 
     /**
-     * Set article data
+     * Set article data.
      * 
      * @param array $article
      */
@@ -64,7 +65,7 @@ class Article
     }
 
     /**
-     * Returns article ID
+     * Returns article ID.
      * 
      * @return int
      */
@@ -74,7 +75,7 @@ class Article
     }
 
     /**
-     * Returns category ID
+     * Returns category ID.
      * 
      * @return int
      */
@@ -84,13 +85,14 @@ class Article
     }
 
     /**
-     * Returns article title
+     * Returns article title.
      * 
      * @param string $type null|raw
      * 
      * @return string
      */
-    public function title($type = '') {
+    public function title($type = '')
+    {
         $title = $this->article['title'];
         if ('raw' === $type) {
             return $title;
@@ -100,13 +102,14 @@ class Article
     }
 
     /**
-     * Returns the keywords
+     * Returns the keywords.
      * 
      * @param string $type null|raw
      * 
      * @return string
      */
-    public function keywords($type = '') {
+    public function keywords($type = '')
+    {
         $keywords = $this->article['keywords'];
         if ('raw' === $type) {
             return $keywords;
@@ -116,13 +119,14 @@ class Article
     }
 
     /**
-     * Returns the description
+     * Returns the description.
      * 
      * @param string $type
      * 
      * @return string
      */
-    public function description($type = '') {
+    public function description($type = '')
+    {
         $description = $this->article['description'];
         if ('raw' === $type) {
             return $description;
@@ -132,16 +136,17 @@ class Article
     }
 
     /**
-     * Returns article content
+     * Returns article content.
      * 
      * @param bool|int $truncate
-     * @param bool $stripTags
-     * @param bool $escape
-     * @param bool $raw
+     * @param bool     $stripTags
+     * @param bool     $escape
+     * @param bool     $raw
      * 
      * @return string
      */
-    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false) {
+    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
+    {
         $content = $this->article['content'];
 
         if (true === $stripTags) {
@@ -158,6 +163,7 @@ class Article
 
         if (false === $raw) {
             $content = Hooks\Filter::apply('content_filter', $content);
+
             return $content;
         }
 
@@ -165,13 +171,14 @@ class Article
     }
 
     /**
-     * Returns the author
+     * Returns the author.
      * 
      * @param bool $adder Returns adder name if fields empty
      * 
      * @return string
      */
-    public function author($adder = true) {
+    public function author($adder = true)
+    {
         $author = $this->article['author'];
 
         // if fields is empty and $adder is true
@@ -183,14 +190,15 @@ class Article
     }
 
     /**
-     * Returns article date
+     * Returns article date.
      * 
      * @param bool|string $format
-     * @param string $style normal|locale
+     * @param string      $style  normal|locale
      * 
      * @return string If date field empty, return current date
      */
-    public function date($format = false, $style = 'normal', $inflected = true) {
+    public function date($format = false, $style = 'normal', $inflected = true)
+    {
         $date = $this->article['date'];
 
         if (empty($date)) {
@@ -202,13 +210,13 @@ class Article
                 $format = ($format) ? $format : '%D';
                 $date = strftime($format, strtotime($date));
                 break;
-            
+
             default: // http://php.net/manual/en/datetime.formats.date.php
                 $format = ($format) ? $format : 'Y-m-d H:i:s';
                 $date = date_format(date_create($date), $format);
                 break;
         }
-        
+
         $date = Hooks\Filter::apply('date_format_filter', $date);
 
         if (true === $inflected) {
@@ -224,7 +232,7 @@ class Article
                 'wrzesień' => 'września', // 09
                 'październik' => 'października', // 10
                 'listopad' => 'listopada', // 11
-                'grudzień' => 'grudnia' // 12
+                'grudzień' => 'grudnia', // 12
             ];
 
             foreach ($month as $key => $value) {
@@ -236,7 +244,7 @@ class Article
     }
 
     /**
-     * Returns date of article added
+     * Returns date of article added.
      * 
      * @return string
      */
@@ -246,7 +254,7 @@ class Article
     }
 
     /**
-     * Returns date of last article modified
+     * Returns date of last article modified.
      * 
      * @return string
      */
@@ -256,7 +264,7 @@ class Article
     }
 
     /**
-     * Returns adder ID
+     * Returns adder ID.
      * 
      * @return int
      */
@@ -266,14 +274,15 @@ class Article
     }
 
     /**
-     * Returns first name and surname of adder
+     * Returns first name and surname of adder.
      * 
      * @param string $type
      * 
      * @return string
      */
-    public function adderFullName($type = '') {
-        $name = trim($this->article['adder_first_name'] . ' ' . $this->article['adder_surname']);
+    public function adderFullName($type = '')
+    {
+        $name = trim($this->article['adder_first_name'].' '.$this->article['adder_surname']);
         if ('raw' === $type) {
             return $name;
         }
@@ -282,7 +291,7 @@ class Article
     }
 
     /**
-     * Returns modifier ID
+     * Returns modifier ID.
      * 
      * @return int
      */
@@ -292,12 +301,13 @@ class Article
     }
 
     /**
-     * Returns modifier full name
+     * Returns modifier full name.
      * 
      * @return int
      */
-    public function modifierFullName($type = '') {
-        $name = $this->article['modifier_first_name'] . ' ' . $this->article['modifier_surname'];
+    public function modifierFullName($type = '')
+    {
+        $name = $this->article['modifier_first_name'].' '.$this->article['modifier_surname'];
         if ('raw' === $type) {
             return $name;
         }
@@ -306,7 +316,7 @@ class Article
     }
 
     /**
-     * Checks whether the article has modified
+     * Checks whether the article has modified.
      * 
      * @return bool
      */
@@ -316,7 +326,7 @@ class Article
     }
 
     /**
-     * Returns the number of views
+     * Returns the number of views.
      * 
      * @return int
      */
@@ -326,7 +336,7 @@ class Article
     }
 
     /**
-     * Returns article slug
+     * Returns article slug.
      * 
      * @return string
      */
@@ -336,7 +346,7 @@ class Article
     }
 
     /**
-     * Returns article url
+     * Returns article url.
      * 
      * @return string
      */
@@ -352,7 +362,7 @@ class Article
     }
 
     /**
-     * Returns album path
+     * Returns album path.
      * 
      * @return string
      */
@@ -362,7 +372,7 @@ class Article
     }
 
     /**
-     * Returns thumb path
+     * Returns thumb path.
      * 
      * @return string
      */
@@ -372,7 +382,7 @@ class Article
     }
 
     /**
-     * Checks whether the article has a thumbnail
+     * Checks whether the article has a thumbnail.
      * 
      * @return bool
      */
@@ -382,12 +392,12 @@ class Article
     }
 
     /**
-     * Returns thumbnail code or only address
+     * Returns thumbnail code or only address.
      * 
-     * @param int $width Image width
-     * @param int $height Image height
-     * @param bool $album Add album address if exists
-     * @param string $alt Set alternative text
+     * @param int    $width   Image width
+     * @param int    $height  Image height
+     * @param bool   $album   Add album address if exists
+     * @param string $alt     Set alternative text
      * @param string $default Default thumb path. It use when thumb path is empty
      * 
      * @return string
@@ -420,7 +430,7 @@ class Article
     }
 
     /**
-     * Returns the number of photos
+     * Returns the number of photos.
      * 
      * @return int
      */
@@ -430,7 +440,7 @@ class Article
     }
 
     /**
-     * Checks whether the article has a photos
+     * Checks whether the article has a photos.
      * 
      * @return bool
      */
@@ -440,7 +450,7 @@ class Article
     }
 
     /**
-     * Chcecks whether the article is published
+     * Chcecks whether the article is published.
      * 
      * @return bool
      */
@@ -450,7 +460,7 @@ class Article
     }
 
     /**
-     * Returns article category anchor
+     * Returns article category anchor.
      * 
      * @return string
      */
@@ -463,7 +473,7 @@ class Article
     }
 
     /**
-     * Returns category title
+     * Returns category title.
      * 
      * @param string $type
      * 
@@ -481,7 +491,7 @@ class Article
     }
 
     /**
-     * Returns category url
+     * Returns category url.
      * 
      * @return string
      */
@@ -495,7 +505,7 @@ class Article
     }
 
     /**
-     * Checks whether the article has a category
+     * Checks whether the article has a category.
      * 
      * @return bool
      */

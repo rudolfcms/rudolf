@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\ErrorHandler\Handler;
 
 class DebugFriendlyHandler extends Handler implements IHandler
@@ -18,10 +19,10 @@ class DebugFriendlyHandler extends Handler implements IHandler
     }
 
     /**
-     * Get resource
+     * Get resource.
      *
      * @param string|array $name
-     * @param bool $include
+     * @param bool         $include
      *
      * @return string
      */
@@ -29,13 +30,15 @@ class DebugFriendlyHandler extends Handler implements IHandler
     {
         if (true === $include) {
             ob_start();
-            include __DIR__ .'/../Resources/'. $name;
+            include __DIR__.'/../Resources/'.$name;
+
             return ob_get_clean();
         }
 
         foreach ($name as $key => $value) {
-            $t[] = file_get_contents(__DIR__ .'/../Resources/'. $value);
+            $t[] = file_get_contents(__DIR__.'/../Resources/'.$value);
         }
+
         return implode('', $t);
     }
 }

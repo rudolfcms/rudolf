@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Category\One\Admin;
 
 use Rudolf\Modules\Articles\Category\One;
@@ -8,11 +9,11 @@ class Category extends One\Category implements ICategory
 {
     public function editUrl()
     {
-        return DIR . '/admin/articles/categories/edit/' . $this->id();
+        return DIR.'/admin/articles/categories/edit/'.$this->id();
     }
 
     public function delUrl()
     {
-        return DIR . '/admin/articles/categories/del/' . $this->id();
+        return DIR.'/admin/articles/categories/del/'.$this->id();
     }
 }

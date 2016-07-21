@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Index;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;

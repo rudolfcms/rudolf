@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\Feed;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
@@ -9,11 +10,9 @@ use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 class Controller extends FrontController
 {
     /**
-     * Get feed
+     * Get feed.
      * 
      * @param string $type Feed type
-     * 
-     * @return void
      */
     public function getFeed($type)
     {
@@ -28,7 +27,7 @@ class Controller extends FrontController
 
         $view = new View();
         $view->setArticles($results, $pagination);
-        
+
         $response = new Response();
         switch ($type) {
             case 'atom':

@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Modules;
 
 use Rudolf\Component\Routing\RouteCollection;
@@ -9,7 +10,7 @@ class ModulesRouting
     private $modulesList;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param array $modulesList
      * @param RouteCollection
@@ -23,20 +24,21 @@ class ModulesRouting
     }
 
     /**
-     * Add routes to collection
+     * Add routes to collection.
      * 
      * @return RouteCollection
      */
     public function addRoutes()
     {
         $collection = $this->collection;
-        for ($i=0; $i < $c = count($this->modulesList); $i++) {
-            $file = $this->path . '/' . $this->modulesList[$i] . '/routing.php';
-            
+        for ($i = 0; $i < $c = count($this->modulesList); ++$i) {
+            $file = $this->path.'/'.$this->modulesList[$i].'/routing.php';
+
             if (is_file($file)) {
                 include $file;
             }
         }
+
         return $collection;
     }
 }

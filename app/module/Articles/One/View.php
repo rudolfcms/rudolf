@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Articles\One;
 
 use Rudolf\Framework\View\FrontView;
@@ -6,7 +7,7 @@ use Rudolf\Framework\View\FrontView;
 class View extends FrontView
 {
     /**
-     * Set articles data
+     * Set articles data.
      * 
      * @param array $data
      */

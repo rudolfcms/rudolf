@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Categories\One;
 
 interface ICategory

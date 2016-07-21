@@ -3,7 +3,7 @@
 $cacheDir = '../app/temp/imageresizer/';
 
 if (!file_exists($cacheDir)) {
-	mkdir($cacheDir, 0775);
+    mkdir($cacheDir, 0775);
 }
 
 define('FILE_CACHE_DIRECTORY', $cacheDir);

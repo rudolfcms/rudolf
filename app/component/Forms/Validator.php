@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Forms;
 
 use DateTime;
@@ -16,7 +17,7 @@ class Validator
     private $fields;
 
     /**
-     * Checks if there are any errors
+     * Checks if there are any errors.
      * 
      * @return false
      */
@@ -27,24 +28,25 @@ class Validator
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * Returns array with alerts
+     * Returns array with alerts.
      * 
      * @return false|array
      */
     public function getAlerts()
     {
-        return (empty($this->alerts)) ? false: $this->alerts;
+        return (empty($this->alerts)) ? false : $this->alerts;
     }
 
     /**
-     * Checks wheter date is valid
+     * Checks wheter date is valid.
      * 
-     * @param string $field Field name
-     * @param string $value Field value
+     * @param string $field  Field name
+     * @param string $value  Field value
      * @param string $format Date format
      * 
      * @return bool
@@ -52,28 +54,30 @@ class Validator
     public function checkDatetime($field, $value, $format = 'Y-m-d')
     {
         $d = DateTime::createFromFormat($format, $value);
-        
+
         if (false === ($d && $d->format($format) == $value)) {
             $this->alerts[$field] = [
                 'type' => 'error',
-                'message' => 'Invalid datetime'
+                'message' => 'Invalid datetime',
             ];
 
             $this->fields[$field] = 0;
+
             return false;
         }
 
         $this->fields[$field] = 1;
+
         return true;
     }
 
     /**
-     * Check char
+     * Check char.
      * 
      * @param string $field Field name
      * @param string $value Field value
-     * @param int $max Max characters in string
-     * @param int $min Min characters
+     * @param int    $max   Max characters in string
+     * @param int    $min   Min characters
      * 
      * @return bool
      */
@@ -84,33 +88,35 @@ class Validator
         if ($length < $min) {
             $this->alerts[$field] = [
                 'type' => 'error',
-                'message' => 'Too short string'
+                'message' => 'Too short string',
             ];
 
             $this->fields[$field] = 0;
+
             return false;
         } elseif ($max < $length) {
             $this->alerts[$field] = [
                 'type' => 'error',
-                'message' => 'Too long string'
+                'message' => 'Too long string',
             ];
 
             $this->fields[$field] = 0;
+
             return false;
         }
 
         $this->fields[$field] = 1;
+
         return true;
     }
 
     /**
-     * Check int
+     * Check int.
      * 
      * @param string $field Field name
-     * @param int $field Field value
-     * @param int $max Max value
-     * @param int $min Min value
-     * 
+     * @param int    $field Field value
+     * @param int    $max   Max value
+     * @param int    $min   Min value
      * @param bool
      */
     public function checkInt($field, $value, $max = false, $min = 0)
@@ -118,22 +124,25 @@ class Validator
         if ($value < $min) {
             $this->alerts[$field] = [
                 'type' => 'error',
-                'message' => 'Too low'
+                'message' => 'Too low',
             ];
 
             $this->fields[$field] = 0;
+
             return false;
         } elseif ($value > $max) {
             $this->alerts[$field] = [
                 'type' => 'error',
-                'message' => 'Too high'
+                'message' => 'Too high',
             ];
 
             $this->fields[$field] = 0;
+
             return false;
         }
 
         $this->fields[$field] = 1;
+
         return true;
     }
 }

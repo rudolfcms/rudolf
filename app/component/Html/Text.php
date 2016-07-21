@@ -1,13 +1,14 @@
 <?php
+
 namespace Rudolf\Component\Html;
 
 class Text
-{   
+{
     /**
      * It truncates text.
      * 
-     * @param string $str text to cut
-     * @param int $length truncate text length
+     * @param string $str      text to cut
+     * @param int    $length   truncate text length
      * @param string $ellipsis
      *
      * @return $str truncate text
@@ -17,8 +18,9 @@ class Text
         $tmp['length'] = strlen($str);
 
         if ($tmp['length'] > $length) {
-            while($str[$length] != ' ' && ++$length < $tmp['length']);
-            return trim(substr($str, 0, $length), ',') . $ellipsis;
+            while ($str[$length] != ' ' && ++$length < $tmp['length']);
+
+            return trim(substr($str, 0, $length), ',').$ellipsis;
         } else {
             return $str;
         }

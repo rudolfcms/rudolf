@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Pages\One;
 
 use Rudolf\Component\Http\HttpErrorException;
@@ -27,7 +28,7 @@ class Controller extends FrontController
 
         $temp = '';
         foreach ($addressArray as $key => $value) {
-            $active[] = ltrim($temp = $temp . '/' . $value, '/');
+            $active[] = ltrim($temp = $temp.'/'.$value, '/');
         }
 
         $view->setFrontData($this->frontData, $active);

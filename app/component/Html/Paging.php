@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Html;
 
 class Paging
@@ -12,21 +13,20 @@ class Paging
     private $nesting;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array $nav with data for loop
-     *      <page> - current page
-     *      <forstart> -
-     *      <forend> -
-     *      <allpages> - all pages
-     *      <prev> - prev page
-     *      <next> - next page
-     *
-     * @param string $path path with a slash at the beginning and at the end without him, like: '/kg'
-     * @param array $classes Specifies a pagination appearance
-     *      <ul> - main ul class
-     *      <current> - current active li class
-     * @param int $nesting
+     * @param array  $nav     with data for loop
+     *                        <page> - current page
+     *                        <forstart> -
+     *                        <forend> -
+     *                        <allpages> - all pages
+     *                        <prev> - prev page
+     *                        <next> - next page
+     * @param string $path    path with a slash at the beginning and at the end without him, like: '/kg'
+     * @param array  $classes Specifies a pagination appearance
+     *                        <ul> - main ul class
+     *                        <current> - current active li class
+     * @param int    $nesting
      */
     public function __construct($info = [], $path = '', $classes = [], $nesting = 0)
     {
@@ -53,14 +53,14 @@ class Paging
 
     public function getPath()
     {
-        return DIR . $this->path;
+        return DIR.$this->path;
     }
 
     public function setClasses(array $classes)
     {
         $this->classes = array_merge([
             'ul' => '',
-            'current' => 'current'
+            'current' => 'current',
         ], $classes);
     }
 
@@ -86,7 +86,7 @@ class Paging
         $classes = $this->getClasses();
         $nesting = $this->getNesting();
 
-        $html[] = sprintf('<ul%1$s>', ($classes['ul']) ? ' class="' . $classes['ul'].'"' : '');
+        $html[] = sprintf('<ul%1$s>', ($classes['ul']) ? ' class="'.$classes['ul'].'"' : '');
         if (!isset($classes['current'])) {
             $classes['current'] = 'current';
         }
@@ -95,7 +95,7 @@ class Paging
         $tab = str_repeat("\t", 1 + $nesting);
 
         if ($nav['page'] > 1) {
-            $html[] = sprintf('%1$s<li><a href="%2$s">«</a></li>', $tab, $path.'/page/' . $nav['prev']);
+            $html[] = sprintf('%1$s<li><a href="%2$s">«</a></li>', $tab, $path.'/page/'.$nav['prev']);
         }
         if ($nav['forstart'] > 1) {
             $html[] = sprintf('%1$s<li><a href="%2$s">1</a></li>', $tab, $path.'/page/1');
@@ -103,13 +103,13 @@ class Paging
         if ($nav['forstart'] > 2) {
             $html[] = sprintf('%1$s<li><a>...</a></li>', $tab);
         }
-        for($nav['forstart']; $nav['forstart'] < $nav['forend']; $nav['forstart']++) {
+        for ($nav['forstart']; $nav['forstart'] < $nav['forend']; ++$nav['forstart']) {
             if ($nav['forstart'] == $nav['page']) {
                 $html[] = sprintf(
                     '%1$s<li class="%2$s"><a href="%3$s">%4$s</a></li>',
                     $tab,
                     $classes['current'],
-                    $path . '/page/' . $nav['forstart'],
+                    $path.'/page/'.$nav['forstart'],
                     $nav['forstart']
                 );
             }
@@ -117,7 +117,7 @@ class Paging
                 $html[] = sprintf(
                     '%1$s<li><a href="%2$s">%3$s</a></li>',
                     $tab,
-                    $path . '/page/' . $nav['forstart'],
+                    $path.'/page/'.$nav['forstart'],
                     $nav['forstart']
                 );
             }
@@ -129,7 +129,7 @@ class Paging
             $html[] = sprintf(
                 '%1$s<li><a href="%2$s">%3$s</a></li>',
                 $tab,
-                $path . '/page/' . $nav['allpages'],
+                $path.'/page/'.$nav['allpages'],
                 $nav['allpages']
             );
         }
@@ -137,10 +137,10 @@ class Paging
             $html[] = sprintf(
                 '%1$s<li><a href="%2$s">»</a></li>',
                 $tab,
-                $path . '/page/' . $nav['next']
+                $path.'/page/'.$nav['next']
             );
         }
-        $html[] = $nest . '</ul>'."\n";
+        $html[] = $nest.'</ul>'."\n";
 
         return implode("\n", $html);
     }

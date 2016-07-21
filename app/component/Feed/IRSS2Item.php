@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Feed;
 
 interface IRSS2Item

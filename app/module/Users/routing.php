@@ -1,4 +1,5 @@
 <?php
+
 use Rudolf\Component\Routing;
 use Rudolf\Component\Modules;
 
@@ -9,10 +10,10 @@ $collection->add('user/login', new Routing\Route(
     'user/login(/redirect-to/<page>)?',
     'Rudolf\Modules\Users\Login\Controller::login',
     array( // wyrazenia regularne dla parametrow
-        'page' => ".*$"
+        'page' => '.*$',
     ),
     array( // wartosci domyslne
-        'page' => 'dashboard'
+        'page' => 'dashboard',
     )
 ));
 

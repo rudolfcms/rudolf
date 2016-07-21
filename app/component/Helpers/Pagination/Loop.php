@@ -1,8 +1,9 @@
 <?php
+
 namespace Rudolf\Component\Helpers\Pagination;
 
 use Rudolf\Component\Html\Paging;
-    
+
 class Loop
 {
     /**
@@ -31,10 +32,10 @@ class Loop
     protected $current = -1;
 
     /**
-     * Constructor
+     * Constructor.
      * 
-     * @param array $data
-     * @param Calc $calc
+     * @param array  $data
+     * @param Calc   $calc
      * @param string $itemClassName
      * @param string $path
      */
@@ -48,7 +49,7 @@ class Loop
     }
 
     /**
-     * Chech, is any item to display
+     * Chech, is any item to display.
      * 
      * @return bool
      */
@@ -58,7 +59,7 @@ class Loop
     }
 
     /**
-     * Returns number of items to display on page
+     * Returns number of items to display on page.
      * 
      * @return int
      */
@@ -68,7 +69,7 @@ class Loop
     }
 
     /**
-     * Whether there are more items available in the loop
+     * Whether there are more items available in the loop.
      *
      * @return bool
      */
@@ -77,11 +78,12 @@ class Loop
         if ($this->current + 1 < $this->total()) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * Set the current item
+     * Set the current item.
      *
      * @return object
      */
@@ -95,7 +97,7 @@ class Loop
     }
 
     /**
-     * Checks if pagination is needed
+     * Checks if pagination is needed.
      * 
      * @return bool
      */
@@ -105,12 +107,12 @@ class Loop
     }
 
     /**
-     * Return navigation
+     * Return navigation.
      * 
      * @param array $classes
-     *      ul
-     *      current
-     * @param int $navNumber
+     *                         ul
+     *                         current
+     * @param int   $navNumber
      * 
      * @return string
      */

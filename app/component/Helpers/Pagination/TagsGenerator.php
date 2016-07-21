@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Component\Helpers\Pagination;
 
 use Rudolf\Component\Html\Head;
@@ -20,7 +21,7 @@ class TagsGenerator
 
     public function setPath($path)
     {
-        $this->path = str_replace('//', '/', DIR . '/'. $path . '/');
+        $this->path = str_replace('//', '/', DIR.'/'.$path.'/');
     }
 
     public function create()

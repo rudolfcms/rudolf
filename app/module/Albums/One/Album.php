@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Modules\Albums\One;
 
 use Rudolf\Component\Hooks;
@@ -13,7 +14,7 @@ class Album
     protected $album;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param array $album
      */
@@ -23,7 +24,7 @@ class Album
     }
 
     /**
-     * Set album data
+     * Set album data.
      * 
      * @param array $album
      */
@@ -60,7 +61,7 @@ class Album
     }
 
     /**
-     * Returns album ID
+     * Returns album ID.
      * 
      * @return int
      */
@@ -70,7 +71,7 @@ class Album
     }
 
     /**
-     * Returns category ID
+     * Returns category ID.
      * 
      * @return int
      */
@@ -80,7 +81,7 @@ class Album
     }
 
     /**
-     * Returns album title
+     * Returns album title.
      * 
      * @param string $type null|raw
      * 
@@ -97,7 +98,7 @@ class Album
     }
 
     /**
-     * Returns the author
+     * Returns the author.
      * 
      * @param string $type null|raw
      * 
@@ -114,10 +115,10 @@ class Album
     }
 
     /**
-     * Returns album date
+     * Returns album date.
      * 
      * @param bool|string $format
-     * @param string $style normal|locale
+     * @param string      $style  normal|locale
      * 
      * @return string If date field empty, return current date
      */
@@ -134,13 +135,13 @@ class Album
                 $format = ($format) ? $format : '%D';
                 $date = strftime($format, strtotime($date));
                 break;
-            
+
             default: // http://php.net/manual/en/datetime.formats.date.php
                 $format = ($format) ? $format : 'Y-m-d H:i:s';
                 $date = date_format(date_create($date), $format);
                 break;
         }
-        
+
         $date = Hooks\Filter::apply('date_format_filter', $date);
 
         if (true === $inflected) {
@@ -156,7 +157,7 @@ class Album
                 'wrzesień' => 'września', // 09
                 'październik' => 'października', // 10
                 'listopad' => 'listopada', // 11
-                'grudzień' => 'grudnia' // 12
+                'grudzień' => 'grudnia', // 12
             ];
 
             foreach ($month as $key => $value) {
@@ -168,7 +169,7 @@ class Album
     }
 
     /**
-     * Returns date of album added
+     * Returns date of album added.
      * 
      * @return string
      */
@@ -178,7 +179,7 @@ class Album
     }
 
     /**
-     * Returns date of last album modified
+     * Returns date of last album modified.
      * 
      * @return string
      */
@@ -188,7 +189,7 @@ class Album
     }
 
     /**
-     * Returns adder ID
+     * Returns adder ID.
      * 
      * @return int
      */
@@ -198,7 +199,7 @@ class Album
     }
 
     /**
-     * Returns first name and surname of adder
+     * Returns first name and surname of adder.
      * 
      * @param string $type
      * 
@@ -206,7 +207,7 @@ class Album
      */
     public function adderFullName($type = '')
     {
-        $name = trim($this->album['adder_first_name'] . ' ' . $this->album['adder_surname']);
+        $name = trim($this->album['adder_first_name'].' '.$this->album['adder_surname']);
         if ('raw' === $type) {
             return $name;
         }
@@ -215,7 +216,7 @@ class Album
     }
 
     /**
-     * Returns modifier ID
+     * Returns modifier ID.
      * 
      * @return int
      */
@@ -225,13 +226,13 @@ class Album
     }
 
     /**
-     * Returns modifier full name
+     * Returns modifier full name.
      * 
      * @return int
      */
     public function modifierFullName($type = '')
     {
-        $name = $this->album['modifier_first_name'] . ' ' . $this->album['modifier_surname'];
+        $name = $this->album['modifier_first_name'].' '.$this->album['modifier_surname'];
         if ('raw' === $type) {
             return $name;
         }
@@ -240,7 +241,7 @@ class Album
     }
 
     /**
-     * Checks whether the album has modified
+     * Checks whether the album has modified.
      * 
      * @return bool
      */
@@ -250,7 +251,7 @@ class Album
     }
 
     /**
-     * Returns the number of views
+     * Returns the number of views.
      * 
      * @return int
      */
@@ -260,7 +261,7 @@ class Album
     }
 
     /**
-     * Returns album slug
+     * Returns album slug.
      * 
      * @return string
      */
@@ -270,7 +271,7 @@ class Album
     }
 
     /**
-     * Returns album url
+     * Returns album url.
      * 
      * @return string
      */
@@ -286,7 +287,7 @@ class Album
     }
 
     /**
-     * Returns album path
+     * Returns album path.
      * 
      * @return string
      */
@@ -296,7 +297,7 @@ class Album
     }
 
     /**
-     * Returns thumb path
+     * Returns thumb path.
      * 
      * @return string
      */
@@ -306,7 +307,7 @@ class Album
     }
 
     /**
-     * Checks whether the album has a thumbnail
+     * Checks whether the album has a thumbnail.
      * 
      * @return bool
      */
@@ -316,12 +317,12 @@ class Album
     }
 
     /**
-     * Returns thumbnail code or only address
+     * Returns thumbnail code or only address.
      * 
-     * @param int $width Image width
-     * @param int $height Image height
-     * @param bool $album Add album address if exists
-     * @param string $alt Set alternative text
+     * @param int    $width   Image width
+     * @param int    $height  Image height
+     * @param bool   $album   Add album address if exists
+     * @param string $alt     Set alternative text
      * @param string $default Default thumb path. It use when thumb path is empty
      * 
      * @return string
@@ -354,7 +355,7 @@ class Album
     }
 
     /**
-     * Returns the number of photos
+     * Returns the number of photos.
      * 
      * @return int
      */
@@ -364,7 +365,7 @@ class Album
     }
 
     /**
-     * Checks whether the album has a photos
+     * Checks whether the album has a photos.
      * 
      * @return bool
      */
@@ -374,7 +375,7 @@ class Album
     }
 
     /**
-     * Chcecks whether the album is published
+     * Chcecks whether the album is published.
      * 
      * @return bool
      */
@@ -384,7 +385,7 @@ class Album
     }
 
     /**
-     * Returns album category anchor
+     * Returns album category anchor.
      * 
      * @return string
      */
@@ -397,7 +398,7 @@ class Album
     }
 
     /**
-     * Returns category title
+     * Returns category title.
      * 
      * @param string $type
      * 
@@ -415,7 +416,7 @@ class Album
     }
 
     /**
-     * Returns category url
+     * Returns category url.
      * 
      * @return string
      */
@@ -429,7 +430,7 @@ class Album
     }
 
     /**
-     * Checks whether the album has a category
+     * Checks whether the album has a category.
      * 
      * @return bool
      */

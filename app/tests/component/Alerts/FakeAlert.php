@@ -1,4 +1,5 @@
 <?php
+
 namespace Rudolf\Tests\Component\Alerts;
 
 class FakeAlert
