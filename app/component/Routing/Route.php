@@ -32,10 +32,10 @@ class Route
     /**
      * Constructor.
      *
-     * @param array  $controllerName Controller to use for route
-     * @param array  $params         Params
-     * @param array  $defaults       An array of default parameter values
-     * @param int    $priority       Route priority
+     * @param array $controllerName Controller to use for route
+     * @param array $params         Params
+     * @param array $defaults       An array of default parameter values
+     * @param int   $priority       Route priority
      */
     public function __construct($path, $controllerName, array $params = [], array $defaults = [], $priority = 1000)
     {
