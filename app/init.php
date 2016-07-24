@@ -9,6 +9,7 @@
  * @version 0.1
  */
 use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
+use Rudolf\Component\Logger\Logger;
 use Rudolf\Component\Modules\ModulesHooks;
 use Rudolf\Component\Modules\ModulesManager;
 use Rudolf\Component\Modules\ModulesRouting;
@@ -46,7 +47,7 @@ textdomain($domain);
 bind_textdomain_codeset($domain, 'UTF-8');
 
 // initialize logger
-$logger = new Rudolf\Component\Logger\Logger();
+$logger = new Logger();
 
 // register ErrorHandler
 $errorHandler = new ErrorHandler();
