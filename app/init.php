@@ -36,15 +36,17 @@ define('FRONT_THEME', $config['front_theme']);
 define('ADMIN_THEME', $config['admin_theme']);
 define('GENERAL_SITE_NAME', $config['general_name']);
 
-$lang = 'pl_PL.UTF8';
-putenv('LANG='.$lang);
-setlocale(LC_ALL,  $lang);
-//setlocale(LC_ALL,'en_US.UTF8');
+$lang = 'pl_PL';
+// $lang = 'en_US';
+$codeset = 'UTF-8';
+putenv('LANG='.$lang.'.'.$codeset);
+putenv('LANGUAGE='.$lang.'.'.$codeset);
+setlocale(LC_ALL,  $lang.'.'.$codeset);
 
 $domain = 'rudolf';
 bindtextdomain($domain, APP_ROOT.'/locale');
 textdomain($domain);
-bind_textdomain_codeset($domain, 'UTF-8');
+bind_textdomain_codeset($domain, $codeset);
 
 // initialize logger
 $logger = new Logger();
