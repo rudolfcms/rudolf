@@ -38,7 +38,7 @@ define('GENERAL_SITE_NAME', $config['general_name']);
 
 $lang = 'pl_PL.UTF8';
 putenv('LANG='.$lang);
-setlocale(LC_MESSAGES,  $lang);
+setlocale(LC_ALL,  $lang);
 //setlocale(LC_ALL,'en_US.UTF8');
 
 $domain = 'rudolf';
