@@ -30,7 +30,7 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 1,
-    'ico' => 'fa-add'
+    'ico' => 'fa-plus'
 ]));
 
 
