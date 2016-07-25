@@ -10,17 +10,19 @@ class Navigation
 
     private $type;
 
-    private $items;
+    private $items = [];
 
-    private $currents;
+    private $currents = [];
 
-    private $classes;
+    private $classes = [];
 
     private $nesting;
 
-    private $before;
+    private $before = [];
 
-    private $after;
+    private $after = [];
+
+    private $config = [];
 
     /**
      * Set root ID.
@@ -197,6 +199,28 @@ class Navigation
     }
 
     /**
+     * Set config
+     *
+     * @param array $config
+     *      'li_a_text-container' (string) Selector container for text in <li><a>
+     *      'li_a_ico-container' (string) Selector container for ico in <li><a>
+     *      'li_a_ico-class_base' (string) Base class of icon container
+     */
+    public function setConfig(array $config)
+    {
+        $this->config = $config;
+    }
+
+    public function getConfig()
+    {
+        return array_merge([
+            'li_a_text-container' => '',
+            'li_a_ico-container' => '',
+            'li_a_ico-class_base' => ''
+        ], $this->config);
+    }
+
+    /**
      * Put value is not empty.
      *
      * @param string       $atribute
@@ -214,6 +238,23 @@ class Navigation
         }
 
         return (isset($value) and !empty($value)) ? ' '.$atribute.'="'.trim($value).'"' : '';
+    }
+
+    private function addContainerWithSelectorIf($inside, $selector)
+    {
+        if (empty($selector)) {
+            return $inside;
+        }
+
+        return '<'.$selector.'>'.$inside.'</'.$selector.'>';
+    }
+
+    private function addContainerWithIcoIf($ico, $selector, $classBase)
+    {
+        if (empty($ico) or empty($selector)) {
+            return false;
+        }
+        return '<'.$selector.' class="'.$classBase.' '.$ico.'"></'.$selector.'> ';
     }
 
     /**
@@ -247,6 +288,7 @@ class Navigation
         $before = $this->getBefore();
         $after = $this->getAfter();
         $nesting = $this->getNesting();
+        $config = $this->getConfig();
 
         if (empty($items)) {
             return false;
@@ -286,7 +328,8 @@ class Navigation
                     'parent_id' => $item['value']->getParentId(),
                     'title' => $item['value']->getTitle(),
                     'slug' => $item['value']->getSlug(),
-                    'caption' => $item['value']->getCaption()
+                    'caption' => $item['value']->getCaption(),
+                    'ico' => $item['value']->getIco()
                 ];
             }
 
@@ -304,7 +347,8 @@ class Navigation
                 /*
                  * <li> with <ul>
                  */
-                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'.'%4$s'.' href="'.'%5$s'.'">%6$s'.'%7$s'.'%8$s</a>%9$s',
+                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'
+                    .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
                     $tab,
 
@@ -323,16 +367,23 @@ class Navigation
                     # %5$s a href=""
                     $item['slug'],
 
-                    # %6$s before text in li a
+                    # %6$s ico
+                    $this->addContainerWithIcoIf(
+                        $item['ico'],
+                        $config['li_a_ico-container'],
+                        $config['li_a_ico-class_base']
+                    ),
+
+                    # %7$s before text in li a
                     $before['li_with_ul_a_text'],
 
-                    # %7$s text inside item
-                    $item['title'],
+                    # %8$s text inside item
+                    $this->addContainerWithSelectorIf($item['title'], $config['li_a_text-container']),
 
-                    # %8$s after text in li a
+                    # %9$s after text in li a
                     $after['li_with_ul_a_text'],
 
-                    # %9$s text after li a
+                    # %10$s text after li a
                     $after['li_with_ul_a']
                 );
 
@@ -353,7 +404,8 @@ class Navigation
 
             // HTML for menu item with no children (aka "leaf")
             else {
-                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'.'%4$s'.' href="'.'%5$s'.'">%6$s'.'%7$s'.'%8$s</a>%9$s',
+                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'
+                    .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
                     str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),
 
@@ -372,16 +424,23 @@ class Navigation
                     # %5$s a href=""
                     $item['slug'],
 
-                    # %6$s before text in li a
+                    # %6$s ico
+                    $this->addContainerWithIcoIf(
+                        $item['ico'],
+                        $config['li_a_ico-container'],
+                        $config['li_a_ico-class_base']
+                    ),
+
+                    # %7$s before text in li a
                     $before['li_a_text'],
 
-                    # %7$s text inside item
-                    $item['title'],
+                    # %8$s text inside item
+                    $this->addContainerWithSelectorIf($item['title'], $config['li_a_text-container']),
 
-                    # %8$s after text in li a
+                    # %9$s after text in li a
                     $after['li_a_text'],
 
-                    # %9$s text after li a
+                    # %10$s text after li a
                     $after['li_a']
                 );
             }

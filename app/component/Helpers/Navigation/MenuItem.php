@@ -60,4 +60,9 @@ class MenuItem
     {
         return $this->data['position'];
     }
+
+    public function getIco()
+    {
+        return isset($this->data['ico']) ? $this->data['ico'] : null;
+    }
 }

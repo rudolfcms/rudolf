@@ -43,7 +43,7 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    public function pageNav($type, $nesting = 0, $classes, $before = [], $after = [])
+    public function pageNav($type, $nesting = 0, $classes, $before = [], $after = [], $config = [])
     {
         $nav = new Navigation();
         $nav->setType($type);
@@ -53,6 +53,7 @@ class AdminView extends BaseView
         $nav->setNesting($nesting);
         $nav->setBefore($before);
         $nav->setAfter($after);
+        $nav->setConfig($config);
 
         return $nav->create();
     }
