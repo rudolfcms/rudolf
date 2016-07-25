@@ -1,28 +1,25 @@
 <?php
 
-use Rudolf\Component\Routing;
-use Rudolf\Component\Modules;
+use Rudolf\Component\Routing\Route;
 
-$module = new Modules\Module('dashboard');
-$config = $module->getConfig();
-
-$collection->add('user/login', new Routing\Route(
+$collection->add('user/login', new Route(
     'user/login(/redirect-to/<page>)?',
     'Rudolf\Modules\Users\Login\Controller::login',
-    array( // wyrazenia regularne dla parametrow
-        'page' => '.*$',
-    ),
-    array( // wartosci domyslne
-        'page' => 'dashboard',
-    )
+    ['page' => '.*$'],
+    ['page' => 'dashboard']
 ));
 
-$collection->add('user/logout', new Routing\Route(
+$collection->add('user', new Route(
+    'user([\/])?',
+    'Rudolf\Modules\Users\Profile\Controller::redirectTo',
+    [],
+    ['target' => DIR.'/user/profile']
+));
+$collection->add('user/logout', new Route(
     'user/logout',
     'Rudolf\Modules\Users\Login\Controller::logout'
 ));
-
-$collection->add('user/profile', new Routing\Route(
+$collection->add('user/profile', new Route(
     'user/profile',
     'Rudolf\Modules\Users\Profile\Controller::profile'
 ));
