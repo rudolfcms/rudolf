@@ -33,17 +33,19 @@ class MenuItem
 
     public function getSlug()
     {
+        $slug = $this->data['slug'];
+
         switch ($this->data['item_type']) {
             case 'absolute':
                 // $newItems[$key];
                 break;
             case 'app':
             default:
-                $this->data['slug'] = DIR.'/'.$this->data['slug'];
+                $slug = DIR.'/'.$slug;
                 break;
         }
 
-        return $this->data['slug'];
+        return $slug;
     }
 
     public function getCaption()
