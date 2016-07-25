@@ -80,9 +80,10 @@ class Breadcrumbs
         }
 
         $url = null;
+        $array = [];
 
         for ($pid = 0, $i = 0; $i < count($address); ++$i) {
-            if ($pid == $menu[$address[$i]][$pid]['parent_id']) {
+            if (isset($menu[$address[$i]]) and $pid == $menu[$address[$i]][$pid]['parent_id']) {
                 $array[$i] = array($url.'/'.$address[$i], $menu[$address[$i]][$pid]['title']);
                 $pid = $menu[$address[$i]][$pid]['id'];
                 $url .= '/'.$address[$i];
@@ -92,9 +93,13 @@ class Breadcrumbs
         return $array;
     }
 
-    public function create()
+    public function create($withStart = true)
     {
         $elements = $this->getStructure();
+        if (empty($elements)) {
+            return false;
+        }
+
         $nesting = $this->getNesting();
         $classes = $this->getClasses();
 
@@ -104,7 +109,9 @@ class Breadcrumbs
 
         $tab = str_repeat("\t", $nesting + 1);
 
-        $html[] = $tab.'<li><a href="'.DIR.'/">Start</a></li>';
+        if (true === $withStart) {
+            $html[] = $tab.'<li><a href="'.DIR.'/">Start</a></li>';
+        }
 
         for ($i = 0; $i < (count($elements) - 1); ++$i) {
             $html[] = sprintf('%1$s<li><a href="%2$s">%3$s</a></li>',
