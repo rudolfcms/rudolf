@@ -34,23 +34,34 @@ $collection->add(new MenuItem([
 ]));
 
 
-// $uid = $collection->add(new MenuItem([
-//     'parent_id' => 0,
-//     'title' => _('User'),
-//     'caption' => _('User'),
-//     'slug' => 'user',
-//     'menu_type' => 'top-right',
-//     'item_type' => 'app',
-//     'position' => 10,
-//     'ico' => 'fa-user'
-// ]));
-// $collection->add(new MenuItem([
-//     'parent_id' => $uid,
-//     'title' => _('Logout'),
-//     'caption' => _('Logout'),
-//     'slug' => 'user/logout',
-//     'menu_type' => 'top-right',
-//     'item_type' => 'app',
-//     'position' => 0,
-//     'ico' => 'fa-sign-out'
-// ]));
+$uid = $collection->add(new MenuItem([
+    'parent_id' => 0,
+    'title' => _('User'),
+    'caption' => _('User'),
+    'slug' => 'user',
+    'menu_type' => 'top-right',
+    'item_type' => 'app',
+    'position' => 10,
+    'ico' => 'fa-user'
+]));
+$collection->add(new MenuItem([
+    'parent_id' => $uid,
+    'title' => _('Profile'),
+    'caption' => _('Profile'),
+    'slug' => 'user/profile',
+    'menu_type' => 'top-right',
+    'item_type' => 'app',
+    'position' => 0,
+    'ico' => 'fa-user'
+]));
+
+$collection->add(new MenuItem([
+    'parent_id' => $uid,
+    'title' => _('Logout'),
+    'caption' => _('Logout'),
+    'slug' => 'user/logout',
+    'menu_type' => 'top-right',
+    'item_type' => 'app',
+    'position' => 1,
+    'ico' => 'fa-sign-out'
+]));
