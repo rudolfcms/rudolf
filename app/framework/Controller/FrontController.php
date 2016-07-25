@@ -3,18 +3,13 @@
 namespace Rudolf\Framework\Controller;
 
 use Rudolf\Framework\Model\FrontModel;
+use Rudolf\Framework\View\FrontView;
 
 abstract class FrontController extends BaseController
 {
-    public $frontData;
-
-    public function __construct()
+    public function init()
     {
         $model = new FrontModel();
-
-        $this->frontData = [
-            'menu_items' => $model->getMenuItems(),
-            'menu_types' => $model->getMenuTypes(),
-        ];
+        FrontView::setFrontData($model->getMenuItems(), $this->request);
     }
 }

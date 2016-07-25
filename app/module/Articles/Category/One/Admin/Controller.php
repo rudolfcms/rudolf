@@ -21,10 +21,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->edit($category);
-        $view->setActive([
-            'admin/articles',
-            'admin/articles/categories',
-        ]);
         $view->render('admin');
     }
 
@@ -47,11 +43,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->add($_POST);
-        $view->setActive([
-            'admin/articles',
-            'admin/articles/categories',
-            'admin/articles/categories/add',
-        ]);
         $view->render('admin');
     }
 }

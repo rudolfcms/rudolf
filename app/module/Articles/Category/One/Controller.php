@@ -48,7 +48,6 @@ class Controller extends FrontController
 
         $view = new View();
         $view->setData($results, $pagination, $categoryInfo);
-        $view->setFrontData($this->frontData, 'artykuly/kategorie/'.$slug);
         $view->render();
     }
 }

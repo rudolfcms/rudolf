@@ -23,15 +23,6 @@ class Controller extends FrontController
 
         $view = new View();
         $view->page($pageInfo);
-
-        $active = [];
-
-        $temp = '';
-        foreach ($addressArray as $key => $value) {
-            $active[] = ltrim($temp = $temp.'/'.$value, '/');
-        }
-
-        $view->setFrontData($this->frontData, $active);
         $view->setBreadcrumbsData($pagesList, $addressArray);
         $view->render();
     }

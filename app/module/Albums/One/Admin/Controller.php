@@ -26,7 +26,6 @@ class Controller extends AdminController
         $view = new View();
         $view->editAlbum($album);
         $view->setCategories($categoriesList);
-        $view->setActive(['admin/albums']);
         $view->render('admin');
     }
 
@@ -44,7 +43,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->delAlbum($album);
-        $view->setActive(['admin/albums']);
         $view->render('admin');
     }
 
@@ -59,18 +57,13 @@ class Controller extends AdminController
             $id = $model->add($_POST);
 
             if ($id) {
-                $location = DIR.'/admin/albums/edit/'.$id;
-                $response = new Response('', 301);
-                $response->setHeader(['Location', $location]);
-                $response->send();
-                exit();
+                $this->redirect(DIR.'/admin/albums/edit/'.$id);
             }
         }
 
         $view = new View();
         $view->addAlbum($_POST);
         $view->setCategories($categoriesList);
-        $view->setActive(['admin/albums', 'admin/albums/add']);
         $view->render('admin');
     }
 }

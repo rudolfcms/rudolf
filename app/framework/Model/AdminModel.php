@@ -3,7 +3,7 @@
 namespace Rudolf\Framework\Model;
 
 use Rudolf\Component\Auth\Auth;
-use Rudolf\Component\Helpers\Navigation\ModulesMenu;
+use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 
 class AdminModel extends BaseModel
 {
@@ -23,13 +23,23 @@ class AdminModel extends BaseModel
         return self::$auth;
     }
 
-    /**
-     * @return array
-     */
     public function getMenuItems()
     {
-        $menu = new ModulesMenu();
+        foreach (glob(MODULES_ROOT.'/*', GLOB_ONLYDIR) as $dir) {
+            $dir = str_replace(MODULES_ROOT.'/', '', $dir);
+            $array[] = $dir;
+        }
 
-        return $menu->getMenuItems();
+        $collection = new MenuItemCollection();
+
+        for ($i = 0; $i < count($array); ++$i) {
+            $file = MODULES_ROOT.'/'.$array[$i].'/menu.php';
+
+            if (file_exists($file)) {
+                include $file;
+            }
+        }
+
+        return $collection;
     }
 }

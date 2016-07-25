@@ -2,23 +2,26 @@
 
 namespace Rudolf\Framework\View;
 
+use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 use Rudolf\Component\Html\Navigation;
 
 abstract class FrontView extends BaseView
 {
-    protected $frontData;
+    private static $menuItemsCollection;
+    protected static $request;
 
-    public function setFrontData($menu, $current = 0)
+    public static function setFrontData(MenuItemCollection $collection, $request)
     {
-        $this->frontData = [$menu, $current];
+        self::$menuItemsCollection = $collection;
+        self::$request = $request;
     }
 
     public function pageNav($type, $classes, $nesting = 0, $before = [], $after = [])
     {
         $nav = new Navigation();
         $nav->setType($type);
-        $nav->setItems($this->frontData[0]['menu_items']);
-        $nav->setCurrent($this->frontData[1]);
+        $nav->setItems(self::$menuItemsCollection);
+        $nav->setCurrent(self::$request);
         $nav->setClasses($classes);
         $nav->setNesting($nesting);
         $nav->setBefore($before);

@@ -1,13 +1,9 @@
 <?php
 
-use Rudolf\Component\Routing;
-use Rudolf\Component\Modules\Module;
-
-$module = new Module('dashboard');
-$config = $module->getConfig();
+use Rudolf\Component\Routing\Route;
 
 # /foto(/page/3)
-$collection->add('album/list', new Routing\Route(
+$collection->add('album/list', new Route(
     'foto(/page/<page>)?',
     'Rudolf\Modules\Albums\Roll\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
@@ -15,7 +11,7 @@ $collection->add('album/list', new Routing\Route(
 ));
 
 # /foto/kategorie(/page/3)
-$collection->add('album/category', new Routing\Route(
+$collection->add('album/category', new Route(
     'foto/kategorie/<slug>(/page/<page>)?',
     'Rudolf\Modules\Albums\Category\One\Controller::getCategory',
     ['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
@@ -24,7 +20,7 @@ $collection->add('album/category', new Routing\Route(
 ));
 
 # /foto/2015/09/hello-world
-$collection->add('album/one', new Routing\Route(
+$collection->add('album/one', new Route(
     'foto/<year>/<month>/<slug>',
     'Rudolf\Modules\Albums\One\Controller::getOne',
     ['year' => '[0-9]{4}',
@@ -38,53 +34,57 @@ $collection->add('album/one', new Routing\Route(
 # admin
 ############################
 
-$collection->add('albums/admin', new Routing\Route(
-    $config['admin_path'].'/albums?$',
-    'Rudolf\Modules\Albums\Roll\Admin\Controller::redirect'
+$collection->add('albums/admin', new Route(
+    'admin/albums([\/])?',
+    'Rudolf\Modules\Albums\Roll\Admin\Controller::redirectTo',
+    [],
+    ['target' => DIR.'/admin/albums/list']
 ));
 
-$collection->add('albums/roll/admin', new Routing\Route(
-    $config['admin_path'].'/albums/list(/page/<page>)?',
+$collection->add('albums/roll/admin', new Route(
+    'admin/albums/list(/page/<page>)?',
     'Rudolf\Modules\Albums\Roll\Admin\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]
 ));
 
 // categories
-$collection->add('albums/categories/admin', new Routing\Route(
-    $config['admin_path'].'/albums/categories?$',
-    'Rudolf\Modules\Albums\Category\Roll\Admin\Controller::redirect'
+$collection->add('albums/categories/admin', new Route(
+    'admin/albums/categories([\/])?',
+    'Rudolf\Modules\Albums\Category\Roll\Admin\Controller::redirectTo',
+    [],
+    ['target' => DIR.'/admin/albums/categories/list']
 ));
-$collection->add('albums/categories/roll/admin', new Routing\Route(
-    $config['admin_path'].'/albums/categories/list(/page/<page>)?',
+$collection->add('albums/categories/roll/admin', new Route(
+    'admin/albums/categories/list(/page/<page>)?',
     'Rudolf\Modules\Albums\Category\Roll\Admin\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]
 ));
-$collection->add('albums/categories/one/admin/edit', new Routing\Route(
-    $config['admin_path'].'/albums/categories/edit/<id>$',
+$collection->add('albums/categories/one/admin/edit', new Route(
+    'admin/albums/categories/edit/<id>$',
     'Rudolf\Modules\Albums\Category\One\Admin\Controller::edit',
     ['id' => '[1-9][0-9]*']
 ));
-$collection->add('albums/categories/one/admin/add', new Routing\Route(
-    $config['admin_path'].'/albums/categories/add$',
+$collection->add('albums/categories/one/admin/add', new Route(
+    'admin/albums/categories/add$',
     'Rudolf\Modules\Albums\Category\One\Admin\Controller::add'
 ));
 
 // one
-$collection->add('albums/one/admin/edit', new Routing\Route(
-    $config['admin_path'].'/albums/edit/<id>$',
+$collection->add('albums/one/admin/edit', new Route(
+    'admin/albums/edit/<id>$',
     'Rudolf\Modules\Albums\One\Admin\Controller::edit',
     ['id' => '[1-9][0-9]*']
 ));
 
-$collection->add('albums/one/admin/del', new Routing\Route(
-    $config['admin_path'].'/albums/del/<id>$',
+$collection->add('albums/one/admin/del', new Route(
+    'admin/albums/del/<id>$',
     'Rudolf\Modules\Albums\One\Admin\Controller::del',
     ['id' => '[1-9][0-9]*']
 ));
 
-$collection->add('albums/one/admin/add', new Routing\Route(
-    $config['admin_path'].'/albums/add$',
+$collection->add('albums/one/admin/add', new Route(
+    'admin/albums/add$',
     'Rudolf\Modules\Albums\One\Admin\Controller::add'
 ));

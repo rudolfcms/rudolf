@@ -3,6 +3,7 @@
 namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Alerts\AlertsCollection;
+use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 use Rudolf\Component\Html\Navigation;
 use Rudolf\Component\Modules\Module;
 
@@ -13,15 +14,9 @@ class AdminView extends BaseView
      */
     private static $userInfo;
 
-    /**
-     * @var array
-     */
-    private static $adminData;
+    private static $menuItemsCollection;
 
-    /**
-     * @var string
-     */
-    private static $active;
+    protected static $request;
 
     public function __construct()
     {
@@ -29,6 +24,12 @@ class AdminView extends BaseView
         $this->config = $module->getConfig();
 
         parent::__construct();
+    }
+
+    public static function setAdminData(MenuItemCollection $collection, $request)
+    {
+        self::$menuItemsCollection = $collection;
+        self::$request = $request;
     }
 
     /**
@@ -42,12 +43,12 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    public function pageNav($type, $nesting = 0, $classes, $before = false, $after = false)
+    public function pageNav($type, $nesting = 0, $classes, $before = [], $after = [])
     {
         $nav = new Navigation();
         $nav->setType($type);
-        $nav->setItems(self::$adminData['menu_items']);
-        $nav->setCurrent(self::$active);
+        $nav->setItems(self::$menuItemsCollection);
+        $nav->setCurrent(self::$request);
         $nav->setClasses($classes);
         $nav->setNesting($nesting);
         $nav->setBefore($before);
@@ -66,22 +67,6 @@ class AdminView extends BaseView
         return DIR.'/'.$this->config['admin_path'];
     }
 
-    public function setActive($active)
-    {
-        self::$active = $active;
-    }
-
-    /**
-     *
-     */
-    public static function setAdminData($adminData)
-    {
-        self::$adminData = $adminData;
-    }
-
-    /**
-     *
-     */
     public static function setUserInfo($userInfo)
     {
         self::$userInfo = $userInfo;

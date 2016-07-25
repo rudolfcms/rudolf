@@ -31,7 +31,6 @@ class Controller extends FrontController
 
         $view = new View();
         $view->setData($results, $pagination);
-        $view->setFrontData($this->frontData);
         $view->render();
     }
 }

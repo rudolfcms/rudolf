@@ -65,7 +65,7 @@ class FrontController
      */
     private function call($class, $params)
     {
-        $object = new $class[0]();
+        $object = new $class[0]($this->router->getUrl());
 
         if (false === isset($class[1])) {
             $method = 'index';

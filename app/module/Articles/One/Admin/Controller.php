@@ -26,7 +26,6 @@ class Controller extends AdminController
         $view = new View();
         $view->editArticle($article);
         $view->setCategories($categoriesList);
-        $view->setActive(['admin/articles']);
         $view->render('admin');
     }
 
@@ -44,7 +43,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->delArticle($article);
-        $view->setActive(['admin/articles']);
         $view->render('admin');
     }
 
@@ -59,18 +57,13 @@ class Controller extends AdminController
             $id = $model->add($_POST);
 
             if ($id) {
-                $location = DIR.'/admin/articles/edit/'.$id;
-                $response = new Response('', 301);
-                $response->setHeader(['Location', $location]);
-                $response->send();
-                exit();
+                $this->redirect(DIR.'/admin/articles/edit/'.$id);
             }
         }
 
         $view = new View();
         $view->addArticle($_POST);
         $view->setCategories($categoriesList);
-        $view->setActive(['admin/articles', 'admin/articles/add']);
         $view->render('admin');
     }
 }

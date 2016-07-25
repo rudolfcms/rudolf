@@ -13,9 +13,6 @@ class Controller extends AdminController
         //$profileInfo = $model->getProfileInfo();
 
         $view = new View();
-
-        $view->setActive(['user']);
-
         $view->userCard();
         $view->render('admin');
     }

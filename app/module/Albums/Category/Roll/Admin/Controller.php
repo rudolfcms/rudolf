@@ -24,19 +24,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->setData($results, $pagination);
-        $view->setActive([
-            'admin/albums',
-            'admin/albums/categories',
-            'admin/albums/categories/list',
-        ]);
         $view->render('admin');
-    }
-
-    public function redirect()
-    {
-        $response = new Response('', 301);
-        $response->setHeader(['Location', DIR.'/admin/albums/categories/list']);
-        $response->send();
-        exit;
     }
 }

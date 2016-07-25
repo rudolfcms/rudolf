@@ -2,8 +2,12 @@
 
 namespace Rudolf\Component\Html;
 
+use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
+
 class Navigation
 {
+    private $rootID = 0;
+
     private $type;
 
     private $items;
@@ -17,32 +21,6 @@ class Navigation
     private $before;
 
     private $after;
-
-    /**
-     * Constructor.
-     *
-     * @param string       $type     Menu type
-     * @param array        $items    Array of navigation items
-     * @param array|string $currents Current pages slug
-     * @param array        $classes
-     * @param int          $nesting
-     * @param array        $before
-     * @param array        $after
-     * 
-     * @return string
-     */
-    public function __construct($type = '', $items = [], $currents = null, $classes = [],
-        $nesting = 0, $before = [], $after = [])
-    {
-        $this->setRootID(0);
-        $this->setType($type);
-        $this->setItems($items);
-        $this->setCurrent($currents);
-        $this->setClasses($classes);
-        $this->setNesting($nesting);
-        $this->setBefore($before);
-        $this->setAfter($after);
-    }
 
     /**
      * Set root ID.
@@ -77,53 +55,16 @@ class Navigation
     /**
      * Set items.
      *
-     * 'items' (array) Menu item
-     *      'id' (int) Unique item id
-     *      'parent_id' (int) Parent ID
-     *      'title' (string) Text in <li><a>
-     *      'slug' (string) Url in <li><a href=""
-     *      'caption' (string) Text in <li><a title=""
+     * @param MenuItemCollection $items
      */
-    public function setItems(array $items)
+    public function setItems(MenuItemCollection $items)
     {
-        $this->items = $items;
+        $this->menuItemsCollection = $items;
     }
 
     public function getItems()
     {
-        $items = $this->items;
-
-        // filter items
-        foreach ($items as $key => $value) {
-            if ($this->getType() === $value['menu_type']) {
-                $newItems[$key] = $items[$key];
-
-                if (isset($items[$key]['type'])) {
-                    switch ($items[$key]['type']) {
-                        case 'absolute':
-                            // $newItems[$key];
-                            break;
-                        case 'app':
-                        default:
-                            $newItems[$key]['slug'] = DIR.'/'.$value['slug'];
-                            break;
-                    }
-                }
-            }
-        }
-
-        if (empty($newItems)) {
-            return false;
-        }
-
-        // sort items
-        usort($newItems, function ($a, $b) {
-            if (isset($a['position']) and isset($b['position'])) {
-                return $a['position'] - $b['position'];
-            }
-        });
-
-        return $newItems;
+        return $this->menuItemsCollection->getByType($this->getType());
     }
 
     /**
@@ -134,7 +75,13 @@ class Navigation
     public function setCurrent($currents)
     {
         if (!is_array($currents)) {
-            $currents = array($currents);
+            $address = explode('/', trim($currents, '/'));
+
+            $currents = [];
+            $temp = '';
+            foreach ($address as $key => $value) {
+                $currents[] = ltrim($temp = $temp.'/'.$value, '/');
+            }
         }
 
         $this->currents = $currents;
@@ -304,9 +251,10 @@ class Navigation
         if (empty($items)) {
             return false;
         }
+
         foreach ($items as $item) {
-            if (isset($item['parent_id'])) {
-                $children[$item['parent_id']][] = $item;
+            if (null !== $item->getParentId()) {
+                $children[$item->getParentId()][] = $item;
             }
         }
 
@@ -331,17 +279,26 @@ class Navigation
         $this->html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
         // loop
-        while ($loop && (($option = each($children[$parent])) || ($parent > $root_id))) {
+        while ($loop && (($item = each($children[$parent])) || ($parent > $root_id))) {
+            if (is_object($item['value'])) {
+                $item = [
+                    'id' => $item['value']->getId(),
+                    'parent_id' => $item['value']->getParentId(),
+                    'title' => $item['value']->getTitle(),
+                    'slug' => $item['value']->getSlug(),
+                    'caption' => $item['value']->getCaption()
+                ];
+            }
 
             // HTML for menu item containing childrens (close)
-            if ($option === false) {
+            if ($item === false) {
                 $parent = array_pop($parent_stack);
                 $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting).'</ul>';
                 $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting).'</li>';
             }
 
             // HTML for menu item containing childrens (open)
-            elseif (!empty($children[$option['value']['id']])) {
+            elseif (!empty($children[$item['id']])) {
                 $tab = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting);
 
                 /*
@@ -354,23 +311,23 @@ class Navigation
                     # %2$s li class (active)
                     $this->isAtribute('class', [
                         $classes['li_with_ul'],
-                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : '',
+                        ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
                     $before['li_with_ul_a'],
 
                     # %4$s a title=""
-                    $this->isAtribute('title', $option['value']['caption']),
+                    $this->isAtribute('title', $item['caption']),
 
                     # %5$s a href=""
-                    $option['value']['slug'],
+                    $item['slug'],
 
                     # %6$s before text in li a
                     $before['li_with_ul_a_text'],
 
                     # %7$s text inside item
-                    $option['value']['title'],
+                    $item['title'],
 
                     # %8$s after text in li a
                     $after['li_with_ul_a_text'],
@@ -390,8 +347,8 @@ class Navigation
                     $this->isAtribute('class', $classes['sub_ul'])
                 );
 
-                array_push($parent_stack, $option['value']['parent_id']);
-                $parent = $option['value']['id'];
+                array_push($parent_stack, $item['parent_id']);
+                $parent = $item['id'];
             }
 
             // HTML for menu item with no children (aka "leaf")
@@ -403,23 +360,23 @@ class Navigation
                     # %2$s li class (active)
                     $this->isAtribute('class', [
                         $classes['li_whitout_ul'],
-                        ($this->isActive($option['value']['slug'], $currents)) ? $classes['li_active'] : '',
+                        ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
                     $before['li_a'],
 
                     # %4$s a title=""
-                    $this->isAtribute('title', $option['value']['caption']),
+                    $this->isAtribute('title', $item['caption']),
 
                     # %5$s a href=""
-                    $option['value']['slug'],
+                    $item['slug'],
 
                     # %6$s before text in li a
                     $before['li_a_text'],
 
                     # %7$s text inside item
-                    $option['value']['title'],
+                    $item['title'],
 
                     # %8$s after text in li a
                     $after['li_a_text'],
