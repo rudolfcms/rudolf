@@ -23,7 +23,7 @@ class FrontModel extends BaseModel
                 'slug' => $value['slug'],
                 'caption' => $value['caption'],
                 'menu_type' => $value['menu_type'],
-                'item_type' => 'app',
+                'item_type' => $value['item_type'],
                 'position' => $value['position']
             ]));
         }
