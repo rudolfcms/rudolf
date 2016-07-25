@@ -4,6 +4,7 @@ namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
+use Rudolf\Component\Html\Breadcrumbs;
 use Rudolf\Component\Html\Navigation;
 use Rudolf\Component\Modules\Module;
 
@@ -56,6 +57,49 @@ class AdminView extends BaseView
         $nav->setConfig($config);
 
         return $nav->create();
+    }
+
+    public function breadcrumb($nesting = 0, $classes = [])
+    {
+        $breadcrumbs = new Breadcrumbs();
+        $breadcrumbs->setElements($this->getBreadcrumbElements());
+        $breadcrumbs->setAddress(explode('/', trim(self::$request, '/')));
+        $breadcrumbs->setClasses($classes);
+        $breadcrumbs->setNesting($nesting);
+
+        return $breadcrumbs->create($withStart = false);
+    }
+
+    private function getBreadcrumbElements()
+    {
+        $array = [];
+        foreach (self::$menuItemsCollection->getAll() as $key => $value) {
+            $slug = explode('/', trim($value->getSlug(), '/'));
+            $slug = end($slug);
+            $array[$slug][$value->getParentId()] = array(
+                'id' => $value->getId(),
+                'parent_id' => $value->getParentId(),
+                'slug' => $slug,
+                'title' => $value->getTitle(),
+            );
+        }
+        $array['admin'][0] = array_merge(
+            end($array['dashboard']),
+            ['id' => 0, 'slug' => 'admin', 'parent_id' => 0, 'title' => 'Admin']
+        );
+        $overview = end($array['overview']);
+        $array['overview'][0] = array_merge(
+            $overview,
+            ['parent_id' => 0]
+        );
+        $array['dashboard'][0] = [
+            'title' => _('Dashboard'),
+            'id' => 0,
+            'parent_id' => 0,
+            'slug' => 'dashboard'
+        ];
+
+        return $array;
     }
 
     protected function pageTitle()
