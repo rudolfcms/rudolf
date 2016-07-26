@@ -6,10 +6,14 @@ trait CategoryAddon
 {
     public function setCategories($categories)
     {
+        if (false === $categories) {
+            $this->categories = [];
+            return;
+        }
         $this->categories = $categories;
     }
     public function categories()
     {
-        return (array) $this->categories;
+        return $this->categories;
     }
 }
