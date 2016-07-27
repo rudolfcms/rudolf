@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Tests\Component\Alerts;
+namespace Rudolf\Tests\component\Alerts;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
