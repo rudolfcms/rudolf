@@ -68,7 +68,7 @@ class AddModel extends AdminModel
         $stmt->bindValue(':category_id', $f['category_id'], \PDO::PARAM_INT);
 
         if (!$stmt->execute()) {
-           return false;
+            return false;
         }
 
         return $this->pdo->lastInsertId();

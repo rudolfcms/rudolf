@@ -3,7 +3,6 @@
 namespace Rudolf\Modules\Albums\Category\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
-use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 

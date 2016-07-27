@@ -56,6 +56,6 @@ class EditModel extends AdminModel
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
         $stmt->bindValue(':category_id', $f['category_id'], \PDO::PARAM_INT);
 
-        return $status = $stmt->execute();;
+        return $status = $stmt->execute();
     }
 }

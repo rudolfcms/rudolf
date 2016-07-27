@@ -10,7 +10,7 @@ $id = $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 50,
-    'ico' => 'fa-picture-o'
+    'ico' => 'fa-picture-o',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $id,
@@ -20,7 +20,7 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 0,
-    'ico' => 'fa-list'
+    'ico' => 'fa-list',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $id,
@@ -30,5 +30,5 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 1,
-    'ico' => 'fa-plus'
+    'ico' => 'fa-plus',
 ]));

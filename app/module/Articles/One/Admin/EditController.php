@@ -21,7 +21,7 @@ class EditController extends AdminController
         if (isset($_POST['update'])) {
             $form->handle(array_merge($_POST, ['id' => $id]));
 
-             if ($form->isValid() and $form->update()) {
+            if ($form->isValid() and $form->update()) {
                 $this->redirect(DIR.'/admin/articles/edit/'.$id);
             }
 

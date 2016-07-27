@@ -45,7 +45,7 @@ class Validator
 
             $this->errors[$field] = 1;
         } elseif (!empty($value) and true === $shuldEmpty) {
-            $this->alerts[$field] = isset($msg['not_empty']) ? $msg['not_empty'] : 'Not empty';;
+            $this->alerts[$field] = isset($msg['not_empty']) ? $msg['not_empty'] : 'Not empty';
 
             $this->errors[$field] = 1;
         } else {
@@ -74,7 +74,6 @@ class Validator
             $this->alerts[$field] = isset($msg['short']) ? $msg['short'] : 'Too short';
 
             $this->errors[$field] = 1;
-
         } elseif ($max < $length) {
             $this->alerts[$field] = isset($msg['long']) ? $msg['long'] : 'Too long';
 
@@ -139,7 +138,7 @@ class Validator
      * @param string $field  Field name
      * @param string $value  Field value
      * @param string $format Date format
-     * @param array  $msg   Custom messages ['invalid']
+     * @param array  $msg    Custom messages ['invalid']
      *
      * @return this
      */

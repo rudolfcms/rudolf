@@ -10,7 +10,7 @@ $id = $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 10,
-    'ico' => 'fa-tachometer'
+    'ico' => 'fa-tachometer',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $id,
@@ -20,5 +20,5 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 0,
-    'ico' => 'fa-home'
+    'ico' => 'fa-home',
 ]));

@@ -199,12 +199,12 @@ class Navigation
     }
 
     /**
-     * Set config
+     * Set config.
      *
      * @param array $config
-     *      'li_a_text-container' (string) Selector container for text in <li><a>
-     *      'li_a_ico-container' (string) Selector container for ico in <li><a>
-     *      'li_a_ico-class_base' (string) Base class of icon container
+     *                      'li_a_text-container' (string) Selector container for text in <li><a>
+     *                      'li_a_ico-container' (string) Selector container for ico in <li><a>
+     *                      'li_a_ico-class_base' (string) Base class of icon container
      */
     public function setConfig(array $config)
     {
@@ -216,7 +216,7 @@ class Navigation
         return array_merge([
             'li_a_text-container' => '',
             'li_a_ico-container' => '',
-            'li_a_ico-class_base' => ''
+            'li_a_ico-class_base' => '',
         ], $this->config);
     }
 
@@ -254,6 +254,7 @@ class Navigation
         if (empty($ico) or empty($selector)) {
             return false;
         }
+
         return '<'.$selector.' class="'.$classBase.' '.$ico.'"></'.$selector.'> ';
     }
 
@@ -329,7 +330,7 @@ class Navigation
                     'title' => $item['value']->getTitle(),
                     'slug' => $item['value']->getSlug(),
                     'caption' => $item['value']->getCaption(),
-                    'ico' => $item['value']->getIco()
+                    'ico' => $item['value']->getIco(),
                 ];
             }
 

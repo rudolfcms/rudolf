@@ -96,7 +96,7 @@ class AdminView extends BaseView
             'title' => _('Dashboard'),
             'id' => 0,
             'parent_id' => 0,
-            'slug' => 'dashboard'
+            'slug' => 'dashboard',
         ];
 
         return $array;

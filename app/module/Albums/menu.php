@@ -10,7 +10,7 @@ $id = $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 40,
-    'ico' => 'fa-camera'
+    'ico' => 'fa-camera',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $id,
@@ -20,7 +20,7 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 0,
-    'ico' => 'fa-list'
+    'ico' => 'fa-list',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $id,
@@ -30,7 +30,7 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 1,
-    'ico' => 'fa-plus'
+    'ico' => 'fa-plus',
 ]));
 
 $cid = $collection->add(new MenuItem([
@@ -41,7 +41,7 @@ $cid = $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 2,
-    'ico' => 'fa-folder'
+    'ico' => 'fa-folder',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $cid,
@@ -51,7 +51,7 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 0,
-    'ico' => 'fa-list'
+    'ico' => 'fa-list',
 ]));
 $collection->add(new MenuItem([
     'parent_id' => $cid,
@@ -61,5 +61,5 @@ $collection->add(new MenuItem([
     'menu_type' => 'main',
     'item_type' => 'app',
     'position' => 1,
-    'ico' => 'fa-plus'
+    'ico' => 'fa-plus',
 ]));

@@ -15,7 +15,7 @@ class DelModel extends AdminModel
     {
         $query = $this->pdo->prepare("DELETE FROM {$this->prefix}albums WHERE id = :id");
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
-        
+
         return $query->execute();
     }
 }

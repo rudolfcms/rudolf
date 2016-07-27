@@ -7,9 +7,7 @@ use Rudolf\Component\Html\Text;
 
 class FormCheck extends Form
 {
-
     /**
-     * @return void
      */
     public function check()
     {
@@ -25,12 +23,12 @@ class FormCheck extends Form
             'photos' => '',
             'published' => '',
         ], $this->data);
-        
-        $data = array_map(function($a) {
+
+        $data = array_map(function ($a) {
             return trim($a);
         }, $data);
 
-        if(empty($data['date'])) {
+        if (empty($data['date'])) {
             $data['date'] = date('Y-m-d H:i:s');
         }
         if (empty($data['slug'])) {
@@ -42,29 +40,29 @@ class FormCheck extends Form
         $this->validator
             ->checkChar('title', $data['title'], 3, 255, [
                     'short' => _('Title is too short. Min is 3 characters'),
-                    'long' => _('Title is too long. Max is 255 characters')
+                    'long' => _('Title is too long. Max is 255 characters'),
                 ])
             ->checkEmpty('title', $data['title'], false, [
-                    'empty' => _('The title does not be empty! Min 3 characters')
+                    'empty' => _('The title does not be empty! Min 3 characters'),
                 ])
             ->checkChar('author', $data['author'], 0, 64, [
-                    'long' => _('Author is too long. Max is 64 characters')
+                    'long' => _('Author is too long. Max is 64 characters'),
                 ])
             ->checkDatetime('date', $data['date'], 'Y-m-d H:i:s', [
-                    'invalid' => _('Date is invalid. Require date in Y-m-d H:i:s format')
+                    'invalid' => _('Date is invalid. Require date in Y-m-d H:i:s format'),
                 ])
             //->checkChar('content', $data['content'])
             ->checkIsInt('category_id', $data['category_id'], [
-                    'not_int' => _('Category ID must be integer')
+                    'not_int' => _('Category ID must be integer'),
                 ])
             ->checkChar('slug', $data['slug'], 0, 255, [
-                    'long' => _('URL is too long. Max is 255 characters')
+                    'long' => _('URL is too long. Max is 255 characters'),
                 ])
             ->checkChar('thumb', $data['thumb'], 0, 255, [
-                    'long' => _('Thumb is too long. Max is 255 characters')
+                    'long' => _('Thumb is too long. Max is 255 characters'),
                 ])
             ->checkChar('album', $data['album'], 0, 255, [
-                    'long' => _('Album is too long. Max is 255 characters')
+                    'long' => _('Album is too long. Max is 255 characters'),
                 ])
             ->checkIsInt('photos', $data['photos']);
 

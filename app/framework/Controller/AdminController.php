@@ -2,7 +2,6 @@
 
 namespace Rudolf\Framework\Controller;
 
-use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Model\AdminModel;
 use Rudolf\Framework\View\AdminView;
 

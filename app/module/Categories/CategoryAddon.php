@@ -8,6 +8,7 @@ trait CategoryAddon
     {
         if (false === $categories) {
             $this->categories = [];
+
             return;
         }
         $this->categories = $categories;

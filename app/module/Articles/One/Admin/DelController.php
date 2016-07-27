@@ -12,7 +12,7 @@ class DelController extends AdminController
         // if data was send
         if (isset($_POST['delete'])) {
             $form = new DelForm();
-            $form->handle(['id'=>$id]);
+            $form->handle(['id' => $id]);
             $form->setModel(new DelModel());
 
             if ($form->isValid()) {

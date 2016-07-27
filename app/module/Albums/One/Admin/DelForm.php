@@ -18,9 +18,9 @@ class DelForm extends Form
 
     public function check()
     {
-    	$this->validator
+        $this->validator
             ->checkIsInt('id', $this->data['id'], [
-                'not_int' => _('Album ID is not valid')
+                'not_int' => _('Album ID is not valid'),
             ]);
 
         $this->id = $this->data['id'];
@@ -28,6 +28,6 @@ class DelForm extends Form
 
     public function delete()
     {
-    	$this->model->delete($this->id);
+        $this->model->delete($this->id);
     }
 }
