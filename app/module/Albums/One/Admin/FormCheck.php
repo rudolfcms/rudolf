@@ -58,8 +58,14 @@ class FormCheck extends Form
             ->checkChar('slug', $data['slug'], 0, 255, [
                     'long' => _('URL is too long. Max is 255 characters'),
                 ])
+            ->checkEmpty('thumb', $data['thumb'], false, [
+                    'empty' => _('The thumb address does not be empty! Min 3 characters'),
+                ])
             ->checkChar('thumb', $data['thumb'], 0, 255, [
                     'long' => _('Thumb is too long. Max is 255 characters'),
+                ])
+            ->checkEmpty('album', $data['album'], false, [
+                    'empty' => _('The album address does not be empty! Min 3 characters'),
                 ])
             ->checkChar('album', $data['album'], 0, 255, [
                     'long' => _('Album is too long. Max is 255 characters'),
