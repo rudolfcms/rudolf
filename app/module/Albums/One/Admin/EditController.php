@@ -12,7 +12,6 @@ class EditController extends AdminController
     {
         $categories = new CategoriesRoll();
         $categoriesList = $categories->getAll('albums');
-        $album = (new One\Model())->getOneById($id);
 
         $form = new EditForm();
         $form->setModel(new EditModel());
@@ -26,11 +25,10 @@ class EditController extends AdminController
             }
 
             $form->dispalyAlerts();
-            $album = array_merge($album, $form->getDataToDisplay());
         }
 
         $view = new EditView();
-        $view->editAlbum($album);
+        $view->editAlbum($form->getDataToDisplay((new One\Model())->getOneById($id)));
         $view->setCategories($categoriesList);
         $view->render('admin');
     }

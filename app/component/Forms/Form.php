@@ -51,12 +51,17 @@ abstract class Form
     /**
      * Get data to display in add form.
      *
+     * @param array $mergeWith
+     *
      * @return array
      */
-    public function getDataToDisplay()
+    public function getDataToDisplay($mergeWith = [])
     {
         if (empty($this->data)) {
             $this->data = [];
+        }
+        if (!empty($mergeWith)) {
+            $this->data = array_merge($mergeWith, $this->data);
         }
 
         return array_map(function ($a) {
