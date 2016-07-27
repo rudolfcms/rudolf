@@ -35,6 +35,8 @@ class FormCheck extends Form
         }
         if (empty($data['slug'])) {
             $data['slug'] = Text::sluger($data['title']);
+        } else {
+            $data['slug'] = Text::sluger($data['slug']);
         }
 
         $data['published'] = $data['published'] ? 1 : 0;
