@@ -22,95 +22,59 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validator->isErrors());
     }
 
-    public function testCheckDatetimeExcepctTrue()
+    public function testCheckDatetimeValid()
     {
         $validator = new Validator();
-        $dateToTest = '1970-01-01 00:00:00';
+        $validator->checkDatetime('date', '1970-01-01 00:00:00', 'Y-m-d H:i:s');
 
-        $this->assertTrue($validator->checkDatetime('date', $dateToTest, 'Y-m-d H:i:s'));
+        $this->assertFalse($validator->isErrors());
     }
 
     public function testCheckDatetimeNotValid()
     {
         $validator = new Validator();
-        $dateToTest = '1970-01-01 00-00-00';
+        $validator->checkDatetime('date', '1970-01-01 00-00-00', 'Y-m-d H:i:s');
 
-        $this->assertFalse($validator->checkDatetime('date', $dateToTest, 'Y-m-d H:i:s'));
-    }
-
-    public function testCheckDatetimeNotValidAlert()
-    {
-        $validator = new Validator();
-        $dateToTest = '1970-01-01 00-00-00';
-        $validator->checkDatetime('date', $dateToTest, 'Y-m-d H:i:s');
-
-        $this->assertEquals($validator->getAlerts()['date'], [
-            'type' => 'error',
-            'message' => 'Invalid datetime',
-        ]);
+        $this->assertTrue($validator->isErrors());
     }
 
     public function testCheckChar()
     {
         $validator = new Validator();
-        $charToTest = 'validator';
+        $validator->checkChar('char', 'validator', 8);
 
-        $this->assertTrue($validator->checkChar('char', $charToTest, 9, 0));
+        $this->assertFalse($validator->isErrors());
     }
 
     public function testCheckCharToShort()
     {
         $validator = new Validator();
-        $charToTest = 'validator';
+        $validator->checkChar('char', 'validator', 10);
 
-        $this->assertFalse($validator->checkChar('char', $charToTest, 90, 10));
-    }
-
-    public function testCheckCharToShortAlert()
-    {
-        $validator = new Validator();
-        $charToTest = 'validator';
-        $validator->checkChar('char', $charToTest, 90, 10);
-
-        $this->assertEquals($validator->getAlerts()['char'], [
-            'type' => 'error',
-            'message' => 'Too short string',
-        ]);
-    }
-
-    public function testCheckCharToLongAlert()
-    {
-        $validator = new Validator();
-        $charToTest = 'validator';
-        $validator->checkChar('char', $charToTest, 1, 0);
-
-        $this->assertEquals($validator->getAlerts()['char'], [
-            'type' => 'error',
-            'message' => 'Too long string',
-        ]);
+        $this->assertTrue($validator->isErrors());
     }
 
     public function testCheckInt()
     {
         $validator = new Validator();
-        $intTotest = 128;
+        $validator->checkInt('int', 128, 129, 0);
 
-        $this->assertTrue($validator->checkInt('int', $intTotest, 129, 0));
+        $this->assertTrue($validator->isErrors());
     }
 
     public function testCheckIntBeyondUpperRange()
     {
         $validator = new Validator();
-        $intTotest = 1024;
+        $validator->checkInt('int', 1024, $min = 0, $max = 129);
 
-        $this->assertFalse($validator->checkInt('int', $intTotest, 129));
+        $this->assertTrue($validator->isErrors());
     }
 
     public function testCheckIntBeyondLowerRange()
     {
         $validator = new Validator();
-        $intTotest = 1024;
+        $validator->checkInt('int', 1024, $min = 2048);
 
-        $this->assertFalse($validator->checkInt('int', $intTotest, false, 2048));
+        $this->assertTrue($validator->isErrors());
     }
 }

@@ -74,15 +74,13 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($obj->date(), $date);
     }
 
-    public function testEmptyDate()
+    public function testInvalidDate()
     {
-        $format = 'H:i:s Y-m-d';
-        $date = date($format);
-        $date = date_format(date_create($date), $format);
+        $invalidDate = 'invalid date';
 
         $obj = new Album();
-        //$obj->setData(['date' => $date]);
-        $this->assertEquals($obj->date($format), $date);
+        $obj->setData(['date' => $invalidDate]);
+        $this->assertEquals($obj->date('H:i:s Y-m-d'), $invalidDate);
     }
 
     public function testDateNormalFormat()
@@ -233,11 +231,16 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
         $slug = 'testing-album';
 
         $obj = new Album();
-
-        $url = sprintf('%1$s/%2$s/%3$s/%4$s/%5$s', DIR, 'foto', $obj->date('Y'), $obj->date('m'), $slug);
-
         $obj->setData(['date' => $date, 'slug' => $slug]);
-        $this->assertEquals($obj->url(), $url);
+        $this->assertEquals($obj->url(),
+            sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
+                DIR,
+                'foto',
+                $obj->date('Y'),
+                $obj->date('m'),
+                $slug
+            )
+        );
     }
 
     public function testALbum()
