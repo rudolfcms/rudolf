@@ -360,7 +360,7 @@ class Album
     public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '')
     {
         $path = $this->thumb();
-        $alt = ($alt) ? $alt : $this->title('raw');
+        $alt = ($alt) ? $alt : $this->title();
 
         if (!$this->hasThumbnail()) {
             if (!empty($default)) {
