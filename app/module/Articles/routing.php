@@ -97,17 +97,17 @@ $collection->add('articles/categories/one/admin/add', new Route(
 // article
 $collection->add('articles/one/admin/edit', new Route(
     'admin/articles/edit/<id>$',
-    'Rudolf\Modules\Articles\One\Admin\Controller::edit',
+    'Rudolf\Modules\Articles\One\Admin\EditController::edit',
     ['id' => '[1-9][0-9]*']
 ));
 
 $collection->add('articles/one/admin/del', new Route(
     'admin/articles/del/<id>$',
-    'Rudolf\Modules\Articles\One\Admin\Controller::del',
+    'Rudolf\Modules\Articles\One\Admin\DelController::del',
     ['id' => '[1-9][0-9]*']
 ));
 
 $collection->add('articles/one/admin/add', new Route(
     'admin/articles/add$',
-    'Rudolf\Modules\Articles\One\Admin\Controller::add'
+    'Rudolf\Modules\Articles\One\Admin\AddController::add'
 ));

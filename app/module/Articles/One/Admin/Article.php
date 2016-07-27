@@ -21,7 +21,7 @@ class Article extends One\Article
      */
     public function textarea()
     {
-        return trim($this->content(false, false, true, true)); // traits
+        return $this->content(false, false, false, true);
     }
 
     public function addCategory()

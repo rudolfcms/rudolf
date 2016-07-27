@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Albums\One;
 
+use Rudolf\Component\Forms\Validator;
 use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
@@ -132,8 +133,10 @@ class Album
     {
         $date = $this->album['date'];
 
-        if (empty($date)) {
-            $date = date('Y-m-d H:i:s');
+        $validator = new Validator();
+        $validator->checkDatetime('date', $date, 'Y-m-d H:i:s');
+        if ($validator->isErrors() or empty($date)) {
+            return $date;
         }
 
         switch ($style) {
@@ -268,12 +271,19 @@ class Album
 
     /**
      * Returns album slug.
-     * 
+     *
+     * @param string $type
+     *
      * @return string
      */
-    public function slug()
+    public function slug($type = '')
     {
-        return Text::escape($this->album['slug']);
+        $slug = $this->album['slug'];
+        if ('raw' === $type) {
+            return $slug;
+        }
+
+        return Text::escape($slug);
     }
 
     /**
@@ -294,22 +304,36 @@ class Album
 
     /**
      * Returns album path.
+     *
+     * @param string $type
      * 
      * @return string
      */
-    public function album()
+    public function album($type = '')
     {
-        return Text::escape($this->album['album']);
+        $album = $this->album['album'];
+        if ('raw' === $type) {
+            return $album;
+        }
+
+        return Text::escape($album);
     }
 
     /**
      * Returns thumb path.
+     *
+     * @param string $type
      * 
      * @return string
      */
-    public function thumb()
+    public function thumb($type = '')
     {
-        return Text::escape($this->album['thumb']);
+        $thumb = $this->album['thumb'];
+        if ('raw' === $type) {
+            return $thumb;
+        }
+
+        return Text::escape($thumb);
     }
 
     /**

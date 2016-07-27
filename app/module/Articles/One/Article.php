@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Articles\One;
 
+use Rudolf\Component\Forms\Validator;
 use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
@@ -169,21 +170,24 @@ class Article
 
         return $content;
     }
-
     /**
      * Returns the author.
      * 
-     * @param bool $adder Returns adder name if fields empty
+     * @param string $type null|raw
      * 
      * @return string
      */
-    public function author($adder = true)
+    public function author($type = '', $adder = true)
     {
         $author = $this->article['author'];
 
         // if fields is empty and $adder is true
         if (empty($author) and true === $adder) {
             $author = $this->adderFullName(false);
+        }
+
+        if ('raw' === $type) {
+            return $author;
         }
 
         return Text::escape($author);
@@ -201,8 +205,10 @@ class Article
     {
         $date = $this->article['date'];
 
-        if (empty($date)) {
-            $date = date('Y-m-d H:i:s');
+        $validator = new Validator();
+        $validator->checkDatetime('date', $date, 'Y-m-d H:i:s');
+        if ($validator->isErrors() or empty($date)) {
+            return $date;
         }
 
         switch ($style) {
@@ -337,12 +343,19 @@ class Article
 
     /**
      * Returns article slug.
-     * 
+     *
+     * @param string $type
+     *
      * @return string
      */
-    public function slug()
+    public function slug($type = '')
     {
-        return Text::escape($this->article['slug']);
+        $slug = $this->article['slug'];
+        if ('raw' === $type) {
+            return $slug;
+        }
+
+        return Text::escape($slug);
     }
 
     /**
@@ -363,22 +376,36 @@ class Article
 
     /**
      * Returns album path.
+     *
+     * @param string $type
      * 
      * @return string
      */
-    public function album()
+    public function album($type = '')
     {
-        return Text::escape($this->article['album']);
+        $album = $this->article['album'];
+        if ('raw' === $type) {
+            return $album;
+        }
+
+        return Text::escape($album);
     }
 
     /**
      * Returns thumb path.
+     *
+     * @param string $type
      * 
      * @return string
      */
-    public function thumb()
+    public function thumb($type = '')
     {
-        return Text::escape($this->article['thumb']);
+        $thumb = $this->article['thumb'];
+        if ('raw' === $type) {
+            return $thumb;
+        }
+
+        return Text::escape($thumb);
     }
 
     /**

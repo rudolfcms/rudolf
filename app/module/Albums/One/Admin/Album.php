@@ -21,7 +21,7 @@ class Album extends One\Album
      */
     public function textarea()
     {
-        return trim($this->content(false, false, true, true)); // traits
+        return $this->content(false, false, false, true);
     }
 
     public function addCategory()
