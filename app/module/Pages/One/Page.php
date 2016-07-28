@@ -3,6 +3,7 @@
 namespace Rudolf\Modules\Pages\One;
 
 use Rudolf\Component\Hooks;
+use Rudolf\Component\Html\Text;
 
 class Page
 {
@@ -11,6 +12,11 @@ class Page
     public function __construct($page = [])
     {
         $this->setData($page);
+    }
+
+    public function id()
+    {
+        return $this->page['id'];
     }
 
     public function setData($page)
@@ -25,6 +31,25 @@ class Page
             ],
             (array) $page
         );
+    }
+
+    public function url()
+    {
+        return sprintf('%1$s/%2$s',
+            DIR,
+            Text::escape($this->page['slug'])
+        );
+        return $this->page['slug'];
+    }
+
+    public function modified()
+    {
+        return $this->page['modified'];
+    }
+
+    public function added()
+    {
+        return $this->page['added'];
     }
 
     public function title()

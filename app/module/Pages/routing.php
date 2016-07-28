@@ -1,8 +1,8 @@
 <?php
 
-use Rudolf\Component\Routing;
+use Rudolf\Component\Routing\Route;
 
-$collection->add('pages', new Routing\Route(
+$collection->add('pages', new Route(
     '<page>',
     'Rudolf\Modules\Pages\One\Controller::page',
     array(
@@ -11,4 +11,22 @@ $collection->add('pages', new Routing\Route(
     ),
     [],
     2000
+));
+
+# admin
+############################
+
+// list
+
+$collection->add('pages/admin', new Route(
+    'admin/pages([\/])?',
+    'Rudolf\Modules\Pages\Roll\Admin\Controller::redirectTo',
+    [],
+    ['target' => DIR.'/admin/pages/list']
+));
+$collection->add('pages/roll/admin', new Route(
+    'admin/pages/list(/page/<page>)?',
+    'Rudolf\Modules\Pages\Roll\Admin\Controller::getList',
+    ['page' => '[1-9][0-9]*$'],
+    ['page' => 0]
 ));
