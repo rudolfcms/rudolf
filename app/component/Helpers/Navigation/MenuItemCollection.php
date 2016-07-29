@@ -31,6 +31,9 @@ class MenuItemCollection
      */
     public function getByType($type)
     {
+        if (empty($this->collection)) {
+            return;
+        }
         $items = [];
 
         foreach ($this->collection as $key => $item) {
