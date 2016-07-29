@@ -16,7 +16,7 @@ abstract class FrontView extends BaseView
         self::$request = $request;
     }
 
-    public function pageNav($type, $classes, $nesting = 0, $before = [], $after = [])
+    public function pageNav($type = 'main', $classes = [], $nesting = 0, $before = [], $after = [])
     {
         $nav = new Navigation();
         $nav->setType($type);
