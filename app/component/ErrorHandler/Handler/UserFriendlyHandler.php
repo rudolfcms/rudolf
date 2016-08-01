@@ -7,11 +7,9 @@ use Rudolf\Component\Http\Response;
 
 class UserFriendlyHandler extends Handler implements IHandler
 {
-    public function handle($exception)
+    public function handle()
     {
-        $this->exception = $exception;
-
-        $code = $this->getCode($exception);
+        $code = $this->getCode($this->getException());
         $texts = ResponseMessages::getMessages($code);
 
         $response = new Response($this->displayDefaultMessage($code, $texts[0], $texts[1]), $code);

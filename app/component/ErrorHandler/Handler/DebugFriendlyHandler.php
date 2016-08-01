@@ -4,14 +4,12 @@ namespace Rudolf\Component\ErrorHandler\Handler;
 
 class DebugFriendlyHandler extends Handler implements IHandler
 {
-    public function handle($exception)
+    public function handle()
     {
-        $this->exception = $exception;
-
         $this->pageTitle = 'Oh no! Error occurred!';
         $this->pageStyle = $this->getResource(['css/reset.css', 'css/style.css']);
         $this->pageScript = $this->getResource(['js/checkargs.js']);
-        $this->message = $exception->getMessage();
+        $this->message = $this->getException()->getMessage();
         $this->description = $this->getDescription();
         $this->trace = $this->getTrace();
 

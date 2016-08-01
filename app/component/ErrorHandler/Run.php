@@ -85,7 +85,8 @@ class Run
     public function handleException($e)
     {
         ob_clean();
-        $this->handler->handle($e);
+        $this->handler->setException($e);
+        $this->handler->handle();
 
         if ($this->logger) {
             $d = $this->handler->getDescription();

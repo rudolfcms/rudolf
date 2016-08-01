@@ -6,8 +6,6 @@ class PlainTextHandler extends Handler implements IHandler
 {
     public function handle($exception)
     {
-        $this->exception = $exception;
-
         echo $this->formatMessage();
     }
 

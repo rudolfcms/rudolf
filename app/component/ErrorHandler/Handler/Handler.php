@@ -4,6 +4,17 @@ namespace Rudolf\Component\ErrorHandler\Handler;
 
 abstract class Handler
 {
+    private $exception;
+
+    public function setException($e)
+    {
+        $this->exception = $e;
+    }
+
+    public function getException()
+    {
+        return $this->exception;
+    }
     /**
      * Get exception information.
      *
