@@ -27,7 +27,7 @@ class UserFriendlyHandler extends Handler implements IHandler
      */
     public function getCode($e)
     {
-        return $e->getCode() ? $e->getCode() : 503;
+        return $e->getCode() > 400 ? $e->getCode() : 503;
     }
 
     /**
