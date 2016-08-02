@@ -21,7 +21,7 @@ class Model extends FrontModel
         }
 
         for ($pid = 0, $i = 0; $i < count($path); ++$i) {
-            $pidInArray = isset($pages[$path[$i]]) ? $pages[$path[$i]][$pid] : false;
+            $pidInArray = isset($pages[$path[$i]][$pid]) ? $pages[$path[$i]][$pid] : false;
 
             if (false === $pidInArray) {
                 return false;
