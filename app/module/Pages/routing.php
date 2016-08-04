@@ -17,7 +17,6 @@ $collection->add('pages', new Route(
 ############################
 
 // list
-
 $collection->add('pages/admin', new Route(
     'admin/pages([\/])?',
     'Rudolf\Modules\Pages\Roll\Admin\Controller::redirectTo',
@@ -29,4 +28,12 @@ $collection->add('pages/roll/admin', new Route(
     'Rudolf\Modules\Pages\Roll\Admin\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]
+));
+
+
+// page 
+$collection->add('pages/one/admin/edit', new Route(
+    'admin/pages/edit/<id>$',
+    'Rudolf\Modules\Pages\One\Admin\EditController::edit',
+    ['id' => '[1-9][0-9]*']
 ));

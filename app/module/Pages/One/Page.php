@@ -57,11 +57,6 @@ class Page
         return $this->page['title'];
     }
 
-    public function author()
-    {
-        return $this->page['author'];
-    }
-
     public function content()
     {
         $content = $this->page['content'];

@@ -20,7 +20,7 @@ class Controller extends FrontController
             throw new HttpErrorException('No page found (error 404)', 404);
         }
 
-        $pageInfo = $page->getPageById($pageID);
+        $pageInfo = $page->getOneById($pageID);
 
         $view = new View();
         $view->page($pageInfo);

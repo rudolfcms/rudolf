@@ -4,7 +4,7 @@ namespace Rudolf\Modules\Pages\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Framework\Controller\AdminController;
-use Rudolf\Modules\Pages\Roll\Model as PagesList;
+use Rudolf\Modules\Pages\Roll\Admin\Model as PagesList;
 
 class Controller extends AdminController
 {

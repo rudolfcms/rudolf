@@ -2,16 +2,16 @@
 
 namespace Rudolf\Modules\Pages\Roll;
 
-use Rudolf\Framework\Model\AdminModel;
+use Rudolf\Framework\Model\FrontModel;
 
-class Model extends AdminModel
+class Model extends FrontModel
 {
     /**
      * Returns pages list.
      * 
      * @return array
      */
-    public function getPagesList()
+    public function getPagesList($simple = false)
     {
         $stmt = $this->pdo->prepare("
             SELECT id,
@@ -22,11 +22,15 @@ class Model extends AdminModel
             FROM {$this->prefix}pages
         ");
         $stmt->execute();
-        $results = $stmt->fetchAll();
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
         if (empty($results)) {
             return false;
+        }
+
+        if (true === $simple) {
+            return $results;
         }
         $i = 0;
 
@@ -41,51 +45,5 @@ class Model extends AdminModel
         }
 
         return $array;
-    }
-
-    /**
-     * Returns array with pages list.
-     *
-     * @param int   $limit
-     * @param int   $onPage
-     * @param array $orderBy
-     *
-     * @return array
-     */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
-    {
-        $clausule = $this->createWhereClausule($this->where);
-
-        $stmt = $this->pdo->prepare("
-            SELECT *
-            FROM {$this->prefix}pages
-            WHERE $clausule
-            ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
-                                                   $onPage
-        ");
-
-        $stmt->execute();
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-
-        if (!empty($results)) {
-            return $results;
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns total number of pages items.
-     * 
-     * @param array|string $where
-     * 
-     * @return int
-     */
-    public function getTotalNumber($where = ['published' => 1])
-    {
-        $this->where = $where;
-
-        return $this->countItems('pages', $where);
     }
 }

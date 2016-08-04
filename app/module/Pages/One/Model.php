@@ -44,12 +44,21 @@ class Model extends FrontModel
      * 
      * @return array
      */
-    public function getPageById($id)
+    public function getOneById($id)
     {
         $stmt = $this->pdo->prepare("
-            SELECT *
-            FROM {$this->prefix}pages
-            WHERE id = :id
+            SELECT page.id, page.parent_id, page.title, page.content, page.keywords, page.views,
+                   page.description, page.published, page.slug, page.added, page.modified,
+                   adder.nick AS adder_nick,
+                   adder.first_name AS adder_first_name,
+                   adder.surname AS adder_surname,
+                   modifier.nick AS adder_nick,
+                   modifier.first_name AS modifier_first_name,
+                   modifier.surname AS modifier_surname
+            FROM {$this->prefix}pages as page
+            LEFT JOIN {$this->prefix}users AS adder ON page.adder_ID = adder.id
+            LEFT JOIN {$this->prefix}users AS modifier ON page.modifier_ID = modifier.id
+            WHERE page.id = :id
         ");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
