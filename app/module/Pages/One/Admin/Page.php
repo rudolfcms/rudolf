@@ -30,35 +30,10 @@ class Page extends One\Page
     }
     public function url()
     {
-        if (!isset($this->pagesList)) {
+        if (!isset($this->page['url'])) {
             return $this->slug();
         }
-        foreach ($this->pagesList as $key => $value) {
-            $pages[$value['id']] = $value;
-        }
-
-        $url = $this->slug();
-        $current = $pages[$this->id()];
-
-        if (0 === $current['parent_id']) {
-            return $url;
-        }
-
-        foreach ($pages as $key => $value) {
-            if ($key == $current['parent_id']) {
-                $url = $value['slug'].'/'.$url;
-                $current = $value;
-                continue;
-            }
-
-            // chyba niepotrzebne
-            if (0 == $current['parent_id']) {
-                break;
-            }
-
-        }
-
-        return DIR.'/'.$url;
+        return $this->page['url'];
     }
 
     public function slug()

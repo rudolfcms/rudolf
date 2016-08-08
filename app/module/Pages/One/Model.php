@@ -14,11 +14,13 @@ class Model extends FrontModel
      * 
      * @return int|bool
      */
-    public function getPageIdByPath(array $path, $pages = false)
+    public function getPageIdByPath(array $path, array $pages)
     {
-        if (false === $pages) {
-            $pages = $this->getPagesList();
+        // temp workaround
+        foreach ($pages as $key => $value) {
+            $array[$value['slug']][$value['parent_id']] = $value;
         }
+        $pages = $array;
 
         for ($pid = 0, $i = 0; $i < count($path); ++$i) {
             $pidInArray = isset($pages[$path[$i]][$pid]) ? $pages[$path[$i]][$pid] : false;
@@ -62,7 +64,7 @@ class Model extends FrontModel
         ");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
-        $results = $stmt->fetchAll();
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
         if (empty($results)) {
@@ -70,5 +72,29 @@ class Model extends FrontModel
         }
 
         return $results[0];
+    }
+
+    public function addToPageUrl(array $page, array $pagesList)
+    {
+        foreach ($pagesList as $key => $value) {
+            $pages[$value['id']] = $value;
+        }
+
+        $url = $page['slug'];
+        $current = $pages[$page['id']];
+
+        if (0 === $current['parent_id']) {
+            return $url;
+        } else {
+            $pid = $page['parent_id'];
+            while ($pid != 0) {
+                $url = $pages[$pid]['slug'].'/'.$url;
+                $pid = $pages[$pid]['parent_id'];
+            }
+        }
+
+        $page['url'] = DIR.'/'.$url;
+
+        return $page;
     }
 }

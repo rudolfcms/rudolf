@@ -13,10 +13,9 @@ class EditView extends AdminView
      * 
      * @param array $page
      */
-    public function editPage($page, $pagesList)
+    public function editPage($page)
     {
         $this->page = new Page($page);
-        $this->page->setPages($pagesList);
 
         $this->pageTitle = _('Edit page');
         $this->head->setTitle($this->pageTitle);

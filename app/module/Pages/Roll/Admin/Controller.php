@@ -4,7 +4,9 @@ namespace Rudolf\Modules\Pages\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Framework\Controller\AdminController;
+use Rudolf\Modules\Pages\One\Model as PageOne;
 use Rudolf\Modules\Pages\Roll\Admin\Model as PagesList;
+use Rudolf\Modules\Pages\Roll\Model as PagesFullList;
 
 class Controller extends AdminController
 {
@@ -20,6 +22,15 @@ class Controller extends AdminController
         $onPage = $pagination->getOnPage();
 
         $results = $list->getList($limit, $onPage);
+
+        $page = new PageOne();
+        $pagesList = new PagesFullList();
+        foreach ($results as $key => $value) {
+            $results[$key] = $page->addToPageUrl(
+                $value,
+                $pagesList->getPagesList()
+            );
+        }
 
         $view = new View();
         $view->setData($results, $pagination);

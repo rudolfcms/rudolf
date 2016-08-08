@@ -24,13 +24,18 @@ class EditController extends AdminController
             $form->dispalyAlerts();
         }
 
-        $pages = new PagesList();
+        $pagesList = new PagesList();
+        $page = new One\Model();
         $view = new EditView();
         $view->editPage(
-            $form->getDataToDisplay((new One\Model())->getOneById($id)),
-            $pages->getPagesList($simple = true)
+            $form->getDataToDisplay(
+                $page->addToPageUrl(
+                    $page->getOneById($id),
+                    $pagesList->getPagesList()
+                )
+            )
         );
-        $view->setPages($pages->getPagesList($simple = true));
+        $view->setPages($pagesList->getPagesList());
         $view->render('admin');
 	}
 }

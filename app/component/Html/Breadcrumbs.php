@@ -79,6 +79,16 @@ class Breadcrumbs
             return false;
         }
 
+        // temp workaround
+        foreach ($menu as $key => $value) {
+            if (isset($value['slug'])) {
+                $array[$value['slug']][$value['parent_id']] = $value;
+            }
+        }
+        if (isset($value['slug'])) {
+            $menu = $array;
+        }
+
         $url = null;
         $array = [];
 
