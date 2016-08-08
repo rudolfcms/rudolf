@@ -57,10 +57,27 @@ class Page
         return $this->page['title'];
     }
 
-    public function content()
+    public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
     {
         $content = $this->page['content'];
-        $content = Hooks\Filter::apply('content_filter', $content);
+
+        if (true === $stripTags) {
+            $content = strip_tags($content);
+        }
+
+        if (false !== $truncate and strlen($content) > $truncate) {
+            $content = Text::truncate($content, $truncate);
+        }
+
+        if (true === $escape) {
+            $content = Text::escape($content);
+        }
+
+        if (false === $raw) {
+            $content = Hooks\Filter::apply('content_filter', $content);
+
+            return $content;
+        }
 
         return $content;
     }
