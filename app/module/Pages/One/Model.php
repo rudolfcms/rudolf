@@ -64,14 +64,13 @@ class Model extends FrontModel
         ");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
+        $this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if (empty($results)) {
+        if (empty($this->results)) {
             return false;
         }
 
-        return $results[0];
+        return $this->results;
     }
 
     public function addToPageUrl(array $page, array $pagesList)
@@ -96,5 +95,19 @@ class Model extends FrontModel
         $page['url'] = DIR.'/'.$url;
 
         return $page;
+    }
+
+    /**
+     * Increment page views.
+     */
+    public function addView()
+    {
+        $info = $this->results;
+
+        $stmt = $this->pdo->prepare("UPDATE {$this->prefix}pages SET views = :v
+            WHERE id = :id");
+        $stmt->bindValue(':v', ++$info['views'], \PDO::PARAM_INT);
+        $stmt->bindValue(':id', $info['id'], \PDO::PARAM_INT);
+        $stmt->execute();
     }
 }
