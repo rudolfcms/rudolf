@@ -40,7 +40,7 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        if ($pagination->getAllPages() < $page) {
+        if ($pagination->getAllPages() < $page and $pagination->getAllPages() > 1) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
 

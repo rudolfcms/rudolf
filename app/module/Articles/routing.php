@@ -86,12 +86,17 @@ $collection->add('articles/categories/roll/admin', new Route(
 ));
 $collection->add('articles/categories/one/admin/edit', new Route(
     'admin/articles/categories/edit/<id>$',
-    'Rudolf\Modules\Articles\Category\One\Admin\Controller::edit',
+    'Rudolf\Modules\Articles\Category\One\Admin\EditController::edit',
     ['id' => '[1-9][0-9]*']
 ));
 $collection->add('articles/categories/one/admin/add', new Route(
     'admin/articles/categories/add$',
-    'Rudolf\Modules\Articles\Category\One\Admin\Controller::add'
+    'Rudolf\Modules\Articles\Category\One\Admin\AddController::add'
+));
+$collection->add('articles/categories/one/admin/del', new Route(
+    'admin/articles/categories/del/<id>$',
+    'Rudolf\Modules\Articles\Category\One\Admin\DelController::del',
+    ['id' => '[1-9][0-9]*']
 ));
 
 // article

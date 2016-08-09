@@ -63,12 +63,17 @@ $collection->add('albums/categories/roll/admin', new Route(
 ));
 $collection->add('albums/categories/one/admin/edit', new Route(
     'admin/albums/categories/edit/<id>$',
-    'Rudolf\Modules\Albums\Category\One\Admin\Controller::edit',
+    'Rudolf\Modules\Albums\Category\One\Admin\EditController::edit',
     ['id' => '[1-9][0-9]*']
 ));
 $collection->add('albums/categories/one/admin/add', new Route(
     'admin/albums/categories/add$',
-    'Rudolf\Modules\Albums\Category\One\Admin\Controller::add'
+    'Rudolf\Modules\Albums\Category\One\Admin\AddController::add'
+));
+$collection->add('albums/categories/one/admin/del', new Route(
+    'admin/albums/categories/del/<id>$',
+    'Rudolf\Modules\Albums\Category\One\Admin\DelController::del',
+    ['id' => '[1-9][0-9]*']
 ));
 
 // one
