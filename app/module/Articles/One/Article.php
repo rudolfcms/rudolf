@@ -448,8 +448,8 @@ class Article
             $path, $width, $height, $alt
         );
 
-        if (true === $album and !empty($this->album())) {
-            $album = $this->album();
+        $album = $this->album();
+        if (true === $album and !empty($album)) {
             $image = sprintf('<a href="%1$s">%2$s</a>', $album, $image);
         }
 
