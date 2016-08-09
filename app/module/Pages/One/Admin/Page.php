@@ -26,6 +26,7 @@ class Page extends One\Page
         if (!isset($this->page['url'])) {
             return $this->slug();
         }
+
         return $this->page['url'];
     }
 

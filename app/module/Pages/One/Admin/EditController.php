@@ -9,9 +9,9 @@ use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class EditController extends AdminController
 {
-	public function edit($id)
-	{
-		$form = new EditForm();
+    public function edit($id)
+    {
+        $form = new EditForm();
         $form->setModel(new EditModel());
 
         $page = new PageOne();
@@ -42,5 +42,5 @@ class EditController extends AdminController
         );
         $view->setPages($pagesList->getPagesList());
         $view->render('admin');
-	}
+    }
 }

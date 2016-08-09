@@ -43,6 +43,7 @@ class Page
             DIR,
             Text::escape($this->page['slug'])
         );
+
         return $this->page['slug'];
     }
 

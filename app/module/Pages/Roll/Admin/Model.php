@@ -6,7 +6,6 @@ use Rudolf\Framework\Model\AdminModel;
 
 class Model extends AdminModel
 {
-
     /**
      * Returns array with pages list.
      *
