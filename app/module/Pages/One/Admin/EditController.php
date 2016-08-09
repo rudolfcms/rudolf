@@ -2,8 +2,9 @@
 
 namespace Rudolf\Modules\Pages\One\Admin;
 
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
-use Rudolf\Modules\Pages\One;
+use Rudolf\Modules\Pages\One\Model as PageOne;
 use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class EditController extends AdminController
@@ -12,6 +13,11 @@ class EditController extends AdminController
 	{
 		$form = new EditForm();
         $form->setModel(new EditModel());
+
+        $page = new PageOne();
+        if (false === ($pageData = $page->getOneById($id))) {
+            throw new HttpErrorException('No page found (error 404)', 404);
+        }
 
         // if data was send
         if (isset($_POST['update'])) {
@@ -25,12 +31,11 @@ class EditController extends AdminController
         }
 
         $pagesList = new PagesList();
-        $page = new One\Model();
         $view = new EditView();
         $view->editPage(
             $form->getDataToDisplay(
                 $page->addToPageUrl(
-                    $page->getOneById($id),
+                    $pageData,
                     $pagesList->getPagesList()
                 )
             )

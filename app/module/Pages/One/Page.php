@@ -24,8 +24,12 @@ class Page
         $this->page = array_merge(
             [
                 'id' => 0,
+                'parent_id' => 0,
                 'title' => '',
-                'author' => '',
+                'description' => '',
+                'keywords' => '',
+                'slug' => '',
+                'published' => '',
                 'content' => '',
                 'views' => '',
             ],
@@ -52,9 +56,21 @@ class Page
         return $this->page['added'];
     }
 
-    public function title()
+    /**
+     * Returns page title.
+     * 
+     * @param string $type null|raw
+     * 
+     * @return string
+     */
+    public function title($type = '')
     {
-        return $this->page['title'];
+        $title = $this->page['title'];
+        if ('raw' === $type) {
+            return $title;
+        }
+
+        return Text::escape($title);
     }
 
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
@@ -80,6 +96,40 @@ class Page
         }
 
         return $content;
+    }
+
+    /**
+     * Returns the keywords.
+     * 
+     * @param string $type null|raw
+     * 
+     * @return string
+     */
+    public function keywords($type = '')
+    {
+        $keywords = $this->page['keywords'];
+        if ('raw' === $type) {
+            return $keywords;
+        }
+
+        return Text::escape($keywords);
+    }
+
+    /**
+     * Returns the description.
+     * 
+     * @param string $type
+     * 
+     * @return string
+     */
+    public function description($type = '')
+    {
+        $description = $this->page['description'];
+        if ('raw' === $type) {
+            return $description;
+        }
+
+        return Text::escape($description);
     }
 
     public function views()

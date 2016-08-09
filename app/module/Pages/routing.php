@@ -42,3 +42,7 @@ $collection->add('pages/one/admin/del', new Route(
     'Rudolf\Modules\Pages\One\Admin\DelController::del',
     ['id' => '[1-9][0-9]*']
 ));
+$collection->add('pages/one/admin/add', new Route(
+    'admin/pages/add$',
+    'Rudolf\Modules\Pages\One\Admin\AddController::add'
+));

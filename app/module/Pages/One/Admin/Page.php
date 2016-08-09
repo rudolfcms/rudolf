@@ -7,13 +7,6 @@ use Rudolf\Modules\Pages\One;
 
 class Page extends One\Page
 {
-    private $pagesList;
-
-    public function setPages($pagesList)
-    {
-        $this->pagesList = $pagesList;
-    }
-
     public function parentID()
     {
         return $this->page['parent_id'];
@@ -44,40 +37,6 @@ class Page extends One\Page
     public function isPublished()
     {
         return $this->page['published'];
-    }
-
-    /**
-     * Returns the keywords.
-     * 
-     * @param string $type null|raw
-     * 
-     * @return string
-     */
-    public function keywords($type = '')
-    {
-        $keywords = $this->page['keywords'];
-        if ('raw' === $type) {
-            return $keywords;
-        }
-
-        return Text::escape($keywords);
-    }
-
-    /**
-     * Returns the description.
-     * 
-     * @param string $type
-     * 
-     * @return string
-     */
-    public function description($type = '')
-    {
-        $description = $this->page['description'];
-        if ('raw' === $type) {
-            return $description;
-        }
-
-        return Text::escape($description);
     }
 
     /**
