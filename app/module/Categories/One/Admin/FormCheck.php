@@ -20,7 +20,7 @@ class FormCheck extends Form
             'keywords' => '',
             'content' => '',
             'slug' => '',
-            'type' => $this->type
+            'type' => $this->type,
         ], $this->data);
 
         $data = array_map(function ($a) {
@@ -45,18 +45,18 @@ class FormCheck extends Form
                     'empty' => _('The title does not be empty! Min 3 characters'),
                 ])
             ->checkChar('description', $data['description'], 0, 255, [
-                    'long' => _('Description is too long. Max is 255 characters')
+                    'long' => _('Description is too long. Max is 255 characters'),
                 ])
             ->checkChar('keywords', $data['keywords'], 0, 255, [
                     'short' => _('Keywords is too short. Min is 3 characters'),
-                    'long' => _('Keywords is too long. Max is 255 characters')
+                    'long' => _('Keywords is too long. Max is 255 characters'),
                 ])
             ->checkChar('type', $data['type'], 0, 255, [
-                    'long' => _('Type is too long. Max is 255 characters')
+                    'long' => _('Type is too long. Max is 255 characters'),
                 ])
             //->checkChar('content', $data['content'])
             ->checkChar('slug', $data['slug'], 0, 255, [
-                    'long' => _('URL is too long. Max is 255 characters')
+                    'long' => _('URL is too long. Max is 255 characters'),
                 ]);
 
         $this->dataValidated = $data;

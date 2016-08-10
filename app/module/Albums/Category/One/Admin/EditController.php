@@ -2,7 +2,6 @@
 
 namespace Rudolf\Modules\Albums\Category\One\Admin;
 
-use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One;
 use Rudolf\Modules\Categories\One\Admin\EditForm;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Galleries;
+namespace Rudolf\Modules\Galleries\One;
 
 use Rudolf\Component\Hooks;
 use Rudolf\Component\Images\Image;
@@ -60,8 +60,8 @@ class Parser
      */
     public function createGallery($info)
     {
-        $serverPath = $this->config['path_root'].'/'.$info['url'];
-        $webPath = $this->config['path_web'].'/'.$info['url'];
+        $serverPath = $this->config['path_root'].'/'.$info['slug'];
+        $webPath = $this->config['path_web'].'/'.$info['slug'];
 
         $imagesArray = $this->getImagesArray($serverPath.'/thumbs');
         if (!$imagesArray) {

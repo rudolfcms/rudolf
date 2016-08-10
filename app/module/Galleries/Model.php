@@ -2,43 +2,44 @@
 
 namespace Rudolf\Modules\Galleries;
 
-use Rudolf\Framework\Model\FrontModel;
+use Rudolf\Framework\Model\BaseModel;
 
-class Model extends FrontModel
+abstract class Model extends BaseModel
 {
     /**
-     * It get gallery info by id.
-     *
-     * @param int $id
-     *
-     * @return array
+     * Returns part of query.
+     * 
+     * @return string
      */
-    public function getGalleryInfoById($id)
+    protected function queryPart($part)
     {
-        $id = (int) $id;
-        $stmt = $this->pdo->prepare("
-            SELECT id,
-                   title,
-                   url,
-                   thumb_width,
-                   thumb_height
-            FROM {$this->prefix}galleries
-            WHERE id = :id
-        ");
-        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
+        switch ($part) {
+            case 'full':
+                return "
+                    SELECT gallery.id,
+                           gallery.title,
+                           gallery.added,
+                           gallery.modified,
+                           gallery.adder_ID,
+                           gallery.modifier_ID,
+                           gallery.slug,
+                           adder.nick AS adder_nick,
+                           adder.first_name AS adder_first_name,
+                           adder.surname AS adder_surname,
+                           adder.email AS adder_email,
+                           modifier.nick AS adder_nick,
+                           modifier.first_name AS modifier_first_name,
+                           modifier.surname AS modifier_surname,
+                           modifier.email AS modifier_email
+                    FROM {$this->prefix}galleries AS gallery
+                    LEFT JOIN {$this->prefix}users AS adder ON gallery.adder_ID = adder.id
+                    LEFT JOIN {$this->prefix}users AS modifier ON gallery.modifier_ID = modifier.id
+                ";
+                break;
 
-        if (empty($results)) {
-            return false;
+            default:
+                return "SELECT * FROM {$this->prefix}galleries ";
+            break;
         }
-
-        return $results[0];
-    }
-
-    public function getNumberOfAll($where)
-    {
-        return $this->count('galleries', $where);
     }
 }
