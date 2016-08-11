@@ -25,11 +25,14 @@ class Controller extends AdminController
 
         $page = new PageOne();
         $pagesList = new PagesFullList();
+
+        if (!empty($resutls)) {
         foreach ($results as $key => $value) {
-            $results[$key] = $page->addToPageUrl(
-                $value,
-                $pagesList->getPagesList()
-            );
+                $results[$key] = $page->addToPageUrl(
+                    $value,
+                    $pagesList->getPagesList()
+                );
+            }
         }
 
         $view = new View();
