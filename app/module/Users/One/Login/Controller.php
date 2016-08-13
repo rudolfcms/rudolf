@@ -1,8 +1,7 @@
 <?php
 
-namespace Rudolf\Modules\Users\Login;
+namespace Rudolf\Modules\Users\One\Login;
 
-use Rudolf\Component\Http\Response;
 use Rudolf\Framework\Controller\FrontController;
 
 class Controller extends FrontController
@@ -22,28 +21,11 @@ class Controller extends FrontController
         }
 
         if (true === $model->check() || 1 === $status) {
-            $response = new Response('');
-            $response->setHeader(['Location', DIR.'/admin']);
-            $response->send();
-            exit;
+            $this->redirect(DIR.'/admin');
         }
 
         $view = new View();
         $view->form($_POST, $status);
         $view->render('admin');
-    }
-
-    /**
-     * logout.
-     */
-    public function logout()
-    {
-        $model = new Model();
-        $model->logout();
-
-        $response = new Response('');
-        $response->setHeader(['Location', DIR.'/user/login']);
-        $response->send();
-        exit;
     }
 }

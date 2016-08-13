@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Users\Profile;
+namespace Rudolf\Modules\Users\One\Admin\Profile;
 
 use Rudolf\Framework\View\AdminView;
 

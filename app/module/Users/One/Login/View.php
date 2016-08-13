@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Users\Login;
+namespace Rudolf\Modules\Users\One\Login;
 
 use Rudolf\Component\Html\Text;
 use Rudolf\Framework\View\FrontView;

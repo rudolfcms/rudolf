@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Users\Login;
+namespace Rudolf\Modules\Users\One\Login;
 
 use Rudolf\Component\Auth\Auth;
 use Rudolf\Framework\Model\FrontModel;
@@ -17,14 +17,7 @@ class Model extends FrontModel
     public function login($email, $password)
     {
         $auth = new Auth($this->pdo, $this->prefix);
-        $status = $auth->login($email, $password);
 
-        return $status;
-    }
-
-    public function logout()
-    {
-        $auth = new Auth($this->pdo, $this->prefix);
-        $auth->logout();
+        return $auth->login($email, $password);
     }
 }
