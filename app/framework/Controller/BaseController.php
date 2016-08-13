@@ -36,9 +36,9 @@ abstract class BaseController
         return $page;
     }
 
-    protected function redirect($path = DIR, $code = 301, $response = '')
+    protected function redirect($path = DIR, $code = 301)
     {
-        $response = new Response($response, $code);
+        $response = new Response('', $code);
         $response->setHeader(['Location', $path]);
         $response->send();
         exit;
