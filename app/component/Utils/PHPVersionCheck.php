@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Checks whether php version is compatible with LCMS.
+ * Checks whether php version is compatible with Rudolf.
  * 
  * @param float $minimumVersionPHP
  */
