@@ -26,7 +26,7 @@ class Controller extends AdminController
         $page = new PageOne();
         $pagesList = new PagesFullList();
 
-        if (!empty($resutls)) {
+        if (!empty($results)) {
             foreach ($results as $key => $value) {
                 $results[$key] = $page->addToPageUrl(
                     $value,
