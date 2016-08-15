@@ -359,29 +359,29 @@ class Album
      */
     public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '')
     {
-        $path = $this->thumb();
+        $thumbUrl = $this->thumb();
+        $albumUrl = $this->album();
         $alt = ($alt) ? $alt : $this->title();
 
         if (!$this->hasThumbnail()) {
             if (!empty($default)) {
-                $path = $default;
+                $thumbUrl = $default;
             } else {
                 return false;
             }
         }
 
-        $path = Image::resize($path, $width, $height);
+        $thumbUrl = Image::resize($thumbUrl, $width, $height);
 
-        $image = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
-            $path, $width, $height, $alt
+        $html = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
+            $thumbUrl, $width, $height, $alt
         );
 
-        $album = $this->album();
-        if (true === $album and !empty($album)) {
-            $image = sprintf('<a href="%1$s">%2$s</a>', $album, $image);
+        if (true === $album and !empty($albumUrl)) {
+            $html = sprintf('<a href="%1$s">%2$s</a>', $albumUrl, $html);
         }
 
-        return $image;
+        return $html;
     }
 
     /**
