@@ -50,7 +50,7 @@ class AddModel extends AdminModel
                 , :thumb
                 , :photos
                 , :published
-                , :category_id)
+                , :category_ID)
         ");
         $stmt->bindValue(':title', $f['title'], \PDO::PARAM_STR);
         $stmt->bindValue(':keywords', $f['keywords'], \PDO::PARAM_STR);
@@ -65,7 +65,7 @@ class AddModel extends AdminModel
         $stmt->bindValue(':thumb', $f['thumb'], \PDO::PARAM_STR);
         $stmt->bindValue(':photos', $f['photos'], \PDO::PARAM_INT);
         $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $f['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(':category_ID', $f['category_ID'], \PDO::PARAM_INT);
 
         if (!$stmt->execute()) {
             return false;

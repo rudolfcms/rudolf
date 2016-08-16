@@ -34,7 +34,7 @@ class DataGenerator
             foreach ($this->_fields[$table] as $key => $value) {
                 if ('id' === $key) {
                     continue;
-                } elseif ('category_id' === $key or 'parent_id' === $key) {
+                } elseif ('category_ID' === $key or 'parent_id' === $key) {
                     $v = 0;
                 } elseif ('tinyint' === $value[0]) {
                     $v = $this->randomTinyint();

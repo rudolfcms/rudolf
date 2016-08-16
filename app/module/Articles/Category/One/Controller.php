@@ -31,7 +31,7 @@ class Controller extends FrontController
         $list = new ArticlesList();
         $total = $list->getTotalNumber([
             'published' => 1,
-            'category_id' => $categoryInfo['id'],
+            'category_ID' => $categoryInfo['id'],
         ]);
 
         $conf = (new Module('articles'))->getConfig();

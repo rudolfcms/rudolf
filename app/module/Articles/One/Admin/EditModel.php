@@ -23,7 +23,7 @@ class EditModel extends AdminModel
             UPDATE
                 {$this->prefix}articles
             SET
-                category_ID = :category_id,
+                category_ID = :category_ID,
                 title = :title,
                 keywords = :keywords,
                 description = :description,
@@ -54,7 +54,7 @@ class EditModel extends AdminModel
         $stmt->bindValue(':photos', $f['photos'], \PDO::PARAM_INT);
         $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $f['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(':category_ID', $f['category_ID'], \PDO::PARAM_INT);
 
         return $status = $stmt->execute();
     }

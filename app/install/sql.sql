@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `rudolf_albums` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `category_ID` int(11) unsigned NOT NULL DEFAULT '0',
   `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `author` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adder_ID` int(11) unsigned NOT NULL,
