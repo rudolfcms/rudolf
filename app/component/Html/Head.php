@@ -2,6 +2,8 @@
 
 namespace Rudolf\Component\Html;
 
+use Rudolf\Component\Hooks\Filter;
+
 class Head
 {
     /**
@@ -118,6 +120,8 @@ class Head
         if (empty($this->pageStylesheets)) {
             return false;
         }
+
+        $this->pageStylesheets = Filter::apply('head_stylesheets', $this->pageStylesheets);
 
         foreach ($this->pageStylesheets as $key => $value) {
             $html[] = sprintf('<link rel="stylesheet" href="%1$s"/>', $value);
