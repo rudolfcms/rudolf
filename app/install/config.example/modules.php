@@ -8,6 +8,5 @@ return [
   'Koxy' => 1,
   'Pages' => 1,
   'Users' => 1,
-  'Categories' => 1,
   'Galleries' => 1,
 ];
