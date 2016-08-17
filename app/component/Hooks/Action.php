@@ -108,22 +108,22 @@ class Action
         }
 
         // Do 'all' actions first
-        if (isset(self::$filters['all'])) {
-            self::$current_filter[] = $tag;
+        if (isset(Filter::$filters['all'])) {
+            Filter::$currentFilter[] = $tag;
             $all_args = func_get_args();
             self::$_call_all_hook ($all_args);
         }
 
-        if (!isset(self::$filters[$tag])) {
-            if (isset(self::$filters['all'])) {
-                array_pop(self::$current_filter);
+        if (!isset(Filter::$filters[$tag])) {
+            if (isset(Filter::$filters['all'])) {
+                array_pop(Filter::$currentFilter);
             }
 
             return;
         }
 
-        if (!isset(self::$filters['all'])) {
-            self::$current_filter[] = $tag;
+        if (!isset(Filter::$filters['all'])) {
+            Filter::$currentFilter[] = $tag;
         }
 
         $args = array();
@@ -137,22 +137,22 @@ class Action
         }
 
         // Sort
-        if (!isset(self::$merged_filters[ $tag ])) {
-            ksort(self::$filters[$tag]);
-            self::$merged_filters[ $tag ] = true;
+        if (!isset(Filter::$mergedFilters[ $tag ])) {
+            ksort(Filter::$filters[$tag]);
+            Filter::$mergedFilters[ $tag ] = true;
         }
 
-        reset(self::$filters[$tag]);
+        reset(Filter::$filters[$tag]);
 
         do {
-            foreach ((array) current(self::$filters[$tag]) as $the_) {
+            foreach ((array) current(Filter::$filters[$tag]) as $the_) {
                 if (!is_null($the_['function'])) {
                     call_user_func_array($the_['function'], array_slice($args, 0, (int) $the_['accepted_args']));
                 }
             }
-        } while (next(self::$filters[$tag]) !== false);
+        } while (next(Filter::$filters[$tag]) !== false);
 
-        array_pop(self::$current_filter);
+        array_pop(Filter::$currentFilter);
     }
 
     /**
@@ -176,41 +176,41 @@ class Action
         }
 
         // Do 'all' actions first
-        if (isset(self::$filters['all'])) {
-            self::$current_filter[] = $tag;
+        if (isset(Filter::$filters['all'])) {
+            Filter::$currentFilter[] = $tag;
             $all_args = func_get_args();
             self::$_call_all_hook ($all_args);
         }
 
-        if (!isset(self::$filters[$tag])) {
-            if (isset(self::$filters['all'])) {
-                array_pop(self::$current_filter);
+        if (!isset(Filter::$filters[$tag])) {
+            if (isset(Filter::$filters['all'])) {
+                array_pop(Filter::$currentFilter);
             }
 
             return;
         }
 
-        if (!isset(self::$filters['all'])) {
-            self::$current_filter[] = $tag;
+        if (!isset(Filter::$filters['all'])) {
+            Filter::$currentFilter[] = $tag;
         }
 
         // Sort
         if (!isset($merged_filters[ $tag ])) {
-            ksort(self::$filters[$tag]);
+            ksort(Filter::$filters[$tag]);
             $merged_filters[ $tag ] = true;
         }
 
-        reset(self::$filters[ $tag ]);
+        reset(Filter::$filters[ $tag ]);
 
         do {
-            foreach ((array) current(self::$filters[$tag]) as $the_) {
+            foreach ((array) current(Filter::$filters[$tag]) as $the_) {
                 if (!is_null($the_['function'])) {
                     call_user_func_array($the_['function'], array_slice($args, 0, (int) $the_['accepted_args']));
                 }
             }
-        } while (next(self::$filters[$tag]) !== false);
+        } while (next(Filter::$filters[$tag]) !== false);
 
-        array_pop(self::$current_filter);
+        array_pop(Filter::$currentFilter);
     }
 
     /**
