@@ -4,6 +4,7 @@ namespace Rudolf\Framework\Model;
 
 use Rudolf\Component\Auth\Auth;
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
+use Rudolf\Component\Modules\Manager as ModulesManager;
 
 class AdminModel extends BaseModel
 {
@@ -25,17 +26,14 @@ class AdminModel extends BaseModel
 
     public function getMenuItems()
     {
-        foreach (glob(MODULES_ROOT.'/*', GLOB_ONLYDIR) as $dir) {
-            $dir = str_replace(MODULES_ROOT.'/', '', $dir);
-            $array[] = $dir;
-        }
+        $modules = (new ModulesManager(MODULES_ROOT))->getCollection()->getActive();
 
         $collection = new MenuItemCollection();
 
-        for ($i = 0; $i < count($array); ++$i) {
-            $file = MODULES_ROOT.'/'.$array[$i].'/menu.php';
+        foreach ($modules as $key => $value) {
+            $file = MODULES_ROOT.'/'.$value->getName().'/menu.php';
 
-            if (file_exists($file)) {
+            if (is_file($file)) {
                 include $file;
             }
         }

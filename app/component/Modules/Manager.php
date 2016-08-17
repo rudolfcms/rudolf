@@ -30,7 +30,7 @@ class Manager
         $this->modules = $this->getCollection()->getActive();
     }
 
-    private function getCollection()
+    public function getCollection()
     {
         $modules = include CONFIG_ROOT.'/modules.php';
 
