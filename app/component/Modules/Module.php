@@ -29,7 +29,7 @@ class Module
 
     public function getConfig()
     {
-        $file = CONFIG_ROOT.'/modules/'.$this->name.'.php';
+        $file = CONFIG_ROOT.'/modules/'.strtolower($this->name).'.php';
 
         if (!file_exists($file)) {
             throw new \Exception("{$this->name} module configuration does not exist");

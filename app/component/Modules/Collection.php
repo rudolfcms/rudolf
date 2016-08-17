@@ -12,13 +12,12 @@ class Collection
     /**
      * Add module to collection.
      *
-     * @param string $name Module name
+     * @param string $name   Module name
      * @param Module $module Module object
      */
     public function add($name, Module $module)
     {
         $this->collection[$name] = $module;
-
     }
 
     /**

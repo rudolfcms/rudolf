@@ -7,72 +7,67 @@ class ConfigEditor
     /**
      * @var array
      */
-    private $path;
-
-    /**
-     * @var array
-     */
     private $modules;
 
-    public function __construct($path)
+    public function __construct()
     {
-        $this->path = $path;
+        $this->refresh();
+    }
+
+    public function refresh()
+    {
+        $this->modules = include CONFIG_ROOT.'/modules.php';
+    }
+
+    public function getStatus($name)
+    {
+        if (isset($this->modules[$name])) {
+            return $this->modules[$name];
+        }
+
+        return;
+    }
+
+    public function save()
+    {
+        $var_str = var_export($this->modules, true);
+        $var = "<?php return $var_str;\n";
+
+        file_put_contents(CONFIG_ROOT.'/modules.php', $var);
+        $this->refresh();
     }
 
     /**
-     * Acticate non-active modules.
-     * 
+     * Activate non-active modules.
+     *
      * @param string $name module name
      */
     public function activate($name)
     {
-        $this->modules[$name] = true;
+        $this->modules[$name] = 1;
     }
 
     /**
      * Deactivate active modules.
-     * 
+     *
      * @param string $name module name
      */
     public function deactivate($name)
     {
-        $this->modules[$name] = false;
+        $this->modules[$name] = 0;
     }
 
-    /**
-     * Add new module to list.
-     * 
-     * @param string $name module name
-     */
-    public function add($name)
-    {
-        $this->modules[$name] = false;
-    }
-
-    /**
-     * Delete module from list.
-     * 
-     * @param string $name module name
-     */
-    public function delete($name)
-    {
-        unset($this->modules[$name]);
-    }
-
-    /**
+    /*
      * Refresh modules list, and if find new, merge with modules.php config
      */
-    private function regenerateList()
-    {
-        foreach (glob($this->path.'/*', GLOB_ONLYDIR) as $dir) {
-            $modules[str_replace($this->path.'/', '', $dir)] = 0;
-        }
+    // private function regenerateList()
+    // {
+    //     foreach (glob($this->path.'/*', GLOB_ONLYDIR) as $dir) {
+    //         $modules[str_replace($this->path.'/', '', $dir)] = 0;
+    //     }
 
-        $modules = array_merge($modules, $this->modules);
+    //     $this->modules = array_merge($modules, $this->modules);
 
-        $var_str = var_export($modules, true);
-        $var = "<?php return $var_str;\n";
-
-        file_put_contents($this->path.'/modules.php', $var);
-    }
+    //     $this->save();
+    // }
 }
