@@ -23,6 +23,6 @@ $collection->add('modules/roll/admin', new Route(
 // module
 $collection->add('modules/one/admin/switch', new Route(
     'admin/modules/switch/<slug>$',
-    'Rudolf\Modules\Modules\One\Admin\SwitchController::switch',
+    'Rudolf\Modules\Modules\One\Admin\SwitchController::switchStatus',
     ['slug' => '[A-z0-9-]+']
 ));
