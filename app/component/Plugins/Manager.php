@@ -45,11 +45,17 @@ class Manager
 
     public function addRoutes(RouteCollection $collection)
     {
+        if (!$this->plugins) {
+            return;
+        }
         $collection = (new Routing($this->plugins, $collection, $this->path))->addRoutes();
     }
 
     public function addHooks()
     {
+        if (!$this->plugins) {
+            return;
+        }
         (new Hooks($this->plugins, $this->path))->addHooks();
     }
 }

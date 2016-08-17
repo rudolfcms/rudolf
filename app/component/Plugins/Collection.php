@@ -39,6 +39,10 @@ class Collection
             }
         }
 
+        if (empty($collection)) {
+            return false;
+        }
+
         return $collection;
     }
 }
