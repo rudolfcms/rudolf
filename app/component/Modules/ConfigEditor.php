@@ -34,6 +34,9 @@ class ConfigEditor
         $var = "<?php return $var_str;\n";
 
         file_put_contents(CONFIG_ROOT.'/modules.php', $var);
+
+        opcache_reset();
+
         $this->refresh();
     }
 
