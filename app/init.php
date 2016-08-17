@@ -11,7 +11,7 @@
 use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
 use Rudolf\Component\Logger\Logger;
 use Rudolf\Component\Modules\Manager as ModulesManager;
-use Rudolf\Component\Plugins\PluginsManager;
+use Rudolf\Component\Plugins\Manager as PluginsManager;
 use Rudolf\Component\Routing\FrontController;
 use Rudolf\Component\Routing\RouteCollection;
 use Rudolf\Component\Routing\Router;
@@ -58,8 +58,10 @@ $errorHandler->register();
 // routes
 $routeCollection = new RouteCollection();
 
-// run extensions (plugins) menager
-PluginsManager::run();
+// plugins
+$pluginsManager = new PluginsManager(PLUGINS_ROOT);
+$pluginsManager->addRoutes($routeCollection);
+$pluginsManager->addHooks();
 
 // modules
 $modulesManager = new ModulesManager(MODULES_ROOT);

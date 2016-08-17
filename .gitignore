@@ -3,5 +3,6 @@ app/config
 app/log
 app/temp
 app/vendor
+content/plugins
 content/themes
 content/uploads
