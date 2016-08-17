@@ -107,6 +107,16 @@ class Loop
     }
 
     /**
+     * Get current page number.
+     *
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->calc->getPageNumber();
+    }
+
+    /**
      * Return navigation.
      * 
      * @param array $classes
