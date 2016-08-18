@@ -1,27 +1,34 @@
 {
-	"config": {
-    	"vendor-dir": "app/vendor"
+    "name": "mklj/rudolf",
+    "type": "project",
+    "description": "Rudolf is simple CMS written in PHP. That's all.",
+    "authors": [
+        {
+            "name": "Mikołaj Pich",
+            "email": "m.pich@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "psr/log": "^1.0"
     },
-	"name": "mklj/Rudolf",
-	"description": "Rudolf is simple CMS written in PHP. That's all.",
-	"authors": [
-		{
-			"name": "Mikołaj Pich",
-			"email": "m.pich@outlook.com"
-		}
-	],
-	"require": {
-		"php": ">=5.4.0",
-		"phpunit/phpunit": "4.8.*",
-		"psr/log": "^1.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"Rudolf\\Framework\\": "app/framework/",
-			"Rudolf\\Component\\": "app/component/",
-			"Rudolf\\Modules\\": "app/module/",
-			"Rudolf\\Tests\\Component\\": "app/tests/component/",
-			"Rudolf\\Tests\\Module\\": "app/tests/modules/"
-		}
-	}
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rudolf\\Framework\\": "app/framework/",
+            "Rudolf\\Component\\": "app/component/",
+            "Rudolf\\Modules\\": "app/module/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rudolf\\Tests\\Component\\": "app/tests/component/",
+            "Rudolf\\Tests\\Module\\": "app/tests/modules/"
+        }
+    },
+    "config": {
+        "vendor-dir": "app/vendor"
+    }
 }
