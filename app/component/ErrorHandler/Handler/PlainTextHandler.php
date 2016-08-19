@@ -4,7 +4,7 @@ namespace Rudolf\Component\ErrorHandler\Handler;
 
 class PlainTextHandler extends Handler implements IHandler
 {
-    public function handle($exception)
+    public function handle()
     {
         echo $this->formatMessage();
     }
