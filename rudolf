@@ -1,0 +1,113 @@
+#!/usr/bin/env php
+<?php
+
+use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
+use Colors\Color;
+
+define('WEB_ROOT', __DIR__);
+
+require_once WEB_ROOT.'/app/vendor/autoload.php';
+require_once WEB_ROOT.'/app/defines.php';
+
+$config = include CONFIG_ROOT.'/site.php';
+
+$errorHandler = new ErrorHandler();
+$errorHandler->setEnvironment(1);
+$errorHandler->register();
+
+$rudolf = new Rudolf();
+
+switch (isset($argv[1]) ? $argv[1] : 'help') {
+    case 'install':
+        $rudolf->install();
+        break;
+
+    case 'clear-cache':
+        $rudolf->clearCache();
+        break;
+
+    case 'update':
+        $rudolf->update();
+        break;
+
+    case 'help':
+    default:
+        $rudolf->help();
+        break;
+}
+
+echo PHP_EOL;
+
+class Rudolf
+{
+    public function __construct()
+    {
+        $this->c = new Color();
+    }
+    public function help()
+    {
+        fwrite(STDERR,
+            $this->c->green(NAME).' '.$this->c->yellow(VER_NAME)
+            .PHP_EOL
+            .PHP_EOL.$this->c->yellow('Usage:')
+            .PHP_EOL.'  command [command]'
+            .PHP_EOL
+            .PHP_EOL.$this->c->yellow('Available commands:')
+            .PHP_EOL.'  '.$this->c->green('help').'         display this message'
+            .PHP_EOL.'  '.$this->c->green('install').'      install rudolf, if not installed yet'
+            .PHP_EOL.'  '.$this->c->green('clear-cache').'  clear app/temp/ directory'
+            .PHP_EOL.'  '.$this->c->green('update').'       update packages, modules and plugins'
+        );
+    }
+
+    public function install()
+    {
+        if (file_exists('app/config')) {
+            echo $this->c->green('Rudolf already installed!').PHP_EOL;
+            die;
+        }
+
+        echo $this->c->green('=============================================').PHP_EOL;
+        echo $this->c->green(' Rudolf Install Script').PHP_EOL;
+        echo $this->c->green('=============================================').PHP_EOL;
+
+        $this->update('Installing');
+
+        echo $this->c->green('Creating catalogs...');
+        mkdir('app/config');
+        mkdir('app/log');
+        mkdir('app/temp');
+        mkdir('content/themes content/themes/front content/themes/admin');
+        mkdir('content/uploads');
+        mkdir('content/plugins');
+        echo $this->c->green(' done.').PHP_EOL;
+    }
+
+    public function clearCache()
+    {
+        echo $this->c->green('Deleting cache...');
+        system('rm -rf '.TEMP_ROOT.'/*', $retval);
+        echo 'done.';
+
+        return $retval == 0;
+    }
+
+    public function update($what = 'Updating')
+    {
+        $this->downloadComposer();
+        echo $this->c->green($what.' composer packages...');
+        system('php composer.phar update -q');
+        echo $this->c->green(' done.').PHP_EOL;
+    }
+
+    private function downloadComposer()
+    {
+        if (file_exists('composer.phar')) {
+            return;
+        }
+        echo 'Downloading composer.phar...'.PHP_EOL;
+        copy('https://getcomposer.org/installer', 'composer-setup.php');
+        system('php composer-setup.php');
+        unlink('composer-setup.php');
+    }
+}
