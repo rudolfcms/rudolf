@@ -53,7 +53,7 @@ function install()
     downloadComposer();
 
     echo out('Instaling composer packages...', 'green');
-    system('php '.WEB_ROOT.'/composer.phar install --quiet');
+    system(composerCmd('php '.WEB_ROOT.'/composer.phar install --quiet'));
     echo out(' done.', null, true);
 
     echo out('Removing composer.phar...', 'green');
@@ -83,8 +83,28 @@ function update()
 
     downloadComposer();
     echo out('Updating composer packages...', 'green');
-    system('php '.WEB_ROOT.'/composer.phar update --quiet');
+    system(composerCmd());
     echo out(' done.', null, true);
+}
+
+function composerCmd($command = null)
+{
+    $config = include WEB_ROOT.'/app/config/site.php';
+
+    if (null === $command) {
+        $command = 'php '.WEB_ROOT.'/composer.phar update --quiet';
+    }
+
+    if (0 === $config['debug']) {
+        echo out(
+            'Running in --no-dev mode. Change debug to 0 in site.php config to download dev packages.',
+            'blue',
+            true
+        );
+        $command .= ' --no-dev';
+    }
+
+    return $command;
 }
 
 /**
