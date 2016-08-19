@@ -76,7 +76,7 @@ function clearCache()
  */
 function update()
 {
-    if (!file_exists('app/config')) {
+    if (!file_exists(WEB_ROOT.'/app/config')) {
         echo out('Rudolf not installed!', 'red').PHP_EOL;
         die;
     }
@@ -111,10 +111,10 @@ function downloadComposer()
 function help()
 {
     fwrite(STDERR,
-        out(NAME, 'green').' '.out(VER_NAME, 'brown', true) .
-        PHP_EOL .
+        out(NAME, 'green').' '.out(VER_NAME, 'brown', true).
+        PHP_EOL.
         out('Usage:', 'brown', true).
-        '  command [command]'. PHP_EOL.
+        '  command [command]'.PHP_EOL.
         PHP_EOL.
         out('Available commands:', 'brown', true).
         '  '.out('clear-cache', 'green').'  clear app/temp/ directory'.PHP_EOL.
@@ -127,9 +127,9 @@ function help()
 /**
  * Colorize output.
  *
- * @param string  $text Text to colorize
- * @param mixed   $color Color style
- * @param bool    $newLine
+ * @param string $text    Text to colorize
+ * @param mixed  $color   Color style
+ * @param bool   $newLine
  */
 function out($text, $color = null, $newLine = false)
 {
