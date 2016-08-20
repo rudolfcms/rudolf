@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'admin_path' => 'admin',
+  'admin_path' => 'admin',
 );
