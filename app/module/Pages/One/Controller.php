@@ -14,6 +14,9 @@ class Controller extends FrontController
         $page = new Model();
 
         $pagesList = (new PagesList())->getPagesList();
+        if (false === $pagesList) {
+            throw new HttpErrorException('No page found (error 404)', 404);
+        }
         $pageID = $page->getPageIdByPath($addressArray, $pagesList);
 
         if (false === $pageID) {
