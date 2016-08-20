@@ -84,7 +84,9 @@ class Run
      */
     public function handleException($e)
     {
-        if (ob_get_contents()) ob_end_clean();
+        if (ob_get_contents()) {
+            ob_end_clean();
+        }
         $this->handler->setException($e);
         $this->handler->handle();
 

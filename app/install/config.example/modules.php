@@ -1,4 +1,6 @@
-<?php return array (
+<?php
+
+return array(
   'Albums' => 1,
   'Articles' => 1,
   'Dashboard' => 1,
