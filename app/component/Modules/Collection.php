@@ -33,10 +33,18 @@ class Collection
      */
     public function getActive()
     {
+        if (empty($this->collection)) {
+            return false;
+        }
+
         foreach ($this->collection as $key => $value) {
             if ($value->getStatus()) {
                 $collection[] = $value;
             }
+        }
+
+        if (empty($collection)) {
+            return false;
         }
 
         return $collection;
