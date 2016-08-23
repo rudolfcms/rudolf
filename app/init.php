@@ -1,13 +1,5 @@
 <?php
-/**
- * This file is part of Rudolf.
- * 
- * Initiates the application.
- * 
- * @author Mikołaj Pich <m.pich@outlook.com>
- *
- * @version 0.1
- */
+
 use Rudolf\Component\ErrorHandler\Run as ErrorHandler;
 use Rudolf\Component\Logger\Logger;
 use Rudolf\Component\Modules\Manager as ModulesManager;
