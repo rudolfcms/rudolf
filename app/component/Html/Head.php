@@ -124,7 +124,7 @@ class Head
         $this->pageStylesheets = Filter::apply('head_stylesheets', $this->pageStylesheets);
 
         foreach ($this->pageStylesheets as $key => $value) {
-            $html[] = sprintf('<link rel="stylesheet" href="%1$s"/>', $value);
+            $html[] = sprintf('<link rel="stylesheet" href="%1$s">', $value);
         }
 
         $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
@@ -159,7 +159,7 @@ class Head
             return false;
         }
 
-        $link = sprintf('<link rel="shortcut icon" href="%1$s"/>', $this->pageFavicon);
+        $link = sprintf('<link rel="shortcut icon" href="%1$s">', $this->pageFavicon);
 
         if (true === $return) {
             return $link;
