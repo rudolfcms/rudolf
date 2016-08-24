@@ -225,6 +225,8 @@ class Head
             return false;
         }
 
+        $this->after = Filter::apply('head_after', $this->after);
+
         $html = implode("\n".str_repeat("\t", $nesting), $this->after).PHP_EOL;
 
         if (true === $return) {
