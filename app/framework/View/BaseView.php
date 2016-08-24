@@ -2,9 +2,11 @@
 
 namespace Rudolf\Framework\View;
 
-use Rudolf\Component\Html\Head;
-use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
 use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
+use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
+use Rudolf\Component\Html\Foot;
+use Rudolf\Component\Html\Head;
+use Rudolf\Component\Plugins\DomPlugins;
 
 abstract class BaseView
 {
@@ -40,6 +42,8 @@ abstract class BaseView
     {
         // create necessary objects
         $this->head = new Head();
+        $this->foot = new Foot();
+        new DomPlugins($this->head, $this->foot);
     }
 
     /**
@@ -53,12 +57,12 @@ abstract class BaseView
         if ('admin' === $side) {
             $this->side = 'admin';
             $this->themeName = ADMIN_THEME;
-            $path = '/'.$this->side.'/'.$this->themeName;
         } else {
             $this->side = 'front';
             $this->themeName = FRONT_THEME;
-            $path = '/'.$this->side.'/'.$this->themeName;
         }
+
+        $path = '/'.$this->side.'/'.$this->themeName;
 
         $this->themeRoot = THEMES_ROOT.$path;
         $this->themePath = THEMES.$path;
@@ -106,11 +110,11 @@ abstract class BaseView
      */
     private function loadConfig()
     {
-        $file = $this->themeRoot.'/'.$this->themeName.'.php';
+        $file = $this->themeRoot.'/theme.php';
 
         if (is_file($file)) {
             include $file;
-            $class = ucfirst($this->themeName);
+            $class = $this->themeName;
             $this->theme = new $class($this);
         }
     }

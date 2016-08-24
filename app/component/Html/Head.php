@@ -2,10 +2,10 @@
 
 namespace Rudolf\Component\Html;
 
-use Rudolf\Component\Hooks\Filter;
-
 class Head
 {
+    use DocumentPart;
+
     /**
      * @var string
      */
@@ -19,22 +19,12 @@ class Head
     /**
      * @var array
      */
-    private $pageStylesheets;
+    private $pageStylesheets = [];
 
     /**
      * @var string
      */
     private $pageFavicon;
-
-    /**
-     * @var array
-     */
-    private $before;
-
-    /**
-     * @var array
-     */
-    private $after;
 
     /**
      * Make all elements inside <head>.
@@ -45,6 +35,7 @@ class Head
         $html[] = sprintf('<meta charset="%1$s">', $this->charset(true));
         $html[] = sprintf('<title>%1$s</title>', $this->title(true));
         $html[] = $this->stylesheets(true, $nesting);
+        $html[] = $this->scripts(true, $nesting);
         $html[] = $this->favicon(true);
         $html[] = $this->after(true);
 
@@ -109,44 +100,6 @@ class Head
     }
 
     /**
-     * Get stylesheets links.
-     * 
-     * @param bool $return
-     * 
-     * @return void|string
-     */
-    public function stylesheets($return = false, $nesting = 1)
-    {
-        if (empty($this->pageStylesheets)) {
-            return false;
-        }
-
-        $this->pageStylesheets = Filter::apply('head_stylesheets', $this->pageStylesheets);
-
-        foreach ($this->pageStylesheets as $key => $value) {
-            $html[] = sprintf('<link rel="stylesheet" href="%1$s">', $value);
-        }
-
-        $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
-
-        if (true === $return) {
-            return $html;
-        }
-
-        echo $html;
-    }
-
-    /**
-     * Set page stylesheet.
-     * 
-     * @param string $href Stylesheet location
-     */
-    public function setStylesheet($href)
-    {
-        $this->pageStylesheets[] = $href;
-    }
-
-    /**
      * Get favicon links.
      * 
      * @param bool $return
@@ -179,20 +132,23 @@ class Head
     }
 
     /**
-     * Get tags before.
+     * Get stylesheets links.
      * 
      * @param bool $return
-     * @param int  $nesting
      * 
      * @return void|string
      */
-    public function before($return = false, $nesting = 1)
+    public function stylesheets($return = false, $nesting = 1)
     {
-        if (empty($this->before)) {
+        if (empty($this->pageStylesheets)) {
             return false;
         }
 
-        $html = implode("\n".str_repeat("\t", $nesting), $this->before).PHP_EOL;
+        foreach ($this->pageStylesheets as $key => $value) {
+            $html[] = sprintf('<link rel="stylesheet" href="%1$s">', $value);
+        }
+
+        $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
 
         if (true === $return) {
             return $html;
@@ -202,47 +158,27 @@ class Head
     }
 
     /**
-     * Set tags before others.
-     * 
-     * @param string $before
+     * Get stylesheet array.
+     *
+     * @return array
      */
-    public function setBefore($before)
+    public function getStylesheetsArray()
     {
-        $this->before[] = $before;
+        return $this->pageStylesheets;
     }
 
     /**
-     * Get tags after.
+     * Set page stylesheet.
      * 
-     * @param bool $return
-     * @param int  $nesting
-     * 
-     * @return void|string
+     * @param string $href Stylesheet location
      */
-    public function after($return = false, $nesting = 1)
+    public function setStylesheet($href)
     {
-        if (empty($this->after)) {
-            return false;
-        }
-
-        $this->after = Filter::apply('head_after', $this->after);
-
-        $html = implode("\n".str_repeat("\t", $nesting), $this->after).PHP_EOL;
-
-        if (true === $return) {
-            return $html;
-        }
-
-        echo $html;
+        $this->pageStylesheets[] = $href;
     }
-
-    /**
-     * Set tags after others.
-     * 
-     * @param string $after
-     */
-    public function setAfter($after)
+    public function setStylesheetsArray($array)
     {
-        $this->after[] = $after;
+        //$this->pageStylesheets = array_merge($this->pageStylesheets, $array);
+        $this->pageStylesheets = $array;
     }
 }
