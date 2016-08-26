@@ -10,7 +10,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0",
+        "phpixie/image": "^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*"
