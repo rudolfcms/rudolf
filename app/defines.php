@@ -23,6 +23,7 @@ define('THEMES',        DIR.'/content/themes');
 define('UPLOADS',       DIR.'/content/uploads');
 define('CONTENT',       DIR.'/content');
 
+define('CONTENT_ROOT',  WEB_ROOT.'/content');
 define('PLUGINS_ROOT',  WEB_ROOT.'/content/plugins');
 define('THEMES_ROOT',   WEB_ROOT.'/content/themes');
 define('UPLOADS_ROOT',  WEB_ROOT.'/content/uploads');

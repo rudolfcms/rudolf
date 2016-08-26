@@ -60,6 +60,8 @@ $modulesManager = new ModulesManager(MODULES_ROOT);
 $modulesManager->addRoutes($routeCollection);
 $modulesManager->addHooks();
 
+include APP_ROOT.'/component/Images/routing.php';
+
 $router = new Router($_SERVER['REQUEST_URI'], DIR, $routeCollection);
 
 $frontController = new FrontController($router);

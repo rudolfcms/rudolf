@@ -1,17 +1,13 @@
 <?php
 
-// use Rudolf\Component\Routing;
+use Rudolf\Component\Routing\Route;
 
-// $collection->add('imageresizer', new Routing\Route(
-//     'imageresize/<width>/<height>/<url>',
-//     'Rudolf\Images\Resizer::init',
-//     array(
-//         'width' => '\d+',
-//         'height' => '\d+',
-//         'url' => '(.*+)'
-//     ),
-//     array(
-//         'width' => 100,
-//         'height' => 100
-//     )
-// ));
+$routeCollection->add('imageresizer/local', new Route(
+    'content/cache/<width>/<height>/<src>',
+    'Rudolf\Component\Images\Resizer::runAsProxy',
+    [
+        'width' => '\d+',
+        'height' => '\d+',
+        'src' => '(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$',
+    ]
+));
