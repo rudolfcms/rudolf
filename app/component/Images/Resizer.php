@@ -116,7 +116,7 @@ class Resizer
         $file = $this->getAbsoluteInternalPath();
 
         if (!file_exists($file)) {
-            throw new Exception('Image not found', 1);
+            throw new \Exception('Image not found', 1);
         };
 
         $cacheFile = $this->createCacheName();
