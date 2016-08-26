@@ -6,10 +6,6 @@ class Image
 {
     public static function resize($url, $w, $h)
     {
-        return CONTENT.'/cache/'.$w.'/'.$h.'/'.base64_url_encode($url);
+        return CONTENT.'/cache/'.$w.'/'.$h.'/'.strtr(base64_encode($url), '+/=', '-_');
     }
-}
-
-function base64_url_encode($input) {
- return strtr(base64_encode($input), '+/=', '-_');
 }
