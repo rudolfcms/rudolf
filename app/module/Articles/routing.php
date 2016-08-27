@@ -33,9 +33,12 @@ $collection->add('articles/one', new Route(
 
 # /feed/atom
 $collection->add('articles/feed', new Route(
-    'feed/<feed>$',
-    'Rudolf\Modules\Articles\Feed\Controller::getFeed',
-    ['feed' => '[a-z0-9]+(?:-[a-z0-9]+)*']
+    'atom/$',
+    'Rudolf\Modules\Articles\Feed\Controller::getAtomFeed'
+));
+$collection->add('articles/feed/rss', new Route(
+    'rss/$',
+    'Rudolf\Modules\Articles\Feed\Controller::getRssFeed'
 ));
 
 # /artykuly/2015/9/hello-world

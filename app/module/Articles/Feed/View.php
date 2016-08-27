@@ -22,7 +22,7 @@ class View extends FrontView
 
         $generator = new Feed\RSS2Generator();
         $generator->setTitle($config['feed_title']);
-        $generator->setLink('http://zsrokietnica.project/feed/rss');
+        $generator->setLink($config['feed_link']);
         $generator->setDescription($config['feed_description']);
 
         $loop = new Loop($this->data, $this->pagination,

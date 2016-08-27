@@ -7,4 +7,5 @@ return array(
   'sort' => 'date',
   'feed_title' => 'Rudolf Feed',
   'feed_description' => 'Rudolf RSS canal',
+  'feed_link' => 'http://rudolf.project/rss/',
 );

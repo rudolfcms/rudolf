@@ -9,41 +9,35 @@ use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 
 class Controller extends FrontController
 {
-    /**
-     * Get feed.
-     * 
-     * @param string $type Feed type
-     */
-    public function getFeed($type)
+    public function init()
     {
         $list = new ArticlesList();
-        $total = $list->getTotalNumber();
 
-        $pagination = new Pagination($total, 1, 20);
+        $pagination = new Pagination($list->getTotalNumber(), 1, 20);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
         $results = $list->getList($limit, $onPage);
 
-        $view = new View();
-        $view->setArticles($results, $pagination);
+        $this->view = new View();
+        $this->view->setArticles($results, $pagination);
 
-        $response = new Response();
-        switch ($type) {
-            case 'atom':
-                $response->setContent($view->atom());
-                $response->setHeader(['Content-Type', 'text/xml']);
-                //$response->setHeader(['Content-Type', 'application/atom+xml']);
-                echo $response->send();
-                break;
+        $this->response = new Response();
+    }
 
-            case 'rss':
-            default:
-                $response->setContent($view->rss2());
-                $response->setHeader(['Content-Type', 'text/xml']);
-                //$response->setHeader(['Content-Type', 'charset=utf-8']);
-                echo $response->send();
-                break;
-        }
+    public function getAtomFeed()
+    {
+        $this->response->setContent($this->view->atom());
+        $this->response->setHeader(['Content-Type', 'text/xml']);
+        //$this->response->setHeader(['Content-Type', 'application/atom+xml']);
+        echo $this->response->send();
+    }
+
+    public function getRssFeed()
+    {
+        $this->response->setContent($this->view->rss2());
+        $this->response->setHeader(['Content-Type', 'text/xml']);
+        //$this->response->setHeader(['Content-Type', 'charset=utf-8']);
+        echo $this->response->send();
     }
 }
