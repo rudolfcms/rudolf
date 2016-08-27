@@ -7,11 +7,6 @@ class Foot
     use DocumentPart;
 
     /**
-     * @var array
-     */
-    private $pageScripts;
-
-    /**
      * Make all elements before </body>.
      */
     public function make($return = false, $nesting = 1)
