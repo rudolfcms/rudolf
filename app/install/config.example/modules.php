@@ -10,4 +10,5 @@ return array(
   'Modules' => 1,
   'Pages' => 1,
   'Users' => 1,
+  'Search' => 0,
 );
