@@ -16,7 +16,7 @@ class Model extends BaseModel
      */
     public function getTotalNumber()
     {
-        return count($modules = (new PluginsManager(MODULES_ROOT))->getCollection()->getAll()) - 1;
+        return count($modules = (new PluginsManager(MODULES_ROOT))->getCollection()->getAll());
     }
 
     /**
@@ -27,6 +27,10 @@ class Model extends BaseModel
     public function getList()
     {
         $modules = (new PluginsManager(MODULES_ROOT))->getCollection()->getAll();
+
+        if (empty($modules)) {
+            return false;
+        }
 
         $i = 1;
         foreach ($modules as $key => $value) {
