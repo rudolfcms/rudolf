@@ -5,12 +5,12 @@
  * 
  * @param float $minimumVersionPHP
  */
-function php_check_run($minimumVersionPHP)
+function php_compatibility_check($minimumVersionPHP)
 {
     $phpVersion = PHP_VERSION;
 
     if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
-        php_version_error($phpVersion, $minimumVersionPHP);
+        php_compatibility_error($phpVersion, $minimumVersionPHP);
     }
 }
 
@@ -22,13 +22,13 @@ function php_check_run($minimumVersionPHP)
  * @param float $phpVersion
  * @param float $minimumVersionPHP
  */
-function php_version_error($phpVersion, $minimumVersionPHP)
+function php_compatibility_error($phpVersion, $minimumVersionPHP)
 {
     $pageTitle = 'Error to start the Rudolf!';
     $shortText = 'Your host needs to use PHP '.$minimumVersionPHP.' or higher to run this version of Rudolf!';
     $longText = 'To run Rudolf, you must upgrade your copy of PHP.';
 
-    php_version_error_display($pageTitle, $shortText, $longText);
+    php_compatibility_error_display($pageTitle, $shortText, $longText);
 
     die(1);
 }
@@ -40,14 +40,14 @@ function php_version_error($phpVersion, $minimumVersionPHP)
  * @param string $shortText
  * @param string $longText
  */
-function php_version_error_display($pageTitle, $shortText, $longText)
+function php_compatibility_error_display($pageTitle, $shortText, $longText)
 {
     header('Content-type: text/html; charset=UTF-8');
     header('Cache-control: none');
     header('Pragma: no-cache'); ?><!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title><?php echo $pageTitle; ?></title>
     <style type="text/css">
         body {

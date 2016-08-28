@@ -10,9 +10,8 @@ use Rudolf\Component\Routing\Router;
 
 ob_start();
 
-// checks whether php version is compatible with the instance of Rudolf
-require_once dirname(__FILE__).'/component/Utils/PHPVersionCheck.php';
-php_check_run($required = 5.4);
+require_once dirname(__FILE__).'/component/Utils/PHPCompatibilityCheck.php';
+php_compatibility_check($required = 5.4);
 
 // load defines
 require_once __DIR__.'/defines.php';
