@@ -2,6 +2,8 @@
 
 namespace Rudolf\Component\Forms;
 
+use Rudolf\Component\Hooks\Filter;
+
 class AdminFields
 {
     /**
@@ -21,6 +23,18 @@ class AdminFields
      */
     public function textarea($content, $name, $class, $id, $placeholder = '', $cols = 30, $rows = 10)
     {
+        if (Filter::isHas('admin_textarea')) {
+            return Filter::apply('admin_textarea', [
+                'content' => $content,
+                'name' => $name,
+                'class' => $class,
+                'id' => $id,
+                'placeholder' => $placeholder,
+                'cols' => $cols,
+                'rows' => $rows,
+            ]);
+        }
+
         $html = sprintf('<textarea name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s" cols="%6$s" rows="%7$s">%1$s</textarea>',
             $content,
             $name,
@@ -30,8 +44,6 @@ class AdminFields
             $cols,
             $rows
         );
-
-        // to do: add hook
 
         return $html;
     }

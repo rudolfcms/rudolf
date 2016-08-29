@@ -10,6 +10,11 @@ abstract class FrontView extends BaseView
     private static $menuItemsCollection;
     protected static $request;
 
+    public function init()
+    {
+        $this->domPlugins->front();
+    }
+
     public static function setFrontData(MenuItemCollection $collection, $request)
     {
         self::$menuItemsCollection = $collection;

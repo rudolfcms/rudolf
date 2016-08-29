@@ -3,6 +3,7 @@
 namespace Rudolf\Framework\View;
 
 use Rudolf\Component\Alerts\AlertsCollection;
+use Rudolf\Component\Forms\AdminFields;
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 use Rudolf\Component\Html\Breadcrumbs;
 use Rudolf\Component\Html\Navigation;
@@ -19,12 +20,12 @@ class AdminView extends BaseView
 
     protected static $request;
 
-    public function __construct()
+    public function init()
     {
         $module = new Module('dashboard');
         $this->config = $module->getConfig();
-
-        parent::__construct();
+        $this->domPlugins->admin();
+        $this->adminFields = new AdminFields();
     }
 
     public static function setAdminData(MenuItemCollection $collection, $request)

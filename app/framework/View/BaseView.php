@@ -43,7 +43,11 @@ abstract class BaseView
         // create necessary objects
         $this->head = new Head();
         $this->foot = new Foot();
-        new DomPlugins($this->head, $this->foot);
+        $this->domPlugins = new DomPlugins($this->head, $this->foot);
+
+        if (method_exists($this, 'init')) {
+            $this->init();
+        }
     }
 
     /**
@@ -114,7 +118,7 @@ abstract class BaseView
 
         if (is_file($file)) {
             include $file;
-            $class = $this->themeName;
+            $class = str_replace('-', '_', $this->themeName);
             $this->theme = new $class($this);
         }
     }
