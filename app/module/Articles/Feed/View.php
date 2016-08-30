@@ -34,7 +34,7 @@ class View extends FrontView
             $item = new Feed\RSS2Item();
 
             $item->setTitle($article->title());
-            $item->setLink('http://zsrokietnica.project'.$article->url());
+            $item->setLink($config['feed_site'].$article->url());
             $item->setDescription($article->content());
             $item->setAuthor($article->author());
             $item->setPubDate($article->date('D, d M Y H:i:s T'));
