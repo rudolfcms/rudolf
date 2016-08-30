@@ -28,14 +28,15 @@ define('GENERAL_SITE_NAME', $config['general_name']);
 $lang = 'pl_PL';
 // $lang = 'en_US';
 $codeset = 'UTF-8';
+putenv('LC_ALL='.$lang.'.'.$codeset);
 putenv('LANG='.$lang.'.'.$codeset);
 putenv('LANGUAGE='.$lang.'.'.$codeset);
 setlocale(LC_ALL,  $lang.'.'.$codeset);
 
 $domain = 'rudolf';
 bindtextdomain($domain, APP_ROOT.'/locale');
-textdomain($domain);
 bind_textdomain_codeset($domain, $codeset);
+textdomain($domain);
 
 // initialize logger
 $logger = new Logger();
