@@ -87,6 +87,16 @@ class AdminFields
      */
     public function pathInput($path, $name, $class, $id, $placeholder = '')
     {
+        if (Filter::isHas('admin_file_path_input')) {
+            return Filter::apply('admin_file_path_input', [
+                'path' => $path,
+                'name' => $name,
+                'class' => $class,
+                'id' => $id,
+                'placeholder' => $placeholder,
+            ]);
+        }
+
         $html = sprintf('<input type="text" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s">',
             $path,
             $name,
@@ -94,8 +104,6 @@ class AdminFields
             $id,
             $placeholder
         );
-
-        // to do: add hook
 
         return $html;
     }
