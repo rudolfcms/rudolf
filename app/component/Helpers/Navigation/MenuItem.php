@@ -2,6 +2,8 @@
 
 namespace Rudolf\Component\Helpers\Navigation;
 
+use Rudolf\Component\Html\Text;
+
 class MenuItem
 {
     private $data;
@@ -50,7 +52,7 @@ class MenuItem
 
     public function getCaption()
     {
-        return $this->data['caption'];
+        return Text::escape($this->data['caption']);
     }
 
     public function getType()
