@@ -43,11 +43,16 @@ function install()
     mkdir('app/config');
     mkdir('app/log');
     mkdir('app/temp');
+    mkdir('content');
     mkdir('content/themes');
     mkdir('content/themes/front');
     mkdir('content/themes/admin');
     mkdir('content/uploads');
     mkdir('content/plugins');
+    echo out(' done.', null, true);
+
+    echo out('Copy config examples...', 'green');
+    system('cp -r app/install/config.example/* app/config');
     echo out(' done.', null, true);
 
     downloadComposer();
