@@ -102,7 +102,7 @@ class Response
      * 
      * @throws \InvalidArgumentException
      */
-    private function setStatusCode($code)
+    public function setStatusCode($code)
     {
         if (!isset(self::$statusTexts[$code])) {
             throw new \InvalidArgumentException('Invalid HTTP status code', 1);

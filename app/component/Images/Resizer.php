@@ -3,6 +3,7 @@
 namespace Rudolf\Component\Images;
 
 use PHPixie\Image as ImageManipulator;
+use Rudolf\Component\Http\Response;
 
 class Resizer
 {
@@ -65,14 +66,32 @@ class Resizer
      *
      * @param string $file Full path to cache file
      *
-     * @return bool
+     * @see http://dtbaker.net/web-development/how-to-cache-images-generated-by-php/
      */
     private function serveFromCache($file)
     {
-        header('Content-Type: '.$this->getImageType($file, $returnFull = true));
-        echo file_get_contents($file);
+        $response = new Response();
+        $response->setHeader(['Cache-Control', 'private, max-age=10800, pre-check=10800']);
+        $response->setHeader(['Pragma', 'private']);
+        $response->setHeader(['Expires', date(DATE_RFC822, strtotime(' 2 day'))]);
 
-        return true;
+        $modifiedDate = gmdate('D, d M Y H:i:s', filemtime($file));
+
+        if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])
+            && (strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == filemtime($file))
+        ) {
+            // send the last mod time of the file back
+            $response->setHeader(['Last-Modified', $modifiedDate.' GMT']);
+            $response->setStatusCode(304);
+            $response->send();
+            exit;
+        }
+
+        $response->setHeader(['Content-Type', $this->getImageType($file, $returnFull = true)]);
+        $response->setHeader(['Last-Modified', $modifiedDate.' GMT']);
+        $response->send();
+        echo file_get_contents($file);
+        exit;
     }
 
     /**
