@@ -89,8 +89,8 @@ class Resizer
 
         $response->setHeader(['Content-Type', $this->getImageType($file, $returnFull = true)]);
         $response->setHeader(['Last-Modified', $modifiedDate.' GMT']);
-        $response->send();
-        echo file_get_contents($file);
+        $response->setContent(file_get_contents($file));
+        echo $response->send();
         exit;
     }
 
