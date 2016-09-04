@@ -9,7 +9,7 @@
  * @version 0.1
  */
 define('VER', 0.1);
-define('VER_NAME', '0.0.9-prealpha');
+define('VER_NAME', '0.0.10-prealpha');
 define('NAME', 'rudolf');
 
 if (dirname($_SERVER['SCRIPT_NAME']) == DIRECTORY_SEPARATOR) {
