@@ -27,7 +27,11 @@ class UserFriendlyHandler extends Handler implements IHandler
      */
     public function getCode($e)
     {
-        return $e->getCode() > 400 ? $e->getCode() : 503;
+        $code = $e->getCode();
+        if (isset(Response::$statusTexts[$code])) {
+            return $code;
+        }
+        return 503;
     }
 
     /**
@@ -35,7 +39,7 @@ class UserFriendlyHandler extends Handler implements IHandler
      * 
      * @return string
      */
-    public static function displayDefaultMessage($code, $message, $text)
+    public function displayDefaultMessage($code, $message, $text)
     {
         $code = $code;
         $message = _($message);
