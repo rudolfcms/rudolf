@@ -96,15 +96,7 @@ function install()
         'session_expire' => '+1 month',
     ], true).';');
 
-    downloadComposer();
-
-    echo out('Instaling composer packages...', 'green');
-    system(composerCmd('php '.WEB_ROOT.'/composer.phar install --quiet'));
-    echo out(' done.', null, true);
-
-    echo out('Removing composer.phar...', 'green');
-    unlink(WEB_ROOT.'/composer.phar');
-    echo out(' done.', null, true);
+    composer('install');
 }
 
 /**
@@ -127,48 +119,7 @@ function update()
         die;
     }
 
-    downloadComposer();
-    echo out('Updating composer packages...', 'green');
-    system(composerCmd());
-    echo out(' done.', null, true);
-}
-
-function composerCmd($command = null)
-{
-    $config = include WEB_ROOT.'/app/config/site.php';
-
-    if (null === $command) {
-        $command = 'php '.WEB_ROOT.'/composer.phar update --quiet';
-    }
-
-    if ('0' == $config['debug']) {
-        // echo out(
-        //     'Running in --no-dev mode. Change debug to \'1\' in site.php config to download dev packages.',
-        //     'blue',
-        //     true
-        // );
-        $command .= ' --no-dev';
-    }
-
-    return $command;
-}
-
-/**
- * Download and install composer.
- */
-function downloadComposer()
-{
-    if (file_exists(WEB_ROOT.'/composer.phar')) {
-        return;
-    }
-    echo out('Downloading composer...', 'green');
-    copy('https://getcomposer.org/installer', WEB_ROOT.'/composer-setup.php');
-    echo out(' done.', null, true);
-
-    echo out('Installing composer...', 'green');
-    system('php '.WEB_ROOT.'/composer-setup.php --quiet');
-    unlink(WEB_ROOT.'/composer-setup.php');
-    echo out(' done.', null, true);
+    composer('update');
 }
 
 /**
@@ -188,6 +139,46 @@ function help()
         '  '.out('install', 'green').'      install rudolf, if not installed yet'.PHP_EOL.
         '  '.out('update', 'green').'       update packages, modules and plugins'.PHP_EOL
     );
+}
+
+/**
+ * Composer helper.
+ */
+function composer($command = 'update')
+{
+    if (!('update' === $command or 'install' === $command)) {
+        return;
+    }
+    if (!file_exists(WEB_ROOT.'/composer.phar')) {
+        echo out('Downloading composer...', 'green');
+        copy('https://getcomposer.org/installer', WEB_ROOT.'/composer-setup.php');
+        echo out(' done.', null, true);
+
+        echo out('Installing composer...', 'green');
+        system('php '.WEB_ROOT.'/composer-setup.php --quiet');
+        unlink(WEB_ROOT.'/composer-setup.php');
+        echo out(' done.', null, true);
+    }
+
+    if ('install' == $command) {
+        echo out('Instaling composer packages...', 'green');
+
+    } else {
+        echo out('Updating composer packages...', 'green');
+    }
+
+    $config = include WEB_ROOT.'/app/config/site.php';
+    if ('0' == $config['debug']) {
+        $command .= ' --no-dev ';
+        $command .= ' --optimize-autoloader ';
+    }
+
+    system('php '.WEB_ROOT.'/composer.phar '.$command.' --quiet');
+    echo out(' done.', null, true);
+
+    echo out('Removing composer.phar...', 'green');
+    unlink(WEB_ROOT.'/composer.phar');
+    echo out(' done.', null, true);
 }
 
 /**
