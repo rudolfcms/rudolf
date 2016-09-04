@@ -6,10 +6,10 @@ use Rudolf\Framework\Controller\FrontController;
 
 class Controller extends FrontController
 {
-	public function search()
-	{
+    public function search()
+    {
         $view = new View();
         $view->search();
         $view->render();
-	}
+    }
 }

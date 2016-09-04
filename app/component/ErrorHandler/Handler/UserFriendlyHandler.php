@@ -31,6 +31,7 @@ class UserFriendlyHandler extends Handler implements IHandler
         if (isset(Response::$statusTexts[$code])) {
             return $code;
         }
+
         return 503;
     }
 

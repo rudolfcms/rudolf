@@ -1,3 +1,5 @@
-<?php return array(
-	'search_id' => 'xxxxxx:xxxxxx',
+<?php
+
+return array(
+    'search_id' => 'xxxxxx:xxxxxx',
 );

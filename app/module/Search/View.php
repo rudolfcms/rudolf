@@ -7,14 +7,14 @@ use Rudolf\Component\Modules\Module;
 
 class View extends FrontView
 {
-	public function search()
-	{
-		$this->head->setTitle(_('Search'));
-		$this->template = 'search';
-	}
+    public function search()
+    {
+        $this->head->setTitle(_('Search'));
+        $this->template = 'search';
+    }
 
-	public function searchID()
-	{
-		return (new Module('search'))->getConfig()['search_id'];
-	}
+    public function searchID()
+    {
+        return (new Module('search'))->getConfig()['search_id'];
+    }
 }
