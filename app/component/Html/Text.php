@@ -2,6 +2,8 @@
 
 namespace Rudolf\Component\Html;
 
+use Coduo\PHPHumanizer\StringHumanizer;
+
 class Text
 {
     /**
@@ -10,20 +12,13 @@ class Text
      * @param string $str      text to cut
      * @param int    $length   truncate text length
      * @param string $ellipsis
+     * @param string $allowedTags
      *
      * @return $str truncate text
      */
-    public static function truncate($str, $length, $ellipsis = '...')
+    public static function truncate($str, $length, $ellipsis = '...', $allowedTags = '')
     {
-        $tmp['length'] = strlen($str);
-
-        if ($tmp['length'] > $length) {
-            while ($str[$length] != ' ' && ++$length < $tmp['length']);
-
-            return trim(substr($str, 0, $length), ',').$ellipsis;
-        } else {
-            return $str;
-        }
+        return StringHumanizer::truncateHtml($str, $length, $allowedTags, $ellipsis);
     }
 
     /**

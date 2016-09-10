@@ -154,8 +154,8 @@ class Article
             $content = strip_tags($content);
         }
 
-        if (false !== $truncate and strlen($content) > $truncate) {
-            $content = Text::truncate($content, $truncate);
+        if (false !== $truncate) {
+            $content = Text::truncate($content, $truncate, '...', '<b><i><u><em><strong><a><span>');
         }
 
         if (true === $escape) {
