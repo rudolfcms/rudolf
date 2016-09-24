@@ -9,8 +9,8 @@ class Text
     /**
      * It truncates text.
      * 
-     * @param string $str      text to cut
-     * @param int    $length   truncate text length
+     * @param string $str         text to cut
+     * @param int    $length      truncate text length
      * @param string $ellipsis
      * @param string $allowedTags
      *

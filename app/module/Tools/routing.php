@@ -2,7 +2,6 @@
 
 use Rudolf\Component\Routing\Route;
 
-
 // list
 
 $collection->add('tools/admin', new Route(
@@ -17,7 +16,6 @@ $collection->add('tools/admin/list', new Route(
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]
 ));
-
 
 $collection->add('tools/admin/db-dump', new Route(
     'admin/tools/db-dump$',

@@ -9,7 +9,7 @@ class Resizer
 {
     private $type;
     private $cacheExtension;
-    private $cacheDirectory ;
+    private $cacheDirectory;
     private $allowedTypes;
 
     /**

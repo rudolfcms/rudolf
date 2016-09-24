@@ -6,26 +6,26 @@ use Rudolf\Component\Helpers\Pagination\IItem;
 
 class Tool implements IItem
 {
-	private $tool;
+    private $tool;
 
-	public function setData($tool)
-	{
-		$this->tool = array_merge(
+    public function setData($tool)
+    {
+        $this->tool = array_merge(
             [
                 'name' => '',
                 'slug' => '',
             ],
             (array) $tool
         );
-	}
+    }
 
-	public function name()
-	{
-		return $this->tool['name'];
-	}
+    public function name()
+    {
+        return $this->tool['name'];
+    }
 
-	public function slug()
-	{
-		return $this->tool['slug'];
-	}
+    public function slug()
+    {
+        return $this->tool['slug'];
+    }
 }

@@ -13,7 +13,7 @@ class View extends AdminView
      */
     public function setData($data)
     {
-    	$this->data = $data;
+        $this->data = $data;
         $this->pageTitle = _('Database dump');
         $this->head->setTitle($this->pageTitle);
 

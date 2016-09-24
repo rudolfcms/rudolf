@@ -23,5 +23,3 @@ $collection->add(new MenuItem([
     'position' => 0,
     'ico' => 'fa-database',
 ]));
-
-

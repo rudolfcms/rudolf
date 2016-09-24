@@ -10,7 +10,7 @@ class Model
             [
                 'name' => 'Database dump',
                 'slug' => 'db-dump',
-            ]
+            ],
         ];
     }
 
