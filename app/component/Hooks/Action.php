@@ -87,7 +87,7 @@ class Action
     }
 
     /**
-     * do Execute functions hooked on a specific action hook.
+     * dispatch Execute functions hooked on a specific action hook.
      *
      * @since 0.1
      * 
@@ -95,7 +95,7 @@ class Action
      * @param mixed  $arg,... Optional additional arguments which are passed on to the functions 
      *                        hooked to the action.
      */
-    public static function do($tag, $arg = '')
+    public static function dispatch($tag, $arg = '')
     {
         if (!isset(self::$actions)) {
             self::$actions = array();
