@@ -11,6 +11,6 @@ class Controller extends AdminController
         $model = new Model();
         $model->logout();
 
-        $this->redirect(DIR.'/user/login');
+        $this->redirect(DIR.'/user/login', 302);
     }
 }

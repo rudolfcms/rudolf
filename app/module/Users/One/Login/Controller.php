@@ -21,7 +21,7 @@ class Controller extends FrontController
         }
 
         if (true === $model->check() || 1 === $status) {
-            $this->redirect(DIR.'/admin');
+            $this->redirect(DIR.'/admin', 302);
         }
 
         $view = new View();

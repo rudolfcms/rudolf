@@ -35,7 +35,9 @@ class ConfigEditor
 
         file_put_contents(CONFIG_ROOT.'/plugins.php', $var);
 
-        opcache_reset();
+        if (function_exists('opcache_reset')) {
+            opcache_reset();
+        }
 
         $this->refresh();
     }

@@ -7,16 +7,21 @@ use Rudolf\Component\Http\Response;
 
 class Resizer
 {
-    private $type = 'internal';
-    private $cacheExtension = '.jpg';
-    private $cacheDirectory = TEMP_ROOT.'/imageresizer/';
-    private $allowedTypes = ['gif', 'png', 'jpeg'];
+    private $type;
+    private $cacheExtension;
+    private $cacheDirectory ;
+    private $allowedTypes;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
+        $this->type = 'internal';
+        $this->cacheExtension = '.jpg';
+        $this->cacheDirectory = TEMP_ROOT.'/imageresizer/';
+        $this->allowedTypes = ['gif', 'png', 'jpeg'];
+
         if (!file_exists($this->cacheDirectory)) {
             mkdir($this->cacheDirectory, 0775);
         }
