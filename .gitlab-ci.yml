@@ -3,6 +3,7 @@ cache:
   - app/vendor/
 
 before_script:
+- if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi 
 - apt-get update -yqq
 - apt-get install git -yqq
 - curl -sS https://getcomposer.org/installer | php
