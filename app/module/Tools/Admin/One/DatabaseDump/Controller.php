@@ -21,7 +21,6 @@ class Controller extends AdminController
             );
             $filename = 'rudolf_'.$dbconf['database'].'_'.date('Y-m-d_H-i-s').'.sql';
 
-            set_time_limit(0);
             ignore_user_abort(TRUE);
 
             ob_start();
