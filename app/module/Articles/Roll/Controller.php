@@ -29,11 +29,11 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        $results = $articles->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
-
-        if (false === $results and $page > 1) {
+        if ($pagination->getAllPages() < $page and $page > 1) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
+
+        $results = $articles->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
         $view = new View();
         $view->rollView($results, $pagination);
