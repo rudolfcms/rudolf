@@ -14,7 +14,7 @@
         "phpixie/image": "^3.2",
         "coduo/php-humanizer": "^2.0",
         "ircmaxell/password-compat": "^1.0",
-        "ifsnop/mysqldump-php": "^2.2"
+        "dg/mysql-dump": "^1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*"
