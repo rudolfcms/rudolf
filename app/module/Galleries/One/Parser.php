@@ -63,7 +63,7 @@ class Parser
         $serverPath = $this->config['path_root'].'/'.$info['slug'];
         $webPath = $this->config['path_web'].'/'.$info['slug'];
 
-        $imagesArray = $this->getImagesArray($serverPath.'/thumbs');
+        $imagesArray = $this->getImagesArray($serverPath);
         if (!$imagesArray) {
             return false;
         }
@@ -76,8 +76,8 @@ class Parser
         $h = $info['thumb_height'];
 
         for ($i = 0; $i < count($imagesArray); ++$i) {
-            $photo = $webPath.'/photos/'.$imagesArray[$i];
-            $thumb = $this->image->resize($webPath.'/thumbs/'.$imagesArray[$i], $w, $h);
+            $photo = $webPath.'/'.$imagesArray[$i];
+            $thumb = $this->image->resize($webPath.'/'.$imagesArray[$i], $w, $h);
             $alt = $imagesArray[$i];
 
             $codeGallery[] = sprintf('<a href="%1$s">'.
