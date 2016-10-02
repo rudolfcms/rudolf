@@ -38,7 +38,15 @@ class Resizer
     {
         $this->width = $width;
         $this->height = $height;
-        $this->src = base64_decode(strtr($src, '-_', '+/='));
+
+        $src = trim($src, '/');
+
+        if ('http://' === substr($src, 0, 7) || 'https://' === substr($src, 0, 8)) {
+            $this->src = ltrim($src, '/');
+        } else {
+            $this->src = '/content/'.$src;
+            $this->src = urldecode($this->src);
+        }
 
         if (true === $this->tryServeCache()) {
             exit;

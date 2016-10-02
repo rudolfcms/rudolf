@@ -6,6 +6,7 @@ class Image
 {
     public static function resize($url, $w, $h)
     {
-        return CONTENT.'/cache/'.$w.'/'.$h.'/'.strtr(base64_encode($url), '+/=', '-_');
+        $url = str_replace('/content/', '', $url);
+        return CONTENT.'/cache/'.$w.'/'.$h.'/'.ltrim($url, '/');
     }
 }
