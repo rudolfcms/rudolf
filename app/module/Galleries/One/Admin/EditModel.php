@@ -3,6 +3,7 @@
 namespace Rudolf\Modules\Galleries\One\Admin;
 
 use Rudolf\Framework\Model\AdminModel;
+use Rudolf\Component\Modules\Module;
 
 class EditModel extends AdminModel
 {
@@ -21,41 +22,45 @@ class EditModel extends AdminModel
 
         $stmt = $this->pdo->prepare("
             UPDATE
-                {$this->prefix}articles
+                {$this->prefix}galleries
             SET
-                category_ID = :category_ID,
                 title = :title,
-                keywords = :keywords,
-                description = :description,
-                content = :content,
-                author = :author,
-                date = :date,
                 modified = :modified,
                 modifier_ID = :modifier,
                 slug = :slug,
-                album = :album,
-                thumb = :thumb,
-                photos = :photos,
-                published = :published
+                thumb_width = :thumb_width,
+                thumb_height = :thumb_height
             WHERE
                 id = :id
         ");
         $stmt->bindValue(':title', $f['title'], \PDO::PARAM_STR);
-        $stmt->bindValue(':keywords', $f['keywords'], \PDO::PARAM_STR);
-        $stmt->bindValue(':description', $f['description'], \PDO::PARAM_STR);
-        $stmt->bindValue(':content', $f['content'], \PDO::PARAM_STR);
-        $stmt->bindValue(':author', $f['author'], \PDO::PARAM_STR);
-        $stmt->bindValue(':date', $f['date'], \PDO::PARAM_STR);
         $stmt->bindValue(':modified', $f['modified'], \PDO::PARAM_STR);
         $stmt->bindValue(':modifier', $f['modifier'], \PDO::PARAM_INT);
         $stmt->bindValue(':slug', $f['slug'], \PDO::PARAM_STR);
-        $stmt->bindValue(':album', $f['album'], \PDO::PARAM_STR);
-        $stmt->bindValue(':thumb', $f['thumb'], \PDO::PARAM_STR);
-        $stmt->bindValue(':photos', $f['photos'], \PDO::PARAM_INT);
-        $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
+        $stmt->bindValue(':thumb_width', $f['thumb_width'], \PDO::PARAM_INT);
+        $stmt->bindValue(':thumb_height', $f['thumb_height'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
-        $stmt->bindValue(':category_ID', $f['category_ID'], \PDO::PARAM_INT);
 
         return $status = $stmt->execute();
+    }
+
+    public function delete($post)
+    {
+        $config = (new Module('galleries'))->getConfig();
+        $file = $config['path_root'].'/'.$post['slug'].'/'.$post['delete'];
+
+        if (file_exists($file)) {
+            unlink($file);
+        }
+    }
+
+    public function upload($file, $post)
+    {
+        $config = (new Module('galleries'))->getConfig();
+
+        $uploadDir = $config['path_root'].'/'.$post['slug'].'/';
+        $uploadfile = $uploadDir.basename($file['name']);
+
+        return move_uploaded_file($file['tmp_name'], $uploadfile);
     }
 }

@@ -32,6 +32,8 @@ class Gallery
             [
                 'id' => 0,
                 'title' => '',
+                'thumb_width' => '',
+                'thumb_height' => '',
                 'added' => '',
                 'modified' => '',
                 'adder_ID' => 0,
@@ -172,17 +174,37 @@ class Gallery
         return Text::escape($slug);
     }
 
-    /**
-     * Returns gallery url.
-     * 
-     * @return string
-     */
-    public function url()
+    public function thumbsWidth()
     {
-        // return sprintf('%1$s/%2$s/%3$s',
-        //     DIR,
-        //     'artykuly',
-        //     $this->slug()
-        // );
+        return $this->gallery['thumb_width'];
+    }
+
+    public function thumbsHegiht()
+    {
+        return $this->gallery['thumb_height'];
+    }
+
+    public function code()
+    {
+        return '{{gallery:'.$this->id().'}}';
+    }
+
+    public function hasPhotos()
+    {
+        $parser = new Parser();
+        $this->images = $parser->createGallery([
+            'slug' => $this->slug(),
+            // 'thumb_width' => $this->thumbsWidth(),
+            // 'thumb_height' => $this->thumbsHegiht(),
+            'thumb_width' => 100,
+            'thumb_height' => 75,
+        ], $onlyArray = true);
+
+        return !empty($this->images);
+    }
+
+    public function imagesList()
+    {
+        return $this->images;
     }
 }

@@ -9,13 +9,22 @@ class EditController extends AdminController
 {
     public function edit($id)
     {
+        $model = new EditModel();
 
         $form = new EditForm();
-        $form->setModel(new EditModel());
+        $form->setModel($model);
 
         // if data was send
-        if (isset($_POST['update'])) {
+        if (!empty($_POST)) {
             $form->handle(array_merge($_POST, ['id' => $id]));
+
+            if (isset($_POST['delete'])) {
+                $model->delete($_POST);
+            }
+
+            if (isset($_FILES['photo_upload'])) {
+                $model->upload($_FILES['photo_upload'], $_POST);
+            }
 
             if ($form->isValid() and $form->update()) {
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);

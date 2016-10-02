@@ -58,7 +58,7 @@ class Parser
      *
      * @return string
      */
-    public function createGallery($info)
+    public function createGallery($info, $onlyArray = false)
     {
         $serverPath = $this->config['path_root'].'/'.$info['slug'];
         $webPath = $this->config['path_web'].'/'.$info['slug'];
@@ -76,13 +76,23 @@ class Parser
         $h = $info['thumb_height'];
 
         for ($i = 0; $i < count($imagesArray); ++$i) {
-            $photo = $webPath.'/'.$imagesArray[$i];
-            $thumb = $this->image->resize($webPath.'/'.$imagesArray[$i], $w, $h);
-            $alt = $imagesArray[$i];
+            $gallery[] = [
+                'photo' => $webPath.'/'.$imagesArray[$i],
+                'thumb' => $this->image->resize($webPath.'/'.$imagesArray[$i], $w, $h),
+                'alt' => $imagesArray[$i],
+                'width' => $w,
+                'height' => $h,
+            ];
+        }
 
+        if (true === $onlyArray) {
+            return $gallery;
+        }
+
+        foreach ($gallery as $key => $value) {
             $codeGallery[] = sprintf('<a href="%1$s">'.
                     '<img src="%2$s" alt="%3$s" width="%4$s" height="%5$s">'.
-                '</a>', $photo, $thumb, $alt, $w, $h
+                '</a>', $value['photo'], $value['thumb'], $value['alt'], $value['width'], $value['height']
             );
         }
 
