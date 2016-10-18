@@ -61,6 +61,6 @@ class View extends FrontView
      */
     public function categoryDescription()
     {
-        return $this->categoryInfo['description'];
+        return $this->categoryInfo['content'];
     }
 }
