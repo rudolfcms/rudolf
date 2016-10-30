@@ -8,7 +8,7 @@ class Model extends FrontModel
 {
     private $web_root = WEB_ROOT;
 
-    private $extension = 'png';
+    private $extension = 'jpg';
 
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'DESC'])
     {
