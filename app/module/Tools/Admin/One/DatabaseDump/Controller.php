@@ -21,7 +21,7 @@ class Controller extends AdminController
             );
             $filename = 'rudolf_'.$dbconf['database'].'_'.date('Y-m-d_H-i-s').'.sql';
 
-            ignore_user_abort(TRUE);
+            ignore_user_abort(true);
 
             ob_start();
             $dump->write();
@@ -30,7 +30,7 @@ class Controller extends AdminController
             $response = new Response();
 
             if (isset($_POST['gziped'])) {
-                ini_set('zlib.output_compression', TRUE);
+                ini_set('zlib.output_compression', true);
                 $output = gzencode($source, 9);
                 $response->setHeader(['Content-Encoding', 'gzip']);
                 $response->setHeader(['Content-Type', 'application/x-gzip']);
@@ -43,7 +43,7 @@ class Controller extends AdminController
             $response->setContent($output);
             $response->setHeader(['Connection', 'close']);
             $response->setHeader(['Content-Length', strlen($output)]);
-            $response->setHeader(['Expires', gmdate('D, d M Y H:i:s') . ' GMT']);
+            $response->setHeader(['Expires', gmdate('D, d M Y H:i:s').' GMT']);
             $response->setHeader(['Cache-Control', 'no-cache']);
 
             echo $response->send();

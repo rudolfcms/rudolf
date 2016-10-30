@@ -8,6 +8,6 @@ $routeCollection->add('imageresizer/local', new Route(
     [
         'width' => '\d+',
         'height' => '\d+',
-        'filename' => '(.*)'
+        'filename' => '(.*)',
     ]
 ));
