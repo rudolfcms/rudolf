@@ -155,7 +155,7 @@ class Article
         }
 
         if (false !== $truncate) {
-            $content = Text::truncate($content, $truncate, '...', '<b><i><u><em><strong><a><span>');
+            $content = Text::truncate($content, $truncate, '…', '<b><i><u><em><strong><a><span>');
         }
 
         if (true === $escape) {
