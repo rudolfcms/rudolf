@@ -445,7 +445,7 @@ class Article
 
         $thumbUrl = Image::resize($thumbUrl, $width, $height);
 
-        $html = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"/>',
+        $html = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
             $thumbUrl, $width, $height, $alt
         );
 

@@ -106,10 +106,11 @@ class Navigation
      *
      * 'classes' (array) 
      *      'root_ul' (string) Main <ul>
+     *      `li` (string) Each <li>
+     *      'li_active' (string)
      *      'li_with_ul' (string) <li> with <ul>
      *      'li_whitout_ul' (string) <li> without <ul>
      *      'sub_ul' (string) <ul> inside <li>
-     *      'li_active' (string)
      */
     public function setClasses(array $classes)
     {
@@ -120,10 +121,11 @@ class Navigation
     {
         return array_merge([
             'root_ul' => '',
+            'li' => '',
+            'li_active' => '',
             'li_with_ul' => '',
             'li_whitout_ul' => '',
             'sub_ul' => '',
-            'li_active' => '',
         ], $this->classes);
     }
 
@@ -355,6 +357,7 @@ class Navigation
 
                     # %2$s li class (active)
                     $this->isAtribute('class', [
+                        $classes['li'],
                         $classes['li_with_ul'],
                         ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
@@ -412,6 +415,7 @@ class Navigation
 
                     # %2$s li class (active)
                     $this->isAtribute('class', [
+                        $classes['li'],
                         $classes['li_whitout_ul'],
                         ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
