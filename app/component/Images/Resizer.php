@@ -3,6 +3,7 @@
 namespace Rudolf\Component\Images;
 
 use PHPixie\Image as ImageManipulator;
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Component\Http\Response;
 
 class Resizer
@@ -38,7 +39,15 @@ class Resizer
     {
         $this->width = $width;
         $this->height = $height;
-        $this->src = base64_decode(strtr($src, '-_', '+/='));
+
+        $src = trim($src, '/');
+
+        if ('http://' === substr($src, 0, 7) || 'https://' === substr($src, 0, 8)) {
+            $this->src = ltrim($src, '/');
+        } else {
+            $this->src = '/content/'.$src;
+            $this->src = urldecode($this->src);
+        }
 
         if (true === $this->tryServeCache()) {
             exit;
@@ -140,7 +149,7 @@ class Resizer
         $file = $this->getAbsoluteInternalPath();
 
         if (!file_exists($file)) {
-            throw new \Exception('Image not found', 1);
+            throw new HttpErrorException('Image not found (error 404)', 404);
         };
 
         $cacheFile = $this->createCacheName();
