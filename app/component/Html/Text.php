@@ -2,13 +2,14 @@
 
 namespace Rudolf\Component\Html;
 
+use Cocur\Slugify\Slugify;
 use HtmlTruncator\Truncator;
 
 class Text
 {
     /**
      * It truncates text.
-     * 
+     *
      * @param string $str         text to cut
      * @param int    $length      truncate text length
      * @param string $ellipsis
@@ -27,9 +28,9 @@ class Text
 
     /**
      * Excape string.
-     * 
+     *
      * @param string $content
-     * 
+     *
      * @return string
      */
     public static function escape($content)
@@ -39,15 +40,7 @@ class Text
 
     public static function sluger($string)
     {
-        return strtolower(
-            trim(
-                preg_replace('~[^0-9a-z]+~i', '-',
-                    html_entity_decode(
-                        preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1',
-                            htmlentities($string, ENT_QUOTES, 'UTF-8')
-                        ), ENT_QUOTES, 'UTF-8'
-                    )
-                ), '-')
-            );
+        $slugify = new Slugify();
+        return $slugify->slugify($string);
     }
 }
