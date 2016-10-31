@@ -2,7 +2,7 @@
 
 namespace Rudolf\Component\Html;
 
-use Coduo\PHPHumanizer\StringHumanizer;
+use HtmlTruncator\Truncator;
 
 class Text
 {
@@ -18,7 +18,11 @@ class Text
      */
     public static function truncate($str, $length, $ellipsis = '...', $allowedTags = '')
     {
-        return StringHumanizer::truncateHtml($str, $length, $allowedTags, $ellipsis);
+        $str = strip_tags($str, $allowedTags);
+        return Truncator::truncate($str, $length, [
+            'ellipsis' => $ellipsis,
+            'length_in_chars' => true,
+        ]);
     }
 
     /**
