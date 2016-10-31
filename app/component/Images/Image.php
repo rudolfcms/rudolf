@@ -9,7 +9,7 @@ class Image
         if (substr($url, 0, strlen(DIR)) === DIR) {
             $url = str_replace(DIR, '', $url);
         }
-        if (substr($url, 0, strlen('/content/'))) {
+        if (substr($url, 0, strlen('/content/')) === '/content/') {
             $url = str_replace('/content/', '', $url);
         }
 
