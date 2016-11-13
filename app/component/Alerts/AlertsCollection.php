@@ -9,13 +9,30 @@ class AlertsCollection
     /**
      * @var array
      */
-    private static $collection;
+    private static $collection = array();
+
+    /**
+     * Construct.
+     */
+    public function __construct()
+    {
+        if (isset($_SESSION['rudolf_alerts'])) {
+
+            foreach ($_SESSION['rudolf_alerts'] as $key => $value) {
+                $collectionFromSession[] = new Alert($value['type'], $value['message']);
+            }
+
+            self::$collection = array_merge(self::$collection, $collectionFromSession);
+
+            unset($_SESSION['rudolf_alerts']);
+        }
+    }
 
     /**
      * Add alert to collection.
-     * 
+     *
      * @param Alert $alert Alert object
-     * 
+     *
      * @throws Exception
      */
     public static function add($alert)
@@ -29,12 +46,12 @@ class AlertsCollection
 
     /**
      * Get alerts by type.
-     * 
+     *
      * @param string $type Alert type
-     * 
+     *
      * @return Alert array
      */
-    public static function getByType($type)
+    public function getByType($type)
     {
         $collection = self::$collection;
 
@@ -53,10 +70,10 @@ class AlertsCollection
 
     /**
      * Checks whether were any alert.
-     * 
+     *
      * @return bool
      */
-    public static function isAlerts()
+    public function isAlerts()
     {
         return (bool) !empty(self::$collection);
     }
@@ -71,10 +88,10 @@ class AlertsCollection
 
     /**
      * Get all alerts.
-     * 
+     *
      * @return Alert array
      */
-    public static function getAll()
+    public function getAll()
     {
         return self::$collection;
     }

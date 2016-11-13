@@ -3,7 +3,7 @@
 namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Framework\Controller\AdminController;
-use Rudolf\Modules\Articles\One;
+use Rudolf\Modules\Articles\One\Model as OneModel;
 use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class EditController extends AdminController
@@ -28,7 +28,7 @@ class EditController extends AdminController
         }
 
         $view = new EditView();
-        $view->editArticle($form->getDataToDisplay((new One\Model())->getOneById($id)));
+        $view->editArticle($form->getDataToDisplay((new OneModel())->getOneById($id)));
         $view->setCategories($categoriesList);
         $view->render('admin');
     }

@@ -2,6 +2,9 @@
 
 namespace Rudolf\Modules\Categories\One\Admin;
 
+use Rudolf\Component\Alerts\Alert;
+use Rudolf\Component\Alerts\AlertsCollection;
+
 class AddForm extends FormCheck
 {
     protected $model;
@@ -16,6 +19,14 @@ class AddForm extends FormCheck
      */
     public function save()
     {
-        return $this->model->add($this->dataValidated);
+        $status = $this->model->add($this->dataValidated);
+
+        if ($status) {
+            AlertsCollection::add(new Alert(
+                'success', 'Pomyślnie dodano kategorię.'
+            ));
+        }
+
+        return $status;
     }
 }

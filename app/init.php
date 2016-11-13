@@ -8,6 +8,7 @@ use Rudolf\Component\Routing\FrontController;
 use Rudolf\Component\Routing\RouteCollection;
 use Rudolf\Component\Routing\Router;
 
+session_start();
 ob_start();
 
 require_once dirname(__FILE__).'/component/Utils/PHPCompatibilityCheck.php';

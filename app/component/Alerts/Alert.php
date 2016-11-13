@@ -16,7 +16,7 @@ class Alert implements IAlert
 
     /**
      * Constructor.
-     * 
+     *
      * @param string $type
      * @param string $message
      */
@@ -24,13 +24,18 @@ class Alert implements IAlert
     {
         $this->setType($type);
         $this->setMessage($message);
+
+        $_SESSION['rudolf_alerts'][md5($message)] = [
+            'type' => $type,
+            'message' => $message
+        ];
     }
 
     /**
      * Set alert type.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function setType($type)
@@ -40,7 +45,7 @@ class Alert implements IAlert
 
     /**
      * Get alert type.
-     * 
+     *
      * @return string
      */
     public function getType()
@@ -50,9 +55,9 @@ class Alert implements IAlert
 
     /**
      * Set alert mesage.
-     * 
+     *
      * @param string $message
-     * 
+     *
      * @return string
      */
     public function setMessage($message)
@@ -62,11 +67,12 @@ class Alert implements IAlert
 
     /**
      * Get alert mesage.
-     * 
+     *
      * @return string
      */
     public function getMessage()
     {
+        unset($_SESSION['rudolf_alerts'][md5($this->message)]);
         return $this->message;
     }
 }
