@@ -9,11 +9,6 @@ before_script:
 - curl -sS https://getcomposer.org/installer | php
 - php composer.phar install
 
-test:php5.4:
-  image: php:5.4
-  script:
-  - app/vendor/bin/phpunit
-
 test:php5.5:
   image: php:5.5
   script:
