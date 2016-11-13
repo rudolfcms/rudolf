@@ -7,8 +7,8 @@ use Rudolf\Framework\Controller\FrontController;
 class Controller extends FrontController
 {
     /**
-     * login.
-     * 
+     * Login.
+     *
      * @param string $redirect
      */
     public function login($redirect)

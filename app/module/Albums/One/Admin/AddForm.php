@@ -2,6 +2,10 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Rudolf\Modules\Albums\One\Album;
+use Rudolf\Component\Alerts\Alert;
+use Rudolf\Component\Alerts\AlertsCollection;
+
 class AddForm extends FormCheck
 {
     protected $model;
@@ -16,6 +20,16 @@ class AddForm extends FormCheck
      */
     public function save()
     {
-        return $this->model->add($this->dataValidated);
+        $status = $this->model->add($this->dataValidated);
+
+        if ($status) {
+            $album = new Album($this->dataValidated);
+            AlertsCollection::add(new Alert(
+                'success', 'Pomyślnie dodano album.
+                <a href="'.$album->url().'">Zobacz go</a>.'
+            ));
+        }
+
+        return $status;
     }
 }

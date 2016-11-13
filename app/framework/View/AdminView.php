@@ -25,6 +25,7 @@ class AdminView extends BaseView
         $module = new Module('dashboard');
         $this->config = $module->getConfig();
         $this->domPlugins->admin();
+        $this->alertsCollection = new AlertsCollection();
         $this->adminFields = new AdminFields();
     }
 
@@ -177,7 +178,7 @@ class AdminView extends BaseView
             'info' => 'info',
         ], $classes);
 
-        $a = AlertsCollection::getAll();
+        $a = $this->alertsCollection->getAll();
 
         foreach ($a as $key => $alert) {
             $html[] = $this->alert($alert->getType(), $alert->getMessage(), $classes);
@@ -188,7 +189,7 @@ class AdminView extends BaseView
 
     protected function isAlerts()
     {
-        if (AlertsCollection::isAlerts()) {
+        if ($this->alertsCollection->isAlerts()) {
             return true;
         }
 

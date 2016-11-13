@@ -2,6 +2,8 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Rudolf\Component\Alerts\Alert;
+use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Component\Forms\Form;
 
 class DelForm extends Form
@@ -28,6 +30,14 @@ class DelForm extends Form
 
     public function delete()
     {
-        $this->model->delete($this->id);
+        $status = $this->model->delete($this->id);
+
+        if ($status) {
+            AlertsCollection::add(new Alert(
+                'success', 'Pomyślnie usunięto album.'
+            ));
+        }
+
+        return $status;
     }
 }

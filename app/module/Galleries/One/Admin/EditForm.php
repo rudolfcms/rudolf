@@ -2,6 +2,9 @@
 
 namespace Rudolf\Modules\Galleries\One\Admin;
 
+use Rudolf\Component\Alerts\Alert;
+use Rudolf\Component\Alerts\AlertsCollection;
+
 class EditForm extends FormCheck
 {
     /**
@@ -19,6 +22,14 @@ class EditForm extends FormCheck
      */
     public function update()
     {
-        return $this->model->update($this->dataValidated);
+        $status = $this->model->update($this->dataValidated);
+
+        if ($status) {
+            AlertsCollection::add(new Alert(
+                'success', 'Pomyślnie zmodyfikowano galerię.'
+            ));
+        }
+
+        return $status;
     }
 }

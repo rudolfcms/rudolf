@@ -8,9 +8,9 @@ class EditModel extends AdminModel
 {
     /**
      * Update article by id.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return int
      */
     public function update($f)
