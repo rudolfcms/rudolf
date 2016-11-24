@@ -33,11 +33,11 @@ $collection->add('articles/one', new Route(
 
 # /feed/atom
 $collection->add('articles/feed', new Route(
-    'atom/$',
+    'atom(\/)?',
     'Rudolf\Modules\Articles\Feed\Controller::getAtomFeed'
 ));
 $collection->add('articles/feed/rss', new Route(
-    'rss/$',
+    'rss(\/)?',
     'Rudolf\Modules\Articles\Feed\Controller::getRssFeed'
 ));
 
