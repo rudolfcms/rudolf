@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rudolf\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-15 23:06+0200\n"
-"PO-Revision-Date: 2016-07-19 00:06+0200\n"
+"POT-Creation-Date: 2016-11-24 18:51+0100\n"
+"PO-Revision-Date: 2016-11-24 19:00+0100\n"
 "Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
 "Language-Team: Rudolf team <team@rudolf.project>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: app/component/ErrorHandler/Handler/UserFriendlyHandler.php:43
+#: app/component/ErrorHandler/Handler/UserFriendlyHandler.php:48
 msgid "Code"
 msgstr "Kod"
 
@@ -255,19 +255,16 @@ msgid "Not Acceptable"
 msgstr "Niedozwolone"
 
 #: app/component/Http/ResponseMessages.php:103
-#, fuzzy
 msgid ""
 "The requested file exists but cannot be used as the client system doesn't "
 "understand the format the file is configured for."
 msgstr ""
-"understand the format the file is configured for.Żażądany zasób nie jest w "
-"stanie zwrócić odpowiedzi mogącej być obsłużonej przez klienta według "
-"informacji podanych w zapytaniu."
+"Zażądany zasób nie jest w stanie zwrócić odpowiedzi mogącej być obsłużonej "
+"przez klienta według informacji podanych w zapytaniu."
 
 #: app/component/Http/ResponseMessages.php:106
-#, fuzzy
 msgid "Proxy Authentication Required"
-msgstr "Wymagana opłata"
+msgstr "Wymagane uwierzytelnienie proxy"
 
 #: app/component/Http/ResponseMessages.php:107
 msgid "The request must be authorised before it can take place."
@@ -275,7 +272,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:110
 msgid "Request Time-out"
-msgstr ""
+msgstr "Koniec czasu oczekiwania na żądanie"
 
 #: app/component/Http/ResponseMessages.php:111
 msgid ""
@@ -303,7 +300,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:122
 msgid "Length Required"
-msgstr ""
+msgstr "Wymagana długość"
 
 #: app/component/Http/ResponseMessages.php:123
 msgid "The request is missing its Content-Length header."
@@ -311,7 +308,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:126
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Warunek wstępny nie może być spełniony"
 
 #: app/component/Http/ResponseMessages.php:127
 msgid ""
@@ -321,7 +318,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:130
 msgid "Request Entity Too Large"
-msgstr ""
+msgstr "Encja zapytania zbyt długa"
 
 #: app/component/Http/ResponseMessages.php:131
 msgid "The requested file was too big to process."
@@ -329,7 +326,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:134
 msgid "Request-URI Too Large"
-msgstr ""
+msgstr "Adres URI zapytania zbyt długi"
 
 #: app/component/Http/ResponseMessages.php:135
 msgid "The address you entered was overly long for the server."
@@ -337,7 +334,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:138
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "Nieznany sposób żądania"
 
 #: app/component/Http/ResponseMessages.php:139
 msgid "The filetype of the request is unsupported."
@@ -357,7 +354,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:146
 msgid "Not Implemented"
-msgstr ""
+msgstr "Nie zaimplementowano"
 
 #: app/component/Http/ResponseMessages.php:147
 msgid "The server does not support the facility required."
@@ -365,7 +362,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:150
 msgid "Bad Gateway"
-msgstr ""
+msgstr "Błąd bramy"
 
 #: app/component/Http/ResponseMessages.php:151
 msgid "The server you're trying to reach is sending back errors."
@@ -385,7 +382,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:158
 msgid "Gateway Time-out"
-msgstr ""
+msgstr "Przekroczony czas bramy"
 
 #: app/component/Http/ResponseMessages.php:159
 msgid ""
@@ -395,7 +392,7 @@ msgstr ""
 
 #: app/component/Http/ResponseMessages.php:162
 msgid "HTTP Version not supported"
-msgstr ""
+msgstr "Nieobsługiwana wersja HTTP"
 
 #: app/component/Http/ResponseMessages.php:163
 msgid "The HTTP protocol you are asking for is not supported."
@@ -415,7 +412,7 @@ msgstr "Strony"
 msgid "Add page"
 msgstr "Dodaj stronę"
 
-#: app/module/Pages/One/Admin/DelForm.php:23
+#: app/module/Pages/One/Admin/DelForm.php:25
 msgid "Page ID is not valid"
 msgstr "Adres email jest niepoprawny"
 
@@ -423,6 +420,7 @@ msgstr "Adres email jest niepoprawny"
 #: app/module/Articles/One/Admin/FormCheck.php:46
 #: app/module/Categories/One/Admin/FormCheck.php:41
 #: app/module/Albums/One/Admin/FormCheck.php:44
+#: app/module/Galleries/One/Admin/FormCheck.php:33
 msgid "Title is too short. Min is 3 characters"
 msgstr "Tytuł jest zbyt krótki. Minimalnie 3 znaki"
 
@@ -430,6 +428,7 @@ msgstr "Tytuł jest zbyt krótki. Minimalnie 3 znaki"
 #: app/module/Articles/One/Admin/FormCheck.php:47
 #: app/module/Categories/One/Admin/FormCheck.php:42
 #: app/module/Albums/One/Admin/FormCheck.php:45
+#: app/module/Galleries/One/Admin/FormCheck.php:34
 msgid "Title is too long. Max is 255 characters"
 msgstr "Tytuł jest zbyt długi. Maksymalnie 255 znaków"
 
@@ -437,6 +436,7 @@ msgstr "Tytuł jest zbyt długi. Maksymalnie 255 znaków"
 #: app/module/Articles/One/Admin/FormCheck.php:50
 #: app/module/Categories/One/Admin/FormCheck.php:45
 #: app/module/Albums/One/Admin/FormCheck.php:48
+#: app/module/Galleries/One/Admin/FormCheck.php:37
 msgid "The title does not be empty! Min 3 characters"
 msgstr "Tytuł nie może być pusty! Minimalnie 3 znaki"
 
@@ -467,17 +467,26 @@ msgstr "Usuń stronę"
 msgid "Edit page"
 msgstr "Edytuj stronę"
 
+#: app/module/Plugins/Roll/Admin/View.php:20 app/module/Plugins/menu.php:17
+#: app/module/Plugins/menu.php:18
+msgid "Plugins list"
+msgstr "Lista wtyczek"
+
+#: app/module/Plugins/menu.php:7 app/module/Plugins/menu.php:8
+msgid "Plugins"
+msgstr "Wtyczki"
+
 #: app/module/Koxy/menu.php:7 app/module/Koxy/menu.php:8
 msgid "Koxy"
-msgstr ""
+msgstr "Koksy"
 
 #: app/module/Koxy/menu.php:17 app/module/Koxy/menu.php:18
 msgid "Koxy list"
-msgstr ""
+msgstr "Lista koksów"
 
 #: app/module/Koxy/menu.php:27 app/module/Koxy/menu.php:28
 msgid "Add kox"
-msgstr ""
+msgstr "Dodaj koksa"
 
 #: app/module/Articles/Roll/Admin/View.php:20 app/module/Articles/menu.php:17
 #: app/module/Articles/menu.php:18
@@ -510,7 +519,7 @@ msgstr "Lista kategorii"
 msgid "Add category"
 msgstr "Dodaj kategorię"
 
-#: app/module/Articles/One/Admin/DelForm.php:23
+#: app/module/Articles/One/Admin/DelForm.php:26
 msgid "Article ID is not valid"
 msgstr "Identyfikator artykułu jest niepoprawny"
 
@@ -552,14 +561,14 @@ msgstr "Edycja artykułu"
 msgid "Category list"
 msgstr "Lista kategorii"
 
-#: app/module/Articles/Category/One/View.php:32
+#: app/module/Articles/Category/One/View.php:33
 #: app/module/Albums/Roll/View.php:34
-#: app/module/Albums/Category/One/View.php:31 app/module/Index/View.php:25
+#: app/module/Albums/Category/One/View.php:32 app/module/Index/View.php:26
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Strona %1$s z %2$s"
 
-#: app/module/Articles/Category/One/View.php:49
+#: app/module/Articles/Category/One/View.php:52
 msgid "Articles from category"
 msgstr "Artykuły z kategorii"
 
@@ -573,7 +582,7 @@ msgstr "Usuwanie kategorii"
 msgid "Edit category"
 msgstr "Edycja kategorii"
 
-#: app/module/Categories/One/Admin/DelForm.php:23
+#: app/module/Categories/One/Admin/DelForm.php:25
 msgid "Category ID is not valid"
 msgstr "Identyfikator kategorii jest niepoprawny"
 
@@ -600,7 +609,7 @@ msgstr "Lista albumów"
 msgid "Add album"
 msgstr "Dodaj album"
 
-#: app/module/Albums/One/Admin/DelForm.php:23
+#: app/module/Albums/One/Admin/DelForm.php:25
 msgid "Album ID is not valid"
 msgstr "Identyfikator albumu jest niepoprawny"
 
@@ -620,7 +629,7 @@ msgstr "Usuń album"
 msgid "Edit album"
 msgstr "Edycja albumu"
 
-#: app/module/Albums/Category/One/View.php:48
+#: app/module/Albums/Category/One/View.php:51
 msgid "Albums from category"
 msgstr "Albumy z kategorii"
 
@@ -636,6 +645,27 @@ msgstr "Galerie"
 #: app/module/Galleries/menu.php:27 app/module/Galleries/menu.php:28
 msgid "Add gallery"
 msgstr "Dodaj galerię"
+
+#: app/module/Galleries/One/Admin/FormCheck.php:40
+msgid "The thumb width must be integer"
+msgstr "Szerokość miniatury musi być liczbą"
+
+#: app/module/Galleries/One/Admin/FormCheck.php:43
+msgid "The thumb height must be integer"
+msgstr "Wysokość miniatury musi być liczbą"
+
+#: app/module/Galleries/One/Admin/EditView.php:21
+msgid "Edit gallery"
+msgstr "Edytuj galerię"
+
+#: app/module/Modules/Roll/Admin/View.php:20 app/module/Modules/menu.php:17
+#: app/module/Modules/menu.php:18
+msgid "Modules list"
+msgstr "Lista modułów"
+
+#: app/module/Modules/menu.php:7 app/module/Modules/menu.php:8
+msgid "Modules"
+msgstr "Moduły"
 
 #: app/module/Users/Roll/Admin/View.php:20 app/module/Users/menu.php:17
 #: app/module/Users/menu.php:18
@@ -688,7 +718,7 @@ msgid "unnamed error"
 msgstr "nieznany błąd"
 
 #: app/module/Dashboard/menu.php:7 app/module/Dashboard/menu.php:8
-#: app/module/Dashboard/View.php:11 app/framework/View/AdminView.php:96
+#: app/module/Dashboard/View.php:11 app/framework/View/AdminView.php:98
 msgid "Dashboard"
 msgstr "Panel zarządzania"
 
@@ -696,57 +726,65 @@ msgstr "Panel zarządzania"
 msgid "Overview"
 msgstr "Przegląd"
 
-#: content/themes/front/amazingschool/templates/article-one.html.php:6
-#: content/themes/front/amazingschool/templates/albums-list.html.php:10
-#: content/themes/front/amazingschool/templates/articles-list.html.php:6
-msgid "author"
-msgstr "autor"
-
-#: content/themes/front/amazingschool/templates/article-one.html.php:7
-#: content/themes/front/amazingschool/templates/albums-list.html.php:11
-#: content/themes/front/amazingschool/templates/articles-list.html.php:7
-msgid "added"
-msgstr "dodano"
-
-#: content/themes/front/amazingschool/templates/article-one.html.php:7
-#: content/themes/front/amazingschool/templates/albums-list.html.php:11
-#: content/themes/front/amazingschool/templates/articles-list.html.php:7
-#: content/themes/front/amazingschool/amazingschool.php:24
-msgid "date_on"
-msgstr "o"
-
-#: content/themes/front/amazingschool/templates/article-one.html.php:8
-#: content/themes/front/amazingschool/templates/albums-list.html.php:12
-#: content/themes/front/amazingschool/templates/articles-list.html.php:8
-msgid "photos"
-msgstr "zdjęć"
-
-#: content/themes/front/amazingschool/templates/article-one.html.php:9
-#: content/themes/front/amazingschool/templates/albums-list.html.php:13
-#: content/themes/front/amazingschool/templates/articles-list.html.php:9
-msgid "views"
-msgstr "odsłon"
-
-#: content/themes/front/amazingschool/templates/_foot.html.php:4
-msgid "Search something?"
-msgstr "Szukasz czegoś?"
-
-#: content/themes/front/amazingschool/templates/_foot.html.php:5
+#: app/module/Search/View.php:12
 msgid "Search"
 msgstr "Szukaj"
 
-#: content/themes/front/amazingschool/templates/_foot.html.php:11
+#: app/module/Tools/menu.php:7 app/module/Tools/menu.php:8
+msgid "Tools"
+msgstr "Narzędzia"
+
+#: app/module/Tools/menu.php:18 app/module/Tools/menu.php:19
+#: app/module/Tools/Admin/One/DatabaseDump/View.php:17
+msgid "Database dump"
+msgstr "Zrzut bazy"
+
+#: app/module/Tools/Admin/Roll/View.php:20
+msgid "Tools list"
+msgstr "Lista narzędzi"
+
+#: app/framework/View/AdminView.php:214
+msgid "Warning"
+msgstr "Uwaga"
+
+#: app/framework/View/AdminView.php:217
+msgid "Success"
+msgstr "Udało się"
+
+#: app/framework/View/AdminView.php:220
+msgid "Info"
+msgstr "Informacja"
+
+#: app/framework/View/AdminView.php:225
+msgid "Error"
+msgstr "Błąd"
+
+msgid "author"
+msgstr "autor"
+
+msgid "added"
+msgstr "dodano"
+
+msgid "date_on"
+msgstr "o"
+
+msgid "photos"
+msgstr "zdjęć"
+
+msgid "views"
+msgstr "odsłon"
+
+msgid "Search something?"
+msgstr "Szukasz czegoś?"
+
 msgid "Bookmarks"
 msgstr "Zakładki"
 
-#: content/themes/front/amazingschool/templates/_foot.html.php:14
 msgid "References"
 msgstr "Polecane"
 
-#: content/themes/front/amazingschool/templates/_foot.html.php:17
 msgid "Links"
 msgstr "Linki"
 
-#: content/themes/front/amazingschool/templates/_foot.html.php:20
 msgid "Subscription"
 msgstr "Subskrypcje"

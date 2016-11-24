@@ -171,8 +171,7 @@ class AdminView extends BaseView
         }
 
         $classes = array_merge([
-            'danger' => 'danger',
-            'error' => 'error',
+            'error' => 'danger',
             'warning' => 'warning',
             'success' => 'success',
             'info' => 'info',
@@ -209,7 +208,24 @@ class AdminView extends BaseView
     {
         $html[] = sprintf('<div class="alert alert-%1$s %1$s">', $classes[$type]);
         $html[] = '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-        $html[] = sprintf('<strong>%1$s!</strong> %2$s', ucfirst($type), $message);
+
+        switch ($type) {
+            case 'warning':
+                $title = _('Warning');
+                break;
+            case 'success':
+                $title = _('Success');
+                break;
+            case 'info':
+                $title = _('Info');
+                break;
+
+            case 'error':
+            default:
+                $title = _('Error');
+                break;
+        }
+        $html[] = sprintf('<strong>%1$s!</strong> %2$s', $title, $message);
         $html[] = '</div>';
 
         return implode('', $html);
