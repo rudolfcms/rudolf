@@ -10,6 +10,7 @@ class View extends FrontView
     public function search()
     {
         $this->head->setTitle(_('Search'));
+        $this->head->setCanonical(DIR.'/search');
         $this->template = 'search';
     }
 

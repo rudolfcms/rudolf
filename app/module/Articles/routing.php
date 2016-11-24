@@ -12,7 +12,7 @@ $collection->add('articles/list', new Route(
 
 # /artykuly/kategorie(/page/3)
 $collection->add('articles/categories/one', new Route(
-    'artykuly/kategorie/<slug>(/page/<page>)?',
+    'artykuly/kategorie/<slug>(/|/page/<page>)?',
     'Rudolf\Modules\Articles\Category\One\Controller::getCategory',
     ['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
      'page' => '[1-9][0-9]*$', ],

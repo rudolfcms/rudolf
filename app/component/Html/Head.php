@@ -37,6 +37,7 @@ class Head
         $html[] = $this->stylesheets(true, $nesting);
         $html[] = $this->scripts(true, $nesting);
         $html[] = $this->favicon(true);
+        $html[] = $this->canonical(true);
         $html[] = $this->after(true);
 
         // trimmmmmmmmmmmmm
@@ -129,6 +130,40 @@ class Head
     public function setFavicon($favicon)
     {
         $this->pageFavicon = $favicon;
+    }
+
+    /**
+     * Get canonical link.
+     *
+     * @param bool $return
+     *
+     * @return void|string
+     */
+    public function canonical($return = false)
+    {
+        if (empty($this->canonical)) {
+            return false;
+        }
+
+        $canonical = sprintf('<link rel="canonical" href="%1$s">',
+            (new Url())->getOrigin().$this->canonical
+        );
+
+        if (true === $return) {
+            return $canonical;
+        }
+
+        echo $canonical;
+    }
+
+    /**
+     * Set canonical link.
+     *
+     * @param string $href
+     */
+    public function setCanonical($href)
+    {
+        $this->canonical = $href;
     }
 
     /**

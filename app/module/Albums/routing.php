@@ -12,7 +12,7 @@ $collection->add('album/list', new Route(
 
 # /foto/kategorie(/page/3)
 $collection->add('album/category', new Route(
-    'foto/kategorie/<slug>(/page/<page>)?',
+    'foto/kategorie/<slug>(/|/page/<page>)?',
     'Rudolf\Modules\Albums\Category\One\Controller::getCategory',
     ['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
      'page' => '[1-9][0-9]*$', ],
@@ -21,11 +21,11 @@ $collection->add('album/category', new Route(
 
 # /foto/2015/09/hello-world
 $collection->add('album/one', new Route(
-    'foto/<year>/<month>/<slug>',
+    'foto/<year>/<month>/<slug>(\/)?',
     'Rudolf\Modules\Albums\One\Controller::getOne',
     ['year' => '[0-9]{4}',
      'month' => "(0[1-9]|[12]\d|3[01])",
-     'slug' => '[a-z0-9-]*$',
+     'slug' => '[a-z0-9-]+',
         // (0[1-9]|[12]\d|3[01]) with 0, like 05
         // ([1-9]|[12]\d|3[01]) without 0, like 5
     ]

@@ -20,10 +20,14 @@ class View extends FrontView
 
         $page = $pagination->getPageNumber();
         $allPages = $pagination->getAllPages();
+        $pageInfo = null;
 
         if (1 !== $page) {
             $this->head->setTitle(sprintf(_('Page %1$s of %2$s'), $page, $allPages));
+            $pageInfo = 'page/'.$page;
         }
+
+        $this->head->setCanonical(DIR.'/'.$pageInfo);
 
         $this->template = 'index';
     }

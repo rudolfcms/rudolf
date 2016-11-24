@@ -10,7 +10,7 @@ class View extends FrontView
 {
     public function setData($data, $pagination, $info = false)
     {
-        $path = '/albums/kategorie/'.$info['slug'];
+        $path = '/foto/kategorie/'.$info['slug'];
         $this->loop = new Loop($data, $pagination,
             'Rudolf\\Modules\\Albums\\One\\Album',
             $path
@@ -26,12 +26,15 @@ class View extends FrontView
         $allPages = $pagination->getAllPages();
 
         $titleBefore = null;
+        $pageInfo = null;
 
         if (1 !== $page) {
             $titleBefore = sprintf(_('Page %1$s of %2$s'), $page, $allPages).' &ndash; ';
+            $pageInfo = '/page/'.$page;
         }
 
         $this->head->setTitle($titleBefore.$this->categoryTitle(true));
+        $this->head->setCanonical(DIR.$path.$pageInfo);
 
         $this->template = 'albums-category';
     }

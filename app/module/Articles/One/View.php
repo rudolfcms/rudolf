@@ -16,6 +16,7 @@ class View extends FrontView
         $this->article = new Article($data);
 
         $this->head->setTitle($this->article->title());
+        $this->head->setCanonical($this->article->url());
 
         $this->template = 'article-one';
     }

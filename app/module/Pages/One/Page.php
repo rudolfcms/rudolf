@@ -39,12 +39,14 @@ class Page
 
     public function url()
     {
-        return sprintf('%1$s/%2$s',
-            DIR,
-            Text::escape($this->page['slug'])
-        );
+        if (!isset($this->page['url'])) {
+            return sprintf('%1$s/%2$s',
+                DIR,
+                Text::escape($this->page['slug'])
+            );
+        }
 
-        return $this->page['slug'];
+        return $this->page['url'];
     }
 
     public function modified()
