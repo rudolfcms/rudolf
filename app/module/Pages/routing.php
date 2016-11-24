@@ -6,8 +6,7 @@ $collection->add('pages', new Route(
     '<page>',
     'Rudolf\Modules\Pages\One\Controller::page',
     array(
-        'page' => "[a-z0-9-\/]*?(?<!\/)$", // without end slash
-        //'page' => "[a-z0-9-\/]*?$" // with end slash
+        'page' => "[a-z0-9-\/]*(/)?$",
     ),
     [],
     2000

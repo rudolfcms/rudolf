@@ -3,6 +3,6 @@
 use Rudolf\Component\Routing\Route;
 
 $collection->add('search/search', new Route(
-    'szukaj/?',
+    'search(/)?',
     'Rudolf\Modules\Search\Controller::search'
 ));

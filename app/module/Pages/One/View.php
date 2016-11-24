@@ -12,6 +12,7 @@ class View extends FrontView
         $this->page = new Page($data);
 
         $this->head->setTitle($this->page->title());
+        $this->head->setCanonical($this->page->url());
 
         $this->template = 'page';
     }

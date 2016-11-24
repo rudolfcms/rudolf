@@ -12,7 +12,7 @@ $collection->add('articles/list', new Route(
 
 # /artykuly/kategorie(/page/3)
 $collection->add('articles/categories/one', new Route(
-    'artykuly/kategorie/<slug>(/page/<page>)?',
+    'artykuly/kategorie/<slug>(/|/page/<page>)?',
     'Rudolf\Modules\Articles\Category\One\Controller::getCategory',
     ['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*',
      'page' => '[1-9][0-9]*$', ],
@@ -33,11 +33,11 @@ $collection->add('articles/one', new Route(
 
 # /feed/atom
 $collection->add('articles/feed', new Route(
-    'atom/$',
+    'atom(\/)?',
     'Rudolf\Modules\Articles\Feed\Controller::getAtomFeed'
 ));
 $collection->add('articles/feed/rss', new Route(
-    'rss/$',
+    'rss(\/)?',
     'Rudolf\Modules\Articles\Feed\Controller::getRssFeed'
 ));
 
