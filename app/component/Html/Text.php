@@ -20,6 +20,7 @@ class Text
     public static function truncate($str, $length, $ellipsis = '...', $allowedTags = '')
     {
         $str = strip_tags($str, $allowedTags);
+
         return Truncator::truncate($str, $length, [
             'ellipsis' => $ellipsis,
             'length_in_chars' => true,
@@ -41,6 +42,7 @@ class Text
     public static function sluger($string)
     {
         $slugify = new Slugify();
+
         return $slugify->slugify($string);
     }
 }

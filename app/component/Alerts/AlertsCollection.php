@@ -17,7 +17,6 @@ class AlertsCollection
     public function __construct()
     {
         if (isset($_SESSION['rudolf_alerts'])) {
-
             foreach ($_SESSION['rudolf_alerts'] as $key => $value) {
                 $collectionFromSession[] = new Alert($value['type'], $value['message']);
             }

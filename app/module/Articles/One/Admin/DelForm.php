@@ -4,7 +4,6 @@ namespace Rudolf\Modules\Articles\One\Admin;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
-
 use Rudolf\Component\Forms\Form;
 
 class DelForm extends Form

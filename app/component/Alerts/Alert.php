@@ -27,7 +27,7 @@ class Alert implements IAlert
 
         $_SESSION['rudolf_alerts'][md5($message)] = [
             'type' => $type,
-            'message' => $message
+            'message' => $message,
         ];
     }
 
@@ -73,6 +73,7 @@ class Alert implements IAlert
     public function getMessage()
     {
         unset($_SESSION['rudolf_alerts'][md5($this->message)]);
+
         return $this->message;
     }
 }

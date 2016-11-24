@@ -28,7 +28,7 @@ class Controller extends FrontController
         $page->addView();
 
         $view = new View();
-        $view->page($page->addToPageUrl($pageInfo,$pagesList));
+        $view->page($page->addToPageUrl($pageInfo, $pagesList));
         $view->setBreadcrumbsData($pagesList, $addressArray);
         $view->render();
     }
