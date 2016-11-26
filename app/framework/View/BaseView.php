@@ -52,7 +52,7 @@ abstract class BaseView
 
     /**
      * Render page.
-     * 
+     *
      * @param string $side front|admin
      * @param string $type html|json
      */
@@ -96,7 +96,9 @@ abstract class BaseView
         } elseif (is_file($file)) {
             include $file;
         } else {
-            throw new TemplateNotFoundException("Template file '{$this->template}' does not exist in ".$this->themeName);
+            throw new TemplateNotFoundException(
+                "Template file '{$this->template}' does not exist in ".$this->themeName
+            );
         }
     }
 
@@ -107,6 +109,17 @@ abstract class BaseView
     {
         header('Content-Type: application/json');
         echo json_encode($this->data);
+    }
+
+    /**
+     * Set error 404 default page title and template name.
+     *
+     * @return void
+     */
+    public function error404()
+    {
+        $this->pageTitle = 'error 404';
+        $this->template = 'error404';
     }
 
     /**
