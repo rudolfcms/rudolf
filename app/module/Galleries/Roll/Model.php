@@ -8,9 +8,9 @@ class Model extends AbstractModel
 {
     /**
      * Returns total number of galleries items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber($where = ['published' => 1])

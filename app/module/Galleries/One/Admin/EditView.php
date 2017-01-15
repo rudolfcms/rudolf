@@ -11,7 +11,7 @@ class EditView extends AdminView
 
     /**
      * Set data to edit gallery.
-     * 
+     *
      * @param array $gallery
      */
     public function editGallery($gallery)

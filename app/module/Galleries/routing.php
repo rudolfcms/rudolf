@@ -16,7 +16,6 @@ $collection->add('galleries/roll/admin', new Route(
     ['page' => 0]
 ));
 
-// gallery
 $collection->add('galleries/one/admin/edit', new Route(
     'admin/galleries/edit/<id>$',
     'Rudolf\Modules\Galleries\One\Admin\EditController::edit',

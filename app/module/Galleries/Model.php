@@ -8,7 +8,7 @@ abstract class Model extends BaseModel
 {
     /**
      * Returns part of query.
-     * 
+     *
      * @return string
      */
     protected function queryPart($part)
