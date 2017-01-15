@@ -13,7 +13,7 @@ class Gallery
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $gallery
      */
     public function __construct($gallery = [])
@@ -23,7 +23,7 @@ class Gallery
 
     /**
      * Set gallery data.
-     * 
+     *
      * @param array $gallery
      */
     public function setData($gallery)
@@ -50,7 +50,7 @@ class Gallery
 
     /**
      * Returns gallery ID.
-     * 
+     *
      * @return int
      */
     public function id()
@@ -60,9 +60,9 @@ class Gallery
 
     /**
      * Returns gallery title.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function title($type = '')
@@ -77,7 +77,7 @@ class Gallery
 
     /**
      * Returns date of gallery added.
-     * 
+     *
      * @return string
      */
     public function added()
@@ -87,7 +87,7 @@ class Gallery
 
     /**
      * Returns date of last gallery modified.
-     * 
+     *
      * @return string
      */
     public function modified()
@@ -97,7 +97,7 @@ class Gallery
 
     /**
      * Returns adder ID.
-     * 
+     *
      * @return int
      */
     public function adderID()
@@ -107,9 +107,9 @@ class Gallery
 
     /**
      * Returns first name and surname of adder.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function adderFullName($type = '')
@@ -124,7 +124,7 @@ class Gallery
 
     /**
      * Returns modifier ID.
-     * 
+     *
      * @return int
      */
     public function modifierID()
@@ -134,7 +134,7 @@ class Gallery
 
     /**
      * Returns modifier full name.
-     * 
+     *
      * @return int
      */
     public function modifierFullName($type = '')
@@ -149,7 +149,7 @@ class Gallery
 
     /**
      * Checks whether the gallery has modified.
-     * 
+     *
      * @return bool
      */
     public function isModified()
