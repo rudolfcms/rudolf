@@ -1,0 +1,22 @@
+# Language package for Rudolf.
+# Copyright (C) 2015 Rudolf
+# This file is distributed under the same license as the PACKAGE package.
+# Mikołaj Pich <m.pich@outlook.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rudolf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-17 18:59+0200\n"
+"PO-Revision-Date: 2015-12-05 17:53+0100\n"
+"Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
+"Language-Team: Rudolf team <team@rudolf.project>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: en_US\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "date_on"
+msgstr "at"

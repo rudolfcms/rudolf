@@ -1,0 +1,25 @@
+cache:
+  paths:
+  - app/vendor/
+
+before_script:
+- if find . -name "*.php" ! -path "./app/vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
+- apt-get update -yqq
+- apt-get install git -yqq
+- curl -sS https://getcomposer.org/installer | php
+- php composer.phar install
+
+test:php5.5:
+  image: php:5.5
+  script:
+  - app/vendor/bin/phpunit
+
+test:php5.6:
+  image: php:5.6
+  script:
+  - app/vendor/bin/phpunit
+
+test:php7:
+  image: php:7
+  script:
+  - app/vendor/bin/phpunit

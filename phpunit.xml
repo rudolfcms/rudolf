@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="app/tests/bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Rudolf Test Suite">
+            <directory>app/tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">app/</directory>
+            <exclude>
+                <directory>./content</directory>
+                <directory>./app/config</directory>
+                <directory>./app/install/config.example</directory>
+                <directory>./app/temp</directory>
+                <directory>./app/tests</directory>
+                <directory>./app/vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
