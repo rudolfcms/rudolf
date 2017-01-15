@@ -1,6 +1,6 @@
+/config/
+/content/
+/log/
+/temp/
+/vendor/
 composer.lock
-app/config
-app/log
-app/temp
-app/vendor
-content

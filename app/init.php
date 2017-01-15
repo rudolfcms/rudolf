@@ -18,7 +18,7 @@ php_compatibility_check($required = 5.4);
 require_once __DIR__.'/defines.php';
 
 // load class autolaoder
-require_once APP_ROOT.'/vendor/autoload.php';
+require_once WEB_ROOT.'/vendor/autoload.php';
 
 // load page configuration
 $config = include CONFIG_ROOT.'/site.php';

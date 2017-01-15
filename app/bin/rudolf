@@ -34,15 +34,15 @@ switch (isset($argv[1]) ? $argv[1] : 'help') {
  */
 function install()
 {
-    if (file_exists('app/config')) {
+    if (file_exists('config')) {
         echo out('Rudolf already installed!', 'red').PHP_EOL;
         die;
     }
 
     echo out('Creating catalogs...', 'green');
-    mkdir('app/config');
-    mkdir('app/log');
-    mkdir('app/temp');
+    mkdir('log');
+    mkdir('temp');
+    mkdir('config');
     mkdir('content');
     mkdir('content/themes');
     mkdir('content/themes/front');
@@ -52,7 +52,7 @@ function install()
     echo out(' done.', null, true);
 
     echo out('Copy config examples...', 'green');
-    system('cp -r app/install/config.example/* app/config');
+    system('cp -r app/install/config.example/* config/');
     echo out(' done.', null, true);
 
     echo PHP_EOL;
@@ -72,7 +72,7 @@ function install()
     $db['charset'] = in('utf8');
     echo out('- Prefix [').out('rudolf_', 'brown').']: ';
     $db['prefix'] = in('rudolf_');
-    file_put_contents('app/config/database.php', '<?php return '.var_export($db, true).';');
+    file_put_contents('config/database.php', '<?php return '.var_export($db, true).';');
     echo out('saved.', 'green', true);
 
     echo PHP_EOL;
@@ -86,12 +86,12 @@ function install()
     $site['general_name'] = in('Welcome in rudolf!');
     echo out('- Debug on [').out('0', 'brown').']: ';
     $site['debug'] = in('0');
-    file_put_contents('app/config/site.php', '<?php return '.var_export($site, true).';');
+    file_put_contents('config/site.php', '<?php return '.var_export($site, true).';');
     echo out('saved.', 'green', true);
 
     echo PHP_EOL;
 
-    file_put_contents('app/config/auth.php', '<?php return '.var_export([
+    file_put_contents('config/auth.php', '<?php return '.var_export([
         'site_key' => randString(64),
         'session_expire' => '+1 month',
     ], true).';');
@@ -104,8 +104,8 @@ function install()
  */
 function clearCache()
 {
-    echo out('Clear app/temp...', 'green');
-    system('rm -rf '.WEB_ROOT.'/app/temp/*');
+    echo out('Clear temp...', 'green');
+    system('rm -rf '.WEB_ROOT.'/temp/*');
     echo out(' done.', null, true);
 }
 
@@ -114,7 +114,7 @@ function clearCache()
  */
 function update()
 {
-    if (!file_exists(WEB_ROOT.'/app/config')) {
+    if (!file_exists(WEB_ROOT.'/config')) {
         echo out('Rudolf not installed!', 'red').PHP_EOL;
         die;
     }
@@ -134,7 +134,7 @@ function help()
         '  command [command]'.PHP_EOL.
         PHP_EOL.
         out('Available commands:', 'brown', true).
-        '  '.out('clear-cache', 'green').'  clear app/temp/ directory'.PHP_EOL.
+        '  '.out('clear-cache', 'green').'  clear temp/ directory'.PHP_EOL.
         '  '.out('help', 'green').'         display this message'.PHP_EOL.
         '  '.out('install', 'green').'      install rudolf, if not installed yet'.PHP_EOL.
         '  '.out('update', 'green').'       update packages, modules and plugins'.PHP_EOL
@@ -167,7 +167,7 @@ function composer($command = 'update')
         echo out('Updating composer packages...', 'green');
     }
 
-    $config = include WEB_ROOT.'/app/config/site.php';
+    $config = include WEB_ROOT.'/config/site.php';
     if ('0' == $config['debug']) {
         $command .= ' --no-dev ';
         $command .= ' --optimize-autoloader ';

@@ -1,7 +1,3 @@
-##
-# @package Rudolf
-##
-
 Options -Indexes
 Options +FollowSymLinks
 RewriteEngine On

@@ -1,5 +1,5 @@
 {
-    "name": "mklj/rudolf",
+    "name": "rudolfcms/rudolf",
     "type": "project",
     "description": "Rudolf is simple CMS written in PHP. That's all.",
     "authors": [
@@ -29,11 +29,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Rudolf\\Tests\\Component\\": "app/tests/component/",
-            "Rudolf\\Tests\\Module\\": "app/tests/modules/"
+            "Rudolf\\Tests\\Component\\": "tests/component/",
+            "Rudolf\\Tests\\Module\\": "tests/modules/"
         }
-    },
-    "config": {
-        "vendor-dir": "app/vendor"
     }
 }

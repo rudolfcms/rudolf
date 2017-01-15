@@ -5,11 +5,12 @@ define('VER_NAME', '0.0.11-prealpha');
 define('NAME', 'rudolf');
 
 define('APP_ROOT',      __DIR__);
-define('CONFIG_ROOT',   APP_ROOT.'/config');
 define('CORE_ROOT',     APP_ROOT.'/core');
-define('TEMP_ROOT',     APP_ROOT.'/temp');
 define('MODULES_ROOT',  APP_ROOT.'/module');
-define('LOG_ROOT',      APP_ROOT.'/log');
+
+define('CONFIG_ROOT',   WEB_ROOT.'/config');
+define('TEMP_ROOT',     WEB_ROOT.'/temp');
+define('LOG_ROOT',      WEB_ROOT.'/log');
 
 define('CONTENT_ROOT',  WEB_ROOT.'/content');
 define('PLUGINS_ROOT',  CONTENT_ROOT.'/plugins');

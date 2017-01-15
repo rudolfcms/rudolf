@@ -1,4 +1,5 @@
-# Rudolf #
+# rudolf
 
-## What is `Rudolf`? ##
-Rudolf is simple CMS system written in PHP. That's all.
+## What is rudolf?
+
+rudolf is simple CMS written in PHP. That's all.
