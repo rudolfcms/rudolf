@@ -33,6 +33,7 @@ abstract class Model extends FrontModel
                            article.album,
                            article.thumb,
                            article.photos,
+                           article.homepage_hidden,
                            article.published,
                            adder.nick AS adder_nick,
                            adder.first_name AS adder_first_name,

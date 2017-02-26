@@ -23,6 +23,7 @@ class FormCheck extends Form
             'thumb' => '',
             'album' => '',
             'photos' => '',
+            'homepage_hidden' => '',
             'published' => '',
         ], $this->data);
 
@@ -40,6 +41,7 @@ class FormCheck extends Form
         }
 
         $data['published'] = $data['published'] ? 1 : 0;
+        $data['homepage_hidden'] = $data['homepage_hidden'] ? 1 : 0;
 
         $this->validator
             ->checkChar('title', $data['title'], 3, 255, [

@@ -34,6 +34,7 @@ class AddModel extends AdminModel
                 , album
                 , thumb
                 , photos
+                , homepage_hidden
                 , published
                 , category_ID)
             VALUES
@@ -49,6 +50,7 @@ class AddModel extends AdminModel
                 , :album
                 , :thumb
                 , :photos
+                , :homepage_hidden
                 , :published
                 , :category_ID)
         ");
@@ -64,6 +66,7 @@ class AddModel extends AdminModel
         $stmt->bindValue(':album', $f['album'], \PDO::PARAM_STR);
         $stmt->bindValue(':thumb', $f['thumb'], \PDO::PARAM_STR);
         $stmt->bindValue(':photos', $f['photos'], \PDO::PARAM_INT);
+        $stmt->bindValue(':homepage_hidden', $f['homepage_hidden'], \PDO::PARAM_INT);
         $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
         $stmt->bindValue(':category_ID', $f['category_ID'], \PDO::PARAM_INT);
 

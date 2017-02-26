@@ -36,6 +36,7 @@ class EditModel extends AdminModel
                 album = :album,
                 thumb = :thumb,
                 photos = :photos,
+                homepage_hidden = :homepage_hidden,
                 published = :published
             WHERE
                 id = :id
@@ -52,6 +53,7 @@ class EditModel extends AdminModel
         $stmt->bindValue(':album', $f['album'], \PDO::PARAM_STR);
         $stmt->bindValue(':thumb', $f['thumb'], \PDO::PARAM_STR);
         $stmt->bindValue(':photos', $f['photos'], \PDO::PARAM_INT);
+        $stmt->bindValue(':homepage_hidden', $f['homepage_hidden'], \PDO::PARAM_INT);
         $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
         $stmt->bindValue(':category_ID', $f['category_ID'], \PDO::PARAM_INT);

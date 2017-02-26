@@ -56,6 +56,7 @@ class Article
                 'thumb' => '',
                 'thumbnail' => '',
                 'photos' => '',
+                'homepage_hidden' => false,
                 'published' => false,
                 'category' => '',
                 'category_title' => '',
@@ -474,6 +475,16 @@ class Article
     public function hasPhotos()
     {
         return (bool) $this->article['photos'];
+    }
+
+    /**
+     * Check whether the article is hidden on homepage.
+     *
+     * @return bool
+     */
+    public function isHomepageHidden()
+    {
+        return (bool) $this->article['homepage_hidden'];
     }
 
     /**

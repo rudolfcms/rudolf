@@ -15,7 +15,7 @@ class Controller extends FrontController
         $page = $this->firstPageRedirect($page);
 
         $list = new ArticlesList();
-        $total = $list->getTotalNumber();
+        $total = $list->getTotalNumber(['published' => 1, 'homepage_hidden' => 0]);
 
         $conf = (new Module('index'))->getConfig();
 
