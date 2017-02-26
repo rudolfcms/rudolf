@@ -1,6 +1,6 @@
-/config/
-/content/
-/log/
-/temp/
-/vendor/
+/src/config/
+/src/content/
+/src/log/
+/src/temp/
+/src/vendor/
 composer.lock

@@ -1,14 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-define('WEB_ROOT', dirname(dirname(__DIR__)));
+define('ROOT', __DIR__);
+define('WEB_ROOT', ROOT.'/src/');
 
 if (!file_exists('composer.json')) {
     echo out('Must be execute in rudolf root! (where is composer.json)', 'red', true);
     die;
 }
 
-include 'app/defines.php';
+include __DIR__.'/src/app/defines.php';
 
 switch (isset($argv[1]) ? $argv[1] : 'help') {
     case 'install':
@@ -40,19 +41,19 @@ function install()
     }
 
     echo out('Creating catalogs...', 'green');
-    mkdir('log');
-    mkdir('temp');
-    mkdir('config');
-    mkdir('content');
-    mkdir('content/themes');
-    mkdir('content/themes/front');
-    mkdir('content/themes/admin');
-    mkdir('content/uploads');
-    mkdir('content/plugins');
+    mkdir('src/config');
+    mkdir('src/content');
+    mkdir('src/content/plugins');
+    mkdir('src/content/themes');
+    mkdir('src/content/themes/admin');
+    mkdir('src/content/themes/front');
+    mkdir('src/content/uploads');
+    mkdir('src/log');
+    mkdir('src/temp');
     echo out(' done.', null, true);
 
     echo out('Copy config examples...', 'green');
-    system('cp -r app/install/config.example/* config/');
+    system('cp -r src/app/install/config.example/* src/config/');
     echo out(' done.', null, true);
 
     echo PHP_EOL;
@@ -72,7 +73,7 @@ function install()
     $db['charset'] = in('utf8');
     echo out('- Prefix [').out('rudolf_', 'brown').']: ';
     $db['prefix'] = in('rudolf_');
-    file_put_contents('config/database.php', '<?php return '.var_export($db, true).';');
+    file_put_contents('src/config/database.php', '<?php return '.var_export($db, true).';');
     echo out('saved.', 'green', true);
 
     echo PHP_EOL;
@@ -86,12 +87,12 @@ function install()
     $site['general_name'] = in('Welcome in rudolf!');
     echo out('- Debug on [').out('0', 'brown').']: ';
     $site['debug'] = in('0');
-    file_put_contents('config/site.php', '<?php return '.var_export($site, true).';');
+    file_put_contents('src/config/site.php', '<?php return '.var_export($site, true).';');
     echo out('saved.', 'green', true);
 
     echo PHP_EOL;
 
-    file_put_contents('config/auth.php', '<?php return '.var_export([
+    file_put_contents('src/config/auth.php', '<?php return '.var_export([
         'site_key' => randString(64),
         'session_expire' => '+1 month',
     ], true).';');
@@ -105,7 +106,7 @@ function install()
 function clearCache()
 {
     echo out('Clear temp...', 'green');
-    system('rm -rf '.WEB_ROOT.'/temp/*');
+    system('rm -rf '.ROOT.'/src/temp/*');
     echo out(' done.', null, true);
 }
 
@@ -114,7 +115,7 @@ function clearCache()
  */
 function update()
 {
-    if (!file_exists(WEB_ROOT.'/config')) {
+    if (!file_exists(ROOT.'/src/config')) {
         echo out('Rudolf not installed!', 'red').PHP_EOL;
         die;
     }
@@ -149,14 +150,14 @@ function composer($command = 'update')
     if (!('update' === $command or 'install' === $command)) {
         return;
     }
-    if (!file_exists(WEB_ROOT.'/composer.phar')) {
+    if (!file_exists(ROOT.'/composer.phar')) {
         echo out('Downloading composer...', 'green');
-        copy('https://getcomposer.org/installer', WEB_ROOT.'/composer-setup.php');
+        copy('https://getcomposer.org/installer', ROOT.'/composer-setup.php');
         echo out(' done.', null, true);
 
         echo out('Installing composer...', 'green');
-        system('php '.WEB_ROOT.'/composer-setup.php --quiet');
-        unlink(WEB_ROOT.'/composer-setup.php');
+        system('php '.ROOT.'/composer-setup.php --quiet');
+        unlink(ROOT.'/composer-setup.php');
         echo out(' done.', null, true);
     }
 
@@ -167,17 +168,17 @@ function composer($command = 'update')
         echo out('Updating composer packages...', 'green');
     }
 
-    $config = include WEB_ROOT.'/config/site.php';
+    $config = include ROOT.'/src/config/site.php';
     if ('0' == $config['debug']) {
         $command .= ' --no-dev ';
         $command .= ' --optimize-autoloader ';
     }
 
-    system('php '.WEB_ROOT.'/composer.phar '.$command.' --quiet');
+    system('php '.ROOT.'/composer.phar '.$command.' --quiet');
     echo out(' done.', null, true);
 
     echo out('Removing composer.phar...', 'green');
-    unlink(WEB_ROOT.'/composer.phar');
+    unlink(ROOT.'/composer.phar');
     echo out(' done.', null, true);
 }
 

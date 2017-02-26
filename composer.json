@@ -22,9 +22,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Rudolf\\Framework\\": "app/framework/",
-            "Rudolf\\Component\\": "app/component/",
-            "Rudolf\\Modules\\": "app/module/"
+            "Rudolf\\Framework\\": "src/app/framework/",
+            "Rudolf\\Component\\": "src/app/component/",
+            "Rudolf\\Modules\\": "src/app/module/"
         }
     },
     "autoload-dev": {
@@ -32,5 +32,8 @@
             "Rudolf\\Tests\\Component\\": "tests/component/",
             "Rudolf\\Tests\\Module\\": "tests/modules/"
         }
+    },
+    "config": {
+        "vendor-dir": "src/vendor"
     }
 }
