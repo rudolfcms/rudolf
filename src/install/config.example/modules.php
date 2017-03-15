@@ -9,6 +9,7 @@ return array(
   'Koxy' => 0,
   'Modules' => 1,
   'Pages' => 1,
+  'Pages' => 1,
   'Users' => 1,
   'Tools' => 1,
   'Search' => 0,

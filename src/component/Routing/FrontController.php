@@ -42,7 +42,7 @@ class FrontController
      */
     public function run()
     {
-        try {
+        
             if (false === $this->router->run()) {
                 throw new HttpErrorException('No routing rules (error 404)', 404);
             }
@@ -54,17 +54,7 @@ class FrontController
             }
 
             $this->call($names, $this->router->getParams());
-        } catch (HttpErrorException $e) {
-            try {
-                if (substr($this->router->getUrl(), 0, 6) === '/admin') {
-                    $this->call(['Rudolf\\Framework\\Controller\\HttpErrorAdminController']);
-                } else {
-                    $this->call(['Rudolf\\Framework\\Controller\\HttpErrorFrontController']);
-                }
-            } catch (TemplateNotFoundException $e) {
-                throw new HttpErrorException('Page and error template not found (error 404)', 404);
-            }
-        }
+        
     }
 
     /**

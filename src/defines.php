@@ -4,13 +4,13 @@ define('VER', 0.11);
 define('VER_NAME', '0.11.0');
 define('NAME', 'rudolf');
 
-define('APP_ROOT',      __DIR__);
+define('APP_ROOT',      dirname(__DIR__));
 define('CORE_ROOT',     APP_ROOT.'/core');
-define('MODULES_ROOT',  APP_ROOT.'/module');
+define('MODULES_ROOT',  APP_ROOT.'/src/module');
 
-define('CONFIG_ROOT',   WEB_ROOT.'/config');
-define('TEMP_ROOT',     WEB_ROOT.'/temp');
-define('LOG_ROOT',      WEB_ROOT.'/log');
+define('CONFIG_ROOT',   APP_ROOT.'/config');
+define('TEMP_ROOT',     APP_ROOT.'/temp');
+define('LOG_ROOT',      APP_ROOT.'/log');
 
 define('CONTENT_ROOT',  WEB_ROOT.'/content');
 define('PLUGINS_ROOT',  CONTENT_ROOT.'/plugins');

@@ -18,7 +18,7 @@ php_compatibility_check($required = 5.4);
 require_once __DIR__.'/defines.php';
 
 // load class autolaoder
-require_once WEB_ROOT.'/vendor/autoload.php';
+require_once dirname(__DIR__).'/vendor/autoload.php';
 
 // load page configuration
 $config = include CONFIG_ROOT.'/site.php';
@@ -61,7 +61,7 @@ $modulesManager = new ModulesManager(MODULES_ROOT);
 $modulesManager->addRoutes($routeCollection);
 $modulesManager->addHooks();
 
-include APP_ROOT.'/component/Images/routing.php';
+include APP_ROOT.'/src/component/Images/routing.php';
 
 $router = new Router($_SERVER['REQUEST_URI'], DIR, $routeCollection);
 
