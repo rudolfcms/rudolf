@@ -1,6 +1,6 @@
 /config/
-/public/content/
 /log/
+/public/content/
 /temp/
 /vendor/
 composer.lock

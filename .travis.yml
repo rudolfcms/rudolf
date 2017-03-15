@@ -8,7 +8,7 @@ php:
   - hhvm
 
 before_install:
-  - if find . -name "*.php" ! -path "./src/vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
+  - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
 
 install:
   - composer install --no-interaction
@@ -28,5 +28,5 @@ after_success:
 
 cache:
   directories:
-  - src/vendor
+  - vendor
   - $HOME/.cache/composer
