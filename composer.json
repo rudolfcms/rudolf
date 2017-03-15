@@ -2,6 +2,7 @@
     "name": "rudolfcms/rudolf",
     "type": "project",
     "description": "Rudolf is simple CMS written in PHP. That's all.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mikołaj Pich",
