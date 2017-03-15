@@ -19,7 +19,7 @@ class FormCheck extends Form
             'content' => '',
             'slug' => '',
             'author' => '',
-            'category_ID' => '',
+            'category_ID' => 0,
             'thumb' => '',
             'album' => '',
             'photos' => '',
