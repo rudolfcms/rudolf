@@ -5,8 +5,8 @@ define('VER_NAME', '0.11.0');
 define('NAME', 'rudolf');
 
 define('APP_ROOT',      dirname(__DIR__));
-define('CORE_ROOT',     APP_ROOT.'/core');
 define('MODULES_ROOT',  APP_ROOT.'/src/module');
+define('LOCALES_ROOT',  APP_ROOT.'/src/locale');
 
 define('CONFIG_ROOT',   APP_ROOT.'/config');
 define('TEMP_ROOT',     APP_ROOT.'/temp');

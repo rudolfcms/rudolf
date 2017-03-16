@@ -35,7 +35,7 @@ putenv('LANGUAGE='.$lang.'.'.$codeset);
 setlocale(LC_ALL,  $lang.'.'.$codeset);
 
 $domain = 'rudolf';
-bindtextdomain($domain, APP_ROOT.'/locale');
+bindtextdomain($domain, LOCALES_ROOT);
 bind_textdomain_codeset($domain, $codeset);
 textdomain($domain);
 
