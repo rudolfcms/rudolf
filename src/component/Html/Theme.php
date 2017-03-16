@@ -22,19 +22,19 @@ class Theme
     {
         $this->view->head->setAfter($code);
     }
-    public function addStylesheet($url)
+    public function addStylesheet($url, $version = '')
     {
-        $this->view->head->setStylesheet($url);
+        $this->view->head->setStylesheet($url, $version);
     }
-    public function addScript($url, $target = 'foot')
+    public function addScript($url, $target = 'foot', $version = '')
     {
         switch ($target) {
             case 'head':
-                $this->view->head->setScript($url);
+                $this->view->head->setScript($url, $version);
                 break;
 
             default:
-                $this->view->foot->setScript($url);
+                $this->view->foot->setScript($url, $version);
                 break;
         }
     }

@@ -163,9 +163,14 @@ trait DocumentPart
      * Set page stylesheet.
      *
      * @param string $href Script location
+     * @param string $version Version
      */
-    public function setScript($href)
+    public function setScript($href, $version = '')
     {
+        if ($version) {
+            $href .= '?v='.$version;
+        }
+
         $this->pageScripts[] = $href;
     }
 }

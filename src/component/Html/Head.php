@@ -205,10 +205,15 @@ class Head
     /**
      * Set page stylesheet.
      * 
-     * @param string $href Stylesheet location
+     * @param string $href    Stylesheet location
+     * @param string $version Version
      */
-    public function setStylesheet($href)
+    public function setStylesheet($href, $version = '')
     {
+        if ($version) {
+            $href .= '?v='.$version;
+        }
+
         $this->pageStylesheets[] = $href;
     }
     public function setStylesheetsArray($array)
