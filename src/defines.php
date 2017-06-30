@@ -1,7 +1,7 @@
 <?php
 
-define('VER', 0.11);
-define('VER_NAME', '0.11.0');
+define('VER', 0.12);
+define('VER_NAME', '0.12.0');
 define('NAME', 'rudolf');
 
 define('APP_ROOT',      dirname(__DIR__));
