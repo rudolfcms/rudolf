@@ -18,9 +18,9 @@ class Manager
 
     /**
      * Constructor.
-     * 
+     *
      * Run plugins manager service
-     * 
+     *
      * @param string $path Absolute path to plugins directory
      */
     public function __construct($path)

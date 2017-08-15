@@ -11,7 +11,7 @@ class EditView extends AdminView
 
     /**
      * Set data to edit album.
-     * 
+     *
      * @param array $album
      */
     public function editAlbum($album)

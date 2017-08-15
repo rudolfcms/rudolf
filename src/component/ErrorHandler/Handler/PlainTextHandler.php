@@ -18,7 +18,8 @@ class PlainTextHandler extends Handler implements IHandler
     {
         $description = $this->getDescription();
 
-        return sprintf("%s: %s in %s:%d\n%s\n",
+        return sprintf(
+            "%s: %s in %s:%d\n%s\n",
             $description['class'],
             $description['message'],
             $description['file'],
@@ -37,7 +38,8 @@ class PlainTextHandler extends Handler implements IHandler
     private function formatTrace($trace)
     {
         foreach ($trace as $key => $value) {
-            $t[] = sprintf('- %1$s:%2$s %3$s%4$s%5$s ',
+            $t[] = sprintf(
+                '- %1$s:%2$s %3$s%4$s%5$s ',
                 $value['file'],
                 $value['line'],
                 $value['class'],

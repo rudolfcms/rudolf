@@ -28,7 +28,8 @@ class EditForm extends FormCheck
         if ($status) {
             $article = new Article($this->dataValidated);
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie zmodyfikowano artykuł.
+                'success',
+                'Pomyślnie zmodyfikowano artykuł.
                 <a href="'.$article->url().'">Zobacz go</a>.'
             ));
         }

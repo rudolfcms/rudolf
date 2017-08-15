@@ -11,7 +11,7 @@ class DelView extends AdminView
 
     /**
      * Set data to delete album.
-     * 
+     *
      * @param array $album
      */
     public function delAlbum($album)

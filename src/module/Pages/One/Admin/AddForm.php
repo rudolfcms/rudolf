@@ -34,7 +34,8 @@ class AddForm extends FormCheck
             $page = new Page($data);
 
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie dodano stronę.
+                'success',
+                'Pomyślnie dodano stronę.
                 <a href="'.$page->url().'">Zobacz ją</a>.'
             ));
         }

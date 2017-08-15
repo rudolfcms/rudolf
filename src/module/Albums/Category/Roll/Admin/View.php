@@ -10,7 +10,9 @@ class View extends AdminView
 {
     public function setData($data, Pagination $pagination)
     {
-        $this->loop = new Loop($data, $pagination,
+        $this->loop = new Loop(
+            $data,
+            $pagination,
             'Rudolf\\Modules\\Albums\\Category\\One\\Admin\\Category',
             '/admin/articles\\categories/list'
         );

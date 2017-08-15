@@ -42,7 +42,7 @@ class Model extends AdminModel
 
     /**
      * Returns total number of users items.
-     * 
+     *
      * @return int
      */
     public function getTotalNumber()

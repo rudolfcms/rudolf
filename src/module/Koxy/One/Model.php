@@ -41,7 +41,7 @@ class Model extends FrontModel
 
             file_put_contents($file, implode(':', $contentArray));
 
-            setcookie('vote_'.$id, $type,  time() + (3600 * 24 * 365 * 5), DIR);
+            setcookie('vote_'.$id, $type, time() + (3600 * 24 * 365 * 5), DIR);
         }
 
         return [

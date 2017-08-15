@@ -54,7 +54,7 @@ class Model extends FrontModel
 
     /**
      * Returns total number of kox items.
-     * 
+     *
      * @return int
      */
     public function getTotalNumber()

@@ -34,7 +34,8 @@ class DelForm extends Form
 
         if ($status) {
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie usunięto galerię.'
+                'success',
+                'Pomyślnie usunięto galerię.'
             ));
         }
 

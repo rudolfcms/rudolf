@@ -87,7 +87,7 @@ class Response
 
     /**
      * Set content.
-     * 
+     *
      * @param string $content Content to return in response
      */
     public function setContent($content)
@@ -97,9 +97,9 @@ class Response
 
     /**
      * Set status code.
-     * 
+     *
      * @param int $code Http status code
-     * 
+     *
      * @throws \InvalidArgumentException
      */
     public function setStatusCode($code)
@@ -112,7 +112,7 @@ class Response
 
     /**
      * Set once header.
-     * 
+     *
      * @param array $header
      */
     public function setHeader($header)
@@ -125,7 +125,7 @@ class Response
 
     /**
      * Set many headers.
-     * 
+     *
      * @param array $headers
      */
     public function setManyHeaders($headers)
@@ -140,7 +140,7 @@ class Response
 
     /**
      * Send headers.
-     * 
+     *
      * @return void|false
      */
     public function sendHeaders()
@@ -159,7 +159,7 @@ class Response
     /**
      * Send http response
      * It sends headers and content.
-     * 
+     *
      * @return string Response content
      */
     public function send()

@@ -11,7 +11,7 @@ class DelView extends AdminView
 
     /**
      * Set data to delete article.
-     * 
+     *
      * @param array $article
      */
     public function delArticle($article)

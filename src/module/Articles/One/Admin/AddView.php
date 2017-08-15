@@ -11,7 +11,7 @@ class AddView extends AdminView
 
     /**
      * Set data do add article.
-     * 
+     *
      * @param array $article
      */
     public function addArticle($article)

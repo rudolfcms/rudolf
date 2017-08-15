@@ -79,7 +79,7 @@ class Run
 
     /**
      * Handle exceptions.
-     * 
+     *
      * @param Exception $e
      */
     public function handleException($e)

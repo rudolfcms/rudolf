@@ -36,7 +36,8 @@ class EditForm extends FormCheck
             $page = new Page($data);
 
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie zmodyfikowano stronę.
+                'success',
+                'Pomyślnie zmodyfikowano stronę.
                 <a href="'.$page->url().'">Zobacz ją</a>.'
             ));
         }

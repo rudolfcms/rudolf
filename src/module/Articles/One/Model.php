@@ -8,11 +8,11 @@ class Model extends Articles\Model
 {
     /**
      * Returns article data based on year, month and slug.
-     * 
+     *
      * @param int    $year
      * @param int    $month
      * @param string $slug
-     * 
+     *
      * @return bool|array
      */
     public function getOneByDate($year, $month, $slug)
@@ -34,9 +34,9 @@ class Model extends Articles\Model
 
     /**
      * Returns article data based on id.
-     * 
+     *
      * @param int $id
-     * 
+     *
      * @return bool|array
      */
     public function getOneById($id)

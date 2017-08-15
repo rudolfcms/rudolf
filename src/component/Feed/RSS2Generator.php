@@ -4,11 +4,11 @@ namespace Rudolf\Component\Feed;
 
 /**
  * This file is part of Rudolf articles module.
- * 
+ *
  * RSS2 Feed generator
- * 
+ *
  * @see http://cyber.law.harvard.edu/rss/rss.html
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
  *
  * @version 0.1
@@ -123,15 +123,15 @@ class RSS2Generator
 
     /**
      * Set channel title.
-     * 
+     *
      * The name of the channel.
      * It's how people refer to your service. If you have an HTML
      * website that contains the same information as your RSS file,
      * the title of your channel should be the same as the title
      * of your website.
-     * 
+     *
      * @example GoUpstate.com News Headlines
-     * 
+     *
      * @param string $title
      */
     public function setTitle($title)
@@ -141,11 +141,11 @@ class RSS2Generator
 
     /**
      * Set channel link.
-     * 
+     *
      * The URL to the HTML website corresponding to the channel.
-     * 
+     *
      * @example http://www.goupstate.com/
-     * 
+     *
      * @param string $link
      */
     public function setLink($link)
@@ -155,11 +155,11 @@ class RSS2Generator
 
     /**
      * Set channel descritpion.
-     * 
+     *
      * Phrase or sentence describing the channel.
-     * 
+     *
      * @example The latest news from GoUpstate.com, a Spartanburg Herald-Journal Web site.
-     * 
+     *
      * @param string $description
      */
     public function setDescription($description)
@@ -169,18 +169,18 @@ class RSS2Generator
 
     /**
      * Set channel description.
-     * 
+     *
      * The language the channel is written in.
      * This allows aggregators to group all Italian language sites,
      * for example, on a single page. A list of allowable values for
      * this element, as provided by Netscape, is here [#1]. You may also
      * use values defined [#2] by the W3C.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/languages.html
      * @link http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
-     * 
+     *
      * @example en-us
-     * 
+     *
      * @param string $laguage
      */
     public function setLanguage($language)
@@ -190,11 +190,11 @@ class RSS2Generator
 
     /**
      * Set channel copyright.
-     * 
+     *
      * Copyright notice for content in the channel.
-     * 
+     *
      * @example Copyright 2002, Spartanburg Herald-Journal
-     * 
+     *
      * @param string $copyright
      */
     public function setCopyright($copyright)
@@ -204,11 +204,11 @@ class RSS2Generator
 
     /**
      * Set channel managing editor.
-     * 
+     *
      * Email address for person responsible for editorial content.
-     * 
+     *
      * @example geo@herald.com (George Matesky)
-     * 
+     *
      * @param string
      */
     public function setManagingEditor($managingEditor)
@@ -218,12 +218,12 @@ class RSS2Generator
 
     /**
      * Set channel web master.
-     * 
+     *
      * Email address for person responsible for technical issues
      * relating to channel.
-     * 
+     *
      * @example betty@herald.com (Betty Guernsey)
-     * 
+     *
      * @param string
      */
     public function setWebMaster($webMaster)
@@ -233,7 +233,7 @@ class RSS2Generator
 
     /**
      * Set channel pub date.
-     * 
+     *
      * The publication date for the content in the channel.
      * For example, the New York Times publishes on a daily basis,
      * the publication date flips once every 24 hours. That's when
@@ -241,11 +241,11 @@ class RSS2Generator
      * to the Date and Time Specification of RFC 822, with the exception
      * that the year may be expressed with two characters or four
      * characters (four preferred).
-     * 
+     *
      * @link http://asg.web.cmu.edu/rfc/rfc822.html
-     * 
+     *
      * @example Sat, 07 Sep 2002 00:00:01 GMT
-     * 
+     *
      * @param string $pubDate
      */
     public function setPubDate($pubDate)
@@ -255,11 +255,11 @@ class RSS2Generator
 
     /**
      * Set channel last build date.
-     * 
+     *
      * The last time the content of the channel changed.
-     * 
+     *
      * @example Sat, 07 Sep 2002 09:42:31 GMT
-     * 
+     *
      * @param string $lastBuildDate
      */
     public function setLastBuildDate($lastBuildDate)
@@ -269,15 +269,15 @@ class RSS2Generator
 
     /**
      * Set channel category.
-     * 
+     *
      * Specify one or more categories that the channel belongs to.
      * Follows the same rules as the <item>-level category element.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltcategorygtSubelementOfLtitemgt
      * @link http://cyber.law.harvard.edu/rss/rss.html#syndic8
-     * 
+     *
      * @example Newspapers
-     * 
+     *
      * @param string $category
      */
     public function setCategory($category)
@@ -287,11 +287,11 @@ class RSS2Generator
 
     /**
      * Set channel generator.
-     * 
+     *
      * A string indicating the program used to generate the channel.
-     * 
+     *
      * @example MightyInHouse Content System v2.3
-     * 
+     *
      * @param string $generator
      */
     public function setGenerator($generator)
@@ -301,14 +301,14 @@ class RSS2Generator
 
     /**
      * Set channel docs.
-     * 
+     *
      * A URL that points to the documentation for the format
      * used in the RSS file. It's probably a pointer to this page.
      * It's for people who might stumble across an RSS file on
      * a Web server 25 years from now and wonder what it is.
-     * 
+     *
      * @example http://blogs.law.harvard.edu/tech/rss
-     * 
+     *
      * @param string $docs
      */
     public function setDocs($docs = 'http://blogs.law.harvard.edu/tech/rss')
@@ -318,21 +318,21 @@ class RSS2Generator
 
     /**
      * Set channel cloud.
-     * 
+     *
      * Allows processes to register with a cloud to be notified
      * of updates to the channel, implementing a lightweight
      * publish-subscribe protocol for RSS feeds.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltcloudgtSubelementOfLtchannelgt
-     * 
-     * @example <cloud 
+     *
+     * @example <cloud
      *               domain="rpc.sys.com"
      *               port="80"
      *               path="/RPC2"
      *               registerProcedure="pingMe"
      *               protocol="soap"
      *          />
-     * 
+     *
      * @param string $domain
      * @param int    $port
      * @param string $path
@@ -352,15 +352,15 @@ class RSS2Generator
 
     /**
      * Set channel ttl.
-     * 
+     *
      * ttl stands for time to live.It's a number of minutes
      * that indicates how long a channel can be cached
      * before refreshing from the source.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltttlgtSubelementOfLtchannelgt
-     * 
+     *
      * @example 60
-     * 
+     *
      * @param int $ttl
      */
     public function setTtl($ttl)
@@ -370,12 +370,12 @@ class RSS2Generator
 
     /**
      * Set channel image.
-     * 
+     *
      * Specifies a GIF, JPEG or PNG image that can be displayed
      * with the channel.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltimagegtSubelementOfLtchannelgt
-     * 
+     *
      * @param string $url   The URL of a GIF, JPEG or PNG image that represents the channel
      * @param string $title Describes the image, it's used in the ALT attribute of the
      *                      HTML <img> tag when the channel is rendered in HTML
@@ -398,9 +398,9 @@ class RSS2Generator
 
     /**
      * The PICS rating for the channel.
-     * 
+     *
      * @link http://www.w3.org/PICS/
-     * 
+     *
      * @param
      */
     public function setRating($rating)
@@ -410,12 +410,12 @@ class RSS2Generator
 
     /**
      * Set channel text input.
-     * 
+     *
      * Specifies a text input box that can be displayed
      * with the channel.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/rss.html#lttextinputgtSubelementOfLtchannelgt
-     * 
+     *
      * @param string $title       The label of the Submit button in the text input area
      * @param string $description Explains the text input area
      * @param string $name        The name of the text object in the text input area
@@ -433,12 +433,12 @@ class RSS2Generator
 
     /**
      * Set channel skip hours.
-     * 
+     *
      * A hint for aggregators telling them which hours
      * they can skip.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/skipHoursDays.html#skiphours
-     * 
+     *
      * @param
      */
     public function setSkipHours(array $skipHours)
@@ -448,12 +448,12 @@ class RSS2Generator
 
     /**
      * Set channel skip days.
-     * 
+     *
      * A hint for aggregators telling them which days
      * they can skip.
-     * 
+     *
      * @link http://cyber.law.harvard.edu/rss/skipHoursDays.html#skipdays
-     * 
+     *
      * @param
      */
     public function setSkipDays(array $skipDays)
@@ -468,7 +468,7 @@ class RSS2Generator
 
     /**
      * Generate rss canal.
-     * 
+     *
      * @return string
      */
     public function generate()

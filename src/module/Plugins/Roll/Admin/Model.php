@@ -9,9 +9,9 @@ class Model extends BaseModel
 {
     /**
      * Returns total number of modules items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber()

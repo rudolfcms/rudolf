@@ -8,7 +8,7 @@ class DelView extends AdminView
 {
     /**
      * Set data to delete category.
-     * 
+     *
      * @param array $category
      */
     public function delCategory($category)

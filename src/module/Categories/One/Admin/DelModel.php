@@ -8,7 +8,7 @@ class DelModel extends AdminModel
 {
     /**
      * Delete category.
-     * 
+     *
      * @param int $id Category ID
      */
     public function delete($id)

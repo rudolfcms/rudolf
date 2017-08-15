@@ -8,7 +8,7 @@ class DelView extends AdminView
 {
     /**
      * Set data to delete page.
-     * 
+     *
      * @param array $page
      */
     public function delPage($page)

@@ -11,7 +11,7 @@ class EditView extends AdminView
 
     /**
      * Set data to edit article.
-     * 
+     *
      * @param array $article
      */
     public function editArticle($article)

@@ -14,7 +14,7 @@ abstract class Category
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $category
      */
     public function __construct($category = [])
@@ -24,7 +24,7 @@ abstract class Category
 
     /**
      * Set category data.
-     * 
+     *
      * @param array $category
      */
     public function setData($category)
@@ -47,7 +47,7 @@ abstract class Category
 
     /**
      * Returns category ID.
-     * 
+     *
      * @return int
      */
     public function id()
@@ -57,9 +57,9 @@ abstract class Category
 
     /**
      * Returns category title.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function title($type = '')
@@ -74,9 +74,9 @@ abstract class Category
 
     /**
      * Returns the keywords.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function keywords($type = '')
@@ -91,9 +91,9 @@ abstract class Category
 
     /**
      * Returns the description.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function description($type = '')
@@ -108,12 +108,12 @@ abstract class Category
 
     /**
      * Returns content.
-     * 
+     *
      * @param bool|int $truncate
      * @param bool     $stripTags
      * @param bool     $escape
      * @param bool     $raw
-     * 
+     *
      * @return string
      */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
@@ -143,7 +143,7 @@ abstract class Category
 
     /**
      * Returns date of category added.
-     * 
+     *
      * @return string
      */
     public function added()
@@ -153,7 +153,7 @@ abstract class Category
 
     /**
      * Returns date of last category modified.
-     * 
+     *
      * @return string
      */
     public function modified()
@@ -163,7 +163,7 @@ abstract class Category
 
     /**
      * Returns adder ID.
-     * 
+     *
      * @return int
      */
     public function adderID()
@@ -173,9 +173,9 @@ abstract class Category
 
     /**
      * Returns first name and surname of adder.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function adderFullName($type = '')
@@ -190,7 +190,7 @@ abstract class Category
 
     /**
      * Returns modifier ID.
-     * 
+     *
      * @return int
      */
     public function modifierID()
@@ -200,7 +200,7 @@ abstract class Category
 
     /**
      * Returns modifier full name.
-     * 
+     *
      * @return int
      */
     public function modifierFullName($type = '')
@@ -215,7 +215,7 @@ abstract class Category
 
     /**
      * Checks whether the category has modified.
-     * 
+     *
      * @return bool
      */
     public function isModified()
@@ -225,7 +225,7 @@ abstract class Category
 
     /**
      * Returns the number of views.
-     * 
+     *
      * @return int
      */
     public function views()
@@ -240,7 +240,7 @@ abstract class Category
 
     /**
      * Returns category slug.
-     * 
+     *
      * @return string
      */
     public function slug()

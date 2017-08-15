@@ -10,7 +10,7 @@ class EditView extends AdminView
 
     /**
      * Set data to edit page.
-     * 
+     *
      * @param array $page
      */
     public function editPage($page)

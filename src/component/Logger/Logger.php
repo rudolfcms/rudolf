@@ -13,7 +13,8 @@ class Logger extends AbstractLogger
 
     private function format($message)
     {
-        return sprintf("[%s] %s | %s\n",
+        return sprintf(
+            "[%s] %s | %s\n",
             date('Y-m-d H:i:s'),
             $message,
             $_SERVER['REQUEST_URI']

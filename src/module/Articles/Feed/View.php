@@ -27,7 +27,9 @@ class View extends FrontView
         $generator->setLink($domain.'/rss');
         $generator->setDescription($config['feed_description']);
 
-        $loop = new Loop($this->data, $this->pagination,
+        $loop = new Loop(
+            $this->data,
+            $this->pagination,
             'Rudolf\\Modules\\Articles\\One\\Article'
         );
 

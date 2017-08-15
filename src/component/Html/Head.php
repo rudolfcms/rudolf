@@ -56,9 +56,9 @@ class Head
 
     /**
      * Get page title.
-     * 
+     *
      * @param bool $return
-     * 
+     *
      * @return void|string
      */
     public function title($return = false)
@@ -79,9 +79,9 @@ class Head
 
     /**
      * Get page charset.
-     * 
+     *
      * @param bool $return
-     * 
+     *
      * @return void|string
      */
     public function charset($return = false)
@@ -102,9 +102,9 @@ class Head
 
     /**
      * Get favicon links.
-     * 
+     *
      * @param bool $return
-     * 
+     *
      * @return void|string
      */
     public function favicon($return = false)
@@ -124,7 +124,7 @@ class Head
 
     /**
      * Set page favicon.
-     * 
+     *
      * @param string $href Favicon location
      */
     public function setFavicon($favicon)
@@ -145,7 +145,8 @@ class Head
             return false;
         }
 
-        $canonical = sprintf('<link rel="canonical" href="%1$s">',
+        $canonical = sprintf(
+            '<link rel="canonical" href="%1$s">',
             (new Url())->getOrigin().$this->canonical
         );
 
@@ -168,9 +169,9 @@ class Head
 
     /**
      * Get stylesheets links.
-     * 
+     *
      * @param bool $return
-     * 
+     *
      * @return void|string
      */
     public function stylesheets($return = false, $nesting = 1)
@@ -204,7 +205,7 @@ class Head
 
     /**
      * Set page stylesheet.
-     * 
+     *
      * @param string $href    Stylesheet location
      * @param string $version Version
      */

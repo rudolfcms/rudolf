@@ -28,7 +28,8 @@ class EditForm extends FormCheck
         if ($status) {
             $album = new Album($this->dataValidated);
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie zmodyfikowano album.
+                'success',
+                'Pomyślnie zmodyfikowano album.
                 <a href="'.$album->url().'">Zobacz go</a>.'
             ));
         }

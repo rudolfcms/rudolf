@@ -8,10 +8,10 @@ class Model extends FrontModel
 {
     /**
      * Returns page id by path.
-     * 
+     *
      * @param array $path
      * @param array $pages
-     * 
+     *
      * @return int|bool
      */
     public function getPageIdByPath(array $path, array $pages)
@@ -41,9 +41,9 @@ class Model extends FrontModel
 
     /**
      * Returns page data.
-     * 
+     *
      * @param int $id
-     * 
+     *
      * @return array
      */
     public function getOneById($id)

@@ -35,9 +35,9 @@ class Model extends Articles\Model
 
     /**
      * Returns total number of articles items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber($where = ['published' => 1])

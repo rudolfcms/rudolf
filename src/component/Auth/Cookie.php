@@ -6,7 +6,7 @@ class Cookie
 {
     /**
      * Constructor.
-     * 
+     *
      * @param string $name
      */
     public function __construct($name)
@@ -16,7 +16,7 @@ class Cookie
 
     /**
      * Create cookie.
-     * 
+     *
      * @return bool
      */
     public function create()

@@ -10,7 +10,7 @@ class AddView extends AdminView
 
     /**
      * Set data do add page.
-     * 
+     *
      * @param array $page
      */
     public function addPage($page)

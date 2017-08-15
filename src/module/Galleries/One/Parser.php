@@ -40,7 +40,8 @@ class Parser
 
                 $codeGallery = $this->createGallery($info);
                 if ($codeGallery) {
-                    $content = str_replace('{{gallery:'.$id.'}}',
+                    $content = str_replace(
+                        '{{gallery:'.$id.'}}',
                         '<div class="gallery-container">'.$codeGallery.'</div>',
                         $content
                     );
@@ -90,9 +91,15 @@ class Parser
         }
 
         foreach ($gallery as $key => $value) {
-            $codeGallery[] = sprintf('<a href="%1$s">'.
+            $codeGallery[] = sprintf(
+                '<a href="%1$s">'.
                     '<img src="%2$s" alt="%3$s" width="%4$s" height="%5$s">'.
-                '</a>', $value['photo'], $value['thumb'], $value['alt'], $value['width'], $value['height']
+                '</a>',
+                $value['photo'],
+                $value['thumb'],
+                $value['alt'],
+                $value['width'],
+                $value['height']
             );
         }
 

@@ -14,7 +14,9 @@ class View extends FrontView
         $config = (new Module('albums'))->getConfig();
         $path = '/'.$config['path'];
 
-        $this->loop = new Loop($data, $pagination,
+        $this->loop = new Loop(
+            $data,
+            $pagination,
             'Rudolf\\Modules\\Albums\\One\\Album',
             $path
         );

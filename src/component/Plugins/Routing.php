@@ -11,7 +11,7 @@ class Routing
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $plugins
      * @param RouteCollection
      * @param string $path from-root path to plugins directory
@@ -25,7 +25,7 @@ class Routing
 
     /**
      * Add routes to collection.
-     * 
+     *
      * @return RouteCollection
      */
     public function addRoutes()

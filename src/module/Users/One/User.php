@@ -13,7 +13,7 @@ class User
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $user
      */
     public function __construct($user = [])
@@ -23,7 +23,7 @@ class User
 
     /**
      * Set user data.
-     * 
+     *
      * @param array $user
      */
     public function setData($user)
@@ -42,7 +42,7 @@ class User
 
     /**
      * Returns user ID.
-     * 
+     *
      * @return int
      */
     public function id()
@@ -52,9 +52,9 @@ class User
 
     /**
      * Returns user nick.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function nick($type = '')
@@ -69,9 +69,9 @@ class User
 
     /**
      * Returns user first name.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function firstName($type = '')
@@ -86,9 +86,9 @@ class User
 
     /**
      * Returns user surname.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function surname($type = '')
@@ -103,9 +103,9 @@ class User
 
     /**
      * Returns user email.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function email($type = '')

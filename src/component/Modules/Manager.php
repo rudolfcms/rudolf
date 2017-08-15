@@ -18,9 +18,9 @@ class Manager
 
     /**
      * Constructor.
-     * 
+     *
      * Run modules manager service
-     * 
+     *
      * @param string $path Absolute path to modules directory
      */
     public function __construct($path)

@@ -13,42 +13,42 @@ class Filter
 {
     /**
      * holds list of hooks.
-     * 
-     * 
+     *
+     *
      * @var array
      */
     public static $filters = array();
 
     /**
      * $mergedFilters.
-     * 
+     *
      * @var array
      */
     public static $mergedFilters = array();
 
     /**
      * holds the name of the current filter.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @var array
      */
     public static $currentFilter = array();
 
     /**
      * add Hooks a function or method to a specific filter action.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string   $tag           The name of the filter to hook the $functionToAdd to.
-     * @param callback $functionToAdd The name of the function to be called when 
+     * @param callback $functionToAdd The name of the function to be called when
      *                                the filter is applied.
-     * @param int      $priority      optional. Used to specify the order in which the functions 
-     *                                associated with a particular action are executed (default: 10). Lower numbers 
-     *                                correspond with earlier execution, and functions with the same priority are 
+     * @param int      $priority      optional. Used to specify the order in which the functions
+     *                                associated with a particular action are executed (default: 10). Lower numbers
+     *                                correspond with earlier execution, and functions with the same priority are
      *                                executed in the order in which they were added to the action.
      * @param int      $accepted_args optional. The number of arguments the function accept (default 1).
-     * 
+     *
      * @return bool true
      */
     public static function add($tag, $functionToAdd, $priority = 10, $accepted_args = 1)
@@ -65,14 +65,14 @@ class Filter
 
     /**
      * remove Removes a function from a specified filter hook.
-     * 
+     *
      * @since 0.1
      *
      * @param string   $tag              The filter hook to which the function to be removed is hooked.
      * @param callback $functionToRemove The name of the function which should be removed.
      * @param int      $priority         optional. The priority of the function (default: 10).
      * @param int      $accepted_args    optional. The number of arguments the function accepts (default: 1).
-     * 
+     *
      * @return bool Whether the function existed before it was removed.
      */
     public static function remove($tag, $functionToRemove, $priority = 10)
@@ -94,12 +94,12 @@ class Filter
 
     /**
      * removeAll Remove all of the hooks from a filter.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string $tag      The filter to remove hooks from.
      * @param int    $priority The priority number to remove.
-     * 
+     *
      * @return bool True when finished.
      */
     public static function removeAll($tag, $priority = false)
@@ -121,16 +121,16 @@ class Filter
 
     /**
      * has  Check if any filter has been registered for a hook.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string   $tag             The name of the filter hook.
      * @param callback $functionToCheck optional.
-     * 
-     * @return mixed If $functionToCheck is omitted, returns boolean for whether the hook 
-     *               has anything registered. When checking a specific function, the priority of that 
-     *               hook is returned, or false if the function is not attached. When using the 
-     *               $functionToCheck argument, this function may return a non-boolean value that 
+     *
+     * @return mixed If $functionToCheck is omitted, returns boolean for whether the hook
+     *               has anything registered. When checking a specific function, the priority of that
+     *               hook is returned, or false if the function is not attached. When using the
+     *               $functionToCheck argument, this function may return a non-boolean value that
      *               evaluates to false (e.g.) 0, so use the === operator for testing the return value.
      */
     public static function isHas($tag, $functionToCheck = false)
@@ -155,13 +155,13 @@ class Filter
 
     /**
      * apply Call the functions added to a filter hook.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string $tag     The name of the filter hook.
      * @param mixed  $value   The value on which the filters hooked to <tt>$tag</tt> are applied on.
      * @param mixed  $var,... Additional variables passed to the functions hooked to <tt>$tag</tt>.
-     * 
+     *
      * @return mixed The filtered value after all hooked functions are applied to it.
      */
     public static function apply($tag, $value)
@@ -213,14 +213,14 @@ class Filter
     }
 
     /**
-     * applyRefArray Execute functions hooked on a specific filter hook, specifying arguments 
+     * applyRefArray Execute functions hooked on a specific filter hook, specifying arguments
      * in an array.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string $tag  The name of the filter hook.
      * @param array  $args The arguments supplied to the functions hooked to <tt>$tag</tt>
-     * 
+     *
      * @return mixed The filtered value after all hooked functions are applied to it.
      */
     public static function applyRefArray($tag, $args)
@@ -267,9 +267,9 @@ class Filter
 
     /**
      * currentFilter Retrieve the name of the current filter or action.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @return string Hook name of the current filter or action.
      */
     public static function currentFilter()
@@ -308,13 +308,13 @@ class Filter
 
     /**
      * buildUniqueID Build Unique ID for storage and retrieval.
-     * 
+     *
      * @param string   $tag      Used in counting how many hooks were applied
      * @param callback $function Used for creating unique id
-     * @param int|bool $priority Used in counting how many hooks were applied. If === false and 
+     * @param int|bool $priority Used in counting how many hooks were applied. If === false and
      *                           $function is an object reference, we return the unique id only if it already has one, false otherwise.
-     * 
-     * @return string|bool Unique ID for usage as array key or false if $priority === false and 
+     *
+     * @return string|bool Unique ID for usage as array key or false if $priority === false and
      *                     $function is an object reference, and it does not already have a unique id.
      */
     private static function buildUniqueID($tag, $function, $priority)
@@ -358,9 +358,9 @@ class Filter
     }
     /**
      * callAllHook.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param (array) $args [description]
      */
     public static function callAllHook($args)

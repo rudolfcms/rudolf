@@ -8,7 +8,7 @@ class Model extends FrontModel
 {
     /**
      * Returns pages list.
-     * 
+     *
      * @return array
      */
     public function getPagesList()

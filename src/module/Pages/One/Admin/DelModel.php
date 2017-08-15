@@ -8,7 +8,7 @@ class DelModel extends AdminModel
 {
     /**
      * Delete page.
-     * 
+     *
      * @param int $id Article ID
      */
     public function delete($id)

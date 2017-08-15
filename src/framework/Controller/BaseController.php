@@ -19,10 +19,10 @@ abstract class BaseController
 
     /**
      * Redirect to `up`, if curent page is 1.
-     * 
+     *
      * @param int $page
      * @param int $code
-     * 
+     *
      * @return int|redirection
      */
     protected function firstPageRedirect($page, $code = 301, $location = '..')

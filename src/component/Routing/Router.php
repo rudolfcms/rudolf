@@ -31,7 +31,7 @@ class Router
 
     /**
      * Constructor.
-     * 
+     *
      * @param RouteCollection
      */
     public function __construct($url, $basePath, RouteCollection $collection = null)
@@ -46,7 +46,7 @@ class Router
 
     /**
      * Sets the url.
-     * 
+     *
      * @param string $url request url
      */
     private function setUrl($url)
@@ -65,7 +65,7 @@ class Router
 
     /**
      * Returns the url.
-     * 
+     *
      * @return string $url
      */
     public function getUrl()
@@ -75,7 +75,7 @@ class Router
 
     /**
      * Sets the base path.
-     * 
+     *
      * @param string $basePath path to the root catalog of app
      */
     public function setBasePath($basePath)
@@ -85,7 +85,7 @@ class Router
 
     /**
      * Returns the base path.
-     * 
+     *
      * @return string $basePath
      */
     public function getBasePath()
@@ -95,7 +95,7 @@ class Router
 
     /**
      * Sets the RouteCollection.
-     * 
+     *
      * @param RouteCollection object with route pattern
      */
     private function setCollection(RouteCollection $collection)
@@ -105,7 +105,7 @@ class Router
 
     /**
      * Returns the RouteCollection object.
-     * 
+     *
      * @return RouteCollection
      */
     public function getCollection()
@@ -115,7 +115,7 @@ class Router
 
     /**
      * Returns the controller and method to run names.
-     * 
+     *
      * @return string
      */
     public function getControllerName()
@@ -125,7 +125,7 @@ class Router
 
     /**
      * Returns array with params.
-     * 
+     *
      * @return array
      */
     public function getParams()
@@ -135,7 +135,7 @@ class Router
 
     /**
      * Looking for suitable rule matching URL. If it finds, returns true.
-     * 
+     *
      * @return bool
      */
     public function run()
@@ -157,9 +157,9 @@ class Router
 
     /**
      * Checks if the URL matches the handed rule.
-     * 
+     *
      * @param Route $route
-     * 
+     *
      * @return bool
      */
     protected function matchRoute($route)

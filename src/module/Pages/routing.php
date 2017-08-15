@@ -29,7 +29,7 @@ $collection->add('pages/roll/admin', new Route(
     ['page' => 0]
 ));
 
-// page 
+// page
 $collection->add('pages/one/admin/edit', new Route(
     'admin/pages/edit/<id>$',
     'Rudolf\Modules\Pages\One\Admin\EditController::edit',

@@ -40,9 +40,9 @@ class Model extends FrontModel
 
     /**
      * Returns total number of items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber($where)

@@ -32,7 +32,7 @@ $codeset = 'UTF-8';
 putenv('LC_ALL='.$lang.'.'.$codeset);
 putenv('LANG='.$lang.'.'.$codeset);
 putenv('LANGUAGE='.$lang.'.'.$codeset);
-setlocale(LC_ALL,  $lang.'.'.$codeset);
+setlocale(LC_ALL, $lang.'.'.$codeset);
 
 $domain = 'rudolf';
 bindtextdomain($domain, LOCALES_ROOT);

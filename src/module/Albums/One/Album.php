@@ -16,7 +16,7 @@ class Album
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $album
      */
     public function __construct($album = [])
@@ -26,7 +26,7 @@ class Album
 
     /**
      * Set album data.
-     * 
+     *
      * @param array $album
      */
     public function setData($album)
@@ -63,7 +63,7 @@ class Album
 
     /**
      * Returns album ID.
-     * 
+     *
      * @return int
      */
     public function id()
@@ -73,7 +73,7 @@ class Album
 
     /**
      * Returns category ID.
-     * 
+     *
      * @return int
      */
     public function categoryID()
@@ -83,9 +83,9 @@ class Album
 
     /**
      * Returns album title.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function title($type = '')
@@ -100,9 +100,9 @@ class Album
 
     /**
      * Returns the author.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function author($type = '', $adder = true)
@@ -123,10 +123,10 @@ class Album
 
     /**
      * Returns album date.
-     * 
+     *
      * @param bool|string $format
      * @param string      $style  normal|locale
-     * 
+     *
      * @return string If date field empty, return current date
      */
     public function date($format = false, $style = 'normal', $inflected = true)
@@ -179,7 +179,7 @@ class Album
 
     /**
      * Returns date of album added.
-     * 
+     *
      * @return string
      */
     public function added()
@@ -189,7 +189,7 @@ class Album
 
     /**
      * Returns date of last album modified.
-     * 
+     *
      * @return string
      */
     public function modified()
@@ -199,7 +199,7 @@ class Album
 
     /**
      * Returns adder ID.
-     * 
+     *
      * @return int
      */
     public function adderID()
@@ -209,9 +209,9 @@ class Album
 
     /**
      * Returns first name and surname of adder.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function adderFullName($type = '')
@@ -226,7 +226,7 @@ class Album
 
     /**
      * Returns modifier ID.
-     * 
+     *
      * @return int
      */
     public function modifierID()
@@ -236,7 +236,7 @@ class Album
 
     /**
      * Returns modifier full name.
-     * 
+     *
      * @return int
      */
     public function modifierFullName($type = '')
@@ -251,7 +251,7 @@ class Album
 
     /**
      * Checks whether the album has modified.
-     * 
+     *
      * @return bool
      */
     public function isModified()
@@ -261,7 +261,7 @@ class Album
 
     /**
      * Returns the number of views.
-     * 
+     *
      * @return int
      */
     public function views()
@@ -288,12 +288,13 @@ class Album
 
     /**
      * Returns album url.
-     * 
+     *
      * @return string
      */
     public function url()
     {
-        return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
+        return sprintf(
+            '%1$s/%2$s/%3$s/%4$s/%5$s',
             DIR,
             'foto',
             $this->date('Y'),
@@ -306,7 +307,7 @@ class Album
      * Returns album path.
      *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function album($type = '')
@@ -323,7 +324,7 @@ class Album
      * Returns thumb path.
      *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function thumb($type = '')
@@ -338,7 +339,7 @@ class Album
 
     /**
      * Checks whether the album has a thumbnail.
-     * 
+     *
      * @return bool
      */
     public function hasThumbnail()
@@ -348,13 +349,13 @@ class Album
 
     /**
      * Returns thumbnail code or only address.
-     * 
+     *
      * @param int    $width   Image width
      * @param int    $height  Image height
      * @param bool   $album   Add album address if exists
      * @param string $alt     Set alternative text
      * @param string $default Default thumb path. It use when thumb path is empty
-     * 
+     *
      * @return string
      */
     public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '')
@@ -373,8 +374,12 @@ class Album
 
         $thumbUrl = Image::resize($thumbUrl, $width, $height);
 
-        $html = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
-            $thumbUrl, $width, $height, $alt
+        $html = sprintf(
+            '<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
+            $thumbUrl,
+            $width,
+            $height,
+            $alt
         );
 
         if (true === $album and !empty($albumUrl)) {
@@ -386,7 +391,7 @@ class Album
 
     /**
      * Returns the number of photos.
-     * 
+     *
      * @return int
      */
     public function photos()
@@ -396,7 +401,7 @@ class Album
 
     /**
      * Checks whether the album has a photos.
-     * 
+     *
      * @return bool
      */
     public function hasPhotos()
@@ -406,7 +411,7 @@ class Album
 
     /**
      * Chcecks whether the album is published.
-     * 
+     *
      * @return bool
      */
     public function isPublished()
@@ -416,12 +421,13 @@ class Album
 
     /**
      * Returns album category anchor.
-     * 
+     *
      * @return string
      */
     public function category()
     {
-        return sprintf('<a href="%1$s">%2$s</a>',
+        return sprintf(
+            '<a href="%1$s">%2$s</a>',
             $this->categoryUrl(),
             $this->categoryTitle()
         );
@@ -429,9 +435,9 @@ class Album
 
     /**
      * Returns category title.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function categoryTitle($type = '')
@@ -447,12 +453,13 @@ class Album
 
     /**
      * Returns category url.
-     * 
+     *
      * @return string
      */
     public function categoryUrl()
     {
-        return sprintf('%1$s/%2$s/%3$s',
+        return sprintf(
+            '%1$s/%2$s/%3$s',
             DIR,
             'foto/kategorie',
             Text::escape($this->album['category_url'])
@@ -461,7 +468,7 @@ class Album
 
     /**
      * Checks whether the album has a category.
-     * 
+     *
      * @return bool
      */
     public function hasCategory()

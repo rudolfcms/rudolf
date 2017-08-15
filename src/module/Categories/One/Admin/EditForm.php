@@ -26,7 +26,8 @@ class EditForm extends FormCheck
 
         if ($status) {
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie zmodyfikowano kategorię.'
+                'success',
+                'Pomyślnie zmodyfikowano kategorię.'
             ));
         }
 

@@ -20,9 +20,9 @@ class UserFriendlyHandler extends Handler implements IHandler
 
     /**
      * Get code from exception.
-     * 
+     *
      * @param Exception $e
-     * 
+     *
      * @return int
      */
     public function getCode($e)
@@ -37,7 +37,7 @@ class UserFriendlyHandler extends Handler implements IHandler
 
     /**
      * Displays an error message in html.
-     * 
+     *
      * @return string
      */
     public function displayDefaultMessage($code, $message, $text)

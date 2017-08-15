@@ -12,7 +12,9 @@ class View extends FrontView
     public function setData($data, Pagination $pagination, $info = false)
     {
         $path = '/artykuly/kategorie/'.$info['slug'];
-        $this->loop = new Loop($data, $pagination,
+        $this->loop = new Loop(
+            $data,
+            $pagination,
             'Rudolf\\Modules\\Articles\\One\\Article',
             $path
         );
@@ -42,9 +44,9 @@ class View extends FrontView
 
     /**
      * Returns category title.
-     * 
+     *
      * @param bool $strip
-     * 
+     *
      * @return string
      */
     public function categoryTitle($strip = false)
@@ -60,7 +62,7 @@ class View extends FrontView
 
     /**
      * Returns category description.
-     * 
+     *
      * @return string
      */
     public function categoryDescription()

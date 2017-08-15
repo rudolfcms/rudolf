@@ -25,7 +25,8 @@ class AddForm extends FormCheck
         if ($status) {
             $article = new Article($this->dataValidated);
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie dodano artykuł.
+                'success',
+                'Pomyślnie dodano artykuł.
                 <a href="'.$article->url().'">Zobacz go</a>.'
             ));
         }

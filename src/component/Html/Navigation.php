@@ -26,7 +26,7 @@ class Navigation
 
     /**
      * Set root ID.
-     * 
+     *
      * @param id $id ID of element to start create tree. Set 0 to create full tree
      */
     public function setRootID($id)
@@ -104,7 +104,7 @@ class Navigation
     /**
      * Set classes to use in menu.
      *
-     * 'classes' (array) 
+     * 'classes' (array)
      *      'root_ul' (string) Main <ul>
      *      `li` (string) Each <li>
      *      'li_active' (string)
@@ -313,7 +313,8 @@ class Navigation
         $this->html[] = $before['root_ul'];
 
         // HTML wrapper for the menu (open)
-        $this->html[] = sprintf('%1$s'.'<ul'.'%2$s'.'>',
+        $this->html[] = sprintf(
+            '%1$s'.'<ul'.'%2$s'.'>',
             # %1$s tab if text before
             (!empty($before['root_ul'])) ? str_repeat("\t", $nesting) : '',
 
@@ -350,7 +351,8 @@ class Navigation
                 /*
                  * <li> with <ul>
                  */
-                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'
+                $this->html[] = sprintf(
+                    '%1$s'.'<li'.'%2$s'.'>%3$s<a'
                     .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
                     $tab,
@@ -394,7 +396,8 @@ class Navigation
                 /*
                  * sub <ul> in <li>
                  */
-                $this->html[] = sprintf('%1$s'.'<ul'.'%2$s'.'>',
+                $this->html[] = sprintf(
+                    '%1$s'.'<ul'.'%2$s'.'>',
                     # %1$s tabulation
                     $tab."\t",
 
@@ -408,7 +411,8 @@ class Navigation
 
             // HTML for menu item with no children (aka "leaf")
             else {
-                $this->html[] = sprintf('%1$s'.'<li'.'%2$s'.'>%3$s<a'
+                $this->html[] = sprintf(
+                    '%1$s'.'<li'.'%2$s'.'>%3$s<a'
                     .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
                     str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),

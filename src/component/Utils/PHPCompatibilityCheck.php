@@ -2,7 +2,7 @@
 
 /**
  * Checks whether php version is compatible with Rudolf.
- * 
+ *
  * @param float $minimumVersionPHP
  */
 function php_compatibility_check($minimumVersionPHP)
@@ -16,9 +16,9 @@ function php_compatibility_check($minimumVersionPHP)
 
 /**
  * Displays an error if the PHP version is too low.
- * 
+ *
  * Calling this function kills execution immediately.
- * 
+ *
  * @param float $phpVersion
  * @param float $minimumVersionPHP
  */
@@ -35,7 +35,7 @@ function php_compatibility_error($phpVersion, $minimumVersionPHP)
 
 /**
  * Display user-friendly error.
- * 
+ *
  * @param string $pageTitle
  * @param string $shortText
  * @param string $longText
@@ -81,5 +81,4 @@ function php_compatibility_error_display($pageTitle, $shortText, $longText)
     </div>
 </body>
 </html><?php
-
 }

@@ -10,7 +10,9 @@ class View extends FrontView
 {
     public function setData($data, Pagination $pagination)
     {
-        $this->loop = new Loop($data, $pagination,
+        $this->loop = new Loop(
+            $data,
+            $pagination,
             'Rudolf\\Modules\\Koxy\\One\\Kox'
         );
 

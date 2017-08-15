@@ -40,7 +40,8 @@ class Page
     public function url()
     {
         if (!isset($this->page['url'])) {
-            return sprintf('%1$s/%2$s',
+            return sprintf(
+                '%1$s/%2$s',
                 DIR,
                 Text::escape($this->page['slug'])
             );
@@ -61,9 +62,9 @@ class Page
 
     /**
      * Returns page title.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function title($type = '')
@@ -103,9 +104,9 @@ class Page
 
     /**
      * Returns the keywords.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function keywords($type = '')
@@ -120,9 +121,9 @@ class Page
 
     /**
      * Returns the description.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function description($type = '')

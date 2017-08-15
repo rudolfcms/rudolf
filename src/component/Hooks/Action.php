@@ -13,21 +13,21 @@ class Action
 {
     /**
      * holds list of actions.
-     * 
+     *
      * @var array
      */
     public static $actions = array();
 
     /**
      * add Hooks a function on to a specific action.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string   $tag           The name of the action to which the $functionToAdd is hooked.
      * @param callback $functionToAdd The name of the function you wish to be called.
-     * @param int      $priority      optional. Used to specify the order in which the functions associated 
-     *                                with a particular action are executed (default: 10). Lower numbers correspond with 
-     *                                earlier execution, and functions with the same priority are executed in the order in 
+     * @param int      $priority      optional. Used to specify the order in which the functions associated
+     *                                with a particular action are executed (default: 10). Lower numbers correspond with
+     *                                earlier execution, and functions with the same priority are executed in the order in
      *                                which they were added to the action.
      * @param int      $accepted_args optional. The number of arguments the function accept (default 1).
      */
@@ -38,15 +38,15 @@ class Action
 
     /**
      * isHas Check if any action has been registered for a hook.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param string   $tag               The name of the action hook.
      * @param callback $function_to_check optional.
-     * 
-     * @return mixed If $function_to_check is omitted, returns boolean for whether the hook has 
-     *               anything registered. When checking a specific function, the priority of that hook is 
-     *               returned, or false if the function is not attached. When using the $function_to_check 
+     *
+     * @return mixed If $function_to_check is omitted, returns boolean for whether the hook has
+     *               anything registered. When checking a specific function, the priority of that hook is
+     *               returned, or false if the function is not attached. When using the $function_to_check
      *               argument, this function may return a non-boolean value that evaluates to false
      *               (e.g.) 0, so use the === operator for testing the return value.
      */
@@ -59,11 +59,11 @@ class Action
      * remove Removes a function from a specified action hook.
      *
      * @since 0.1
-     * 
+     *
      * @param string   $tag              The action hook to which the function to be removed is hooked.
      * @param callback $functionToRemove The name of the function which should be removed.
      * @param int      $priority         optional The priority of the function (default: 10).
-     * 
+     *
      * @return bool Whether the function is removed.
      */
     public static function remove($tag, $functionToRemove, $priority = 10)
@@ -75,10 +75,10 @@ class Action
      * removeAll Remove all of the hooks from an action.
      *
      * @since 0.1
-     * 
+     *
      * @param string $tag      The action to remove hooks from.
      * @param int    $priority The priority number to remove them from.
-     * 
+     *
      * @return bool True when finished.
      */
     public function removeAll($tag, $priority = false)
@@ -90,9 +90,9 @@ class Action
      * dispatch Execute functions hooked on a specific action hook.
      *
      * @since 0.1
-     * 
+     *
      * @param string $tag     The name of the action to be executed.
-     * @param mixed  $arg,... Optional additional arguments which are passed on to the functions 
+     * @param mixed  $arg,... Optional additional arguments which are passed on to the functions
      *                        hooked to the action.
      */
     public static function dispatch($tag, $arg = '')
@@ -111,7 +111,7 @@ class Action
         if (isset(Filter::$filters['all'])) {
             Filter::$currentFilter[] = $tag;
             $all_args = func_get_args();
-            self::$_call_all_hook ($all_args);
+            self::$_call_all_hook($all_args);
         }
 
         if (!isset(Filter::$filters[$tag])) {
@@ -159,7 +159,7 @@ class Action
      * doRefArray Execute functions hooked on a specific action hook, specifying arguments in an array.
      *
      * @since 0.1
-     * 
+     *
      * @param string $tag  The name of the action to be executed.
      * @param array  $args The arguments supplied to the functions hooked to <tt>$tag</tt>
      */
@@ -179,7 +179,7 @@ class Action
         if (isset(Filter::$filters['all'])) {
             Filter::$currentFilter[] = $tag;
             $all_args = func_get_args();
-            self::$_call_all_hook ($all_args);
+            self::$_call_all_hook($all_args);
         }
 
         if (!isset(Filter::$filters[$tag])) {
@@ -217,9 +217,9 @@ class Action
      * did Retrieve the number of times an action is fired.
      *
      * @since 0.1
-     * 
+     *
      * @param string $tag The name of the action hook.
-     * 
+     *
      * @return int The number of times action hook <tt>$tag</tt> is fired
      */
     public static function did($tag)

@@ -33,15 +33,18 @@ class Loop
 
     /**
      * Constructor.
-     * 
+     *
      * @param array  $data
      * @param Calc   $calc
      * @param string $itemClassName
      * @param string $path
      */
-    public function __construct($data, ICalc $calc,
-        $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item', $path = '')
-    {
+    public function __construct(
+        $data,
+        ICalc $calc,
+        $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item',
+        $path = ''
+    ) {
         $this->data = $data;
         $this->calc = $calc;
         $this->itemClassName = $itemClassName;
@@ -50,7 +53,7 @@ class Loop
 
     /**
      * Chech, is any item to display.
-     * 
+     *
      * @return bool
      */
     public function isItems()
@@ -60,7 +63,7 @@ class Loop
 
     /**
      * Returns number of items to display on page.
-     * 
+     *
      * @return int
      */
     public function total()
@@ -98,7 +101,7 @@ class Loop
 
     /**
      * Checks if pagination is needed.
-     * 
+     *
      * @return bool
      */
     public function isPagination()
@@ -118,12 +121,12 @@ class Loop
 
     /**
      * Return navigation.
-     * 
+     *
      * @param array $classes
      *                         ul
      *                         current
      * @param int   $navNumber
-     * 
+     *
      * @return string
      */
     public function nav($classes, $nesting = 2)

@@ -11,7 +11,7 @@ class Kox
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $koxy
      */
     public function __construct($koxy = [])
@@ -21,7 +21,7 @@ class Kox
 
     /**
      * Set koxy data.
-     * 
+     *
      * @param array $koxy
      */
     public function setData($kox)

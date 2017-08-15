@@ -232,8 +232,10 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['date' => $date, 'slug' => $slug]);
-        $this->assertEquals($obj->url(),
-            sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
+        $this->assertEquals(
+            $obj->url(),
+            sprintf(
+                '%1$s/%2$s/%3$s/%4$s/%5$s',
                 DIR,
                 'foto',
                 $obj->date('Y'),

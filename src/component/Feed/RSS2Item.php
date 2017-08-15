@@ -4,11 +4,11 @@ namespace Rudolf\Component\Feed;
 
 /**
  * This file is part of Rudolf articles module.
- * 
+ *
  * RSS2 Feed generator
- * 
+ *
  * @see http://cyber.law.harvard.edu/rss/rss.html
- * 
+ *
  * @author Mikołaj Pich <m.pich@outlook.com>
  *
  * @version 0.1
@@ -67,7 +67,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Set item title.
-     * 
+     *
      * @param string $title
      */
     public function setTitle($title)
@@ -77,7 +77,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Set item link.
-     * 
+     *
      * @param string $link
      */
     public function setLink($link)
@@ -87,7 +87,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Set item descritpion.
-     * 
+     *
      * @param string descrption
      */
     public function setDescription($description)
@@ -97,7 +97,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Set item author.
-     * 
+     *
      * @param string $author
      */
     public function setAuthor($author)
@@ -107,7 +107,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Set item category.
-     * 
+     *
      * @param string $category
      */
     public function setCategory($category)
@@ -142,7 +142,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item title.
-     * 
+     *
      * @return bool|string
      */
     public function getTitle()
@@ -156,7 +156,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item link.
-     * 
+     *
      * @return bool|string
      */
     public function getLink()
@@ -170,7 +170,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item description.
-     * 
+     *
      * @return bool|string
      */
     public function getDescription()
@@ -186,7 +186,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item author.
-     * 
+     *
      * @return bool|string
      */
     public function getAuthor()
@@ -200,7 +200,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item category.
-     * 
+     *
      * @return bool|string
      */
     public function getCategory()
@@ -214,7 +214,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get item pub date.
-     * 
+     *
      * @return bool|string
      */
     public function getPubDate()
@@ -228,7 +228,7 @@ class RSS2Item implements IRSS2Item
 
     /**
      * Get <item> element.
-     * 
+     *
      * @return string
      */
     public function getItem()

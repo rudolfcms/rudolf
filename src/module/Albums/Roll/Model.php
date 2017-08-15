@@ -35,9 +35,9 @@ class Model extends Albums\Model
 
     /**
      * Returns total number of albums items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber($where = ['published' => 1])

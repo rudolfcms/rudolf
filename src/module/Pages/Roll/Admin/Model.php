@@ -40,9 +40,9 @@ class Model extends AdminModel
 
     /**
      * Returns total number of pages items.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return int
      */
     public function getTotalNumber($where = ['published' => 1])

@@ -6,7 +6,14 @@ use Rudolf\Framework\Model\AdminModel;
 
 class EditorModel extends AdminModel
 {
-    private $root = THEMES_ROOT.'/front/'.FRONT_THEME.'/';
+    private $root;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->root = THEMES_ROOT.'/front/'.FRONT_THEME.'/';
+    }
 
     public function getFilesListByPath($path)
     {

@@ -6,9 +6,9 @@ class ResponseMessages
 {
     /**
      * Returns http code description.
-     * 
+     *
      * @param int $code
-     * 
+     *
      * @return array|bool
      */
     public static function getMessages($code)

@@ -11,7 +11,7 @@ class RouteCollection
 
     /**
      * Adds a route.
-     * 
+     *
      * @param string $name The route name
      * @param Route  $item A Route instance
      */
@@ -22,9 +22,9 @@ class RouteCollection
 
     /**
      * Gets a route by name.
-     * 
+     *
      * @param string $name The route name
-     * 
+     *
      * @return Route|null
      */
     public function get($name)

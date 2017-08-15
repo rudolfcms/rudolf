@@ -9,7 +9,7 @@ class Controller extends FrontController
 {
     /**
      * Get one article.
-     * 
+     *
      * @param int    $year
      * @param int    $month
      * @param string $slug

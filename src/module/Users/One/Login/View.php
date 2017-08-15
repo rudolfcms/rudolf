@@ -16,7 +16,7 @@ class View extends FrontView
 
     /**
      * Get nick.
-     * 
+     *
      * @return string
      */
     protected function getNick()
@@ -26,7 +26,7 @@ class View extends FrontView
 
     /**
      * Get status info.
-     * 
+     *
      * @return array
      */
     protected function getMessage($index = false)
@@ -56,6 +56,7 @@ class View extends FrontView
                 $a['type'] = 'danger';
                 //break;
 
+                // no break
             case 5:
                 $a['message'] = _('email or password incorect');
                 $a['type'] = 'danger';

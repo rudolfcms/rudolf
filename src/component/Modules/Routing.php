@@ -11,7 +11,7 @@ class Routing
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $modules
      * @param RouteCollection
      * @param string $path from-root path to modules directory
@@ -25,7 +25,7 @@ class Routing
 
     /**
      * Add routes to collection.
-     * 
+     *
      * @return RouteCollection
      */
     public function addRoutes()

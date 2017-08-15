@@ -27,14 +27,18 @@ class TagsGenerator
     public function create()
     {
         if ($this->calc->getPrev() > 0) {
-            $this->head->setAfter(sprintf('<link rel="prev" href="'.'%1$s'.'page/'.'%2$s'.'">',
-                $this->path, $this->calc->getPrev()
+            $this->head->setAfter(sprintf(
+                '<link rel="prev" href="'.'%1$s'.'page/'.'%2$s'.'">',
+                $this->path,
+                $this->calc->getPrev()
             ));
         }
 
         if ($this->calc->getAllPages() >= $this->calc->getNext()) {
-            $this->head->setAfter(sprintf('<link rel="next" href="'.'%1$s'.'page/'.'%2$s'.'">',
-                $this->path, $this->calc->getNext()
+            $this->head->setAfter(sprintf(
+                '<link rel="next" href="'.'%1$s'.'page/'.'%2$s'.'">',
+                $this->path,
+                $this->calc->getNext()
             ));
         }
     }

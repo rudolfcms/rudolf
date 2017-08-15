@@ -21,9 +21,9 @@ class Session
 
     /**
      * Add user session.
-     * 
+     *
      * @param array $user
-     * 
+     *
      * @return bool
      */
     public function createSession($user)
@@ -82,9 +82,9 @@ class Session
 
     /**
      * Destroy session.
-     * 
+     *
      * @param string $hash Cookie hash
-     * 
+     *
      * @return bool
      */
     public function destroySession()
@@ -105,7 +105,7 @@ class Session
 
     /**
      * Check session.
-     * 
+     *
      * @return bool
      */
     public function checkSession()
@@ -177,9 +177,9 @@ class Session
 
     /**
      * Hash cookie hash.
-     * 
+     *
      * @param string $cookie
-     * 
+     *
      * @return string(64)
      */
     private function cookieHash($cookie)
@@ -189,9 +189,9 @@ class Session
 
     /**
      * Get user ip address.
-     * 
+     *
      * @see https://www.chriswiegman.com/2014/05/getting-correct-ip-address-php/
-     * 
+     *
      * @return string
      */
     public function getIP()

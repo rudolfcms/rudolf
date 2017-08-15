@@ -16,7 +16,7 @@ class Article
 
     /**
      * Constructor.
-     * 
+     *
      * @param array $article
      */
     public function __construct($article = [])
@@ -26,7 +26,7 @@ class Article
 
     /**
      * Set article data.
-     * 
+     *
      * @param array $article
      */
     public function setData($article)
@@ -68,7 +68,7 @@ class Article
 
     /**
      * Returns article ID.
-     * 
+     *
      * @return int
      */
     public function id()
@@ -78,7 +78,7 @@ class Article
 
     /**
      * Returns category ID.
-     * 
+     *
      * @return int
      */
     public function categoryID()
@@ -88,9 +88,9 @@ class Article
 
     /**
      * Returns article title.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function title($type = '')
@@ -105,9 +105,9 @@ class Article
 
     /**
      * Returns the keywords.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function keywords($type = '')
@@ -122,9 +122,9 @@ class Article
 
     /**
      * Returns the description.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function description($type = '')
@@ -139,12 +139,12 @@ class Article
 
     /**
      * Returns article content.
-     * 
+     *
      * @param bool|int $truncate
      * @param bool     $stripTags
      * @param bool     $escape
      * @param bool     $raw
-     * 
+     *
      * @return string
      */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
@@ -173,9 +173,9 @@ class Article
     }
     /**
      * Returns the author.
-     * 
+     *
      * @param string $type null|raw
-     * 
+     *
      * @return string
      */
     public function author($type = '', $adder = true)
@@ -196,10 +196,10 @@ class Article
 
     /**
      * Returns article date.
-     * 
+     *
      * @param bool|string $format
      * @param string      $style  normal|locale
-     * 
+     *
      * @return string If date field empty, return current date
      */
     public function date($format = false, $style = 'normal', $inflected = true)
@@ -252,7 +252,7 @@ class Article
 
     /**
      * Returns date of article added.
-     * 
+     *
      * @return string
      */
     public function added()
@@ -262,7 +262,7 @@ class Article
 
     /**
      * Returns date of last article modified.
-     * 
+     *
      * @return string
      */
     public function modified()
@@ -272,7 +272,7 @@ class Article
 
     /**
      * Returns adder ID.
-     * 
+     *
      * @return int
      */
     public function adderID()
@@ -282,9 +282,9 @@ class Article
 
     /**
      * Returns first name and surname of adder.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function adderFullName($type = '')
@@ -299,7 +299,7 @@ class Article
 
     /**
      * Returns modifier ID.
-     * 
+     *
      * @return int
      */
     public function modifierID()
@@ -309,7 +309,7 @@ class Article
 
     /**
      * Returns modifier full name.
-     * 
+     *
      * @return int
      */
     public function modifierFullName($type = '')
@@ -324,7 +324,7 @@ class Article
 
     /**
      * Checks whether the article has modified.
-     * 
+     *
      * @return bool
      */
     public function isModified()
@@ -334,7 +334,7 @@ class Article
 
     /**
      * Returns the number of views.
-     * 
+     *
      * @return int
      */
     public function views()
@@ -361,12 +361,13 @@ class Article
 
     /**
      * Returns article url.
-     * 
+     *
      * @return string
      */
     public function url()
     {
-        return sprintf('%1$s/%2$s/%3$s/%4$s/%5$s',
+        return sprintf(
+            '%1$s/%2$s/%3$s/%4$s/%5$s',
             DIR,
             'artykuly',
             $this->date('Y'),
@@ -379,7 +380,7 @@ class Article
      * Returns album path.
      *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function album($type = '')
@@ -396,7 +397,7 @@ class Article
      * Returns thumb path.
      *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function thumb($type = '')
@@ -411,7 +412,7 @@ class Article
 
     /**
      * Checks whether the article has a thumbnail.
-     * 
+     *
      * @return bool
      */
     public function hasThumbnail()
@@ -421,13 +422,13 @@ class Article
 
     /**
      * Returns thumbnail code or only address.
-     * 
+     *
      * @param int    $width   Image width
      * @param int    $height  Image height
      * @param bool   $album   Add album address if exists
      * @param string $alt     Set alternative text
      * @param string $default Default thumb path. It use when thumb path is empty
-     * 
+     *
      * @return string
      */
     public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '')
@@ -446,8 +447,12 @@ class Article
 
         $thumbUrl = Image::resize($thumbUrl, $width, $height);
 
-        $html = sprintf('<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
-            $thumbUrl, $width, $height, $alt
+        $html = sprintf(
+            '<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
+            $thumbUrl,
+            $width,
+            $height,
+            $alt
         );
 
         if (true === $album and !empty($albumUrl)) {
@@ -459,7 +464,7 @@ class Article
 
     /**
      * Returns the number of photos.
-     * 
+     *
      * @return int
      */
     public function photos()
@@ -469,7 +474,7 @@ class Article
 
     /**
      * Checks whether the article has a photos.
-     * 
+     *
      * @return bool
      */
     public function hasPhotos()
@@ -489,7 +494,7 @@ class Article
 
     /**
      * Chcecks whether the article is published.
-     * 
+     *
      * @return bool
      */
     public function isPublished()
@@ -499,12 +504,13 @@ class Article
 
     /**
      * Returns article category anchor.
-     * 
+     *
      * @return string
      */
     public function category()
     {
-        return sprintf('<a href="%1$s">%2$s</a>',
+        return sprintf(
+            '<a href="%1$s">%2$s</a>',
             $this->categoryUrl(),
             $this->categoryTitle()
         );
@@ -512,9 +518,9 @@ class Article
 
     /**
      * Returns category title.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function categoryTitle($type = '')
@@ -530,12 +536,13 @@ class Article
 
     /**
      * Returns category url.
-     * 
+     *
      * @return string
      */
     public function categoryUrl()
     {
-        return sprintf('%1$s/%2$s/%3$s',
+        return sprintf(
+            '%1$s/%2$s/%3$s',
             DIR,
             'artykuly/kategorie',
             Text::escape($this->article['category_url'])
@@ -544,7 +551,7 @@ class Article
 
     /**
      * Checks whether the article has a category.
-     * 
+     *
      * @return bool
      */
     public function hasCategory()

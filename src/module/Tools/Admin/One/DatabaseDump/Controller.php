@@ -13,11 +13,13 @@ class Controller extends AdminController
     {
         if (isset($_POST['backup'])) {
             $dbconf = include CONFIG_ROOT.'/database.php';
-            $dump = new MySQLDump(new mysqli(
+            $dump = new MySQLDump(
+                new mysqli(
                 $dbconf['host'],
                 $dbconf['user'],
                 $dbconf['pass'],
-                $dbconf['database'])
+                $dbconf['database']
+            )
             );
             $filename = 'rudolf_'.$dbconf['database'].'_'.date('Y-m-d_H-i-s').'.sql';
 

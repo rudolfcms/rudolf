@@ -113,7 +113,8 @@ class Breadcrumbs
         $nesting = $this->getNesting();
         $classes = $this->getClasses();
 
-        $html[] = sprintf('<ul'.'%1$s'.'>',
+        $html[] = sprintf(
+            '<ul'.'%1$s'.'>',
             $classes['ul'] ? ' class="'.$classes['ul'].'"' : ''
         );
 
@@ -124,14 +125,16 @@ class Breadcrumbs
         }
 
         for ($i = 0; $i < (count($elements) - 1); ++$i) {
-            $html[] = sprintf('%1$s<li><a href="%2$s">%3$s</a></li>',
+            $html[] = sprintf(
+                '%1$s<li><a href="%2$s">%3$s</a></li>',
                 $tab, // nesting
                 DIR.$elements[$i][0],
                 $elements[$i][1]
             );
         }
 
-        $html[] = sprintf('%1$s'.'<li'.'%2$s'.'>'.'%3$s'.'</li>',
+        $html[] = sprintf(
+            '%1$s'.'<li'.'%2$s'.'>'.'%3$s'.'</li>',
             $tab, // nesting
             $classes['li_active'] ? ' class="'.$classes['li_active'].'"' : '',
             $elements[$i][1]

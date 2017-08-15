@@ -23,7 +23,8 @@ class AddForm extends FormCheck
 
         if ($status) {
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie dodano kategorię.'
+                'success',
+                'Pomyślnie dodano kategorię.'
             ));
         }
 

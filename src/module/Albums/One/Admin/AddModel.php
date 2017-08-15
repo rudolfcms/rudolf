@@ -8,7 +8,7 @@ class AddModel extends AdminModel
 {
     /**
      * Add article.
-     * 
+     *
      * @param array $f
      */
     public function add($f)

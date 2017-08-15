@@ -79,7 +79,7 @@ class Route
     /**
      * Returns the controller name.
      *
-     * @return array $controllerName 
+     * @return array $controllerName
      */
     public function getControllerName()
     {
@@ -99,7 +99,7 @@ class Route
     /**
      * Returns the params.
      *
-     * @return array $params 
+     * @return array $params
      */
     public function getParams()
     {
@@ -109,7 +109,7 @@ class Route
     /**
      * Returns the priority.
      *
-     * @return array $priority 
+     * @return array $priority
      */
     public function getPriority()
     {

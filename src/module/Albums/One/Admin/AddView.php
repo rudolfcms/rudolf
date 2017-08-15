@@ -11,7 +11,7 @@ class AddView extends AdminView
 
     /**
      * Set data do add album.
-     * 
+     *
      * @param array $album
      */
     public function addAlbum($album)

@@ -42,9 +42,9 @@ class Page extends One\Page
 
     /**
      * Returns first name and surname of adder.
-     * 
+     *
      * @param string $type
-     * 
+     *
      * @return string
      */
     public function adderFullName($type = '')
@@ -59,7 +59,7 @@ class Page extends One\Page
 
     /**
      * Returns modifier full name.
-     * 
+     *
      * @return int
      */
     public function modifierFullName($type = '')
@@ -74,7 +74,7 @@ class Page extends One\Page
 
     /**
      * Checks whether the page has modified.
-     * 
+     *
      * @return bool
      */
     public function isModified()

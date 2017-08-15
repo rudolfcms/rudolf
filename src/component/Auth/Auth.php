@@ -17,10 +17,10 @@ class Auth
 
     /**
      * Login user.
-     * 
+     *
      * @param string $email
      * @param string $password
-     * 
+     *
      * @return int
      *             1 - logged in!
      *             2 - email not valid
@@ -66,7 +66,7 @@ class Auth
 
     /**
      * Logout current user.
-     * 
+     *
      * @return bool
      */
     public function logout()
@@ -76,7 +76,7 @@ class Auth
 
     /**
      * Check is session exists.
-     * 
+     *
      * @return bool
      */
     public function check()
@@ -86,10 +86,10 @@ class Auth
 
     /**
      * Get logged user info.
-     * 
+     *
      * @param id $uid User ID
      *                not set gives current logged user data
-     * 
+     *
      * @return array
      */
     public function getUser($uid = false)
@@ -122,9 +122,9 @@ class Auth
 
     /**
      * Get password hash.
-     * 
+     *
      * @param string $password
-     * 
+     *
      * @return string
      */
     public function getPasswordHash($password)
@@ -134,9 +134,9 @@ class Auth
 
     /**
      * Get user data by email.
-     * 
+     *
      * @param string $email
-     * 
+     *
      * @return array
      */
     public function getUserDataByEmail($email)
@@ -159,9 +159,9 @@ class Auth
 
     /**
      * Validate email.
-     * 
+     *
      * @param string $email
-     * 
+     *
      * @return bool
      */
     public function validateEmail($email)
@@ -171,9 +171,9 @@ class Auth
 
     /**
      * Validate password.
-     * 
+     *
      * @param string $password
-     * 
+     *
      * @return bool
      */
     public function validatePassword($password)

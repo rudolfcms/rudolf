@@ -28,7 +28,7 @@ abstract class BaseModel
 
     /**
      * Constructor.
-     * 
+     *
      * Initialize connection with database
      */
     public function __construct()
@@ -44,7 +44,7 @@ abstract class BaseModel
 
     /**
      * Create connection with database.
-     * 
+     *
      * @return object PDO
      */
     private function connect()
@@ -62,10 +62,10 @@ abstract class BaseModel
 
     /**
      * Count items in table.
-     * 
+     *
      * @param string       $table (without prefix)
      * @param string|array $where
-     * 
+     *
      * @return int
      */
     protected function countItems($table, $where = null)
@@ -102,9 +102,9 @@ abstract class BaseModel
 
     /**
      * Create where clausule for pdo.
-     * 
+     *
      * @param array|string $where
-     * 
+     *
      * @return string
      */
     public function createWhereClausule($where)

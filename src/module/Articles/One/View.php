@@ -8,7 +8,7 @@ class View extends FrontView
 {
     /**
      * Set articles data.
-     * 
+     *
      * @param array $data
      */
     public function setData($data)

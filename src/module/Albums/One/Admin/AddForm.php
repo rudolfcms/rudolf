@@ -25,7 +25,8 @@ class AddForm extends FormCheck
         if ($status) {
             $album = new Album($this->dataValidated);
             AlertsCollection::add(new Alert(
-                'success', 'Pomyślnie dodano album.
+                'success',
+                'Pomyślnie dodano album.
                 <a href="'.$album->url().'">Zobacz go</a>.'
             ));
         }

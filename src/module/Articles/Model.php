@@ -8,7 +8,7 @@ abstract class Model extends FrontModel
 {
     /**
      * Returns part of query.
-     * 
+     *
      * @return string
      */
     protected function queryPart($part)

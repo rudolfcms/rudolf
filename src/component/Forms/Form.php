@@ -73,7 +73,8 @@ abstract class Form
     {
         foreach ($this->validator->getAlerts() as $key => $value) {
             Alerts\AlertsCollection::add(new Alerts\Alert(
-                'error', $value
+                'error',
+                $value
             ));
         }
     }
