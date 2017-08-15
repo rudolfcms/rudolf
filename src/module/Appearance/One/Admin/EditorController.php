@@ -44,7 +44,7 @@ class EditorController extends AdminController
                 ));
             }
 
-            $this->redirectTo('../../editor');
+            $this->redirectTo($file);
         }
 
         $view = new EditorView();
