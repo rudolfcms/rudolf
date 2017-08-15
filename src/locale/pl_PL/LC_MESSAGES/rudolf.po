@@ -788,3 +788,15 @@ msgstr "Linki"
 
 msgid "Subscription"
 msgstr "Subskrypcje"
+
+msgid "Skip to navigation"
+msgstr "Przejdź do nawigacji"
+
+msgid "Skip to content"
+msgstr "Przejdź do treści"
+
+msgid "Skip to search"
+msgstr "Przejdź do wyszukiwarki"
+
+msgid "Skip to footer"
+msgstr "Przejdź do stopki"
