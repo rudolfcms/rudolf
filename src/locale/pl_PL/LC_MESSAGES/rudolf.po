@@ -7,73 +7,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rudolf\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-24 18:51+0100\n"
-"PO-Revision-Date: 2016-11-24 19:00+0100\n"
+"POT-Creation-Date: 2017-08-15 21:27+0200\n"
+"PO-Revision-Date: 2017-08-15 21:38+0200\n"
 "Last-Translator: Mikołaj Pich <m.pich@outlook.com>\n"
 "Language-Team: Rudolf team <team@rudolf.project>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: app/component/ErrorHandler/Handler/UserFriendlyHandler.php:48
+#: src/component/ErrorHandler/Handler/UserFriendlyHandler.php:48
 msgid "Code"
 msgstr "Kod"
 
-#: app/component/Http/ResponseMessages.php:18
+#: src/component/Http/ResponseMessages.php:18
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: app/component/Http/ResponseMessages.php:19
+#: src/component/Http/ResponseMessages.php:19
 msgid ""
 "The request has been completed and the rest of the process can continue."
-msgstr "Prośba o dalsze wysyłanie zapytania"
+msgstr "Prośba o dalsze wysyłanie zapytania."
 
-#: app/component/Http/ResponseMessages.php:22
+#: src/component/Http/ResponseMessages.php:22
 msgid "Switching Protocols"
 msgstr "Zmiana protokołu"
 
-#: app/component/Http/ResponseMessages.php:23
+#: src/component/Http/ResponseMessages.php:23
 msgid ""
 "When requesting a page, a browser might receive a statis code of 101, "
 "followed by an \"Upgrade\" header showing that the server is changing to a "
 "different version of HTTP."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:26
+#: src/component/Http/ResponseMessages.php:26
 msgid "OK"
 msgstr "OK"
 
-#: app/component/Http/ResponseMessages.php:27
+#: src/component/Http/ResponseMessages.php:27
 msgid "Standard response for HTTP successful requests."
-msgstr "Pomyślnie zrealizowano żądanie"
+msgstr "Pomyślnie zrealizowano żądanie."
 
-#: app/component/Http/ResponseMessages.php:30
+#: src/component/Http/ResponseMessages.php:30
 msgid "Created"
 msgstr "Utworzono"
 
-#: app/component/Http/ResponseMessages.php:31
+#: src/component/Http/ResponseMessages.php:31
 msgid ""
 "When new pages are created by posted form data or by a CGI process, this is "
 "confirmation that it worked."
-msgstr "Wysłany dokument został zapisany na serwerze"
+msgstr "Wysłany dokument został zapisany na serwerze."
 
-#: app/component/Http/ResponseMessages.php:34
+#: src/component/Http/ResponseMessages.php:34
 msgid "Accepted"
 msgstr "Przyjęto"
 
-#: app/component/Http/ResponseMessages.php:35
+#: src/component/Http/ResponseMessages.php:35
 msgid "The client's request was accepted, though not yet processed."
 msgstr ""
-"Zapytanie zostało przyjęte do obsłużenia, lecz jego zrealizowanie jeszcze"
+"Zapytanie zostało przyjęte do obsłużenia, lecz jego zrealizowanie jeszcze."
 
-#: app/component/Http/ResponseMessages.php:38
+#: src/component/Http/ResponseMessages.php:38
 msgid "Non-Authoritative Information"
 msgstr "Informacja nieautorytatywna"
 
-#: app/component/Http/ResponseMessages.php:39
+#: src/component/Http/ResponseMessages.php:39
 msgid ""
 "The information contained in the entity header is not from the original "
 "site, but from a third party server."
@@ -81,32 +81,32 @@ msgstr ""
 "Zwrócona informacja nie odpowiada dokładnie odpowiedzi pierwotnego serwera, "
 "lecz została utworzona z lokalnych bądź zewnętrznych kopii."
 
-#: app/component/Http/ResponseMessages.php:42
+#: src/component/Http/ResponseMessages.php:42
 msgid "No Content"
 msgstr "Brak zawartości"
 
-#: app/component/Http/ResponseMessages.php:43
+#: src/component/Http/ResponseMessages.php:43
 msgid ""
 "If you click a link which has no target URL, this response is elicited by "
 "the server. It's silent and doesn't warn the user about anything."
 msgstr ""
-"Serwer zrealizował zapytanie klienta i nie potrzebuje zwracać żadnej treści"
+"Serwer zrealizował zapytanie klienta i nie potrzebuje zwracać żadnej treści."
 
-#: app/component/Http/ResponseMessages.php:46
+#: src/component/Http/ResponseMessages.php:46
 msgid "Reset Content"
 msgstr "Przywróć zawartość"
 
-#: app/component/Http/ResponseMessages.php:47
+#: src/component/Http/ResponseMessages.php:47
 msgid "This allows the server to reset any content returned by a CGI."
 msgstr ""
 "Serwer zrealizował zapytanie i klient powinien przywrócić pierwotny wygląd "
-"dokumentu"
+"dokumentu."
 
-#: app/component/Http/ResponseMessages.php:50
+#: src/component/Http/ResponseMessages.php:50
 msgid "Partial Content"
 msgstr "Część zawartości"
 
-#: app/component/Http/ResponseMessages.php:51
+#: src/component/Http/ResponseMessages.php:51
 msgid ""
 "The requested file wasn't downloaded entirely. This is returned when the "
 "user presses the stop button before a page is loaded, for example."
@@ -114,11 +114,11 @@ msgstr ""
 "Serwer zrealizował tylko część zapytania typu GET, odpowiedź musi zawierać "
 "nagłówek Range informujący o zakresie bajtowym zwróconego elementu."
 
-#: app/component/Http/ResponseMessages.php:54
+#: src/component/Http/ResponseMessages.php:54
 msgid "Multiple Choices"
 msgstr "Wiele możliwości"
 
-#: app/component/Http/ResponseMessages.php:55
+#: src/component/Http/ResponseMessages.php:55
 msgid ""
 "The requested address refers to more than one file. Depending on how the "
 "server is configured, you get an error or a choice of which page you want."
@@ -127,11 +127,11 @@ msgstr ""
 "podać adres zasobu, który pozwala na wybór jednoznacznego zapytania spośród "
 "możliwych."
 
-#: app/component/Http/ResponseMessages.php:58
+#: src/component/Http/ResponseMessages.php:58
 msgid "Moved Permanently"
 msgstr "Trwale przeniesiony"
 
-#: app/component/Http/ResponseMessages.php:59
+#: src/component/Http/ResponseMessages.php:59
 msgid ""
 "If the server is set up properly it will automatically redirect the reader "
 "to the new location of the file."
@@ -139,11 +139,11 @@ msgstr ""
 "Żądany zasób zmienił swój URI i w przyszłości zasób powinien być szukany pod "
 "wskazanym nowym adresem."
 
-#: app/component/Http/ResponseMessages.php:62
+#: src/component/Http/ResponseMessages.php:62
 msgid "Moved Temporarily"
 msgstr "Znaleziono"
 
-#: app/component/Http/ResponseMessages.php:63
+#: src/component/Http/ResponseMessages.php:63
 msgid ""
 "Page has been moved temporarily, and the new URL is available. You should be "
 "sent there by the server."
@@ -151,11 +151,11 @@ msgstr ""
 "Żądany zasób jest chwilowo dostępny pod innym adresem a przyszłe odwołania "
 "do zasobu powinny być kierowane pod adres pierwotny."
 
-#: app/component/Http/ResponseMessages.php:66
+#: src/component/Http/ResponseMessages.php:66
 msgid "See Other"
 msgstr "Zobacz inne"
 
-#: app/component/Http/ResponseMessages.php:67
+#: src/component/Http/ResponseMessages.php:67
 msgid ""
 "This is a \"see other\" SRC. Data is somewhere else and the GET method is "
 "used to retrieve it."
@@ -164,11 +164,11 @@ msgstr ""
 "skierować. To jest właściwy sposób przekierowywania w odpowiedzi na żądanie "
 "metodą POST."
 
-#: app/component/Http/ResponseMessages.php:70
+#: src/component/Http/ResponseMessages.php:70
 msgid "Not Modified"
 msgstr "Nie zmieniono"
 
-#: app/component/Http/ResponseMessages.php:71
+#: src/component/Http/ResponseMessages.php:71
 msgid ""
 "If the request header includes an 'if modified since' parameter, this code "
 "will be returned if the file has not changed since that date. Search engine "
@@ -177,49 +177,49 @@ msgstr ""
 "Zawartość zasobu nie podległa zmianie według warunku przekazanego przez "
 "klienta (np. data ostatniej wersji zasobu pobranej przez klienta."
 
-#: app/component/Http/ResponseMessages.php:74
+#: src/component/Http/ResponseMessages.php:74
 msgid "Use Proxy"
 msgstr "Użyj serwera proxy"
 
-#: app/component/Http/ResponseMessages.php:75
+#: src/component/Http/ResponseMessages.php:75
 msgid "The recipient is expected to repeat the request via the proxy."
 msgstr ""
 "Do żądanego zasobu trzeba odwołać się przez serwer proxy podany w nagłówku "
 "Location odpowiedzi."
 
-#: app/component/Http/ResponseMessages.php:78
+#: src/component/Http/ResponseMessages.php:78
 msgid "Bad Request"
 msgstr "Nieprawidłowe zapytanie"
 
-#: app/component/Http/ResponseMessages.php:79
+#: src/component/Http/ResponseMessages.php:79
 msgid "There is a syntax error in the request, and it is denied."
 msgstr ""
 "Żądanie nie może być obsłużone przez serwer z powodu błędnej składni "
 "zapytania."
 
-#: app/component/Http/ResponseMessages.php:82
+#: src/component/Http/ResponseMessages.php:82
 msgid "Unauthorized"
 msgstr "Nieautoryzowany dostęp"
 
-#: app/component/Http/ResponseMessages.php:83
+#: src/component/Http/ResponseMessages.php:83
 msgid ""
 "The request header did not contain the necessary authentication codes, and "
 "the client is denied access."
-msgstr "Żądanie zasobu wymaga uwierzytelnienia"
+msgstr "Żądanie zasobu wymaga uwierzytelnienia."
 
-#: app/component/Http/ResponseMessages.php:86
+#: src/component/Http/ResponseMessages.php:86
 msgid "Payment Required"
 msgstr "Wymagana opłata"
 
-#: app/component/Http/ResponseMessages.php:87
+#: src/component/Http/ResponseMessages.php:87
 msgid "Payment is required. This code is not yet in operation."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:90
+#: src/component/Http/ResponseMessages.php:90
 msgid "Forbidden"
 msgstr "Dostęp zabroniony"
 
-#: app/component/Http/ResponseMessages.php:91
+#: src/component/Http/ResponseMessages.php:91
 msgid ""
 "The client is not allowed to see a certain file. This is also returned at "
 "times when the server doesn't want any more visitors."
@@ -227,11 +227,11 @@ msgstr ""
 "Serwer zrozumiał zapytanie lecz konfiguracja bezpieczeństwa zabrania mu "
 "zwrócić żądany zasób."
 
-#: app/component/Http/ResponseMessages.php:94
+#: src/component/Http/ResponseMessages.php:94
 msgid "Not Found"
 msgstr "Nie znaleziono"
 
-#: app/component/Http/ResponseMessages.php:95
+#: src/component/Http/ResponseMessages.php:95
 msgid ""
 "The requested file was not found on the server. Possibly because it was "
 "deleted, or never existed before. Often caused by misspellings of URLs."
@@ -240,21 +240,21 @@ msgstr ""
 "na istnienie takiego zasobu w przeszłości. Często spowodowane przez błędy "
 "ortograficzne w adresach URL."
 
-#: app/component/Http/ResponseMessages.php:98
+#: src/component/Http/ResponseMessages.php:98
 msgid "Method Not Allowed"
 msgstr "Niedozwolona metoda"
 
-#: app/component/Http/ResponseMessages.php:99
+#: src/component/Http/ResponseMessages.php:99
 msgid "The method you are using to access the file is not allowed."
 msgstr ""
 "Metoda zawarta w żądaniu nie jest dozwolona dla wskazanego zasobu, odpowiedź "
 "zawiera też listę dozwolonych metod."
 
-#: app/component/Http/ResponseMessages.php:102
+#: src/component/Http/ResponseMessages.php:102
 msgid "Not Acceptable"
 msgstr "Niedozwolone"
 
-#: app/component/Http/ResponseMessages.php:103
+#: src/component/Http/ResponseMessages.php:103
 msgid ""
 "The requested file exists but cannot be used as the client system doesn't "
 "understand the format the file is configured for."
@@ -262,89 +262,89 @@ msgstr ""
 "Zażądany zasób nie jest w stanie zwrócić odpowiedzi mogącej być obsłużonej "
 "przez klienta według informacji podanych w zapytaniu."
 
-#: app/component/Http/ResponseMessages.php:106
+#: src/component/Http/ResponseMessages.php:106
 msgid "Proxy Authentication Required"
 msgstr "Wymagane uwierzytelnienie proxy"
 
-#: app/component/Http/ResponseMessages.php:107
+#: src/component/Http/ResponseMessages.php:107
 msgid "The request must be authorised before it can take place."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:110
+#: src/component/Http/ResponseMessages.php:110
 msgid "Request Time-out"
 msgstr "Koniec czasu oczekiwania na żądanie"
 
-#: app/component/Http/ResponseMessages.php:111
+#: src/component/Http/ResponseMessages.php:111
 msgid ""
 "The server took longer than its allowed time to process the request. Often "
 "caused by heavy net traffic."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:114
+#: src/component/Http/ResponseMessages.php:114
 msgid "Conflict"
 msgstr "Konflikt"
 
-#: app/component/Http/ResponseMessages.php:115
+#: src/component/Http/ResponseMessages.php:115
 msgid "Too many concurrent requests for a single file."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:118
+#: src/component/Http/ResponseMessages.php:118
 msgid "Gone"
 msgstr "Zniknął (usunięto)"
 
-#: app/component/Http/ResponseMessages.php:119
+#: src/component/Http/ResponseMessages.php:119
 msgid "The file used to be in this position, but is there no longer."
 msgstr ""
 "Zażądany zasób nie jest dłużej dostępny i nie znany jest jego ewentualny "
 "nowy adres URI."
 
-#: app/component/Http/ResponseMessages.php:122
+#: src/component/Http/ResponseMessages.php:122
 msgid "Length Required"
 msgstr "Wymagana długość"
 
-#: app/component/Http/ResponseMessages.php:123
+#: src/component/Http/ResponseMessages.php:123
 msgid "The request is missing its Content-Length header."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:126
+#: src/component/Http/ResponseMessages.php:126
 msgid "Precondition Failed"
 msgstr "Warunek wstępny nie może być spełniony"
 
-#: app/component/Http/ResponseMessages.php:127
+#: src/component/Http/ResponseMessages.php:127
 msgid ""
 "A certain configuration is required for this file to be delivered, but the "
 "client has not set this up."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:130
+#: src/component/Http/ResponseMessages.php:130
 msgid "Request Entity Too Large"
 msgstr "Encja zapytania zbyt długa"
 
-#: app/component/Http/ResponseMessages.php:131
+#: src/component/Http/ResponseMessages.php:131
 msgid "The requested file was too big to process."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:134
+#: src/component/Http/ResponseMessages.php:134
 msgid "Request-URI Too Large"
 msgstr "Adres URI zapytania zbyt długi"
 
-#: app/component/Http/ResponseMessages.php:135
+#: src/component/Http/ResponseMessages.php:135
 msgid "The address you entered was overly long for the server."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:138
+#: src/component/Http/ResponseMessages.php:138
 msgid "Unsupported Media Type"
 msgstr "Nieznany sposób żądania"
 
-#: app/component/Http/ResponseMessages.php:139
+#: src/component/Http/ResponseMessages.php:139
 msgid "The filetype of the request is unsupported."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:142
+#: src/component/Http/ResponseMessages.php:142
 msgid "Internal Server Error"
 msgstr "Wewnętrzny błąd serwera"
 
-#: app/component/Http/ResponseMessages.php:143
+#: src/component/Http/ResponseMessages.php:143
 msgid ""
 "The server encountered an unexpected condition which prevented it from "
 "fulfilling the request."
@@ -352,410 +352,433 @@ msgstr ""
 "Serwer napotkał niespodziewane trudności, które uniemożliwiły zrealizowanie "
 "żądania."
 
-#: app/component/Http/ResponseMessages.php:146
+#: src/component/Http/ResponseMessages.php:146
 msgid "Not Implemented"
 msgstr "Nie zaimplementowano"
 
-#: app/component/Http/ResponseMessages.php:147
+#: src/component/Http/ResponseMessages.php:147
 msgid "The server does not support the facility required."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:150
+#: src/component/Http/ResponseMessages.php:150
 msgid "Bad Gateway"
 msgstr "Błąd bramy"
 
-#: app/component/Http/ResponseMessages.php:151
+#: src/component/Http/ResponseMessages.php:151
 msgid "The server you're trying to reach is sending back errors."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:154
-#: app/component/Http/ResponseMessages.php:167
+#: src/component/Http/ResponseMessages.php:154
+#: src/component/Http/ResponseMessages.php:167
 msgid "Service Unavailable"
 msgstr "Usługa niedostępna"
 
-#: app/component/Http/ResponseMessages.php:155
-#: app/component/Http/ResponseMessages.php:168
+#: src/component/Http/ResponseMessages.php:155
+#: src/component/Http/ResponseMessages.php:168
 msgid "The service or file that is being requested is not currently available."
 msgstr ""
 "Serwer nie jest w stanie w danej chwili zrealizować zapytania klienta ze "
 "względu na przeciążenie."
 
-#: app/component/Http/ResponseMessages.php:158
+#: src/component/Http/ResponseMessages.php:158
 msgid "Gateway Time-out"
 msgstr "Przekroczony czas bramy"
 
-#: app/component/Http/ResponseMessages.php:159
+#: src/component/Http/ResponseMessages.php:159
 msgid ""
 "The gateway has timed out. Like the 408 timeout error, but this one occurs "
 "at the gateway of the server."
 msgstr ""
 
-#: app/component/Http/ResponseMessages.php:162
+#: src/component/Http/ResponseMessages.php:162
 msgid "HTTP Version not supported"
 msgstr "Nieobsługiwana wersja HTTP"
 
-#: app/component/Http/ResponseMessages.php:163
+#: src/component/Http/ResponseMessages.php:163
 msgid "The HTTP protocol you are asking for is not supported."
 msgstr ""
 
-#: app/module/Pages/Roll/Admin/View.php:20 app/module/Pages/menu.php:17
-#: app/module/Pages/menu.php:18
-msgid "Pages list"
-msgstr "Lista stron"
-
-#: app/module/Pages/menu.php:7 app/module/Pages/menu.php:8
-msgid "Pages"
-msgstr "Strony"
-
-#: app/module/Pages/menu.php:27 app/module/Pages/menu.php:28
-#: app/module/Pages/One/Admin/AddView.php:20
-msgid "Add page"
-msgstr "Dodaj stronę"
-
-#: app/module/Pages/One/Admin/DelForm.php:25
-msgid "Page ID is not valid"
-msgstr "Adres email jest niepoprawny"
-
-#: app/module/Pages/One/Admin/FormCheck.php:38
-#: app/module/Articles/One/Admin/FormCheck.php:46
-#: app/module/Categories/One/Admin/FormCheck.php:41
-#: app/module/Albums/One/Admin/FormCheck.php:44
-#: app/module/Galleries/One/Admin/FormCheck.php:33
-msgid "Title is too short. Min is 3 characters"
-msgstr "Tytuł jest zbyt krótki. Minimalnie 3 znaki"
-
-#: app/module/Pages/One/Admin/FormCheck.php:39
-#: app/module/Articles/One/Admin/FormCheck.php:47
-#: app/module/Categories/One/Admin/FormCheck.php:42
-#: app/module/Albums/One/Admin/FormCheck.php:45
-#: app/module/Galleries/One/Admin/FormCheck.php:34
-msgid "Title is too long. Max is 255 characters"
-msgstr "Tytuł jest zbyt długi. Maksymalnie 255 znaków"
-
-#: app/module/Pages/One/Admin/FormCheck.php:42
-#: app/module/Articles/One/Admin/FormCheck.php:50
-#: app/module/Categories/One/Admin/FormCheck.php:45
-#: app/module/Albums/One/Admin/FormCheck.php:48
-#: app/module/Galleries/One/Admin/FormCheck.php:37
-msgid "The title does not be empty! Min 3 characters"
-msgstr "Tytuł nie może być pusty! Minimalnie 3 znaki"
-
-#: app/module/Pages/One/Admin/FormCheck.php:45
-#: app/module/Articles/One/Admin/FormCheck.php:53
-#: app/module/Categories/One/Admin/FormCheck.php:48
-msgid "Description is too long. Max is 255 characters"
-msgstr "Opis jest zbyt długo. Maksymalnie 255 znaków"
-
-#: app/module/Pages/One/Admin/FormCheck.php:48
-#: app/module/Articles/One/Admin/FormCheck.php:56
-#: app/module/Categories/One/Admin/FormCheck.php:52
-msgid "Keywords is too long. Max is 255 characters"
-msgstr "Znaki kluczowe są zbyt długie. Maksymalnie 255 znaków"
-
-#: app/module/Pages/One/Admin/FormCheck.php:51
-#: app/module/Articles/One/Admin/FormCheck.php:69
-#: app/module/Categories/One/Admin/FormCheck.php:59
-#: app/module/Albums/One/Admin/FormCheck.php:61
-msgid "URL is too long. Max is 255 characters"
-msgstr "URL jest zbyt długo. Maksymalnie 255 znaków"
-
-#: app/module/Pages/One/Admin/DelView.php:18
-msgid "Delete page"
-msgstr "Usuń stronę"
-
-#: app/module/Pages/One/Admin/EditView.php:20
-msgid "Edit page"
-msgstr "Edytuj stronę"
-
-#: app/module/Plugins/Roll/Admin/View.php:20 app/module/Plugins/menu.php:17
-#: app/module/Plugins/menu.php:18
-msgid "Plugins list"
-msgstr "Lista wtyczek"
-
-#: app/module/Plugins/menu.php:7 app/module/Plugins/menu.php:8
-msgid "Plugins"
-msgstr "Wtyczki"
-
-#: app/module/Koxy/menu.php:7 app/module/Koxy/menu.php:8
-msgid "Koxy"
-msgstr "Koksy"
-
-#: app/module/Koxy/menu.php:17 app/module/Koxy/menu.php:18
-msgid "Koxy list"
-msgstr "Lista koksów"
-
-#: app/module/Koxy/menu.php:27 app/module/Koxy/menu.php:28
-msgid "Add kox"
-msgstr "Dodaj koksa"
-
-#: app/module/Articles/Roll/Admin/View.php:20 app/module/Articles/menu.php:17
-#: app/module/Articles/menu.php:18
-msgid "Articles list"
-msgstr "Lista artykułów"
-
-#: app/module/Articles/menu.php:7 app/module/Articles/menu.php:8
+#: src/module/Articles/menu.php:7 src/module/Articles/menu.php:8
 msgid "Articles"
 msgstr "Artykuły"
 
-#: app/module/Articles/menu.php:27 app/module/Articles/menu.php:28
-#: app/module/Articles/One/Admin/AddView.php:21
+#: src/module/Articles/menu.php:17 src/module/Articles/menu.php:18
+#: src/module/Articles/Roll/Admin/View.php:20
+msgid "Articles list"
+msgstr "Lista artykułów"
+
+#: src/module/Articles/menu.php:27 src/module/Articles/menu.php:28
+#: src/module/Articles/One/Admin/AddView.php:21
 msgid "Add article"
 msgstr "Dodaj artykuł"
 
-#: app/module/Articles/menu.php:38 app/module/Articles/menu.php:39
-#: app/module/Albums/menu.php:38 app/module/Albums/menu.php:39
+#: src/module/Articles/menu.php:38 src/module/Articles/menu.php:39
+#: src/module/Albums/menu.php:38 src/module/Albums/menu.php:39
 msgid "Categories"
 msgstr "Kategorie"
 
-#: app/module/Articles/menu.php:48 app/module/Articles/menu.php:49
-#: app/module/Albums/menu.php:48 app/module/Albums/menu.php:49
+#: src/module/Articles/menu.php:48 src/module/Articles/menu.php:49
+#: src/module/Albums/menu.php:48 src/module/Albums/menu.php:49
 msgid "Categories list"
 msgstr "Lista kategorii"
 
-#: app/module/Articles/menu.php:58 app/module/Articles/menu.php:59
-#: app/module/Articles/Category/One/Admin/AddView.php:13
-#: app/module/Albums/menu.php:58 app/module/Albums/menu.php:59
-#: app/module/Albums/Category/One/Admin/AddView.php:13
+#: src/module/Articles/menu.php:58 src/module/Articles/menu.php:59
+#: src/module/Articles/Category/One/Admin/AddView.php:13
+#: src/module/Albums/menu.php:58 src/module/Albums/menu.php:59
+#: src/module/Albums/Category/One/Admin/AddView.php:13
 msgid "Add category"
 msgstr "Dodaj kategorię"
 
-#: app/module/Articles/One/Admin/DelForm.php:26
-msgid "Article ID is not valid"
-msgstr "Identyfikator artykułu jest niepoprawny"
+#: src/module/Articles/One/Admin/FormCheck.php:48
+#: src/module/Categories/One/Admin/FormCheck.php:41
+#: src/module/Pages/One/Admin/FormCheck.php:38
+#: src/module/Galleries/One/Admin/FormCheck.php:33
+#: src/module/Albums/One/Admin/FormCheck.php:44
+msgid "Title is too short. Min is 3 characters"
+msgstr "Tytuł jest zbyt krótki. Minimalnie 3 znaki"
 
-#: app/module/Articles/One/Admin/FormCheck.php:59
-#: app/module/Albums/One/Admin/FormCheck.php:51
+#: src/module/Articles/One/Admin/FormCheck.php:49
+#: src/module/Categories/One/Admin/FormCheck.php:42
+#: src/module/Pages/One/Admin/FormCheck.php:39
+#: src/module/Galleries/One/Admin/FormCheck.php:34
+#: src/module/Albums/One/Admin/FormCheck.php:45
+msgid "Title is too long. Max is 255 characters"
+msgstr "Tytuł jest zbyt długi. Maksymalnie 255 znaków"
+
+#: src/module/Articles/One/Admin/FormCheck.php:52
+#: src/module/Categories/One/Admin/FormCheck.php:45
+#: src/module/Pages/One/Admin/FormCheck.php:42
+#: src/module/Galleries/One/Admin/FormCheck.php:37
+#: src/module/Albums/One/Admin/FormCheck.php:48
+msgid "The title does not be empty! Min 3 characters"
+msgstr "Tytuł nie może być pusty! Minimalnie 3 znaki"
+
+#: src/module/Articles/One/Admin/FormCheck.php:55
+#: src/module/Categories/One/Admin/FormCheck.php:48
+#: src/module/Pages/One/Admin/FormCheck.php:45
+msgid "Description is too long. Max is 255 characters"
+msgstr "Opis jest zbyt długo. Maksymalnie 255 znaków"
+
+#: src/module/Articles/One/Admin/FormCheck.php:58
+#: src/module/Categories/One/Admin/FormCheck.php:52
+#: src/module/Pages/One/Admin/FormCheck.php:48
+msgid "Keywords is too long. Max is 255 characters"
+msgstr "Znaki kluczowe są zbyt długie. Maksymalnie 255 znaków"
+
+#: src/module/Articles/One/Admin/FormCheck.php:61
+#: src/module/Albums/One/Admin/FormCheck.php:51
 msgid "Author is too long. Max is 64 characters"
 msgstr "Autor jest zbyt długo. Maksymalnie 64 znaki"
 
-#: app/module/Articles/One/Admin/FormCheck.php:62
-#: app/module/Albums/One/Admin/FormCheck.php:54
+#: src/module/Articles/One/Admin/FormCheck.php:64
+#: src/module/Albums/One/Admin/FormCheck.php:54
 msgid "Date is invalid. Require date in Y-m-d H:i:s format"
 msgstr "Data jest niepoprawna. Wymagana data w formacie R-m-d G:m:s"
 
-#: app/module/Articles/One/Admin/FormCheck.php:66
-#: app/module/Albums/One/Admin/FormCheck.php:58
+#: src/module/Articles/One/Admin/FormCheck.php:68
+#: src/module/Albums/One/Admin/FormCheck.php:58
 msgid "Category ID must be integer"
 msgstr "Identyfikator kategorii musi być liczbą"
 
-#: app/module/Articles/One/Admin/FormCheck.php:72
-#: app/module/Albums/One/Admin/FormCheck.php:67
+#: src/module/Articles/One/Admin/FormCheck.php:71
+#: src/module/Categories/One/Admin/FormCheck.php:59
+#: src/module/Pages/One/Admin/FormCheck.php:51
+#: src/module/Albums/One/Admin/FormCheck.php:61
+msgid "URL is too long. Max is 255 characters"
+msgstr "URL jest zbyt długo. Maksymalnie 255 znaków"
+
+#: src/module/Articles/One/Admin/FormCheck.php:74
+#: src/module/Albums/One/Admin/FormCheck.php:67
 msgid "Thumb is too long. Max is 255 characters"
 msgstr "Miniatura jest za długa. Maksymalnie 255 znaków"
 
-#: app/module/Articles/One/Admin/FormCheck.php:75
-#: app/module/Albums/One/Admin/FormCheck.php:73
+#: src/module/Articles/One/Admin/FormCheck.php:77
+#: src/module/Albums/One/Admin/FormCheck.php:73
 msgid "Album is too long. Max is 255 characters"
 msgstr "Album jest za dłguo. Maksymalnie 255 znaków"
 
-#: app/module/Articles/One/Admin/DelView.php:21
-msgid "Delete article"
-msgstr "Usuń artykuł"
-
-#: app/module/Articles/One/Admin/EditView.php:21
+#: src/module/Articles/One/Admin/EditView.php:21
 msgid "Edit article"
 msgstr "Edycja artykułu"
 
-#: app/module/Articles/Category/Roll/Admin/View.php:18
-#: app/module/Albums/Category/Roll/Admin/View.php:25
-msgid "Category list"
-msgstr "Lista kategorii"
+#: src/module/Articles/One/Admin/DelView.php:21
+msgid "Delete article"
+msgstr "Usuń artykuł"
 
-#: app/module/Articles/Category/One/View.php:33
-#: app/module/Albums/Roll/View.php:34
-#: app/module/Albums/Category/One/View.php:32 app/module/Index/View.php:26
+#: src/module/Articles/One/Admin/DelForm.php:25
+msgid "Article ID is not valid"
+msgstr "Identyfikator artykułu jest niepoprawny"
+
+#: src/module/Articles/Category/One/Admin/EditView.php:13
+#: src/module/Albums/Category/One/Admin/EditView.php:13
+msgid "Edit category"
+msgstr "Edycja kategorii"
+
+#: src/module/Articles/Category/One/Admin/DelView.php:18
+#: src/module/Albums/Category/One/Admin/DelView.php:18
+msgid "Delete category"
+msgstr "Usuwanie kategorii"
+
+#: src/module/Articles/Category/One/View.php:33 src/module/Index/View.php:26
+#: src/module/Albums/Roll/View.php:34
+#: src/module/Albums/Category/One/View.php:32
 #, php-format
 msgid "Page %1$s of %2$s"
 msgstr "Strona %1$s z %2$s"
 
-#: app/module/Articles/Category/One/View.php:52
+#: src/module/Articles/Category/One/View.php:52
 msgid "Articles from category"
 msgstr "Artykuły z kategorii"
 
-#: app/module/Articles/Category/One/Admin/DelView.php:18
-#: app/module/Albums/Category/One/Admin/DelView.php:18
-msgid "Delete category"
-msgstr "Usuwanie kategorii"
+#: src/module/Articles/Category/Roll/Admin/View.php:18
+#: src/module/Albums/Category/Roll/Admin/View.php:25
+msgid "Category list"
+msgstr "Lista kategorii"
 
-#: app/module/Articles/Category/One/Admin/EditView.php:13
-#: app/module/Albums/Category/One/Admin/EditView.php:13
-msgid "Edit category"
-msgstr "Edycja kategorii"
+#: src/module/Appearance/menu.php:7 src/module/Appearance/menu.php:8
+msgid "Appearance"
+msgstr "Wygląd"
 
-#: app/module/Categories/One/Admin/DelForm.php:25
-msgid "Category ID is not valid"
-msgstr "Identyfikator kategorii jest niepoprawny"
+#: src/module/Appearance/menu.php:17 src/module/Appearance/menu.php:18
+#: src/module/Appearance/Roll/Admin/View.php:20
+msgid "Themes list"
+msgstr "Lista szablonów"
 
-#: app/module/Categories/One/Admin/FormCheck.php:51
-msgid "Keywords is too short. Min is 3 characters"
-msgstr "Słowa kluczowe są za krótkie. Minimum 3 znaki"
+#: src/module/Appearance/menu.php:27 src/module/Appearance/menu.php:28
+msgid "Editor"
+msgstr "Edytor"
 
-#: app/module/Categories/One/Admin/FormCheck.php:55
-msgid "Type is too long. Max is 255 characters"
-msgstr "Typ jest zbyt długi. Maksymalnie 255 znaków"
+#: src/module/Appearance/One/Admin/EditorView.php:11
+msgid "Theme editor"
+msgstr "Edytor szablonu"
 
-#: app/module/Albums/Roll/View.php:29 app/module/Albums/menu.php:7
-#: app/module/Albums/menu.php:8
-msgid "Albums"
-msgstr "Albumy"
-
-#: app/module/Albums/Roll/Admin/View.php:20 app/module/Albums/menu.php:17
-#: app/module/Albums/menu.php:18
-msgid "Albums list"
-msgstr "Lista albumów"
-
-#: app/module/Albums/menu.php:27 app/module/Albums/menu.php:28
-#: app/module/Albums/One/Admin/AddView.php:21
-msgid "Add album"
-msgstr "Dodaj album"
-
-#: app/module/Albums/One/Admin/DelForm.php:25
-msgid "Album ID is not valid"
-msgstr "Identyfikator albumu jest niepoprawny"
-
-#: app/module/Albums/One/Admin/FormCheck.php:64
-msgid "The thumb address does not be empty! Min 3 characters"
-msgstr "Adres miniatury nie może być pusty! Minimum 3 znaki"
-
-#: app/module/Albums/One/Admin/FormCheck.php:70
-msgid "The album address does not be empty! Min 3 characters"
-msgstr "Adres albumu nie może być pusty! Minimum 3 znaki"
-
-#: app/module/Albums/One/Admin/DelView.php:21
-msgid "Delete album"
-msgstr "Usuń album"
-
-#: app/module/Albums/One/Admin/EditView.php:21
-msgid "Edit album"
-msgstr "Edycja albumu"
-
-#: app/module/Albums/Category/One/View.php:51
-msgid "Albums from category"
-msgstr "Albumy z kategorii"
-
-#: app/module/Galleries/Roll/Admin/View.php:20
-#: app/module/Galleries/menu.php:17 app/module/Galleries/menu.php:18
-msgid "Galleries list"
-msgstr "Lista galerii"
-
-#: app/module/Galleries/menu.php:7 app/module/Galleries/menu.php:8
-msgid "Galleries"
-msgstr "Galerie"
-
-#: app/module/Galleries/menu.php:27 app/module/Galleries/menu.php:28
-msgid "Add gallery"
-msgstr "Dodaj galerię"
-
-#: app/module/Galleries/One/Admin/FormCheck.php:40
-msgid "The thumb width must be integer"
-msgstr "Szerokość miniatury musi być liczbą"
-
-#: app/module/Galleries/One/Admin/FormCheck.php:43
-msgid "The thumb height must be integer"
-msgstr "Wysokość miniatury musi być liczbą"
-
-#: app/module/Galleries/One/Admin/EditView.php:21
-msgid "Edit gallery"
-msgstr "Edytuj galerię"
-
-#: app/module/Modules/Roll/Admin/View.php:20 app/module/Modules/menu.php:17
-#: app/module/Modules/menu.php:18
-msgid "Modules list"
-msgstr "Lista modułów"
-
-#: app/module/Modules/menu.php:7 app/module/Modules/menu.php:8
+#: src/module/Modules/menu.php:7 src/module/Modules/menu.php:8
 msgid "Modules"
 msgstr "Moduły"
 
-#: app/module/Users/Roll/Admin/View.php:20 app/module/Users/menu.php:17
-#: app/module/Users/menu.php:18
-msgid "Users list"
-msgstr "Lista użytkowników"
+#: src/module/Modules/menu.php:17 src/module/Modules/menu.php:18
+#: src/module/Modules/Roll/Admin/View.php:20
+msgid "Modules list"
+msgstr "Lista modułów"
 
-#: app/module/Users/menu.php:7 app/module/Users/menu.php:8
-msgid "Users"
-msgstr "Użytkownicy"
+#: src/module/Categories/One/Admin/FormCheck.php:51
+msgid "Keywords is too short. Min is 3 characters"
+msgstr "Słowa kluczowe są za krótkie. Minimum 3 znaki"
 
-#: app/module/Users/menu.php:27 app/module/Users/menu.php:28
-msgid "Add user"
-msgstr "Dodaj użytkownika"
+#: src/module/Categories/One/Admin/FormCheck.php:55
+msgid "Type is too long. Max is 255 characters"
+msgstr "Typ jest zbyt długi. Maksymalnie 255 znaków"
 
-#: app/module/Users/menu.php:38 app/module/Users/menu.php:39
-msgid "User"
-msgstr "Użytkownik"
+#: src/module/Categories/One/Admin/DelForm.php:25
+msgid "Category ID is not valid"
+msgstr "Identyfikator kategorii jest niepoprawny"
 
-#: app/module/Users/menu.php:48 app/module/Users/menu.php:49
-#: app/module/Users/One/Admin/Profile/View.php:11
-msgid "Profile"
-msgstr "Profil"
-
-#: app/module/Users/menu.php:59 app/module/Users/menu.php:60
-msgid "Logout"
-msgstr "Wyloguj"
-
-#: app/module/Users/One/Login/View.php:40
-msgid "logged in"
-msgstr "zalogowano"
-
-#: app/module/Users/One/Login/View.php:45
-msgid "email not valid"
-msgstr "adres email jest niepoprawny"
-
-#: app/module/Users/One/Login/View.php:50
-msgid "password not valid"
-msgstr "hasło jest nie poprawne"
-
-#: app/module/Users/One/Login/View.php:60
-msgid "email or password incorect"
-msgstr "adres email lub hasło są nieprawidłowe"
-
-#: app/module/Users/One/Login/View.php:65
-msgid "account is inactive"
-msgstr "konto jest nieaktywne"
-
-#: app/module/Users/One/Login/View.php:72
-msgid "unnamed error"
-msgstr "nieznany błąd"
-
-#: app/module/Dashboard/menu.php:7 app/module/Dashboard/menu.php:8
-#: app/module/Dashboard/View.php:11 app/framework/View/AdminView.php:98
+#: src/module/Dashboard/menu.php:7 src/module/Dashboard/menu.php:8
+#: src/module/Dashboard/View.php:11 src/framework/View/AdminView.php:98
 msgid "Dashboard"
 msgstr "Panel zarządzania"
 
-#: app/module/Dashboard/menu.php:17 app/module/Dashboard/menu.php:18
+#: src/module/Dashboard/menu.php:17 src/module/Dashboard/menu.php:18
 msgid "Overview"
 msgstr "Przegląd"
 
-#: app/module/Search/View.php:12
+#: src/module/Pages/menu.php:7 src/module/Pages/menu.php:8
+msgid "Pages"
+msgstr "Strony"
+
+#: src/module/Pages/menu.php:17 src/module/Pages/menu.php:18
+#: src/module/Pages/Roll/Admin/View.php:20
+msgid "Pages list"
+msgstr "Lista stron"
+
+#: src/module/Pages/menu.php:27 src/module/Pages/menu.php:28
+#: src/module/Pages/One/Admin/AddView.php:20
+msgid "Add page"
+msgstr "Dodaj stronę"
+
+#: src/module/Pages/One/Admin/EditView.php:20
+msgid "Edit page"
+msgstr "Edytuj stronę"
+
+#: src/module/Pages/One/Admin/DelView.php:18
+msgid "Delete page"
+msgstr "Usuń stronę"
+
+#: src/module/Pages/One/Admin/DelForm.php:25
+#: src/module/Galleries/One/Admin/DelForm.php:25
+msgid "Page ID is not valid"
+msgstr "Adres email jest niepoprawny"
+
+#: src/module/Search/View.php:12
 msgid "Search"
 msgstr "Szukaj"
 
-#: app/module/Tools/menu.php:7 app/module/Tools/menu.php:8
+#: src/module/Users/menu.php:7 src/module/Users/menu.php:8
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: src/module/Users/menu.php:17 src/module/Users/menu.php:18
+#: src/module/Users/Roll/Admin/View.php:20
+msgid "Users list"
+msgstr "Lista użytkowników"
+
+#: src/module/Users/menu.php:27 src/module/Users/menu.php:28
+msgid "Add user"
+msgstr "Dodaj użytkownika"
+
+#: src/module/Users/menu.php:38 src/module/Users/menu.php:39
+msgid "User"
+msgstr "Użytkownik"
+
+#: src/module/Users/menu.php:48 src/module/Users/menu.php:49
+#: src/module/Users/One/Admin/Profile/View.php:11
+msgid "Profile"
+msgstr "Profil"
+
+#: src/module/Users/menu.php:59 src/module/Users/menu.php:60
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: src/module/Users/One/Login/View.php:40
+msgid "logged in"
+msgstr "zalogowano"
+
+#: src/module/Users/One/Login/View.php:45
+msgid "email not valid"
+msgstr "adres email jest niepoprawny"
+
+#: src/module/Users/One/Login/View.php:50
+msgid "password not valid"
+msgstr "hasło jest nie poprawne"
+
+#: src/module/Users/One/Login/View.php:60
+msgid "email or password incorect"
+msgstr "adres email lub hasło są nieprawidłowe"
+
+#: src/module/Users/One/Login/View.php:65
+msgid "account is inactive"
+msgstr "konto jest nieaktywne"
+
+#: src/module/Users/One/Login/View.php:72
+msgid "unnamed error"
+msgstr "nieznany błąd"
+
+#: src/module/Galleries/menu.php:7 src/module/Galleries/menu.php:8
+msgid "Galleries"
+msgstr "Galerie"
+
+#: src/module/Galleries/menu.php:17 src/module/Galleries/menu.php:18
+#: src/module/Galleries/Roll/Admin/View.php:20
+msgid "Galleries list"
+msgstr "Lista galerii"
+
+#: src/module/Galleries/menu.php:27 src/module/Galleries/menu.php:28
+#: src/module/Galleries/One/Admin/AddView.php:18
+msgid "Add gallery"
+msgstr "Dodaj galerię"
+
+#: src/module/Galleries/One/Admin/FormCheck.php:40
+msgid "The thumb width must be integer"
+msgstr "Szerokość miniatury musi być liczbą"
+
+#: src/module/Galleries/One/Admin/FormCheck.php:43
+msgid "The thumb height must be integer"
+msgstr "Wysokość miniatury musi być liczbą"
+
+#: src/module/Galleries/One/Admin/EditView.php:21
+msgid "Edit gallery"
+msgstr "Edytuj galerię"
+
+#: src/module/Galleries/One/Admin/DelView.php:18
+msgid "Delete gallery"
+msgstr "Usuwanie galerii"
+
+#: src/module/Plugins/menu.php:7 src/module/Plugins/menu.php:8
+msgid "Plugins"
+msgstr "Wtyczki"
+
+#: src/module/Plugins/menu.php:17 src/module/Plugins/menu.php:18
+#: src/module/Plugins/Roll/Admin/View.php:20
+msgid "Plugins list"
+msgstr "Lista wtyczek"
+
+#: src/module/Albums/menu.php:7 src/module/Albums/menu.php:8
+#: src/module/Albums/Roll/View.php:29
+msgid "Albums"
+msgstr "Albumy"
+
+#: src/module/Albums/menu.php:17 src/module/Albums/menu.php:18
+#: src/module/Albums/Roll/Admin/View.php:20
+msgid "Albums list"
+msgstr "Lista albumów"
+
+#: src/module/Albums/menu.php:27 src/module/Albums/menu.php:28
+#: src/module/Albums/One/Admin/AddView.php:21
+msgid "Add album"
+msgstr "Dodaj album"
+
+#: src/module/Albums/One/Admin/FormCheck.php:64
+msgid "The thumb address does not be empty! Min 3 characters"
+msgstr "Adres miniatury nie może być pusty! Minimum 3 znaki"
+
+#: src/module/Albums/One/Admin/FormCheck.php:70
+msgid "The album address does not be empty! Min 3 characters"
+msgstr "Adres albumu nie może być pusty! Minimum 3 znaki"
+
+#: src/module/Albums/One/Admin/EditView.php:21
+msgid "Edit album"
+msgstr "Edycja albumu"
+
+#: src/module/Albums/One/Admin/DelView.php:21
+msgid "Delete album"
+msgstr "Usuń album"
+
+#: src/module/Albums/One/Admin/DelForm.php:25
+msgid "Album ID is not valid"
+msgstr "Identyfikator albumu jest niepoprawny"
+
+#: src/module/Albums/Category/One/View.php:51
+msgid "Albums from category"
+msgstr "Albumy z kategorii"
+
+#: src/module/Tools/menu.php:7 src/module/Tools/menu.php:8
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: app/module/Tools/menu.php:18 app/module/Tools/menu.php:19
-#: app/module/Tools/Admin/One/DatabaseDump/View.php:17
+#: src/module/Tools/menu.php:18 src/module/Tools/menu.php:19
+#: src/module/Tools/Admin/One/DatabaseDump/View.php:17
 msgid "Database dump"
 msgstr "Zrzut bazy"
 
-#: app/module/Tools/Admin/Roll/View.php:20
+#: src/module/Tools/Admin/Roll/View.php:20
 msgid "Tools list"
 msgstr "Lista narzędzi"
 
-#: app/framework/View/AdminView.php:214
+#: src/module/Koxy/menu.php:7 src/module/Koxy/menu.php:8
+msgid "Koxy"
+msgstr "Koksy"
+
+#: src/module/Koxy/menu.php:17 src/module/Koxy/menu.php:18
+msgid "Koxy list"
+msgstr "Lista koksów"
+
+#: src/module/Koxy/menu.php:27 src/module/Koxy/menu.php:28
+msgid "Add kox"
+msgstr "Dodaj koksa"
+
+#: src/framework/View/AdminView.php:214
 msgid "Warning"
 msgstr "Uwaga"
 
-#: app/framework/View/AdminView.php:217
+#: src/framework/View/AdminView.php:217
 msgid "Success"
 msgstr "Udało się"
 
-#: app/framework/View/AdminView.php:220
+#: src/framework/View/AdminView.php:220
 msgid "Info"
 msgstr "Informacja"
 
-#: app/framework/View/AdminView.php:225
+#: src/framework/View/AdminView.php:225
 msgid "Error"
 msgstr "Błąd"
 
