@@ -2,8 +2,16 @@
 
 namespace Rudolf\Component\Html;
 
-class Theme
+abstract class Theme
 {
+    const VERSION = '0.1.0';
+
+    const NAME = 'undefined';
+
+    const DESCRIPTION = 'null';
+
+    const AUTHOR = 'user@host';
+
     public function __construct($view)
     {
         $this->view = $view;

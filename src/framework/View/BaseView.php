@@ -130,7 +130,7 @@ abstract class BaseView
         $file = $this->themeRoot.'/theme.php';
 
         if (is_file($file)) {
-            include $file;
+            include_once $file;
             $class = str_replace('-', '_', $this->themeName);
             $this->theme = new $class($this);
         }
