@@ -22,9 +22,9 @@ class View extends FrontView
     /**
      * @param array $data
      * @param Pagination $pagination
-     * @param bool $info
+     * @param array $info
      */
-    public function setData(array $data, Pagination $pagination, $info = false)
+    public function setData(array $data, Pagination $pagination, $info = [])
     {
         $path = '/foto/kategorie/'.$info['slug'];
         $this->loop = new Loop(

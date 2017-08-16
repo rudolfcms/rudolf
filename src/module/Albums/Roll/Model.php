@@ -7,7 +7,7 @@ use Rudolf\Modules\Albums;
 class Model extends Albums\Model
 {
     /**
-     * @var string
+     * @var array|string
      */
     private $where;
 
@@ -18,7 +18,7 @@ class Model extends Albums\Model
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array|bool
+     * @return array
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
@@ -31,11 +31,7 @@ class Model extends Albums\Model
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        if (!empty($results)) {
-            return $results;
-        }
-
-        return false;
+        return $results;
     }
 
     /**

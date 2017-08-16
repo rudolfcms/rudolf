@@ -38,15 +38,15 @@ class Model extends AdminModel
      * @param int $limit
      * @param int $onPage
      *
-     * @return array|bool
+     * @return array
      */
     public function getList($limit, $onPage)
     {
-        if (empty($this->themes)) {
-            return false;
-        }
-
         $array = [];
+
+        if (empty($this->themes)) {
+            return $array;
+        }
 
         $i = 1;
         foreach ($this->themes as $key => $value) {

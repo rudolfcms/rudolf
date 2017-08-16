@@ -7,7 +7,7 @@ use Rudolf\Framework\View\AdminView;
 class DelView extends AdminView
 {
     /**
-     * @var array
+     * @var Category
      */
     protected $category;
 

@@ -28,11 +28,15 @@ class AdminModel extends BaseModel
     }
 
     /**
-     * @return MenuItemCollection
+     * @return MenuItemCollection|bool
      */
     public function getMenuItems()
     {
         $modules = (new ModulesManager(MODULES_ROOT))->getCollection()->getActive();
+
+        if (empty($modules)) {
+            return false;
+        }
 
         $collection = new MenuItemCollection();
 

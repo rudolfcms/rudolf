@@ -365,6 +365,8 @@ class Navigation
         $parent = $root_id;
         $parent_stack = array();
 
+        $html = [];
+
         $html[] = $before['root_ul'];
 
         // HTML wrapper for the menu (open)

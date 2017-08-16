@@ -7,7 +7,7 @@ use Rudolf\Framework\View\AdminView;
 class AddView extends AdminView
 {
     /**
-     * @var string
+     * @var Category
      */
     protected $category;
 

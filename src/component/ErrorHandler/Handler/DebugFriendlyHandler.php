@@ -25,12 +25,12 @@ class DebugFriendlyHandler extends Handler implements IHandler
     private $message;
 
     /**
-     * @var string
+     * @var array
      */
     private $description;
 
     /**
-     * @var string
+     * @var array
      */
     private $trace;
 

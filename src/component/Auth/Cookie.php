@@ -45,7 +45,7 @@ class Cookie
     }
 
     /**
-     * @return bool
+     * @return string|bool
      */
     public function getValue()
     {

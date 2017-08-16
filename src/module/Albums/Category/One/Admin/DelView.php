@@ -26,7 +26,7 @@ class DelView extends AdminView
      *
      * @param array $category
      */
-    public function delCategory($category)
+    public function delCategory(array $category)
     {
         $this->category = new Category($category);
 

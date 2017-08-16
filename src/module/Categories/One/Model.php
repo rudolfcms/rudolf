@@ -12,7 +12,7 @@ class Model extends FrontModel
      * @param string $slug
      * @param string $type
      *
-     * @return array|bool
+     * @return array
      */
     public function getCategoryInfo($slug, $type)
     {
@@ -26,10 +26,6 @@ class Model extends FrontModel
         $stmt->bindValue(':type', $type, \PDO::PARAM_STR);
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-        if (empty($results[0])) {
-            return false;
-        }
 
         return $results[0];
     }

@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Articles\Category\One\Admin;
 
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One\Admin\DelForm;
 use Rudolf\Modules\Categories\One\Admin\DelModel;
@@ -26,6 +27,10 @@ class DelController extends AdminController
         }
 
         $category = (new OneModel())->getCategoryInfoById($id);
+
+        if (!$category) {
+            throw new HttpErrorException('Category not found', 404);
+        }
 
         $view = new DelView();
         $view->delCategory($category);

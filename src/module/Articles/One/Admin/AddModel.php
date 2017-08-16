@@ -11,7 +11,7 @@ class AddModel extends AdminModel
      *
      * @param array $f
      *
-     * @return int Article ID
+     * @return int|false Article ID
      */
     public function add($f)
     {

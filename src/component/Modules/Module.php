@@ -49,7 +49,7 @@ class Module
     }
 
     /**
-     * @return mixed
+     * @return array
      * @throws \Exception
      */
     public function getConfig()

@@ -12,7 +12,7 @@ class EditorView extends AdminView
     protected $filesList;
 
     /**
-     * @var string
+     * @var array
      */
     protected $file;
 

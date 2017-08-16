@@ -92,7 +92,7 @@ class RSS2Generator
     private $ttl;
 
     /**
-     * @var string
+     * @var array
      */
     private $image;
 
@@ -102,17 +102,17 @@ class RSS2Generator
     private $rating;
 
     /**
-     * @var string
+     * @var array
      */
     private $textInput;
 
     /**
-     * @var string
+     * @var array
      */
     private $skipHours;
 
     /**
-     * @var string
+     * @var array
      */
     private $skipDays;
 
@@ -456,7 +456,7 @@ class RSS2Generator
      *
      * @link http://cyber.law.harvard.edu/rss/skipHoursDays.html#skipdays
      *
-     * @param
+     * @param array $skipDays
      */
     public function setSkipDays(array $skipDays)
     {

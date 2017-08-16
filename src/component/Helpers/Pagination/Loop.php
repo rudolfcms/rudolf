@@ -93,6 +93,9 @@ class Loop
     public function item()
     {
         $this->current += 1;
+        /**
+         * @var IItem $item
+         */
         $item = new $this->itemClassName();
         $item->setData($this->data[$this->current]);
 

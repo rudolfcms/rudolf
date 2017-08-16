@@ -24,7 +24,7 @@ class EditView extends AdminView
     /**
      * @param array $category
      */
-    public function edit($category)
+    public function edit(array $category)
     {
         $this->category = new Category($category);
 

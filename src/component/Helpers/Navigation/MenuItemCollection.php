@@ -15,7 +15,7 @@ class MenuItemCollection
      */
     public function add(MenuItem $item)
     {
-        if (null == $item->getId()) {
+        if (null === $item->getId()) {
             $item->setId(count($this->collection) + 1);
         }
 
