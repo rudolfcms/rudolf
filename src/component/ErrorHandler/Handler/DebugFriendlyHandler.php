@@ -49,8 +49,7 @@ class DebugFriendlyHandler extends Handler implements IHandler
     /**
      * Get resource.
      *
-     * @param string|array $name
-     * @param bool         $include
+     * @param array $name
      *
      * @return string
      */

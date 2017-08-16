@@ -28,7 +28,7 @@ class AddForm extends FormCheck
     {
         $status = $this->model->add($this->dataValidated);
 
-        if ($status) {
+        if (false !== $status) {
             $article = new Article($this->dataValidated);
             AlertsCollection::add(new Alert(
                 'success',

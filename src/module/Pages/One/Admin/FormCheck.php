@@ -53,7 +53,7 @@ class FormCheck extends Form
             ->checkChar('slug', $data['slug'], 0, 255, [
                     'long' => _('URL is too long. Max is 255 characters'),
                 ])
-            ->checkIsInt('parent_id', $data['parent_id']);
+            ->checkIsInt('parent_id', $data['parent_id'], true);
 
         $this->dataValidated = $data;
     }

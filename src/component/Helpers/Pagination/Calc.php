@@ -51,7 +51,7 @@ class Calc implements ICalc
     /**
      * variables needed to create a loop.
      *
-     * @var int
+     * @var double
      */
     private $forstart;
     private $forend;
@@ -115,7 +115,7 @@ class Calc implements ICalc
         }
 
         // are calculated here the necessary data to properly build a loop
-        $this->forstart = (int) $this->pageNumber - floor($this->navNum / 2);
+        $this->forstart = $this->pageNumber - floor($this->navNum / 2);
         $this->forend = $this->forstart + $this->navNum;
 
         if ($this->forstart <= 0) {
@@ -125,7 +125,7 @@ class Calc implements ICalc
         $overend = $this->allPages - $this->forend;
 
         if ($overend < 0) {
-            $this->forstart = (int) $this->forstart + $overend + 1;
+            $this->forstart = $this->forstart + $overend + 1;
         }
 
         // This line is repeated due to the fact that $ this-> forstart may have changed

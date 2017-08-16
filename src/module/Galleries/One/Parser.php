@@ -89,7 +89,7 @@ class Parser
 
         $gallery = [];
 
-        for ($i = 0; $i < count($imagesArray); ++$i) {
+        for ($i = 0; $i < $c = count($imagesArray); ++$i) {
             $gallery[] = [
                 'photo' => $webPath.'/'.$imagesArray[$i],
                 'thumb' => $this->image->resize($webPath.'/'.$imagesArray[$i], $w, $h),

@@ -29,7 +29,7 @@ class DelForm extends Form
     public function check()
     {
         $this->validator
-            ->checkIsInt('id', $this->data['id'], [
+            ->checkIsInt('id', $this->data['id'], true, [
                 'not_int' => _('Page ID is not valid'),
             ]);
 

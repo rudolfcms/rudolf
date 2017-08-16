@@ -32,23 +32,19 @@ class Model extends AbstractModel
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array|bool
+     * @return array
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        $clausule = $this->createWhereClausule($this->where);
+        $clause = $this->createWhereClausule($this->where);
 
         $stmt = $this->pdo->prepare($this->queryPart('full').
-            "WHERE $clausule ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
+            "WHERE $clause ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
 
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        if (!empty($results)) {
-            return $results;
-        }
-
-        return false;
+        return $results;
     }
 }

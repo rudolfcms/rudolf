@@ -67,7 +67,7 @@ class FormCheck extends Form
                     'invalid' => _('Date is invalid. Require date in Y-m-d H:i:s format'),
                 ])
             //->checkChar('content', $data['content'])
-            ->checkIsInt('category_ID', $data['category_ID'], [
+            ->checkIsInt('category_ID', $data['category_ID'], true, [
                     'not_int' => _('Category ID must be integer'),
                 ])
             ->checkChar('slug', $data['slug'], 0, 255, [
@@ -79,7 +79,7 @@ class FormCheck extends Form
             ->checkChar('album', $data['album'], 0, 255, [
                     'long' => _('Album is too long. Max is 255 characters'),
                 ])
-            ->checkIsInt('photos', $data['photos']);
+            ->checkIsInt('photos', $data['photos'], true);
 
         $this->dataValidated = $data;
     }

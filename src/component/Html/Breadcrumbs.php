@@ -109,7 +109,7 @@ class Breadcrumbs
         $url = null;
         $array = [];
 
-        for ($pid = 0, $i = 0; $i < count($address); ++$i) {
+        for ($pid = 0, $i = 0; $i < $c = count($address); ++$i) {
             if (isset($menu[$address[$i]][$pid]) and $pid == $menu[$address[$i]][$pid]['parent_id']) {
                 $array[$i] = array($url.'/'.$address[$i], $menu[$address[$i]][$pid]['title']);
                 $pid = $menu[$address[$i]][$pid]['id'];

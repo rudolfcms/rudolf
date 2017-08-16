@@ -39,10 +39,10 @@ class FormCheck extends Form
             ->checkEmpty('title', $data['title'], false, [
                     'empty' => _('The title does not be empty! Min 3 characters'),
                 ])
-            ->checkIsInt('thumb_width', $data['thumb_width'], [
+            ->checkIsInt('thumb_width', $data['thumb_width'], true, [
                     'not_int' => _('The thumb width must be integer'),
                 ])
-            ->checkIsInt('thumb_height', $data['thumb_height'], [
+            ->checkIsInt('thumb_height', $data['thumb_height'], true, [
                     'not_int' => _('The thumb height must be integer'),
                 ]);
 
