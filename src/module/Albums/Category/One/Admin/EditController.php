@@ -29,7 +29,7 @@ class EditController extends AdminController
 
         $category = $form->getDataToDisplay((new One\Model())->getCategoryInfoById($id));
 
-        if (!$category) {
+        if (empty($category)) {
             throw new HttpErrorException('Category not found', 404);
         }
 

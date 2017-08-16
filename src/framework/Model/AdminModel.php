@@ -34,17 +34,15 @@ class AdminModel extends BaseModel
     {
         $modules = (new ModulesManager(MODULES_ROOT))->getCollection()->getActive();
 
-        if (empty($modules)) {
-            return false;
-        }
-
         $collection = new MenuItemCollection();
 
-        foreach ($modules as $key => $value) {
-            $file = MODULES_ROOT.'/'.$value->getName().'/menu.php';
+        if (!empty($modules)) {
+            foreach ($modules as $key => $value) {
+                $file = MODULES_ROOT.'/'.$value->getName().'/menu.php';
 
-            if (is_file($file)) {
-                include $file;
+                if (is_file($file)) {
+                    include $file;
+                }
             }
         }
 

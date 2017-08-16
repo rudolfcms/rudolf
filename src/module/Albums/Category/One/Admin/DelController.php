@@ -28,7 +28,7 @@ class DelController extends AdminController
 
         $category = (new OneModel())->getCategoryInfoById($id);
 
-        if (!$category) {
+        if (empty($category)) {
             throw new HttpErrorException('Category not found', 404);
         }
 
