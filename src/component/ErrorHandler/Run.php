@@ -70,7 +70,8 @@ class Run
     public function handleShutdown()
     {
         $e = error_get_last();
-        if ($e && $this->isLevelFatal($e['type'])) {
+
+        if (!empty($e) && $this->isLevelFatal($e['type'])) {
             $this->handleError($e['type'], $e['message'], $e['file'], $e['line']);
         }
     }

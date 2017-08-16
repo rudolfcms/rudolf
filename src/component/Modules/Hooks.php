@@ -9,6 +9,11 @@ class Hooks
      */
     private $modules;
 
+    /**
+     * @var string
+     */
+    private $path;
+
     public function __construct(array $modules, $path = '/modules')
     {
         $this->modules = $modules;

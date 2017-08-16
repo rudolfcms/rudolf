@@ -43,7 +43,7 @@ class DebugFriendlyHandler extends Handler implements IHandler
         $this->description = $this->getDescription();
         $this->trace = $this->getTrace();
 
-        echo $this->getResource('templates/layout.html.php', true);
+        echo $this->includeFile('templates/layout.html.php');
     }
 
     /**
@@ -54,15 +54,8 @@ class DebugFriendlyHandler extends Handler implements IHandler
      *
      * @return string
      */
-    private function getResource($name, $include = false)
+    private function getResource($name)
     {
-        if (true === $include) {
-            ob_start();
-            include __DIR__.'/../Resources/'.$name;
-
-            return ob_get_clean();
-        }
-
         $t = [];
 
         foreach ($name as $key => $value) {
@@ -70,5 +63,20 @@ class DebugFriendlyHandler extends Handler implements IHandler
         }
 
         return implode('', $t);
+    }
+
+    /**
+     * Include template file.
+     *
+     * @param string $file
+     *
+     * @return string
+     */
+    private function includeFile($file) {
+        ob_start();
+
+        include __DIR__.'/../Resources/'.$file;
+
+        return ob_get_clean();
     }
 }

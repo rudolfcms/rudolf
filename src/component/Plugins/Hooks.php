@@ -10,6 +10,11 @@ class Hooks
     private $plugins;
 
     /**
+     * @var string
+     */
+    private $path;
+
+    /**
      * Hooks constructor.
      *
      * @param array $plugins

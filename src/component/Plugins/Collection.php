@@ -32,11 +32,13 @@ class Collection
 
     /**
      * Get active plugins.
+     *
+     * @return Plugin[]
      */
     public function getActive()
     {
         if (empty($this->collection)) {
-            return false;
+            return [];
         }
 
         foreach ($this->collection as $key => $value) {
@@ -46,7 +48,7 @@ class Collection
         }
 
         if (empty($collection)) {
-            return false;
+            return [];
         }
 
         return $collection;

@@ -12,7 +12,7 @@ class Manager
     private $path;
 
     /**
-     * @var array
+     * @var Plugin[]
      */
     private $plugins;
 
@@ -45,15 +45,16 @@ class Manager
 
     public function addRoutes(RouteCollection $collection)
     {
-        if (!$this->plugins) {
+        if (empty($this->plugins)) {
             return;
         }
+
         (new Routing($this->plugins, $collection, $this->path))->addRoutes();
     }
 
     public function addHooks()
     {
-        if (!$this->plugins) {
+        if (empty($this->plugins)) {
             return;
         }
 

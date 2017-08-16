@@ -59,7 +59,7 @@ class Navigation
      */
     public function setRootID($id)
     {
-        $this->rootID = is_numeric($id) ? $id : 0;
+        $this->rootID = (int) $id;
     }
 
     /**

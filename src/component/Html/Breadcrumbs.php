@@ -72,6 +72,9 @@ class Breadcrumbs
         return $this->classes;
     }
 
+    /**
+     * @param int $nesting
+     */
     public function setNesting($nesting)
     {
         $this->nesting = $nesting;

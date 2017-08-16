@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Albums\One;
 use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
@@ -27,8 +28,14 @@ class EditController extends AdminController
             $form->displayAlerts();
         }
 
+        $album = $form->getDataToDisplay((new One\Model())->getOneById($id));
+
+        if (empty($album)) {
+            throw new HttpErrorException('Category not found', 404);
+        }
+
         $view = new EditView();
-        $view->editAlbum($form->getDataToDisplay((new One\Model())->getOneById($id)));
+        $view->editAlbum($album);
         $view->setCategories($categoriesList);
         $view->render('admin');
     }

@@ -12,7 +12,7 @@ class Loop
     protected $data;
 
     /**
-     * @var Calc
+     * @var ICalc
      */
     protected $calc;
 

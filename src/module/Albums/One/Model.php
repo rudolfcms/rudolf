@@ -7,7 +7,7 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
-     * @var array
+     * @var bool|array
      */
     private $results;
 
@@ -74,7 +74,7 @@ class Model extends FrontModel
      *
      * @param int $id
      *
-     * @return bool|array
+     * @return array
      */
     public function getOneById($id)
     {
@@ -113,10 +113,6 @@ class Model extends FrontModel
         $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $this->results = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        if (empty($this->results)) {
-            return false;
-        }
 
         return $this->results;
     }

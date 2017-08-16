@@ -12,6 +12,26 @@ class Auth
     private $pdo;
 
     /**
+     * @var string
+     */
+    private $prefix;
+
+    /**
+     * @var array
+     */
+    private $config;
+
+    /**
+     * @var string
+     */
+    private $table;
+
+    /**
+     * @var Session
+     */
+    private $session;
+
+    /**
      * Auth constructor.
      * @param PDO $pdo
      * @param string $prefix

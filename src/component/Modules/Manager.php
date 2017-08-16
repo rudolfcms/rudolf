@@ -12,7 +12,7 @@ class Manager
     private $path;
 
     /**
-     * @var array
+     * @var Module[]
      */
     private $modules;
 

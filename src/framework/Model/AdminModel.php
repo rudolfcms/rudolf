@@ -28,7 +28,7 @@ class AdminModel extends BaseModel
     }
 
     /**
-     * @return MenuItemCollection|bool
+     * @return MenuItemCollection
      */
     public function getMenuItems()
     {

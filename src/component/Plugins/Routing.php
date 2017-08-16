@@ -17,6 +17,11 @@ class Routing
     private $plugins;
 
     /**
+     * @var string
+     */
+    private $path;
+
+    /**
      * Constructor.
      *
      * @param array $plugins

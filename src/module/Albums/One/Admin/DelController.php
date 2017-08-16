@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Albums\One\Model as OneModel;
 
@@ -24,6 +25,10 @@ class DelController extends AdminController
         }
 
         $album = (new OneModel())->getOneById($id);
+
+        if (empty($album)) {
+            throw new HttpErrorException('Category not found', 404);
+        }
 
         $view = new DelView();
         $view->delAlbum($album);

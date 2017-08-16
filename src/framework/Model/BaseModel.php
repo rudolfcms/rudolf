@@ -68,7 +68,7 @@ abstract class BaseModel
      *
      * @return int
      */
-    protected function countItems($table, $where = null)
+    protected function countItems($table, $where = [])
     {
         $table = $this->prefix.$table;
         $cachedFileName = $table.'_'.md5(json_encode($where));

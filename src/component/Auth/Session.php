@@ -182,7 +182,7 @@ class Session
      *
      * @param string|bool $hash
      *
-     * @return int $uid
+     * @return int|false $uid
      */
     public function getSessionUID($hash = false)
     {

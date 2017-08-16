@@ -7,6 +7,11 @@ use Rudolf\Component\Alerts;
 abstract class Form
 {
     /**
+     * @var Validator
+     */
+    protected $validator;
+
+    /**
      * @var array
      */
     protected $data;

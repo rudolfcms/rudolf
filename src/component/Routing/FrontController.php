@@ -51,7 +51,7 @@ class FrontController
                     $this->call(['Rudolf\\Framework\\Controller\\HttpErrorFrontController']);
                 }
             } catch (TemplateNotFoundException $e) {
-                throw new HttpErrorException('Error template not found (error 404)', 404);
+                throw new TemplateNotFoundException('Error template not found (error 404)', 404);
             }
         }
     }

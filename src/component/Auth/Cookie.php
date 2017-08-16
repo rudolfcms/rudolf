@@ -45,11 +45,11 @@ class Cookie
     }
 
     /**
-     * @return string|bool
+     * @return string
      */
     public function getValue()
     {
-        return (isset($_COOKIE[$this->name])) ? $_COOKIE[$this->name] : false;
+        return (isset($_COOKIE[$this->name])) ? $_COOKIE[$this->name] : '';
     }
 
     /**

@@ -17,6 +17,11 @@ class Routing
     private $modules;
 
     /**
+     * @var string
+     */
+    private $path;
+
+    /**
      * Constructor.
      *
      * @param array $modules

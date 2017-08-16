@@ -2,7 +2,6 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
-use Rudolf\Modules\Albums\One\Album;
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 

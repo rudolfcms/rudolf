@@ -33,12 +33,12 @@ class Collection
     /**
      * Get active modules.
      *
-     * @return bool|Module[]
+     * @return Module[]
      */
     public function getActive()
     {
         if (empty($this->collection)) {
-            return false;
+            return [];
         }
 
         foreach ($this->collection as $key => $value) {
@@ -48,7 +48,7 @@ class Collection
         }
 
         if (empty($collection)) {
-            return false;
+            return [];
         }
 
         return $collection;

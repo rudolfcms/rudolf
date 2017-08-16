@@ -99,7 +99,7 @@ class Calc implements ICalc
      */
     protected function calculationVariables()
     {
-        $this->allPages = ceil($this->total / $this->onPage); // round up quotient all elements and elements on page
+        $this->allPages = (int) ceil($this->total / $this->onPage); // round up quotient all elements and elements on page
 
         // if page number is greater than number of all elements
         if ($this->pageNumber > $this->allPages) {
@@ -115,7 +115,7 @@ class Calc implements ICalc
         }
 
         // are calculated here the necessary data to properly build a loop
-        $this->forstart = $this->pageNumber - floor($this->navNum / 2);
+        $this->forstart = (int) $this->pageNumber - floor($this->navNum / 2);
         $this->forend = $this->forstart + $this->navNum;
 
         if ($this->forstart <= 0) {
@@ -125,15 +125,15 @@ class Calc implements ICalc
         $overend = $this->allPages - $this->forend;
 
         if ($overend < 0) {
-            $this->forstart = $this->forstart + $overend + 1;
+            $this->forstart = (int) $this->forstart + $overend + 1;
         }
 
         // This line is repeated due to the fact that $ this-> forstart may have changed
         $this->forend = $this->forstart + $this->navNum;
 
         // Variables hold the numbers of the previous and next page
-        $this->prev = $this->pageNumber - 1;
-        $this->next = $this->pageNumber + 1;
+        $this->prev = (int) $this->pageNumber - 1;
+        $this->next = (int) $this->pageNumber + 1;
     }
 
     public function getTotal()

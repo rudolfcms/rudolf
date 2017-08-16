@@ -185,7 +185,7 @@ class Router
         // sprawdza dopasowanie do wzorca
         preg_match("#^$url$#", $this->getUrl(), $results);
 
-        if ($results) {
+        if (!empty($results)) {
             $this->controller = $route->getControllerName();
 
             return true;

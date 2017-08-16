@@ -2,8 +2,15 @@
 
 namespace Rudolf\Install;
 
+use PDO;
+
 class DataGenerator
 {
+    /**
+     * @var PDO
+     */
+    private $pdo;
+
     public $_tables;
     private $_fields;
 
