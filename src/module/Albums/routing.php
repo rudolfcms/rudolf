@@ -4,7 +4,7 @@ use Rudolf\Component\Routing\Route;
 
 # /foto(/page/3)
 $collection->add('album/list', new Route(
-    'foto(/page/<page>)?',
+    'foto(/|/page/<page>)?',
     'Rudolf\Modules\Albums\Roll\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]

@@ -32,11 +32,15 @@ class View extends FrontView
 
         $titleBefore = null;
 
+        $canonical = $path;
+
         if (1 !== $page) {
             $titleBefore = sprintf(_('Page %1$s of %2$s'), $page, $allPages).' &ndash; ';
+            $canonical .= '/page/'.$page;
         }
 
         $this->head->setTitle($titleBefore.$this->pageTitle);
+        $this->head->setCanonical($canonical);
 
         $this->template = 'albums';
     }
