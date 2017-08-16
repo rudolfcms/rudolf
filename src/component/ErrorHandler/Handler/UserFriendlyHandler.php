@@ -2,6 +2,7 @@
 
 namespace Rudolf\Component\ErrorHandler\Handler;
 
+use Exception;
 use Rudolf\Component\Http\ResponseMessages;
 use Rudolf\Component\Http\Response;
 
@@ -42,9 +43,7 @@ class UserFriendlyHandler extends Handler implements IHandler
      */
     public function displayDefaultMessage($code, $message, $text)
     {
-        $code = $code;
         $message = _($message);
-        $text = $text;
         $error = _('Code').' '.$code;
         $title = $error.' - '.$message;
 

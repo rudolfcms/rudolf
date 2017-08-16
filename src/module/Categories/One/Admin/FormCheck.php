@@ -7,6 +7,14 @@ use Rudolf\Component\Html\Text;
 
 class FormCheck extends Form
 {
+    /**
+     * @var array
+     */
+    protected $dataValidated;
+
+    /**
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;

@@ -7,6 +7,11 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
+     * @var array
+     */
+    private $results;
+
+    /**
      * Returns page id by path.
      *
      * @param array $path
@@ -16,6 +21,8 @@ class Model extends FrontModel
      */
     public function getPageIdByPath(array $path, array $pages)
     {
+        $array = [];
+
         // temp workaround
         foreach ($pages as $key => $value) {
             $array[$value['slug']][$value['parent_id']] = $value;
@@ -44,7 +51,7 @@ class Model extends FrontModel
      *
      * @param int $id
      *
-     * @return array
+     * @return array|bool
      */
     public function getOneById($id)
     {
@@ -75,6 +82,7 @@ class Model extends FrontModel
 
     public function addToPageUrl(array $page, array $pagesList)
     {
+        $pages = [];
         foreach ($pagesList as $key => $value) {
             $pages[$value['id']] = $value;
         }

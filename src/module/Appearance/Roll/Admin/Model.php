@@ -6,6 +6,9 @@ use Rudolf\Framework\Model\AdminModel;
 
 class Model extends AdminModel
 {
+    /**
+     * @var array
+     */
     private $themes;
 
     public function __construct()
@@ -15,21 +18,35 @@ class Model extends AdminModel
         $this->themes = $this->getThemesList();
     }
 
+    /**
+     * @return array
+     */
     private function getThemesList()
     {
         return array_diff(scandir(THEMES_ROOT.'/front'), array('.', '..'));
     }
 
+    /**
+     * @return int
+     */
     public function getTotalNumber()
     {
         return count($this->themes);
     }
 
-    public function getList()
+    /**
+     * @param int $limit
+     * @param int $onPage
+     *
+     * @return array|bool
+     */
+    public function getList($limit, $onPage)
     {
         if (empty($this->themes)) {
             return false;
         }
+
+        $array = [];
 
         $i = 1;
         foreach ($this->themes as $key => $value) {
@@ -51,6 +68,6 @@ class Model extends AdminModel
             ];
         }
 
-        return $array;
+        return array_slice($array, $limit, $onPage);
     }
 }

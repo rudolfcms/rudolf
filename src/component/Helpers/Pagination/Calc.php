@@ -166,11 +166,17 @@ class Calc implements ICalc
         return $this->navNum;
     }
 
+    /**
+     * @return int
+     */
     public function getPrev()
     {
         return $this->prev;
     }
 
+    /**
+     * @return int
+     */
     public function getNext()
     {
         return $this->next;

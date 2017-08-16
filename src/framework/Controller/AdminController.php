@@ -2,11 +2,17 @@
 
 namespace Rudolf\Framework\Controller;
 
+use Rudolf\Component\Auth\Auth;
 use Rudolf\Framework\Model\AdminModel;
 use Rudolf\Framework\View\AdminView;
 
 class AdminController extends BaseController
 {
+    /**
+     * @var Auth
+     */
+    protected $auth;
+
     public function init()
     {
         $model = new AdminModel();

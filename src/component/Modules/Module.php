@@ -4,9 +4,24 @@ namespace Rudolf\Component\Modules;
 
 class Module
 {
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var int
+     */
     private $status;
 
+    /**
+     * Module constructor.
+     *
+     * @param $name
+     * @param int $status
+     *
+     * @throws \InvalidArgumentException
+     */
     public function __construct($name, $status = 1)
     {
         $this->name = $name;
@@ -17,16 +32,26 @@ class Module
         }
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @return bool
+     */
     public function getStatus()
     {
         return (bool) $this->status;
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function getConfig()
     {
         $file = CONFIG_ROOT.'/modules/'.strtolower($this->name).'.php';

@@ -16,14 +16,6 @@ class Album extends One\Album
         return DIR.'/admin/albums/del/'.$this->id();
     }
 
-    /**
-     * Get content for textarea.
-     */
-    public function textarea()
-    {
-        return $this->content(false, false, false, true);
-    }
-
     public function addCategory()
     {
         return DIR.'/admin/albums/categories/add';

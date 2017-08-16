@@ -20,7 +20,7 @@ class DelController extends AdminController
                 $this->redirect(DIR.'/admin/albums');
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $album = (new OneModel())->getOneById($id);

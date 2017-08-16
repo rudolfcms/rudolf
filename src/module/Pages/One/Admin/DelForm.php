@@ -13,6 +13,14 @@ class DelForm extends Form
      */
     protected $model;
 
+    /**
+     * @var int
+     */
+    protected $id;
+
+    /**
+     * @param DelModel $model
+     */
     public function setModel(DelModel $model)
     {
         $this->model = $model;

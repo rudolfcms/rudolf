@@ -10,11 +10,26 @@ class EditView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Gallery
+     */
+    protected $gallery;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to edit gallery.
      *
      * @param array $gallery
      */
-    public function editGallery($gallery)
+    public function editGallery(array $gallery)
     {
         $this->gallery = new Gallery($gallery);
 

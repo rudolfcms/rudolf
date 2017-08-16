@@ -23,7 +23,7 @@ class EditController extends AdminController
                 $this->redirect(DIR.'/admin/articles/categories/edit/'.$id);
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $view = new EditView();

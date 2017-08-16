@@ -10,11 +10,26 @@ class AddView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Article
+     */
+    protected $article;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data do add article.
      *
      * @param array $article
      */
-    public function addArticle($article)
+    public function addArticle(array $article)
     {
         $this->article = new Article($article);
 

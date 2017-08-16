@@ -31,7 +31,7 @@ class RouteCollection
     {
         //!array_key_exists($name, $this->collection)
         if (!isset($this->collection[$name])) {
-            return;
+            return null;
         }
 
         return $this->collection[$name];
@@ -40,12 +40,12 @@ class RouteCollection
     /**
      * Returns all routes in this collection.
      *
-     * @return Route array An array of routes collection
+     * @return Route[]|null An array of routes collection
      */
     public function getAll()
     {
         if (empty($this->collection)) {
-            return false;
+            return null;
         }
 
         uasort($this->collection, [$this, 'cmp_obj']);
@@ -53,6 +53,12 @@ class RouteCollection
         return $this->collection;
     }
 
+    /**
+     * @param Route $a
+     * @param Route $b
+     *
+     * @return int
+     */
     public static function cmp_obj($a, $b)
     {
         $al = $a->getPriority();

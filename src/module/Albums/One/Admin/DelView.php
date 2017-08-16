@@ -10,11 +10,26 @@ class DelView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Album
+     */
+    protected $album;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to delete album.
      *
      * @param array $album
      */
-    public function delAlbum($album)
+    public function delAlbum(array $album)
     {
         $this->album = new Album($album);
 

@@ -12,6 +12,11 @@ class Gallery
     protected $gallery;
 
     /**
+     * @var array
+     */
+    protected $images;
+
+    /**
      * Constructor.
      *
      * @param array $gallery
@@ -134,6 +139,8 @@ class Gallery
 
     /**
      * Returns modifier full name.
+     *
+     * @param string $type
      *
      * @return int
      */

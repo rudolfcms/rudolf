@@ -2,15 +2,43 @@
 
 namespace Rudolf\Component\Auth;
 
+use PDO;
+
 class Session
 {
+    /**
+     * @var PDO
+     */
     private $pdo;
+
+    /**
+     * @var string
+     */
     private $prefix;
+
+    /**
+     * @var array
+     */
     private $config;
 
+    /**
+     * @var string
+     */
     private $cookieName = 'auth';
 
-    public function __construct($pdo, $prefix, $config)
+    /**
+     * @var string
+     */
+    private $table;
+
+    /**
+     * Session constructor.
+     *
+     * @param PDO $pdo
+     * @param $prefix
+     * @param array $config
+     */
+    public function __construct(PDO $pdo, $prefix, array $config)
     {
         $this->pdo = $pdo;
         $this->prefix = $prefix;
@@ -29,7 +57,7 @@ class Session
     public function createSession($user)
     {
         $ip = $this->getIP();
-        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
 
         $session['cookie_hash'] = sha1($this->config['site_key'].microtime());
         $session['hash'] = $this->cookieHash($session['cookie_hash']);
@@ -70,7 +98,7 @@ class Session
         $stmt->bindValue(':hash', $session['hash'], \PDO::PARAM_STR);
         $stmt->bindValue(':expire', $session['expire'], \PDO::PARAM_STR);
         $stmt->bindValue(':ip', $ip, \PDO::PARAM_STR);
-        $stmt->bindValue(':useragent', $useragent, \PDO::PARAM_STR);
+        $stmt->bindValue(':useragent', $userAgent, \PDO::PARAM_STR);
         $stmt->bindValue(':cookie', $session['cookie_hash'], \PDO::PARAM_STR);
 
         if (false === $stmt->execute()) {
@@ -82,8 +110,6 @@ class Session
 
     /**
      * Destroy session.
-     *
-     * @param string $hash Cookie hash
      *
      * @return bool
      */
@@ -116,7 +142,7 @@ class Session
         $ip = $this->getIP();
         $useragent = $_SERVER['HTTP_USER_AGENT'];
 
-        #check lenght
+        #check length
         if (strlen($cookie_value) !== 40) {
             return false;
         }
@@ -154,7 +180,7 @@ class Session
     /**
      * Returns the UID.
      *
-     * @param string $hash
+     * @param string|bool $hash
      *
      * @return int $uid
      */

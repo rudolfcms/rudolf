@@ -13,6 +13,8 @@ class Controller extends FrontController
      * Get albums list.
      *
      * @param int $page Page number
+     *
+     * @throws HttpErrorException
      */
     public function getList($page)
     {

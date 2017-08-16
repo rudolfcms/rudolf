@@ -22,6 +22,8 @@ class Collection
 
     /**
      * Get all plugins.
+     *
+     * @return Plugin[]
      */
     public function getAll()
     {

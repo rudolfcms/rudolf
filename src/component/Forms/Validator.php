@@ -6,13 +6,24 @@ use DateTime;
 
 class Validator
 {
+    /**
+     * @var array
+     */
     private $alerts;
+
+    /**
+     * @var array
+     */
+    private $errors;
 
     public function __construct()
     {
         $this->alerts = [];
     }
 
+    /**
+     * @return bool
+     */
     public function isErrors()
     {
         return !empty($this->alerts);
@@ -21,7 +32,7 @@ class Validator
     /**
      * Returns array with alerts.
      *
-     * @return false|array
+     * @return array
      */
     public function getAlerts()
     {
@@ -33,18 +44,18 @@ class Validator
      *
      * @param string $field      Field name
      * @param string $value      Field value
-     * @param bool   $shuldEmpty
+     * @param bool   $shouldEmpty
      * @param array  $msg        Custom messages ['empty', 'not_empty']
      *
-     * @return this
+     * @return $this
      */
-    public function checkEmpty($field, $value, $shuldEmpty = false, $msg = [])
+    public function checkEmpty($field, $value, $shouldEmpty = false, $msg = [])
     {
-        if (empty($value) and false === $shuldEmpty) {
+        if (empty($value) and false === $shouldEmpty) {
             $this->alerts[$field] = isset($msg['empty']) ? $msg['empty'] : 'Empty';
 
             $this->errors[$field] = 1;
-        } elseif (!empty($value) and true === $shuldEmpty) {
+        } elseif (!empty($value) and true === $shouldEmpty) {
             $this->alerts[$field] = isset($msg['not_empty']) ? $msg['not_empty'] : 'Not empty';
 
             $this->errors[$field] = 1;
@@ -64,7 +75,7 @@ class Validator
      * @param int    $max   Max characters in string
      * @param array  $msg   Custom messages ['short', 'long']
      *
-     * @return this
+     * @return $this
      */
     public function checkChar($field, $value, $min = 0, $max = 255, $msg = [])
     {
@@ -85,15 +96,25 @@ class Validator
         return $this;
     }
 
-    public function checkIsInt($field, $value, $shuldInt = true, $msg = [])
+    /**
+     * Check is int
+     *
+     * @param string $field
+     * @param mixed $value
+     * @param bool $shouldInt
+     * @param array $msg
+     *
+     * @return $this
+     */
+    public function checkIsInt($field, $value, $shouldInt = true, $msg = [])
     {
         $isInt = is_numeric($value);
 
-        if (false === $shuldInt and $isInt) {
+        if (false === $shouldInt and $isInt) {
             $this->alerts[$field] = isset($msg['int']) ? $msg['int'] : 'Int';
 
             $this->errors[$field] = 1;
-        } elseif (true === $shuldInt and !$isInt) {
+        } elseif (true === $shouldInt and !$isInt) {
             $this->alerts[$field] = isset($msg['not_int']) ? $msg['not_int'] : 'Not int';
 
             $this->errors[$field] = 1;
@@ -107,13 +128,13 @@ class Validator
     /**
      * Check int.
      *
-     * @param string $field Field name
-     * @param int    $field Field value
-     * @param int    $min   Min value
-     * @param int    $max   Max value
-     * @param array  $msg   Custom messages ['low', 'high']
+     * @param string    $field Field name
+     * @param int       $value Field value
+     * @param int       $min   Min value
+     * @param int|bool  $max   Max value
+     * @param array     $msg   Custom messages ['low', 'high']
      *
-     * @return this
+     * @return $this
      */
     public function checkInt($field, $value, $min = 0, $max = false, $msg = [])
     {
@@ -133,14 +154,14 @@ class Validator
     }
 
     /**
-     * Checks wheter date is valid.
+     * Checks whether data is valid.
      *
      * @param string $field  Field name
      * @param string $value  Field value
      * @param string $format Date format
      * @param array  $msg    Custom messages ['invalid']
      *
-     * @return this
+     * @return $this
      */
     public function checkDatetime($field, $value, $format = 'Y-m-d', $msg = [])
     {

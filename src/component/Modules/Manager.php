@@ -50,7 +50,7 @@ class Manager
      */
     public function addRoutes(RouteCollection $collection)
     {
-        $collection = (new Routing($this->modules, $collection, $this->path))->addRoutes();
+        (new Routing($this->modules, $collection, $this->path))->addRoutes();
     }
 
     public function addHooks()

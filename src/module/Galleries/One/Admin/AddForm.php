@@ -12,6 +12,9 @@ class AddForm extends FormCheck
      */
     protected $model;
 
+    /**
+     * @param AddModel $model
+     */
     public function setModel(AddModel $model)
     {
         $this->model = $model;

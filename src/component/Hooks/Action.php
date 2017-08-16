@@ -30,6 +30,8 @@ class Action
      *                                earlier execution, and functions with the same priority are executed in the order in
      *                                which they were added to the action.
      * @param int      $accepted_args optional. The number of arguments the function accept (default 1).
+     *
+     * @return bool
      */
     public static function add($tag, $functionToAdd, $priority = 10, $accepted_args = 1)
     {
@@ -111,7 +113,7 @@ class Action
         if (isset(Filter::$filters['all'])) {
             Filter::$currentFilter[] = $tag;
             $all_args = func_get_args();
-            self::$_call_all_hook($all_args);
+            self::_call_all_hook($all_args);
         }
 
         if (!isset(Filter::$filters[$tag])) {

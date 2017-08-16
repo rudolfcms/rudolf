@@ -9,6 +9,16 @@ use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 
 class Controller extends FrontController
 {
+    /**
+     * @var View
+     */
+    private $view;
+
+    /**
+     * @var Response
+     */
+    private $response;
+
     public function init()
     {
         $list = new ArticlesList();

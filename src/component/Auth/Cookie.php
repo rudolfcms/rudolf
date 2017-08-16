@@ -5,6 +5,26 @@ namespace Rudolf\Component\Auth;
 class Cookie
 {
     /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $value;
+
+    /**
+     * @var string
+     */
+    private $expire;
+
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
      * Constructor.
      *
      * @param string $name
@@ -24,11 +44,17 @@ class Cookie
         return setcookie($this->name, $this->value, $this->expire, $this->path);
     }
 
+    /**
+     * @return bool
+     */
     public function getValue()
     {
         return (isset($_COOKIE[$this->name])) ? $_COOKIE[$this->name] : false;
     }
 
+    /**
+     * @return bool
+     */
     public function isExist()
     {
         return (bool) (isset($_COOKIE[$this->name]));
@@ -63,7 +89,7 @@ class Cookie
     }
 
     /**
-     * @param $path
+     * @param string $path
      */
     public function setPath($path)
     {

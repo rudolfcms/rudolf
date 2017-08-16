@@ -16,19 +16,43 @@ class AdminView extends BaseView
      */
     private static $userInfo;
 
+    /**
+     * @var MenuItemCollection
+     */
     private static $menuItemsCollection;
 
+    /**
+     * @var string
+     */
     protected static $request;
+
+    /**
+     * @var array
+     */
+    private $config;
+
+    /**
+     * @var AlertsCollection
+     */
+    private $alertsCollection;
+
+    /**
+     * @var AdminFields
+     */
+    protected $adminFields;
 
     public function init()
     {
-        $module = new Module('dashboard');
-        $this->config = $module->getConfig();
+        $this->config = (new Module('dashboard'))->getConfig();
         $this->domPlugins->admin();
         $this->alertsCollection = new AlertsCollection();
         $this->adminFields = new AdminFields();
     }
 
+    /**
+     * @param MenuItemCollection $collection
+     * @param string $request
+     */
     public static function setAdminData(MenuItemCollection $collection, $request)
     {
         self::$menuItemsCollection = $collection;
@@ -43,6 +67,7 @@ class AdminView extends BaseView
      * @param array  $classes
      * @param array  $before
      * @param array  $after
+     * @param array  $config
      *
      * @return string
      */
@@ -61,6 +86,11 @@ class AdminView extends BaseView
         return $nav->create();
     }
 
+    /**
+     * @param int $nesting
+     * @param array $classes
+     * @return bool|string
+     */
     public function breadcrumb($nesting = 0, $classes = [])
     {
         $breadcrumbs = new Breadcrumbs();
@@ -72,6 +102,9 @@ class AdminView extends BaseView
         return $breadcrumbs->create($withStart = false);
     }
 
+    /**
+     * @return array
+     */
     private function getBreadcrumbElements()
     {
         $array = [];
@@ -104,11 +137,17 @@ class AdminView extends BaseView
         return $array;
     }
 
+    /**
+     * @return string
+     */
     protected function pageTitle()
     {
         return $this->pageTitle;
     }
 
+    /**
+     * @return string
+     */
     public function adminDir()
     {
         return DIR.'/'.$this->config['admin_path'];
@@ -162,7 +201,9 @@ class AdminView extends BaseView
     /**
      * Get all alerts.
      *
-     * @param array
+     * @param array $classes
+     *
+     * @return string
      */
     protected function alerts($classes = [])
     {
@@ -179,6 +220,8 @@ class AdminView extends BaseView
 
         $a = $this->alertsCollection->getAll();
 
+        $html = [];
+
         foreach ($a as $key => $alert) {
             $html[] = $this->alert($alert->getType(), $alert->getMessage(), $classes);
         }
@@ -186,6 +229,9 @@ class AdminView extends BaseView
         return implode("\n", $html);
     }
 
+    /**
+     * @return bool
+     */
     protected function isAlerts()
     {
         if ($this->alertsCollection->isAlerts()) {
@@ -204,7 +250,7 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    protected function alert($type, $message, $classes = '')
+    protected function alert($type, $message, $classes = [])
     {
         $html[] = sprintf('<div class="alert alert-%1$s %1$s">', $classes[$type]);
         $html[] = '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';

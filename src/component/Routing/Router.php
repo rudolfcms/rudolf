@@ -30,9 +30,11 @@ class Router
     private $params = [];
 
     /**
-     * Constructor.
+     * Router constructor.
      *
-     * @param RouteCollection
+     * @param string $url
+     * @param string $basePath
+     * @param RouteCollection|null $collection
      */
     public function __construct($url, $basePath, RouteCollection $collection = null)
     {
@@ -98,7 +100,7 @@ class Router
      *
      * @param RouteCollection object with route pattern
      */
-    private function setCollection(RouteCollection $collection)
+    public function setCollection(RouteCollection $collection)
     {
         self::$collection = $collection;
     }
@@ -110,7 +112,7 @@ class Router
      */
     public function getCollection()
     {
-        return $this->collection;
+        return self::$collection;
     }
 
     /**

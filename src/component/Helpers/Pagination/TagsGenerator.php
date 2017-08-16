@@ -6,12 +6,27 @@ use Rudolf\Component\Html\Head;
 
 class TagsGenerator
 {
+    /**
+     * @var ICalc
+     */
     private $calc;
 
+    /**
+     * @var Head
+     */
     private $head;
 
+    /**
+     * @var string
+     */
     private $path;
 
+    /**
+     * TagsGenerator constructor.
+     * @param ICalc $calc
+     * @param Head $head
+     * @param string $path
+     */
     public function __construct(ICalc $calc, Head $head, $path = '')
     {
         $this->calc = $calc;
@@ -19,6 +34,9 @@ class TagsGenerator
         $this->setPath($path);
     }
 
+    /**
+     * @param string $path
+     */
     public function setPath($path)
     {
         $this->path = str_replace('//', '/', DIR.'/'.$path.'/');

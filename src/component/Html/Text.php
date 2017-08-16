@@ -15,7 +15,7 @@ class Text
      * @param string $ellipsis
      * @param string $allowedTags
      *
-     * @return $str truncate text
+     * @return string truncate text
      */
     public static function truncate($str, $length, $ellipsis = '...', $allowedTags = '')
     {
@@ -28,7 +28,7 @@ class Text
     }
 
     /**
-     * Excape string.
+     * Escape string.
      *
      * @param string $content
      *

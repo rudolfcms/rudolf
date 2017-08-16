@@ -10,11 +10,26 @@ class EditView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Album
+     */
+    protected $album;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to edit album.
      *
      * @param array $album
      */
-    public function editAlbum($album)
+    public function editAlbum(array $album)
     {
         $this->album = new Album($album);
 

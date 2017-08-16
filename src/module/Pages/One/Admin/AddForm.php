@@ -9,8 +9,14 @@ use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class AddForm extends FormCheck
 {
+    /**
+     * @var AddModel
+     */
     protected $model;
 
+    /**
+     * @param AddModel $model
+     */
     public function setModel(AddModel $model)
     {
         $this->model = $model;

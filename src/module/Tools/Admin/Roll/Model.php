@@ -29,14 +29,14 @@ class Model
     /**
      * Returns array with modules list.
      *
-     * @return array
+     * @return array|bool
      */
-    public function getList()
+    public function getList($limit, $onPage)
     {
         if (empty($this->tools)) {
             return false;
         }
 
-        return $this->tools;
+        return array_slice($this->tools, $limit, $onPage);
     }
 }

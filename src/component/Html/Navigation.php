@@ -2,45 +2,76 @@
 
 namespace Rudolf\Component\Html;
 
+use Rudolf\Component\Helpers\Navigation\MenuItem;
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 
 class Navigation
 {
+    /**
+     * @var int
+     */
     private $rootID = 0;
 
+    /**
+     * @var string
+     */
     private $type;
 
-    private $items = [];
+    /**
+     * @var MenuItemCollection
+     */
+    private $menuItemsCollection;
 
+    /**
+     * @var array
+     */
     private $currents = [];
 
+    /**
+     * @var array
+     */
     private $classes = [];
 
+    /**
+     * @var int
+     */
     private $nesting;
 
+    /**
+     * @var array
+     */
     private $before = [];
 
+    /**
+     * @var array
+     */
     private $after = [];
 
+    /**
+     * @var array
+     */
     private $config = [];
 
     /**
      * Set root ID.
      *
-     * @param id $id ID of element to start create tree. Set 0 to create full tree
+     * @param int $id ID of element to start create tree. Set 0 to create full tree
      */
     public function setRootID($id)
     {
         $this->rootID = is_numeric($id) ? $id : 0;
     }
 
+    /**
+     * @return int
+     */
     public function getRootID()
     {
         return $this->rootID;
     }
 
     /**
-     * Menu type definited in menu_types table.
+     * Menu type defined in menu_types table.
      *
      * @param string $type
      */
@@ -49,6 +80,9 @@ class Navigation
         $this->type = $type;
     }
 
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;
@@ -64,6 +98,9 @@ class Navigation
         $this->menuItemsCollection = $items;
     }
 
+    /**
+     * @return array
+     */
     public function getItems()
     {
         return $this->menuItemsCollection->getByType($this->getType());
@@ -89,6 +126,9 @@ class Navigation
         $this->currents = $currents;
     }
 
+    /**
+     * @return array
+     */
     public function getCurrents()
     {
         $currents = $this->currents;
@@ -104,12 +144,12 @@ class Navigation
     /**
      * Set classes to use in menu.
      *
-     * 'classes' (array)
+     * @param array $classes
      *      'root_ul' (string) Main <ul>
      *      `li` (string) Each <li>
      *      'li_active' (string)
      *      'li_with_ul' (string) <li> with <ul>
-     *      'li_whitout_ul' (string) <li> without <ul>
+     *      'li_without_ul' (string) <li> without <ul>
      *      'sub_ul' (string) <ul> inside <li>
      */
     public function setClasses(array $classes)
@@ -117,6 +157,9 @@ class Navigation
         $this->classes = $classes;
     }
 
+    /**
+     * @return array
+     */
     public function getClasses()
     {
         return array_merge([
@@ -124,7 +167,7 @@ class Navigation
             'li' => '',
             'li_active' => '',
             'li_with_ul' => '',
-            'li_whitout_ul' => '',
+            'li_without_ul' => '',
             'sub_ul' => '',
         ], $this->classes);
     }
@@ -139,6 +182,9 @@ class Navigation
         $this->nesting = $nesting;
     }
 
+    /**
+     * @return mixed
+     */
     public function getNesting()
     {
         return $this->nesting;
@@ -147,7 +193,7 @@ class Navigation
     /**
      * Put string before elements.
      *
-     * 'before' (array)
+     * @param array $before
      *      'root_ul' (string) Main <ul>
      *      'first_root_li' (string) First <li> in main <ul>
      *      'li_a' (string) In <li> before <a>
@@ -160,6 +206,9 @@ class Navigation
         $this->before = $before;
     }
 
+    /**
+     * @return array
+     */
     public function getBefore()
     {
         return array_merge([
@@ -175,7 +224,7 @@ class Navigation
     /**
      * Put string after elements.
      *
-     * 'after' (array) Texts after:
+     * @param array $after Texts after
      *      'root_ul' (string) Main <ul>
      *      'last_root_li' (string) Last <li> in main <ul>
      *      'li_a' (string) In <li> after <a>
@@ -188,6 +237,9 @@ class Navigation
         $this->after = $after;
     }
 
+    /**
+     * @return array
+     */
     public function getAfter()
     {
         return array_merge([
@@ -213,6 +265,9 @@ class Navigation
         $this->config = $config;
     }
 
+    /**
+     * @return array
+     */
     public function getConfig()
     {
         return array_merge([
@@ -310,10 +365,10 @@ class Navigation
         $parent = $root_id;
         $parent_stack = array();
 
-        $this->html[] = $before['root_ul'];
+        $html[] = $before['root_ul'];
 
         // HTML wrapper for the menu (open)
-        $this->html[] = sprintf(
+        $html[] = sprintf(
             '%1$s'.'<ul'.'%2$s'.'>',
             # %1$s tab if text before
             (!empty($before['root_ul'])) ? str_repeat("\t", $nesting) : '',
@@ -322,36 +377,40 @@ class Navigation
             $this->isAtribute('class', $classes['root_ul'])
         );
 
-        $this->html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
+        $html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
         // loop
         while ($loop && (($item = each($children[$parent])) || ($parent > $root_id))) {
             if (is_object($item['value'])) {
+                /**
+                 * @var MenuItem $obj
+                 */
+                $obj = $item['value'];
                 $item = [
-                    'id' => $item['value']->getId(),
-                    'parent_id' => $item['value']->getParentId(),
-                    'title' => $item['value']->getTitle(),
-                    'slug' => $item['value']->getSlug(),
-                    'caption' => $item['value']->getCaption(),
-                    'ico' => $item['value']->getIco(),
+                    'id' => $obj->getId(),
+                    'parent_id' => $obj->getParentId(),
+                    'title' => $obj->getTitle(),
+                    'slug' => $obj->getSlug(),
+                    'caption' => $obj->getCaption(),
+                    'ico' => $obj->getIco(),
                 ];
             }
 
-            // HTML for menu item containing childrens (close)
+            // HTML for menu item containing children (close)
             if ($item === false) {
                 $parent = array_pop($parent_stack);
-                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting).'</ul>';
-                $this->html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting).'</li>';
+                $html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 + $nesting).'</ul>';
+                $html[] = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting).'</li>';
             }
 
-            // HTML for menu item containing childrens (open)
+            // HTML for menu item containing children (open)
             elseif (!empty($children[$item['id']])) {
                 $tab = str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting);
 
                 /*
                  * <li> with <ul>
                  */
-                $this->html[] = sprintf(
+                $html[] = sprintf(
                     '%1$s'.'<li'.'%2$s'.'>%3$s<a'
                     .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
@@ -396,7 +455,7 @@ class Navigation
                 /*
                  * sub <ul> in <li>
                  */
-                $this->html[] = sprintf(
+                $html[] = sprintf(
                     '%1$s'.'<ul'.'%2$s'.'>',
                     # %1$s tabulation
                     $tab."\t",
@@ -411,7 +470,7 @@ class Navigation
 
             // HTML for menu item with no children (aka "leaf")
             else {
-                $this->html[] = sprintf(
+                $html[] = sprintf(
                     '%1$s'.'<li'.'%2$s'.'>%3$s<a'
                     .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
                     # %1$s tabulation
@@ -420,7 +479,7 @@ class Navigation
                     # %2$s li class (active)
                     $this->isAtribute('class', [
                         $classes['li'],
-                        $classes['li_whitout_ul'],
+                        $classes['li_without_ul'],
                         ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
                     ]),
 
@@ -455,13 +514,13 @@ class Navigation
             }
         }
 
-        $this->html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1).$after['last_root_li'] : '';
+        $html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1).$after['last_root_li'] : '';
 
         // HTML wrapper for the menu (close)
-        $this->html[] = str_repeat("\t", $nesting).'</ul>';
+        $html[] = str_repeat("\t", $nesting).'</ul>';
 
-        $this->html[] = $after['root_ul'];
+        $html[] = $after['root_ul'];
 
-        return implode("\n", array_filter($this->html))."\n";
+        return implode("\n", array_filter($html))."\n";
     }
 }

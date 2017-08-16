@@ -8,7 +8,16 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function setData($data, Pagination $pagination)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     */
+    public function setData(array $data, Pagination $pagination)
     {
         $this->loop = new Loop(
             $data,

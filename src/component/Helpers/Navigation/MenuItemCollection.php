@@ -4,8 +4,15 @@ namespace Rudolf\Component\Helpers\Navigation;
 
 class MenuItemCollection
 {
+    /**
+     * @var MenuItem[]
+     */
     private $collection;
 
+    /**
+     * @param MenuItem $item
+     * @return int|null
+     */
     public function add(MenuItem $item)
     {
         if (null == $item->getId()) {
@@ -17,6 +24,9 @@ class MenuItemCollection
         return $item->getId();
     }
 
+    /**
+     * @return MenuItem[]
+     */
     public function getAll()
     {
         return $this->collection;
@@ -32,7 +42,7 @@ class MenuItemCollection
     public function getByType($type)
     {
         if (empty($this->collection)) {
-            return;
+            return null;
         }
         $items = [];
 
@@ -41,11 +51,18 @@ class MenuItemCollection
                 $items[] = $item;
             }
         }
-
-        usort($items, function ($a, $b) {
-            return strcmp($a->getPosition(), $b->getPosition());
-        });
+        usort($items, [$this, 'sort']);
 
         return $items;
+    }
+
+    /**
+     * @param MenuItem $a
+     * @param MenuItem $b
+     * @return int
+     */
+    private function sort($a, $b)
+    {
+        return strcmp($a->getPosition(), $b->getPosition());
     }
 }

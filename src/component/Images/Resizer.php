@@ -8,10 +8,40 @@ use Rudolf\Component\Http\Response;
 
 class Resizer
 {
+    /**
+     * @var string
+     */
     private $type;
+
+    /**
+     * @var string
+     */
     private $cacheExtension;
+
+    /**
+     * @var string
+     */
     private $cacheDirectory;
+
+    /**
+     * @var array
+     */
     private $allowedTypes;
+
+    /**
+     * @var int
+     */
+    private $width;
+
+    /**
+     * @var int
+     */
+    private $height;
+
+    /**
+     * @var string
+     */
+    private $src;
 
     /**
      * Constructor.
@@ -68,8 +98,11 @@ class Resizer
     private function tryServeCache()
     {
         $file = $this->createCacheName();
+
         if (file_exists($file)) {
-            return $this->serveFromCache($file);
+            $this->serveFromCache($file);
+
+            return true;
         }
 
         return false;
@@ -81,6 +114,8 @@ class Resizer
      * @param string $file Full path to cache file
      *
      * @see http://dtbaker.net/web-development/how-to-cache-images-generated-by-php/
+     *
+     * @return void
      */
     private function serveFromCache($file)
     {
@@ -135,7 +170,7 @@ class Resizer
 
         $manipulator = new ImageManipulator();
         $image = $manipulator->load(file_get_contents($this->src));
-        $image->fill($this->width, $this->height, true);
+        $image->fill($this->width, $this->height);
         $image->save($cacheFile);
 
         $this->serveFromCache($cacheFile);
@@ -156,7 +191,7 @@ class Resizer
 
         $manipulator = new ImageManipulator();
         $image = $manipulator->read($file);
-        $image->fill($this->width, $this->height, true);
+        $image->fill($this->width, $this->height);
         $image->save($cacheFile);
 
         $this->serveFromCache($cacheFile);
@@ -166,6 +201,9 @@ class Resizer
      * Get image type by mimetype.
      *
      * @param string $file
+     * @param bool   $returnFull
+     *
+     * @throws \Exception
      *
      * @return string
      */

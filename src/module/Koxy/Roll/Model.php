@@ -10,6 +10,13 @@ class Model extends FrontModel
 
     private $extension = 'jpg';
 
+    /**
+     * @param int $limit
+     * @param int $onPage
+     * @param array $orderBy
+     *
+     * @return array|bool
+     */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'DESC'])
     {
         $catalog = UPLOADS_ROOT.'/moments/';
@@ -17,6 +24,8 @@ class Model extends FrontModel
         if (($array = glob($catalog.'*.'.$this->extension)) == false) {
             return false;
         }
+
+        $a = [];
 
         foreach ($array as $key => $value) {
             $a[]['path'] = str_replace($this->web_root, '', $value);
@@ -27,6 +36,8 @@ class Model extends FrontModel
         }
 
         $a = array_slice($a, $limit, $onPage);
+
+        $likes = [];
 
         foreach ($a as $key => $value) {
             $file = UPLOADS_ROOT.str_replace('.'.$this->extension, '.txt', $value['path']);
@@ -41,6 +52,8 @@ class Model extends FrontModel
                 $likes[$key]['likes'] = [0, 0];
             }
         }
+
+        $returnArray = [];
 
         foreach ($a as $key => $value) {
             $returnArray[$key] = [

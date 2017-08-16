@@ -8,7 +8,16 @@ use Rudolf\Framework\View\AdminView;
 
 class View extends AdminView
 {
-    public function setData($data, Pagination $pagination)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     */
+    public function setData(array $data, Pagination $pagination)
     {
         $this->loop = new Loop(
             $data,
@@ -22,6 +31,9 @@ class View extends AdminView
         $this->template = 'categories-list';
     }
 
+    /**
+     * @return string
+     */
     protected function pageTitle()
     {
         return _('Category list');

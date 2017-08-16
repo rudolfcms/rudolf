@@ -30,7 +30,7 @@ class EditController extends AdminController
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $view = new EditView();

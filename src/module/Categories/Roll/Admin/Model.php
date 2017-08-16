@@ -6,10 +6,15 @@ use Rudolf\Modules\Categories\Roll;
 
 class Model extends Roll\Model
 {
+    /**
+     * @param int $limit
+     * @param int $onPage
+     * @param array $orderBy
+     *
+     * @return array|bool
+     */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        $clausule = $this->createWhereClausule($this->where);
-
         $type = $this->where['type'];
         $stmt = $this->pdo->prepare("
             SELECT category.id,
@@ -47,6 +52,11 @@ class Model extends Roll\Model
         return false;
     }
 
+    /**
+     * @param string $type
+     *
+     * @return array|bool
+     */
     public function getAll($type)
     {
         $stmt = $this->pdo->prepare("

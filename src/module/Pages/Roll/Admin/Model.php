@@ -7,13 +7,18 @@ use Rudolf\Framework\Model\AdminModel;
 class Model extends AdminModel
 {
     /**
+     * @var string
+     */
+    private $where;
+
+    /**
      * Returns array with pages list.
      *
      * @param int   $limit
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array
+     * @return array|bool
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {

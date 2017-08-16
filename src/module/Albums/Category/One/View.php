@@ -2,13 +2,29 @@
 
 namespace Rudolf\Modules\Albums\Category\One;
 
+use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Helpers\Pagination\TagsGenerator;
 use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function setData($data, $pagination, $info = false)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @var array
+     */
+    protected $categoryInfo;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     * @param bool $info
+     */
+    public function setData(array $data, Pagination $pagination, $info = false)
     {
         $path = '/foto/kategorie/'.$info['slug'];
         $this->loop = new Loop(

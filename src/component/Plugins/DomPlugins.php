@@ -3,14 +3,33 @@
 namespace Rudolf\Component\Plugins;
 
 use Rudolf\Component\Hooks\Filter;
+use Rudolf\Component\Html\Foot;
+use Rudolf\Component\Html\Head;
 
 class DomPlugins
 {
-    public function __construct($head, $foot)
+    /**
+     * @var Head
+     */
+    private $head;
+
+    /**
+     * @var Foot
+     */
+    private $foot;
+
+    /**
+     * DomPlugins constructor.
+     *
+     * @param Head $head
+     * @param Foot $foot
+     */
+    public function __construct(Head $head, Foot $foot)
     {
         $this->head = $head;
         $this->foot = $foot;
     }
+
     public function front()
     {
         if (Filter::isHas('head_stylesheets')) {

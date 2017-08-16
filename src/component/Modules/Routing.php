@@ -6,7 +6,14 @@ use Rudolf\Component\Routing\RouteCollection;
 
 class Routing
 {
+    /**
+     * @var RouteCollection
+     */
     private $collection;
+
+    /**
+     * @var array
+     */
     private $modules;
 
     /**

@@ -27,7 +27,7 @@ class EditController extends AdminController
                 $this->redirect(DIR.'/admin/pages/edit/'.$id);
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $pagesList = new PagesList();

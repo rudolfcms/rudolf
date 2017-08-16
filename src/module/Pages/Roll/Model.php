@@ -9,7 +9,7 @@ class Model extends FrontModel
     /**
      * Returns pages list.
      *
-     * @return array
+     * @return array|bool
      */
     public function getPagesList()
     {

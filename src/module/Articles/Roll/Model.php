@@ -7,20 +7,25 @@ use Rudolf\Modules\Articles;
 class Model extends Articles\Model
 {
     /**
+     * @var string
+     */
+    private $where;
+
+    /**
      * Returns array with articles list.
      *
      * @param int   $limit
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array
+     * @return array|bool
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        $clausule = $this->createWhereClausule($this->where);
+        $clause = $this->createWhereClausule($this->where);
 
         $stmt = $this->pdo->prepare($this->queryPart('full').
-            "WHERE $clausule ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
+            "WHERE $clause ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
 
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

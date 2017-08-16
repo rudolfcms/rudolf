@@ -6,7 +6,25 @@ use Rudolf\Framework\View\AdminView;
 
 class AddView extends AdminView
 {
-    public function add($category)
+    /**
+     * @var string
+     */
+    protected $category;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
+     * @param array $category
+     */
+    public function add(array $category)
     {
         $this->category = new Category($category);
 

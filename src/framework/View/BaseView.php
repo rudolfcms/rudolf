@@ -6,10 +6,26 @@ use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
 use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
 use Rudolf\Component\Html\Foot;
 use Rudolf\Component\Html\Head;
+use Rudolf\Component\Html\Theme;
 use Rudolf\Component\Plugins\DomPlugins;
 
 abstract class BaseView
 {
+    /**
+     * @var Head
+     */
+    public $head;
+
+    /**
+     * @var Foot
+     */
+    public $foot;
+
+    /**
+     * @var DomPlugins
+     */
+    protected $domPlugins;
+
     /**
      * @var string Server-side path to theme catalog
      */
@@ -31,9 +47,24 @@ abstract class BaseView
     public $side;
 
     /**
-     * @var object
+     * @var Theme
      */
     public $theme;
+
+    /**
+     * @var string
+     */
+    protected $template;
+
+    /**
+     * @var string
+     */
+    protected $pageTitle;
+
+    /**
+     * @var array
+     */
+    public $data;
 
     /**
      * Constructor.
@@ -86,6 +117,9 @@ abstract class BaseView
 
     /**
      * Render page in html.
+     *
+     * @throws ThemeNotFoundException
+     * @throws TemplateNotFoundException
      */
     private function renderHtml()
     {

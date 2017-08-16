@@ -175,6 +175,7 @@ class Article
      * Returns the author.
      *
      * @param string $type null|raw
+     * @param bool $adder
      *
      * @return string
      */
@@ -199,6 +200,7 @@ class Article
      *
      * @param bool|string $format
      * @param string      $style  normal|locale
+     * @param bool        $inflected
      *
      * @return string If date field empty, return current date
      */
@@ -309,6 +311,8 @@ class Article
 
     /**
      * Returns modifier full name.
+     *
+     * @param string $type
      *
      * @return int
      */

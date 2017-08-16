@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Albums\Roll;
 
+use Rudolf\Component\Helpers\Pagination\Calc;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Helpers\Pagination\TagsGenerator;
 use Rudolf\Component\Modules\Module;
@@ -9,7 +10,16 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function rollView($data, $pagination)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @param array $data
+     * @param Calc $pagination
+     */
+    public function rollView(array $data, Calc $pagination)
     {
         $config = (new Module('albums'))->getConfig();
         $path = '/'.$config['path'];

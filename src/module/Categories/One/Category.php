@@ -201,6 +201,8 @@ abstract class Category
     /**
      * Returns modifier full name.
      *
+     * @param string $type
+     *
      * @return int
      */
     public function modifierFullName($type = '')

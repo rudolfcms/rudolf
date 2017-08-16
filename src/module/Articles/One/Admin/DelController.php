@@ -20,7 +20,7 @@ class DelController extends AdminController
                 $this->redirect(DIR.'/admin/articles');
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $article = (new OneModel())->getOneById($id);

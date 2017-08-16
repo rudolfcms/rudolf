@@ -4,7 +4,10 @@ namespace Rudolf\Component\Helpers\Pagination;
 
 class Item implements IItem
 {
-    public function setData($item)
+    /**
+     * @param array $item
+     */
+    public function setData(array $item)
     {
     }
 }

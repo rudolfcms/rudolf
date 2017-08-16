@@ -8,6 +8,9 @@ use Rudolf\Component\Modules\Manager as ModulesManager;
 
 class AdminModel extends BaseModel
 {
+    /**
+     * @var Auth
+     */
     protected static $auth;
 
     /**
@@ -24,6 +27,9 @@ class AdminModel extends BaseModel
         return self::$auth;
     }
 
+    /**
+     * @return MenuItemCollection
+     */
     public function getMenuItems()
     {
         $modules = (new ModulesManager(MODULES_ROOT))->getCollection()->getActive();

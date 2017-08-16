@@ -9,7 +9,16 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function rollView($data, Pagination $pagination)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     */
+    public function rollView(array $data, Pagination $pagination)
     {
         $this->loop = new Loop(
             $data,

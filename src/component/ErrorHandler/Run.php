@@ -2,6 +2,8 @@
 
 namespace Rudolf\Component\ErrorHandler;
 
+use Psr\Log\LoggerInterface;
+
 class Run
 {
     /**
@@ -13,6 +15,11 @@ class Run
      * @var object
      */
     private $logger;
+
+    /**
+     * @var Handler\Handler
+     */
+    private $handler;
 
     /**
      * Constructor.
@@ -70,6 +77,11 @@ class Run
 
     /**
      * Handle errors.
+     *
+     * @param $level
+     * @param $message
+     * @param null $file
+     * @param null $line
      */
     public function handleError($level, $message, $file = null, $line = null)
     {
@@ -80,7 +92,7 @@ class Run
     /**
      * Handle exceptions.
      *
-     * @param Exception $e
+     * @param \Exception $e
      */
     public function handleException($e)
     {

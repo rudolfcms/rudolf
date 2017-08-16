@@ -15,12 +15,4 @@ class Gallery extends One\Gallery
     {
         return DIR.'/admin/galleries/del/'.$this->id();
     }
-
-    /**
-     * Get content for textarea.
-     */
-    public function textarea()
-    {
-        return $this->content(false, false, false, true);
-    }
 }

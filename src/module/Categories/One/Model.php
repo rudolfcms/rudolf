@@ -10,8 +10,9 @@ class Model extends FrontModel
      * Get category info.
      *
      * @param string $slug
+     * @param string $type
      *
-     * @return array
+     * @return array|bool
      */
     public function getCategoryInfo($slug, $type)
     {
@@ -36,9 +37,9 @@ class Model extends FrontModel
     /**
      * Get category info.
      *
-     * @param string $slug
+     * @param int $id
      *
-     * @return array
+     * @return array|bool
      */
     public function getCategoryInfoById($id)
     {

@@ -10,7 +10,7 @@ class EditModel extends AdminModel
     /**
      * Update article by id.
      *
-     * @param array $data
+     * @param array $f
      *
      * @return int
      */
@@ -59,8 +59,8 @@ class EditModel extends AdminModel
         $config = (new Module('galleries'))->getConfig();
 
         $uploadDir = $config['path_root'].'/'.$post['slug'].'/';
-        $uploadfile = $uploadDir.basename($file['name']);
+        $uploadFile = $uploadDir.basename($file['name']);
 
-        return move_uploaded_file($file['tmp_name'], $uploadfile);
+        return move_uploaded_file($file['tmp_name'], $uploadFile);
     }
 }

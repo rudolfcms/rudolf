@@ -6,12 +6,7 @@ use Rudolf\Framework\Controller\FrontController;
 
 class Controller extends FrontController
 {
-    /**
-     * Login.
-     *
-     * @param string $redirect
-     */
-    public function login($redirect)
+    public function login()
     {
         $model = new Model();
 

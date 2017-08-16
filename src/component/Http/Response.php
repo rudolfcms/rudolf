@@ -12,7 +12,7 @@ class Response
     /**
      * @var int Http response code
      */
-    private $status;
+    private $statusCode;
 
     /**
      * @var array Headers
@@ -82,7 +82,7 @@ class Response
     {
         $this->setContent($content);
         $this->setStatusCode($status);
-        $this->headers = $this->setManyHeaders($headers);
+        $this->setManyHeaders($headers);
     }
 
     /**
@@ -114,11 +114,13 @@ class Response
      * Set once header.
      *
      * @param array $header
+     *
+     * @return void
      */
     public function setHeader($header)
     {
         if (empty($header)) {
-            return false;
+            return;
         }
         $this->headers[$header[0]] = $header[1];
     }
@@ -127,11 +129,13 @@ class Response
      * Set many headers.
      *
      * @param array $headers
+     *
+     * @return void
      */
     public function setManyHeaders($headers)
     {
         if (empty($headers)) {
-            return false;
+            return;
         }
         foreach ($headers as $key => $value) {
             $this->setHeader($value);
@@ -141,14 +145,14 @@ class Response
     /**
      * Send headers.
      *
-     * @return void|false
+     * @return void
      */
     public function sendHeaders()
     {
         header('HTTP/1.1 '.$this->statusCode.' '.self::$statusTexts[$this->statusCode]);
 
         if (empty($this->headers)) {
-            return false;
+            return;
         }
 
         foreach ($this->headers as $key => $value) {

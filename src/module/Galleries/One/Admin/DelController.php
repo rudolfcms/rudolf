@@ -20,7 +20,7 @@ class DelController extends AdminController
                 $this->redirect(DIR.'/admin/galleries');
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $gallery = (new One\Model())->getGalleryInfoById($id);

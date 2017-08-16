@@ -4,7 +4,15 @@ namespace Rudolf\Modules\Modules\One\Admin;
 
 class Module
 {
-    public function setData($data)
+    /**
+     * @var array
+     */
+    private $module;
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data)
     {
         $this->module = $data;
     }

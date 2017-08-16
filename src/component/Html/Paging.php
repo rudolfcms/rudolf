@@ -4,18 +4,30 @@ namespace Rudolf\Component\Html;
 
 class Paging
 {
+    /**
+     * @var array
+     */
     private $info;
 
+    /**
+     * @var string
+     */
     private $path;
 
+    /**
+     * @var array
+     */
     private $classes;
 
+    /**
+     * @var int
+     */
     private $nesting;
 
     /**
      * Constructor.
      *
-     * @param array  $nav     with data for loop
+     * @param array  $info     with data for loop
      *                        <page> - current page
      *                        <forstart> -
      *                        <forend> -

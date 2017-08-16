@@ -21,7 +21,7 @@ class AddController extends AdminController
                 $this->redirect(DIR.'/admin/pages/edit/'.$id);
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $view = new AddView();

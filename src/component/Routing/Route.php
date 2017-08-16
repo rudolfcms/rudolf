@@ -32,10 +32,11 @@ class Route
     /**
      * Constructor.
      *
-     * @param array $controllerName Controller to use for route
-     * @param array $params         Params
-     * @param array $defaults       An array of default parameter values
-     * @param int   $priority       Route priority
+     * @param string $path
+     * @param string $controllerName Controller to use for route
+     * @param array  $params         Params
+     * @param array  $defaults       An array of default parameter values
+     * @param int    $priority       Route priority
      */
     public function __construct($path, $controllerName, array $params = [], array $defaults = [], $priority = 1000)
     {
@@ -47,9 +48,9 @@ class Route
     }
 
     /**
-     * Sets the pattern for the path.
+     * Sets path.
      *
-     * @param string $pattern The path pattern
+     * @param string $path The path
      */
     private function setPath($path)
     {
@@ -79,7 +80,7 @@ class Route
     /**
      * Returns the controller name.
      *
-     * @return array $controllerName
+     * @return string $controllerName
      */
     public function getControllerName()
     {
@@ -109,7 +110,7 @@ class Route
     /**
      * Returns the priority.
      *
-     * @return array $priority
+     * @return int $priority
      */
     public function getPriority()
     {

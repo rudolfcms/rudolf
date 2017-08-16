@@ -2,11 +2,6 @@
 
 namespace Rudolf\Modules\Appearance\One\Admin;
 
-use Rudolf\Component\Forms\Validator;
-use Rudolf\Component\Hooks;
-use Rudolf\Component\Html\Text;
-use Rudolf\Component\Images\Image;
-
 class Theme
 {
     /**
@@ -28,6 +23,8 @@ class Theme
      * Set theme data.
      *
      * @param array $theme
+     *
+     * @return array
      */
     public function setData($theme)
     {

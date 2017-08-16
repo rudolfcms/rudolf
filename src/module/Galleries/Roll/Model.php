@@ -7,6 +7,11 @@ use Rudolf\Modules\Galleries\Model as AbstractModel;
 class Model extends AbstractModel
 {
     /**
+     * @var string
+     */
+    protected $where;
+
+    /**
      * Returns total number of galleries items.
      *
      * @param array|string $where
@@ -27,7 +32,7 @@ class Model extends AbstractModel
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array
+     * @return array|bool
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {

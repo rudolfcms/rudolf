@@ -7,11 +7,25 @@ use Rudolf\Framework\View\AdminView;
 class DelView extends AdminView
 {
     /**
+     * @var Page
+     */
+    protected $page;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+    /**
      * Set data to delete page.
      *
      * @param array $page
      */
-    public function delPage($page)
+    public function delPage(array $page)
     {
         $this->page = new Page($page);
 

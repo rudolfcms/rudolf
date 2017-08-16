@@ -9,7 +9,22 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function setData($data, Pagination $pagination, $info = false)
+    /**
+     * @var Loop
+     */
+    protected $loop;
+
+    /**
+     * @var array
+     */
+    protected $categoryInfo;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     * @param array $info
+     */
+    public function setData(array $data, Pagination $pagination, $info = [])
     {
         $path = '/artykuly/kategorie/'.$info['slug'];
         $this->loop = new Loop(

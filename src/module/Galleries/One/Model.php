@@ -11,7 +11,7 @@ class Model extends FrontModel
      *
      * @param int $id
      *
-     * @return array
+     * @return array|bool
      */
     public function getGalleryInfoById($id)
     {
@@ -54,6 +54,6 @@ class Model extends FrontModel
 
     public function getNumberOfAll($where)
     {
-        return $this->count('galleries', $where);
+        return $this->countItems('galleries', $where);
     }
 }

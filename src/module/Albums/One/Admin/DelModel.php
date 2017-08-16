@@ -10,6 +10,8 @@ class DelModel extends AdminModel
      * Delete article.
      *
      * @param int $id Article ID
+     *
+     * @return bool
      */
     public function delete($id)
     {

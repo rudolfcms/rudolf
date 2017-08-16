@@ -7,11 +7,26 @@ use Rudolf\Framework\View\AdminView;
 class AddView extends AdminView
 {
     /**
+     * @var Gallery
+     */
+    protected $gallery;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to add gallery.
      *
      * @param array $gallery
      */
-    public function addGallery($gallery)
+    public function addGallery(array $gallery)
     {
         $this->gallery = new Gallery($gallery);
 

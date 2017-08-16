@@ -9,11 +9,26 @@ class EditView extends AdminView
     use PagesAddon;
 
     /**
+     * @var Page
+     */
+    protected $page;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to edit page.
      *
      * @param array $page
      */
-    public function editPage($page)
+    public function editPage(array $page)
     {
         $this->page = new Page($page);
 

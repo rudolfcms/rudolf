@@ -27,7 +27,16 @@ class Head
     private $pageFavicon;
 
     /**
+     * @var string
+     */
+    private $canonical;
+
+    /**
      * Make all elements inside <head>.
+     *
+     * @param bool $return
+     * @param int $nesting
+     * @return string|array|null
      */
     public function make($return = false, $nesting = 1)
     {
@@ -45,13 +54,14 @@ class Head
             $html[$key] = trim($value);
         }
 
-        $return = implode("\n".str_repeat("\t", $nesting), array_filter($html)).PHP_EOL;
+        $html = implode("\n".str_repeat("\t", $nesting), array_filter($html)).PHP_EOL;
 
-        if (true === $return) {
-            return $return;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $return;
+        return $html;
     }
 
     /**
@@ -59,17 +69,18 @@ class Head
      *
      * @param bool $return
      *
-     * @return void|string
+     * @return string
      */
     public function title($return = false)
     {
         $title = trim($this->pageTitle.' | '.GENERAL_SITE_NAME, ' | ');
 
-        if (true === $return) {
-            return $title;
+        if (false === $return) {
+            echo $title;
+            return null;
         }
 
-        echo $title;
+        return $title;
     }
 
     public function setTitle($title)
@@ -82,17 +93,18 @@ class Head
      *
      * @param bool $return
      *
-     * @return void|string
+     * @return string
      */
     public function charset($return = false)
     {
         $charset = (empty($this->pageCharset)) ? 'utf-8' : $this->pageCharset;
 
-        if (true === $return) {
-            return $charset;
+        if (false === $return) {
+            echo $charset;
+            return null;
         }
 
-        echo $charset;
+        return $charset;
     }
 
     public function setCharset($pageCharset)
@@ -105,7 +117,7 @@ class Head
      *
      * @param bool $return
      *
-     * @return void|string
+     * @return string
      */
     public function favicon($return = false)
     {
@@ -116,16 +128,17 @@ class Head
         $link = sprintf('<link rel="shortcut icon" href="%1$s">', $this->pageFavicon);
 
         if (true === $return) {
-            return $link;
+            echo $link;
+            return null;
         }
 
-        echo $link;
+        return $link;
     }
 
     /**
      * Set page favicon.
      *
-     * @param string $href Favicon location
+     * @param string $favicon Favicon location
      */
     public function setFavicon($favicon)
     {
@@ -137,7 +150,7 @@ class Head
      *
      * @param bool $return
      *
-     * @return void|string
+     * @return string
      */
     public function canonical($return = false)
     {
@@ -150,11 +163,12 @@ class Head
             (new Url())->getOrigin().$this->canonical
         );
 
-        if (true === $return) {
-            return $canonical;
+        if (false === $return) {
+            echo $canonical;
+            return null;
         }
 
-        echo $canonical;
+        return $canonical;
     }
 
     /**
@@ -171,8 +185,9 @@ class Head
      * Get stylesheets links.
      *
      * @param bool $return
+     * @param int  $nesting
      *
-     * @return void|string
+     * @return string
      */
     public function stylesheets($return = false, $nesting = 1)
     {
@@ -180,17 +195,20 @@ class Head
             return false;
         }
 
+        $html = [];
+
         foreach ($this->pageStylesheets as $key => $value) {
             $html[] = sprintf('<link rel="stylesheet" href="%1$s">', $value);
         }
 
         $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
 
-        if (true === $return) {
-            return $html;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $html;
+        return $html;
     }
 
     /**

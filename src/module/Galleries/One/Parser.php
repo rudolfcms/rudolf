@@ -12,6 +12,16 @@ class Parser
         'jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF',
     ];
 
+    /**
+     * @var Image
+     */
+    private $image;
+
+    /**
+     * @var array
+     */
+    private $config;
+
     public function __construct()
     {
         $this->image = new Image();
@@ -56,8 +66,9 @@ class Parser
      * It create gallery code.
      *
      * @param array $info array with gallery information
+     * @param bool  $onlyArray
      *
-     * @return string
+     * @return string|array
      */
     public function createGallery($info, $onlyArray = false)
     {
@@ -76,6 +87,8 @@ class Parser
         $w = $info['thumb_width'];
         $h = $info['thumb_height'];
 
+        $gallery = [];
+
         for ($i = 0; $i < count($imagesArray); ++$i) {
             $gallery[] = [
                 'photo' => $webPath.'/'.$imagesArray[$i],
@@ -89,6 +102,8 @@ class Parser
         if (true === $onlyArray) {
             return $gallery;
         }
+
+        $codeGallery = [];
 
         foreach ($gallery as $key => $value) {
             $codeGallery[] = sprintf(
@@ -111,7 +126,7 @@ class Parser
      *
      * @param string $imagesDir string with images directory
      *
-     * @return array $array array with images list
+     * @return array|bool $array array with images list
      */
     private function getImagesArray($imagesDir)
     {

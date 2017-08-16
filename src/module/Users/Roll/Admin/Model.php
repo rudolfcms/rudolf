@@ -13,7 +13,7 @@ class Model extends AdminModel
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array
+     * @return array|bool
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {

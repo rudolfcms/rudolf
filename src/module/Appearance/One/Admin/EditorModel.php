@@ -6,6 +6,9 @@ use Rudolf\Framework\Model\AdminModel;
 
 class EditorModel extends AdminModel
 {
+    /**
+     * @var string
+     */
     private $root;
 
     public function __construct()
@@ -15,6 +18,11 @@ class EditorModel extends AdminModel
         $this->root = THEMES_ROOT.'/front/'.FRONT_THEME.'/';
     }
 
+    /**
+     * @param string $path
+     *
+     * @return array
+     */
     public function getFilesListByPath($path)
     {
         return array_diff(
@@ -23,6 +31,11 @@ class EditorModel extends AdminModel
         );
     }
 
+    /**
+     * @param string $path
+     *
+     * @return array
+     */
     public function getFileInfo($path)
     {
         $file = $this->root.$path;
@@ -40,6 +53,12 @@ class EditorModel extends AdminModel
         ];
     }
 
+    /**
+     * @param string $path
+     * @param string $data
+     *
+     * @return bool|int
+     */
     public function saveFile($path, $data)
     {
         $file = $this->root.$path;

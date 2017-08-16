@@ -7,22 +7,27 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
+     * @var string
+     */
+    protected $where;
+
+    /**
      * Returns array with categories list.
      *
      * @param int   $limit
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array
+     * @return array|bool
      */
     public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
     {
-        $clausule = $this->createWhereClausule($this->where);
+        $clause = $this->createWhereClausule($this->where);
 
         $stmt = $this->pdo->prepare("
             SELECT *
             FROM {$this->prefix}categories
-            WHERE $clausule
+            WHERE $clause
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
                                                    $onPage
         ");

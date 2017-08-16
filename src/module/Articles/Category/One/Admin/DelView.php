@@ -7,11 +7,26 @@ use Rudolf\Framework\View\AdminView;
 class DelView extends AdminView
 {
     /**
+     * @var array
+     */
+    protected $category;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to delete category.
      *
      * @param array $category
      */
-    public function delCategory($category)
+    public function delCategory(array $category)
     {
         $this->category = new Category($category);
 

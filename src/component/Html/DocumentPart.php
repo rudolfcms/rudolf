@@ -30,16 +30,17 @@ trait DocumentPart
     public function before($return = false, $nesting = 1)
     {
         if (empty($this->before)) {
-            return;
+            return null;
         }
 
         $html = implode("\n".str_repeat("\t", $nesting), $this->before).PHP_EOL;
 
-        if (true === $return) {
-            return $html;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $html;
+        return $html;
     }
 
     /**
@@ -79,16 +80,17 @@ trait DocumentPart
     public function after($return = false, $nesting = 1)
     {
         if (empty($this->after)) {
-            return;
+            return null;
         }
 
         $html = implode("\n".str_repeat("\t", $nesting), $this->after).PHP_EOL;
 
-        if (true === $return) {
-            return $html;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $html;
+        return $html;
     }
 
     /**
@@ -121,14 +123,17 @@ trait DocumentPart
      * Get scripts links.
      *
      * @param bool $return
+     * @param int  $nesting
      *
-     * @return void|string
+     * @return string|array|null
      */
     public function scripts($return = false, $nesting = 1)
     {
         if (empty($this->pageScripts)) {
-            return false;
+            return null;
         }
+
+        $html = [];
 
         foreach ($this->pageScripts as $key => $value) {
             $html[] = sprintf('<script src="%1$s"></script>', $value);
@@ -136,11 +141,12 @@ trait DocumentPart
 
         $html = implode("\n".str_repeat("\t", $nesting), $html).PHP_EOL;
 
-        if (true === $return) {
-            return $html;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $html;
+        return $html;
     }
 
     /**

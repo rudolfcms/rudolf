@@ -2,6 +2,7 @@
 
 namespace Rudolf\Framework\Model;
 
+use PDO;
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 use Rudolf\Component\Helpers\Navigation\MenuItem;
 
@@ -11,7 +12,7 @@ class FrontModel extends BaseModel
     {
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}menu");
         $stmt->execute();
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $collection = new MenuItemCollection();
 

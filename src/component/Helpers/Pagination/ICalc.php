@@ -7,4 +7,8 @@ interface ICalc
     public function nav();
 
     public function getAllPages();
+
+    public function getPrev();
+
+    public function getNext();
 }

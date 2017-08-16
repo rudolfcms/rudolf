@@ -19,13 +19,17 @@ class ConfigEditor
         $this->plugins = include CONFIG_ROOT.'/plugins.php';
     }
 
+    /**
+     * @param $name
+     * @return mixed|null
+     */
     public function getStatus($name)
     {
         if (isset($this->plugins[$name])) {
             return $this->plugins[$name];
         }
 
-        return;
+        return null;
     }
 
     public function save()

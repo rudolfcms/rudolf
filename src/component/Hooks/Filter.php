@@ -71,7 +71,6 @@ class Filter
      * @param string   $tag              The filter hook to which the function to be removed is hooked.
      * @param callback $functionToRemove The name of the function which should be removed.
      * @param int      $priority         optional. The priority of the function (default: 10).
-     * @param int      $accepted_args    optional. The number of arguments the function accepts (default: 1).
      *
      * @return bool Whether the function existed before it was removed.
      */
@@ -97,8 +96,8 @@ class Filter
      *
      * @since 0.1
      *
-     * @param string $tag      The filter to remove hooks from.
-     * @param int    $priority The priority number to remove.
+     * @param string    $tag      The filter to remove hooks from.
+     * @param int|bool  $priority The priority number to remove.
      *
      * @return bool True when finished.
      */
@@ -355,6 +354,8 @@ class Filter
             // Static Calling
             return $function[0].$function[1];
         }
+
+        return false;
     }
     /**
      * callAllHook.

@@ -7,7 +7,25 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function page($data)
+    /**
+     * @var Page
+     */
+    protected $page;
+
+    /**
+     * @var array
+     */
+    protected $pagesList;
+
+    /**
+     * @var array
+     */
+    protected $aAddress;
+
+    /**
+     * @param array $data
+     */
+    public function page(array $data)
     {
         $this->page = new Page($data);
 
@@ -17,12 +35,22 @@ class View extends FrontView
         $this->template = 'page';
     }
 
-    public function setBreadcrumbsData($list, $aAddress)
+    /**
+     * @param array $list
+     * @param array $aAddress
+     */
+    public function setBreadcrumbsData(array $list, array $aAddress)
     {
         $this->pagesList = $list;
         $this->aAddress = $aAddress;
     }
 
+    /**
+     * @param int $nesting
+     * @param array $classes
+     *
+     * @return bool|string
+     */
     public function breadcrumb($nesting = 0, $classes = [])
     {
         $breadcrumbs = new Breadcrumbs();

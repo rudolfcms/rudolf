@@ -16,6 +16,8 @@ class Controller extends FrontController
      *
      * @param string $slug
      * @param int    $page
+     *
+     * @throws HttpErrorException
      */
     public function getCategory($slug, $page)
     {

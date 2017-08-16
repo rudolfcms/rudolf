@@ -9,11 +9,26 @@ class AddView extends AdminView
     use PagesAddon;
 
     /**
+     * @var Page
+     */
+    protected $page;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data do add page.
      *
      * @param array $page
      */
-    public function addPage($page)
+    public function addPage(array $page)
     {
         $this->page = new Page($page);
 

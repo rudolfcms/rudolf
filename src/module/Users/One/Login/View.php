@@ -7,7 +7,21 @@ use Rudolf\Framework\View\FrontView;
 
 class View extends FrontView
 {
-    public function form($formData, $status)
+    /**
+     * @var array
+     */
+    protected $formData;
+
+    /**
+     * @var int
+     */
+    protected $status;
+
+    /**
+     * @param array $formData
+     * @param int $status
+     */
+    public function form(array $formData, $status)
     {
         $this->formData = $formData;
         $this->status = $status;
@@ -27,7 +41,9 @@ class View extends FrontView
     /**
      * Get status info.
      *
-     * @return array
+     * @param bool $index
+     *
+     * @return array|bool
      */
     protected function getMessage($index = false)
     {

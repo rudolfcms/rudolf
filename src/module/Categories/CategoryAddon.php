@@ -4,7 +4,15 @@ namespace Rudolf\Modules\Categories;
 
 trait CategoryAddon
 {
-    public function setCategories($categories)
+    /**
+     * @var array
+     */
+    protected $categories;
+
+    /**
+     * @param array $categories
+     */
+    public function setCategories(array $categories)
     {
         if (false === $categories) {
             $this->categories = [];
@@ -13,6 +21,10 @@ trait CategoryAddon
         }
         $this->categories = $categories;
     }
+
+    /**
+     * @return array
+     */
     public function categories()
     {
         return $this->categories;

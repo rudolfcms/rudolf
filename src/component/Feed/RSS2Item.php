@@ -86,9 +86,9 @@ class RSS2Item implements IRSS2Item
     }
 
     /**
-     * Set item descritpion.
+     * Set item description.
      *
-     * @param string descrption
+     * @param string $description
      */
     public function setDescription($description)
     {

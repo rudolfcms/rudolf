@@ -22,7 +22,7 @@ class DelController extends AdminController
                 $this->redirect(DIR.'/admin/articles/categories');
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $category = (new OneModel())->getCategoryInfoById($id);

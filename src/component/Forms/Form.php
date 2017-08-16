@@ -34,7 +34,7 @@ abstract class Form
     }
 
     /**
-     * Chech is any errors.
+     * Check is any errors.
      *
      * @return bool
      */
@@ -69,7 +69,7 @@ abstract class Form
         }, $this->data);
     }
 
-    public function dispalyAlerts()
+    public function displayAlerts()
     {
         foreach ($this->validator->getAlerts() as $key => $value) {
             Alerts\AlertsCollection::add(new Alerts\Alert(

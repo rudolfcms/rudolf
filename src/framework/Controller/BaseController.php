@@ -6,8 +6,16 @@ use Rudolf\Component\Http\Response;
 
 abstract class BaseController
 {
+    /**
+     * @var string
+     */
     protected $request;
 
+    /**
+     * BaseController constructor.
+     *
+     * @param $request
+     */
     public function __construct($request)
     {
         $this->request = $request;
@@ -18,12 +26,12 @@ abstract class BaseController
     }
 
     /**
-     * Redirect to `up`, if curent page is 1.
+     * Redirect to `up`, if current page is 1.
      *
      * @param int $page
      * @param int $code
      *
-     * @return int|redirection
+     * @return int
      */
     protected function firstPageRedirect($page, $code = 301, $location = '..')
     {
@@ -36,6 +44,10 @@ abstract class BaseController
         return $page;
     }
 
+    /**
+     * @param string $path
+     * @param int $code
+     */
     protected function redirect($path = DIR, $code = 301)
     {
         $response = new Response('', $code);
@@ -44,6 +56,9 @@ abstract class BaseController
         exit;
     }
 
+    /**
+     * @param string $path
+     */
     public function redirectTo($path)
     {
         $this->redirect($path);

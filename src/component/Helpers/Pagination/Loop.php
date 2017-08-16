@@ -35,7 +35,7 @@ class Loop
      * Constructor.
      *
      * @param array  $data
-     * @param Calc   $calc
+     * @param ICalc   $calc
      * @param string $itemClassName
      * @param string $path
      */
@@ -52,7 +52,7 @@ class Loop
     }
 
     /**
-     * Chech, is any item to display.
+     * Check, is any item to display.
      *
      * @return bool
      */
@@ -88,7 +88,7 @@ class Loop
     /**
      * Set the current item.
      *
-     * @return object
+     * @return IItem
      */
     public function item()
     {
@@ -125,7 +125,7 @@ class Loop
      * @param array $classes
      *                         ul
      *                         current
-     * @param int   $navNumber
+     * @param int   $nesting
      *
      * @return string
      */

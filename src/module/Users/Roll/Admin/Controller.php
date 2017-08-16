@@ -12,7 +12,7 @@ class Controller extends AdminController
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');
 
         $list = new Model();
-        $total = $list->getTotalNumber('1');
+        $total = $list->getTotalNumber();
 
         $pagination = new Pagination($total, $page, 10);
         $limit = $pagination->getLimit();

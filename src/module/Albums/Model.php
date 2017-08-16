@@ -9,6 +9,8 @@ abstract class Model extends FrontModel
     /**
      * Returns part of query.
      *
+     * @param string $part
+     *
      * @return string
      */
     protected function queryPart($part)

@@ -10,11 +10,26 @@ class EditView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Article
+     */
+    protected $article;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to edit article.
      *
      * @param array $article
      */
-    public function editArticle($article)
+    public function editArticle(array $article)
     {
         $this->article = new Article($article);
 

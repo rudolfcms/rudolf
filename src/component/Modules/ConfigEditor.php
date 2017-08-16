@@ -19,13 +19,17 @@ class ConfigEditor
         $this->modules = include CONFIG_ROOT.'/modules.php';
     }
 
+    /**
+     * @param string $name
+     * @return string|null
+     */
     public function getStatus($name)
     {
         if (isset($this->modules[$name])) {
             return $this->modules[$name];
         }
 
-        return;
+        return null;
     }
 
     public function save()

@@ -2,15 +2,31 @@
 
 namespace Rudolf\Component\ErrorHandler\Handler;
 
+use Exception;
+
 abstract class Handler
 {
+    /**
+     * @var Exception
+     */
     private $exception;
 
+    /**
+     * @return void
+     */
+    abstract public function handle();
+
+    /**
+     * @param Exception $e
+     */
     public function setException($e)
     {
         $this->exception = $e;
     }
 
+    /**
+     * @return Exception
+     */
     public function getException()
     {
         return $this->exception;
@@ -31,7 +47,7 @@ abstract class Handler
     }
 
     /**
-     * Get strac trace.
+     * Get trace.
      *
      * @return array
      */

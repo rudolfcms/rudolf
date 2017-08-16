@@ -37,6 +37,8 @@ class PlainTextHandler extends Handler implements IHandler
      */
     private function formatTrace($trace)
     {
+        $t = [];
+
         foreach ($trace as $key => $value) {
             $t[] = sprintf(
                 '- %1$s:%2$s %3$s%4$s%5$s ',

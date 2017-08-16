@@ -7,11 +7,16 @@ use Rudolf\Framework\View\FrontView;
 class View extends FrontView
 {
     /**
+     * @var Article
+     */
+    protected $article;
+
+    /**
      * Set articles data.
      *
      * @param array $data
      */
-    public function setData($data)
+    public function setData(array $data)
     {
         $this->article = new Article($data);
 

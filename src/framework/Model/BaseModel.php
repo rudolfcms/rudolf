@@ -7,7 +7,7 @@ use PDO;
 abstract class BaseModel
 {
     /**
-     * @var object PDO
+     * @var PDO
      */
     protected $pdo;
 
@@ -83,12 +83,12 @@ abstract class BaseModel
             return file_get_contents($file);
         }
 
-        $clausule = $this->createWhereClausule($where);
+        $clause = $this->createWhereClausule($where);
 
         $stmt = $this->pdo->query("
             SELECT COUNT(*) AS count
             FROM $table
-            WHERE $clausule
+            WHERE $clause
         ");
 
         $result = $stmt->fetch(PDO::FETCH_OBJ);
@@ -110,20 +110,20 @@ abstract class BaseModel
     public function createWhereClausule($where)
     {
         if (is_array($where)) {
-            $clausule = null;
+            $clause = null;
 
             foreach ($where as $key => $value) {
                 $condition = $key.'=\''.$value.'\' and ';
-                $clausule .= trim($condition, '0=');
+                $clause .= trim($condition, '0=');
             }
 
-            $clausule = trim($clausule, 'and ');
+            $clause = trim($clause, 'and ');
         } elseif (is_string($where)) {
-            $clausule = $where;
+            $clause = $where;
         } else {
-            $clausule = '1=1';
+            $clause = '1=1';
         }
 
-        return $clausule;
+        return $clause;
     }
 }

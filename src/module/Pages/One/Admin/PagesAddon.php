@@ -4,7 +4,15 @@ namespace Rudolf\Modules\Pages\One\Admin;
 
 trait PagesAddon
 {
-    public function setPages($pages)
+    /**
+     * @var array
+     */
+    protected $pages;
+
+    /**
+     * @param array $pages
+     */
+    public function setPages(array $pages)
     {
         if (false === $pages) {
             $this->pages = [];
@@ -13,6 +21,10 @@ trait PagesAddon
         }
         $this->pages = $pages;
     }
+
+    /**
+     * @return array
+     */
     public function pages()
     {
         return $this->pages;

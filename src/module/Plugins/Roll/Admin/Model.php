@@ -22,15 +22,17 @@ class Model extends BaseModel
     /**
      * Returns array with modules list.
      *
-     * @return array
+     * @return array|bool
      */
-    public function getList()
+    public function getList($limit, $onPage)
     {
         $modules = (new PluginsManager(MODULES_ROOT))->getCollection()->getAll();
 
         if (empty($modules)) {
             return false;
         }
+
+        $array = [];
 
         $i = 1;
         foreach ($modules as $key => $value) {
@@ -41,6 +43,6 @@ class Model extends BaseModel
             ];
         }
 
-        return $array;
+        return array_slice($array, $limit, $onPage);
     }
 }

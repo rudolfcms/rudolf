@@ -7,11 +7,21 @@ use Rudolf\Framework\View\AdminView;
 class DelView extends AdminView
 {
     /**
+     * @var Gallery
+     */
+    protected $gallery;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
      * Set data to delete gallery.
      *
      * @param array $gallery
      */
-    public function delGallery($gallery)
+    public function delGallery(array $gallery)
     {
         $this->gallery = new Gallery($gallery);
 

@@ -60,6 +60,8 @@ class Page extends One\Page
     /**
      * Returns modifier full name.
      *
+     * @param string $type
+     *
      * @return int
      */
     public function modifierFullName($type = '')

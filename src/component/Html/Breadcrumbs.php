@@ -4,12 +4,24 @@ namespace Rudolf\Component\Html;
 
 class Breadcrumbs
 {
+    /**
+     * @var array
+     */
     private $elements;
 
+    /**
+     * @var array
+     */
     private $address;
 
+    /**
+     * @var array
+     */
     private $classes;
 
+    /**
+     * @var int
+     */
     private $nesting;
 
     /**
@@ -17,7 +29,7 @@ class Breadcrumbs
      *
      * @param array $elements Array with menu elements
      * @param array $address  Address elements array
-     * @param array $classes  Array wich classes to use in breadcrumbs
+     * @param array $classes  Array which classes to use in breadcrumbs
      * @param int   $nesting  Generated code nesting
      */
     public function __construct($elements = [], $address = [], $classes = [], $nesting = 0)
@@ -78,6 +90,8 @@ class Breadcrumbs
         if (empty($menu) || empty($address)) {
             return false;
         }
+
+        $array = [];
 
         // temp workaround
         foreach ($menu as $key => $value) {

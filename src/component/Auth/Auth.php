@@ -2,9 +2,21 @@
 
 namespace Rudolf\Component\Auth;
 
+use PDO;
+
 class Auth
 {
-    public function __construct($pdo, $prefix = '')
+    /**
+     * @var PDO
+     */
+    private $pdo;
+
+    /**
+     * Auth constructor.
+     * @param PDO $pdo
+     * @param string $prefix
+     */
+    public function __construct(PDO $pdo, $prefix = '')
     {
         $this->pdo = $pdo;
         $this->prefix = $prefix;
@@ -26,7 +38,7 @@ class Auth
      *             2 - email not valid
      *             3 - password not valid
      *             4 - user not exist
-     *             5 - email or password incorect
+     *             5 - email or password incorrect
      *             6 - account is inactive
      *             7 - unnamed error
      */
@@ -87,10 +99,10 @@ class Auth
     /**
      * Get logged user info.
      *
-     * @param id $uid User ID
+     * @param int $uid User ID
      *                not set gives current logged user data
      *
-     * @return array
+     * @return array|bool
      */
     public function getUser($uid = false)
     {
@@ -137,7 +149,7 @@ class Auth
      *
      * @param string $email
      *
-     * @return array
+     * @return array|bool
      */
     public function getUserDataByEmail($email)
     {

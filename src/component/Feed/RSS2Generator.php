@@ -92,27 +92,27 @@ class RSS2Generator
     private $ttl;
 
     /**
-     * @var private
+     * @var string
      */
     private $image;
 
     /**
-     * @var private
+     * @var string
      */
     private $rating;
 
     /**
-     * @var private
+     * @var string
      */
     private $textInput;
 
     /**
-     * @var private
+     * @var string
      */
     private $skipHours;
 
     /**
-     * @var private
+     * @var string
      */
     private $skipDays;
 
@@ -181,7 +181,7 @@ class RSS2Generator
      *
      * @example en-us
      *
-     * @param string $laguage
+     * @param string $language
      */
     public function setLanguage($language)
     {
@@ -376,12 +376,15 @@ class RSS2Generator
      *
      * @link http://cyber.law.harvard.edu/rss/rss.html#ltimagegtSubelementOfLtchannelgt
      *
-     * @param string $url   The URL of a GIF, JPEG or PNG image that represents the channel
+     * @param string $url The URL of a GIF, JPEG or PNG image that represents the channel
      * @param string $title Describes the image, it's used in the ALT attribute of the
      *                      HTML <img> tag when the channel is rendered in HTML
-     * @param string $link  The URL of the site, when the channel is rendered, the image
+     * @param string $link The URL of the site, when the channel is rendered, the image
      *                      is a link to the site. (Note, in practice the image <title> and <link> should
      *                      have the same value as the channel's <title> and <link>
+     * @param int $width
+     * @param int $height
+     * @param string $description
      */
     public function setImage($url, $title, $link, $width = 88, $height = 31, $description = '')
     {
@@ -389,7 +392,6 @@ class RSS2Generator
             'url' => $url,
             'title' => $title,
             'link' => $link,
-            'url' => $url,
             'width' => $width,
             'height' => $height,
             'description' => $description,
@@ -439,7 +441,7 @@ class RSS2Generator
      *
      * @link http://cyber.law.harvard.edu/rss/skipHoursDays.html#skiphours
      *
-     * @param
+     * @param array $skipHours
      */
     public function setSkipHours(array $skipHours)
     {
@@ -461,7 +463,10 @@ class RSS2Generator
         $this->skipDays = $skipDays;
     }
 
-    public function setItems($items)
+    /**
+     * @param array $items
+     */
+    public function setItems(array $items)
     {
         $this->items = $items;
     }

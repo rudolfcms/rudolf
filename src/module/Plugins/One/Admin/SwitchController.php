@@ -2,6 +2,8 @@
 
 namespace Rudolf\Modules\Plugins\One\Admin;
 
+use Rudolf\Component\Alerts\Alert;
+use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Component\Plugins\ConfigEditor;
 use Rudolf\Framework\Controller\AdminController;
 
@@ -14,7 +16,10 @@ class SwitchController extends AdminController
         $status = $configEditor->getStatus($name);
 
         if (null === $status) {
-            // TODO: trigger alerts
+            AlertsCollection::add(new Alert(
+                'error',
+                'Wystąpił nieoczekiwany błąd'
+            ));
             $this->redirect(DIR.'/admin/plugins');
         }
 
@@ -22,14 +27,20 @@ class SwitchController extends AdminController
             case 1:
                 $configEditor->deactivate($name);
                 $configEditor->save();
-                // TODO: trigger alerts
+                AlertsCollection::add(new Alert(
+                    'success',
+                    'Pomyślnie wyłączono wtyczkę '.$name.'.'
+                ));
                 $this->redirect(DIR.'/admin/plugins?de', 302);
                 break;
 
             case 0:
                 $configEditor->activate($name);
                 $configEditor->save();
-                // TODO: trigger alerts
+                AlertsCollection::add(new Alert(
+                    'success',
+                    'Pomyślnie włączono wtyczkę '.$name.'.'
+                ));
                 $this->redirect(DIR.'/admin/plugins?ac', 302);
                 break;
         }

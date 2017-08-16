@@ -17,8 +17,6 @@ class AdminFields
      * @param int    $cols
      * @param int    $rows
      *
-     * @todo http://www.php-fig.org/psr/psr-2/#4-4-method-arguments
-     *
      * @return string
      */
     public function textarea($content, $name, $class, $id, $placeholder = '', $cols = 30, $rows = 10)
@@ -60,10 +58,10 @@ class AdminFields
      *
      * @return string
      */
-    public function datetimeInput($date, $name, $class, $id, $placeholder = '')
+    public function dateInput($date, $name, $class, $id, $placeholder = '')
     {
         $html = sprintf(
-            '<input type="datetime" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s">',
+            '<input type="text" value="%1$s" name="%2$s" class="%3$s" id="%4$s" placeholder="%5$s">',
             $date,
             $name,
             $class,
@@ -79,7 +77,7 @@ class AdminFields
     /**
      * Returns input with path to file.
      *
-     * @param $string path
+     * @param string $path
      * @param string $name
      * @param string $class
      * @param string $id

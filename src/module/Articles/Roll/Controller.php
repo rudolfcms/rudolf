@@ -14,6 +14,8 @@ class Controller extends FrontController
      *
      * @param int $page Page number
      *
+     * @throws HttpErrorException
+     *
      * @return bool|string
      */
     public function getList($page)

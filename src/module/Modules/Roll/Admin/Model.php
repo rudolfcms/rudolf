@@ -24,9 +24,11 @@ class Model extends BaseModel
      *
      * @return array
      */
-    public function getList()
+    public function getList($limit, $onPage)
     {
         $modules = (new ModulesManager(MODULES_ROOT))->getCollection()->getAll();
+
+        $array = [];
 
         $i = 1;
         foreach ($modules as $key => $value) {
@@ -41,6 +43,6 @@ class Model extends BaseModel
             }
         }
 
-        return $array;
+        return array_slice($array, $limit, $onPage);
     }
 }

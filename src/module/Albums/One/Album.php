@@ -28,6 +28,8 @@ class Album
      * Set album data.
      *
      * @param array $album
+     *
+     * @return array
      */
     public function setData($album)
     {
@@ -102,6 +104,7 @@ class Album
      * Returns the author.
      *
      * @param string $type null|raw
+     * @param bool   $adder
      *
      * @return string
      */
@@ -126,6 +129,7 @@ class Album
      *
      * @param bool|string $format
      * @param string      $style  normal|locale
+     * @param bool        $inflected
      *
      * @return string If date field empty, return current date
      */
@@ -236,6 +240,8 @@ class Album
 
     /**
      * Returns modifier full name.
+     *
+     * @param string $type
      *
      * @return int
      */

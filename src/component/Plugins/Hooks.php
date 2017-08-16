@@ -9,6 +9,12 @@ class Hooks
      */
     private $plugins;
 
+    /**
+     * Hooks constructor.
+     *
+     * @param array $plugins
+     * @param $path
+     */
     public function __construct(array $plugins, $path)
     {
         $this->plugins = $plugins;

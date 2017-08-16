@@ -8,10 +8,20 @@ use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Html\Url;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Framework\View\FrontView;
+use Rudolf\Modules\Articles\One\Article;
 
 class View extends FrontView
 {
-    public function setArticles($data, Pagination $pagination)
+    /**
+     * @var Pagination
+     */
+    protected $pagination;
+
+    /**
+     * @param array $data
+     * @param Pagination $pagination
+     */
+    public function setArticles(array $data, Pagination $pagination)
     {
         $this->data = $data;
         $this->pagination = $pagination;
@@ -33,7 +43,12 @@ class View extends FrontView
             'Rudolf\\Modules\\Articles\\One\\Article'
         );
 
+        $array = [];
+
         while ($loop->haveItems()) {
+            /**
+             * @var Article $article
+             */
             $article = $loop->item();
             $item = new Feed\RSS2Item();
 

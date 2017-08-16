@@ -10,11 +10,26 @@ class AddView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Album
+     */
+    protected $album;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data do add album.
      *
      * @param array $album
      */
-    public function addAlbum($album)
+    public function addAlbum(array $album)
     {
         $this->album = new Album($album);
 

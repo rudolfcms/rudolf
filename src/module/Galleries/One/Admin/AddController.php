@@ -17,11 +17,11 @@ class AddController extends AdminController
         if (!empty($_POST)) {
             $form->handle($_POST);
 
-            if ($form->isValid() and $id = $form->add($_POST)) {
+            if ($form->isValid() and $id = $form->add()) {
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);
             }
 
-            $form->dispalyAlerts();
+            $form->displayAlerts();
         }
 
         $view = new AddView();

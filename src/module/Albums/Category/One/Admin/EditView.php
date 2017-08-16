@@ -6,6 +6,24 @@ use Rudolf\Framework\View\AdminView;
 
 class EditView extends AdminView
 {
+    /**
+     * @var Category
+     */
+    protected $category;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
+     * @param array $category
+     */
     public function edit($category)
     {
         $this->category = new Category($category);

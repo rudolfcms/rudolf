@@ -2,7 +2,6 @@
 
 namespace Rudolf\Component\Routing;
 
-use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
 use Rudolf\Component\Http\HttpErrorException;
 
 class FrontController
@@ -13,24 +12,9 @@ class FrontController
     private $router;
 
     /**
-     * @var string Controller name
-     */
-    private $controller;
-
-    /**
-     * @var string Method name
-     */
-    private $method;
-
-    /**
-     * @var array Params array
-     */
-    private $params;
-
-    /**
      * Constructor.
      *
-     * @param Router
+     * @param Router $router
      */
     public function __construct(Router $router)
     {
@@ -39,6 +23,8 @@ class FrontController
 
     /**
      * Run.
+     *
+     * @throws HttpErrorException
      */
     public function run()
     {
@@ -49,7 +35,7 @@ class FrontController
         $names = $this->explodeName($this->router->getControllerName());
 
         if (!class_exists($names[0])) {
-            throw new HttpErrorException('Controller class '.$names[0].' doesn\'t exist');
+            throw new HttpErrorException('Controller class '.$names[0].' does not exist');
         }
 
         $this->call($names, $this->router->getParams());
@@ -58,20 +44,19 @@ class FrontController
     /**
      * Call controller method.
      *
-     * @param object @object
-     * @param string $method
+     * @param array $call
      * @param array  $params
      *
      * @return bool
      */
-    private function call($class, $params = [])
+    private function call(array $call, $params = [])
     {
-        $object = new $class[0]($this->router->getUrl());
+        $object = new $call[0]($this->router->getUrl());
 
-        if (false === isset($class[1])) {
+        if (false === isset($call[1])) {
             $method = 'index';
         } else {
-            $method = $class[1];
+            $method = $call[1];
         }
 
         return call_user_func_array(array($object, $method), $params);

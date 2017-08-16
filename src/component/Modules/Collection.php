@@ -5,7 +5,7 @@ namespace Rudolf\Component\Modules;
 class Collection
 {
     /**
-     * @var array
+     * @var Module[]
      */
     private $collection;
 
@@ -22,6 +22,8 @@ class Collection
 
     /**
      * Get all modules.
+     *
+     * @return Module[]
      */
     public function getAll()
     {
@@ -30,6 +32,8 @@ class Collection
 
     /**
      * Get active modules.
+     *
+     * @return bool|Module[]
      */
     public function getActive()
     {

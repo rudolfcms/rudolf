@@ -36,7 +36,7 @@ class Alert implements IAlert
      *
      * @param string $type
      *
-     * @return string
+     * @return void
      */
     public function setType($type)
     {
@@ -58,7 +58,7 @@ class Alert implements IAlert
      *
      * @param string $message
      *
-     * @return string
+     * @return void
      */
     public function setMessage($message)
     {

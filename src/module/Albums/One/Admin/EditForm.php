@@ -13,6 +13,9 @@ class EditForm extends FormCheck
      */
     protected $model;
 
+    /**
+     * @param EditModel $model
+     */
     public function setModel(EditModel $model)
     {
         $this->model = $model;

@@ -10,11 +10,26 @@ class DelView extends AdminView
     use CategoryAddon;
 
     /**
+     * @var Article
+     */
+    protected $article;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var string
+     */
+    protected $templateType;
+
+    /**
      * Set data to delete article.
      *
      * @param array $article
      */
-    public function delArticle($article)
+    public function delArticle(array $article)
     {
         $this->article = new Article($article);
 

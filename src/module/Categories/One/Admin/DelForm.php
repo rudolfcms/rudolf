@@ -13,6 +13,14 @@ class DelForm extends Form
      */
     protected $model;
 
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @param DelModel $model
+     */
     public function setModel(DelModel $model)
     {
         $this->model = $model;
@@ -28,6 +36,9 @@ class DelForm extends Form
         $this->id = $this->data['id'];
     }
 
+    /**
+     * @return bool
+     */
     public function delete()
     {
         $status = $this->model->delete($this->id);

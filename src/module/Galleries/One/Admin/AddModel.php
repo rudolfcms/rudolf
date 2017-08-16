@@ -10,7 +10,7 @@ class AddModel extends AdminModel
     /**
      * Add article.
      *
-     * @param array $data
+     * @param array $f
      *
      * @return int
      */

@@ -7,6 +7,11 @@ use Rudolf\Modules\Articles;
 class Model extends Articles\Model
 {
     /**
+     * @var array
+     */
+    private $results;
+
+    /**
      * Returns article data based on year, month and slug.
      *
      * @param int    $year

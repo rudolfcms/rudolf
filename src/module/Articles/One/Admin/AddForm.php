@@ -8,8 +8,14 @@ use Rudolf\Component\Alerts\AlertsCollection;
 
 class AddForm extends FormCheck
 {
-    protected $model;
+    /**
+     * @var AddModel
+     */
+    private $model;
 
+    /**
+     * @param AddModel $model
+     */
     public function setModel(AddModel $model)
     {
         $this->model = $model;

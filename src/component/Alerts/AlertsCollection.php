@@ -16,6 +16,8 @@ class AlertsCollection
      */
     public function __construct()
     {
+        $collectionFromSession = [];
+
         if (isset($_SESSION['rudolf_alerts'])) {
             foreach ($_SESSION['rudolf_alerts'] as $key => $value) {
                 $collectionFromSession[] = new Alert($value['type'], $value['message']);
@@ -48,12 +50,10 @@ class AlertsCollection
      *
      * @param string $type Alert type
      *
-     * @return Alert array
+     * @return Alert[]|bool
      */
     public function getByType($type)
     {
-        $collection = self::$collection;
-
         foreach (self::$collection as $key => $value) {
             if ($type === $value->getType()) {
                 $newCollection[] = $value;
@@ -88,7 +88,7 @@ class AlertsCollection
     /**
      * Get all alerts.
      *
-     * @return Alert array
+     * @return Alert[]
      */
     public function getAll()
     {

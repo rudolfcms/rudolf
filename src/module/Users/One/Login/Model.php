@@ -14,6 +14,12 @@ class Model extends FrontModel
         return $auth->check();
     }
 
+    /**
+     * @param string $email
+     * @param string $password
+     *
+     * @return int
+     */
     public function login($email, $password)
     {
         $auth = new Auth($this->pdo, $this->prefix);

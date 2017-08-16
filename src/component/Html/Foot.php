@@ -8,6 +8,11 @@ class Foot
 
     /**
      * Make all elements before </body>.
+     *
+     * @param bool $return
+     * @param int $nesting
+     *
+     * @return string|null
      */
     public function make($return = false, $nesting = 1)
     {
@@ -20,12 +25,13 @@ class Foot
             $html[$key] = trim($value);
         }
 
-        $return = implode("\n".str_repeat("\t", $nesting), array_filter($html)).PHP_EOL;
+        $html = implode("\n".str_repeat("\t", $nesting), array_filter($html)).PHP_EOL;
 
-        if (true === $return) {
-            return $return;
+        if (false === $return) {
+            echo $html;
+            return null;
         }
 
-        echo $return;
+        return $html;
     }
 }

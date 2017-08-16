@@ -4,6 +4,36 @@ namespace Rudolf\Component\ErrorHandler\Handler;
 
 class DebugFriendlyHandler extends Handler implements IHandler
 {
+    /**
+     * @var string
+     */
+    private $pageTitle;
+
+    /**
+     * @var string
+     */
+    private $pageStyle;
+
+    /**
+     * @var string
+     */
+    private $pageScript;
+
+    /**
+     * @var string
+     */
+    private $message;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $trace;
+
     public function handle()
     {
         $this->pageTitle = 'Oh no! Error occurred!';
@@ -32,6 +62,8 @@ class DebugFriendlyHandler extends Handler implements IHandler
 
             return ob_get_clean();
         }
+
+        $t = [];
 
         foreach ($name as $key => $value) {
             $t[] = file_get_contents(__DIR__.'/../Resources/'.$value);

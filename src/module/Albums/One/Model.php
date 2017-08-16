@@ -7,6 +7,11 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
+     * @var array
+     */
+    private $results;
+
+    /**
      * Returns album data based on year, month and slug.
      *
      * @param int    $year
