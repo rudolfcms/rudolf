@@ -61,15 +61,20 @@ class View extends FrontView
      * Returns category title.
      *
      * @param bool $strip
+     * @param bool $before
      *
      * @return string
      */
-    public function categoryTitle($strip = false)
+    public function categoryTitle($strip = false, $before = true)
     {
-        $title = _('Articles from category').' <i>'.$this->categoryInfo['title'].'</i>';
+        $title = '<i>'.$this->categoryInfo['title'].'</i>';
 
         if (true === $strip) {
-            return strip_tags($title);
+            $title = strip_tags($title);
+        }
+
+        if (true === $before) {
+            $title = _('Articles from category').' '.$title;
         }
 
         return $title;
@@ -83,5 +88,15 @@ class View extends FrontView
     public function categoryDescription()
     {
         return $this->categoryInfo['content'];
+    }
+
+    /**
+     * Returns if category description exist
+     *
+     * @return boolean
+     */
+    public function isCategoryDescription()
+    {
+        return !empty($this->categoryInfo['content']);
     }
 }
