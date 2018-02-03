@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Tools\Admin\One\DatabaseDump;
+namespace Rudolf\Modules\Tools\Admin\One\DatabaseImport;
 
 use Rudolf\Framework\View\AdminView;
 
@@ -12,9 +12,9 @@ class View extends AdminView
     public function setData(array $data)
     {
         $this->data = $data;
-        $this->pageTitle = _('Database dump');
+        $this->pageTitle = _('Database import');
         $this->head->setTitle($this->pageTitle);
 
-        $this->template = 'tool-dbdump';
+        $this->template = 'tool-dbimport';
     }
 }

@@ -13,6 +13,10 @@ class Model
                 'name' => 'Database dump',
                 'slug' => 'db-dump',
             ],
+            [
+                'name' => 'Database import',
+                'slug' => 'db-import',
+            ],
         ];
     }
 

@@ -19,6 +19,11 @@ $collection->add('tools/admin/list', new Route(
 
 $collection->add('tools/admin/db-dump', new Route(
     'admin/tools/db-dump$',
-    'Rudolf\Modules\Tools\Admin\One\DatabaseDump\Controller::show',
-    ['id' => '[1-9][0-9]*']
+    'Rudolf\Modules\Tools\Admin\One\DatabaseDump\Controller::show'
+));
+
+
+$collection->add('tools/admin/db-import', new Route(
+    'admin/tools/db-import$',
+    'Rudolf\Modules\Tools\Admin\One\DatabaseImport\Controller::show'
 ));

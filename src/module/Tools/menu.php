@@ -23,3 +23,15 @@ $collection->add(new MenuItem([
     'position' => 0,
     'ico' => 'fa-database',
 ]));
+
+
+$collection->add(new MenuItem([
+    'parent_id' => $id,
+    'title' => _('Database import'),
+    'caption' => _('Database import'),
+    'slug' => 'admin/tools/db-import',
+    'menu_type' => 'main',
+    'item_type' => 'app',
+    'position' => 1,
+    'ico' => 'fa-level-up',
+]));
