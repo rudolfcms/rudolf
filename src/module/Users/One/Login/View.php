@@ -72,7 +72,6 @@ class View extends FrontView
 //                $a['type'] = 'danger';
                 //break;
 
-                // no break
             case 5:
                 $a['message'] = _('email or password incorect');
                 $a['type'] = 'danger';

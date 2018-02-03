@@ -21,12 +21,18 @@ class Controller extends AdminController
             if ($file['error'] !== UPLOAD_ERR_OK
                 || !is_uploaded_file($file['tmp_name'])) {
                 $error = 1;
-                AlertsCollection::add(new Alert('error', 'Uszkodzony plik.',
-                    ALERT::MODE_IMMEDIATELY));
+                AlertsCollection::add(new Alert(
+                    'error',
+                    'Uszkodzony plik.',
+                    ALERT::MODE_IMMEDIATELY
+                ));
             } elseif ('application/sql' !== $file['type']) {
                 $error = 1;
-                AlertsCollection::add(new Alert('error', 'Nieprawidłowy plik. Tylko .sql.',
-                    ALERT::MODE_IMMEDIATELY));
+                AlertsCollection::add(new Alert(
+                    'error',
+                    'Nieprawidłowy plik. Tylko .sql.',
+                    ALERT::MODE_IMMEDIATELY
+                ));
             }
 
             if (0 === $error) {
@@ -34,12 +40,17 @@ class Controller extends AdminController
                 $model->clear();
                 $queries = $model->import(file_get_contents($file['tmp_name']));
                 if ($queries) {
-                    AlertsCollection::add(new Alert('success',
-                        'Poprawnie zaimportowano ' . $file['name'].'! Wykonano '.$queries.' zapytań.'));
+                    AlertsCollection::add(new Alert(
+                        'success',
+                        'Poprawnie zaimportowano ' . $file['name'].'! Wykonano '.$queries.' zapytań.'
+                    ));
                     $this->redirectTo(DIR.'/admin/tools/db-import');
                 } else {
-                    AlertsCollection::add(new Alert('error', 'Nastąpił błąd podczas importu!',
-                        ALERT::MODE_IMMEDIATELY));
+                    AlertsCollection::add(new Alert(
+                        'error',
+                        'Nastąpił błąd podczas importu!',
+                        ALERT::MODE_IMMEDIATELY
+                    ));
                 }
             }
         }

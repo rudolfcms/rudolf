@@ -71,7 +71,8 @@ class DebugFriendlyHandler extends Handler implements IHandler
      *
      * @return string
      */
-    private function includeFile($file) {
+    private function includeFile($file)
+    {
         ob_start();
 
         include __DIR__.'/../Resources/'.$file;
