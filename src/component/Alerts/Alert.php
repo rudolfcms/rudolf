@@ -4,6 +4,10 @@ namespace Rudolf\Component\Alerts;
 
 class Alert implements IAlert
 {
+    const MODE_IMMEDIATELY = 0;
+
+    const MODE_SESSION = 1;
+
     /**
      * @var string
      */
@@ -20,15 +24,17 @@ class Alert implements IAlert
      * @param string $type
      * @param string $message
      */
-    public function __construct($type, $message)
+    public function __construct($type, $message, $mode = self::MODE_SESSION)
     {
         $this->setType($type);
         $this->setMessage($message);
 
-        $_SESSION['rudolf_alerts'][md5($message)] = [
-            'type' => $type,
-            'message' => $message,
-        ];
+        if (self::MODE_SESSION === $mode) {
+            $_SESSION['rudolf_alerts'][md5($message)] = [
+                'type' => $type,
+                'message' => $message,
+            ];
+        }
     }
 
     /**
