@@ -18,7 +18,7 @@ class Model extends AbstractModel
      *
      * @return int
      */
-    public function getTotalNumber(array $where = ['published' => 1])
+    public function getTotalNumber($where = ['published' => 1])
     {
         $this->where = $where;
 

@@ -43,8 +43,8 @@ class Model extends AdminModel
      *
      * @return int
      */
-    public function getTotalNumber()
+    public function getTotalNumber($where)
     {
-        return $this->countItems('users');
+        return $this->countItems('users', $where);
     }
 }

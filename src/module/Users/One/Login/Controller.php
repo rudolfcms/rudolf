@@ -16,7 +16,7 @@ class Controller extends FrontController
             $status = $model->login($_POST['email'], $_POST['password']);
         }
 
-        if (1 === $status && true === $model->check()) {
+        if (1 === $status || true === $model->check()) {
             $this->redirect(DIR.'/admin', 302);
         }
 

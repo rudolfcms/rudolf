@@ -17,7 +17,7 @@ abstract class BaseModel
     protected $prefix;
 
     /**
-     * @var object PDO
+     * @var PDO
      */
     private static $db;
 
@@ -45,7 +45,7 @@ abstract class BaseModel
     /**
      * Create connection with database.
      *
-     * @return object PDO
+     * @return PDO
      */
     private function connect()
     {
@@ -67,6 +67,7 @@ abstract class BaseModel
      * @param string|array $where
      *
      * @return int
+     * @throws \RuntimeException
      */
     protected function countItems($table, $where = [])
     {
@@ -75,8 +76,10 @@ abstract class BaseModel
 
         $file = TEMP_ROOT.'/'.self::$config['engine'].'/'.$cachedFileName;
 
-        if (!file_exists(TEMP_ROOT.'/mysql')) {
-            mkdir(TEMP_ROOT.'/mysql', 0755);
+        if (!file_exists(TEMP_ROOT.'/mysql')
+            && !mkdir(TEMP_ROOT.'/mysql', 0755)
+            && !is_dir(TEMP_ROOT.'/mysql')) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', TEMP_ROOT.'/mysql'));
         }
 
         if (is_file($file)) {
@@ -93,8 +96,8 @@ abstract class BaseModel
 
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
-        $fp = fopen($file, 'w');
-        fputs($fp, $result->count);
+        $fp = fopen($file, 'wb');
+        fwrite($fp, $result->count);
         fclose($fp);
 
         return $result->count;
