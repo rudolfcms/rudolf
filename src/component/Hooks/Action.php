@@ -134,7 +134,7 @@ class Action
         } else {
             $args[] = $arg;
         }
-        for ($a = 2; $a < func_num_args(); ++$a) {
+        for ($a = 2, $aMax = func_num_args(); $a < $aMax; ++$a) {
             $args[] = func_get_arg($a);
         }
 

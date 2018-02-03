@@ -39,6 +39,10 @@ class UserFriendlyHandler extends Handler implements IHandler
     /**
      * Displays an error message in html.
      *
+     * @param $code
+     * @param $message
+     * @param $text
+     *
      * @return string
      */
     public function displayDefaultMessage($code, $message, $text)

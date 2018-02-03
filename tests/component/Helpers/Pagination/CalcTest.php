@@ -14,7 +14,7 @@ class CalcTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithMinusTotal()
     {
-        $calc = new Calc(-$this->total, $this->pageNumber, $this->onPage, $this->navNum);
+        new Calc(-$this->total, $this->pageNumber, $this->onPage, $this->navNum);
     }
 
     /**
@@ -22,7 +22,7 @@ class CalcTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithMinusPageNumber()
     {
-        $calc = new Calc($this->total, -$this->pageNumber, $this->onPage, $this->navNum);
+        new Calc($this->total, -$this->pageNumber, $this->onPage, $this->navNum);
     }
 
     /**
@@ -30,7 +30,7 @@ class CalcTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithMinusOnPage()
     {
-        $calc = new Calc($this->total, $this->pageNumber, -$this->onPage, $this->navNum);
+        new Calc($this->total, $this->pageNumber, -$this->onPage, $this->navNum);
     }
 
     /**
@@ -38,7 +38,7 @@ class CalcTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithMinusNavNum()
     {
-        $calc = new Calc($this->total, $this->pageNumber, $this->onPage, -$this->navNum);
+        new Calc($this->total, $this->pageNumber, $this->onPage, -$this->navNum);
     }
 
     /**
@@ -46,7 +46,7 @@ class CalcTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithMinusParams()
     {
-        $calc = new Calc(-$this->total, -$this->pageNumber, -$this->onPage, -$this->navNum);
+        new Calc(-$this->total, -$this->pageNumber, -$this->onPage, -$this->navNum);
     }
 
     public function testGetTotal()

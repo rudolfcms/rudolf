@@ -14,7 +14,9 @@ class Controller extends FrontController
      *
      * @param int $page Page number
      *
+     * @throws \InvalidArgumentException
      * @throws HttpErrorException
+     * @throws \Exception
      */
     public function getList($page)
     {

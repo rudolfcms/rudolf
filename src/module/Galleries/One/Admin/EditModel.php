@@ -41,9 +41,14 @@ class EditModel extends AdminModel
         $stmt->bindValue(':thumb_height', $f['thumb_height'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
 
-        return $status = $stmt->execute();
+        return $stmt->execute();
     }
 
+    /**
+     * @param $post
+     *
+     * @throws \Exception
+     */
     public function delete($post)
     {
         $config = (new Module('galleries'))->getConfig();
@@ -54,6 +59,13 @@ class EditModel extends AdminModel
         }
     }
 
+    /**     *
+     * @param $file
+     * @param $post
+     *
+     * @return bool
+     * @throws \Exception
+     */
     public function upload($file, $post)
     {
         $config = (new Module('galleries'))->getConfig();

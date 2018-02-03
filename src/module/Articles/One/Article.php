@@ -146,6 +146,7 @@ class Article
      * @param bool     $raw
      *
      * @return string
+     * @throws \HtmlTruncator\InvalidHtmlException
      */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
     {
@@ -184,7 +185,7 @@ class Article
         $author = $this->article['author'];
 
         // if fields is empty and $adder is true
-        if (empty($author) and true === $adder) {
+        if (empty($author) && true === $adder) {
             $author = $this->adderFullName(false);
         }
 
@@ -210,18 +211,18 @@ class Article
 
         $validator = new Validator();
         $validator->checkDatetime('date', $date, 'Y-m-d H:i:s');
-        if ($validator->isErrors() or empty($date)) {
+        if (empty($date) || $validator->isErrors()) {
             return $date;
         }
 
         switch ($style) {
             case 'locale': // http://php.net/manual/en/function.strftime.php
-                $format = ($format) ? $format : '%D';
+                $format = $format ? $format : '%D';
                 $date = strftime($format, strtotime($date));
                 break;
 
             default: // http://php.net/manual/en/datetime.formats.date.php
-                $format = ($format) ? $format : 'Y-m-d H:i:s';
+                $format = $format ? $format : 'Y-m-d H:i:s';
                 $date = date_format(date_create($date), $format);
                 break;
         }
@@ -439,7 +440,7 @@ class Article
     {
         $thumbUrl = $this->thumb();
         $albumUrl = $this->album();
-        $alt = ($alt) ? $alt : $this->title();
+        $alt = $alt ? $alt : $this->title();
 
         if (!$this->hasThumbnail()) {
             if (!empty($default)) {
@@ -459,7 +460,7 @@ class Article
             $alt
         );
 
-        if (true === $album and !empty($albumUrl)) {
+        if (true === $album && !empty($albumUrl)) {
             $html = sprintf('<a href="%1$s">%2$s</a>', $albumUrl, $html);
         }
 

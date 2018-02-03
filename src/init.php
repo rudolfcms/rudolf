@@ -11,7 +11,7 @@ use Rudolf\Component\Routing\Router;
 session_start();
 ob_start();
 
-require_once dirname(__FILE__).'/component/Utils/PHPCompatibilityCheck.php';
+require_once __DIR__.'/component/Utils/PHPCompatibilityCheck.php';
 php_compatibility_check($required = 5.4);
 
 // load defines

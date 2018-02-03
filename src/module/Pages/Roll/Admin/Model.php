@@ -20,19 +20,17 @@ class Model extends AdminModel
      *
      * @return array|bool
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
         $clausule = $this->createWhereClausule($this->where);
 
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT *
             FROM {$this->prefix}pages
             WHERE $clausule
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
                                                    $onPage
         ");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
@@ -50,7 +48,7 @@ class Model extends AdminModel
      *
      * @return int
      */
-    public function getTotalNumber($where = ['published' => 1])
+    public function getTotalNumber(array $where = ['published' => 1])
     {
         $this->where = $where;
 

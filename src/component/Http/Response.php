@@ -78,7 +78,7 @@ class Response
      *
      * @throws \InvalidArgumentException When the HTTP status code is not valid
      */
-    public function __construct($content = '', $status = 200, $headers = [])
+    public function __construct($content = '', $status = 200, array $headers = [])
     {
         $this->setContent($content);
         $this->setStatusCode($status);

@@ -18,10 +18,11 @@ class Manager
 
     /**
      * Constructor.
-     *
      * Run modules manager service
      *
      * @param string $path Absolute path to modules directory
+     *
+     * @throws \InvalidArgumentException
      */
     public function __construct($path)
     {
@@ -30,8 +31,13 @@ class Manager
         $this->modules = $this->getCollection()->getActive();
     }
 
+    /**
+     * @return Collection
+     * @throws \InvalidArgumentException
+     */
     public function getCollection()
     {
+        /** @var array $modules */
         $modules = include CONFIG_ROOT.'/modules.php';
 
         $collection = new Collection();

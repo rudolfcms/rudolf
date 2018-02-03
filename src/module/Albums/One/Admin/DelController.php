@@ -8,6 +8,12 @@ use Rudolf\Modules\Albums\One\Model as OneModel;
 
 class DelController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function del($id)
     {
         // if data was send

@@ -5,6 +5,7 @@ namespace Rudolf\Modules\Tools\Admin\Roll;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Framework\View\AdminView;
+use Rudolf\Modules\Tools\Admin\One\Tool;
 
 class View extends AdminView
 {
@@ -22,7 +23,7 @@ class View extends AdminView
         $this->loop = new Loop(
             $data,
             $pagination,
-            'Rudolf\\Modules\\Tools\\Admin\\One\\Tool',
+            Tool::class,
             '/admin/plugins/list'
         );
 

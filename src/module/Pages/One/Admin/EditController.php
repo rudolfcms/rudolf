@@ -9,6 +9,12 @@ use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class EditController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function edit($id)
     {
         $form = new EditForm();
@@ -23,7 +29,7 @@ class EditController extends AdminController
         if (isset($_POST['update'])) {
             $form->handle(array_merge($_POST, ['id' => $id]));
 
-            if ($form->isValid() and $form->update()) {
+            if ($form->isValid() && $form->update()) {
                 $this->redirect(DIR.'/admin/pages/edit/'.$id);
             }
 

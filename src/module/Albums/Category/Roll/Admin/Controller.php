@@ -8,6 +8,11 @@ use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class Controller extends AdminController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');

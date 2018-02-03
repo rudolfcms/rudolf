@@ -36,8 +36,8 @@ class Model extends FrontModel
                 return false;
             }
 
-            if (isset($pidInArray['parent_id']) && $pid == $pidInArray['parent_id']) {
-                $pid = $pidInArray['id'];
+            if (isset($pidInArray['parent_id']) && $pid === (int) $pidInArray['parent_id']) {
+                $pid = (int) $pidInArray['id'];
             } else {
                 return false;
             }
@@ -92,12 +92,12 @@ class Model extends FrontModel
 
         if (0 === $current['parent_id']) {
             return $url;
-        } else {
-            $pid = $page['parent_id'];
-            while ($pid != 0) {
-                $url = $pages[$pid]['slug'].'/'.$url;
-                $pid = $pages[$pid]['parent_id'];
-            }
+        }
+
+        $pid = $page['parent_id'];
+        while ((int) $pid !== 0) {
+            $url = $pages[$pid]['slug'].'/'.$url;
+            $pid = $pages[$pid]['parent_id'];
         }
 
         $page['url'] = DIR.'/'.$url;

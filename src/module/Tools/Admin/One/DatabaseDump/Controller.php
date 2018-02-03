@@ -9,6 +9,9 @@ use Rudolf\Framework\Controller\AdminController;
 
 class Controller extends AdminController
 {
+    /**
+     * @throws \Exception
+     */
     public function show()
     {
         if (isset($_POST['backup'])) {

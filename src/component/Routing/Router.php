@@ -22,7 +22,7 @@ class Router
     /**
      * @var string name of controller with method name in matched route
      */
-    private $controller = null;
+    private $controller;
 
     /**
      * @var array request params
@@ -41,7 +41,7 @@ class Router
         $this->setBasePath($basePath);
         $this->setUrl($url);
 
-        if ($collection != null) {
+        if ($collection !== null) {
             self::$collection = $collection;
         }
     }
@@ -199,9 +199,9 @@ class Router
      */
     protected function setGetData($route)
     {
-        $routePath = str_replace(array('(', ')'), array('', ''), $route->getPath());
+        $routePath = str_replace(['(', ')'], '', $route->getPath());
         $trim = explode('<', $routePath);
-        $parsed_url = str_replace(array($this->basePath), array(''), $this->getUrl());
+        $parsed_url = str_replace([$this->basePath], '', $this->getUrl());
         $parsed_url = preg_replace("#$trim[0]#", '', $parsed_url, 1);
 
         // ustawia parametry przekazane w URL

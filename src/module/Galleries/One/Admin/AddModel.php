@@ -13,6 +13,7 @@ class AddModel extends AdminModel
      * @param array $f
      *
      * @return int
+     * @throws \Exception
      */
     public function add($f)
     {
@@ -59,7 +60,9 @@ class AddModel extends AdminModel
             $stmt->execute();
         }
 
-        mkdir($directory);
+        if (!mkdir($directory) && !is_dir($directory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $directory));
+        }
 
         return $id;
     }

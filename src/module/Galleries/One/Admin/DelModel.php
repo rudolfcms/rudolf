@@ -14,6 +14,7 @@ class DelModel extends AdminModel
      * @param int $id gallery ID
      *
      * @return bool
+     * @throws \Exception
      */
     public function delete($id)
     {

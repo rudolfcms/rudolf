@@ -23,7 +23,10 @@ class Model extends AdminModel
      */
     private function getThemesList()
     {
-        return array_diff(scandir(THEMES_ROOT.'/front'), array('.', '..'));
+        return array_diff(
+            scandir(THEMES_ROOT.'/front', SCANDIR_SORT_ASCENDING),
+            array('.', '..')
+        );
     }
 
     /**
@@ -64,7 +67,7 @@ class Model extends AdminModel
                 'full-name' => $value::NAME,
                 'author' => $value::AUTHOR,
                 'version' => $value::VERSION,
-                'active' => FRONT_THEME == $value,
+                'active' => FRONT_THEME === $value,
             ];
         }
 

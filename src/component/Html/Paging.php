@@ -40,7 +40,7 @@ class Paging
      *                        <current> - current active li class
      * @param int    $nesting
      */
-    public function __construct($info = [], $path = '', $classes = [], $nesting = 0)
+    public function __construct(array $info = [], $path = '', array $classes = [], $nesting = 0)
     {
         $this->setInfo($info);
         $this->setPath($path);
@@ -98,7 +98,7 @@ class Paging
         $classes = $this->getClasses();
         $nesting = $this->getNesting();
 
-        $html[] = sprintf('<ul%1$s>', ($classes['ul']) ? ' class="'.$classes['ul'].'"' : '');
+        $html[] = sprintf('<ul%1$s>', $classes['ul'] ? ' class="'.$classes['ul'].'"' : '');
         if (!isset($classes['current'])) {
             $classes['current'] = 'current';
         }
@@ -116,7 +116,7 @@ class Paging
             $html[] = sprintf('%1$s<li><a>...</a></li>', $tab);
         }
         for ($nav['forstart']; $nav['forstart'] < $nav['forend']; ++$nav['forstart']) {
-            if ($nav['forstart'] == $nav['page']) {
+            if ((int) $nav['forstart'] === $nav['page']) {
                 $html[] = sprintf(
                     '%1$s<li class="%2$s"><a href="%3$s">%4$s</a></li>',
                     $tab,
@@ -125,7 +125,7 @@ class Paging
                     $nav['forstart']
                 );
             }
-            if ($nav['forstart'] != $nav['page']) {
+            if ((int) $nav['forstart'] !== $nav['page']) {
                 $html[] = sprintf(
                     '%1$s<li><a href="%2$s">%3$s</a></li>',
                     $tab,

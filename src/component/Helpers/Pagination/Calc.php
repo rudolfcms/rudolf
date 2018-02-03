@@ -87,7 +87,7 @@ class Calc implements ICalc
         $this->onPage = (int) $onPage;
         $this->navNum = (int) $navNum;
 
-        if (($total) < 0 || ($pageNumber) < 0 || ($onPage) < 0 || ($navNum) < 0) {
+        if ($total < 0 || $pageNumber < 0 || $onPage < 0 || $navNum < 0) {
             throw new InvalidArgumentException('Bad pagination params');
         }
 
@@ -132,8 +132,8 @@ class Calc implements ICalc
         $this->forend = $this->forstart + $this->navNum;
 
         // Variables hold the numbers of the previous and next page
-        $this->prev = (int) $this->pageNumber - 1;
-        $this->next = (int) $this->pageNumber + 1;
+        $this->prev = $this->pageNumber - 1;
+        $this->next = $this->pageNumber + 1;
     }
 
     public function getTotal()
@@ -189,7 +189,7 @@ class Calc implements ICalc
      */
     public function nav()
     {
-        return $array = array(
+        return array(
             'page' => $this->pageNumber,
             'forstart' => $this->forstart,
             'forend' => $this->forend,

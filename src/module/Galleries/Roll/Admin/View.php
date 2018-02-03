@@ -5,6 +5,7 @@ namespace Rudolf\Modules\Galleries\Roll\Admin;
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Framework\View\AdminView;
+use Rudolf\Modules\Galleries\One\Admin\Gallery;
 
 class View extends AdminView
 {
@@ -22,7 +23,7 @@ class View extends AdminView
         $this->loop = new Loop(
             $data,
             $pagination,
-            'Rudolf\\Modules\\Galleries\\One\\Admin\\Gallery',
+            Gallery::class,
             '/admin/galleries/list'
         );
 

@@ -40,6 +40,8 @@ class Head
      */
     public function make($return = false, $nesting = 1)
     {
+        $html = [];
+
         $html[] = $this->before(true);
         $html[] = sprintf('<meta charset="%1$s">', $this->charset(true));
         $html[] = sprintf('<title>%1$s</title>', $this->title(true));
@@ -97,7 +99,7 @@ class Head
      */
     public function charset($return = false)
     {
-        $charset = (empty($this->pageCharset)) ? 'utf-8' : $this->pageCharset;
+        $charset = empty($this->pageCharset) ? 'utf-8' : $this->pageCharset;
 
         if (false === $return) {
             echo $charset;

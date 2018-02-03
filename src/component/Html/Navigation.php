@@ -291,7 +291,7 @@ class Navigation
             array_filter($value);
             $value = trim(implode(' ', $value));
 
-            return (!empty($value)) ? ' '.$atribute.'="'.$value.'"' : '';
+            return !empty($value) ? ' '.$atribute.'="'.$value.'"' : '';
         }
 
         return (isset($value) and !empty($value)) ? ' '.$atribute.'="'.trim($value).'"' : '';
@@ -308,7 +308,7 @@ class Navigation
 
     private function addContainerWithIcoIf($ico, $selector, $classBase)
     {
-        if (empty($ico) or empty($selector)) {
+        if (empty($ico) || empty($selector)) {
             return false;
         }
 
@@ -373,13 +373,13 @@ class Navigation
         $html[] = sprintf(
             '%1$s'.'<ul'.'%2$s'.'>',
             # %1$s tab if text before
-            (!empty($before['root_ul'])) ? str_repeat("\t", $nesting) : '',
+            !empty($before['root_ul']) ? str_repeat("\t", $nesting) : '',
 
             # %2$s root ul class
             $this->isAtribute('class', $classes['root_ul'])
         );
 
-        $html[] = (!empty($before['first_root_li'])) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
+        $html[] = !empty($before['first_root_li']) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
         // loop
         while ($loop && (($item = each($children[$parent])) || ($parent > $root_id))) {
@@ -422,7 +422,7 @@ class Navigation
                     $this->isAtribute('class', [
                         $classes['li'],
                         $classes['li_with_ul'],
-                        ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
+                        $this->isActive($item['slug'], $currents) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
@@ -466,8 +466,8 @@ class Navigation
                     $this->isAtribute('class', $classes['sub_ul'])
                 );
 
-                array_push($parent_stack, $item['parent_id']);
-                $parent = $item['id'];
+                $parent_stack[] = $item['parent_id'];
+                $parent         = $item['id'];
             }
 
             // HTML for menu item with no children (aka "leaf")
@@ -482,7 +482,7 @@ class Navigation
                     $this->isAtribute('class', [
                         $classes['li'],
                         $classes['li_without_ul'],
-                        ($this->isActive($item['slug'], $currents)) ? $classes['li_active'] : '',
+                        $this->isActive($item['slug'], $currents) ? $classes['li_active'] : '',
                     ]),
 
                     # %3$s text before li a
@@ -516,7 +516,7 @@ class Navigation
             }
         }
 
-        $html[] = (!empty($after['last_root_li'])) ? str_repeat("\t", $nesting + 1).$after['last_root_li'] : '';
+        $html[] = !empty($after['last_root_li']) ? str_repeat("\t", $nesting + 1).$after['last_root_li'] : '';
 
         // HTML wrapper for the menu (close)
         $html[] = str_repeat("\t", $nesting).'</ul>';

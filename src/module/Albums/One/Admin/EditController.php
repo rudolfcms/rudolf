@@ -9,6 +9,12 @@ use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class EditController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function edit($id)
     {
         $categories = new CategoriesRoll();

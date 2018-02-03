@@ -14,6 +14,10 @@ class View extends FrontView
         $this->template = 'search';
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function searchID()
     {
         return (new Module('search'))->getConfig()['search_id'];

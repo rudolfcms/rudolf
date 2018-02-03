@@ -7,7 +7,7 @@ use Rudolf\Framework\Model\FrontModel;
 class Model extends FrontModel
 {
     /**
-     * @var string
+     * @var string|array
      */
     protected $where;
 
@@ -20,19 +20,17 @@ class Model extends FrontModel
      *
      * @return array|bool
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
         $clause = $this->createWhereClausule($this->where);
 
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT *
             FROM {$this->prefix}categories
             WHERE $clause
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
                                                    $onPage
         ");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 

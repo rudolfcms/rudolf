@@ -42,7 +42,7 @@ class Loop
     public function __construct(
         $data,
         ICalc $calc,
-        $itemClassName = 'Rudolf\Component\Helpers\Pagination\Item',
+        $itemClassName = Item::class,
         $path = ''
     ) {
         $this->data = $data;
@@ -78,11 +78,7 @@ class Loop
      */
     public function haveItems()
     {
-        if ($this->current + 1 < $this->total()) {
-            return true;
-        }
-
-        return false;
+        return $this->current + 1 < $this->total();
     }
 
     /**
@@ -92,7 +88,7 @@ class Loop
      */
     public function item()
     {
-        $this->current += 1;
+        ++$this->current;
         /**
          * @var IItem $item
          */

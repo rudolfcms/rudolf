@@ -6,6 +6,9 @@ use Rudolf\Framework\Controller\AdminController;
 
 class AddController extends AdminController
 {
+    /**
+     * @throws \Exception
+     */
     public function add()
     {
         $model = new AddModel();
@@ -17,7 +20,7 @@ class AddController extends AdminController
         if (!empty($_POST)) {
             $form->handle($_POST);
 
-            if ($form->isValid() and $id = $form->add()) {
+            if ($form->isValid() && $id = $form->add()) {
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);
             }
 

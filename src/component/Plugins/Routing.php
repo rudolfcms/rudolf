@@ -25,7 +25,7 @@ class Routing
      * Constructor.
      *
      * @param array $plugins
-     * @param RouteCollection
+     * @param RouteCollection $collection
      * @param string $path from-root path to plugins directory
      */
     public function __construct(array $plugins, RouteCollection $collection, $path = '/plugins')

@@ -8,6 +8,11 @@ use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 
 class Controller extends AdminController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');

@@ -8,6 +8,11 @@ use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class EditController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws \Exception
+     */
     public function edit($id)
     {
         $categories = new CategoriesRoll();
@@ -20,7 +25,7 @@ class EditController extends AdminController
         if (isset($_POST['update'])) {
             $form->handle(array_merge($_POST, ['id' => $id]));
 
-            if ($form->isValid() and $form->update()) {
+            if ($form->isValid() && $form->update()) {
                 $this->redirect(DIR.'/admin/articles/edit/'.$id);
             }
 

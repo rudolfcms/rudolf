@@ -14,6 +14,7 @@ class FormCheck extends Form
 
     public function check()
     {
+        /** @var array $data */
         $data = array_merge([
             'parent_id' => 0,
             'title' => '',
@@ -53,7 +54,7 @@ class FormCheck extends Form
             ->checkChar('slug', $data['slug'], 0, 255, [
                     'long' => _('URL is too long. Max is 255 characters'),
                 ])
-            ->checkIsInt('parent_id', $data['parent_id'], true);
+            ->checkIsInt('parent_id', $data['parent_id']);
 
         $this->dataValidated = $data;
     }

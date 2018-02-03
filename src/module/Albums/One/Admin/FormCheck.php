@@ -14,6 +14,7 @@ class FormCheck extends Form
 
     public function check()
     {
+        /** @var array $data */
         $data = array_merge([
             'title' => '',
             'date' => '',
@@ -75,7 +76,7 @@ class FormCheck extends Form
             ->checkChar('album', $data['album'], 0, 255, [
                     'long' => _('Album is too long. Max is 255 characters'),
                 ])
-            ->checkIsInt('photos', $data['photos'], true);
+            ->checkIsInt('photos', $data['photos']);
 
         $this->dataValidated = $data;
     }

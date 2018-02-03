@@ -11,11 +11,6 @@ class Resizer
     /**
      * @var string
      */
-    private $type;
-
-    /**
-     * @var string
-     */
     private $cacheExtension;
 
     /**
@@ -44,17 +39,19 @@ class Resizer
     private $src;
 
     /**
-     * Constructor.
+     * Resizer constructor.
+     * @throws \RuntimeException
      */
     public function __construct()
     {
-        $this->type = 'internal';
         $this->cacheExtension = '.jpg';
         $this->cacheDirectory = TEMP_ROOT.'/imageresizer/';
         $this->allowedTypes = ['gif', 'png', 'jpeg'];
 
-        if (!file_exists($this->cacheDirectory)) {
-            mkdir($this->cacheDirectory, 0775);
+        if (!file_exists($this->cacheDirectory)
+            && !mkdir($this->cacheDirectory, 0775)
+            && !is_dir($this->cacheDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $this->cacheDirectory));
         }
     }
 
@@ -63,7 +60,10 @@ class Resizer
      *
      * @param int    $width
      * @param int    $height
-     * @param string $src    Base64 encoded url
+     * @param string $src Base64 encoded url
+     *
+     * @throws HttpErrorException
+     * @throws \Exception
      */
     public function runAsProxy($width, $height, $src)
     {
@@ -92,8 +92,8 @@ class Resizer
 
     /**
      * Try to serve image from cache.
-     *
      * @return bool
+     * @throws \Exception
      */
     private function tryServeCache()
     {
@@ -114,8 +114,8 @@ class Resizer
      * @param string $file Full path to cache file
      *
      * @see http://dtbaker.net/web-development/how-to-cache-images-generated-by-php/
-     *
      * @return void
+     * @throws \Exception
      */
     private function serveFromCache($file)
     {
@@ -126,6 +126,7 @@ class Resizer
 
         $modifiedDate = gmdate('D, d M Y H:i:s', filemtime($file));
 
+        /** @var array $_SERVER */
         if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])
             && (strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == filemtime($file))
         ) {
@@ -163,6 +164,7 @@ class Resizer
 
     /**
      * Serve image from external location.
+     * @throws \Exception
      */
     private function serveExternal()
     {
@@ -178,6 +180,8 @@ class Resizer
 
     /**
      * Serve image from internal location.
+     * @throws HttpErrorException
+     * @throws \Exception
      */
     private function serveInternal()
     {
@@ -185,7 +189,7 @@ class Resizer
 
         if (!file_exists($file)) {
             throw new HttpErrorException('Image not found (error 404)', 404);
-        };
+        }
 
         $cacheFile = $this->createCacheName();
 
@@ -213,7 +217,9 @@ class Resizer
 
         if ('image' !== $type[0]) {
             throw new \Exception('File is not image!');
-        } elseif (!in_array($type[1], $this->allowedTypes)) {
+        }
+
+        if (!in_array($type[1], $this->allowedTypes)) {
             throw new \Exception('Unacceptable image type!');
         }
 

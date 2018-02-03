@@ -7,6 +7,7 @@ use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Helpers\Pagination\TagsGenerator;
 use Rudolf\Component\Modules\Module;
 use Rudolf\Framework\View\FrontView;
+use Rudolf\Modules\Albums\One\Album;
 
 class View extends FrontView
 {
@@ -17,7 +18,9 @@ class View extends FrontView
 
     /**
      * @param array $data
-     * @param Calc $pagination
+     * @param Calc  $pagination
+     *
+     * @throws \Exception
      */
     public function rollView(array $data, Calc $pagination)
     {
@@ -27,7 +30,7 @@ class View extends FrontView
         $this->loop = new Loop(
             $data,
             $pagination,
-            'Rudolf\\Modules\\Albums\\One\\Album',
+            Album::class,
             $path
         );
 

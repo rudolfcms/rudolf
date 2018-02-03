@@ -9,10 +9,8 @@ class Model extends BaseModel
 {
     /**
      * Returns total number of modules items.
-     *
-     * @param array|string $where
-     *
      * @return int
+     * @throws \InvalidArgumentException
      */
     public function getTotalNumber()
     {
@@ -22,7 +20,11 @@ class Model extends BaseModel
     /**
      * Returns array with modules list.
      *
+     * @param $limit
+     * @param $onPage
+     *
      * @return array|bool
+     * @throws \InvalidArgumentException
      */
     public function getList($limit, $onPage)
     {

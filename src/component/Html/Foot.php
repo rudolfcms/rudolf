@@ -16,6 +16,8 @@ class Foot
      */
     public function make($return = false, $nesting = 1)
     {
+        $html = [];
+
         $html[] = $this->before(true);
         $html[] = $this->scripts(true, $nesting);
         $html[] = $this->after(true);

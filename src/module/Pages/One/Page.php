@@ -9,7 +9,7 @@ class Page
 {
     protected $page;
 
-    public function __construct($page = [])
+    public function __construct(array $page = [])
     {
         $this->setData($page);
     }
@@ -77,6 +77,15 @@ class Page
         return Text::escape($title);
     }
 
+    /**
+     * @param bool $truncate
+     * @param bool $stripTags
+     * @param bool $escape
+     * @param bool $raw
+     *
+     * @return mixed|string
+     * @throws \HtmlTruncator\InvalidHtmlException
+     */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
     {
         $content = $this->page['content'];
@@ -85,7 +94,7 @@ class Page
             $content = strip_tags($content);
         }
 
-        if (false !== $truncate and strlen($content) > $truncate) {
+        if (false !== $truncate && strlen($content) > $truncate) {
             $content = Text::truncate($content, $truncate);
         }
 

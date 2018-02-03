@@ -14,6 +14,7 @@ class EditorController extends AdminController
      * @param string $file Filename in base64, default templates/_header.html.php
      *
      * @return void
+     * @throws \Exception
      */
     public function editor($file)
     {
@@ -31,6 +32,7 @@ class EditorController extends AdminController
 
         // if data was send
         if (isset($_POST['save'])) {
+            /** @var array $_POST */
             if ($model->saveFile($filename, $_POST['content'])) {
                 AlertsCollection::add(new Alert(
                     'success',

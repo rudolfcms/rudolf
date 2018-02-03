@@ -36,6 +36,10 @@ class DelForm extends Form
         $this->id = $this->data['id'];
     }
 
+    /**
+     * @return bool
+     * @throws \Exception
+     */
     public function delete()
     {
         $status = $this->model->delete($this->id);

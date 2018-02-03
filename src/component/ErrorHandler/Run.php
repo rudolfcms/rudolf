@@ -51,7 +51,7 @@ class Run
      */
     public function register()
     {
-        if (php_sapi_name() === 'cli') {
+        if (PHP_SAPI === 'cli') {
             $this->handler = new Handler\PlainTextHandler();
         } elseif ($this->debug > 0) {
             $this->handler = new Handler\DebugFriendlyHandler();
@@ -71,7 +71,7 @@ class Run
     {
         $e = error_get_last();
 
-        if (!empty($e) && $this->isLevelFatal($e['type'])) {
+        if (!empty($e) && static::isLevelFatal($e['type'])) {
             $this->handleError($e['type'], $e['message'], $e['file'], $e['line']);
         }
     }

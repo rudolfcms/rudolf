@@ -35,7 +35,7 @@ class View extends FrontView
      */
     protected function getNick()
     {
-        return (isset($this->formData['email'])) ? Text::escape($this->formData['email']) : '';
+        return isset($this->formData['email']) ? Text::escape($this->formData['email']) : '';
     }
 
     /**
@@ -69,7 +69,7 @@ class View extends FrontView
 
             case 4:
                 //$a['message'] = _('user not exist');
-                $a['type'] = 'danger';
+//                $a['type'] = 'danger';
                 //break;
 
                 // no break

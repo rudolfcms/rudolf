@@ -14,7 +14,7 @@ class Theme
      *
      * @param array $theme
      */
-    public function __construct($theme = [])
+    public function __construct(array $theme = [])
     {
         $this->setData($theme);
     }

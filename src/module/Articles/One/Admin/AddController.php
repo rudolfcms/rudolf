@@ -7,6 +7,9 @@ use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class AddController extends AdminController
 {
+    /**
+     * @throws \Exception
+     */
     public function add()
     {
         $categories = new CategoriesRoll();

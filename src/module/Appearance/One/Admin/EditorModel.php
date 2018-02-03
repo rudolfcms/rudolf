@@ -26,7 +26,7 @@ class EditorModel extends AdminModel
     public function getFilesListByPath($path)
     {
         return array_diff(
-            scandir($this->root.$path),
+            scandir($this->root.$path, SCANDIR_SORT_ASCENDING),
             array('.', '..')
         );
     }
@@ -47,7 +47,7 @@ class EditorModel extends AdminModel
         return [
             'name' => str_replace($this->root, '', $file),
             'content' => file_get_contents($file),
-            'last-modified' => date("Y-m-d H:i:s", filemtime($file)),
+            'last-modified' => date('Y-m-d H:i:s', filemtime($file)),
             'size' => filesize($file),
             'perms' => decoct(fileperms($file) & 0777),
         ];

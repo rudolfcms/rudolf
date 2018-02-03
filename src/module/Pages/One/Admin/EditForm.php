@@ -24,6 +24,7 @@ class EditForm extends FormCheck
 
     /**
      * @return int
+     * @throws \Exception
      */
     public function update()
     {

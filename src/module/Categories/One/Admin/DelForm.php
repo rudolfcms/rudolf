@@ -38,6 +38,7 @@ class DelForm extends Form
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function delete()
     {

@@ -19,7 +19,7 @@ class Album
      *
      * @param array $album
      */
-    public function __construct($album = [])
+    public function __construct(array $album = [])
     {
         $this->setData($album);
     }
@@ -113,7 +113,7 @@ class Album
         $author = $this->album['author'];
 
         // if fields is empty and $adder is true
-        if (empty($author) and true === $adder) {
+        if (empty($author) && true === $adder) {
             $author = $this->adderFullName(false);
         }
 
@@ -139,18 +139,18 @@ class Album
 
         $validator = new Validator();
         $validator->checkDatetime('date', $date, 'Y-m-d H:i:s');
-        if ($validator->isErrors() or empty($date)) {
+        if (empty($date) || $validator->isErrors()) {
             return $date;
         }
 
         switch ($style) {
             case 'locale': // http://php.net/manual/en/function.strftime.php
-                $format = ($format) ? $format : '%D';
+                $format = $format ? $format : '%D';
                 $date = strftime($format, strtotime($date));
                 break;
 
             default: // http://php.net/manual/en/datetime.formats.date.php
-                $format = ($format) ? $format : 'Y-m-d H:i:s';
+                $format = $format ? $format : 'Y-m-d H:i:s';
                 $date = date_format(date_create($date), $format);
                 break;
         }
@@ -388,7 +388,7 @@ class Album
             $alt
         );
 
-        if (true === $album and !empty($albumUrl)) {
+        if (true === $album && !empty($albumUrl)) {
             $html = sprintf('<a href="%1$s">%2$s</a>', $albumUrl, $html);
         }
 

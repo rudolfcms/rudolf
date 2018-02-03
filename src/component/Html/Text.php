@@ -10,12 +10,13 @@ class Text
     /**
      * It truncates text.
      *
-     * @param string $str         text to cut
-     * @param int    $length      truncate text length
+     * @param string $str    text to cut
+     * @param int    $length truncate text length
      * @param string $ellipsis
      * @param string $allowedTags
      *
      * @return string truncate text
+     * @throws \HtmlTruncator\InvalidHtmlException
      */
     public static function truncate($str, $length, $ellipsis = '...', $allowedTags = '')
     {

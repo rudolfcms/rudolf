@@ -7,6 +7,11 @@ use Rudolf\Modules\Galleries\One;
 
 class DelController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws \Exception
+     */
     public function del($id)
     {
         // if data was send

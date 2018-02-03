@@ -13,10 +13,10 @@ class Model extends Roll\Model
      *
      * @return array
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
         $type = $this->where['type'];
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT category.id,
                    category.title,
                    category.slug,
@@ -40,8 +40,6 @@ class Model extends Roll\Model
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
                                                    $onPage
         ");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
@@ -55,7 +53,7 @@ class Model extends Roll\Model
      */
     public function getAll($type)
     {
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT category.id,
                    category.title,
                    category.slug,
@@ -65,8 +63,6 @@ class Model extends Roll\Model
             WHERE category.type = '$type'
             GROUP BY category.id
         ");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 

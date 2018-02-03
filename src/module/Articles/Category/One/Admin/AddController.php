@@ -8,6 +8,9 @@ use Rudolf\Modules\Categories\One\Admin\AddModel;
 
 class AddController extends AdminController
 {
+    /**
+     * @throws \Exception
+     */
     public function add()
     {
         $form = new AddForm();

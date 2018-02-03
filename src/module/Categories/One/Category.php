@@ -17,7 +17,7 @@ abstract class Category
      *
      * @param array $category
      */
-    public function __construct($category = [])
+    public function __construct(array $category = [])
     {
         $this->setData($category);
     }
@@ -115,6 +115,7 @@ abstract class Category
      * @param bool     $raw
      *
      * @return string
+     * @throws \HtmlTruncator\InvalidHtmlException
      */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
     {
@@ -124,7 +125,7 @@ abstract class Category
             $content = strip_tags($content);
         }
 
-        if (false !== $truncate and strlen($content) > $truncate) {
+        if (false !== $truncate && strlen($content) > $truncate) {
             $content = Text::truncate($content, $truncate);
         }
 

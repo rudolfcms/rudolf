@@ -22,7 +22,8 @@ class Model extends FrontModel
             $contentArray = [0, 0];
         }
 
-        if (!isset($_COOKIE['vote_'.$id])) {
+        $cookieName = 'vote_'.$id;
+        if (!isset($_COOKIE[$cookieName])) {
             switch ($type) {
                 case 'down':
                     $type = 'down';

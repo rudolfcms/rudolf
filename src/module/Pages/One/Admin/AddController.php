@@ -7,6 +7,9 @@ use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class AddController extends AdminController
 {
+    /**
+     * @throws \Exception
+     */
     public function add()
     {
         $form = new AddForm();

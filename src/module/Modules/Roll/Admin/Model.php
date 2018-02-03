@@ -9,10 +9,8 @@ class Model extends BaseModel
 {
     /**
      * Returns total number of modules items.
-     *
-     * @param array|string $where
-     *
      * @return int
+     * @throws \InvalidArgumentException
      */
     public function getTotalNumber()
     {
@@ -22,7 +20,11 @@ class Model extends BaseModel
     /**
      * Returns array with modules list.
      *
+     * @param $limit
+     * @param $onPage
+     *
      * @return array
+     * @throws \InvalidArgumentException
      */
     public function getList($limit, $onPage)
     {
@@ -34,7 +36,8 @@ class Model extends BaseModel
         foreach ($modules as $key => $value) {
 
             // prevent to disable this module and dashboard
-            if ('Modules' !== $value->getName() and 'Dashboard' !== $value->getName()) {
+            $name = $value->getName();
+            if ('Modules' !== $name && 'Dashboard' !== $name) {
                 $array[] = [
                     'id' => $i++,
                     'name' => $value->getName(),

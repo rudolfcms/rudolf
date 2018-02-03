@@ -8,7 +8,7 @@ class Controller extends AdminController
 {
     public function profile()
     {
-        $model = new Model();
+        new Model();
 
         //$profileInfo = $model->getProfileInfo();
 

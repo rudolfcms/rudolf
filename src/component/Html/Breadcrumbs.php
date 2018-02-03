@@ -32,7 +32,7 @@ class Breadcrumbs
      * @param array $classes  Array which classes to use in breadcrumbs
      * @param int   $nesting  Generated code nesting
      */
-    public function __construct($elements = [], $address = [], $classes = [], $nesting = 0)
+    public function __construct(array $elements = [], array $address = [], array $classes = [], $nesting = 0)
     {
         $this->setElements($elements);
         $this->setAddress($address);
@@ -82,7 +82,7 @@ class Breadcrumbs
 
     public function getNesting()
     {
-        return (int) $this->nesting;
+        return $this->nesting;
     }
 
     public function getStructure()
@@ -110,7 +110,7 @@ class Breadcrumbs
         $array = [];
 
         for ($pid = 0, $i = 0; $i < $c = count($address); ++$i) {
-            if (isset($menu[$address[$i]][$pid]) and $pid == $menu[$address[$i]][$pid]['parent_id']) {
+            if (isset($menu[$address[$i]][$pid]) && $pid === $menu[$address[$i]][$pid]['parent_id']) {
                 $array[$i] = array($url.'/'.$address[$i], $menu[$address[$i]][$pid]['title']);
                 $pid = $menu[$address[$i]][$pid]['id'];
                 $url .= '/'.$address[$i];

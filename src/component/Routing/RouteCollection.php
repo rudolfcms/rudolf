@@ -63,7 +63,7 @@ class RouteCollection
     {
         $al = $a->getPriority();
         $bl = $b->getPriority();
-        if ($al == $bl) {
+        if ($al === $bl) {
             return 0;
         }
 

@@ -9,6 +9,11 @@ use Rudolf\Framework\Controller\AdminController;
 
 class SwitchController extends AdminController
 {
+    /**
+     * @param $name
+     *
+     * @throws \Exception
+     */
     public function switchStatus($name)
     {
         $configEditor = new ConfigEditor();

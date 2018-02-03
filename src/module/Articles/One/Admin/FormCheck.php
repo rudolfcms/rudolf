@@ -14,6 +14,7 @@ class FormCheck extends Form
 
     public function check()
     {
+        /** @var array $data */
         $data = array_merge([
             'title' => '',
             'description' => '',

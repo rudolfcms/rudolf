@@ -15,9 +15,9 @@ class Model extends AdminModel
      *
      * @return array|bool
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT user.id,
                    user.nick,
                    user.first_name,
@@ -28,8 +28,6 @@ class Model extends AdminModel
             FROM {$this->prefix}users AS user
 
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 

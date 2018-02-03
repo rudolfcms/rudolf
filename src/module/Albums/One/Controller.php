@@ -15,6 +15,7 @@ class Controller extends FrontController
      * @param int    $month
      * @param string $slug
      *
+     * @throws \InvalidArgumentException
      * @throws HttpErrorException
      */
     public function getOne($year, $month, $slug)

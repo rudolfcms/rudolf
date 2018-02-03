@@ -60,7 +60,7 @@ abstract class Form
      *
      * @return array
      */
-    public function getDataToDisplay($mergeWith = [])
+    public function getDataToDisplay(array $mergeWith = [])
     {
         if (empty($this->data)) {
             $this->data = [];
@@ -74,6 +74,9 @@ abstract class Form
         }, $this->data);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function displayAlerts()
     {
         foreach ($this->validator->getAlerts() as $key => $value) {

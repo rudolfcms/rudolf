@@ -14,7 +14,7 @@ class Kox
      *
      * @param array $koxy
      */
-    public function __construct($koxy = [])
+    public function __construct(array $koxy = [])
     {
         $this->setData($koxy);
     }
@@ -31,7 +31,7 @@ class Kox
                 'path' => '',
                 'likes' => [0, 0],
             ],
-            (array) $kox
+            $kox
         );
     }
 

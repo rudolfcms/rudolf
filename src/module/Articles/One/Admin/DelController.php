@@ -7,6 +7,11 @@ use Rudolf\Modules\Articles\One\Model as OneModel;
 
 class DelController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws \Exception
+     */
     public function del($id)
     {
         // if data was send

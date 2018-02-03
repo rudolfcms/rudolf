@@ -20,14 +20,12 @@ class Model extends Articles\Model
      *
      * @return array
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'desc'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
         $clause = $this->createWhereClausule($this->where);
 
-        $stmt = $this->pdo->prepare($this->queryPart('full').
+        $stmt = $this->pdo->query($this->queryPart('full').
             "WHERE $clause ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit, $onPage");
-
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
@@ -41,7 +39,7 @@ class Model extends Articles\Model
      *
      * @return int
      */
-    public function getTotalNumber($where = ['published' => 1])
+    public function getTotalNumber(array $where = ['published' => 1])
     {
         $this->where = $where;
 

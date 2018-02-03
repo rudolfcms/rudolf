@@ -24,6 +24,7 @@ class AddForm extends FormCheck
 
     /**
      * @return int
+     * @throws \Exception
      */
     public function save()
     {

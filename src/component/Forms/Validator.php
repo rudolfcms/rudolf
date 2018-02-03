@@ -49,13 +49,13 @@ class Validator
      *
      * @return $this
      */
-    public function checkEmpty($field, $value, $shouldEmpty = false, $msg = [])
+    public function checkEmpty($field, $value, $shouldEmpty = false, array $msg = [])
     {
-        if (empty($value) and false === $shouldEmpty) {
+        if (empty($value) && false === $shouldEmpty) {
             $this->alerts[$field] = isset($msg['empty']) ? $msg['empty'] : 'Empty';
 
             $this->errors[$field] = 1;
-        } elseif (!empty($value) and true === $shouldEmpty) {
+        } elseif (!empty($value) && true === $shouldEmpty) {
             $this->alerts[$field] = isset($msg['not_empty']) ? $msg['not_empty'] : 'Not empty';
 
             $this->errors[$field] = 1;
@@ -77,7 +77,7 @@ class Validator
      *
      * @return $this
      */
-    public function checkChar($field, $value, $min = 0, $max = 255, $msg = [])
+    public function checkChar($field, $value, $min = 0, $max = 255, array $msg = [])
     {
         $length = strlen(trim($value));
 
@@ -106,15 +106,15 @@ class Validator
      *
      * @return $this
      */
-    public function checkIsInt($field, $value, $shouldInt = true, $msg = [])
+    public function checkIsInt($field, $value, $shouldInt = true, array $msg = [])
     {
         $isInt = is_numeric($value);
 
-        if (false === $shouldInt and $isInt) {
+        if (false === $shouldInt && $isInt) {
             $this->alerts[$field] = isset($msg['int']) ? $msg['int'] : 'Int';
 
             $this->errors[$field] = 1;
-        } elseif (true === $shouldInt and !$isInt) {
+        } elseif (true === $shouldInt && !$isInt) {
             $this->alerts[$field] = isset($msg['not_int']) ? $msg['not_int'] : 'Not int';
 
             $this->errors[$field] = 1;
@@ -136,7 +136,7 @@ class Validator
      *
      * @return $this
      */
-    public function checkInt($field, $value, $min = 0, $max = false, $msg = [])
+    public function checkInt($field, $value, $min = 0, $max = false, array $msg = [])
     {
         if ($value < $min) {
             $this->alerts[$field] = isset($msg['low']) ? $msg['low'] : 'Too low';
@@ -163,11 +163,11 @@ class Validator
      *
      * @return $this
      */
-    public function checkDatetime($field, $value, $format = 'Y-m-d', $msg = [])
+    public function checkDatetime($field, $value, $format = 'Y-m-d', array $msg = [])
     {
         $d = DateTime::createFromFormat($format, $value);
 
-        if (false === ($d && $d->format($format) == $value)) {
+        if (false === ($d && $d->format($format) === $value)) {
             $this->alerts[$field] = isset($msg['invalid']) ? $msg['invalid'] : 'Invalid datetime';
             $this->errors[$field] = 1;
         } else {

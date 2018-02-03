@@ -6,6 +6,7 @@ use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
 use Rudolf\Component\Helpers\Pagination\Loop;
 use Rudolf\Component\Helpers\Pagination\TagsGenerator;
 use Rudolf\Framework\View\FrontView;
+use Rudolf\Modules\Articles\One\Article;
 
 class View extends FrontView
 {
@@ -24,13 +25,13 @@ class View extends FrontView
      * @param Pagination $pagination
      * @param array $info
      */
-    public function setData(array $data, Pagination $pagination, $info = [])
+    public function setData(array $data, Pagination $pagination, array $info = [])
     {
         $path = '/artykuly/kategorie/'.$info['slug'];
         $this->loop = new Loop(
             $data,
             $pagination,
-            'Rudolf\\Modules\\Articles\\One\\Article',
+            Article::class,
             $path
         );
 

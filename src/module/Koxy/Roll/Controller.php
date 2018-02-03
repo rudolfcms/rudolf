@@ -9,6 +9,13 @@ use Rudolf\Framework\Controller\FrontController;
 
 class Controller extends FrontController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function index($page)
     {
         $page = $this->firstPageRedirect($page);
@@ -24,7 +31,7 @@ class Controller extends FrontController
 
         $koxy = $list->getList($limit, $onPage, [$conf['sort'], $conf['order']]);
 
-        if (false === $koxy and $page > 1) {
+        if (false === $koxy && $page > 1) {
             throw new HttpErrorException('No koxy page found (error 404)', 404);
         }
 

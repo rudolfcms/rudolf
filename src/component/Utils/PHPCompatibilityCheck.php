@@ -10,7 +10,7 @@ function php_compatibility_check($minimumVersionPHP)
     $phpVersion = PHP_VERSION;
 
     if (version_compare($phpVersion, $minimumVersionPHP, '<')) {
-        php_compatibility_error($phpVersion, $minimumVersionPHP);
+        php_compatibility_error($minimumVersionPHP);
     }
 }
 
@@ -19,10 +19,9 @@ function php_compatibility_check($minimumVersionPHP)
  *
  * Calling this function kills execution immediately.
  *
- * @param float $phpVersion
  * @param float $minimumVersionPHP
  */
-function php_compatibility_error($phpVersion, $minimumVersionPHP)
+function php_compatibility_error($minimumVersionPHP)
 {
     $pageTitle = 'Error to start the Rudolf!';
     $shortText = 'Your host needs to use PHP '.$minimumVersionPHP.' or higher to run this version of Rudolf!';

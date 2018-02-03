@@ -4,6 +4,8 @@ namespace Rudolf\Component\Routing;
 
 use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
 use Rudolf\Component\Http\HttpErrorException;
+use Rudolf\Framework\Controller\HttpErrorAdminController;
+use Rudolf\Framework\Controller\HttpErrorFrontController;
 
 class FrontController
 {
@@ -24,8 +26,7 @@ class FrontController
 
     /**
      * Run.
-     *
-     * @throws HttpErrorException
+     * @throws TemplateNotFoundException
      */
     public function run()
     {
@@ -38,7 +39,9 @@ class FrontController
 
             if (!class_exists($names[0])) {
                 throw new HttpErrorException('Controller class '.$names[0].' does not exist');
-            } elseif (!$names) {
+            }
+
+            if (!$names) {
                 throw new HttpErrorException('Invalid route callable');
             }
 
@@ -46,9 +49,9 @@ class FrontController
         } catch (HttpErrorException $e) {
             try {
                 if (substr($this->router->getUrl(), 0, 6) === '/admin') {
-                    $this->call(['Rudolf\\Framework\\Controller\\HttpErrorAdminController']);
+                    $this->call([HttpErrorAdminController::class]);
                 } else {
-                    $this->call(['Rudolf\\Framework\\Controller\\HttpErrorFrontController']);
+                    $this->call([HttpErrorFrontController::class]);
                 }
             } catch (TemplateNotFoundException $e) {
                 throw new TemplateNotFoundException('Error template not found (error 404)', 404);
@@ -64,7 +67,7 @@ class FrontController
      *
      * @return bool
      */
-    private function call(array $call, $params = [])
+    private function call(array $call, array $params = [])
     {
         $object = new $call[0]($this->router->getUrl());
 

@@ -11,4 +11,6 @@ interface ICalc
     public function getPrev();
 
     public function getNext();
+
+    public function getPageNumber();
 }

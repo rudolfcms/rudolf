@@ -13,19 +13,16 @@ class Parser
     ];
 
     /**
-     * @var Image
-     */
-    private $image;
-
-    /**
      * @var array
      */
     private $config;
 
+    /**
+     * Parser constructor.
+     * @throws \Exception
+     */
     public function __construct()
     {
-        $this->image = new Image();
-
         $this->config = (new Module('galleries'))->getConfig();
     }
 
@@ -43,8 +40,9 @@ class Parser
         if (!empty($array[0])) {
             $model = new Model();
 
+            /** @var array[] $array */
             foreach ($array[0] as $gallery) {
-                $id = str_replace('{{gallery:', '', str_replace('}}', '', $gallery));
+                $id = str_replace(['}}', '{{gallery:'], '', $gallery);
 
                 $info = $model->getGalleryInfoById($id);
 
@@ -92,7 +90,7 @@ class Parser
         for ($i = 0; $i < $c = count($imagesArray); ++$i) {
             $gallery[] = [
                 'photo' => $webPath.'/'.$imagesArray[$i],
-                'thumb' => $this->image->resize($webPath.'/'.$imagesArray[$i], $w, $h),
+                'thumb' => Image::resize($webPath.'/'.$imagesArray[$i], $w, $h),
                 'alt' => $imagesArray[$i],
                 'width' => $w,
                 'height' => $h,

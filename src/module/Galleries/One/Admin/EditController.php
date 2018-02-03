@@ -7,6 +7,11 @@ use Rudolf\Modules\Galleries\One;
 
 class EditController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws \Exception
+     */
     public function edit($id)
     {
         $model = new EditModel();
@@ -26,7 +31,7 @@ class EditController extends AdminController
                 $model->upload($_FILES['photo_upload'], $_POST);
             }
 
-            if ($form->isValid() and $form->update()) {
+            if ($form->isValid() && $form->update()) {
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);
             }
 

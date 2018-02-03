@@ -17,7 +17,7 @@ define('PLUGINS_ROOT', CONTENT_ROOT.'/plugins');
 define('THEMES_ROOT', CONTENT_ROOT.'/themes');
 define('UPLOADS_ROOT', CONTENT_ROOT.'/uploads');
 
-if (dirname($_SERVER['SCRIPT_NAME']) == '/') {
+if (dirname($_SERVER['SCRIPT_NAME']) === '/') {
     define('DIR', '');
 } else {
     define('DIR', dirname($_SERVER['SCRIPT_NAME']));

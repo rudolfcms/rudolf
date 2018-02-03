@@ -27,8 +27,13 @@ class View extends FrontView
         $this->pagination = $pagination;
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function rss2()
     {
+        /** @var array $config */
         $config = (new Module('articles'))->getConfig();
         $domain = (new Url())->getOrigin();
 
@@ -37,11 +42,7 @@ class View extends FrontView
         $generator->setLink($domain.'/rss');
         $generator->setDescription($config['feed_description']);
 
-        $loop = new Loop(
-            $this->data,
-            $this->pagination,
-            'Rudolf\\Modules\\Articles\\One\\Article'
-        );
+        $loop = new Loop($this->data, $this->pagination, Article::class);
 
         $array = [];
 

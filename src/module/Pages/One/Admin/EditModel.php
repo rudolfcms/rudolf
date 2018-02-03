@@ -46,6 +46,6 @@ class EditModel extends AdminModel
         $stmt->bindValue(':published', $f['published'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $f['id'], \PDO::PARAM_INT);
 
-        return $status = $stmt->execute();
+        return $stmt->execute();
     }
 }

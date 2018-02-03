@@ -1,5 +1,6 @@
 <?php
 
+use Rudolf\Component\Helpers\Pagination\IItem;
 use Rudolf\Component\Helpers\Pagination\Calc;
 use Rudolf\Component\Helpers\Pagination\Loop;
 
@@ -22,7 +23,7 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         $calc = new Calc(count($data), 1);
         $loop = new Loop($data, $calc);
 
-        $this->assertEquals($loop->total(), count($data));
+        $this->assertCount($loop->total(), $data);
     }
 
     public function testIsItemsWhenItemsExists()
@@ -45,7 +46,7 @@ class LoopTest extends \PHPUnit_Framework_TestCase
 
     public function testIsItemsWhenArrayItemsNotArray()
     {
-        $data = false;
+        $data = [];
         $calc = new Calc(count($data), 1);
         $loop = new Loop($data, $calc);
 
@@ -77,7 +78,7 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         $loop = new Loop($data, $calc);
         $loop->haveItems();
 
-        $this->assertInstanceOf('Rudolf\Component\Helpers\Pagination\IItem', $loop->item());
+        $this->assertInstanceOf(IItem::class, $loop->item());
     }
 
     public function testNav()

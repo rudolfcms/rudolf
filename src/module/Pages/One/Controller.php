@@ -8,6 +8,11 @@ use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class Controller extends FrontController
 {
+    /**
+     * @param $stringAddress
+     *
+     * @throws HttpErrorException
+     */
     public function page($stringAddress)
     {
         $addressArray = explode('/', trim($stringAddress, '/'));

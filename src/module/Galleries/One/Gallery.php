@@ -21,7 +21,7 @@ class Gallery
      *
      * @param array $gallery
      */
-    public function __construct($gallery = [])
+    public function __construct(array $gallery = [])
     {
         $this->setData($gallery);
     }

@@ -74,7 +74,7 @@ class AlertsCollection
      */
     public function isAlerts()
     {
-        return (bool) !empty(self::$collection);
+        return !empty(self::$collection);
     }
 
     /**

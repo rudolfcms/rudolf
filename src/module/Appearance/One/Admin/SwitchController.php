@@ -9,6 +9,11 @@ use Rudolf\Modules\Appearance\ThemeConfigEditor;
 
 class SwitchController extends AdminController
 {
+    /**
+     * @param $name
+     *
+     * @throws \Exception
+     */
     public function switchTheme($name)
     {
         $confEditor = new ThemeConfigEditor();

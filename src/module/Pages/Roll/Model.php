@@ -13,7 +13,7 @@ class Model extends FrontModel
      */
     public function getPagesList()
     {
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->query("
             SELECT id,
                    parent_id,
                    slug,
@@ -21,7 +21,6 @@ class Model extends FrontModel
                    published
             FROM {$this->prefix}pages
         ");
-        $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 

@@ -5,7 +5,7 @@ namespace Rudolf\Modules\Articles\Category\One\Admin;
 use Rudolf\Modules\Articles\Category\One;
 use Rudolf\Modules\Categories\One\ICategory;
 
-class Category extends One\Category implements ICategory
+class Category extends One\Category
 {
     public function editUrl()
     {

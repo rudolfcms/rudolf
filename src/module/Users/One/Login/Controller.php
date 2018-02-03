@@ -12,10 +12,11 @@ class Controller extends FrontController
 
         $status = null;
         if (isset($_POST['send'])) {
+            /** @var array $_POST */
             $status = $model->login($_POST['email'], $_POST['password']);
         }
 
-        if (true === $model->check() || 1 === $status) {
+        if (1 === $status && true === $model->check()) {
             $this->redirect(DIR.'/admin', 302);
         }
 

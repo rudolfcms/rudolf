@@ -18,10 +18,11 @@ class Manager
 
     /**
      * Constructor.
-     *
      * Run plugins manager service
      *
      * @param string $path Absolute path to plugins directory
+     *
+     * @throws \InvalidArgumentException
      */
     public function __construct($path)
     {
@@ -30,8 +31,13 @@ class Manager
         $this->plugins = $this->getCollection()->getActive();
     }
 
+    /**
+     * @return Collection
+     * @throws \InvalidArgumentException
+     */
     public function getCollection()
     {
+        /** @var array $plugins */
         $plugins = include CONFIG_ROOT.'/plugins.php';
 
         $collection = new Collection();

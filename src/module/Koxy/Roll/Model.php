@@ -17,11 +17,11 @@ class Model extends FrontModel
      *
      * @return array|bool
      */
-    public function getList($limit = 0, $onPage = 10, $orderBy = ['id', 'DESC'])
+    public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'DESC'])
     {
         $catalog = UPLOADS_ROOT.'/moments/';
 
-        if (($array = glob($catalog.'*.'.$this->extension)) == false) {
+        if (($array = glob($catalog.'*.'.$this->extension)) === false) {
             return false;
         }
 
@@ -74,7 +74,7 @@ class Model extends FrontModel
     {
         $catalog = UPLOADS_ROOT.'/moments/';
 
-        if (($array = glob($catalog.'*.'.$this->extension)) != false) {
+        if (($array = glob($catalog.'*.'.$this->extension)) !== false) {
             return count($array);
         }
 

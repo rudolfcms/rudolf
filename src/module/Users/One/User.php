@@ -16,7 +16,7 @@ class User
      *
      * @param array $user
      */
-    public function __construct($user = [])
+    public function __construct(array $user = [])
     {
         $this->setData($user);
     }

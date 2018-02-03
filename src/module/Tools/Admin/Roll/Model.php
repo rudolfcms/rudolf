@@ -4,6 +4,8 @@ namespace Rudolf\Modules\Tools\Admin\Roll;
 
 class Model
 {
+    private $tools;
+
     public function __construct()
     {
         $this->tools = [
@@ -16,9 +18,6 @@ class Model
 
     /**
      * Returns total number of modules items.
-     *
-     * @param array|string $where
-     *
      * @return int
      */
     public function getTotalNumber()
@@ -28,6 +27,9 @@ class Model
 
     /**
      * Returns array with modules list.
+     *
+     * @param $limit
+     * @param $onPage
      *
      * @return array|bool
      */

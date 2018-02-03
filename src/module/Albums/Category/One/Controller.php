@@ -17,7 +17,9 @@ class Controller extends FrontController
      * @param string $slug
      * @param int    $page
      *
+     * @throws \InvalidArgumentException
      * @throws HttpErrorException
+     * @throws \Exception
      */
     public function getCategory($slug, $page)
     {
@@ -42,7 +44,8 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        if ($pagination->getAllPages() < $page and $pagination->getAllPages() > 1) {
+        $allPages = $pagination->getAllPages();
+        if ($allPages < $page && $allPages > 1) {
             throw new HttpErrorException('No albums page found (error 404)', 404);
         }
 

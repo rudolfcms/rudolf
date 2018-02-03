@@ -10,6 +10,11 @@ use Rudolf\Modules\Pages\Roll\Model as PagesFullList;
 
 class Controller extends AdminController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');

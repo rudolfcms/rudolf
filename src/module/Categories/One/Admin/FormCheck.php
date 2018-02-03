@@ -8,6 +8,11 @@ use Rudolf\Component\Html\Text;
 class FormCheck extends Form
 {
     /**
+     * @var string
+     */
+    protected $type;
+
+    /**
      * @var array
      */
     protected $dataValidated;
@@ -22,6 +27,7 @@ class FormCheck extends Form
 
     public function check()
     {
+        /** @var array $data */
         $data = array_merge([
             'title' => '',
             'description' => '',

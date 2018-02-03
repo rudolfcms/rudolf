@@ -14,9 +14,9 @@ class Controller extends FrontController
      *
      * @param int $page Page number
      *
+     * @throws \InvalidArgumentException
      * @throws HttpErrorException
-     *
-     * @return bool|string
+     * @throws \Exception
      */
     public function getList($page)
     {
@@ -31,7 +31,7 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        if ($pagination->getAllPages() < $page and $page > 1) {
+        if ($page > 1 && $pagination->getAllPages() < $page) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
 

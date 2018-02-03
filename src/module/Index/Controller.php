@@ -10,6 +10,13 @@ use Rudolf\Modules\Articles\Roll\Model as ArticlesList;
 
 class Controller extends FrontController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function index($page)
     {
         $page = $this->firstPageRedirect($page);
@@ -23,7 +30,7 @@ class Controller extends FrontController
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        if ($pagination->getAllPages() < $page and $page > 1) {
+        if ($page > 1 && $pagination->getAllPages() < $page) {
             throw new HttpErrorException('No articles page found (error 404)', 404);
         }
 

@@ -171,7 +171,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
         $obj = new Album();
         $obj->setData(['modifier_ID' => $modifierD]);
-        $this->assertTrue(is_int($obj->modifierID()));
+        $this->assertInternalType('int', $obj->modifierID());
     }
 
     public function testRawModifierFullName()

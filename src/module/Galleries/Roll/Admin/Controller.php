@@ -8,6 +8,11 @@ use Rudolf\Modules\Galleries\Roll\Model as GalleriesList;
 
 class Controller extends AdminController
 {
+    /**
+     * @param $page
+     *
+     * @throws \InvalidArgumentException
+     */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');

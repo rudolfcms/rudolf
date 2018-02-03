@@ -19,6 +19,9 @@ class Controller extends FrontController
      */
     private $response;
 
+    /**
+     * @throws \InvalidArgumentException
+     */
     public function init()
     {
         $list = new ArticlesList();

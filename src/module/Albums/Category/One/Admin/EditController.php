@@ -10,6 +10,12 @@ use Rudolf\Modules\Categories\One\Admin\EditModel;
 
 class EditController extends AdminController
 {
+    /**
+     * @param $id
+     *
+     * @throws HttpErrorException
+     * @throws \Exception
+     */
     public function edit($id)
     {
         $form = new EditForm();
