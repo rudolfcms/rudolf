@@ -12,7 +12,7 @@ session_start();
 ob_start();
 
 require_once __DIR__.'/component/Utils/PHPCompatibilityCheck.php';
-php_compatibility_check($required = 5.4);
+php_compatibility_check($required = 5.6);
 
 // load defines
 require_once __DIR__.'/defines.php';
