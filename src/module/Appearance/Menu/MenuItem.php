@@ -26,7 +26,8 @@ class MenuItem extends Item
         return 'xxxx-xx-xx';
     }
 
-    public function url() {
+    public function url()
+    {
         return Text::escape($this->getSlug());
     }
 
