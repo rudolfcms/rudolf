@@ -39,7 +39,7 @@ class MenuItemCollection
      *
      * @return array of MenuItem
      */
-    public function getByType($type)
+    public function getByType($type, $sort = true)
     {
         if (empty($this->collection)) {
             return null;
@@ -51,7 +51,10 @@ class MenuItemCollection
                 $items[] = $item;
             }
         }
-        usort($items, [$this, 'sort']);
+
+        if (true === $sort) {
+            usort($items, [$this, 'sort']);
+        }
 
         return $items;
     }

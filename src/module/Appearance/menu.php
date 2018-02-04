@@ -32,3 +32,14 @@ $collection->add(new MenuItem([
     'position' => 1,
     'ico' => 'fa-wrench',
 ]));
+
+$collection->add(new MenuItem([
+    'parent_id' => $id,
+    'title' => _('Menu'),
+    'caption' => _('Menu'),
+    'slug' => 'admin/appearance/menu',
+    'menu_type' => 'main',
+    'item_type' => 'app',
+    'position' => 2,
+    'ico' => 'fa-bars',
+]));

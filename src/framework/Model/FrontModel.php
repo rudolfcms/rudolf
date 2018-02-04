@@ -10,7 +10,7 @@ class FrontModel extends BaseModel
 {
     public function getMenuItems()
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}menu");
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->prefix}menu ORDER BY `id` ASC");
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

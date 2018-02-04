@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Appearance;
+namespace Rudolf\Modules\Appearance\Change;
 
 class ThemeConfigEditor
 {

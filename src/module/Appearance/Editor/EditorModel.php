@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\One\Admin;
+namespace Rudolf\Modules\Appearance\Editor;
 
 use Rudolf\Framework\Model\AdminModel;
 

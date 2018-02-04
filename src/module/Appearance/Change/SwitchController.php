@@ -1,11 +1,10 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\One\Admin;
+namespace Rudolf\Modules\Appearance\Change;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Framework\Controller\AdminController;
-use Rudolf\Modules\Appearance\ThemeConfigEditor;
 
 class SwitchController extends AdminController
 {

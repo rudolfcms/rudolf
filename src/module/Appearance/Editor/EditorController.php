@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\One\Admin;
+namespace Rudolf\Modules\Appearance\Editor;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;

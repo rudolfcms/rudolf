@@ -9,7 +9,7 @@ class MenuItem
     /**
      * @var array
      */
-    private $data;
+    protected $data;
 
     /**
      * MenuItem constructor.
@@ -33,7 +33,7 @@ class MenuItem
      */
     public function getId()
     {
-        return isset($this->data['id']) ? $this->data['id'] : null;
+        return isset($this->data['id']) ? (int) $this->data['id'] : null;
     }
 
     /**
@@ -41,7 +41,7 @@ class MenuItem
      */
     public function getParentId()
     {
-        return $this->data['parent_id'];
+        return (int) $this->data['parent_id'];
     }
 
     /**
@@ -49,7 +49,7 @@ class MenuItem
      */
     public function getTitle()
     {
-        return $this->data['title'];
+        return Text::escape($this->data['title']);
     }
 
     /**
@@ -69,7 +69,7 @@ class MenuItem
                 break;
         }
 
-        return $slug;
+        return Text::escape($slug);
     }
 
     /**
@@ -85,7 +85,7 @@ class MenuItem
      */
     public function getType()
     {
-        return $this->data['menu_type'];
+        return Text::escape($this->data['menu_type']);
     }
 
     /**
@@ -93,7 +93,7 @@ class MenuItem
      */
     public function getPosition()
     {
-        return $this->data['position'];
+        return (int) $this->data['position'];
     }
 
     /**
@@ -101,6 +101,6 @@ class MenuItem
      */
     public function getIco()
     {
-        return isset($this->data['ico']) ? $this->data['ico'] : null;
+        return isset($this->data['ico']) ? Text::escape($this->data['ico']) : null;
     }
 }
