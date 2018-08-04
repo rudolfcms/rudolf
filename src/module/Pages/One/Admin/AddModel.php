@@ -28,6 +28,7 @@ class AddModel extends AdminModel
                 , content
                 , added
                 , adder_ID
+                , modifier_ID
                 , slug
                 , published
                 , parent_id)
@@ -38,6 +39,7 @@ class AddModel extends AdminModel
                 , :content
                 , :added
                 , :adder
+                , '0'
                 , :slug
                 , :published
                 , :parent_id)
