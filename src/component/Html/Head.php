@@ -76,6 +76,7 @@ class Head
     public function title($return = false)
     {
         $title = trim($this->pageTitle.' | '.GENERAL_SITE_NAME, ' | ');
+        $title = strip_tags($title);
 
         if (false === $return) {
             echo $title;
