@@ -127,7 +127,7 @@ class Navigation
             !empty($before['root_ul']) ? str_repeat("\t", $nesting) : '',
 
             # %2$s root ul class
-            $this->isAtribute('class', $classes['root_ul'])
+            $this->isAttribute('class', $classes['root_ul'])
         );
 
         $html[] = !empty($before['first_root_li']) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
@@ -168,7 +168,7 @@ class Navigation
                     $tab,
 
                     # %2$s li class (active)
-                    $this->isAtribute(
+                    $this->isAttribute(
                         'class',
                         [
                             $classes['li'],
@@ -181,7 +181,7 @@ class Navigation
                     $before['li_with_ul_a'],
 
                     # %4$s a title=""
-                    $this->isAtribute('title', $item['caption']),
+                    $this->isAttribute('title', $item['caption']),
 
                     # %5$s a href=""
                     $item['slug'],
@@ -215,7 +215,7 @@ class Navigation
                     $tab."\t",
 
                     # %2$s sub ul class
-                    $this->isAtribute('class', $classes['sub_ul'])
+                    $this->isAttribute('class', $classes['sub_ul'])
                 );
 
                 $parent_stack[] = $item['parent_id'];
@@ -223,13 +223,13 @@ class Navigation
             } // HTML for menu item with no children (aka "leaf")
             else {
                 $html[] = sprintf(
-                    '%1$s'.'<li'.'%2$s'.'>%3$s<a'
-                    .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
+                    '%1$s'.'<li'.'%2$s'.'>%3$s<a'.'%4$s'
+                    .'%5$s'.' href="'.'%6$s'.'">%7$s%8$s'.'%9$s'.'%10$s</a>%11$s',
                     # %1$s tabulation
                     str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),
 
                     # %2$s li class (active)
-                    $this->isAtribute(
+                    $this->isAttribute(
                         'class',
                         [
                             $classes['li'],
@@ -241,29 +241,38 @@ class Navigation
                     # %3$s text before li a
                     $before['li_a'],
 
-                    # %4$s a title=""
-                    $this->isAtribute('title', $item['caption']),
+                    # %4$s a class=""
+                    $this->isAttribute(
+                        'class',
+                        [
+                            $classes['a'],
+                            $this->isActive($item['slug'], $currents) ? $classes['a_active'] : '',
+                        ]
+                    ),
 
-                    # %5$s a href=""
+                    # %5$s a title=""
+                    $this->isAttribute('title', $item['caption']),
+
+                    # %6$s a href=""
                     $item['slug'],
 
-                    # %6$s ico
+                    # %7$s ico
                     $this->addContainerWithIcoIf(
                         $item['ico'],
                         $config['li_a_ico-container'],
                         $config['li_a_ico-class_base']
                     ),
 
-                    # %7$s before text in li a
+                    # %8$s before text in li a
                     $before['li_a_text'],
 
-                    # %8$s text inside item
+                    # %9$s text inside item
                     $this->addContainerWithSelectorIf($item['title'], $config['li_a_text-container']),
 
-                    # %9$s after text in li a
+                    # %10$s after text in li a
                     $after['li_a_text'],
 
-                    # %10$s text after li a
+                    # %11$s text after li a
                     $after['li_a']
                 );
             }
@@ -366,7 +375,9 @@ class Navigation
             [
                 'root_ul'       => '',
                 'li'            => '',
+                'a'             => '',
                 'li_active'     => '',
+                'a_active'      => '',
                 'li_with_ul'    => '',
                 'li_without_ul' => '',
                 'sub_ul'        => '',
@@ -381,7 +392,9 @@ class Navigation
      * @param array $classes
      *      'root_ul' (string) Main <ul>
      *      `li` (string) Each <li>
+     *      `a` (string) Each <a>
      *      'li_active' (string)
+     *      'a_active' (string)
      *      'li_with_ul' (string) <li> with <ul>
      *      'li_without_ul' (string) <li> without <ul>
      *      'sub_ul' (string) <ul> inside <li>
@@ -508,21 +521,21 @@ class Navigation
     /**
      * Put value is not empty.
      *
-     * @param string       $atribute
+     * @param string       $attribute
      * @param string|array $value
      *
      * @return string
      */
-    private function isAtribute($atribute, $value)
+    private function isAttribute($attribute, $value)
     {
         if (is_array($value)) {
             array_filter($value);
             $value = trim(implode(' ', $value));
 
-            return !empty($value) ? ' '.$atribute.'="'.$value.'"' : '';
+            return !empty($value) ? ' '.$attribute.'="'.$value.'"' : '';
         }
 
-        return (isset($value) and !empty($value)) ? ' '.$atribute.'="'.trim($value).'"' : '';
+        return (isset($value) and !empty($value)) ? ' '.$attribute.'="'.trim($value).'"' : '';
     }
 
     protected function each(&$arr)
