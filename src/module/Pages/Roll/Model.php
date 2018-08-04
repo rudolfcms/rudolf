@@ -9,7 +9,7 @@ class Model extends FrontModel
     /**
      * Returns pages list.
      *
-     * @return array|bool
+     * @return array
      */
     public function getPagesList()
     {
@@ -25,7 +25,7 @@ class Model extends FrontModel
         $stmt->closeCursor();
 
         if (empty($results)) {
-            return false;
+            return [];
         }
 
         return $results;

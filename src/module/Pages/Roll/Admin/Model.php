@@ -18,7 +18,7 @@ class Model extends AdminModel
      * @param int   $onPage
      * @param array $orderBy
      *
-     * @return array|bool
+     * @return array
      */
     public function getList($limit = 0, $onPage = 10, array $orderBy = ['id', 'desc'])
     {
@@ -38,7 +38,7 @@ class Model extends AdminModel
             return $results;
         }
 
-        return false;
+        return [];
     }
 
     /**

@@ -158,8 +158,16 @@ class Navigation
 
         $html[] = !empty($before['first_root_li']) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
+        //TODO: move this somewhere
+        function eachPolyfill(&$arr) {
+            $key = key($arr);
+            $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+            next($arr);
+            return $result;
+        }
+
         // loop
-        while ($loop && (($item = each($children[$parent])) || ($parent > $root_id))) {
+        while ($loop && (($item = eachPolyfill($children[$parent])) || ($parent > $root_id))) {
             if (is_object($item['value'])) {
                 /**
                  * @var MenuItem $obj
@@ -228,7 +236,7 @@ class Navigation
                 $html[] = sprintf(
                     '%1$s'.'<li>%2$s - <a'.'%3$s'.' href="'.'%4$s'.'">%5$s</a> – pozycja: %6$s'.
                     ' <a href="/admin/appearance/menu/edit/%2$s" class="btn btn-primary btn-xs">Edytuj</a>'.
-                    ' <a href="/admin/appearance/menu/del/%2$s" class="btn btn-danger btn-xs">Edytuj</a>',
+                    ' <a href="/admin/appearance/menu/del/%2$s" class="btn btn-danger btn-xs">Usuń</a>',
 
                     # %1$s tabulation
                     str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),

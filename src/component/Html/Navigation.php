@@ -381,8 +381,17 @@ class Navigation
 
         $html[] = !empty($before['first_root_li']) ? str_repeat("\t", $nesting + 1).$before['first_root_li'] : '';
 
+
+        //TODO: move this somewhere
+        function eachPolyfill(&$arr) {
+            $key = key($arr);
+            $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+            next($arr);
+            return $result;
+        }
+
         // loop
-        while ($loop && (($item = each($children[$parent])) || ($parent > $root_id))) {
+        while ($loop && (($item = eachPolyfill($children[$parent])) || ($parent > $root_id))) {
             if (is_object($item['value'])) {
                 /**
                  * @var MenuItem $obj

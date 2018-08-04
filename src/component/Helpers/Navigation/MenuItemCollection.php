@@ -7,7 +7,7 @@ class MenuItemCollection
     /**
      * @var MenuItem[]
      */
-    private $collection;
+    private $collection = [];
 
     /**
      * @param MenuItem $item
@@ -42,7 +42,7 @@ class MenuItemCollection
     public function getByType($type, $sort = true)
     {
         if (empty($this->collection)) {
-            return null;
+            return [];
         }
         $items = [];
 
