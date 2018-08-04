@@ -7,7 +7,7 @@ class Collection
     /**
      * @var array
      */
-    private $collection;
+    private $collection = [];
 
     /**
      * Add plugin to collection.

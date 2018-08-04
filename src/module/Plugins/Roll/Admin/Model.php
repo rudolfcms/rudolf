@@ -23,7 +23,7 @@ class Model extends BaseModel
      * @param $limit
      * @param $onPage
      *
-     * @return array|bool
+     * @return array
      * @throws \InvalidArgumentException
      */
     public function getList($limit, $onPage)
@@ -31,7 +31,7 @@ class Model extends BaseModel
         $modules = (new PluginsManager(MODULES_ROOT))->getCollection()->getAll();
 
         if (empty($modules)) {
-            return false;
+            return [];
         }
 
         $array = [];
