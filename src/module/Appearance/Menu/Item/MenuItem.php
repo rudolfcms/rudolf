@@ -1,6 +1,6 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Item;
 
 use Rudolf\Component\Helpers\Navigation\MenuItem as Item;
 use Rudolf\Component\Html\Text;
@@ -9,7 +9,7 @@ class MenuItem extends Item
 {
     public function delUrl()
     {
-        return DIR.'/admin/appearance/menu/del/'.$this->getId();
+        return DIR.'/admin/appearance/menu/del-item/'.$this->getId();
     }
 
     public function title()

@@ -9,6 +9,8 @@ class MenuView extends AdminView
 {
     private $items;
 
+    protected $types;
+
     public function display(MenuItemCollection $items, $types)
     {
         $this->pageTitle = _('Menu editor');

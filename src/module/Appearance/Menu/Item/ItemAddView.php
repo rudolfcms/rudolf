@@ -1,11 +1,11 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Item;
 
 use Rudolf\Component\Helpers\Navigation\MenuItemCollection;
 use Rudolf\Framework\View\AdminView;
 
-class AddView extends AdminView
+class ItemAddView extends AdminView
 {
     /**
      * @var MenuItem
@@ -21,11 +21,6 @@ class AddView extends AdminView
      * @var MenuItemCollection
      */
     protected $items;
-
-    /**
-     * @var string
-     */
-    protected $templateType;
 
     public function display($data, $types, $items)
     {

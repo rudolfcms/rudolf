@@ -7,6 +7,7 @@ use Rudolf\Component\Routing\Route;
 
 // list
 
+/** @var \Rudolf\Component\Routing\RouteCollection $collection */
 $collection->add('appearance/admin', new Route(
     'admin/appearance([\/])?',
     'Rudolf\Modules\Appearance\Roll\Admin\Controller::redirectTo',
@@ -41,22 +42,36 @@ $collection->add('appearance/menu', new Route(
     'Rudolf\Modules\Appearance\Menu\MenuController::display'
 ));
 
-// menu
-$collection->add('appearance/menu/edit', new Route(
-    'admin/appearance/menu/edit/<id>',
-    'Rudolf\Modules\Appearance\Menu\EditController::edit',
+$collection->add('appearance/menu/add-item', new Route(
+    'admin/appearance/menu/add-item?',
+    'Rudolf\Modules\Appearance\Menu\Item\ItemAddController::add'
+));
+
+$collection->add('appearance/menu/edit-item', new Route(
+    'admin/appearance/menu/edit-item/<id>',
+    'Rudolf\Modules\Appearance\Menu\Item\ItemEditController::edit',
     ['id' => '[1-9][0-9]*']
 ));
 
-// menu
-$collection->add('appearance/menu/del', new Route(
-    'admin/appearance/menu/del/<id>',
-    'Rudolf\Modules\Appearance\Menu\DelController::del',
+$collection->add('appearance/menu/del-item', new Route(
+    'admin/appearance/menu/del-item/<id>',
+    'Rudolf\Modules\Appearance\Menu\Item\ItemDelController::del',
     ['id' => '[1-9][0-9]*']
 ));
 
-// menu
-$collection->add('appearance/menu/add', new Route(
-    'admin/appearance/menu/add?',
-    'Rudolf\Modules\Appearance\Menu\AddController::add'
+$collection->add('appearance/menu/add-type', new Route(
+    'admin/appearance/menu/add-type?',
+    'Rudolf\Modules\Appearance\Menu\Type\TypeAddController::add'
+));
+
+$collection->add('appearance/menu/edit-type', new Route(
+    'admin/appearance/menu/edit-type/<id>',
+    'Rudolf\Modules\Appearance\Menu\Type\TypeEditController::edit',
+    ['id' => '[1-9][0-9]*']
+));
+
+$collection->add('appearance/menu/del-type', new Route(
+    'admin/appearance/menu/del-type/<id>',
+    'Rudolf\Modules\Appearance\Menu\Type\TypeDelController::del',
+    ['id' => '[1-9][0-9]*']
 ));

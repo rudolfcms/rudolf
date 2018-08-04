@@ -37,7 +37,7 @@ class MenuItemCollection
      *
      * @param string $type
      *
-     * @return array of MenuItem
+     * @return MenuItem[]
      */
     public function getByType($type, $sort = true)
     {

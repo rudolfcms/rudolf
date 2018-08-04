@@ -1,13 +1,14 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Item;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Framework\Model\FrontModel;
+use Rudolf\Modules\Appearance\Menu\Model;
 
-class AddController extends AdminController
+class ItemAddController extends AdminController
 {
     /**
      * @throws \Exception
@@ -15,7 +16,7 @@ class AddController extends AdminController
     public function add()
     {
         if (isset($_POST['add'])) {
-            $model = new AddModel();
+            $model = new ItemAddModel();
             $id = $model->add($_POST);
             if ($id) {
                 AlertsCollection::add(new Alert(
@@ -31,7 +32,7 @@ class AddController extends AdminController
             ));
         }
 
-        $view = new AddView();
+        $view = new ItemAddView();
         $view->display(new MenuItem([
             'id' => -1,
             'parent_id' => 0,

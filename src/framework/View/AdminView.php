@@ -41,6 +41,11 @@ class AdminView extends BaseView
      */
     protected $adminFields;
 
+    /**
+     * @var string
+     */
+    protected $templateType;
+
     public function init()
     {
         $this->config = (new Module('dashboard'))->getConfig();

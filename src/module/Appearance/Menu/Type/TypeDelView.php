@@ -1,10 +1,10 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Type;
 
 use Rudolf\Framework\View\AdminView;
 
-class DelView extends AdminView
+class TypeDelView extends AdminView
 {
     protected $item;
     protected $path;

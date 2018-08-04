@@ -12,6 +12,9 @@
     "require": {
         "ext-gettext": "*",
         "ext-PDO": "*",
+        "ext-json": "*",
+        "ext-zlib": "*",
+        "ext-mysqli": "*",
         "roave/security-advisories": "dev-master",
         "php": ">=5.5.9",
         "psr/log": "^1.0",

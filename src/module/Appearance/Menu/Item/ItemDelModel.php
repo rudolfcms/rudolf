@@ -1,10 +1,10 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Item;
 
 use Rudolf\Framework\Model\AdminModel;
 
-class DelModel extends AdminModel
+class ItemDelModel extends AdminModel
 {
     public function del($id)
     {

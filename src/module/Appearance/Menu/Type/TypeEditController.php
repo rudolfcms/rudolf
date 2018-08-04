@@ -1,13 +1,12 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Type;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Framework\Controller\AdminController;
-use Rudolf\Framework\Model\FrontModel;
 
-class EditController extends AdminController
+class TypeEditController extends AdminController
 {
     /**
      * @param $id
@@ -16,8 +15,8 @@ class EditController extends AdminController
      */
     public function edit($id)
     {
-        $model = new EditModel();
-        $view = new EditView();
+        $model = new TypeEditModel();
+        $view = new TypeEditView();
 
         if (isset($_POST['update'])) {
             if ($model->edit($id, $_POST)) {
@@ -25,7 +24,7 @@ class EditController extends AdminController
                     'success',
                     'Zaktualizowano!'
                 ));
-                $this->redirectTo(DIR.'/admin/appearance/menu/edit/'.$id);
+                $this->redirectTo(DIR.'/admin/appearance/menu/edit-type/'.$id);
                 return;
             }
             AlertsCollection::add(new Alert(
@@ -34,7 +33,7 @@ class EditController extends AdminController
             ));
         }
 
-        $view->display($model->getInfo($id), (new Model())->getTypes(), (new FrontModel())->getMenuItems());
+        $view->display($model->getMenuTypeById($id));
         $view->render('admin');
     }
 }

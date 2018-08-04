@@ -1,12 +1,12 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Type;
 
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Framework\Controller\AdminController;
 
-class DelController extends AdminController
+class TypeDelController extends AdminController
 {
     /**
      * @param $id
@@ -16,7 +16,7 @@ class DelController extends AdminController
     public function del($id)
     {
         if (isset($_POST['delete'])) {
-            $model = new DelModel();
+            $model = new TypeDelModel();
             if ($model->del($id)) {
                 AlertsCollection::add(new Alert(
                     'success',
@@ -26,14 +26,14 @@ class DelController extends AdminController
                 return;
             }
             AlertsCollection::add(new Alert(
-                'success',
+                'error',
                 'Coś się zepsuło!'
             ));
-            $this->redirectTo(DIR.'/admin/appearance/menu/del/'.$id);
+            $this->redirectTo(DIR.'/admin/appearance/menu/del-type/'.$id);
         }
 
-        $view = new DelView();
-        $view->display((new EditModel())->getInfo($id));
+        $view = new TypeDelView();
+        $view->display((new TypeEditModel())->getMenuTypeById($id));
         $view->render('admin');
     }
 }

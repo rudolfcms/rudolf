@@ -1,10 +1,11 @@
 <?php
 
-namespace Rudolf\Modules\Appearance\Menu;
+namespace Rudolf\Modules\Appearance\Menu\Item;
 
+use Rudolf\Component\Html\Text;
 use Rudolf\Framework\Model\AdminModel;
 
-class AddModel extends AdminModel
+class ItemAddModel extends AdminModel
 {
     public function add($p)
     {
@@ -13,7 +14,7 @@ class AddModel extends AdminModel
           menu_type = :menu_type, item_type = :item_type, position = :position");
         $stmt->bindValue(':parent_id', $p['parent_id'], \PDO::PARAM_INT);
         $stmt->bindValue(':title', $p['title']);
-        $stmt->bindValue(':slug', $p['slug']);
+        $stmt->bindValue(':slug', !empty($p['slug']) ? $p['slug'] : Text::sluger($p['title']));
         $stmt->bindValue(':caption', $p['caption']);
         $stmt->bindValue(':menu_type', $p['menu_type']);
         $stmt->bindValue(':item_type', $p['item_type']);
