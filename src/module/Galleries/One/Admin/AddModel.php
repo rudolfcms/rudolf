@@ -21,6 +21,8 @@ class AddModel extends AdminModel
         $f['added'] = date('Y-m-d H:i:s');
         $f['adder_ID'] = $userInfo['id'];
 
+        $this->pdo->beginTransaction();
+
         $stmt = $this->pdo->prepare("
             INSERT INTO {$this->prefix}galleries
                 (title
@@ -60,9 +62,12 @@ class AddModel extends AdminModel
             $stmt->execute();
         }
 
-        if (!mkdir($directory) && !is_dir($directory)) {
+        if (!mkdir($directory, 0777, true) && !is_dir($directory)) {
+            $this->pdo->rollBack();
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $directory));
         }
+
+        $this->pdo->commit();
 
         return $id;
     }

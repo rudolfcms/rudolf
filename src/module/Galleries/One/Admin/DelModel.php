@@ -25,7 +25,7 @@ class DelModel extends AdminModel
         $config = (new Module('galleries'))->getConfig();
         $directory = $config['path_root'].'/'.$f['slug'];
         array_map('unlink', glob($directory.'/*'));
-        rmdir($directory);
+        is_dir($directory) && rmdir($directory);
 
         return $query->execute();
     }
