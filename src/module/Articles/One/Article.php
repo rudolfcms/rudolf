@@ -433,14 +433,15 @@ class Article
      * @param bool   $album   Add album address if exists
      * @param string $alt     Set alternative text
      * @param string $default Default thumb path. It use when thumb path is empty
+     * @param array  $class
      *
      * @return string
      */
-    public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '')
+    public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '', $class = [])
     {
         $thumbUrl = $this->thumb();
         $albumUrl = $this->album();
-        $alt = $alt ? $alt : $this->title();
+        $alt = $alt ? $alt : htmlspecialchars($this->title());
 
         if (!$this->hasThumbnail()) {
             if (!empty($default)) {
@@ -453,15 +454,16 @@ class Article
         $thumbUrl = Image::resize($thumbUrl, $width, $height);
 
         $html = sprintf(
-            '<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s">',
+            '<img src="%1$s" alt="%4$s" width="%2$s" height="%3$s"%5$s>',
             $thumbUrl,
             $width,
             $height,
-            $alt
+            $alt,
+            isset($class['image']) ? ' class="'.$class['image'].'"' : ''
         );
 
         if (true === $album && !empty($albumUrl)) {
-            $html = sprintf('<a href="%1$s">%2$s</a>', $albumUrl, $html);
+            $html = sprintf('<a href="%1$s"%3$s>%2$s</a>', $albumUrl, $html, isset($class['link']) ? ' class="'.$class['link'].'"' : '');
         }
 
         return $html;
