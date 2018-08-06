@@ -36,6 +36,7 @@ class Breadcrumbs
     {
         $this->setElements($elements);
         $this->setAddress($address);
+        $this->setClasses($classes);
         $this->setNesting($nesting);
     }
 
@@ -63,7 +64,10 @@ class Breadcrumbs
     {
         $this->classes = array_merge([
             'ul' => '',
+            'li' => '',
             'li_active' => '',
+            'a' => '',
+            'a_active' => '',
         ], $classes);
     }
 
@@ -131,20 +135,28 @@ class Breadcrumbs
         $classes = $this->getClasses();
 
         $html[] = sprintf(
-            '<ul'.'%1$s'.'>',
-            $classes['ul'] ? ' class="'.$classes['ul'].'"' : ''
+            '<ul%1$s>',
+            $this->isAttribute('class', $classes['ul'])
         );
 
         $tab = str_repeat("\t", $nesting + 1);
 
         if (true === $withStart) {
-            $html[] = $tab.'<li><a href="'.DIR.'/">Start</a></li>';
+            $html[] = sprintf(
+                '%1$s<li%2$s><a%3$s href="%4$s/">Start</a></li>',
+                $tab,
+                $this->isAttribute('class', $classes['li']),
+                $this->isAttribute('class', $classes['a']),
+                DIR
+            );
         }
 
         for ($i = 0; $i < (count($elements) - 1); ++$i) {
             $html[] = sprintf(
-                '%1$s<li><a href="%2$s">%3$s</a></li>',
+                '%1$s<li%2$s><a%3$s href="%4$s">%5$s</a></li>',
                 $tab, // nesting
+                $this->isAttribute('class', $classes['li']),
+                $this->isAttribute('class', $classes['a']),
                 DIR.$elements[$i][0],
                 $elements[$i][1]
             );
@@ -153,12 +165,32 @@ class Breadcrumbs
         $html[] = sprintf(
             '%1$s'.'<li'.'%2$s'.'>'.'%3$s'.'</li>',
             $tab, // nesting
-            $classes['li_active'] ? ' class="'.$classes['li_active'].'"' : '',
+            $this->isAttribute('class', [$classes['li'], $classes['li_active']]),
             $elements[$i][1]
         );
 
         $html[] = str_repeat("\t", $nesting).'</ul>';
 
         return implode("\n", $html);
+    }
+
+    /**
+     * Put value is not empty.
+     *
+     * @param string       $attribute
+     * @param string|array $value
+     *
+     * @return string
+     */
+    private function isAttribute($attribute, $value)
+    {
+        if (is_array($value)) {
+            array_filter($value);
+            $value = trim(implode(' ', $value));
+
+            return !empty($value) ? ' '.$attribute.'="'.$value.'"' : '';
+        }
+
+        return (isset($value) and !empty($value)) ? ' '.$attribute.'="'.trim($value).'"' : '';
     }
 }
