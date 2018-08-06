@@ -17,6 +17,7 @@
         "ext-mysqli": "*",
         "ext-mbstring": "*",
         "ext-gd": "*",
+        "ext-dom": "*",
         "roave/security-advisories": "dev-master",
         "php": ">=5.5.9",
         "psr/log": "^1.0",
