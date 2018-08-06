@@ -72,6 +72,7 @@ class Paging
     {
         $this->classes = array_merge([
             'ul' => '',
+            'li' => '',
             'li_current' => '',
             'a' => '',
             'a_current' => '',
