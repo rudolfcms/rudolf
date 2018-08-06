@@ -116,7 +116,7 @@ class Breadcrumbs
         for ($pid = 0, $i = 0; $i < $c = count($address); ++$i) {
             if (isset($menu[$address[$i]][$pid]) && $pid === (int) $menu[$address[$i]][$pid]['parent_id']) {
                 $array[$i] = array($url.'/'.$address[$i], $menu[$address[$i]][$pid]['title']);
-                $pid = $menu[$address[$i]][$pid]['id'];
+                $pid = (int) $menu[$address[$i]][$pid]['id'];
                 $url .= '/'.$address[$i];
             }
         }
