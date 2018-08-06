@@ -88,7 +88,7 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         $loop = new Loop($data, $calc);
 
         $s = "<ul class=\"nav\">\n\t<li class=\"current\"><a href=\"/page/1\">1</a></li>\n</ul>\n";
-        $this->assertEquals($s, $loop->nav(['ul' => 'nav'], 0));
+        $this->assertEquals($s, $loop->nav(['ul' => 'nav', 'li_current' => 'current'], 0));
     }
 
     public function testIsPaginationWhenExistOnePage()
