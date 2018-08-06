@@ -32,6 +32,6 @@ class DelController extends AdminController
 
         $view = new DelView();
         $view->delPage($page);
-        $view->render('admin');
+        $view->render();
     }
 }

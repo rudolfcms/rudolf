@@ -34,6 +34,6 @@ class TypeDelController extends AdminController
 
         $view = new TypeDelView();
         $view->display((new TypeEditModel())->getMenuTypeById($id));
-        $view->render('admin');
+        $view->render();
     }
 }

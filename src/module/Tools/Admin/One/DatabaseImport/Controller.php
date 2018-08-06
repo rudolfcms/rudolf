@@ -57,6 +57,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->setData($data = []);
-        $view->render('admin');
+        $view->render();
     }
 }

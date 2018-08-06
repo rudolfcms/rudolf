@@ -17,11 +17,6 @@ class AddView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-
-    /**
      * Set data to add gallery.
      *
      * @param array $gallery

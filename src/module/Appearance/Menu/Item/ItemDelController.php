@@ -34,6 +34,6 @@ class ItemDelController extends AdminController
 
         $view = new ItemDelView();
         $view->display((new ItemEditModel())->getInfo($id));
-        $view->render('admin');
+        $view->render();
     }
 }

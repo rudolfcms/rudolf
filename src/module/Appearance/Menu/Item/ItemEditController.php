@@ -37,6 +37,6 @@ class ItemEditController extends AdminController
         }
 
         $view->display($model->getInfo($id), (new Model())->getTypes(), (new FrontModel())->getMenuItems());
-        $view->render('admin');
+        $view->render();
     }
 }

@@ -11,6 +11,6 @@ class MenuController extends AdminController
     {
         $view = new MenuView();
         $view->display((new FrontModel())->getMenuItems(), (new MenuModel())->getMenuTypes());
-        $view->render('admin');
+        $view->render();
     }
 }

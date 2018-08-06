@@ -17,10 +17,6 @@ class DelView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-    /**
      * Set data to delete page.
      *
      * @param array $page

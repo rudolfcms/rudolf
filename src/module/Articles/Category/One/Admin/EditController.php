@@ -41,6 +41,6 @@ class EditController extends AdminController
 
         $view = new EditView();
         $view->edit($category);
-        $view->render('admin');
+        $view->render();
     }
 }

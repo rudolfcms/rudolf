@@ -27,6 +27,6 @@ class Controller extends AdminController
         $results = $list->getList($limit, $onPage);
         $view = new View();
         $view->setData($results, $pagination);
-        $view->render('admin');
+        $view->render();
     }
 }

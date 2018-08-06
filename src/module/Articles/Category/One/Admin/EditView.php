@@ -17,11 +17,6 @@ class EditView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-
-    /**
      * @param array $category
      */
     public function edit(array $category)

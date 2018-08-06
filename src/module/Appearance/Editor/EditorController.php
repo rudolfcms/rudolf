@@ -51,6 +51,6 @@ class EditorController extends AdminController
 
         $view = new EditorView();
         $view->editor($filesList, $model->getFileInfo($filename));
-        $view->render('admin');
+        $view->render();
     }
 }

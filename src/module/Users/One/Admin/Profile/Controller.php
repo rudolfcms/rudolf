@@ -14,6 +14,6 @@ class Controller extends AdminController
 
         $view = new View();
         $view->userCard();
-        $view->render('admin');
+        $view->render();
     }
 }

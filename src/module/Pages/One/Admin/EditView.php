@@ -19,11 +19,6 @@ class EditView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-
-    /**
      * Set data to edit page.
      *
      * @param array $page

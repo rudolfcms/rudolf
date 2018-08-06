@@ -43,6 +43,6 @@ class ItemAddController extends AdminController
             'item_type' => '',
             'position' => 0,
         ]), (new Model())->getTypes(), (new FrontModel())->getMenuItems());
-        $view->render('admin');
+        $view->render();
     }
 }

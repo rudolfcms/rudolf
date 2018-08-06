@@ -199,7 +199,7 @@ class AdminView extends BaseView
     /**
      * @return string
      */
-    protected function getUserRegisterDate()
+    public function getUserRegisterDate()
     {
         return self::$userInfo['dt'];
     }
@@ -281,5 +281,10 @@ class AdminView extends BaseView
         $html[] = '</div>';
 
         return implode('', $html);
+    }
+
+    public function render($side = 'admin', $type = 'html')
+    {
+        parent::render($side, $type);
     }
 }

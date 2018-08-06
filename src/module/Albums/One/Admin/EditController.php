@@ -43,6 +43,6 @@ class EditController extends AdminController
         $view = new EditView();
         $view->editAlbum($album);
         $view->setCategories($categoriesList);
-        $view->render('admin');
+        $view->render();
     }
 }

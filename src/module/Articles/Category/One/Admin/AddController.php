@@ -31,6 +31,6 @@ class AddController extends AdminController
 
         $view = new AddView();
         $view->add($form->getDataToDisplay());
-        $view->render('admin');
+        $view->render();
     }
 }

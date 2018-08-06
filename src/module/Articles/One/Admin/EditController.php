@@ -35,6 +35,6 @@ class EditController extends AdminController
         $view = new EditView();
         $view->editArticle($form->getDataToDisplay((new OneModel())->getOneById($id)));
         $view->setCategories($categoriesList);
-        $view->render('admin');
+        $view->render();
     }
 }

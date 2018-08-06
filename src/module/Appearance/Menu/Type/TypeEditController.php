@@ -34,6 +34,6 @@ class TypeEditController extends AdminController
         }
 
         $view->display($model->getMenuTypeById($id));
-        $view->render('admin');
+        $view->render();
     }
 }

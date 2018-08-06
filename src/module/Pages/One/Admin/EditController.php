@@ -47,6 +47,6 @@ class EditController extends AdminController
             )
         );
         $view->setPages($pagesList->getPagesList());
-        $view->render('admin');
+        $view->render();
     }
 }

@@ -19,11 +19,6 @@ class AddView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-
-    /**
      * Set data do add page.
      *
      * @param array $page

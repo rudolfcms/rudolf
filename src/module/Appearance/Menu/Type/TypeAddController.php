@@ -45,6 +45,6 @@ class TypeAddController extends AdminController
 
         $view = new TypeAddView();
         $view->display($item);
-        $view->render('admin');
+        $view->render();
     }
 }

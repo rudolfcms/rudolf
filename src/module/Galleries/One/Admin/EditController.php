@@ -40,6 +40,6 @@ class EditController extends AdminController
 
         $view = new EditView();
         $view->editGallery($form->getDataToDisplay((new One\Model())->getGalleryInfoById($id)));
-        $view->render('admin');
+        $view->render();
     }
 }

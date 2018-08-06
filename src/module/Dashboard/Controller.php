@@ -10,6 +10,6 @@ class Controller extends AdminController
     {
         $view = new View();
         $view->dashboard();
-        $view->render('admin');
+        $view->render();
     }
 }
