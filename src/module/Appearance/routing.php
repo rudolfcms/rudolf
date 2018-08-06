@@ -38,7 +38,7 @@ $collection->add('appearance/editor', new Route(
 
 // menu
 $collection->add('appearance/menu', new Route(
-    'admin/appearance/menu',
+    'admin/appearance/menu(/)',
     'Rudolf\Modules\Appearance\Menu\MenuController::display'
 ));
 
