@@ -76,7 +76,7 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    public function pageNav($type, $nesting = 0, $classes, $before = [], $after = [], $config = [])
+    public function pageNav($type, $nesting, $classes, array $before = [], array $after = [], array $config = [])
     {
         $nav = new Navigation();
         $nav->setType($type);
@@ -96,7 +96,7 @@ class AdminView extends BaseView
      * @param array $classes
      * @return bool|string
      */
-    public function breadcrumb($nesting = 0, $classes = [])
+    public function breadcrumb($nesting = 0, array $classes = [])
     {
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->setElements($this->getBreadcrumbElements());
@@ -116,9 +116,10 @@ class AdminView extends BaseView
         foreach (self::$menuItemsCollection->getAll() as $key => $value) {
             $slug = explode('/', trim($value->getSlug(), '/'));
             $slug = end($slug);
-            $array[$slug][$value->getParentId()] = array(
+            $parentId = $value->getParentId();
+            $array[$slug][$parentId] = array(
                 'id' => $value->getId(),
-                'parent_id' => $value->getParentId(),
+                'parent_id' => $parentId,
                 'slug' => $slug,
                 'title' => $value->getTitle(),
             );
@@ -210,7 +211,7 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    protected function alerts($classes = [])
+    protected function alerts(array $classes = [])
     {
         if (!$this->isAlerts()) {
             return false;
@@ -255,7 +256,7 @@ class AdminView extends BaseView
      *
      * @return string
      */
-    protected function alert($type, $message, $classes = [])
+    protected function alert($type, $message, array $classes = [])
     {
         $html[] = sprintf('<div class="alert alert-%1$s %1$s">', $classes[$type]);
         $html[] = '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';

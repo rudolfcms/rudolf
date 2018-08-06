@@ -35,7 +35,7 @@ class Navigation
     /**
      * @var int
      */
-    private $nesting;
+    private $nesting = 0;
 
     /**
      * @var array

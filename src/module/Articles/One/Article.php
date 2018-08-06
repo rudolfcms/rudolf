@@ -2,10 +2,12 @@
 
 namespace Rudolf\Modules\Articles\One;
 
+use HtmlTruncator\InvalidHtmlException;
 use Rudolf\Component\Forms\Validator;
 use Rudolf\Component\Hooks;
 use Rudolf\Component\Html\Text;
 use Rudolf\Component\Images\Image;
+use Rudolf\Component\Logger\Logger;
 
 class Article
 {
@@ -15,12 +17,18 @@ class Article
     protected $article;
 
     /**
+     * @var Logger
+     */
+    private $logger;
+
+    /**
      * Constructor.
      *
      * @param array $article
      */
-    public function __construct($article = [])
+    public function __construct(array $article = [])
     {
+        $this->logger = new Logger();
         $this->setData($article);
     }
 
@@ -146,7 +154,6 @@ class Article
      * @param bool     $raw
      *
      * @return string
-     * @throws \HtmlTruncator\InvalidHtmlException
      */
     public function content($truncate = false, $stripTags = false, $escape = false, $raw = false)
     {
@@ -157,7 +164,12 @@ class Article
         }
 
         if (false !== $truncate) {
-            $content = Text::truncate($content, $truncate, '…', '<b><i><u><em><strong><a><span>');
+            try {
+                $content = Text::truncate($content, $truncate, '…', '<b><i><u><em><strong><a><span>');
+            } catch (InvalidHtmlException $e) {
+                $this->logger->error($e->getMessage(), $e->getTrace());
+                $content = $e->getMessage();
+            }
         }
 
         if (true === $escape) {
@@ -437,7 +449,7 @@ class Article
      *
      * @return string
      */
-    public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '', $class = [])
+    public function thumbnail($width = 100, $height = 100, $album = false, $alt = '', $default = '', array $class = [])
     {
         $thumbUrl = $this->thumb();
         $albumUrl = $this->album();

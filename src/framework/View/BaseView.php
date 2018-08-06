@@ -86,6 +86,9 @@ abstract class BaseView
      *
      * @param string $side front|admin
      * @param string $type html|json
+     *
+     * @throws TemplateNotFoundException
+     * @throws ThemeNotFoundException
      */
     public function render($side = 'front', $type = 'html')
     {
@@ -104,14 +107,10 @@ abstract class BaseView
 
         $this->loadConfig();
 
-        switch ($type) {
-            case 'json':
-                $this->renderJson();
-                break;
-
-            default:
-                $this->renderHtml();
-                break;
+        if ($type === 'json') {
+            $this->renderJson();
+        } else {
+            $this->renderHtml();
         }
     }
 
@@ -127,13 +126,15 @@ abstract class BaseView
 
         if (!file_exists($this->themeRoot)) {
             throw new ThemeNotFoundException('Theme '.$this->themeName.' does not exist');
-        } elseif (is_file($file)) {
-            include $file;
-        } else {
+        }
+
+        if (!is_file($file)) {
             throw new TemplateNotFoundException(
                 "Template file '{$this->template}' does not exist in ".$this->themeName
             );
         }
+
+        include $file;
     }
 
     /**

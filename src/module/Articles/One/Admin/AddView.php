@@ -20,11 +20,6 @@ class AddView extends AdminView
     protected $path;
 
     /**
-     * @var string
-     */
-    protected $templateType;
-
-    /**
      * Set data do add article.
      *
      * @param array $article
