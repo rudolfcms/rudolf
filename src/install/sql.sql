@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS `rudolf_categories` (
   `added` datetime NOT NULL,
   `adder_ID` int(11) unsigned NOT NULL,
   `modified` datetime DEFAULT NULL,
-  `modifier_ID` int(11) NOT NULL,
+  `modifier_ID` int(11) unsigned DEFAULT NULL,
   `slug` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `views` int(11) NOT NULL,
+  `views` int(11) unsigned NOT NULL DEFAULT '0',
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -63,25 +63,12 @@ CREATE TABLE IF NOT EXISTS `rudolf_galleries` (
   `slug` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adder_ID` int(11) NOT NULL,
   `added` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `modifier_ID` int(11) NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modifier_ID` int(11) DEFAULT NULL,
   `thumb_width` int(11) NOT NULL,
   `thumb_height` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS `rudolf_guestbook` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `nick` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_added` datetime NOT NULL,
-  `acceptance_date` datetime NOT NULL,
-  `acceptor_nick` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `show` tinyint(1) NOT NULL,
-  `user_agent` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `rudolf_menu` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -114,8 +101,8 @@ CREATE TABLE IF NOT EXISTS `rudolf_pages` (
   `adder_ID` int(11) unsigned NOT NULL,
   `added` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
-  `modifier_ID` int(11) NOT NULL,
-  `views` int(11) DEFAULT '0',
+  `modifier_ID` int(11) DEFAULT NULL,
+  `views` int(11) unsigned NOT NULL DEFAULT '0',
   `slug` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
