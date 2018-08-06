@@ -1,8 +1,8 @@
 <?php
 
-$request = $_SERVER['REQUEST_URI'];
+$request = urldecode($_SERVER['REQUEST_URI']);
 
-$rudolfPublic = __DIR__.'/public';
+$rudolfPublic = dirname(__DIR__).'/rudolf/public';
 
 // workaround https://bugs.php.net/bug.php?id=61286
 $_SERVER['SCRIPT_NAME'] = '/index.php';
@@ -10,7 +10,7 @@ $_SERVER['SCRIPT_NAME'] = '/index.php';
 $requestFile = $rudolfPublic.$request;
 $index = $rudolfPublic.'/index.php';
 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|svg|ttf)$/', $request)) {
+if (preg_match('/\.(?:png|jpg|jpeg|gif|svg|ttf|doc|pdf)$/', $request)) {
     if (file_exists($requestFile)) {
         return false;
     }
