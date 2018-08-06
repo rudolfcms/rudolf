@@ -4,7 +4,8 @@ cache:
 
 before_script:
 - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
-- apk add --update git
+- apk add --update git gettext-dev libpng-dev
+- docker-php-ext-install gettext mysqli gd
 - curl -sS https://getcomposer.org/installer | php
 - php composer.phar install
 
