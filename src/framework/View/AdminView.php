@@ -80,7 +80,7 @@ class AdminView extends BaseView
     {
         $nav = new Navigation();
         $nav->setType($type);
-        $nav->setItems(self::$menuItemsCollection);
+        $nav->setItems($this->getMenuItems());
         $nav->setCurrent(self::$request);
         $nav->setClasses($classes);
         $nav->setNesting($nesting);
@@ -141,6 +141,11 @@ class AdminView extends BaseView
         ];
 
         return $array;
+    }
+
+    protected function getMenuItems()
+    {
+        return self::$menuItemsCollection;
     }
 
     /**
