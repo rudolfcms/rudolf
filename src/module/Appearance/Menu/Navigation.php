@@ -108,8 +108,8 @@ class Navigation extends BaseNavigation
             else {
                 $html[] = sprintf(
                     '%1$s'.'<li>%2$s - <a'.'%3$s'.' href="'.'%4$s'.'">%5$s</a> – pozycja: %6$s'.
-                    ' <a href="'.DIR.'/admin/appearance/menu/edit-item/%2$s" class="btn btn-primary btn-xs">Edytuj</a>'.
-                    ' <a href="'.DIR.'/admin/appearance/menu/del-item/%2$s" class="btn btn-danger btn-xs">Usuń</a>',
+                    ' <a href="'.DIR.'/admin/appearance/menu/edit-item/%2$s" class="btn btn-primary btn-sm btn-xs">Edytuj</a>'.
+                    ' <a href="'.DIR.'/admin/appearance/menu/del-item/%2$s" class="btn btn-danger btn-sm btn-xs">Usuń</a>',
 
                     # %1$s tabulation
                     str_repeat("\t", (count($parent_stack) + 1) * 2 - 1 + $nesting),

@@ -199,7 +199,8 @@ class Navigation
                     $this->addContainerWithIcoIf(
                         $item['ico'],
                         $config['li_a_ico-container'],
-                        $config['li_a_ico-class_base']
+                        $config['li_a_ico-class_base'],
+                        $config['icon_attribute']
                     ),
 
                     # %8$s before text in li a
@@ -269,7 +270,8 @@ class Navigation
                     $this->addContainerWithIcoIf(
                         $item['ico'],
                         $config['li_a_ico-container'],
-                        $config['li_a_ico-class_base']
+                        $config['li_a_ico-class_base'],
+                        $config['icon_attribute']
                     ),
 
                     # %8$s before text in li a
@@ -509,6 +511,7 @@ class Navigation
                 'li_a_text-container' => '',
                 'li_a_ico-container'  => '',
                 'li_a_ico-class_base' => '',
+                'icon_attribute'      => 'class'
             ],
             $this->config
         );
@@ -569,13 +572,13 @@ class Navigation
         return in_array($slug, $array);
     }
 
-    private function addContainerWithIcoIf($ico, $selector, $classBase)
+    private function addContainerWithIcoIf($ico, $selector, $classBase, $attribute)
     {
         if (empty($ico) || empty($selector)) {
             return false;
         }
 
-        return '<'.$selector.' class="'.$classBase.' '.$ico.'"></'.$selector.'> ';
+        return '<'.$selector.' '.$attribute.'="'.implode(' ', [$classBase, $ico]).'"></'.$selector.'> ';
     }
 
     private function addContainerWithSelectorIf($inside, $selector)
