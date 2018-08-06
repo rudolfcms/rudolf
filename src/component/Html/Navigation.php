@@ -162,8 +162,8 @@ class Navigation
                  * <li> with <ul>
                  */
                 $html[] = sprintf(
-                    '%1$s'.'<li'.'%2$s'.'>%3$s<a'
-                    .'%4$s'.' href="'.'%5$s'.'">%6$s%7$s'.'%8$s'.'%9$s</a>%10$s',
+                    '%1$s'.'<li'.'%2$s'.'>%3$s<a%4$s'
+                    .'%5$s'.' href="'.'%6$s'.'">%7$s%8$s'.'%9$s'.'%10$s</a>%11$s',
                     # %1$s tabulation
                     $tab,
 
@@ -180,29 +180,38 @@ class Navigation
                     # %3$s text before li a
                     $before['li_with_ul_a'],
 
-                    # %4$s a title=""
+                    # %4$s a class
+                    $this->isAttribute(
+                        'class',
+                        [
+                            $classes['a'],
+                            $this->isActive($item['slug'], $currents) ? $classes['a_active'] : '',
+                        ]
+                    ),
+
+                    # %5$s a title=""
                     $this->isAttribute('title', $item['caption']),
 
-                    # %5$s a href=""
+                    # %6$s a href=""
                     $item['slug'],
 
-                    # %6$s ico
+                    # %7$s ico
                     $this->addContainerWithIcoIf(
                         $item['ico'],
                         $config['li_a_ico-container'],
                         $config['li_a_ico-class_base']
                     ),
 
-                    # %7$s before text in li a
+                    # %8$s before text in li a
                     $before['li_with_ul_a_text'],
 
-                    # %8$s text inside item
+                    # %9$s text inside item
                     $this->addContainerWithSelectorIf($item['title'], $config['li_a_text-container']),
 
-                    # %9$s after text in li a
+                    # %10$s after text in li a
                     $after['li_with_ul_a_text'],
 
-                    # %10$s text after li a
+                    # %11$s text after li a
                     $after['li_with_ul_a']
                 );
 
