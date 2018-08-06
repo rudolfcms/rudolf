@@ -9,6 +9,12 @@ use Rudolf\Framework\Controller\AdminController;
 
 class SwitchController extends AdminController
 {
+    private $blacklist = [
+        'Dashboard',
+        'Modules',
+        'Users',
+    ];
+
     /**
      * @param $name
      *
@@ -30,6 +36,15 @@ class SwitchController extends AdminController
 
         switch ($status) {
             case 1:
+                if (in_array($name, $this->blacklist)) {
+                    AlertsCollection::add(new Alert(
+                        'error',
+                        'Nie można wyłączyć modułu '.$name.'.'
+                    ));
+                    $this->redirect(DIR.'/admin/modules?de', 302);
+                    break;
+                }
+
                 $configEditor->deactivate($name);
                 $configEditor->save();
                 AlertsCollection::add(new Alert(

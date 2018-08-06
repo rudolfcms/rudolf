@@ -10,20 +10,20 @@ class Controller extends AdminController
     /**
      * @param $page
      *
-     * @throws \InvalidArgumentException
+     * @throws \Rudolf\Component\Html\Exceptions\TemplateNotFoundException
+     * @throws \Rudolf\Component\Html\Exceptions\ThemeNotFoundException
      */
     public function getList($page)
     {
         $page = $this->firstPageRedirect($page, 301, $location = '../../list');
 
-        $list = new Model();
-        $total = $list->getTotalNumber();
+        $model = new Model();
 
-        $pagination = new Pagination($total, $page, 10);
+        $pagination = new Pagination($model->getTotalNumber(), $page, 15);
         $limit = $pagination->getLimit();
         $onPage = $pagination->getOnPage();
 
-        $results = $list->getList($limit, $onPage);
+        $results = $model->getList($limit, $onPage);
 
         $view = new View();
         $view->setData($results, $pagination);
