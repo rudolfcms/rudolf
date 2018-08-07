@@ -23,7 +23,7 @@ class ItemAddController extends AdminController
                     'success',
                     'Poprawnie dodano!'
                 ));
-                $this->redirectTo(DIR.'/admin/appearance/menu/edit/'.$id);
+                $this->redirectTo(DIR.'/admin/appearance/menu/edit-item/'.$id);
                 return;
             }
             AlertsCollection::add(new Alert(
