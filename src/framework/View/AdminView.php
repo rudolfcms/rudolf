@@ -169,6 +169,11 @@ class AdminView extends BaseView
         self::$userInfo = $userInfo;
     }
 
+    protected function getUserId()
+    {
+        return (int) self::$userInfo['id'];
+    }
+
     /**
      * @return string
      */

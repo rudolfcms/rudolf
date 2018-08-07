@@ -47,7 +47,7 @@ class View extends FrontView
      */
     protected function getMessage($index = false)
     {
-        if (!isset($this->status)) {
+        if ($this->status === null) {
             return false;
         }
 

@@ -35,6 +35,8 @@ class User
                 'first_name' => '',
                 'surname' => '',
                 'email' => '',
+                'active' => false,
+                'dt' => '',
             ],
             (array) $user
         );
@@ -116,5 +118,15 @@ class User
         }
 
         return Text::escape($email);
+    }
+
+    public function getRegisterDate()
+    {
+        return $this->user['dt'];
+    }
+
+    public function isActive()
+    {
+        return (bool) $this->user['active'];
     }
 }

@@ -22,6 +22,6 @@ class Controller extends FrontController
 
         $view = new View();
         $view->form($_POST, $status);
-        $view->render();
+        $view->render('admin');
     }
 }

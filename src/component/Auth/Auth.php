@@ -17,11 +17,6 @@ class Auth
     private $prefix;
 
     /**
-     * @var array
-     */
-    private $config;
-
-    /**
      * @var string
      */
     private $table;
@@ -40,11 +35,10 @@ class Auth
     {
         $this->pdo = $pdo;
         $this->prefix = $prefix;
-        $this->config = include CONFIG_ROOT.'/'.'auth.php';
 
         $this->table = $this->prefix.'users';
 
-        $this->session = new Session($pdo, $prefix, $this->config);
+        $this->session = new Session($pdo, $prefix, include CONFIG_ROOT.'/'.'auth.php');
     }
 
     /**
@@ -68,7 +62,9 @@ class Auth
         #validation
         if (false === $this->validateEmail($email)) {
             return 2;
-        } elseif (false === $this->validatePassword($password)) {
+        }
+
+        if (false === $this->validatePassword($password)) {
             return 3;
         }
 
@@ -119,7 +115,7 @@ class Auth
     /**
      * Get logged user info.
      *
-     * @param int $uid User ID
+     * @param int|bool $uid User ID
      *                not set gives current logged user data
      *
      * @return array|bool

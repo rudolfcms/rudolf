@@ -4,7 +4,7 @@ namespace Rudolf\Modules\Users\One\Admin\Profile;
 
 use Rudolf\Framework\View\AdminView;
 
-class View extends AdminView
+class ShowView extends AdminView
 {
     public function userCard()
     {

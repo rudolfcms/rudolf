@@ -17,7 +17,7 @@ $collection->add('user', new Route(
 ));
 $collection->add('user/profile', new Route(
     'user/profile',
-    'Rudolf\Modules\Users\One\Admin\Profile\Controller::profile'
+    'Rudolf\Modules\Users\One\Admin\Profile\ShowController::profile'
 ));
 $collection->add('user/logout', new Route(
     'user/logout',
@@ -39,4 +39,11 @@ $collection->add('users/roll/admin', new Route(
     'Rudolf\Modules\Users\Roll\Admin\Controller::getList',
     ['page' => '[1-9][0-9]*$'],
     ['page' => 0]
+));
+
+// edit
+$collection->add('users/edit', new Route(
+    '/admin/users/edit/<id>$',
+    'Rudolf\Modules\Users\One\Admin\Profile\EditController::edit',
+    ['id' => '[1-9][0-9]*']
 ));

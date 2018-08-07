@@ -4,15 +4,15 @@ namespace Rudolf\Modules\Users\One\Admin\Profile;
 
 use Rudolf\Framework\Controller\AdminController;
 
-class Controller extends AdminController
+class ShowController extends AdminController
 {
     public function profile()
     {
-        new Model();
+        new ShowModel();
 
         //$profileInfo = $model->getProfileInfo();
 
-        $view = new View();
+        $view = new ShowView();
         $view->userCard();
         $view->render();
     }
