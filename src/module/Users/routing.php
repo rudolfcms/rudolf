@@ -41,9 +41,20 @@ $collection->add('users/roll/admin', new Route(
     ['page' => 0]
 ));
 
-// edit
+// profile
 $collection->add('users/edit', new Route(
     '/admin/users/edit/<id>$',
     'Rudolf\Modules\Users\One\Admin\Profile\EditController::edit',
+    ['id' => '[1-9][0-9]*']
+));
+
+$collection->add('users/add', new Route(
+    '/admin/users/add?',
+    'Rudolf\Modules\Users\One\Admin\Profile\AddController::Add'
+));
+
+$collection->add('users/del', new Route(
+    '/admin/users/del/<id>$',
+    'Rudolf\Modules\Users\One\Admin\Profile\DelController::del',
     ['id' => '[1-9][0-9]*']
 ));
