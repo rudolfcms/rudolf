@@ -1,7 +1,15 @@
-/.idea/
+# Rudolf
 /config/
 /log/
 /public/content/
 /temp/
+
+
+# User-specific stuff
+.idea/
+*.iml
+
+
+# Composer
+composer.phar
 /vendor/
-.php_cs.cache
