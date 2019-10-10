@@ -21,6 +21,7 @@ class AddController extends AdminController
             $form->handle($_POST);
 
             if ($form->isValid() && $id = $form->add()) {
+                $model->flushCache('galleries');
                 $this->redirect(DIR.'/admin/galleries/edit/'.$id);
             }
 

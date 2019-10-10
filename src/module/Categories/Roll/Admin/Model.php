@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Categories\Roll\Admin;
 
+use PDO;
 use Rudolf\Modules\Categories\Roll;
 
 class Model extends Roll\Model
@@ -40,7 +41,7 @@ class Model extends Roll\Model
             ORDER BY $orderBy[0] $orderBy[1] LIMIT $limit,
                                                    $onPage
         ");
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
         return $results;
@@ -63,7 +64,7 @@ class Model extends Roll\Model
             WHERE category.type = '$type'
             GROUP BY category.id
         ");
-        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
         return $results;

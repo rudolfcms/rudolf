@@ -38,7 +38,7 @@ class AdminModel extends BaseModel
 
         if (!empty($modules)) {
             foreach ($modules as $key => $value) {
-                $file = MODULES_ROOT.'/'.$value->getName().'/menu.php';
+                $file = MODULES_ROOT . '/' . $value->getName() . '/menu.php';
 
                 if (is_file($file)) {
                     include $file;
@@ -47,5 +47,13 @@ class AdminModel extends BaseModel
         }
 
         return $collection;
+    }
+
+    public function flushCache($tableName = '')
+    {
+        if (!empty($tableName)) $table = $this->prefix . $tableName;
+        else $table = $this->prefix . '*';
+
+        array_map('unlink', glob(TEMP_ROOT . '/' . self::$config['engine'] . '/' . $table . '*'));
     }
 }

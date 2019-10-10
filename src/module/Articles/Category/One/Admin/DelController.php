@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Articles\Category\One\Admin;
 
+use Exception;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One\Admin\DelForm;
@@ -14,19 +15,21 @@ class DelController extends AdminController
      * @param $id
      *
      * @throws HttpErrorException
-     * @throws \Exception
+     * @throws Exception
      */
     public function del($id)
     {
         // if data was send
         if (isset($_POST['delete'])) {
+            $delModel = new DelModel();
             $form = new DelForm();
             $form->handle(['id' => $id]);
-            $form->setModel(new DelModel());
+            $form->setModel($delModel);
 
             if ($form->isValid()) {
                 $form->delete();
-                $this->redirect(DIR.'/admin/articles/categories');
+                $delModel->flushCache('categories');
+                $this->redirect(DIR . '/admin/articles/categories');
             }
 
             $form->displayAlerts();

@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Albums\Category\One\Admin;
 
+use Exception;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\One;
@@ -14,12 +15,13 @@ class EditController extends AdminController
      * @param $id
      *
      * @throws HttpErrorException
-     * @throws \Exception
+     * @throws Exception
      */
     public function edit($id)
     {
+        $editModel = new EditModel();
         $form = new EditForm();
-        $form->setModel(new EditModel());
+        $form->setModel($editModel);
         $form->setType('albums');
 
         // if data was send
@@ -27,7 +29,8 @@ class EditController extends AdminController
             $form->handle(array_merge($_POST, ['id' => $id]));
 
             if ($form->isValid() and $form->update()) {
-                $this->redirect(DIR.'/admin/albums/categories/edit/'.$id);
+                $editModel->flushCache('categories');
+                $this->redirect(DIR . '/admin/albums/categories/edit/' . $id);
             }
 
             $form->displayAlerts();

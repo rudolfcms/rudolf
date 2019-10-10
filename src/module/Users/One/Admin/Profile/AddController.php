@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Users\One\Admin\Profile;
 
+use Exception;
 use Rudolf\Component\Alerts\Alert;
 use Rudolf\Component\Alerts\AlertsCollection;
 use Rudolf\Framework\Controller\AdminController;
@@ -9,7 +10,7 @@ use Rudolf\Framework\Controller\AdminController;
 class AddController extends AdminController
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function add()
     {
@@ -21,10 +22,11 @@ class AddController extends AdminController
                         'Podane hasła nie są identyczne!'
                     )
                 );
-                $this->redirect(DIR.'/admin/users/add');
+                $this->redirect(DIR . '/admin/users/add');
             }
 
-            $id = (new AddModel())->add($_POST);
+            $addModel = new AddModel();
+            $id = ($addModel)->add($_POST);
 
             if ($id) {
                 AlertsCollection::add(
@@ -33,7 +35,8 @@ class AddController extends AdminController
                         'Dodano użytkownika'
                     )
                 );
-                $this->redirect(DIR.'/admin/users/edit/'.$id);
+                $addModel->flushCache('users');
+                $this->redirect(DIR . '/admin/users/edit/' . $id);
             }
             AlertsCollection::add(
                 new Alert(

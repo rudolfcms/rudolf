@@ -3,6 +3,7 @@
 namespace Rudolf\Framework\Model;
 
 use PDO;
+use RuntimeException;
 
 abstract class BaseModel
 {
@@ -24,7 +25,7 @@ abstract class BaseModel
     /**
      * @var array
      */
-    private static $config;
+    protected static $config;
 
     /**
      * Constructor.
@@ -67,7 +68,7 @@ abstract class BaseModel
      * @param string|array $where
      *
      * @return int
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     protected function countItems($table, $where = [])
     {
@@ -76,10 +77,10 @@ abstract class BaseModel
 
         $file = TEMP_ROOT.'/'.self::$config['engine'].'/'.$cachedFileName;
 
-        if (!file_exists(TEMP_ROOT.'/mysql')
-            && !mkdir(TEMP_ROOT.'/mysql', 0755)
-            && !is_dir(TEMP_ROOT.'/mysql')) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', TEMP_ROOT.'/mysql'));
+        if (!file_exists(TEMP_ROOT.'/'.self::$config['engine'])
+            && !mkdir(TEMP_ROOT.'/'.self::$config['engine'], 0755)
+            && !is_dir(TEMP_ROOT.'/'.self::$config['engine'])) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', TEMP_ROOT.'/'.self::$config['engine']));
         }
 
         if (is_file($file)) {

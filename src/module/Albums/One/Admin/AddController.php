@@ -2,21 +2,23 @@
 
 namespace Rudolf\Modules\Albums\One\Admin;
 
+use Exception;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Categories\Roll\Admin\Model as CategoriesRoll;
 
 class AddController extends AdminController
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function add()
     {
         $categories = new CategoriesRoll();
         $categoriesList = $categories->getAll('albums');
 
+        $addModel = new AddModel();
         $form = new AddForm();
-        $form->setModel(new AddModel());
+        $form->setModel($addModel);
 
         // if data was send
         if (isset($_POST['add'])) {
@@ -24,7 +26,8 @@ class AddController extends AdminController
 
             if ($form->isValid()) {
                 $id = $form->save();
-                $this->redirect(DIR.'/admin/albums/edit/'.$id);
+                $addModel->flushCache('albums');
+                $this->redirect(DIR . '/admin/albums/edit/' . $id);
             }
 
             $form->displayAlerts();

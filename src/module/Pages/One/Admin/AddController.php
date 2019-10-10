@@ -2,18 +2,20 @@
 
 namespace Rudolf\Modules\Pages\One\Admin;
 
+use Exception;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Pages\Roll\Model as PagesList;
 
 class AddController extends AdminController
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function add()
     {
+        $addModel = new AddModel();
         $form = new AddForm();
-        $form->setModel(new AddModel());
+        $form->setModel($addModel);
 
         // if data was send
         if (isset($_POST['add'])) {
@@ -21,7 +23,8 @@ class AddController extends AdminController
 
             if ($form->isValid()) {
                 $id = $form->save();
-                $this->redirect(DIR.'/admin/pages/edit/'.$id);
+                $addModel->flushCache('pages');
+                $this->redirect(DIR . '/admin/pages/edit/' . $id);
             }
 
             $form->displayAlerts();

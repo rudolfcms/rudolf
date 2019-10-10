@@ -3,6 +3,8 @@
 namespace Rudolf\Modules\Users\Roll\Admin;
 
 use Rudolf\Component\Helpers\Pagination\Calc as Pagination;
+use Rudolf\Component\Html\Exceptions\TemplateNotFoundException;
+use Rudolf\Component\Html\Exceptions\ThemeNotFoundException;
 use Rudolf\Framework\Controller\AdminController;
 
 class Controller extends AdminController
@@ -10,7 +12,8 @@ class Controller extends AdminController
     /**
      * @param $page
      *
-     * @throws \InvalidArgumentException
+     * @throws TemplateNotFoundException
+     * @throws ThemeNotFoundException
      */
     public function getList($page)
     {

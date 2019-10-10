@@ -2,6 +2,7 @@
 
 namespace Rudolf\Modules\Pages\One\Admin;
 
+use Exception;
 use Rudolf\Component\Http\HttpErrorException;
 use Rudolf\Framework\Controller\AdminController;
 use Rudolf\Modules\Pages\One\Model as PageOne;
@@ -13,12 +14,13 @@ class EditController extends AdminController
      * @param $id
      *
      * @throws HttpErrorException
-     * @throws \Exception
+     * @throws Exception
      */
     public function edit($id)
     {
+        $editModel = new EditModel();
         $form = new EditForm();
-        $form->setModel(new EditModel());
+        $form->setModel($editModel);
 
         $page = new PageOne();
         if (false === ($pageData = $page->getOneById($id))) {
@@ -30,7 +32,8 @@ class EditController extends AdminController
             $form->handle(array_merge($_POST, ['id' => $id]));
 
             if ($form->isValid() && $form->update()) {
-                $this->redirect(DIR.'/admin/pages/edit/'.$id);
+                $editModel->flushCache('pages');
+                $this->redirect(DIR . '/admin/pages/edit/' . $id);
             }
 
             $form->displayAlerts();
